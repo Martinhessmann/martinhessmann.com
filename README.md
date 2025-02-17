@@ -1,82 +1,76 @@
 # Martin Heßmann
 
-Hey there, I'm Martin. Trying to put myself into words always feels a bit like trying to capture something that's in constant motion - the moment you think you've got it, something's already shifted.
+Hey there, I'm Martin. Trying to catch myself in words feels a bit like photographing a moving bicycle - there's always some blur around the edges, you know? That's kind of how I experience life and work - in constant motion, with thoughts flowing and shifting as they go.
 
 ## About Me
 
-Born in 1989 in [Neuruppin](https://en.wikipedia.org/wiki/Neuruppin), I now live in [Berlin Friedrichshain](https://en.wikipedia.org/wiki/Friedrichshain). I studied Communication Design at [HTW Berlin](https://www.htw-berlin.de/) from 2010 to 2014, completing my Bachelor of Arts with a grade of 1.7. My thesis focused on Natural User Interfaces, which now feels like an early hint towards my eventual path in digital product management.
+Born in 1989 in [Neuruppin](https://en.wikipedia.org/wiki/Neuruppin), I now find myself navigating the streets of [Berlin Friedrichshain](https://en.wikipedia.org/wiki/Friedrichshain). I studied Communication Design at [HTW Berlin](https://www.htw-berlin.de/) from 2010 to 2014, finishing my Bachelor with a 1.7 grade and a thesis on Natural User Interfaces that somehow naturally pointed me toward where I am now.
 
-## How I Work
+## How My Mind Works
 
-I'm the kind of person who just starts typing or sketching and sees where it leads me. It's a bit like riding my bicycle - you start pedaling without knowing exactly where you'll end up, but trusting that the journey itself will be worthwhile.
+I'm the type who likes to just start typing or sketching and let thoughts unfold wherever they want to go, a bit like riding my bicycle through Berlin's neighborhoods. You start pedaling in one direction, but the interesting side streets and unexpected views are what make the journey worth it.
 
-This approach shapes everything I do at work:
+This approach shapes how I engage with work:
 - Leading teams as Digital Product Manager at [AN®](https://an.design)
-- Working at the intersection of design and technology
-- Collaborating in small teams where ideas flow naturally
-- Building digital tools that solve real human problems
+- Finding that sweet spot where design meets technology
+- Flowing with small teams where ideas build on each other naturally
+- Creating digital tools that actually help humans do things better
 
-I find that small, tight-knit teams create this constant flow of input and process that doesn't feel overwhelming. There's something about that continuous exchange that just feels right to me.
+I've found that small, peaceful teams create this continuous stream of input and process without feeling like an overwhelming Hinderniss that you can't überwinden. There's a natural rhythm to it - thoughts build, evolve, sometimes circle back, but always keep moving.
 
 ## Professional Journey
 
-My career path has unfolded somewhat organically:
+My path has unfolded somewhat like my bike routes through the city - some planned roads, some wonderful detours:
 - Digital Product Manager at [AN®](https://an.design) (current)
 - Digital Art Director at [Unit U+2463 GmbH](https://unit23.com/) (March 2018 - July 2023)
 - UX/UI Designer at [Ape Unit GmbH](https://apeunit.com) (July 2014 - March 2018)
-- Design Intern at [Ape Unit GmbH](https://apeunit.com) (2013)
 - Freelance designer for web, print, and corporate design (various periods)
-
-Each role has been less of a calculated career move and more of an exploration into what feels meaningful and engaging.
 
 ## On Labels and Expectations
 
-Over time, I've worn many professional hats:
+Over time, I've worn different hats that people might use to categorize me:
 ```
 Webdesigner → Communication Designer → UX/UI Designer → Digital Art Director → Product Manager
 ```
 
-I've sometimes worried about being labeled, because labels can create expectations that feel like Hindernisse - obstacles that seem impossible to overcome. Through therapy and supportive relationships, I've learned that many of these perceived limitations are psychological constructs rather than actual issues with me as a designer, developer, project manager, friend, or father.
+And I've learned something interesting - I get a bit worried about being labeled, because labels can create expectations that feel like barriers. Through therapy and some really healing relationships, I've discovered that many of these perceived limitations are actually psychological constructs rather than real issues with me as a designer, developer, project manager, friend, or father.
 
-## Finding the Right Environment
+It's been liberating to realize that the boxes don't have to define the journey. Sometimes what seems like an obstacle is just interesting terrain to navigate.
 
-What I appreciate about [AN®](https://an.design) is their "feel-good philosophy" - this recognition that we're humans first, professionals second. Their approach is hyper-collaborative, hands-on, with an open file culture that aligns with how I naturally work.
+## Finding My Flow State
 
-Small, well-coordinated project teams give me that continuous flow of ideas without the overwhelming pressure of rigid structures. It feels natural, like a good conversation that builds momentum on its own.
+What clicks with me about [AN®](https://an.design) is their feel-good philosophy - this understanding that we're humans first, professionals second. Their hyper-collaborative, open approach just fits how my mind works.
 
-## Projects That Matter to Me
+Small, well-coordinated project teams give me that continuous current of ideas without the overwhelming pressure of rigid structures. It's like a good conversation that just builds momentum naturally.
+
+## Projects & Collaborations That Matter
 
 Some work I've been involved with:
-- Developing [Grün Berlin](https://gruen-berlin.de)'s website for sustainable public spaces
-- Leading design for [easyCredit-Ratenkauf](https://www.easycredit-ratenkauf.de/)
-- Redesigning [Ninetailed.io](https://www.ninetailed.io/) to showcase personalization capabilities
-- Designing for [Tertianum Premium Residences](https://www.tertianum-berlin.de/)
-- Collaborating with [Elodie Carstensen](https://www.elodiecarstensen.com/) on fashion projects
+- Supporting [Grün Berlin](https://gruen-berlin.de) and InfraSignal with long-term technical guidance and digital design, helping keep innovation flowing within these established companies
+- Co-creating the B2B styleguide for [easyCredit Partner I](https://partner.easycredit.de), where we work closely on their online marketing strategy - it's like co-parenting a digital brand identity
+- Helping [Ninetailed.io](https://www.ninetailed.io/) create their custom Tailwind setup, perfectly aligned with their Contentful stack and website needs - a great example of making technical solutions feel natural
+- Working with [Tertianum Premium Residences](https://www.tertianum.de/) alongside Amelie Drews, a marketing manager with an amazing digital mindset, and Julian Fleck, whose empathic approach to brand design creates something truly special
+- Supporting WoMoFonds [https://womofonds.de/](https://womofonds.de/) and Dein-WoMo [https://dein-womo.de/](https://dein-womo.de/) in making their services more accessible and developing unique identities, a project made even better through collaboration with my brilliant colleague Cornelia Herishek
+- Building an interactive 3D strategy game for [E.ON](https://www.eon.com/de/c/whatsnetz.html) that makes energy grids understandable and engaging - a fantastic collaboration between our AN® design and dev team and Ray Sono's game designers and account managers
 
-Interestingly, I built [ElodieCarstensen.com](https://www.elodiecarstensen.com/) without having created my own website before - just exploring with an AI assistant called [Cursor](https://cursor.sh/). That captures my approach pretty well: just start and see where it takes you.
+What's kind of funny is that I built [ElodieCarstensen.com](https://www.elodiecarstensen.com/) without having created my own website before - just exploring with an AI assistant. That sort of captures how I approach things - just start pedaling and trust that you'll figure out the path as you go.
 
-## Skills and Approaches
+## Skills That Have Emerged Along The Way
 
-Things I've picked up along the way:
-- Product management in creative contexts
-- [Kanban](https://en.wikipedia.org/wiki/Kanban_(development)) and [Agile](https://en.wikipedia.org/wiki/Agile_software_development) project management
-- UX/UI design with human-centered approaches
-- Collaborative teamwork
-- Digital art direction and visual storytelling
+Things I've picked up throughout my journey:
+- Product management that focuses on people as much as processes
+- [Kanban](https://en.wikipedia.org/wiki/Kanban_(development)) and [Agile](https://en.wikipedia.org/wiki/Agile_software_development) approaches to keep projects flowing
+- UX/UI design that centers on actual humans and their needs
+- Collaborative teamwork that feels natural, not forced
+- Digital art direction that tells meaningful stories
+- SEO optimization that helps creators like Marie reach their audience
+- Brand design and social media strategy for spaces like Studio Stellar that are creating important inclusive environments
 
-But maybe the most useful skill has been learning to trust the process - understanding that creativity isn't about having all the answers upfront.
+But perhaps the most valuable thing I've learned is that creativity isn't about perfection - it's about movement. The process matters as much as the destination.
 
-## Writing & Thoughts
+## Continuing The Journey
 
-Over the years, I've written about my experiences and observations. Here are some pieces that capture different moments:
-
-- [Über Geld spricht man nicht](/articles/cricket) (2017) - Thoughts on financial apps and the psychology of money management
-- [Kommerzielle Mobility Services intuitiv verwalten](/articles/trafineo) (2017) - A case study on simplifying complex logistics services
-- [Tropical Island: Eine Reise ins Künstliche Paradies](/articles/tropical-island-2012) (2012) - A satirical review of Berlin's infamous indoor tropical resort, originally published in HTW Berlin's design magazine
-
-## Moving Forward
-
-I've come to value the journey over the destination. Creating, collaborating, growing - it's all part of this continuous flow. Sometimes challenging, often joyful, always worth the ride.
+I've come to value the path more than the endpoint. Creating, collaborating, growing - it's all part of this continuous flow, like a bicycle ride that takes unexpected turns but always moves forward. Sometimes challenging, often joyful, always worth the pedaling.
 
 ---
 
