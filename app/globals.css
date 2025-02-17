@@ -32,70 +32,27 @@
 
 @layer base {
   :root {
-    /* Light mode */
-    --background: #F5F9FF;          /* Pure white */
-    --foreground: #0033FF;         /* Almost black */
-    --border: #e5e5e5;             /* Light grey */
-    --secondary: #f5f5f5;          /* Very light grey */
-    --secondary-foreground: #0033FF;  /* Same as foreground */
-    --muted: #f0f0f0;              /* Light grey */
-    --muted-foreground: #666666;   /* Mid grey */
-    --accent: #0033FF;             /* Bright blue */
-    --accent-foreground: #ffffff;  /* White */
+    --background: #F5F9FF;
+    --foreground: #00004e;
+    --secondary: #f5f5f5;
+    --secondary-foreground: #00004e;
+    --muted: #babaed;
+    --muted-foreground: #666666;
+    --accent: #0033FF;
+    --accent-foreground: #00004e;
+    --border: #babaed;
   }
 
   .dark {
-    /* Dark mode */
-    --background: #1a1a1a;         /* Almost black */
-    --foreground: #ffffff;         /* White */
-    --border: #333333;             /* Dark grey */
-    --secondary: #262626;          /* Slightly lighter than background */
-    --secondary-foreground: #ffffff;  /* White */
-    --muted: #262626;              /* Same as secondary */
-    --muted-foreground: #999999;   /* Light grey */
-    --accent: #f6cd00;             /* Same bright blue */
-    --accent-foreground: #ffffff;  /* White */
-  }
-}
-
-@layer base {
-  body {
-    @apply bg-background text-foreground;
-  }
-
-  .prose {
-    @apply max-w-3xl mx-auto;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-
-  .prose {
-    @apply prose-code:before:content-none prose-code:after:content-none;
-  }
-
-  .prose pre {
-    @apply bg-secondary text-secondary-foreground;
-  }
-
-  .prose code {
-    @apply bg-secondary text-secondary-foreground px-1.5 py-0.5 rounded-md text-sm;
-  }
-
-  .prose blockquote {
-    border-left: 4px solid var(--muted-foreground);
-    opacity: 0.3;
-  }
-
-  .prose hr {
-    border-color: var(--muted-foreground);
-    opacity: 0.3;
+    --background: #1a1a1a;
+    --foreground: #ffffff;
+    --secondary: #262626;
+    --secondary-foreground: #ffffff;
+    --muted: rgba(255, 255, 255, 0.3);
+    --muted-foreground: #999999;
+    --accent: #f6cd00;
+    --accent-foreground: #ffffff;
+    --border: rgba(255, 255, 255, 0.2);
   }
 }
 
@@ -113,7 +70,23 @@
   }
 
   .prose a {
-    @apply text-accent no-underline hover:underline;
+    color: var(--foreground);
+    text-decoration: underline;
+    text-decoration-color: var(--muted);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+    transition: all 150ms ease;
+  }
+
+  .prose a:hover {
+    color: var(--accent-foreground);
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+
+  .prose pre {
+    @apply bg-secondary text-secondary-foreground;
   }
 
   .prose code {
@@ -121,13 +94,35 @@
   }
 
   .prose blockquote {
-    border-left: 4px solid var(--muted-foreground);
-    opacity: 0.3;
+    border-left: 4px solid var(--muted);
+    opacity: 0.8;
   }
 
   .prose hr {
-    border-color: var(--muted-foreground);
-    opacity: 0.3;
+    border-color: var(--muted);
+    opacity: 0.8;
+  }
+}
+
+@layer components {
+  .theme-toggle {
+    @apply fixed top-4 right-4 inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors disabled:opacity-50 disabled:pointer-events-none;
+    height: 2.5rem;
+    width: 2.5rem;
+    position: relative;
+    color: var(--foreground);
+    background-color: transparent;
+    outline: none;
+  }
+
+  .theme-toggle:hover {
+    background-color: var(--muted);
+    color: var(--foreground);
+  }
+
+  .theme-toggle:focus-visible {
+    outline: 2px solid var(--muted);
+    outline-offset: 2px;
   }
 }
 
