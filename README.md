@@ -33,7 +33,7 @@ Each role has been less of a calculated career move and more of an exploration i
 
 Over time, I've worn many professional hats:
 ```
-Digital Art Director → UX/UI Designer → Freelancer → Product Manager
+Webdesigner → Communication Designer → UX/UI Designer → Digital Art Director → Product Manager
 ```
 
 I've sometimes worried about being labeled, because labels can create expectations that feel like Hindernisse - obstacles that seem impossible to overcome. Through therapy and supportive relationships, I've learned that many of these perceived limitations are psychological constructs rather than actual issues with me as a designer, developer, project manager, friend, or father.
@@ -70,7 +70,9 @@ But maybe the most useful skill has been learning to trust the process - underst
 
 Over the years, I've written about my experiences and observations. Here are some pieces that capture different moments:
 
-- [Tropical Island: Eine Reise ins Künstliche Paradies](/articles/tropical-island-2012) (2012) - A satirical review of Berlin's infamous indoor tropical resort, originally published in HTW Berlin's design magazine.
+- [Über Geld spricht man nicht](/articles/cricket) (2017) - Thoughts on financial apps and the psychology of money management
+- [Kommerzielle Mobility Services intuitiv verwalten](/articles/trafineo) (2017) - A case study on simplifying complex logistics services
+- [Tropical Island: Eine Reise ins Künstliche Paradies](/articles/tropical-island-2012) (2012) - A satirical review of Berlin's infamous indoor tropical resort, originally published in HTW Berlin's design magazine
 
 ## Moving Forward
 
