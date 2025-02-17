@@ -5,11 +5,11 @@
 @font-face {
   font-family: 'Commit Mono';
   src: url('/fonts/CommitMono-VariableFont.woff2') format('woff2-variations');
-  font-weight: 325;
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
   font-variation-settings:
-    'wght' 325,
+    'wght' 400,
     'slnt' 0;
   font-feature-settings:
     'ss01' on,
@@ -20,29 +20,41 @@
     'cv01' on,
     'cv02' on,
     'cv03' on,
+    'cv04' on,
     'cv05' on,
-    'cv10' on;
+    'cv06' on,
+    'cv07' on,
+    'cv08' on,
+    'cv09' on,
+    'cv10' on,
+    'cv11' on;
 }
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --border: 240 5.9% 90%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
+    /* Light mode */
+    --background: #F5F9FF;          /* Pure white */
+    --foreground: #0033FF;         /* Almost black */
+    --border: #e5e5e5;             /* Light grey */
+    --secondary: #f5f5f5;          /* Very light grey */
+    --secondary-foreground: #0033FF;  /* Same as foreground */
+    --muted: #f0f0f0;              /* Light grey */
+    --muted-foreground: #666666;   /* Mid grey */
+    --accent: #0033FF;             /* Bright blue */
+    --accent-foreground: #ffffff;  /* White */
   }
 
   .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
+    /* Dark mode */
+    --background: #1a1a1a;         /* Almost black */
+    --foreground: #ffffff;         /* White */
+    --border: #333333;             /* Dark grey */
+    --secondary: #262626;          /* Slightly lighter than background */
+    --secondary-foreground: #ffffff;  /* White */
+    --muted: #262626;              /* Same as secondary */
+    --muted-foreground: #999999;   /* Light grey */
+    --accent: #f6cd00;             /* Same bright blue */
+    --accent-foreground: #ffffff;  /* White */
   }
 }
 
@@ -77,11 +89,45 @@
   }
 
   .prose blockquote {
-    @apply border-l-4 border-muted-foreground/30;
+    border-left: 4px solid var(--muted-foreground);
+    opacity: 0.3;
   }
 
   .prose hr {
-    @apply border-muted-foreground/30;
+    border-color: var(--muted-foreground);
+    opacity: 0.3;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  .prose {
+    @apply max-w-3xl mx-auto;
+  }
+
+  .prose a {
+    @apply text-accent no-underline hover:underline;
+  }
+
+  .prose code {
+    @apply bg-secondary text-secondary-foreground px-1.5 py-0.5 rounded-md text-sm;
+  }
+
+  .prose blockquote {
+    border-left: 4px solid var(--muted-foreground);
+    opacity: 0.3;
+  }
+
+  .prose hr {
+    border-color: var(--muted-foreground);
+    opacity: 0.3;
   }
 }
 

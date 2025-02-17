@@ -11,7 +11,7 @@ export default async function Home() {
   return (
     <>
       <ThemeToggle />
-      <main className="min-h-screen w-full max-w-3xl mx-auto px-4 py-8 md:py-16 prose prose-neutral dark:prose-invert">
+      <main className="min-h-screen w-full max-w-3xl mx-auto px-4 py-8 md:py-16 prose">
         <MDXRemote source={content} />
       </main>
     </>
