@@ -2,9 +2,13 @@
 
 Hey there, I'm Martin. Trying to catch myself in words feels a bit like photographing a moving bicycle - there's always some blur around the edges, you know? That's kind of how I experience life and work - in constant motion, with thoughts flowing and shifting as they go.
 
+---
+
 ## About Me
 
 Born in 1989 in [Neuruppin](https://en.wikipedia.org/wiki/Neuruppin), I now find myself navigating the streets of [Berlin Friedrichshain](https://en.wikipedia.org/wiki/Friedrichshain). I studied Communication Design at [HTW Berlin](https://www.htw-berlin.de/) from 2010 to 2014, finishing my Bachelor with a 1.7 grade and a thesis on Natural User Interfaces that somehow naturally pointed me toward where I am now.
+
+---
 
 ## How My Mind Works
 
@@ -18,6 +22,8 @@ This approach shapes how I engage with work:
 
 I've found that small, peaceful teams create this continuous stream of input and process without feeling like an overwhelming Hinderniss that you can't überwinden. There's a natural rhythm to it - thoughts build, evolve, sometimes circle back, but always keep moving.
 
+---
+
 ## Professional Journey
 
 My path has unfolded somewhat like my bike routes through the city - some planned roads, some wonderful detours:
@@ -26,22 +32,37 @@ My path has unfolded somewhat like my bike routes through the city - some planne
 - UX/UI Designer at [Ape Unit GmbH](https://apeunit.com) (July 2014 - March 2018)
 - Freelance designer for web, print, and corporate design (various periods)
 
+---
+
 ## On Labels and Expectations
 
 Over time, I've worn different hats that people might use to categorize me:
+
 ```
-Webdesigner → Communication Designer → UX/UI Designer → Digital Art Director → Product Manager
+Webdesigner
+→
+Communication Designer
+→
+UX/UI Designer
+→
+Digital Art Director
+→
+Product Manager
 ```
 
 And I've learned something interesting - I get a bit worried about being labeled, because labels can create expectations that feel like barriers. Through therapy and some really healing relationships, I've discovered that many of these perceived limitations are actually psychological constructs rather than real issues with me as a designer, developer, project manager, friend, or father.
 
 It's been liberating to realize that the boxes don't have to define the journey. Sometimes what seems like an obstacle is just interesting terrain to navigate.
 
+---
+
 ## Finding My Flow State
 
 What clicks with me about [AN®](https://an.design) is their feel-good philosophy - this understanding that we're humans first, professionals second. Their hyper-collaborative, open approach just fits how my mind works.
 
 Small, well-coordinated project teams give me that continuous current of ideas without the overwhelming pressure of rigid structures. It's like a good conversation that just builds momentum naturally.
+
+---
 
 ## Projects & Collaborations That Matter
 
@@ -54,6 +75,8 @@ Some work I've been involved with:
 - Building an interactive 3D strategy game for [E.ON](https://www.eon.com/de/c/whatsnetz.html) that makes energy grids understandable and engaging - a fantastic collaboration between our AN® design and dev team and Ray Sono's game designers and account managers
 
 What's kind of funny is that I built [ElodieCarstensen.com](https://www.elodiecarstensen.com/) without having created my own website before - just exploring with an AI assistant. That sort of captures how I approach things - just start pedaling and trust that you'll figure out the path as you go.
+
+---
 
 ## Skills That Have Emerged Along The Way
 
@@ -68,10 +91,28 @@ Things I've picked up throughout my journey:
 
 But perhaps the most valuable thing I've learned is that creativity isn't about perfection - it's about movement. The process matters as much as the destination.
 
+---
+
 ## Continuing The Journey
 
 I've come to value the path more than the endpoint. Creating, collaborating, growing - it's all part of this continuous flow, like a bicycle ride that takes unexpected turns but always moves forward. Sometimes challenging, often joyful, always worth the pedaling.
 
 ---
 
-🌐 [AN®](https://an.design) • 🎨 [Ape Unit](https://apeunit.com) • 🌿 [Grün Berlin](https://gruen-berlin.de) • 📷 [Instagram](https://www.instagram.com/martinpch/)
+🌐 [ElodieCarstensen.com](https://www.elodiecarstensen.com/) • 💼 [LinkedIn](https://www.linkedin.com/in/martin-hessmann/) • 🐙 [GitHub](https://github.com/Martinhessmann) • 📷 [Instagram](https://www.instagram.com/martinhessmann/)
+
+---
+
+<details>
+<summary>Legal Information</summary>
+
+**Contact & Legal Notice (Impressum)**
+Martin Heßmann
+Kadiner Str. 20a
+10243 Berlin
+Germany
+
+Email: hi@martinhessmann.com
+
+*This legal notice complies with § 5 TMG (German Telemedia Act)*
+</details>

@@ -4,13 +4,89 @@
 
 @font-face {
   font-family: 'Commit Mono';
-  src: url('/fonts/CommitMono-VariableFont.woff2') format('woff2-variations');
+  src: url('/fonts/CommitMonomartinhessmann-Regular.woff2') format('woff2'),
+       url('/fonts/CommitMonomartinhessmann-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
-  font-variation-settings:
-    'wght' 400,
-    'slnt' 0;
+  font-feature-settings:
+    'ss01' on,
+    'ss02' on,
+    'ss03' on,
+    'ss04' on,
+    'ss05' on,
+    'cv01' on,
+    'cv02' on,
+    'cv03' on,
+    'cv04' on,
+    'cv05' on,
+    'cv06' on,
+    'cv07' on,
+    'cv08' on,
+    'cv09' on,
+    'cv10' on,
+    'cv11' on;
+}
+
+@font-face {
+  font-family: 'Commit Mono';
+  src: url('/fonts/CommitMonomartinhessmann-Italic.woff2') format('woff2'),
+       url('/fonts/CommitMonomartinhessmann-Italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  font-feature-settings:
+    'ss01' on,
+    'ss02' on,
+    'ss03' on,
+    'ss04' on,
+    'ss05' on,
+    'cv01' on,
+    'cv02' on,
+    'cv03' on,
+    'cv04' on,
+    'cv05' on,
+    'cv06' on,
+    'cv07' on,
+    'cv08' on,
+    'cv09' on,
+    'cv10' on,
+    'cv11' on;
+}
+
+@font-face {
+  font-family: 'Commit Mono';
+  src: url('/fonts/CommitMonomartinhessmann-Bold.woff2') format('woff2'),
+       url('/fonts/CommitMonomartinhessmann-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  font-feature-settings:
+    'ss01' on,
+    'ss02' on,
+    'ss03' on,
+    'ss04' on,
+    'ss05' on,
+    'cv01' on,
+    'cv02' on,
+    'cv03' on,
+    'cv04' on,
+    'cv05' on,
+    'cv06' on,
+    'cv07' on,
+    'cv08' on,
+    'cv09' on,
+    'cv10' on,
+    'cv11' on;
+}
+
+@font-face {
+  font-family: 'Commit Mono';
+  src: url('/fonts/CommitMonomartinhessmann-BoldItalic.woff2') format('woff2'),
+       url('/fonts/CommitMonomartinhessmann-BoldItalic.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
   font-feature-settings:
     'ss01' on,
     'ss02' on,
@@ -36,23 +112,23 @@
     --foreground: #00004e;
     --secondary: #f5f5f5;
     --secondary-foreground: #00004e;
-    --muted: #babaed;
-    --muted-foreground: #666666;
+    --tertiary: #e8e8fa;
+    --tertiary-foreground: #00004e;
     --accent: #0033FF;
     --accent-foreground: #00004e;
     --border: #babaed;
   }
 
   .dark {
-    --background: #1a1a1a;
+    --background: #070915;
     --foreground: #ffffff;
-    --secondary: #262626;
+    --secondary: #0e0c2b;
     --secondary-foreground: #ffffff;
-    --muted: rgba(255, 255, 255, 0.3);
-    --muted-foreground: #999999;
+    --tertiary: #0e0c2b;
+    --tertiary-foreground: #ffffff;
     --accent: #f6cd00;
     --accent-foreground: #ffffff;
-    --border: rgba(255, 255, 255, 0.2);
+    --border: #2b2660;
   }
 }
 
@@ -72,35 +148,54 @@
   .prose a {
     color: var(--foreground);
     text-decoration: underline;
-    text-decoration-color: var(--muted);
-    text-decoration-thickness: 2px;
-    text-underline-offset: 2px;
+    text-decoration-color: var(--border);
+    text-decoration-thickness: 3px;
+    text-underline-offset: 5px;
     transition: all 150ms ease;
   }
 
   .prose a:hover {
     color: var(--accent-foreground);
     text-decoration-color: var(--accent);
-    text-decoration-thickness: 2px;
-    text-underline-offset: 4px;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 7px;
   }
 
   .prose pre {
-    @apply bg-secondary text-secondary-foreground;
+    background-color: var(--tertiary);
+    color: var(--tertiary-foreground);
+    padding: 1.5rem 2rem;
+    margin: 2rem auto;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    font-size: 1.1em;
+    line-height: 2;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .prose code {
-    @apply bg-secondary text-secondary-foreground px-1.5 py-0.5 rounded-md text-sm;
+    background-color: var(--tertiary);
+    color: var(--tertiary-foreground);
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.375rem;
+    font-size: 0.875em;
+    font-weight: 600;
   }
 
   .prose blockquote {
-    border-left: 4px solid var(--muted);
+    border-left: 4px solid var(--tertiary);
     opacity: 0.8;
   }
 
   .prose hr {
-    border-color: var(--muted);
-    opacity: 0.8;
+    border: none;
+    border-top: 2px solid var(--border);
+    margin: 3rem auto;
+    width: 40%;
+    opacity: 0.5;
   }
 }
 
@@ -109,19 +204,19 @@
     @apply fixed top-4 right-4 inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors disabled:opacity-50 disabled:pointer-events-none;
     height: 2.5rem;
     width: 2.5rem;
-    position: relative;
+    position: absolute;
     color: var(--foreground);
     background-color: transparent;
     outline: none;
   }
 
   .theme-toggle:hover {
-    background-color: var(--muted);
-    color: var(--foreground);
+    background-color: var(--tertiary);
+    color: var(--tertiary-foreground);
   }
 
   .theme-toggle:focus-visible {
-    outline: 2px solid var(--muted);
+    outline: 2px solid var(--tertiary);
     outline-offset: 2px;
   }
 }
