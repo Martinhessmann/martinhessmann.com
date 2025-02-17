@@ -19,6 +19,7 @@ const config: Config = {
   			border: 'var(--border)',
   			background: 'var(--background)',
   			foreground: 'var(--foreground)',
+  			ring: 'var(--ring)',
   			secondary: {
   				DEFAULT: 'var(--secondary)',
   				foreground: 'var(--secondary-foreground)',
@@ -37,7 +38,7 @@ const config: Config = {
   				css: {
   					'--tw-prose-body': 'var(--foreground)',
   					'--tw-prose-headings': 'var(--foreground)',
-  					'--tw-prose-links': 'var(--accent)',
+  					'--tw-prose-links': 'var(--foreground)',
   					'--tw-prose-bold': 'var(--foreground)',
   					'--tw-prose-counters': 'var(--muted-foreground)',
   					'--tw-prose-bullets': 'var(--muted-foreground)',
@@ -50,6 +51,20 @@ const config: Config = {
   					'--tw-prose-pre-bg': 'var(--secondary)',
   					'--tw-prose-th-borders': 'var(--border)',
   					'--tw-prose-td-borders': 'var(--border)',
+  					'a': {
+  						'color': 'var(--foreground)',
+  						'textDecoration': 'underline',
+  						'textDecorationColor': 'var(--muted-foreground)',
+  						'textDecorationThickness': '1px',
+  						'textUnderlineOffset': '2px',
+  						'transition': 'all 150ms ease',
+  						'&:hover': {
+  							'color': 'var(--accent-foreground)',
+  							'textDecorationColor': 'var(--accent)',
+  							'textDecorationThickness': '2px',
+  							'textUnderlineOffset': '4px',
+  						},
+  					},
   				},
   			},
   		}
