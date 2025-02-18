@@ -1,101 +1,56 @@
-# <span>Martin Heßmann</span>
+# Martin Heßmann
 
-Hey there, I'm Martin. Trying to catch myself in words feels a bit like photographing a moving bicycle - there's always some blur around the edges, you know? That's kind of how I experience life and work - in constant motion, with thoughts flowing and shifting as they go.
-
----
-
-## About Me
-
-Born in 1989 in [Neuruppin](https://en.wikipedia.org/wiki/Neuruppin), I now find myself navigating the streets of [Berlin Friedrichshain](https://en.wikipedia.org/wiki/Friedrichshain). I studied Communication Design at [HTW Berlin](https://www.htw-berlin.de/) from 2010 to 2014, finishing my Bachelor with a 1.7 grade and a thesis on Natural User Interfaces that somehow naturally pointed me toward where I am now.
+Hey, I'm Martin. I live in Friedrichshain, former East-Berlin, just 500 meters from where my parents first moved in together—back when getting married was the only way the GDR government would allow them to share an apartment.
 
 ---
 
-## How My Mind Works
+## Getting Started (2010-2014)
 
-I'm the type who likes to just start typing or sketching and let thoughts unfold wherever they want to go, a bit like riding my bicycle through Berlin's neighborhoods. You start pedaling in one direction, but the interesting side streets and unexpected views are what make the journey worth it.
+I studied Communication Design at [HTW Berlin](https://www.htw-berlin.de/) because I wanted to grow up, be independent, and provide for my family. But what I really enjoyed back then were the bike rides through the city—connecting dots that wouldn't exist if I had just taken the U-Bahn or a cab (not that I could afford one).
 
-This approach shapes how I engage with work:
-- Leading teams as Digital Product Manager at [AN®](https://an.design)
-- Finding that sweet spot where design meets technology
-- Flowing with small teams where ideas build on each other naturally
-- Creating digital tools that actually help humans do things better
+Freelancing during this time was less about building a career and more about trying things out—having my first direct client interactions, helping them reach their goals with the tools I had at hand, and learning the rest on the go.
 
-I've found that small, peaceful teams create this continuous stream of input and process without feeling like an overwhelming Hinderniss that you can't überwinden. There's a natural rhythm to it - thoughts build, evolve, sometimes circle back, but always keep moving.
+## From Design to UX (2013-2018)
 
----
+At [Ape Unit GmbH](https://apeunit.com), where I started as an intern in 2013 and later became a UX/UI Designer (2014-2018), I realized I needed more than just visuals—I needed structure, principles, a plan. Otherwise, projects quickly turned into a mess of taste, opinions, and impulses. That chaos drained my motivation and confused the developers at Ape Unit (shoutout to Emil, Micha, and Max <3).
 
-## Professional Journey
+I started seeing how a simple bullet point list of features or a structured, almost text-adventure-like user story format helped create a shared language. It gave us a way to talk things through with both the team and the client, to align on what we actually wanted and needed. "I want that, I don't like that, I feel like something is missing…"
 
-My path has unfolded somewhat like my bike routes through the city - some planned roads, some wonderful detours:
-- Digital Product Manager at [AN®](https://an.design) (current)
-- Digital Art Director at [Unit U+2463 GmbH](https://unit23.com/) (March 2018 - July 2023)
-- UX/UI Designer at [Ape Unit GmbH](https://apeunit.com) (July 2014 - March 2018)
-- Freelance designer for web, print, and corporate design (various periods)
+## "Art" Direction (2018-2023)
 
----
+I never really understood why we called it that, but as our team grew at Unit U+2463 GmbH and we had more than one designer on a project (shoutout to Ray), we could finally split up cognitive and creative work. And while I loved the visuals, I found myself more and more drawn to development flows, handovers, processes, and data.
 
-## On Labels and Expectations
+Projects I worked on during this time:
+- Co-creating the web platform and style guide for [easyCredit Partner](https://www.easycredit-ratenkauf.de/), shaping their B2B brand identity
+- Long-term digital strategy and design support for [Grün Berlin](https://gruen-berlin.de) and [InfraSignal](https://infrasignal.de)
+- Helping [Ninetailed.io](https://www.ninetailed.io/) with their custom Tailwind setup and design system for contentful
+- Working with [Tertianum Premium Residences](https://www.tertianum-berlin.de/) alongside the amazing Amelie Drews and Julian Fleck
 
-Over time, I've worn different hats that people might use to categorize me:
 
-```
-Webdesigner
-→
-Communication Designer
-→
-UX/UI Designer
-→
-Digital Art Director
-→
-Product Manager
-```
+## "AN"kommen (2023-Present)
 
-And I've learned something interesting - I get a bit worried about being labeled, because labels can create expectations that feel like barriers. Through therapy and some really healing relationships, I've discovered that many of these perceived limitations are actually psychological constructs rather than real issues with me as a designer, developer, project manager, friend, or father.
+Now, at [AN®](https://an.jetzt), I feel like I've reached a point where I'm happy with my role. I have the freedom to decide how we advise clients, what solutions we propose, how we structure teams, which experts we bring in, and how we manage timelines, budgets, and processes. I also focus on what the team needs to work well—communication, time management, workflow clarity.
 
-It's been liberating to realize that the boxes don't have to define the journey. Sometimes what seems like an obstacle is just interesting terrain to navigate.
+- Supporting [WoMoFonds](https://womofonds.de/) and [Dein-WoMo](https://dein-womo.de/)
+- Developing [What's Netz](https://www.eon.com/de/c/whatsnetz.html), an interactive 3D strategy game for E.ON in collaboration with Ray Sono's game designers and project managers
 
----
+And then COVID happened. Our semi-remote team had to go fully remote, which gave us both freedom and the need for daily check-ins—via Slack, Notion, Toggl. It shaped how we work together now.
 
-## Finding My Flow State
+## Side Projects
 
-What clicks with me about [AN®](https://an.design) is their feel-good philosophy - this understanding that we're humans first, professionals second. Their hyper-collaborative, open approach just fits how my mind works.
+These aren't really side projects—they're more like things I pass on. Community work. Sharing experiences, making connections, valuing the things I do or did—not just for money, but for what they create in the long run.
 
-Small, well-coordinated project teams give me that continuous current of ideas without the overwhelming pressure of rigid structures. It's like a good conversation that just builds momentum naturally.
+Some of these include:
+- Building [ElodieCarstensen.com](https://www.elodiecarstensen.com/) and developing a Digital Rental Catalogue as a React app powered by AirTable
+- Supporting movement director [Marie Zechiel](https://mariezechiel.com/) with SEO strategies
+- Working on branding with [Studio Stellar](https://www.studiostellar.berlin/), a female-owned, queer, LGBTQ+ and BIPOC-friendly photo studio in Kreuzberg
 
----
+## What's Next?
 
-## Projects & Collaborations That Matter
+I don't really know where the AI bubble is going, and to be honest, it's kind of crazy to watch fully generative images, videos, marketing funnels, and ads evolve at this speed.
 
-Some work I've been involved with:
-- Supporting [Grün Berlin](https://gruen-berlin.de) and InfraSignal with long-term technical guidance and digital design, helping keep innovation flowing within these established companies
-- Co-creating the B2B styleguide for [easyCredit Partner I](https://partner.easycredit.de), where we work closely on their online marketing strategy - it's like co-parenting a digital brand identity
-- Helping [Ninetailed.io](https://www.ninetailed.io/) create their custom Tailwind setup, perfectly aligned with their Contentful stack and website needs - a great example of making technical solutions feel natural
-- Working with [Tertianum Premium Residences](https://www.tertianum.de/) alongside Amelie Drews, a marketing manager with an amazing digital mindset, and Julian Fleck, whose empathic approach to brand design creates something truly special
-- Supporting WoMoFonds [https://womofonds.de/](https://womofonds.de/) and Dein-WoMo [https://dein-womo.de/](https://dein-womo.de/) in making their services more accessible and developing unique identities, a project made even better through collaboration with my brilliant colleague Cornelia Herishek
-- Building an interactive 3D strategy game for [E.ON](https://www.eon.com/de/c/whatsnetz.html) that makes energy grids understandable and engaging - a fantastic collaboration between our AN® design and dev team and Ray Sono's game designers and account managers
+I help my colleagues at [Openwonder.com](https://openwonder.com) navigate that space, but I'm also critical of the ethics and impact this has in the hyper-capitalist phase we're in. It's easy to get caught up in the excitement and forget that all of this is only possible because of billion-dollar investments from big tech companies. We're privileged to have access to these tools, and we shouldn't take that for granted.
 
-What's kind of funny is that I built [ElodieCarstensen.com](https://www.elodiecarstensen.com/) without having created my own website before - just exploring with an AI assistant. That sort of captures how I approach things - just start pedaling and trust that you'll figure out the path as you go.
-
----
-
-## Skills That Have Emerged Along The Way
-
-Things I've picked up throughout my journey:
-- Product management that focuses on people as much as processes
-- [Kanban](https://en.wikipedia.org/wiki/Kanban_(development)) and [Agile](https://en.wikipedia.org/wiki/Agile_software_development) approaches to keep projects flowing
-- UX/UI design that centers on actual humans and their needs
-- Collaborative teamwork that feels natural, not forced
-- Digital art direction that tells meaningful stories
-- SEO optimization that helps creators like Marie reach their audience
-- Brand design and social media strategy for spaces like Studio Stellar that are creating important inclusive environments
-
-But perhaps the most valuable thing I've learned is that creativity isn't about perfection - it's about movement. The process matters as much as the destination.
-
----
-
-## Continuing The Journey
-
-I've come to value the path more than the endpoint. Creating, collaborating, growing - it's all part of this continuous flow, like a bicycle ride that takes unexpected turns but always moves forward. Sometimes challenging, often joyful, always worth the pedaling.
 
 ---
 
