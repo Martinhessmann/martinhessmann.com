@@ -130,19 +130,25 @@
     --accent-foreground: #ffffff;
     --border: #2b2660;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
 
   body {
     @apply bg-background text-foreground;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
   .prose {
     @apply max-w-3xl mx-auto;
+  }
+
+  .prose h1 {
+    font-weight: 700;
+    margin-block-start: 4rem;
   }
 
   .prose a {
@@ -192,10 +198,45 @@
 
   .prose hr {
     border: none;
-    border-top: 2px solid var(--border);
-    margin: 3rem auto;
-    width: 40%;
+    border-top: 1px solid var(--border);
+    margin: 2rem 0;
+    width: 100%;
     opacity: 0.5;
+  }
+
+  .prose details {
+    margin: 1rem 0;
+    padding: 0;
+  }
+
+  .prose details summary {
+    cursor: pointer;
+    list-style: none;
+    color: var(--foreground);
+    text-decoration: underline;
+    text-decoration-color: var(--border);
+    text-decoration-thickness: 3px;
+    text-underline-offset: 5px;
+    transition: all 150ms ease;
+  }
+
+  .prose details summary:hover {
+    color: var(--accent-foreground);
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 3px;
+    text-underline-offset: 7px;
+  }
+
+  .prose details summary::marker,
+  .prose details summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .footer {
+    margin-top: 1rem;
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
   }
 }
 

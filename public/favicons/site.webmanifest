@@ -1,0 +1,29 @@
+{
+  "name": "Martin Heßmann",
+  "short_name": "Mh",
+  "icons": [
+    {
+      "src": "/favicons/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicons/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicons/favicon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "theme_color": "#E5EDFA",
+  "background_color": "#E5EDFA",
+  "display": "standalone",
+  "start_url": "/",
+  "description": "Digital Product Manager, Designer, and Developer"
+}

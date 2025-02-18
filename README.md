@@ -1,4 +1,4 @@
-# Martin Heßmann
+# <span>Martin Heßmann</span>
 
 Hey there, I'm Martin. Trying to catch myself in words feels a bit like photographing a moving bicycle - there's always some blur around the edges, you know? That's kind of how I experience life and work - in constant motion, with thoughts flowing and shifting as they go.
 
@@ -99,10 +99,15 @@ I've come to value the path more than the endpoint. Creating, collaborating, gro
 
 ---
 
-🌐 [ElodieCarstensen.com](https://www.elodiecarstensen.com/) • 💼 [LinkedIn](https://www.linkedin.com/in/martin-hessmann/) • 🐙 [GitHub](https://github.com/Martinhessmann) • 📷 [Instagram](https://www.instagram.com/martinhessmann/)
+Learn more:
+<a href="https://www.elodiecarstensen.com">ElodieCarstensen.com</a> ·
+<a href="https://www.linkedin.com/in/martin-hessmann/">LinkedIn</a> ·
+<a href="https://github.com/Martinhessmann">GitHub</a> ·
+<a href="https://www.instagram.com/martinhessmann/">Instagram</a>
 
----
 
+
+Set in <a href="https://commitmono.com/">Commit Mono</a> · <a href="https://github.com/Martinhessmann/martinhessmann.com">GitHub</a> · <a href="https://vercel.com">Vercel</a>
 <details>
 <summary>Legal Information</summary>
 

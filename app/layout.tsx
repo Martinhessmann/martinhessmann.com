@@ -4,7 +4,20 @@ import "./globals.css"
 
 export const metadata = {
   title: "Martin Heßmann",
-  description: "Personal website of Martin Heßmann",
+  description: "Digital Product Manager, Designer, and Developer",
+  manifest: '/favicons/site.webmanifest',
+  icons: {
+    icon: [
+      { url: '/favicons/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicons/favicon-96x96.png', sizes: '96x96', type: 'image/png' }
+    ],
+    shortcut: '/favicons/favicon.ico',
+    apple: '/favicons/apple-touch-icon.png',
+  },
+  appleWebApp: {
+    title: 'Martin Heßmann',
+    statusBarStyle: 'default',
+  },
 }
 
 export default function RootLayout({
@@ -14,9 +27,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-      </head>
+      <head />
       <body className="min-h-screen antialiased">
         <ThemeProvider
           attribute="class"
