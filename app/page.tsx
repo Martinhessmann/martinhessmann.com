@@ -12,7 +12,15 @@ export default async function Home() {
     <>
       <ThemeToggle />
       <main className="min-h-screen w-full max-w-3xl mx-auto px-4 py-8 md:py-16 prose">
-        <MDXRemote source={content} />
+        <MDXRemote
+          source={content}
+          options={{
+            parseFrontmatter: true,
+            mdxOptions: {
+              development: process.env.NODE_ENV === 'development'
+            }
+          }}
+        />
       </main>
     </>
   )
