@@ -18,7 +18,7 @@ I started seeing how a simple bullet point list of features or a structured, alm
 
 ## "Art" Direction (2018-2023)
 
-I never really understood why we called it that, but as our team grew at Unit U+2463 GmbH and we had more than one designer on a project (shoutout to Ray), we could finally split up cognitive and creative work. And while I loved the visuals, I found myself more and more drawn to development flows, handovers, processes, and data.
+I never really understood why we called it that, but as our team grew at Unit 4 and we had more than one designer on a project (shoutout to Ray), we could finally split up cognitive and creative work. And while I loved the visuals, I found myself more and more drawn to development flows, handovers, processes, and data.
 
 Projects I worked on during this time:
 - Co-creating the web platform and style guide for [easyCredit Partner](https://www.easycredit-ratenkauf.de/), shaping their B2B brand identity
