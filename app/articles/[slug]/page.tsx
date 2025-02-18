@@ -19,7 +19,15 @@ export default async function ArticlePage({
       <>
         <ThemeToggle />
         <main className="min-h-screen w-full max-w-3xl mx-auto px-4 py-8 md:py-16 prose">
-          <MDXRemote source={content} />
+          <MDXRemote
+            source={content}
+            options={{
+              parseFrontmatter: true,
+              mdxOptions: {
+                development: process.env.NODE_ENV === 'development'
+              }
+            }}
+          />
           <div className="mt-16 pt-8 border-t border-muted-foreground/30">
             <a href="/" className="no-underline hover:underline">← Back to home</a>
           </div>
