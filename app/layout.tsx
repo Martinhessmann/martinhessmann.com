@@ -1,10 +1,15 @@
-import type React from "react"
-import { ThemeProvider } from "@/components/theme-provider"
-import "./globals.css"
+import './globals.css'
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import { ThemeProvider } from '@/components/theme-provider'
+import { Navigation } from '@/components/navigation'
+import { ThemeToggle } from '@/components/theme-toggle'
 
-export const metadata = {
-  title: "Martin Heßmann",
-  description: "Digital Product Manager, Designer, and Developer",
+const inter = Inter({ subsets: ['latin'] })
+
+export const metadata: Metadata = {
+  title: 'Martin Heßmann - Digital Product Manager & UX Designer',
+  description: 'Personal website of Martin Heßmann, a Digital Product Manager and UX Designer based in Berlin, Germany.',
   manifest: '/favicons/site.webmanifest',
   icons: {
     icon: [
@@ -26,22 +31,26 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="scroll-smooth">
       <head />
-      <body className="min-h-screen antialiased">
+      <body className={inter.className}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <div className="flex flex-col min-h-screen">
+            <Navigation />
+            <div className="flex-1">
+              {children}
+            </div>
+            <div className="fixed bottom-4 right-4 z-50">
+              <ThemeToggle />
+            </div>
+          </div>
         </ThemeProvider>
       </body>
     </html>
   )
 }
-
-
-
-import './globals.css'
