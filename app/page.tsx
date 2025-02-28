@@ -1,95 +1,80 @@
-import { promises as fs } from 'fs'
-import path from 'path'
-import { MDXRemote } from 'next-mdx-remote/rsc'
-import Image from 'next/image'
-
+import { MacAppBar } from '@/components/mac-app-bar'
 import { ProfessionalHeadline } from '@/components/professional-headline'
 import { SocialLinks } from '@/components/social-links'
-import { ProjectsShowcase } from '@/components/projects-showcase'
+import { AboutSection } from '@/components/about-section'
+import { SkillsSection } from '@/components/skills-section'
+import { ProjectSlider } from '@/components/project-slider'
 import { WorkTimeline } from '@/components/work-timeline'
-import { SectionHeader } from '@/components/section-header'
+import { BlogPostGrid } from '@/components/blog-post-grid'
+import { ThemeToggle } from '@/components/theme-toggle'
+import { ClientProjectsShowcase } from '@/components/client-projects-showcase'
+import { ProjectMilestones } from '@/components/project-milestones'
 
-export default async function Home() {
-  const filePath = path.join(process.cwd(), 'content', 'journey.md')
-  let content = ''
-
-  try {
-    content = await fs.readFile(filePath, 'utf8')
-  } catch (error) {
-    console.error('Error reading journey.md:', error)
-    // Fallback to README.md if journey.md doesn't exist
-    const readmePath = path.join(process.cwd(), 'README.md')
-    content = await fs.readFile(readmePath, 'utf8')
-  }
-
+export default function Home() {
   return (
-    <main className="min-h-screen w-full max-w-3xl mx-auto px-4 py-4 md:py-8 lg:py-16">
+    <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="mb-12 md:mb-16 bg-secondary rounded-lg p-6 md:p-8 shadow-md">
-        <ProfessionalHeadline />
-        <SocialLinks />
+      <section className="pt-8 pb-16 md:py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <MacAppBar />
+            <div className="bg-secondary rounded-b-lg p-6 md:p-8 shadow-md">
+              <ProfessionalHeadline />
+              <div className="mt-6 flex flex-wrap gap-4 justify-center md:justify-start">
+                <SocialLinks />
+                <div className="ml-auto">
+                  <ThemeToggle />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* About Section */}
-      <section className="mb-12 md:mb-16">
-        <SectionHeader
-          title="About Me"
-          subtitle="A bit about who I am and where I'm from"
-          id="about"
-        />
-        <div className="prose max-w-none bg-secondary rounded-lg p-6 shadow-md">
-          <p className="text-base md:text-lg">
-            Hey, I'm Martin 👋 I live in Friedrichshain, former East-Berlin, just 500 meters from where my parents first moved in together—back when getting married was the only way the GDR government would allow them to share an apartment.
-          </p>
-        </div>
-      </section>
+      <AboutSection />
+
+      {/* Skills Section */}
+      <SkillsSection />
 
       {/* Projects Section */}
-      <section className="mb-12 md:mb-16" id="projects">
-        <ProjectsShowcase />
-      </section>
+      <ProjectSlider />
+
+      {/* Client Projects Showcase */}
+      <ClientProjectsShowcase />
+
+      {/* Project Milestones */}
+      <ProjectMilestones />
 
       {/* Experience Section */}
-      <section className="mb-12 md:mb-16" id="experience">
-        <WorkTimeline />
-      </section>
+      <WorkTimeline />
 
       {/* Journey Section */}
-      <section>
-        <SectionHeader
-          title="My Journey"
-          subtitle="The story of my professional path"
-          id="journey"
-        />
-        <div className="prose max-w-none bg-secondary rounded-lg p-6 shadow-md">
-          <div className="relative w-full h-48 md:h-64 mb-6 rounded-md overflow-hidden">
-            <Image
-              src="/images/1x1-curious-group-of-people.png"
-              alt="My professional journey"
-              fill
-              sizes="(max-width: 768px) 100vw, 800px"
-              className="object-cover"
-            />
-          </div>
-          <MDXRemote
-            source={content}
-            options={{
-              parseFrontmatter: true,
-              mdxOptions: {
-                development: process.env.NODE_ENV === 'development'
-              }
-            }}
-          />
-        </div>
-      </section>
+      <BlogPostGrid />
 
-      <footer className="mt-12 md:mt-16 pt-6 md:pt-8 border-t border-muted-foreground/30 text-center text-sm text-muted-foreground">
-        <p>© {new Date().getFullYear()} Martin Heßmann. All rights reserved.</p>
-        <p className="mt-2">
-          Set in <a href="https://commitmono.com/" target="_blank" rel="noopener noreferrer" className="hover:underline">Commit Mono</a> ·
-          <a href="https://github.com/Martinhessmann/martinhessmann.com" target="_blank" rel="noopener noreferrer" className="hover:underline ml-1 mr-1">GitHub</a> ·
-          <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" className="hover:underline">Vercel</a>
-        </p>
+      {/* Footer */}
+      <footer className="py-8 bg-secondary/50">
+        <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
+          <p>© {new Date().getFullYear()} Martin Heßmann. All rights reserved.</p>
+          <div className="mt-2 flex justify-center space-x-4">
+            <a
+              href="https://github.com/martinhessmann"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary transition-colors"
+            >
+              GitHub
+            </a>
+            <a
+              href="https://vercel.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary transition-colors"
+            >
+              Powered by Vercel
+            </a>
+          </div>
+        </div>
       </footer>
     </main>
   )

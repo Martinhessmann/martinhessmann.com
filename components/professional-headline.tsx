@@ -6,13 +6,13 @@ export function ProfessionalHeadline() {
       <ProfileImage />
       <div>
         <h1 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 text-center md:text-left">
-          Digital Product Manager & UX Designer
+          Product Generalist
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground text-center md:text-left">
-          I'm Martin Heßmann, a Digital Product Manager with a background in UX/UI Design.
-          I help teams create user-centered digital products by bridging the gap between design,
-          development, and business needs. With experience in various industries, I focus on
-          creating intuitive, accessible, and impactful digital experiences.
+          I'm Martin Heßmann, a Product Generalist who bridges the gap between design,
+          development, and business needs. I'm neither exclusively a PM, Developer, nor Designer—but
+          a blend of all three, helping teams create intuitive, accessible, and impactful
+          digital experiences.
         </p>
       </div>
     </div>
