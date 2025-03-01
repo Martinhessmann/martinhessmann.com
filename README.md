@@ -89,28 +89,68 @@ This repository includes a Safari-style website suggestions component that showc
   - Color-coded tags for Design, Development, and Project Management involvement
   - "Since year" indicator showing when the client relationship began
   - "Last visited" timestamp
+  - Website favicons (when available)
+  - OG title and description from the website's metadata
+  - Brand color as a subtle accent on the card
 
-### How to Generate Website Screenshots
+### Metadata Enhancement
 
-The component uses screenshots of client websites. To generate these automatically:
+The component automatically fetches and displays rich metadata from each website, including:
+
+- Open Graph title and description
+- Website favicon
+- Site name
+- Theme color from the website's manifest or meta tags
+
+This data is stored in a JSON file (`data/website-metadata.json`) and automatically loaded by the component.
+
+### How to Generate Website Screenshots and Metadata
+
+The component uses screenshots and metadata from client websites. You have two options to generate these:
+
+#### Option 1: Full Screenshots + Metadata (using Puppeteer)
+
+Use this when you need both screenshots and metadata:
 
 1. Install the required dependencies:
    ```
    npm install
    ```
 
-2. Run the screenshot generation script:
+2. Run the screenshot and metadata generation script:
    ```
    npm run fetch-previews
    ```
 
    This will:
-   - Launch a headless browser
+   - Launch a headless browser using Puppeteer
    - Visit each website listed in `scripts/fetch-website-previews.js`
    - Take a screenshot
-   - Save it to `public/images/clients/` with the proper naming convention
+   - Extract metadata (OG title, description, brand colors, favicon)
+   - Save screenshots to `public/images/clients/` with proper naming convention
+   - Save metadata to `data/website-metadata.json`
 
-3. The SafariSuggestions component will automatically use these images.
+#### Option 2: Metadata Only (Lightweight, No Puppeteer)
+
+Use this when you only need to refresh metadata or already have screenshots:
+
+1. Install the required dependencies:
+   ```
+   npm install
+   ```
+
+2. Run the metadata-only script:
+   ```
+   npm run fetch-metadata
+   ```
+
+   This will:
+   - Make HTTP requests to each website listed in `scripts/fetch-website-metadata.js`
+   - Parse the HTML to extract metadata without rendering the page
+   - Save metadata to `data/website-metadata.json`
+   - This is much faster and uses fewer resources than the Puppeteer approach
+
+3. The SafariSuggestions component will automatically use this metadata.
 
 ### Manual Screenshot Option
 
@@ -120,10 +160,16 @@ If the script doesn't work for some websites, you can manually:
 2. Take a screenshot (ideally at 1200x800 resolution)
 3. Save the file with the website domain as the filename (e.g., `example.com.jpg`)
 4. Place in the `public/images/clients/` directory
+5. Add metadata manually to `data/website-metadata.json` if desired
 
-### Fallback for Missing Images
+### Fallback System
 
-The component includes a PlaceholderImage fallback that generates a colored box with the website domain for any missing images, ensuring the UI remains attractive even without all screenshots.
+The component includes multiple fallbacks to ensure it always looks good:
+
+- For missing images: Generates a colored placeholder with the website domain
+- For missing OG title: Falls back to the site name or manually specified title
+- For missing favicons: Simply hides the favicon container
+- For missing theme color: Uses the default card styling
 
 ### Configuration
 
@@ -131,7 +177,7 @@ To modify the website list or details:
 
 1. Edit the `clientWebsites` array in `components/safari-suggestions.tsx`
 2. Add/update entries with:
-   - title: Display name
+   - title: Display name (fallback if OG title not available)
    - url: Website URL (without https://)
    - lastVisited: When the site was last visited
    - tags: Array of your roles (Design, Dev, PM)
@@ -144,3 +190,4 @@ To modify the website list or details:
 - Uses Tailwind CSS for styling
 - Fully responsive across all screen sizes
 - Includes hover effects and transitions for better UX
+- Uses Puppeteer for headless browser screenshots and metadata extraction
