@@ -1,10 +1,21 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { SectionHeader } from './section-header'
 import { PlaceholderImage } from './placeholder-image'
+
+interface WebsiteMetadata {
+  url: string
+  imagePath?: string
+  ogTitle?: string
+  ogDescription?: string
+  themeColor?: string
+  siteName?: string
+  favicon?: string
+  error?: string
+}
 
 interface ClientWebsite {
   title: string
@@ -13,6 +24,11 @@ interface ClientWebsite {
   tags: Array<'Design' | 'Dev' | 'PM'>
   since?: string // e.g. "2019", "2021" - optional year since working with client
   imagePath?: string // Local path if we store images locally
+  ogTitle?: string
+  ogDescription?: string
+  themeColor?: string
+  siteName?: string
+  favicon?: string
 }
 
 export function SafariSuggestions() {
@@ -163,6 +179,50 @@ export function SafariSuggestions() {
     }
   ])
 
+  // Load metadata if available
+  useEffect(() => {
+    const loadMetadata = async () => {
+      try {
+        const response = await fetch('/data/website-metadata.json');
+        if (!response.ok) {
+          console.warn('Metadata file not found. Run npm run fetch-previews to generate it.');
+          return;
+        }
+
+        const metadata: WebsiteMetadata[] = await response.json();
+
+        setClientWebsites(prevSites =>
+          prevSites.map(site => {
+            // Find the matching metadata
+            const siteMetadata = metadata.find(meta =>
+              meta.url === site.url ||
+              site.url.includes(meta.url) ||
+              meta.url.includes(site.url)
+            );
+
+            if (siteMetadata) {
+              // Merge metadata with existing site data
+              return {
+                ...site,
+                ogTitle: siteMetadata.ogTitle,
+                ogDescription: siteMetadata.ogDescription,
+                themeColor: siteMetadata.themeColor,
+                siteName: siteMetadata.siteName,
+                favicon: siteMetadata.favicon
+              };
+            }
+
+            return site;
+          })
+        );
+      } catch (error) {
+        console.error('Error loading website metadata:', error);
+      }
+    };
+
+    loadMetadata();
+  }, []);
+
   // Tag colors
   const tagColors = {
     Design: 'bg-blue-500',
@@ -183,6 +243,11 @@ export function SafariSuggestions() {
         fallback.style.display = 'block';
       }
     }
+  };
+
+  // Function to get a website's display title
+  const getDisplayTitle = (site: ClientWebsite) => {
+    return site.ogTitle || site.siteName || site.title;
   };
 
   return (
@@ -220,12 +285,19 @@ export function SafariSuggestions() {
               key={site.url}
               className="group"
             >
-              <div className="bg-secondary rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+              <div
+                className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                style={{
+                  // Use site theme color as card border if available
+                  borderLeft: site.themeColor ? `4px solid ${site.themeColor}` : undefined,
+                  background: 'var(--secondary)'
+                }}
+              >
                 <div className="aspect-video relative overflow-hidden bg-muted">
                   {site.imagePath ? (
                     <Image
                       src={site.imagePath}
-                      alt={site.title}
+                      alt={getDisplayTitle(site)}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 16vw"
                       className="object-cover"
@@ -242,12 +314,32 @@ export function SafariSuggestions() {
                   </div>
                 </div>
                 <div className="p-3">
-                  <h3 className="text-sm font-medium line-clamp-1 group-hover:text-primary transition-colors">
-                    {site.title}
-                  </h3>
-                  <p className="text-xs text-muted-foreground mt-0.5 mb-2">{site.url}</p>
+                  <div className="flex items-start gap-2">
+                    {site.favicon && (
+                      <img
+                        src={site.favicon.startsWith('http') ? site.favicon : `https://${site.url}${site.favicon.startsWith('/') ? '' : '/'}${site.favicon}`}
+                        alt=""
+                        className="w-4 h-4 mt-0.5 rounded-sm"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).style.display = 'none';
+                        }}
+                      />
+                    )}
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-sm font-medium line-clamp-1 group-hover:text-primary transition-colors">
+                        {getDisplayTitle(site)}
+                      </h3>
+                      <p className="text-xs text-muted-foreground mt-0.5 mb-1">{site.url}</p>
+                    </div>
+                  </div>
 
-                  <div className="flex flex-wrap gap-1 mb-2">
+                  {site.ogDescription && (
+                    <p className="text-xs text-muted-foreground mb-2 line-clamp-2">
+                      {site.ogDescription}
+                    </p>
+                  )}
+
+                  <div className="flex flex-wrap gap-1 mb-1">
                     {site.tags.map(tag => (
                       <span
                         key={tag}

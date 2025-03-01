@@ -7,11 +7,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "fetch-previews": "node scripts/fetch-website-previews.js"
+    "fetch-previews": "node scripts/fetch-website-previews.js",
+    "fetch-metadata": "node scripts/fetch-website-metadata.js"
   },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@radix-ui/react-slot": "^1.0.2",
+    "axios": "^1.6.7",
+    "cheerio": "^1.0.0-rc.12",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "lucide-react": "^0.307.0",
