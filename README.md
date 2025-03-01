@@ -73,3 +73,74 @@ Email: hi@martinhessmann.com
 
 *This legal notice complies with § 5 TMG (German Telemedia Act)*
 </details>
+
+# Martin Heßmann's Portfolio Website
+
+## Safari-Style Client Website Showcase
+
+This repository includes a Safari-style website suggestions component that showcases client websites in a visually appealing grid layout, similar to Safari's suggestions page.
+
+### Features
+
+- Grid layout of website cards that mimics Safari's suggestions UI
+- Each card displays:
+  - Website screenshot/preview image
+  - Website title and URL
+  - Color-coded tags for Design, Development, and Project Management involvement
+  - "Since year" indicator showing when the client relationship began
+  - "Last visited" timestamp
+
+### How to Generate Website Screenshots
+
+The component uses screenshots of client websites. To generate these automatically:
+
+1. Install the required dependencies:
+   ```
+   npm install
+   ```
+
+2. Run the screenshot generation script:
+   ```
+   npm run fetch-previews
+   ```
+
+   This will:
+   - Launch a headless browser
+   - Visit each website listed in `scripts/fetch-website-previews.js`
+   - Take a screenshot
+   - Save it to `public/images/clients/` with the proper naming convention
+
+3. The SafariSuggestions component will automatically use these images.
+
+### Manual Screenshot Option
+
+If the script doesn't work for some websites, you can manually:
+
+1. Visit each website
+2. Take a screenshot (ideally at 1200x800 resolution)
+3. Save the file with the website domain as the filename (e.g., `example.com.jpg`)
+4. Place in the `public/images/clients/` directory
+
+### Fallback for Missing Images
+
+The component includes a PlaceholderImage fallback that generates a colored box with the website domain for any missing images, ensuring the UI remains attractive even without all screenshots.
+
+### Configuration
+
+To modify the website list or details:
+
+1. Edit the `clientWebsites` array in `components/safari-suggestions.tsx`
+2. Add/update entries with:
+   - title: Display name
+   - url: Website URL (without https://)
+   - lastVisited: When the site was last visited
+   - tags: Array of your roles (Design, Dev, PM)
+   - since: Year the relationship began
+   - imagePath: Path to the screenshot image
+
+### Implementation Details
+
+- Built with Next.js and React
+- Uses Tailwind CSS for styling
+- Fully responsive across all screen sizes
+- Includes hover effects and transitions for better UX

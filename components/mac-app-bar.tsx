@@ -208,24 +208,15 @@ export function MacAppBar() {
         </div>
       </div>
 
-      {/* App description when active - handwritten note style */}
+      {/* App description with marker styling */}
       {activeApp && (
-        <div className="relative p-6 bg-yellow-100 dark:bg-yellow-900/40 border-t border-border/30 transform rotate-[-1deg] shadow-md animate-fadeIn">
-          {/* Animated arrow */}
-          <div className="absolute right-8 top-0 -mt-5 transform rotate-[20deg] animate-bounce">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-primary" style={{ strokeWidth: 2.5, strokeLinecap: 'round', strokeLinejoin: 'round' }}>
-              <path d="M7 13L12 18L17 13" stroke="currentColor" strokeWidth="2" />
-              <path d="M12 18V3" stroke="currentColor" strokeWidth="2" />
-            </svg>
-          </div>
-
-          <p className="font-handwriting text-lg md:text-xl text-center text-black dark:text-yellow-100 font-medium" style={{ textShadow: '0.5px 0.5px 0px rgba(0,0,0,0.3)' }}>
-            {apps.find(app => app.name === activeApp)?.description}
+        <div className="relative p-4 transition-all duration-300 animate-fadeIn">
+          <p className="font-marker text-lg md:text-xl text-center">
+            <span className="inline-block text-primary mr-2">-&gt;</span>
+            <span className="bg-gradient-to-r from-primary/20 to-primary/5 px-2 py-1 rounded">
+              {apps.find(app => app.name === activeApp)?.description}
+            </span>
           </p>
-
-          {/* Tape effect */}
-          <div className="absolute left-4 top-0 w-12 h-3 bg-gray-300/50 dark:bg-gray-300/30 transform rotate-[-5deg] -mt-1"></div>
-          <div className="absolute right-4 top-0 w-12 h-3 bg-gray-300/50 dark:bg-gray-300/30 transform rotate-[5deg] -mt-1"></div>
         </div>
       )}
     </div>
