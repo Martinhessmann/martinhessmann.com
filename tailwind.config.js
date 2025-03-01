@@ -17,7 +17,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        handwriting: ['var(--font-caveat)', 'cursive'],
+        marker: ['"Permanent Marker"', 'cursive'],
       },
       colors: {
         border: "hsl(var(--border))",

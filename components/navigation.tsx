@@ -12,6 +12,7 @@ export function Navigation() {
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
     { name: 'Clients', href: '#clients' },
+    { name: 'Websites', href: '#websites' },
     { name: 'Milestones', href: '#milestones' },
     { name: 'Experience', href: '#experience' },
     { name: 'Journey', href: '#journey' }
@@ -19,13 +20,13 @@ export function Navigation() {
 
   return (
     <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm border-b border-muted-foreground/20 py-3 px-4 md:px-6">
-      <div className="max-w-5xl mx-auto flex justify-between items-center">
+      <div className="max-w-6xl mx-auto flex justify-between items-center">
         <Link href="/" className="font-bold text-lg hover:text-primary transition-colors">
           Martin Heßmann
         </Link>
 
         {/* Desktop Navigation */}
-        <ul className="hidden md:flex space-x-6">
+        <ul className="hidden md:flex space-x-5">
           {navItems.map((item) => (
             <li key={item.name}>
               <Link

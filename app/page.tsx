@@ -9,6 +9,7 @@ import { BlogPostGrid } from '@/components/blog-post-grid'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { ClientProjectsShowcase } from '@/components/client-projects-showcase'
 import { ProjectMilestones } from '@/components/project-milestones'
+import { SafariSuggestions } from '@/components/safari-suggestions'
 
 export default function Home() {
   return (
@@ -42,6 +43,9 @@ export default function Home() {
 
       {/* Client Projects Showcase */}
       <ClientProjectsShowcase />
+
+      {/* Client Websites Safari Style */}
+      <SafariSuggestions />
 
       {/* Project Milestones */}
       <ProjectMilestones />
