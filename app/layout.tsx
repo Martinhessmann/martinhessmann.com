@@ -1,11 +1,16 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Caveat } from 'next/font/google'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Navigation } from '@/components/navigation'
 import { ThemeToggle } from '@/components/theme-toggle'
 
 const inter = Inter({ subsets: ['latin'] })
+const caveat = Caveat({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-caveat',
+})
 
 export const metadata: Metadata = {
   title: 'Martin Heßmann - Digital Product Manager & UX Designer',
@@ -31,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className={`scroll-smooth ${caveat.variable}`}>
       <head />
       <body className={inter.className}>
         <ThemeProvider
