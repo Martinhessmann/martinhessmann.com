@@ -1,59 +1,30 @@
-import { MacAppBar } from '@/components/mac-app-bar'
-import { ProfessionalHeadline } from '@/components/professional-headline'
-import { SocialLinks } from '@/components/social-links'
-import { AboutSection } from '@/components/about-section'
-import { SkillsSection } from '@/components/skills-section'
-import { ProjectSlider } from '@/components/project-slider'
-import { WorkTimeline } from '@/components/work-timeline'
-import { BlogPostGrid } from '@/components/blog-post-grid'
 import { ThemeToggle } from '@/components/theme-toggle'
-import { ClientProjectsShowcase } from '@/components/client-projects-showcase'
-import { ProjectMilestones } from '@/components/project-milestones'
-import { SafariSuggestions } from '@/components/safari-suggestions'
+import { HeroAboutSection } from '@/components/hero-about-section'
+import { ProjectSuccessStories } from '@/components/project-success-stories'
+import { ClientPartnerships } from '@/components/client-partnerships'
+import { WebProjectsRepository } from '@/components/web-projects-repository'
+import { WorkJourney } from '@/components/work-journey'
+import { BlogPostGrid } from '@/components/blog-post-grid'
 
 export default function Home() {
   return (
     <main className="min-h-screen">
-      {/* Hero Section */}
-      <section className="pt-8 pb-16 md:py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <MacAppBar />
-            <div className="bg-secondary rounded-b-lg p-6 md:p-8 shadow-md">
-              <ProfessionalHeadline />
-              <div className="mt-6 flex flex-wrap gap-4 justify-center md:justify-start">
-                <SocialLinks />
-                <div className="ml-auto">
-                  <ThemeToggle />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Hero + About Section */}
+      <HeroAboutSection />
 
-      {/* About Section */}
-      <AboutSection />
+      {/* Project Success Stories Section */}
+      <ProjectSuccessStories />
 
-      {/* Skills Section */}
-      <SkillsSection />
+      {/* Client Partnerships */}
+      <ClientPartnerships />
 
-      {/* Projects Section */}
-      <ProjectSlider />
-
-      {/* Client Projects Showcase */}
-      <ClientProjectsShowcase />
-
-      {/* Client Websites Safari Style */}
-      <SafariSuggestions />
-
-      {/* Project Milestones */}
-      <ProjectMilestones />
-
-      {/* Experience Section */}
-      <WorkTimeline />
+      {/* Web Projects Repository */}
+      <WebProjectsRepository />
 
       {/* Journey Section */}
+      <WorkJourney />
+
+      {/* Blog Posts */}
       <BlogPostGrid />
 
       {/* Footer */}
