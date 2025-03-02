@@ -1,25 +1,31 @@
 'use client'
 
 interface PlaceholderImageProps {
-  domain: string
+  siteName?: string
   width?: number
   height?: number
 }
 
-export function PlaceholderImage({ domain, width = 300, height = 169 }: PlaceholderImageProps) {
-  // Create a deterministic color based on the domain name
-  const getColor = (str: string) => {
-    let hash = 0;
-    for (let i = 0; i < str.length; i++) {
-      hash = str.charCodeAt(i) + ((hash << 5) - hash);
+export function PlaceholderImage({ siteName, width = 300, height = 169 }: PlaceholderImageProps) {
+  // Create a deterministic color based on the site name
+  const getColor = (str?: string) => {
+    // Handle undefined or empty strings
+    if (!str || str.length === 0) {
+      return 'hsl(210, 70%, 50%)' // Default blue color
     }
 
-    const hue = Math.abs(hash % 360);
-    return `hsl(${hue}, 70%, 50%)`;
+    let hash = 0
+    for (let i = 0; i < str.length; i++) {
+      hash = str.charCodeAt(i) + ((hash << 5) - hash)
+    }
+
+    const hue = Math.abs(hash % 360)
+    return `hsl(${hue}, 70%, 50%)`
   }
 
-  const bgColor = getColor(domain);
-  const textColor = 'white';
+  const displayName = siteName || 'Website'
+  const bgColor = getColor(siteName)
+  const textColor = 'white'
 
   return (
     <svg
@@ -39,7 +45,7 @@ export function PlaceholderImage({ domain, width = 300, height = 169 }: Placehol
         fontSize="18"
         fontWeight="bold"
       >
-        {domain}
+        {displayName}
       </text>
     </svg>
   )
