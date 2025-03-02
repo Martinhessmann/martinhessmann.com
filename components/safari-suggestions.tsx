@@ -284,6 +284,63 @@ export function SafariSuggestions() {
     return '';
   };
 
+  // Helper to create subtle background color from theme color
+  const getSubtleBackground = (color?: string) => {
+    if (!color) return undefined;
+    try {
+      // Create a subtle background by adding alpha channel
+      if (color.startsWith('#')) {
+        // Convert hex to RGB
+        const r = parseInt(color.slice(1, 3), 16);
+        const g = parseInt(color.slice(3, 5), 16);
+        const b = parseInt(color.slice(5, 7), 16);
+        return `rgba(${r}, ${g}, ${b}, 0.07)`;
+      } else if (color.startsWith('rgb')) {
+        // If it's already RGB format, just add alpha
+        return color.replace('rgb', 'rgba').replace(')', ', 0.07)');
+      }
+    } catch (e) {
+      console.error('Error parsing color:', e);
+    }
+    return undefined;
+  };
+
+  // Set to true to use glass effect, false to use subtle background
+  const useGlassEffect = true;
+
+  // State to detect if we're in dark mode
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  // Check for dark mode
+  useEffect(() => {
+    // Check if document is defined (client-side only)
+    if (typeof document !== 'undefined') {
+      // Initial check
+      setIsDarkMode(document.documentElement.classList.contains('dark'));
+
+      // Create observer for theme changes
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (
+            mutation.type === 'attributes' &&
+            mutation.attributeName === 'class'
+          ) {
+            setIsDarkMode(document.documentElement.classList.contains('dark'));
+          }
+        });
+      });
+
+      // Start observing
+      observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class'],
+      });
+
+      // Cleanup
+      return () => observer.disconnect();
+    }
+  }, []);
+
   return (
     <section id="websites" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4">
@@ -321,10 +378,21 @@ export function SafariSuggestions() {
             >
               <div
                 className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
-                style={{
-                  // Use site theme color as card border if available
-                  borderLeft: site.themeColor ? `4px solid ${site.themeColor}` : undefined,
-                  background: 'var(--secondary)'
+                style={useGlassEffect ? {
+                  // Glass effect styling - adapt for dark/light mode
+                  background: isDarkMode
+                    ? 'rgba(30, 41, 59, 0.5)' // Dark glass
+                    : 'rgba(255, 255, 255, 0.7)', // Light glass
+                  backdropFilter: 'blur(8px)',
+                  border: site.themeColor
+                    ? `1px solid ${site.themeColor}`
+                    : isDarkMode
+                      ? '1px solid rgba(255, 255, 255, 0.1)'
+                      : '1px solid rgba(0, 0, 0, 0.1)'
+                } : {
+                  // Subtle background styling
+                  borderLeft: site.themeColor ? `4px solid ${site.themeColor}` : '4px solid transparent',
+                  background: getSubtleBackground(site.themeColor) || 'var(--secondary)'
                 }}
               >
                 <div className="aspect-video relative overflow-hidden bg-muted">
@@ -382,14 +450,11 @@ export function SafariSuggestions() {
                         title={tag}
                       />
                     ))}
-                    {site.since && (
-                      <span className="text-[10px] ml-auto text-muted-foreground">
-                        Since {site.since}
-                      </span>
-                    )}
                   </div>
 
-                  <p className="text-xs text-muted-foreground">{site.lastVisited}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {site.since && `Since ${site.since}`}
+                  </p>
                 </div>
               </div>
             </Link>
