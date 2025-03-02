@@ -18,6 +18,7 @@ module.exports = {
     extend: {
       fontFamily: {
         marker: ['"Permanent Marker"', 'cursive'],
+        sans: ['ui-sans-serif', 'system-ui', 'sans-serif', '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"', '"Noto Color Emoji"'],
       },
       colors: {
         border: "hsl(var(--border))",

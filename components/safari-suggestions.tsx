@@ -14,6 +14,8 @@ interface WebsiteMetadata {
   themeColor?: string
   siteName?: string
   favicon?: string
+  ogImage?: string
+  ogImageDownloaded?: boolean // Flag to indicate if OG image was downloaded locally
   error?: string
 }
 
@@ -29,12 +31,14 @@ interface ClientWebsite {
   themeColor?: string
   siteName?: string
   favicon?: string
+  ogImage?: string // Add ogImage property
+  ogImageDownloaded?: boolean // Flag to indicate if OG image was downloaded locally
 }
 
 export function SafariSuggestions() {
   const [clientWebsites, setClientWebsites] = useState<ClientWebsite[]>([
     {
-      title: 'Afurnet',
+      title: 'The African Forum for Utility Regulators',
       url: 'afurnet.org',
       lastVisited: '5 days ago',
       tags: ['Design', 'PM'],
@@ -66,7 +70,7 @@ export function SafariSuggestions() {
       imagePath: '/images/clients/ras-services.de.jpg'
     },
     {
-      title: 'Tertianum Premium',
+      title: 'Tertianum Premium Residences',
       url: 'tertianum-premiumresidences.de',
       lastVisited: '6 days ago',
       tags: ['Design', 'Dev', 'PM'],
@@ -74,7 +78,7 @@ export function SafariSuggestions() {
       imagePath: '/images/clients/tertianum-premiumresidences.de.jpg'
     },
     {
-      title: 'Tertianum',
+      title: 'Tertianum Premium Group',
       url: 'tertianum.de',
       lastVisited: '1 week ago',
       tags: ['Design', 'PM'],
@@ -90,7 +94,7 @@ export function SafariSuggestions() {
       imagePath: '/images/clients/eon.com-de-c-whatsnetz.jpg'
     },
     {
-      title: 'SpotsUp Rent',
+      title: 'SpotsUp',
       url: 'spotsup.rent',
       lastVisited: '2 weeks ago',
       tags: ['Dev', 'PM'],
@@ -130,7 +134,7 @@ export function SafariSuggestions() {
       imagePath: '/images/clients/infrasignal.de.jpg'
     },
     {
-      title: 'Stadtweideland',
+      title: 'Stadt Weide Land',
       url: 'stadtweideland.de',
       lastVisited: '3 weeks ago',
       tags: ['Design', 'PM'],
@@ -146,7 +150,7 @@ export function SafariSuggestions() {
       imagePath: '/images/clients/partner.easycredit.de.jpg'
     },
     {
-      title: 'Porsche Design Press',
+      title: 'Porsche Lifestyle Group Pressroom',
       url: 'press.porsche-design.com',
       lastVisited: '1 month ago',
       tags: ['Design', 'PM'],
@@ -170,7 +174,7 @@ export function SafariSuggestions() {
       imagePath: '/images/clients/dein-womo.de.jpg'
     },
     {
-      title: 'WoMo Fonds',
+      title: 'Fonds für Wohnen und Mobilität',
       url: 'womofonds.de',
       lastVisited: '5 days ago',
       tags: ['Design', 'PM'],
@@ -208,7 +212,9 @@ export function SafariSuggestions() {
                 ogDescription: siteMetadata.ogDescription,
                 themeColor: siteMetadata.themeColor,
                 siteName: siteMetadata.siteName,
-                favicon: siteMetadata.favicon
+                favicon: siteMetadata.favicon,
+                ogImage: siteMetadata.ogImage,
+                ogImageDownloaded: siteMetadata.ogImageDownloaded
               };
             }
 
@@ -248,6 +254,34 @@ export function SafariSuggestions() {
   // Function to get a website's display title
   const getDisplayTitle = (site: ClientWebsite) => {
     return site.ogTitle || site.siteName || site.title;
+  };
+
+  // Function to get the best available image for a site
+  const getBestImage = (site: ClientWebsite) => {
+    // If the OG image was downloaded locally, use that
+    if (site.ogImageDownloaded && site.ogImage && site.ogImage.startsWith('/')) {
+      return site.ogImage;
+    }
+
+    // Otherwise use the local screenshot
+    if (site.imagePath) {
+      // Check if there's an og variant available
+      const ogVariantPath = site.imagePath.replace('.jpg', '-og.jpg');
+      // Try to use the -og.jpg variant if it exists
+      return ogVariantPath;
+    }
+
+    // If no local images available but we have an ogImage URL, use it directly
+    if (site.ogImage) {
+      // Handle relative URLs
+      if (!site.ogImage.startsWith('http')) {
+        return `https://${site.url}${site.ogImage.startsWith('/') ? '' : '/'}${site.ogImage}`;
+      }
+      return site.ogImage;
+    }
+
+    // Fallback to placeholder
+    return '';
   };
 
   return (
@@ -294,9 +328,10 @@ export function SafariSuggestions() {
                 }}
               >
                 <div className="aspect-video relative overflow-hidden bg-muted">
-                  {site.imagePath ? (
+                  {/* Use the best available image */}
+                  {(site.ogImage || site.imagePath) ? (
                     <Image
-                      src={site.imagePath}
+                      src={getBestImage(site)}
                       alt={getDisplayTitle(site)}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 16vw"
@@ -308,7 +343,7 @@ export function SafariSuggestions() {
                   {/* Fallback for missing images */}
                   <div
                     className="fallback-image absolute inset-0 flex items-center justify-center"
-                    style={{ display: site.imagePath ? 'none' : 'block' }}
+                    style={{ display: (site.ogImage || site.imagePath) ? 'none' : 'block' }}
                   >
                     <PlaceholderImage domain={site.url} width={300} height={169} />
                   </div>

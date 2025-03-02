@@ -2,6 +2,8 @@ const fs = require('fs').promises;
 const path = require('path');
 const axios = require('axios');
 const cheerio = require('cheerio');
+const { createWriteStream } = require('fs');
+const { pipeline } = require('stream/promises');
 
 const websites = [
   'afurnet.org',
@@ -25,6 +27,7 @@ const websites = [
 ];
 
 const metadataPath = path.join(__dirname, '..', 'data', 'website-metadata.json');
+const imagesDir = path.join(__dirname, '..', 'public', 'images', 'clients');
 
 async function ensureDirectoryExists(dir) {
   try {
@@ -32,6 +35,36 @@ async function ensureDirectoryExists(dir) {
     console.log(`Directory created: ${dir}`);
   } catch (error) {
     console.error(`Failed to create directory: ${error}`);
+  }
+}
+
+async function downloadImage(url, imagePath) {
+  try {
+    // Generate a full local file path
+    const fullImagePath = path.join(imagesDir, path.basename(imagePath));
+
+    // Create a write stream for the image
+    const writer = createWriteStream(fullImagePath);
+
+    // Download the image
+    const response = await axios({
+      url,
+      method: 'GET',
+      responseType: 'stream',
+      timeout: 10000,
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+      }
+    });
+
+    // Pipe the response data to the file
+    await pipeline(response.data, writer);
+
+    console.log(`Image downloaded: ${fullImagePath}`);
+    return true;
+  } catch (error) {
+    console.error(`Error downloading image: ${error.message}`);
+    return false;
   }
 }
 
@@ -86,20 +119,45 @@ async function extractMetadata(url) {
     const ogImage = $('meta[property="og:image"]').attr('content') ||
       $('meta[name="twitter:image"]').attr('content') || '';
 
+    // Clean URL for file naming
+    const cleanedUrl = url.replace(/https?:\/\//, '').replace(/\//g, '-').replace(/\.html$/, '').replace(/\.$/, '');
+
+    // Image path for default screenshot
+    const defaultImagePath = `/images/clients/${cleanedUrl}.jpg`;
+
+    // Image path for OG image if we download it
+    const ogImageFileName = ogImage ? `${cleanedUrl}-og.jpg` : null;
+    const ogImagePath = ogImageFileName ? `/images/clients/${ogImageFileName}` : null;
+
+    // Download the OG image if available
+    let downloadedOgImage = false;
+    if (ogImage) {
+      // Resolve the full URL if relative
+      const absoluteOgImageUrl = ogImage.startsWith('http')
+        ? ogImage
+        : ogImage.startsWith('//')
+          ? `https:${ogImage}`
+          : `${fullUrl}${ogImage.startsWith('/') ? '' : '/'}${ogImage}`;
+
+      downloadedOgImage = await downloadImage(absoluteOgImageUrl, ogImageFileName);
+    }
+
     return {
       url,
-      imagePath: `/images/clients/${url.replace(/https?:\/\//, '').replace(/\//g, '-').replace(/\.html$/, '').replace(/\.$/, '')}.jpg`,
+      imagePath: defaultImagePath,
       ogTitle,
       ogDescription,
       themeColor,
       siteName,
       favicon,
-      ogImage
+      ogImage: downloadedOgImage ? ogImagePath : ogImage, // If downloaded, use local path
+      ogImageDownloaded: downloadedOgImage
     };
   } catch (error) {
     console.error(`Error fetching metadata for ${url}: ${error.message}`);
     return {
       url,
+      imagePath: `/images/clients/${url.replace(/https?:\/\//, '').replace(/\//g, '-').replace(/\.html$/, '').replace(/\.$/, '')}.jpg`,
       error: error.message
     };
   }
@@ -122,6 +180,9 @@ async function saveMetadata(results) {
 }
 
 async function main() {
+  // Ensure the images directory exists
+  await ensureDirectoryExists(imagesDir);
+
   const results = [];
 
   for (const website of websites) {

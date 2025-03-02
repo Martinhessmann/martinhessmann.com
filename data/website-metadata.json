@@ -7,7 +7,8 @@
     "themeColor": "#ffffff",
     "siteName": "The African Forum for Utility Regulators",
     "favicon": "https://afurnet.org/wp-content/uploads/2025/01/afurslogo.png",
-    "ogImage": "https://afurnet.org/wp-content/uploads/2024/05/1200x600_Share_image.png"
+    "ogImage": "/images/clients/afurnet.org-og.jpg",
+    "ogImageDownloaded": true
   },
   {
     "url": "brasseriecolette.de",
@@ -17,7 +18,8 @@
     "themeColor": "#c9db5b",
     "siteName": "",
     "favicon": "https://brasseriecolette.de/favicons/favicon-32x32.png",
-    "ogImage": "https://images.prismic.io/brasseriecolettev3/Zsc4vUaF0TcGJP-r_og-image.jpg?auto=format,compress"
+    "ogImage": "/images/clients/brasseriecolette.de-og.jpg",
+    "ogImageDownloaded": true
   },
   {
     "url": "dpf-investment.de",
@@ -27,7 +29,8 @@
     "themeColor": "",
     "siteName": "dpf-investment.de",
     "favicon": "https://dpf-investment.de/favicons/favicon-32x32.png.pagespeed.ce.hyHc2jZE0K.png",
-    "ogImage": "/dpf-share.png"
+    "ogImage": "/images/clients/dpf-investment.de-og.jpg",
+    "ogImageDownloaded": true
   },
   {
     "url": "ras-services.de",
@@ -37,7 +40,8 @@
     "themeColor": "#ffffff",
     "siteName": "RAS Services",
     "favicon": "https://ras-services.de/wp-content/themes/ras/assets/favicons/ras.svg",
-    "ogImage": "https://mlznu6ng56qb.i.optimole.com/cb:Ego8.44b6e/w:auto/h:auto/q:mauto/f:best/https://ras-services.de/wp-content/themes/ras/assets/favicons/apple-touch-icon.png"
+    "ogImage": "/images/clients/ras-services.de-og.jpg",
+    "ogImageDownloaded": true
   },
   {
     "url": "tertianum-premiumresidences.de",
@@ -47,7 +51,8 @@
     "themeColor": "#8B7E70",
     "siteName": "Tertianum Premium Residences",
     "favicon": "https://tertianum-premiumresidences.de/wp-content/themes/tertianum-premium-residences/assets/favicon_package/favicon-32x32.png",
-    "ogImage": "https://mlznu6ng56qb.i.optimole.com/cb:mZZv.44774/w:auto/h:auto/q:mauto/f:best/https://tertianum-premiumresidences.de/wp-content/uploads/2021/05/og_tpr.png"
+    "ogImage": "/images/clients/tertianum-premiumresidences.de-og.jpg",
+    "ogImageDownloaded": true
   },
   {
     "url": "tertianum.de",
@@ -57,10 +62,12 @@
     "themeColor": "#191919",
     "siteName": "Tertianum Premium Group",
     "favicon": "https://mlznu6ng56qb.i.optimole.com/cb:Vrhl.44700/w:auto/h:auto/q:mauto/f:best/https://tertianum.de/wp-content/themes/tertianum/assets/favicons/favicon-32x32.png",
-    "ogImage": "https://mlznu6ng56qb.i.optimole.com/cb:Vrhl.44700/w:auto/h:auto/q:mauto/f:best/https://tertianum.de/wp-content/uploads/2021/05/og_tpg.png"
+    "ogImage": "/images/clients/tertianum.de-og.jpg",
+    "ogImageDownloaded": true
   },
   {
     "url": "eon.com/de/c/whatsnetz.html",
+    "imagePath": "/images/clients/eon.com-de-c-whatsnetz.jpg",
     "error": "Request failed with status code 403"
   },
   {
@@ -71,7 +78,8 @@
     "themeColor": "",
     "siteName": "SPOTS UP",
     "favicon": "https://spotsup.rent/favicons/favicon.svg",
-    "ogImage": "https://spotsup.rent/de/opengraph-image.png?98f545502c713a63"
+    "ogImage": "/images/clients/spotsup.rent-og.jpg",
+    "ogImageDownloaded": true
   },
   {
     "url": "electronica.group",
@@ -81,7 +89,8 @@
     "themeColor": "",
     "siteName": "Electronica Group",
     "favicon": "https://electronica.group/favicons/android-chrome-192x192.png",
-    "ogImage": "https://electronica.group/og_image.png"
+    "ogImage": "/images/clients/electronica.group-og.jpg",
+    "ogImageDownloaded": true
   },
   {
     "url": "fairworks.com",
@@ -91,7 +100,8 @@
     "themeColor": "#ffffff",
     "siteName": "",
     "favicon": "https://fairworks.com/favicon-32x32.png",
-    "ogImage": "https://www.fairworks.com/og_image.png"
+    "ogImage": "/images/clients/fairworks.com-og.jpg",
+    "ogImageDownloaded": true
   },
   {
     "url": "gruen-berlin.de",
@@ -101,7 +111,8 @@
     "themeColor": "",
     "siteName": "",
     "favicon": "https://gruen-berlin.de/typo3conf/ext/integration_project/Resources/Public/Favicons/favicon-32x32.png",
-    "ogImage": "https://gruen-berlin.de/fileadmin/_processed_/d/6/csm_gruenberlin_projekte_parks_mauerpark_rasenplateau_c_manuelfrauendorffotografie_a288c10d66.jpg"
+    "ogImage": "/images/clients/gruen-berlin.de-og.jpg",
+    "ogImageDownloaded": true
   },
   {
     "url": "infrasignal.de",
@@ -111,7 +122,8 @@
     "themeColor": "",
     "siteName": "",
     "favicon": "https://infrasignal.de/typo3conf/ext/integration_project/Resources/Public/Favicons/favicon-32x32.png",
-    "ogImage": "https://infrasignal.de/typo3temp/assets/_processed_/3/9/csm_infrasignal_og_d7bc47693e.png"
+    "ogImage": "/images/clients/infrasignal.de-og.jpg",
+    "ogImageDownloaded": true
   },
   {
     "url": "stadtweideland.de",
@@ -121,7 +133,8 @@
     "themeColor": "",
     "siteName": "www.stadtweideland.de",
     "favicon": "https://stadtweideland.de/_assets/6c0be82a682c2c284a59c1a12552a5dd/Icons/FavIcons/favicon-32x32.png",
-    "ogImage": "https://www.stadtweideland.de/fileadmin/swl/openGraph.png"
+    "ogImage": "/images/clients/stadtweideland.de-og.jpg",
+    "ogImageDownloaded": true
   },
   {
     "url": "partner.easycredit.de",
@@ -131,7 +144,8 @@
     "themeColor": "#ffffff",
     "siteName": "Business Services von easyCredit",
     "favicon": "https://mlznu6ng56qb.i.optimole.com/cb:ykYL.44893/w:auto/h:auto/q:mauto/f:best/https://partner.easycredit.de/wp-content/themes/easycredit-ratenkauf/static/img/favicons/favicon-32x32.png",
-    "ogImage": "https://mlznu6ng56qb.i.optimole.com/cb:ykYL.44893/w:auto/h:auto/q:mauto/f:best/https://partner.easycredit.de/wp-content/uploads/2024/01/og.png"
+    "ogImage": "/images/clients/partner.easycredit.de-og.jpg",
+    "ogImageDownloaded": true
   },
   {
     "url": "press.porsche-design.com",
@@ -141,7 +155,8 @@
     "themeColor": "#000000",
     "siteName": "",
     "favicon": "https://press.porsche-design.com/favicon-32x32.png",
-    "ogImage": "https://press.porsche-design.com/og-image.jpg"
+    "ogImage": "/images/clients/press.porsche-design.com-og.jpg",
+    "ogImageDownloaded": true
   },
   {
     "url": "teambank.de",
@@ -151,7 +166,8 @@
     "themeColor": "",
     "siteName": "TeamBank",
     "favicon": "https://www.teambank.de/wp-content/uploads/2023/04/cropped-TB_Icon-32x32.png",
-    "ogImage": "https://www.teambank.de/wp-content/uploads/2024/07/TeamBank_Startseite_Stage_1080_v3.jpg"
+    "ogImage": "/images/clients/teambank.de-og.jpg",
+    "ogImageDownloaded": true
   },
   {
     "url": "dein-womo.de",
@@ -161,7 +177,8 @@
     "themeColor": "",
     "siteName": "",
     "favicon": "https://dein-womo.de/typo3conf/ext/integration_project/Resources/Public/_Default/Build/assets/favicons/favicon-32x32.png",
-    "ogImage": "https://dein-womo.de/fileadmin/user_upload/Images/og_image.png"
+    "ogImage": "/images/clients/dein-womo.de-og.jpg",
+    "ogImageDownloaded": true
   },
   {
     "url": "womofonds.de",
@@ -171,6 +188,7 @@
     "themeColor": "",
     "siteName": "",
     "favicon": "https://womofonds.de/_assets/a30f66e2fdecec00088ca08934ca2ab1/_Default/Build/assets/favicons/favicon-32x32.png",
-    "ogImage": "https://womofonds.de/fileadmin/user_upload/Bilder/Logos/og_image.png"
+    "ogImage": "/images/clients/womofonds.de-og.jpg",
+    "ogImageDownloaded": true
   }
 ]
