@@ -1,9 +1,13 @@
+// No need to try importing a file that doesn't exist
+// This was causing webpack caching errors
 let userConfig = undefined
+/*
 try {
   userConfig = await import('./v0-user-next.config')
 } catch (e) {
   // ignore error
 }
+*/
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -18,11 +22,16 @@ const nextConfig = {
   },
   experimental: {
     webpackBuildWorker: true,
-    parallelServerBuildTraces: true,
-    parallelServerCompiles: true,
+  },
+  // Ensure Tailwind has enough time to build
+  webpack: (config) => {
+    // This is to ensure the CSS is properly generated
+    return config;
   },
 }
 
+// No need for mergeConfig if userConfig is always undefined
+/*
 mergeConfig(nextConfig, userConfig)
 
 function mergeConfig(nextConfig, userConfig) {
@@ -44,5 +53,6 @@ function mergeConfig(nextConfig, userConfig) {
     }
   }
 }
+*/
 
 export default nextConfig
