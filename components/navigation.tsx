@@ -3,9 +3,9 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
-import { ThemeToggle } from './theme-toggle'
 
 export function Navigation() {
+  const [isSticky, setIsSticky] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
 
@@ -68,15 +68,10 @@ export function Navigation() {
                 ))}
               </ul>
             </nav>
-
-            <div className="ml-4">
-              <ThemeToggle />
-            </div>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
-            <ThemeToggle />
             <button
               onClick={(e) => {
                 e.stopPropagation()

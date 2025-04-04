@@ -1,6 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { ThemeProvider } from '@/components/theme-provider'
+import { Header } from '@/components/header'
 
 export const metadata: Metadata = {
   title: 'Martin Heßmann - Digital Product Manager & UX Designer',
@@ -27,23 +28,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
-      </head>
-      <body className="font-sans">
+      <body className="font-sans h-screen overflow-hidden">
         <ThemeProvider
-          attribute="data-theme"
-          defaultTheme="dark"
-          forcedTheme="dark"
-          enableSystem={false}
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
           disableTransitionOnChange
         >
-          <div className="flex flex-col min-h-screen">
-            <div className="flex-1">
-              {children}
-            </div>
+          <div className="relative h-screen">
+            <Header />
+            {children}
           </div>
         </ThemeProvider>
       </body>

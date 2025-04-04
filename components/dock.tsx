@@ -41,6 +41,10 @@ export function Dock({ windows, openWindow }: DockProps) {
 
   // Handle app click in dock
   const handleAppClick = (id: string) => {
+    // This will either:
+    // - Open a closed window
+    // - Restore a minimized window
+    // - Focus an already open window
     openWindow(id)
   }
 
@@ -56,20 +60,28 @@ export function Dock({ windows, openWindow }: DockProps) {
 
         {dockApps.map((app) => {
           const appWindow = windows.find(w => w.id === app.id)
-          const isOpen = appWindow?.isOpen
+          const isOpen = appWindow?.isOpen || false
+          const isMinimized = appWindow?.isMinimized || false
           const isActive = appWindow?.isFocused && !initialRender
+
+          // Calculate animation and visual states
+          const isHovered = hoveredApp === app.id
+          const scale = isActive ? 'scale-110' : isHovered ? 'scale-105' : 'scale-100'
+          const translateY = isActive ? '-translate-y-1' : isHovered ? '-translate-y-0.5' : ''
+          const opacity = isMinimized ? 'opacity-60' : 'opacity-100'
 
           return (
             <div
               key={app.id}
-              className="relative group z-10 px-0.5"
+              className={`relative group z-10 px-0.5 transition-all duration-200
+                ${scale} ${translateY} ${opacity}`}
               onMouseEnter={() => setHoveredApp(app.id)}
               onMouseLeave={() => setHoveredApp(null)}
             >
               {/* App icon */}
               <button
                 onClick={() => handleAppClick(app.id)}
-                className="relative"
+                className="relative p-1 rounded-lg hover:bg-white/5 transition-colors"
               >
                 <div className="h-12 w-12 relative">
                   <Image
@@ -77,14 +89,15 @@ export function Dock({ windows, openWindow }: DockProps) {
                     alt={app.title}
                     fill
                     sizes="48px"
-                    className="object-contain drop-shadow-md"
+                    className={`object-contain drop-shadow-md transition-opacity ${isMinimized ? 'opacity-70' : ''}`}
                   />
                 </div>
 
                 {/* Indicator dot for open apps */}
                 {isOpen && (
-                  <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2
-                    w-1.5 h-1.5 rounded-full bg-white/40" />
+                  <div className={`absolute -bottom-1 left-1/2 transform -translate-x-1/2
+                    w-1.5 h-1.5 rounded-full transition-colors
+                    ${isActive ? 'bg-white' : 'bg-white/40'}`} />
                 )}
               </button>
 
@@ -96,6 +109,7 @@ export function Dock({ windows, openWindow }: DockProps) {
                     ring-[0.5px] ring-gray-300/30
                     relative z-10">
                     {app.title}
+                    {isMinimized && " (Minimized)"}
                   </div>
                   {/* Tooltip arrow */}
                   <div className="w-4 h-4 bg-secondary rotate-45 transform

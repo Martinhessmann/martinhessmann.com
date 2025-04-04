@@ -49,3 +49,13 @@ Here's what you'll find in the documentation:
 - Tailwind CSS
 - Shadcn/UI
 - Zustand for state management
+
+## Application Architecture
+
+The project follows Next.js App Router conventions with a clear separation of concerns:
+
+- **app/layout.tsx** - Root layout with HTML structure, metadata, and ThemeProvider
+- **app/page.tsx** - Homepage route component that renders the Desktop
+- **components/desktop.tsx** - Core UI implementation with window management
+
+These files serve different purposes and shouldn't be combined. For more details on the architecture, see [App Documentation](docs/app.md#next-js-file-architecture).
