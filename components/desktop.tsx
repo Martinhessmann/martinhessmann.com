@@ -79,7 +79,7 @@ export function Desktop() {
   return (
     <div className="relative h-full pt-[24px] bg-gradient-to-b from-background to-background/80 overflow-hidden">
       {/* Desktop background */}
-      <div className="absolute inset-0 -top-[24px] bg-[url('/images/desktop-background.jpg')] bg-cover bg-center opacity-40 dark:opacity-20" />
+      <div className="absolute inset-0 -top-[24px] bg-[url('/images/desktop-background.jpg')] bg-cover bg-center" />
 
       {/* Desktop content */}
       <div className="relative z-10 w-full h-full">
@@ -115,7 +115,7 @@ export function Desktop() {
         </div>
 
         {/* Copyright info */}
-        <div className="absolute bottom-2 right-2 text-white/60 text-xs">
+        <div className="absolute bottom-2 right-2 text-muted-foreground text-xs">
           © {new Date().getFullYear()} Martin Heßmann
         </div>
       </div>

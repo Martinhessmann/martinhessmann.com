@@ -90,10 +90,10 @@ These files should not be combined as they serve different purposes in the Next.
 ## Current Issues and TODOs
 
 ### Theme System Improvements
-- [ ] Reimplement user preferred color scheme detection (respect `prefers-color-scheme`)
-- [ ] Add a minimalistic theme switch button in the header.tsx component
-- [ ] Refactor UI components to use semantic color variables for easy theme switching
-- [ ] Create a consistent color system where theme changes only need to modify root CSS variables
+- [x] Reimplement user preferred color scheme detection (respect `prefers-color-scheme`)
+- [x] Add a minimalistic theme switch button in the header.tsx component
+- [x] Refactor UI components to use semantic color variables for easy theme switching
+- [x] Create a consistent color system where theme changes only need to modify root CSS variables
 
 ### Window Interaction Fixes
 - [ ] Fix window movement issues when dragging close to screen boundaries

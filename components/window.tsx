@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect, MouseEvent as ReactMouseEvent, ReactNode } from 'react'
 import Image from 'next/image'
 import { WindowPosition, WindowSize } from '@/lib/store/window-store'
+import { ThemeFavicon } from '@/components/theme-favicon'
 
 interface WindowProps {
   id: string
@@ -250,15 +251,20 @@ export function Window({
 
         {/* Window title with icon */}
         <div className="flex items-center">
-          <div className="h-4 w-4 mr-2 relative">
-            <Image
-              src={icon}
-              alt={title}
-              fill
-              sizes="16px"
-              className="object-contain"
-            />
-          </div>
+          {/* Check if the icon is a favicon and render ThemeFavicon if so */}
+          {icon.includes('/favicons/favicon') ? (
+            <ThemeFavicon className="mr-2" size={16} />
+          ) : (
+            <div className="h-4 w-4 mr-2 relative">
+              <Image
+                src={icon}
+                alt={title}
+                fill
+                sizes="16px"
+                className="object-contain"
+              />
+            </div>
+          )}
           <span className="text-xs font-medium">{title}</span>
         </div>
       </div>
