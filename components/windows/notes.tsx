@@ -19,9 +19,9 @@ export function Notes() {
   )
 
   return (
-    <div className="h-full flex">
+    <div className="h-full flex bg-background">
       {/* Sidebar */}
-      <div className="w-64 border-r border-border flex flex-col">
+      <div className="w-64 border-r border-border flex flex-col bg-card">
         {/* Toolbar */}
         <div className="p-2 border-b border-border flex items-center gap-1">
           <Button variant="ghost" size="icon" className="h-8 w-8">
@@ -76,7 +76,7 @@ export function Notes() {
       </div>
 
       {/* Content */}
-      <div className="flex-grow flex flex-col">
+      <div className="flex-grow flex flex-col bg-background">
         {/* Note Header */}
         <div className="border-b border-border p-4 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
           <h1 className="text-xl font-bold mb-1">{selectedNote.title}</h1>

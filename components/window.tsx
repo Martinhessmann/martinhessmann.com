@@ -243,13 +243,13 @@ export function Window({
   return (
     <div
       ref={windowRef}
-      className={`absolute rounded-xl overflow-hidden backdrop-blur-xl
-        border border-[#1e1e1e] dark:border-[#1e1e1e]
-        ring-[0.5px] ring-white/10
+      className={`absolute rounded-xl overflow-hidden
+        border border-border
+        ring-[0.5px] ring-ring/10
         ${isDragging || isResizing ? 'cursor-grabbing select-none' : ''}
         ${isFocused
-          ? 'bg-[#252525]/90 shadow-lg shadow-black/20'
-          : 'bg-[#252525]/80'}`}
+        ? 'bg-background shadow-lg shadow-foreground/10'
+        : 'bg-background'}`}
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
@@ -261,10 +261,10 @@ export function Window({
     >
       {/* Title bar */}
       <div
-        className={`h-7 border-b backdrop-blur-xl
+        className={`h-7 border-b
           ${isFocused
-            ? 'bg-[#252525]/95 border-[#1e1e1e]'
-            : 'bg-[#252525]/90 border-[#1e1e1e]'}
+            ? 'bg-secondary border-border'
+            : 'bg-secondary border-border'}
           flex items-center px-2 cursor-grab select-none`}
         onMouseDown={handleMouseDown}
       >
@@ -273,31 +273,31 @@ export function Window({
           <button
             onClick={onClose}
             className={`w-3 h-3 rounded-full ${isFocused
-              ? 'bg-[#FF5F57] group-hover:bg-[#FF5F57] hover:bg-[#FF5F57]/90'
-              : 'bg-[#404040] group-hover:bg-[#FF5F57]'}
+              ? 'bg-red-500 group-hover:bg-red-500 hover:bg-red-500/90'
+              : 'bg-muted-foreground group-hover:bg-red-500'}
               flex items-center justify-center transition-colors`}
             aria-label="Close window"
           >
-            <span className="opacity-0 group-hover:opacity-100 text-[10px] text-[#4c0002] font-bold leading-none relative -top-[0.5px]">×</span>
+            <span className="opacity-0 group-hover:opacity-100 text-[10px] text-red-900 font-bold leading-none relative -top-[0.5px]">×</span>
           </button>
           <button
             onClick={onMinimize}
             className={`w-3 h-3 rounded-full ${isFocused
-              ? 'bg-[#FEBC2E] group-hover:bg-[#FEBC2E] hover:bg-[#FEBC2E]/90'
-              : 'bg-[#404040] group-hover:bg-[#FEBC2E]'}
+              ? 'bg-yellow-500 group-hover:bg-yellow-500 hover:bg-yellow-500/90'
+              : 'bg-muted-foreground group-hover:bg-yellow-500'}
               flex items-center justify-center transition-colors`}
             aria-label="Minimize window"
           >
-            <span className="opacity-0 group-hover:opacity-100 text-[10px] text-[#9a5f00] font-bold leading-none relative -top-[1px]">−</span>
+            <span className="opacity-0 group-hover:opacity-100 text-[10px] text-yellow-800 font-bold leading-none relative -top-[1px]">−</span>
           </button>
           <button
             className={`w-3 h-3 rounded-full ${isFocused
-              ? 'bg-[#28C840] group-hover:bg-[#28C840] hover:bg-[#28C840]/90'
-              : 'bg-[#404040] group-hover:bg-[#28C840]'}
+              ? 'bg-green-500 group-hover:bg-green-500 hover:bg-green-500/90'
+              : 'bg-muted-foreground group-hover:bg-green-500'}
               flex items-center justify-center transition-colors`}
             aria-label="Maximize window"
           >
-            <span className="opacity-0 group-hover:opacity-100 text-[#0b4913] font-bold">
+            <span className="opacity-0 group-hover:opacity-100 text-green-900 font-bold">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8" width="8" height="8" fill="none" stroke="currentColor" strokeWidth="1.2" className="scale-90">
                 <path d="M1.5,1.5 h3 v3 M6.5,6.5 h-3 v-3" />
               </svg>
@@ -306,7 +306,7 @@ export function Window({
         </div>
 
         {/* Window title with icon */}
-        <div className="flex items-center justify-center flex-grow text-xs font-medium text-white/70">
+        <div className="flex items-center justify-center flex-grow text-xs font-medium text-foreground">
           {icon && (
             <div className="h-4 w-4 mr-1.5 relative">
               <Image
@@ -328,7 +328,7 @@ export function Window({
       {/* Window content */}
       <div
         ref={contentRef}
-        className={`h-[calc(100%-28px)] bg-[#252525]/95 backdrop-blur-xl p-4 overflow-auto window-content`}
+        className={`h-[calc(100%-28px)] bg-background p-4 overflow-auto window-content`}
         onClick={handleContentClick}
       >
         {children}

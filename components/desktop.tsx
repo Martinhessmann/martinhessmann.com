@@ -216,7 +216,7 @@ export function Desktop() {
          style={{ backgroundImage: 'url(/images/desktop-background.jpg)' }}>
 
       {/* Top menu bar with blur effect */}
-      <div className="absolute top-0 left-0 right-0 h-7 bg-[#252525]/80 backdrop-blur-xl border-b border-white/10 flex items-center px-3 z-50">
+      <div className="absolute top-0 left-0 right-0 h-7 bg-secondary/80 backdrop-blur-xl border-b border-white/10 flex items-center px-3 z-50">
         <div className="flex items-center mr-4">
           <div className="h-4 w-4 mr-2 relative">
             <Image

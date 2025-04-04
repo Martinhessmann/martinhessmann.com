@@ -19,7 +19,7 @@ export function FilterTags({
   selected,
   onChange,
   className,
-  icon = <Tag className="h-4 w-4 text-txt-subtle flex-shrink-0" />,
+  icon = <Tag className="h-4 w-4 text-muted-foreground flex-shrink-0" />,
   allLabel = 'All'
 }: FilterTagsProps) {
   return (
@@ -29,7 +29,7 @@ export function FilterTags({
         <div className="flex gap-1 flex-wrap">
           <Badge
             variant={selected === allLabel ? 'secondary' : 'outline'}
-            className="cursor-pointer hover:bg-bg-subtle whitespace-nowrap text-xs"
+            className="cursor-pointer hover:bg-muted whitespace-nowrap text-xs"
             onClick={() => onChange(allLabel)}
           >
             {allLabel}
@@ -39,7 +39,7 @@ export function FilterTags({
             <Badge
               key={option}
               variant={selected === option ? 'secondary' : 'outline'}
-              className="cursor-pointer hover:bg-bg-subtle whitespace-nowrap text-xs"
+              className="cursor-pointer hover:bg-muted whitespace-nowrap text-xs"
               onClick={() => onChange(option)}
             >
               {option}

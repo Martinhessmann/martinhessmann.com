@@ -34,9 +34,10 @@ export default function RootLayout({
       </head>
       <body className="font-sans">
         <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
+          attribute="data-theme"
+          defaultTheme="dark"
+          forcedTheme="dark"
+          enableSystem={false}
           disableTransitionOnChange
         >
           <div className="flex flex-col min-h-screen">

@@ -204,12 +204,12 @@ export function AppBar() {
   return (
     <>
       <div
-        className={`w-full bg-[#252525]/90 backdrop-blur-xl rounded-t-lg overflow-hidden border-b border-white/10 transition-all duration-300 z-50 ${
+        className={`w-full bg-secondary/90 backdrop-blur-xl rounded-t-lg overflow-hidden border-b border-white/10 transition-all duration-300 z-50 ${
           isSticky ? 'fixed top-0 left-0 right-0 shadow-lg rounded-none' : ''
         }`}
       >
         {/* Window controls */}
-        <div className="flex items-center h-10 px-4 bg-[#252525]/90">
+        <div className="flex items-center h-10 px-4 bg-secondary/90">
           <div className="flex space-x-2">
             <div className="w-3 h-3 rounded-full bg-[#FF5F57]"></div>
             <div className="w-3 h-3 rounded-full bg-[#FEBC2E]"></div>
@@ -221,8 +221,8 @@ export function AppBar() {
         </div>
 
         {/* App dock with scrolling */}
-        <div className="p-5 flex justify-center bg-[#252525]/80 backdrop-blur-xl overflow-hidden">
-          <div className="flex items-end space-x-2 px-6 py-2 bg-[#252525]/80 rounded-full backdrop-blur-xl border border-white/10 shadow-[0_0_0_0.5px_rgba(0,0,0,0.5)] overflow-x-auto max-w-full hide-scrollbar">
+        <div className="p-5 flex justify-center bg-secondary/80 backdrop-blur-xl overflow-hidden">
+          <div className="flex items-end space-x-2 px-6 py-2 bg-secondary/80 rounded-full backdrop-blur-xl border border-white/10 shadow-[0_0_0_0.5px_rgba(0,0,0,0.5)] overflow-x-auto max-w-full hide-scrollbar">
             {apps.map((app) => (
               <div
                 key={app.name}

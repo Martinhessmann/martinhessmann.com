@@ -23,7 +23,7 @@ export function EmptyState({
   return (
     <div
       className={cn(
-        "flex flex-col items-center justify-center text-txt-subtle",
+        "flex flex-col items-center justify-center text-muted-foreground",
         height,
         className
       )}
@@ -33,7 +33,7 @@ export function EmptyState({
 
       {actionLabel && onAction && (
         <button
-          className="mt-2 text-xs underline hover:text-txt-default transition-colors"
+          className="mt-2 text-xs underline hover:text-foreground transition-colors"
           onClick={onAction}
         >
           {actionLabel}

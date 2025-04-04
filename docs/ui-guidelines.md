@@ -12,7 +12,7 @@
 - **Composite Components**: Complex, application-specific components
 
 ## Typography
-- **Font**: Commit Mono for code, System UI for content
+- **Font**: System UI for content, Monospace System for code
 - **Scale**:
   - xs: 0.75rem
   - sm: 0.875rem

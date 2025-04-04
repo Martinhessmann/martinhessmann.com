@@ -14,7 +14,8 @@ This directory contains documentation for various aspects of the project.
 - [Messages](messages.md) - Documentation for the Messages component
 
 ### Design System
-- [Theme System](theme.md) - Documentation of the dark mode color system
+- [Theme System](theme.md) - Documentation of the color system
+- [Color System Refactoring](color-system-refactoring.md) - Details about April 2024 color system improvements
 - [UI Guidelines](ui-guidelines.md) - Design principles, spacing, typography, and accessibility guidelines
 
 ### Component Documentation
