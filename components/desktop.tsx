@@ -4,10 +4,10 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { Dock } from './dock'
 import { Window } from './window'
-import { AboutNotes } from './windows/about-notes'
 import { WebProjects } from './windows/web-projects'
 import { SuccessStories } from './windows/success-stories'
 import { ClientPartnerships } from './windows/client-partnerships'
+import { Notes } from './windows/notes'
 import { ThemeToggle } from './theme-toggle'
 
 // Window position types
@@ -51,58 +51,53 @@ function ClientOnlyClock() {
 }
 
 export function Desktop() {
-  const [windows, setWindows] = useState<WindowState[]>([])
+  const [windows, setWindows] = useState<WindowState[]>([
+    {
+      id: 'web-projects',
+      title: 'Web Projects',
+      icon: '/images/app-icons/04 Chrome.png',
+      isOpen: true,
+      isMinimized: false,
+      isFocused: false,
+      position: { x: 400, y: 100 },
+      component: <WebProjects />,
+      zIndex: 102
+    },
+    {
+      id: 'success-stories',
+      title: 'Success Stories',
+      icon: '/images/app-icons/07 Photos.png',
+      isOpen: true,
+      isMinimized: false,
+      isFocused: false,
+      position: { x: 200, y: 150 },
+      component: <SuccessStories />,
+      zIndex: 101
+    },
+    {
+      id: 'client-partnerships',
+      title: 'Client Partnerships',
+      icon: '/images/app-icons/31 Messages.png',
+      isOpen: true,
+      isMinimized: false,
+      isFocused: false,
+      position: { x: 300, y: 200 },
+      component: <ClientPartnerships />,
+      zIndex: 100
+    },
+    {
+      id: 'notes',
+      title: 'Notes',
+      icon: '/images/app-icons/15 Notes.png',
+      isOpen: true,
+      isMinimized: false,
+      isFocused: true,
+      position: { x: 80, y: 60 },
+      component: <Notes />,
+      zIndex: 103
+    }
+  ])
   const [nextZIndex, setNextZIndex] = useState(100)
-
-  // Initialize windows on component mount
-  useEffect(() => {
-    setWindows([
-      {
-        id: 'about-notes',
-        title: 'Notes - About Me Draft',
-        icon: '/images/app-icons/15 Notes.png',
-        isOpen: true,
-        isMinimized: false,
-        isFocused: true,
-        position: { x: 80, y: 60 },
-        component: <AboutNotes />,
-        zIndex: 103
-      },
-      {
-        id: 'web-projects',
-        title: 'Web Projects Repository',
-        icon: '/images/app-icons/04 Chrome.png',
-        isOpen: true,
-        isMinimized: false,
-        isFocused: false,
-        position: { x: 400, y: 100 },
-        component: <WebProjects />,
-        zIndex: 102
-      },
-      {
-        id: 'success-stories',
-        title: 'Success Stories',
-        icon: '/images/app-icons/07 Photos.png',
-        isOpen: true,
-        isMinimized: false,
-        isFocused: false,
-        position: { x: 200, y: 150 },
-        component: <SuccessStories />,
-        zIndex: 101
-      },
-      {
-        id: 'client-partnerships',
-        title: 'Messages - Client Feedback',
-        icon: '/images/app-icons/31 Messages.png',
-        isOpen: true,
-        isMinimized: false,
-        isFocused: false,
-        position: { x: 300, y: 200 },
-        component: <ClientPartnerships />,
-        zIndex: 100
-      }
-    ])
-  }, [])
 
   // Function to focus a window
   const focusWindow = (windowId: string) => {
