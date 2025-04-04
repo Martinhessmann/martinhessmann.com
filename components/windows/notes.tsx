@@ -86,7 +86,7 @@ export function Notes() {
         </div>
 
         {/* Note Content */}
-        <ScrollArea className="flex-grow">
+        <ScrollArea className="flex-grow p-6">
           <div className="prose dark:prose-invert max-w-none">
             <p className="text-lg mb-6">{selectedNote.content}</p>
 

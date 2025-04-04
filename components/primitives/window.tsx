@@ -84,7 +84,7 @@ export function Window({
       </div>
 
       {/* Window Content */}
-      <div className="flex-1 p-4 overflow-auto">
+      <div className="flex-1 overflow-auto">
         {children}
       </div>
     </Card>

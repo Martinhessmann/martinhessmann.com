@@ -37,7 +37,7 @@ export function Stories() {
 
       {/* Content */}
       {currentStory && (
-        <div className="flex-grow bg-background">
+        <div className="flex-grow p-6 bg-background">
           <div className="max-w-4xl mx-auto">
             {/* Story Header */}
             <div className="mb-6">

@@ -328,7 +328,7 @@ export function Window({
       {/* Window content */}
       <div
         ref={contentRef}
-        className={`h-[calc(100%-28px)] bg-background p-4 overflow-auto window-content`}
+        className={`h-[calc(100%-28px)] bg-background overflow-auto window-content`}
         onClick={handleContentClick}
       >
         {children}
