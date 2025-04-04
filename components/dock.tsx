@@ -19,17 +19,6 @@ interface DockProps {
 
 export function Dock({ windows, openWindow }: DockProps) {
   const [hoveredApp, setHoveredApp] = useState<string | null>(null)
-  const [initialRender, setInitialRender] = useState(true)
-
-  // Reset initial render flag after component mounts
-  useEffect(() => {
-    // Wait a brief moment to ensure all animations have time to start properly
-    const timer = setTimeout(() => {
-      setInitialRender(false)
-    }, 100)
-
-    return () => clearTimeout(timer)
-  }, [])
 
   // Apps in the dock
   const dockApps = [
@@ -51,7 +40,7 @@ export function Dock({ windows, openWindow }: DockProps) {
   return (
     <div className="fixed bottom-2 left-1/2 -translate-x-1/2 px-2 py-1 z-[60]">
       <div className="bg-popover/90 backdrop-blur-2xl rounded-2xl
-        px-1.5 py-1 flex items-end space-x-0
+        px-1.5 py-1 flex items-end space-x-1
         shadow-[0_0_0_0.5px_rgba(0,0,0,0.5)]
         ring-[0.5px] ring-border
         relative">
@@ -62,26 +51,22 @@ export function Dock({ windows, openWindow }: DockProps) {
           const appWindow = windows.find(w => w.id === app.id)
           const isOpen = appWindow?.isOpen || false
           const isMinimized = appWindow?.isMinimized || false
-          const isActive = appWindow?.isFocused && !initialRender
+          const isActive = appWindow?.isFocused
 
-          // Calculate animation and visual states
+          // Get classes for hover and active states
           const isHovered = hoveredApp === app.id
-          const scale = isActive ? 'scale-110' : isHovered ? 'scale-105' : 'scale-100'
-          const translateY = isActive ? '-translate-y-1' : isHovered ? '-translate-y-0.5' : ''
-          const opacity = isMinimized ? 'opacity-60' : 'opacity-100'
 
           return (
-            <div
-              key={app.id}
-              className={`relative group z-10 px-0.5 transition-all duration-200
-                ${scale} ${translateY} ${opacity}`}
-              onMouseEnter={() => setHoveredApp(app.id)}
-              onMouseLeave={() => setHoveredApp(null)}
-            >
+            <div key={app.id} className="relative group">
               {/* App icon */}
               <button
                 onClick={() => handleAppClick(app.id)}
-                className="relative p-1 rounded-lg hover:bg-secondary/20 transition-colors"
+                onMouseEnter={() => setHoveredApp(app.id)}
+                onMouseLeave={() => setHoveredApp(null)}
+                className={`relative p-1 rounded-lg transition-all duration-300
+                  ${isActive ? 'translate-y-[-8px]' : isHovered ? 'translate-y-[-4px]' : ''}
+                  ${isActive ? 'scale-110' : isHovered ? 'scale-105' : 'scale-100'}
+                `}
               >
                 <div className="h-12 w-12 relative">
                   <Image
@@ -89,22 +74,22 @@ export function Dock({ windows, openWindow }: DockProps) {
                     alt={app.title}
                     fill
                     sizes="48px"
-                    className={`object-contain drop-shadow-md transition-opacity ${isMinimized ? 'opacity-70' : ''}`}
+                    className={`object-contain drop-shadow-md ${isMinimized ? 'opacity-50' : 'opacity-100'}`}
                   />
                 </div>
 
                 {/* Indicator dot for open apps */}
                 {isOpen && (
                   <div className={`absolute -bottom-1 left-1/2 transform -translate-x-1/2
-                    w-1.5 h-1.5 rounded-full transition-colors
-                    ${isActive ? 'bg-primary' : 'bg-muted-foreground'}`} />
+                    w-1.5 h-1.5 rounded-full
+                    ${isActive ? 'bg-white' : 'bg-white/40'}`} />
                 )}
               </button>
 
               {/* Tooltip with app name */}
-              <div className="absolute left-1/2 -top-12 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-150">
+              <div className="absolute left-1/2 -top-12 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-150 whitespace-nowrap">
                 <div className="relative flex flex-col items-center">
-                  <div className="bg-popover rounded-lg py-[3px] px-3 text-xs text-popover-foreground whitespace-nowrap
+                  <div className="bg-popover rounded-lg py-[3px] px-3 text-xs text-popover-foreground
                     shadow-[0_0_0_0.5px_rgba(0,0,0,0.8)]
                     ring-[0.5px] ring-border
                     relative z-10">

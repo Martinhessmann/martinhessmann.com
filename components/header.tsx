@@ -108,7 +108,7 @@ export function Header() {
   }
 
   return (
-    <div className="absolute top-0 left-0 right-0 w-full bg-black/20 backdrop-blur-md text-white h-[24px] flex items-center z-50">
+    <div className="absolute top-0 left-0 right-0 w-full bg-black/20 backdrop-blur-md text-white h-[24px] flex items-center z-50 p-4">
       {/* Apple/MH Logo dropdown */}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
