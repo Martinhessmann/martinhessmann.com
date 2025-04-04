@@ -52,9 +52,9 @@ export function Dock({ windows, openWindow }: DockProps) {
   return (
     <div className="fixed bottom-2 left-1/2 -translate-x-1/2 px-2 py-1 z-[60]">
       <div className="bg-[#252525]/90 backdrop-blur-2xl rounded-2xl
-        px-1.5 py-1 flex items-end space-x-1.5
+        px-1.5 py-1 flex items-end space-x-0
         shadow-[0_0_0_0.5px_rgba(0,0,0,0.5)]
-        ring-[0.5px] ring-white/10
+        ring-[0.5px] ring-gray-300/30
         relative">
         {/* Subtle gradient overlay */}
         <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/20 to-transparent opacity-50" />
@@ -67,14 +67,14 @@ export function Dock({ windows, openWindow }: DockProps) {
           return (
             <div
               key={app.id}
-              className="relative group z-10"
+              className="relative group z-10 px-0.5"
               onMouseEnter={() => setHoveredApp(app.id)}
               onMouseLeave={() => setHoveredApp(null)}
             >
               {/* App icon */}
               <button
                 onClick={() => handleAppClick(app.id)}
-                className={`relative ${isActive ? 'scale-110' : ''}`}
+                className="relative"
               >
                 <div className="h-12 w-12 relative">
                   <Image
@@ -98,7 +98,7 @@ export function Dock({ windows, openWindow }: DockProps) {
                 <div className="relative flex flex-col items-center">
                   <div className="bg-[#252525] rounded-lg py-[3px] px-3 text-xs text-white whitespace-nowrap
                     shadow-[0_0_0_0.5px_rgba(0,0,0,0.8)]
-                    ring-[0.5px] ring-white/10
+                    ring-[0.5px] ring-gray-300/30
                     relative z-10">
                     {app.title}
                   </div>
@@ -107,7 +107,7 @@ export function Dock({ windows, openWindow }: DockProps) {
                     -mt-[8px]
                     rounded-sm
                     shadow-[0_0_0_0.5px_rgba(0,0,0,0.8)]
-                    ring-[0.5px] ring-white/10
+                    ring-[0.5px] ring-gray-300/30
                     relative z-[1]" />
                 </div>
               </div>

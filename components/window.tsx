@@ -96,7 +96,7 @@ export function Window({
 
         // Apply boundary constraints to keep header visible
         // Header height is 36px (9px for title bar + some buffer)
-        const minY = 0
+        const minY = 28 // Updated to prevent windows from moving over the menu bar (which is 28px tall)
         const maxY = window.innerHeight - 36
         const minX = -windowSize.width + 100 // Keep at least 100px of window visible horizontally
         const maxX = window.innerWidth - 100 // Keep at least 100px of window visible horizontally
@@ -143,7 +143,7 @@ export function Window({
         }
 
         // Apply boundary constraints
-        const minY = 0
+        const minY = 28 // Updated to prevent windows from moving over the menu bar
         const maxY = window.innerHeight - 36
         const minX = -newWidth + 100
         const maxX = window.innerWidth - 100
@@ -219,26 +219,35 @@ export function Window({
         onMouseDown={handleMouseDown}
       >
         {/* Window control buttons */}
-        <div className="window-buttons flex space-x-[6px] mr-2">
+        <div className="window-buttons flex space-x-[6px] mr-2 pl-2">
           <button
             onClick={onClose}
-            className="w-3 h-3 rounded-full bg-[#FF5F57] hover:bg-[#FF5F57]/80 group flex items-center justify-center transition-colors"
+            className={`w-3 h-3 rounded-full ${isFocused
+              ? 'bg-[#FF5F57] hover:bg-[#FF5F57]/80'
+              : 'bg-[#404040]'}
+              group flex items-center justify-center transition-colors`}
             aria-label="Close window"
           >
-            <span className="hidden group-hover:inline text-[8px] text-[#FF5F57]/30 font-bold">×</span>
+            {isFocused && <span className="hidden group-hover:inline text-[8px] text-[#FF5F57]/30 font-bold">×</span>}
           </button>
           <button
             onClick={onMinimize}
-            className="w-3 h-3 rounded-full bg-[#FEBC2E] hover:bg-[#FEBC2E]/80 group flex items-center justify-center transition-colors"
+            className={`w-3 h-3 rounded-full ${isFocused
+              ? 'bg-[#FEBC2E] hover:bg-[#FEBC2E]/80'
+              : 'bg-[#404040]'}
+              group flex items-center justify-center transition-colors`}
             aria-label="Minimize window"
           >
-            <span className="hidden group-hover:inline text-[8px] text-[#FEBC2E]/30 font-bold">−</span>
+            {isFocused && <span className="hidden group-hover:inline text-[8px] text-[#FEBC2E]/30 font-bold">−</span>}
           </button>
           <button
-            className="w-3 h-3 rounded-full bg-[#28C840] hover:bg-[#28C840]/80 group flex items-center justify-center transition-colors"
+            className={`w-3 h-3 rounded-full ${isFocused
+              ? 'bg-[#28C840] hover:bg-[#28C840]/80'
+              : 'bg-[#404040]'}
+              group flex items-center justify-center transition-colors`}
             aria-label="Maximize window"
           >
-            <span className="hidden group-hover:inline text-[8px] text-[#28C840]/30 font-bold">+</span>
+            {isFocused && <span className="hidden group-hover:inline text-[8px] text-[#28C840]/30 font-bold">+</span>}
           </button>
         </div>
 
