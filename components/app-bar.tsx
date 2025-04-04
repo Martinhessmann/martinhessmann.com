@@ -204,25 +204,25 @@ export function AppBar() {
   return (
     <>
       <div
-        className={`w-full bg-secondary/95 backdrop-blur-sm rounded-t-lg overflow-hidden border-b border-border transition-all duration-300 z-50 ${
+        className={`w-full bg-[#252525]/90 backdrop-blur-xl rounded-t-lg overflow-hidden border-b border-white/10 transition-all duration-300 z-50 ${
           isSticky ? 'fixed top-0 left-0 right-0 shadow-lg rounded-none' : ''
         }`}
       >
         {/* Window controls */}
-        <div className="flex items-center h-8 px-4 bg-secondary">
+        <div className="flex items-center h-10 px-4 bg-[#252525]/90">
           <div className="flex space-x-2">
-            <div className="w-3 h-3 rounded-full bg-red-500"></div>
-            <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-            <div className="w-3 h-3 rounded-full bg-green-500"></div>
+            <div className="w-3 h-3 rounded-full bg-[#FF5F57]"></div>
+            <div className="w-3 h-3 rounded-full bg-[#FEBC2E]"></div>
+            <div className="w-3 h-3 rounded-full bg-[#28C840]"></div>
           </div>
-          <div className="flex-1 text-center text-xs text-muted-foreground font-medium">
+          <div className="flex-1 text-center text-xs text-white/70 font-medium">
             martin-hessmann.com
           </div>
         </div>
 
         {/* App dock with scrolling */}
-        <div className="p-4 flex justify-center bg-secondary/80 backdrop-blur-sm overflow-hidden">
-          <div className="flex items-end space-x-2 px-6 py-2 bg-secondary/50 rounded-full backdrop-blur-md border border-border/30 shadow-lg overflow-x-auto max-w-full hide-scrollbar">
+        <div className="p-5 flex justify-center bg-[#252525]/80 backdrop-blur-xl overflow-hidden">
+          <div className="flex items-end space-x-2 px-6 py-2 bg-[#252525]/80 rounded-full backdrop-blur-xl border border-white/10 shadow-[0_0_0_0.5px_rgba(0,0,0,0.5)] overflow-x-auto max-w-full hide-scrollbar">
             {apps.map((app) => (
               <div
                 key={app.name}

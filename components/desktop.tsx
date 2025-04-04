@@ -203,27 +203,26 @@ export function Desktop() {
          style={{ backgroundImage: 'url(/images/desktop-background.jpg)' }}>
 
       {/* Top menu bar with blur effect */}
-      <div className="absolute top-0 left-0 right-0 h-6 bg-gray-100/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-gray-200/20 dark:border-gray-700/20 flex items-center px-3 z-50">
+      <div className="absolute top-0 left-0 right-0 h-7 bg-[#252525]/80 backdrop-blur-xl border-b border-white/10 flex items-center px-3 z-50">
         <div className="flex items-center mr-4">
           <div className="h-4 w-4 mr-2 relative">
             <Image
-              src="/favicon.ico"
-              alt="Martin Heßmann"
+              src="/images/apple-logo.png"
+              alt="Apple"
               fill
               sizes="16px"
-              className="object-contain"
+              className="object-contain invert"
             />
           </div>
-          <span className="text-xs font-medium">Martin Heßmann</span>
+          <span className="font-medium text-sm text-white/80">Finder</span>
         </div>
-
-        <div className="flex space-x-4 text-xs">
-          <span className="font-semibold">File</span>
-          <span>Edit</span>
-          <span>View</span>
-          <span>Go</span>
-          <span>Window</span>
-          <span>Help</span>
+        <div className="flex items-center space-x-4">
+          <span className="text-sm text-white/60">File</span>
+          <span className="text-sm text-white/60">Edit</span>
+          <span className="text-sm text-white/60">View</span>
+          <span className="text-sm text-white/60">Go</span>
+          <span className="text-sm text-white/60">Window</span>
+          <span className="text-sm text-white/60">Help</span>
         </div>
 
         <div className="flex-grow"></div>
