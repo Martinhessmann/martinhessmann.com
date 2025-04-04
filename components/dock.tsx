@@ -64,8 +64,6 @@ export function Dock({ windows, openWindow }: DockProps) {
                 onMouseEnter={() => setHoveredApp(app.id)}
                 onMouseLeave={() => setHoveredApp(null)}
                 className={`relative p-1 rounded-lg transition-all duration-300
-                  ${isActive ? 'translate-y-[-8px]' : isHovered ? 'translate-y-[-4px]' : ''}
-                  ${isActive ? 'scale-110' : isHovered ? 'scale-105' : 'scale-100'}
                 `}
               >
                 <div className="h-12 w-12 relative">
@@ -80,9 +78,8 @@ export function Dock({ windows, openWindow }: DockProps) {
 
                 {/* Indicator dot for open apps */}
                 {isOpen && (
-                  <div className={`absolute -bottom-1 left-1/2 transform -translate-x-1/2
-                    w-1.5 h-1.5 rounded-full
-                    ${isActive ? 'bg-white' : 'bg-white/40'}`} />
+                  <div className={`absolute -bottom-0.5 left-1/2 transform -translate-x-1/2
+                    w-1 h-1 rounded-full bg-white`} />
                 )}
               </button>
 
