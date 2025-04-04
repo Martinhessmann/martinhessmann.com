@@ -5,10 +5,10 @@ import {
   Notes, Note
 } from '../types/app-content'
 
-import clientMessages from '../data/client-messages/conversations.json'
-import successStories from '../data/success-stories/stories.json'
-import projectsData from '@/data/web-projects/projects.json'
-import notes from '../data/notes/about-me.json'
+import clientMessages from '@/data/messages.json'
+import successStories from '@/data/success-stories.json'
+import projectsData from '@/data/web-projects.json'
+import notesData from '@/data/notes.json'
 
 const typedProjectsData = projectsData as WebProjects
 
@@ -86,7 +86,7 @@ export function getTechnologyCategory(technology: Technology): string {
 
 // Notes
 export function getAllNotes(): Note[] {
-  return (notes as Notes).notes
+  return notesData.notes as Note[]
 }
 
 export function getNoteById(id: string): Note | undefined {

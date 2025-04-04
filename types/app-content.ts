@@ -80,17 +80,18 @@ export interface WebProjects {
 }
 
 // Notes types
-export type NoteSection = {
+export interface NoteSection {
   title: string
   content: string
 }
 
-export type Note = {
+export interface Note {
   id: string
   title: string
-  content: string
   lastEdited: string
   wordCount: number
+  category: 'profile' | 'work' | 'project'
+  content: string
   sections?: NoteSection[]
 }
 
