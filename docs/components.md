@@ -14,6 +14,21 @@ Specific window components and their implementations:
 - **Success Stories**: Coming soon
 - **Client Partnerships**: Coming soon
 
+## Color System Update (April 2024)
+
+All components have been updated to use the standardized Shadcn UI color variables:
+
+- `bg-background`, `text-foreground` for base elements
+- `bg-card`, `text-card-foreground` for card elements
+- `bg-primary`, `text-primary-foreground` for primary elements
+- `bg-secondary`, `text-secondary-foreground` for secondary elements
+- `bg-muted`, `text-muted-foreground` for muted elements
+- `border-border` for standard borders
+- `border-input` for form input borders
+
+This replaces the previous custom naming convention (bg-bg, text-txt, border-bd).
+For full details on the color system, see [Theme](theme.md).
+
 ## UI Components
 
 ### Card

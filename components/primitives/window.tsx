@@ -49,7 +49,7 @@ export function Window({
             onClick={onClose}
             className={cn(
               'w-3 h-3 rounded-full',
-              'bg-destructive/90 hover:bg-destructive',
+              'bg-red-600 hover:bg-red-500',
               'transition-colors duration-200'
             )}
           />
@@ -57,7 +57,7 @@ export function Window({
             onClick={onMinimize}
             className={cn(
               'w-3 h-3 rounded-full',
-              'bg-yellow-500/90 hover:bg-yellow-500',
+              'bg-yellow-600 hover:bg-yellow-500',
               'transition-colors duration-200'
             )}
           />
@@ -65,7 +65,7 @@ export function Window({
             onClick={onMaximize}
             className={cn(
               'w-3 h-3 rounded-full',
-              'bg-green-500/90 hover:bg-green-500',
+              'bg-green-600 hover:bg-green-500',
               'transition-colors duration-200'
             )}
           />

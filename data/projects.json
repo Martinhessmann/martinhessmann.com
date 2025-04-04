@@ -230,7 +230,7 @@
         "category": "Headless CMS"
       },
       "Next.js": {
-        "color": "bg-gray-800",
+        "color": "bg-secondary",
         "category": "Web Application"
       },
       "React": {

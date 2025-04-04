@@ -1,122 +1,109 @@
 # Color System Documentation
 
-This document outlines the color system used in the project, which follows a structured, semantic approach inspired by GitLab's design system.
+This document outlines the color system used in the project, which follows a structured, semantic approach using Tailwind CSS.
+
+## 🔄 Updated Color System (April 2024)
+
+The color system has been refactored to eliminate duplications and create a single source of truth. Key changes:
+
+1. Consolidated to a single configuration file (`tailwind.config.ts`)
+2. Moved all color definitions to `app/globals.css` using the `theme()` function
+3. Standardized on Shadcn UI semantic color naming conventions
+
+### How It Works Now
+
+1. **Base color scales** are defined as HSL values in `globals.css`:
+   ```css
+   --neutral-50: 0 0% 98%;
+   --blue-600: 210 100% 45%;
+   --red-700: 0 100% 40%;
+   /* etc. */
+   ```
+
+2. **Semantic variables** map to these colors using the `theme()` function:
+   ```css
+   --background: theme(colors.neutral.50);
+   --foreground: theme(colors.neutral.950);
+   --primary: theme(colors.blue.600);
+   /* etc. */
+   ```
+
+3. **Tailwind config** references these CSS variables:
+   ```typescript
+   colors: {
+     neutral: {
+       50: "hsl(var(--neutral-50))",
+       // etc.
+     },
+     background: "hsl(var(--background))",
+     foreground: "hsl(var(--foreground))",
+     // etc.
+   }
+   ```
 
 ## Semantic Color Variables
 
 Our color system uses semantic variables that describe the purpose of the color rather than its visual appearance. This makes it easier to maintain a consistent UI and design language.
 
-### Background Colors
+### Color Usage
 
-| Variable | Value | Usage |
-|----------|-------|-------|
-| `--background-color-default` | Neutral-950 | Main background color |
-| `--background-color-subtle` | Neutral-900 | Subtle backgrounds, cards, inputs |
-| `--background-color-strong` | Neutral-800 | Emphasized backgrounds, headers |
-| `--background-color-disabled` | Neutral-900 | Disabled elements |
-| `--background-color-overlap` | Neutral-900 | Overlapping elements |
-| `--background-color-section` | Neutral-800 | Section backgrounds |
-| `--background-color-overlay` | Black 64% | Modal overlays |
-
-### Border Colors
-
-| Variable | Value | Usage |
-|----------|-------|-------|
-| `--border-color-default` | Neutral-700 | Standard borders |
-| `--border-color-subtle` | Neutral-800 | Subtle borders |
-| `--border-color-strong` | Neutral-600 | Emphasized borders |
-| `--border-color-transparent` | Transparent | Invisible borders (for layout) |
-
-### Text Colors
-
-| Variable | Value | Usage |
-|----------|-------|-------|
-| `--text-color-default` | Neutral-50 | Primary text |
-| `--text-color-subtle` | Neutral-400 | Secondary text |
-| `--text-color-disabled` | Neutral-600 | Disabled text |
-| `--text-color-inverted` | Neutral-950 | Text on colored backgrounds |
+| Variable | Light Mode | Dark Mode | Usage |
+|----------|------------|-----------|-------|
+| `--background` | neutral-50 | neutral-950 | Main background color |
+| `--foreground` | neutral-950 | neutral-50 | Primary text color |
+| `--card` | neutral-50 | neutral-950 | Card backgrounds |
+| `--card-foreground` | neutral-950 | neutral-50 | Card text |
+| `--popover` | neutral-50 | neutral-950 | Popover backgrounds |
+| `--popover-foreground` | neutral-950 | neutral-50 | Popover text |
+| `--primary` | blue-600 | blue-600 | Primary actions/accents |
+| `--primary-foreground` | neutral-50 | neutral-50 | Text on primary colors |
+| `--secondary` | neutral-100 | neutral-800 | Secondary backgrounds |
+| `--secondary-foreground` | neutral-950 | neutral-50 | Text on secondary backgrounds |
+| `--muted` | neutral-100 | neutral-800 | Muted backgrounds |
+| `--muted-foreground` | neutral-500 | neutral-400 | Secondary/muted text |
+| `--accent` | blue-600 | blue-600 | Accent elements |
+| `--accent-foreground` | neutral-950 | neutral-50 | Text on accent colors |
+| `--destructive` | red-700 | red-700 | Destructive actions |
+| `--destructive-foreground` | neutral-50 | neutral-50 | Text on destructive colors |
+| `--border` | neutral-200 | neutral-700 | Standard borders |
+| `--input` | neutral-200 | neutral-700 | Form input borders |
+| `--ring` | blue-600 | blue-600 | Focus rings |
 
 ## Usage in Tailwind
 
-The semantic colors are available in Tailwind through custom utility classes:
-
-### Background Colors
+The semantic colors are available in Tailwind through utility classes:
 
 ```jsx
-<div className="bg-bg">Default background</div>
-<div className="bg-bg-subtle">Subtle background</div>
-<div className="bg-bg-strong">Strong background</div>
-<div className="bg-bg-disabled">Disabled background</div>
-<div className="bg-bg-overlap">Overlap background</div>
-<div className="bg-bg-section">Section background</div>
-<div className="bg-bg-overlay">Overlay background</div>
+<div className="bg-background text-foreground">Default background and text</div>
+<div className="bg-card text-card-foreground">Card styling</div>
+<div className="bg-primary text-primary-foreground">Primary button</div>
+<div className="bg-secondary text-secondary-foreground">Secondary button</div>
+<div className="text-muted-foreground">Secondary text</div>
+<div className="border-border">Standard border</div>
 ```
 
-### Border Colors
+## Color Scales
+
+For specific shades beyond semantic colors, we use color scales:
 
 ```jsx
-<div className="border border-bd">Default border</div>
-<div className="border border-bd-subtle">Subtle border</div>
-<div className="border border-bd-strong">Strong border</div>
-<div className="border border-bd-transparent">Transparent border</div>
+<div className="bg-neutral-50">Lightest neutral</div>
+<div className="bg-neutral-950">Darkest neutral</div>
+<div className="bg-blue-600">Primary blue</div>
+<div className="bg-red-700">Destructive red</div>
 ```
 
-### Text Colors
+## ⚠️ Migration Note
 
-```jsx
-<div className="text-txt">Default text</div>
-<div className="text-txt-subtle">Subtle text</div>
-<div className="text-txt-disabled">Disabled text</div>
-<div className="text-txt-inverted">Inverted text</div>
-```
+The previous semantic color system using `bg-bg`, `text-txt`, and `border-bd` prefixes has been deprecated. All components have been updated to use the standardized Shadcn UI semantic color conventions:
 
-## Neutral Color Scale
+| Old Style | New Style |
+|-----------|-----------|
+| `bg-bg` | `bg-background` |
+| `bg-bg-subtle` | `bg-muted` or `bg-secondary` |
+| `bg-bg-strong` | `bg-secondary` |
+| `text-txt` | `text-foreground` |
+| `text-txt-subtle` | `text-muted-foreground` |
+| `border-bd` | `border-border` |
 
-The semantic colors are built on a neutral color scale, which provides consistent gray tones across the application:
-
-```jsx
-// Light grays to dark grays
-<div className="bg-neutral-50">Neutral 50</div>
-<div className="bg-neutral-100">Neutral 100</div>
-<div className="bg-neutral-200">Neutral 200</div>
-<div className="bg-neutral-300">Neutral 300</div>
-<div className="bg-neutral-400">Neutral 400</div>
-<div className="bg-neutral-500">Neutral 500</div>
-<div className="bg-neutral-600">Neutral 600</div>
-<div className="bg-neutral-700">Neutral 700</div>
-<div className="bg-neutral-800">Neutral 800</div>
-<div className="bg-neutral-900">Neutral 900</div>
-<div className="bg-neutral-950">Neutral 950</div>
-```
-
-## Compatibility with Shadcn/UI
-
-This color system is designed to work alongside the existing Shadcn/UI color variables. For components provided by Shadcn/UI, it's still appropriate to use their color variables:
-
-- `bg-background`, `text-foreground` for base elements
-- `bg-card`, `text-card-foreground` for card elements
-- `bg-primary`, `text-primary-foreground` for primary actions
-- `bg-secondary`, `text-secondary-foreground` for secondary actions
-- `bg-muted`, `text-muted-foreground` for muted elements
-- `bg-accent`, `text-accent-foreground` for accented elements
-
-## Migration Guide
-
-When updating existing components to use the new color system:
-
-1. Replace background colors:
-   - `bg-background` → `bg-bg`
-   - `bg-secondary` → `bg-bg-subtle`
-   - `bg-muted` → `bg-bg-subtle`
-
-2. Replace border colors:
-   - `border-border` → `border-bd`
-   - `border-input` → `border-bd-subtle`
-
-3. Replace text colors:
-   - `text-foreground` → `text-txt`
-   - `text-muted-foreground` → `text-txt-subtle`
-
-4. For opacity variants, use the semantic color directly:
-   - `bg-background/30` → `bg-bg-subtle/50`
-   - `border-input/30` → `border-bd-subtle`
+This standardization ensures consistency with the component library and simplifies maintainability.

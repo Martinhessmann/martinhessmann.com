@@ -50,9 +50,9 @@ export function Projects() {
     })
 
   return (
-    <div className="flex flex-col h-full overflow-hidden">
+    <div className="flex flex-col h-full overflow-hidden bg-background">
       {/* Header with search and filters */}
-      <div className="p-3 border-b border-bd">
+      <div className="p-3 border-b border-border bg-secondary">
         <div className="flex flex-col md:flex-row gap-3 justify-between items-start md:items-center">
           <div className="w-full md:w-1/3">
             <SearchInput
@@ -74,7 +74,7 @@ export function Projects() {
       </div>
 
       {/* Project Grid */}
-      <ScrollArea className="flex-1 h-0">
+      <ScrollArea className="flex-1 h-0 bg-background">
         <div className="p-3">
           {filteredProjects.length === 0 ? (
             <EmptyState
@@ -100,9 +100,9 @@ function ProjectCard({ project }: { project: WebProject }) {
   return (
     <Card
       className={cn(
-        'group h-full flex flex-col overflow-hidden',
+        'group h-full flex flex-col overflow-hidden bg-background border-border',
         'transition-all duration-200',
-        'hover:bg-bg-subtle hover:shadow-md'
+        'hover:bg-secondary hover:shadow-md'
       )}
     >
       <a
@@ -112,7 +112,7 @@ function ProjectCard({ project }: { project: WebProject }) {
         className="flex flex-col h-full"
       >
         {/* Project Image */}
-        <div className="relative aspect-video bg-bg-subtle overflow-hidden">
+        <div className="relative aspect-video bg-muted overflow-hidden">
           <Image
             src={project.image}
             alt={project.title}
@@ -127,9 +127,9 @@ function ProjectCard({ project }: { project: WebProject }) {
               if (parent) {
                 parent.classList.add('flex', 'items-center', 'justify-center')
                 const fallback = document.createElement('div')
-                fallback.className = 'flex items-center justify-center w-full h-full bg-bg-subtle'
+                fallback.className = 'flex items-center justify-center w-full h-full bg-muted'
                 const icon = document.createElement('div')
-                icon.className = 'text-txt-subtle'
+                icon.className = 'text-muted-foreground'
                 icon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>'
                 fallback.appendChild(icon)
                 parent.appendChild(fallback)
@@ -145,18 +145,18 @@ function ProjectCard({ project }: { project: WebProject }) {
           </h3>
 
           {/* Description */}
-          <p className="text-xs text-txt-subtle mb-2 line-clamp-2">
+          <p className="text-xs text-muted-foreground mb-2 line-clamp-2">
             {project.description}
           </p>
 
           {/* URL and External Link */}
-          <div className="flex items-center text-xs text-txt-subtle">
+          <div className="flex items-center text-xs text-muted-foreground">
             <span className="flex-1 truncate">{project.url}</span>
             <ExternalLink className="h-3 w-3 flex-shrink-0 ml-1 opacity-70" />
           </div>
 
           {/* Since Year */}
-          <div className="text-xs text-txt-subtle mt-1">
+          <div className="text-xs text-muted-foreground mt-1">
             <span>Since {project.since}</span>
           </div>
 

@@ -46,7 +46,7 @@ export function Dock({ windows, openWindow }: DockProps) {
 
   return (
     <div className="fixed bottom-2 left-1/2 -translate-x-1/2 px-2 py-1 z-[60]">
-      <div className="bg-[#252525]/90 backdrop-blur-2xl rounded-2xl
+      <div className="bg-secondary/90 backdrop-blur-2xl rounded-2xl
         px-1.5 py-1 flex items-end space-x-0
         shadow-[0_0_0_0.5px_rgba(0,0,0,0.5)]
         ring-[0.5px] ring-gray-300/30
@@ -91,14 +91,14 @@ export function Dock({ windows, openWindow }: DockProps) {
               {/* Tooltip with app name */}
               <div className="absolute left-1/2 -top-12 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-150">
                 <div className="relative flex flex-col items-center">
-                  <div className="bg-[#252525] rounded-lg py-[3px] px-3 text-xs text-white whitespace-nowrap
+                  <div className="bg-secondary rounded-lg py-[3px] px-3 text-xs text-white whitespace-nowrap
                     shadow-[0_0_0_0.5px_rgba(0,0,0,0.8)]
                     ring-[0.5px] ring-gray-300/30
                     relative z-10">
                     {app.title}
                   </div>
                   {/* Tooltip arrow */}
-                  <div className="w-4 h-4 bg-[#252525] rotate-45 transform
+                  <div className="w-4 h-4 bg-secondary rotate-45 transform
                     -mt-[8px]
                     rounded-sm
                     shadow-[0_0_0_0.5px_rgba(0,0,0,0.8)]

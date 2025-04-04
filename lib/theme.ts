@@ -1,7 +1,7 @@
 export const theme = {
   font: {
     family: {
-      mono: 'Commit Mono',
+      mono: 'monospace',
       system: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
     },
     size: {
