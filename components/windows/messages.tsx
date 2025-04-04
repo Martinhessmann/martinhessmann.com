@@ -113,7 +113,7 @@ export function Messages() {
 
             {/* Messages - Scrollable */}
             <ScrollArea className="flex-grow">
-              <div className="space-y-4">
+              <div className="p-4 space-y-4">
                 {currentConversation.messages.map((message) => (
                   <div
                     key={message.id}

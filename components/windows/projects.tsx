@@ -75,7 +75,7 @@ export function Projects() {
 
       {/* Project Grid */}
       <ScrollArea className="flex-1 h-0 bg-background">
-        <div>
+        <div className="p-3">
           {filteredProjects.length === 0 ? (
             <EmptyState
               message="No projects found matching your criteria."
