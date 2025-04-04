@@ -112,27 +112,30 @@ export function Desktop() {
       return prevWindows.map(window => ({
         ...window,
         isFocused: window.id === windowId,
+        isMinimized: false, // Unminimize when focusing
         zIndex: window.id === windowId ? highestZIndex + 1 : window.zIndex
       }))
     })
   }
 
-  // Function to toggle window minimization
+  // Function to toggle window minimization with animation class
   const toggleMinimize = (windowId: string) => {
     setWindows(prevWindows =>
       prevWindows.map(window => ({
         ...window,
-        isMinimized: window.id === windowId ? !window.isMinimized : window.isMinimized
+        isMinimized: window.id === windowId ? !window.isMinimized : window.isMinimized,
+        isFocused: window.id === windowId ? false : window.isFocused
       }))
     )
   }
 
-  // Function to close a window
+  // Function to close a window with fade-out animation
   const closeWindow = (windowId: string) => {
     setWindows(prevWindows =>
       prevWindows.map(window => ({
         ...window,
-        isOpen: window.id === windowId ? false : window.isOpen
+        isOpen: window.id === windowId ? false : window.isOpen,
+        isFocused: window.id === windowId ? false : window.isFocused
       }))
     )
   }
@@ -199,8 +202,8 @@ export function Desktop() {
     <div className="w-full h-screen overflow-hidden relative bg-cover bg-center"
          style={{ backgroundImage: 'url(/images/desktop-background.jpg)' }}>
 
-      {/* Top menu bar */}
-      <div className="absolute top-0 left-0 right-0 h-6 bg-gray-100/90 dark:bg-gray-900/90 backdrop-blur-md flex items-center px-3 z-50">
+      {/* Top menu bar with blur effect */}
+      <div className="absolute top-0 left-0 right-0 h-6 bg-gray-100/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-gray-200/20 dark:border-gray-700/20 flex items-center px-3 z-50">
         <div className="flex items-center mr-4">
           <div className="h-4 w-4 mr-2 relative">
             <Image

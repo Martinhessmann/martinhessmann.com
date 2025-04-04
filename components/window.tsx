@@ -193,9 +193,13 @@ export function Window({
   return (
     <div
       ref={windowRef}
-      className={`absolute rounded-lg shadow-2xl overflow-hidden transition-shadow
+      className={`absolute rounded-xl overflow-hidden backdrop-blur-xl
+        border border-[#2e2e2e] dark:border-neutral-700
+        ring-1 ring-white/10 dark:ring-white/5
         ${isDragging || isResizing ? 'cursor-grabbing select-none' : ''}
-        ${isFocused ? 'shadow-2xl' : 'shadow-lg'}`}
+        ${isFocused
+          ? 'bg-white/90 dark:bg-neutral-900/90 shadow-lg shadow-black/20'
+          : 'bg-white/80 dark:bg-neutral-900/80'}`}
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
@@ -207,40 +211,46 @@ export function Window({
     >
       {/* Title bar */}
       <div
-        className={`h-9 ${isFocused ? 'bg-gray-200 dark:bg-gray-800' : 'bg-gray-100 dark:bg-gray-700'}
+        className={`h-7 border-b backdrop-blur-xl
+          ${isFocused
+            ? 'bg-gray-100/90 dark:bg-neutral-800/90 border-gray-200/20 dark:border-neutral-700'
+            : 'bg-gray-100/70 dark:bg-neutral-800/70 border-gray-200/10 dark:border-neutral-800'}
           flex items-center px-2 cursor-grab select-none`}
         onMouseDown={handleMouseDown}
       >
         {/* Window control buttons */}
-        <div className="window-buttons flex space-x-2 mr-3">
+        <div className="window-buttons flex space-x-[6px] mr-2">
           <button
             onClick={onClose}
-            className="w-3 h-3 rounded-full bg-red-500 hover:bg-red-600 flex items-center justify-center"
+            className="w-3 h-3 rounded-full bg-[#FF5F57] hover:bg-[#FF5F57]/80 group flex items-center justify-center transition-colors"
+            aria-label="Close window"
           >
-            <span className="opacity-0 group-hover:opacity-100 text-[8px]">×</span>
+            <span className="hidden group-hover:inline text-[8px] text-[#FF5F57]/30 font-bold">×</span>
           </button>
           <button
             onClick={onMinimize}
-            className="w-3 h-3 rounded-full bg-yellow-500 hover:bg-yellow-600 flex items-center justify-center"
+            className="w-3 h-3 rounded-full bg-[#FEBC2E] hover:bg-[#FEBC2E]/80 group flex items-center justify-center transition-colors"
+            aria-label="Minimize window"
           >
-            <span className="opacity-0 group-hover:opacity-100 text-[8px]">−</span>
+            <span className="hidden group-hover:inline text-[8px] text-[#FEBC2E]/30 font-bold">−</span>
           </button>
           <button
-            className="w-3 h-3 rounded-full bg-green-500 hover:bg-green-600 flex items-center justify-center"
+            className="w-3 h-3 rounded-full bg-[#28C840] hover:bg-[#28C840]/80 group flex items-center justify-center transition-colors"
+            aria-label="Maximize window"
           >
-            <span className="opacity-0 group-hover:opacity-100 text-[8px]">+</span>
+            <span className="hidden group-hover:inline text-[8px] text-[#28C840]/30 font-bold">+</span>
           </button>
         </div>
 
         {/* Window title with icon */}
-        <div className="flex items-center justify-center flex-grow text-sm font-medium">
+        <div className="flex items-center justify-center flex-grow text-xs font-medium text-gray-600 dark:text-neutral-300">
           {icon && (
-            <div className="h-5 w-5 mr-2 relative">
+            <div className="h-4 w-4 mr-1.5 relative">
               <Image
                 src={icon}
                 alt={title}
                 fill
-                sizes="20px"
+                sizes="16px"
                 className="object-contain"
               />
             </div>
@@ -249,11 +259,11 @@ export function Window({
         </div>
 
         {/* Spacer to balance title */}
-        <div className="w-20"></div>
+        <div className="w-[68px]"></div>
       </div>
 
       {/* Window content */}
-      <div className={`h-[calc(100%-36px)] bg-white dark:bg-gray-900 p-4 overflow-auto window-content`}>
+      <div className={`h-[calc(100%-28px)] bg-white/95 dark:bg-neutral-900/95 backdrop-blur-xl p-4 overflow-auto window-content`}>
         {children}
       </div>
 
