@@ -20,9 +20,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  experimental: {
-    webpackBuildWorker: true,
-  },
   // Ensure Tailwind has enough time to build
   webpack: (config) => {
     // This is to ensure the CSS is properly generated

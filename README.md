@@ -1,84 +1,46 @@
 # Martin Heßmann
 
-Hey, I'm Martin 👋 I live in Friedrichshain, former East-Berlin, just 500 meters from where my parents first moved in together—back when getting married was the only way the GDR government would allow them to share an apartment.
+Hey, I'm Martin 👋 I live in Friedrichshain, former East-Berlin. I'm a Product Generalist who bridges the gap between design, development, and business needs. With over a decade in the tech industry, I've worked on various projects ranging from finance platforms to interactive 3D games.
 
 ---
 
-## Getting Started (2010-2014)
+## Project: macOS Desktop Simulation Portfolio
 
-I studied Communication Design at [HTW Berlin](https://www.htw-berlin.de/) because I wanted to grow up, be independent, and provide for my family. But what I really enjoyed back then were the bike rides through the city 🚲 connecting dots that wouldn't exist if I had just taken the U-Bahn or a cab (not that I could afford one).
+This project transforms my personal website into a macOS desktop simulation with draggable windows, a dock, and other macOS-inspired UI elements.
 
-Freelancing during this time was less about building a career and more about trying things out—having my first direct client interactions, helping them reach their goals with the tools I had at hand, and learning the rest on the go.
+### Completed Features
+- [x] Basic macOS desktop simulation layout
+- [x] Draggable windows with focus management
+- [x] Window controls (minimize, maximize, close)
+- [x] Mac-style dock with application icons
+- [x] Theme toggle (light/dark mode)
+- [x] Content windows for About, Web Projects, Success Stories, and Client Partnerships
+- [x] Client-only clock component to prevent hydration errors
 
-## From Design to UX (2013-2018)
+### TODO - Window Improvements
+- [ ] Fix text selection when dragging and resizing windows
+- [ ] Implement diagonal (corner) resizing functionality
+- [ ] Fix left/top resizing speed (currently faster than mouse movement causing windows to disappear)
+- [ ] Add boundary constraints to keep window headers always visible on screen
 
-At [Ape Unit GmbH](https://apeunit.com), where I started as an intern in 2013 and later became a UX/UI Designer (2014-2018), I realized I needed more than just visuals—I needed structure, principles, a plan. Otherwise, projects quickly turned into a mess of taste, opinions, and impulses. That chaos drained my motivation and confused the developers at Ape Unit (shoutout to Emil, Micha, and Max ♥).
+### TODO - Header Bar Enhancements
+- [ ] Add MH Ligatur Logo in top left corner
+- [ ] Make logo clickable to show "About the Author" dropdown menu
+- [ ] Add menu items: "About Martin Heßmann" and "About the Project"
+- [ ] Create "About Martin Heßmann" window with photo, name, address, email, URL, and copyright info
+- [ ] Create "About the Project" window describing the development process (built in Cursor, first commit date, GitHub project link, Vercel hosting info, and concept behind the desktop simulation)
 
-I started seeing how a simple bullet point list of features or a structured, almost text-adventure-like user story format helped create a shared language. It gave us a way to talk things through with both the team and the client, to align on what we actually wanted and needed. "I want that, I don't like that, I feel like something is missing…"
+### TODO - Date Section
+- [ ] Enhance to display day, date, and time in the header
 
-## "Art" Direction (2018-2023)
-
-I never really understood why we called it that, but as our team grew at Unit 4 and we had more than one designer on a project (shoutout to Ray), we could finally split up cognitive and creative work. And while I loved the visuals, I found myself more and more drawn to development flows, handovers, processes, and data.
-
-Projects I worked on during this time:
-- Co-creating the web platform and style guide for [easyCredit Partner](https://www.easycredit-ratenkauf.de/), shaping their B2B brand identity
-- Long-term digital strategy and design support for [Grün Berlin](https://gruen-berlin.de) and [InfraSignal](https://infrasignal.de)
-- Helping [Ninetailed.io](https://www.ninetailed.io/) with their custom Tailwind setup and design system for contentful
-- Working with [Tertianum Premium Residences](https://www.tertianum-berlin.de/) alongside the amazing Amelie Drews and Julian Fleck
-
-## "AN"kommen (2023-Present) 🚀
-
-Now, at [AN](https://an.jetzt), I feel like I've reached a point where I'm happy with my role. I have the freedom to decide how we advise clients, what solutions we propose, how we structure teams, which experts we bring in, and how we manage timelines, budgets, and processes. I also focus on what the team needs to work well—communication, time management, workflow clarity.
-
-- Supporting [WoMoFonds](https://womofonds.de/) and [Dein-WoMo](https://dein-womo.de/)
-- Developing [Whats Netz](https://www.eon.com/de/c/whatsnetz.html), an interactive 3D strategy game for E.ON in collaboration with Ray Sono and their game designers and project managers
-
-And then COVID happened 😷 Our semi-remote team had to go fully remote, which gave us both freedom and the need for daily check-ins—via Slack, Notion, Toggl. It shaped how we work together now.
-
-## Side Projects 💗
-
-These aren't really side projects—they're more like things I pass on. Community work. Sharing experiences, making connections, valuing the things I do or did—not just for money, but for what they create in the long run.
-
-Some of these include:
-- Building [ElodieCarstensen.com](https://www.elodiecarstensen.com) and developing a Digital Rental Catalogue as a React app powered by AirTable
-- Supporting movement director [Marie Zechiel](https://mariezechiel.com/) with SEO strategies
-- Working on branding with [Studio Stellar](https://www.studiostellar.berlin/), a female-owned, queer, LGBTQ+ and BIPOC-friendly photo studio in Kreuzberg ✨
-
-## What's Next? 🤔
-
-I don't really know where the AI bubble is going, and to be honest, it's kind of crazy to watch fully generative images, videos, marketing funnels, and ads evolve at this speed.
-
-I help my colleagues at [Openwonder.com](https://openwonder.com) navigate that space, but I'm also critical of the ethics and impact this has in the hyper-capitalist phase we're in. It's easy to get caught up in the excitement and forget that all of this is only possible because of billion-dollar investments from big tech companies. We're privileged to have access to these tools, and we shouldn't take that for granted.
-
----
-
-Learn more:
-[ElodieCarstensen.com](https://www.elodiecarstensen.com) ·
-[LinkedIn](https://www.linkedin.com/in/martin-hessmann/) ·
-[GitHub](https://github.com/Martinhessmann) ·
-[Instagram](https://www.instagram.com/martinhessmann/)
-
-
-Set in [Commit Mono](https://commitmono.com/) · [GitHub](https://github.com/Martinhessmann/martinhessmann.com) · [Vercel](https://vercel.com)
-<details>
-<summary>Legal Information</summary>
-
-**Contact & Legal Notice (Impressum)**
-Martin Heßmann
-Kadiner Str. 20a
-10243 Berlin
-Germany
-
-Email: hi@martinhessmann.com
-
-*This legal notice complies with § 5 TMG (German Telemedia Act)*
-</details>
-
-# Martin Heßmann's Portfolio Website
+### TODO - Safari Suggestions Component
+- [ ] Fix Metadata Enhancement functionality (currently not working as expected)
+- [ ] Test and improve screenshot generation process
+- [ ] Ensure proper fallbacks for all missing data
 
 ## Safari-Style Client Website Showcase
 
-This repository includes a Safari-style website suggestions component that showcases client websites in a visually appealing grid layout, similar to Safari's suggestions page.
+This repository also includes a Safari-style website suggestions component that showcases client websites in a visually appealing grid layout, similar to Safari's suggestions page.
 
 ### Features
 
@@ -93,16 +55,16 @@ This repository includes a Safari-style website suggestions component that showc
   - OG title and description from the website's metadata
   - Brand color as a subtle accent on the card
 
-### Metadata Enhancement
+### Metadata Enhancement (Work in Progress)
 
-The component automatically fetches and displays rich metadata from each website, including:
+The component is designed to fetch and display rich metadata from each website, including:
 
 - Open Graph title and description
 - Website favicon
 - Site name
 - Theme color from the website's manifest or meta tags
 
-This data is stored in a JSON file (`data/website-metadata.json`) and automatically loaded by the component.
+This functionality is currently being developed and may not work as expected. The data is intended to be stored in a JSON file (`data/website-metadata.json`) and loaded by the component.
 
 ### How to Generate Website Screenshots and Metadata
 
@@ -184,10 +146,27 @@ To modify the website list or details:
    - since: Year the relationship began
    - imagePath: Path to the screenshot image
 
-### Implementation Details
+### Technical Details
 
-- Built with Next.js and React
+- Built with Next.js 14 and React
 - Uses Tailwind CSS for styling
 - Fully responsive across all screen sizes
 - Includes hover effects and transitions for better UX
 - Uses Puppeteer for headless browser screenshots and metadata extraction
+
+---
+
+Set in [Commit Mono](https://commitmono.com/) · [GitHub](https://github.com/Martinhessmann/martinhessmann.com) · [Vercel](https://vercel.com)
+<details>
+<summary>Legal Information</summary>
+
+**Contact & Legal Notice (Impressum)**
+Martin Heßmann
+Kadiner Str. 20a
+10243 Berlin
+Germany
+
+Email: hi@martinhessmann.com
+
+*This legal notice complies with § 5 TMG (German Telemedia Act)*
+</details>

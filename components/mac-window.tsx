@@ -8,6 +8,11 @@ interface WindowPosition {
   y: number
 }
 
+interface WindowSize {
+  width: number
+  height: number
+}
+
 interface MacWindowProps {
   id: string
   title: string
@@ -38,7 +43,12 @@ export function MacWindow({
   updatePosition
 }: MacWindowProps) {
   const [isDragging, setIsDragging] = useState(false)
+  const [isResizing, setIsResizing] = useState(false)
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 })
+  const [windowSize, setWindowSize] = useState({ width: 600, height: 420 })
+  const [resizeDirection, setResizeDirection] = useState({ x: 0, y: 0 })
+  const [resizeStartPosition, setResizeStartPosition] = useState({ x: 0, y: 0 })
+  const [resizeStartSize, setResizeStartSize] = useState({ width: 0, height: 0 })
   const windowRef = useRef<HTMLDivElement>(null)
 
   // Handle window drag
@@ -63,22 +73,115 @@ export function MacWindow({
     }
   }
 
-  // Handle window mouse move
+  // Handle resize start
+  const handleResizeStart = (e: MouseEvent<HTMLDivElement>, direction: { x: number, y: number }) => {
+    e.stopPropagation()
+    if (!isFocused) {
+      onFocus()
+    }
+
+    setIsResizing(true)
+    setResizeDirection(direction)
+    setResizeStartPosition({ x: e.clientX, y: e.clientY })
+    setResizeStartSize({ width: windowSize.width, height: windowSize.height })
+  }
+
+  // Handle window mouse move for dragging and resizing
   useEffect(() => {
     const handleMouseMove = (e: globalThis.MouseEvent) => {
       if (isDragging) {
+        // Calculate new position
+        const newX = e.clientX - dragOffset.x
+        const newY = e.clientY - dragOffset.y
+
+        // Apply boundary constraints to keep header visible
+        // Header height is 36px (9px for title bar + some buffer)
+        const minY = 0
+        const maxY = window.innerHeight - 36
+        const minX = -windowSize.width + 100 // Keep at least 100px of window visible horizontally
+        const maxX = window.innerWidth - 100 // Keep at least 100px of window visible horizontally
+
+        // Apply constraints
+        const constrainedX = Math.min(Math.max(newX, minX), maxX)
+        const constrainedY = Math.min(Math.max(newY, minY), maxY)
+
         updatePosition({
-          x: e.clientX - dragOffset.x,
-          y: e.clientY - dragOffset.y
+          x: constrainedX,
+          y: constrainedY
+        })
+      } else if (isResizing) {
+        const deltaX = e.clientX - resizeStartPosition.x
+        const deltaY = e.clientY - resizeStartPosition.y
+
+        // Calculate new size and position in a single step to ensure consistency
+        let newWidth = windowSize.width
+        let newHeight = windowSize.height
+        let newX = position.x
+        let newY = position.y
+
+        // Handle horizontal resizing
+        if (resizeDirection.x !== 0) {
+          if (resizeDirection.x > 0) {
+            // Right edge resize
+            newWidth = Math.max(300, resizeStartSize.width + deltaX)
+          } else {
+            // Left edge resize - move the window's left edge
+            newWidth = Math.max(300, resizeStartSize.width - deltaX)
+            newX = resizeStartPosition.x - dragOffset.x + deltaX
+          }
+        }
+
+        // Handle vertical resizing
+        if (resizeDirection.y !== 0) {
+          if (resizeDirection.y > 0) {
+            // Bottom edge resize
+            newHeight = Math.max(200, resizeStartSize.height + deltaY)
+          } else {
+            // Top edge resize - move the window's top edge
+            // Simply set the top position to the current mouse position minus the initial drag offset
+            newHeight = Math.max(200, resizeStartSize.height - deltaY)
+            newY = resizeStartPosition.y - dragOffset.y + deltaY
+
+            console.log('Top Resize Debug (improved):', {
+              mouseY: e.clientY,
+              startY: resizeStartPosition.y,
+              deltaY,
+              dragOffsetY: dragOffset.y,
+              originalY: position.y,
+              newY: newY,
+              currentHeight: windowSize.height,
+              newHeight: newHeight
+            })
+          }
+        }
+
+        // Apply boundary constraints
+        const minY = 0
+        const maxY = window.innerHeight - 36
+        const minX = -newWidth + 100
+        const maxX = window.innerWidth - 100
+
+        // Apply constraints to position
+        const constrainedX = Math.min(Math.max(newX, minX), maxX)
+        const constrainedY = Math.min(Math.max(newY, minY), maxY)
+
+        // Update size
+        setWindowSize({ width: newWidth, height: newHeight })
+
+        // Update position
+        updatePosition({
+          x: constrainedX,
+          y: constrainedY
         })
       }
     }
 
     const handleMouseUp = () => {
       setIsDragging(false)
+      setIsResizing(false)
     }
 
-    if (isDragging) {
+    if (isDragging || isResizing) {
       document.addEventListener('mousemove', handleMouseMove)
       document.addEventListener('mouseup', handleMouseUp)
     }
@@ -87,7 +190,7 @@ export function MacWindow({
       document.removeEventListener('mousemove', handleMouseMove)
       document.removeEventListener('mouseup', handleMouseUp)
     }
-  }, [isDragging, dragOffset, updatePosition])
+  }, [isDragging, isResizing, dragOffset, resizeDirection, resizeStartPosition, resizeStartSize, updatePosition, position])
 
   // Handle focus on click
   const handleWindowClick = () => {
@@ -103,13 +206,13 @@ export function MacWindow({
   return (
     <div
       ref={windowRef}
-      className={`absolute rounded-lg shadow-2xl overflow-hidden transition-shadow ${isDragging ? 'cursor-grabbing' : ''} ${isFocused ? 'shadow-2xl' : 'shadow-lg opacity-90'}`}
+      className={`absolute rounded-lg shadow-2xl overflow-hidden transition-shadow ${isDragging || isResizing ? 'cursor-grabbing' : ''} ${isFocused ? 'shadow-2xl' : 'shadow-lg'}`}
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
         zIndex,
-        width: '600px',
-        height: '420px'
+        width: `${windowSize.width}px`,
+        height: `${windowSize.height}px`
       }}
       onClick={handleWindowClick}
     >
@@ -163,6 +266,24 @@ export function MacWindow({
       <div className={`h-[calc(100%-36px)] bg-white dark:bg-gray-900 p-4 overflow-auto window-content`}>
         {children}
       </div>
+
+      {/* Resize handles */}
+      <div className="absolute bottom-0 right-0 w-4 h-4 cursor-se-resize"
+           onMouseDown={(e) => handleResizeStart(e, { x: 1, y: 1 })} />
+      <div className="absolute bottom-0 left-0 w-4 h-4 cursor-sw-resize"
+           onMouseDown={(e) => handleResizeStart(e, { x: -1, y: 1 })} />
+      <div className="absolute top-0 right-0 w-4 h-4 cursor-ne-resize"
+           onMouseDown={(e) => handleResizeStart(e, { x: 1, y: -1 })} />
+      <div className="absolute top-0 left-0 w-4 h-4 cursor-nw-resize"
+           onMouseDown={(e) => handleResizeStart(e, { x: -1, y: -1 })} />
+      <div className="absolute right-0 top-0 bottom-0 w-2 cursor-e-resize"
+           onMouseDown={(e) => handleResizeStart(e, { x: 1, y: 0 })} />
+      <div className="absolute left-0 top-0 bottom-0 w-2 cursor-w-resize"
+           onMouseDown={(e) => handleResizeStart(e, { x: -1, y: 0 })} />
+      <div className="absolute bottom-0 left-0 right-0 h-2 cursor-s-resize"
+           onMouseDown={(e) => handleResizeStart(e, { x: 0, y: 1 })} />
+      <div className="absolute top-0 left-0 right-0 h-2 cursor-n-resize"
+           onMouseDown={(e) => handleResizeStart(e, { x: 0, y: -1 })} />
     </div>
   )
 }

@@ -88,39 +88,46 @@ Products are never "done" - they evolve through constant learning and iteration.
 
       <div className="flex-grow flex">
         {/* Notes sidebar */}
-        <div className="w-1/3 border-r border-gray-200 dark:border-gray-700 overflow-auto">
-          <div className="p-3 text-xs text-gray-500">
+        <div className="w-1/3 border-r border-gray-200 dark:border-gray-700 overflow-y-auto">
+          <div className="p-3 text-xs text-gray-500 sticky top-0 bg-white dark:bg-gray-800 z-10">
             <div className="mb-2">On My Mac</div>
             <div className="mb-1 pl-2">Notes: {notes.length}</div>
           </div>
 
-          {notes.map((note, index) => (
-            <div
-              key={note.id}
-              className={`p-2 mx-1 rounded cursor-pointer ${currentNoteIndex === index ? 'bg-blue-100 dark:bg-blue-900/30' : 'hover:bg-gray-100 dark:hover:bg-gray-800'}`}
-              onClick={() => setCurrentNoteIndex(index)}
-            >
-              <div className="font-medium text-sm mb-1">{note.title}</div>
-              <div className="text-xs text-gray-500">
-                <span className="mr-1">{note.date}</span>
-                {note.content.substring(0, 30)}...
+          <div className="notes-list">
+            {notes.map((note, index) => (
+              <div
+                key={note.id}
+                className={`p-2 mx-1 rounded cursor-pointer ${currentNoteIndex === index ? 'bg-blue-100 dark:bg-blue-900/30' : 'hover:bg-gray-100 dark:hover:bg-gray-800'}`}
+                onClick={() => setCurrentNoteIndex(index)}
+              >
+                <div className="font-medium text-sm mb-1">{note.title}</div>
+                <div className="text-xs text-gray-500">
+                  <span className="mr-1">{note.date}</span>
+                  {note.content.substring(0, 30)}...
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {/* Note content */}
-        <div className="w-2/3 p-4 overflow-auto">
-          <input
-            className="w-full font-bold text-lg mb-2 bg-transparent border-none outline-none"
-            defaultValue={currentNote.title}
-            readOnly
-          />
-          <div className="text-xs text-gray-500 mb-4">
-            Last edited on {currentNote.date} • 123 words
+        <div className="w-2/3 overflow-y-auto">
+          <div className="p-4 sticky top-0 bg-white dark:bg-gray-800 z-10 border-b border-gray-200 dark:border-gray-700">
+            <input
+              className="w-full font-bold text-lg mb-2 bg-transparent border-none outline-none"
+              defaultValue={currentNote.title}
+              readOnly
+            />
+            <div className="text-xs text-gray-500">
+              Last edited on {currentNote.date} • 123 words
+            </div>
           </div>
-          <div className="whitespace-pre-line">
-            {currentNote.content}
+
+          <div className="p-4">
+            <div className="whitespace-pre-line">
+              {currentNote.content}
+            </div>
           </div>
         </div>
       </div>

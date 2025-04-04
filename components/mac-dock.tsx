@@ -28,7 +28,7 @@ export function MacDock({ windows, openWindow }: MacDockProps) {
     { id: 'about-notes', icon: '/images/app-icons/15 Notes.png', title: 'Notes' },
     { id: 'web-projects', icon: '/images/app-icons/04 Chrome.png', title: 'Web Projects' },
     { id: 'success-stories', icon: '/images/app-icons/07 Photos.png', title: 'Success Stories' },
-    { id: 'client-partnerships', icon: '/images/app-icons/26 Telegram.png', title: 'Client Partnerships' },
+    { id: 'client-partnerships', icon: '/images/app-icons/31 Messages.png', title: 'Messages' },
     { id: 'figma', icon: '/images/app-icons/17 Figma.png', title: 'Figma' },
     { id: 'terminal', icon: '/images/app-icons/20 Warp.png', title: 'Terminal' },
   ]
