@@ -3,11 +3,11 @@ import {
   SuccessStories, SuccessStory,
   WebProjects, WebProject, Technology,
   Notes, Note
-} from '../types/app-content'
+} from '../types/types'
 
 import clientMessages from '@/data/messages.json'
-import successStories from '@/data/success-stories.json'
-import projectsData from '@/data/web-projects.json'
+import successStories from '@/data/stories.json'
+import projectsData from '@/data/projects.json'
 import notesData from '@/data/notes.json'
 
 const typedProjectsData = projectsData as WebProjects

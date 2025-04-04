@@ -58,6 +58,44 @@ const config: Config = {
   				DEFAULT: "hsl(var(--card))",
   				foreground: "hsl(var(--card-foreground))",
   			},
+            // New semantic colors based on GitLab
+            neutral: {
+                50: "hsl(var(--color-neutral-50))",
+                100: "hsl(var(--color-neutral-100))",
+                200: "hsl(var(--color-neutral-200))",
+                300: "hsl(var(--color-neutral-300))",
+                400: "hsl(var(--color-neutral-400))",
+                500: "hsl(var(--color-neutral-500))",
+                600: "hsl(var(--color-neutral-600))",
+                700: "hsl(var(--color-neutral-700))",
+                800: "hsl(var(--color-neutral-800))",
+                900: "hsl(var(--color-neutral-900))",
+                950: "hsl(var(--color-neutral-950))",
+            },
+            // Background colors
+            bg: {
+                DEFAULT: "hsl(var(--background-color-default))",
+                subtle: "hsl(var(--background-color-subtle))",
+                strong: "hsl(var(--background-color-strong))",
+                disabled: "hsl(var(--background-color-disabled))",
+                overlap: "hsl(var(--background-color-overlap))",
+                section: "hsl(var(--background-color-section))",
+                overlay: "hsl(var(--background-color-overlay))",
+            },
+            // Border colors
+            bd: {
+                DEFAULT: "hsl(var(--border-color-default))",
+                subtle: "hsl(var(--border-color-subtle))",
+                strong: "hsl(var(--border-color-strong))",
+                transparent: "hsl(var(--border-color-transparent))",
+            },
+            // Text colors
+            txt: {
+                DEFAULT: "hsl(var(--text-color-default))",
+                subtle: "hsl(var(--text-color-subtle))",
+                disabled: "hsl(var(--text-color-disabled))",
+                inverted: "hsl(var(--text-color-inverted))",
+            },
   		},
   		borderRadius: {
   			lg: "var(--radius)",

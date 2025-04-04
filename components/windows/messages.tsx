@@ -2,10 +2,10 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import { ClientConversation, Message } from '@/types/app-content'
-import { getAllConversations } from '@/lib/app-content'
+import { ClientConversation, Message } from '@/types/types'
+import { getAllConversations } from '@/lib/content'
 
-export function ClientPartnerships() {
+export function Messages() {
   const [selectedConversation, setSelectedConversation] = useState<string>('teambank')
 
   const conversations = getAllConversations()

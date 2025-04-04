@@ -31,12 +31,12 @@ export function Dock({ windows, openWindow }: DockProps) {
     return () => clearTimeout(timer)
   }, [])
 
-  // List of apps to show in the dock
-  const apps = [
-    { id: 'web-projects', icon: '/images/app-icons/04 Chrome.png', title: 'Web Projects' },
-    { id: 'success-stories', icon: '/images/app-icons/07 Photos.png', title: 'Success Stories' },
-    { id: 'client-partnerships', icon: '/images/app-icons/31 Messages.png', title: 'Client Partnerships' },
-    { id: 'notes', icon: '/images/app-icons/15 Notes.png', title: 'Notes' },
+  // Apps in the dock
+  const dockApps = [
+    { id: 'projects', icon: '/images/app-icons/04 Chrome.png', title: 'Projects' },
+    { id: 'stories', icon: '/images/app-icons/07 Photos.png', title: 'Stories' },
+    { id: 'messages', icon: '/images/app-icons/31 Messages.png', title: 'Messages' },
+    { id: 'notes', icon: '/images/app-icons/15 Notes.png', title: 'Notes' }
   ]
 
   // Handle app click in dock
@@ -54,7 +54,7 @@ export function Dock({ windows, openWindow }: DockProps) {
         {/* Subtle gradient overlay */}
         <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/20 to-transparent opacity-50" />
 
-        {apps.map((app) => {
+        {dockApps.map((app) => {
           const appWindow = windows.find(w => w.id === app.id)
           const isOpen = appWindow?.isOpen
           const isActive = appWindow?.isFocused && !initialRender

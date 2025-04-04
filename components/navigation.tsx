@@ -9,13 +9,14 @@ export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
 
-  const navItems = [
-    { name: 'About', href: '#about' },
+  const navigation = [
     { name: 'Projects', href: '#projects' },
+    { name: 'Stories', href: '#stories' },
+    { name: 'Messages', href: '#messages' },
+    { name: 'Notes', href: '#notes' },
+    { name: 'About', href: '#about' },
     { name: 'Clients', href: '#clients' },
-    { name: 'Web Projects', href: '#web-projects' },
-    { name: 'Journey', href: '#journey' },
-    { name: 'Blog', href: '#blog' }
+    { name: 'Contact', href: '#contact' }
   ]
 
   // Handle scroll events to change navigation appearance
@@ -55,7 +56,7 @@ export function Navigation() {
           <div className="hidden md:flex items-center space-x-1">
             <nav className="flex items-center">
               <ul className="flex space-x-1">
-                {navItems.map((item) => (
+                {navigation.map((item) => (
                   <li key={item.name}>
                     <Link
                       href={item.href}
@@ -98,7 +99,7 @@ export function Navigation() {
         >
           <nav className="container mx-auto px-4">
             <ul className="flex flex-col space-y-4">
-              {navItems.map((item) => (
+              {navigation.map((item) => (
                 <li key={item.name}>
                   <Link
                     href={item.href}
