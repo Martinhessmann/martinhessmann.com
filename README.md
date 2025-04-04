@@ -4,320 +4,48 @@ Hey, I'm Martin 👋 I live in Friedrichshain, former East-Berlin. I'm a Product
 
 ---
 
-## Project: macOS Desktop Simulation Portfolio
+## Project Overview
 
-This project transforms my personal website into a macOS desktop simulation with draggable windows, a dock, and other macOS-inspired UI elements.
+This is my personal website project that transforms a traditional portfolio into a macOS desktop simulation with draggable windows, a dock, and other macOS-inspired UI elements.
 
-### Completed Features
-- [x] Basic macOS desktop simulation layout
-- [x] Draggable windows with focus management
-- [x] Window controls (minimize, maximize, close)
-- [x] Mac-style dock with application icons
-- [x] Theme toggle (light/dark mode)
-- [x] Content windows for About, Web Projects, Success Stories, and Client Partnerships
-- [x] Client-only clock component to prevent hydration errors
+### Documentation
 
-### TODO - Window Improvements
-- [ ] Fix text selection when dragging and resizing windows
-- [ ] Implement diagonal (corner) resizing functionality
-- [ ] Fix left/top resizing speed (currently faster than mouse movement causing windows to disappear)
-- [ ] Add boundary constraints to keep window headers always visible on screen
+For detailed documentation about the project, please check the [docs directory](docs/README.md).
 
-### TODO - Header Bar Enhancements
-- [ ] Add MH Ligatur Logo in top left corner
-- [ ] Make logo clickable to show "About the Author" dropdown menu
-- [ ] Add menu items: "About Martin Heßmann" and "About the Project"
-- [ ] Create "About Martin Heßmann" window with photo, name, address, email, URL, and copyright info
-- [ ] Create "About the Project" window describing the development process (built in Cursor, first commit date, GitHub project link, Vercel hosting info, and concept behind the desktop simulation)
+Here's what you'll find in the documentation:
 
-### TODO - Date Section
-- [ ] Enhance to display day, date, and time in the header
+#### Project Components
+- [App](docs/app.md) - Overview of the macOS desktop simulation application
+- [Projects](docs/projects.md) - Project showcase component
 
-### TODO - Safari Suggestions Component
-- [ ] Fix Metadata Enhancement functionality (currently not working as expected)
-- [ ] Test and improve screenshot generation process
-- [ ] Ensure proper fallbacks for all missing data
+#### Design System
+- [Theme System](docs/theme.md) - Dark mode color system documentation
+- [UI Guidelines](docs/ui-guidelines.md) - Design principles and component guidelines
 
-## Safari-Style Client Website Showcase
+#### Component Library
+- [Components](docs/components.md) - All available components
+- [Primitives](docs/primitives.md) - Reusable UI building blocks
 
-This repository also includes a Safari-style website suggestions component that showcases client websites in a visually appealing grid layout, similar to Safari's suggestions page.
+#### Data & Content
+- [Data](docs/data.md) - How components consume data from JSON files
 
-### Features
+## Getting Started
 
-- Grid layout of website cards that mimics Safari's suggestions UI
-- Each card displays:
-  - Website screenshot/preview image
-  - Website title and URL
-  - Color-coded tags for Design, Development, and Project Management involvement
-  - "Since year" indicator showing when the client relationship began
-  - "Last visited" timestamp
-  - Website favicons (when available)
-  - OG title and description from the website's metadata
-  - Brand color as a subtle accent on the card
-
-### Metadata Enhancement (Work in Progress)
-
-The component is designed to fetch and display rich metadata from each website, including:
-
-- Open Graph title and description
-- Website favicon
-- Site name
-- Theme color from the website's manifest or meta tags
-
-This functionality is currently being developed and may not work as expected. The data is intended to be stored in a JSON file (`data/website-metadata.json`) and loaded by the component.
-
-### How to Generate Website Screenshots and Metadata
-
-The component uses screenshots and metadata from client websites. You have two options to generate these:
-
-#### Option 1: Full Screenshots + Metadata (using Puppeteer)
-
-Use this when you need both screenshots and metadata:
-
-1. Install the required dependencies:
+1. Clone the repository
+2. Install dependencies:
    ```
    npm install
    ```
-
-2. Run the screenshot and metadata generation script:
+3. Start the development server:
    ```
-   npm run fetch-previews
+   npm run dev
    ```
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-   This will:
-   - Launch a headless browser using Puppeteer
-   - Visit each website listed in `scripts/fetch-website-previews.js`
-   - Take a screenshot
-   - Extract metadata (OG title, description, brand colors, favicon)
-   - Save screenshots to `public/images/clients/` with proper naming convention
-   - Save metadata to `data/website-metadata.json`
+## Technologies Used
 
-#### Option 2: Metadata Only (Lightweight, No Puppeteer)
-
-Use this when you only need to refresh metadata or already have screenshots:
-
-1. Install the required dependencies:
-   ```
-   npm install
-   ```
-
-2. Run the metadata-only script:
-   ```
-   npm run fetch-metadata
-   ```
-
-   This will:
-   - Make HTTP requests to each website listed in `scripts/fetch-website-metadata.js`
-   - Parse the HTML to extract metadata without rendering the page
-   - Save metadata to `data/website-metadata.json`
-   - This is much faster and uses fewer resources than the Puppeteer approach
-
-3. The SafariSuggestions component will automatically use this metadata.
-
-### Manual Screenshot Option
-
-If the script doesn't work for some websites, you can manually:
-
-1. Visit each website
-2. Take a screenshot (ideally at 1200x800 resolution)
-3. Save the file with the website domain as the filename (e.g., `example.com.jpg`)
-4. Place in the `public/images/clients/` directory
-5. Add metadata manually to `data/website-metadata.json` if desired
-
-### Fallback System
-
-The component includes multiple fallbacks to ensure it always looks good:
-
-- For missing images: Generates a colored placeholder with the website domain
-- For missing OG title: Falls back to the site name or manually specified title
-- For missing favicons: Simply hides the favicon container
-- For missing theme color: Uses the default card styling
-
-### Configuration
-
-To modify the website list or details:
-
-1. Edit the `clientWebsites` array in `components/safari-suggestions.tsx`
-2. Add/update entries with:
-   - title: Display name (fallback if OG title not available)
-   - url: Website URL (without https://)
-   - lastVisited: When the site was last visited
-   - tags: Array of your roles (Design, Dev, PM)
-   - since: Year the relationship began
-   - imagePath: Path to the screenshot image
-
-### Technical Details
-
-- Built with Next.js 14 and React
-- Uses Tailwind CSS for styling
-- Fully responsive across all screen sizes
-- Includes hover effects and transitions for better UX
-- Uses Puppeteer for headless browser screenshots and metadata extraction
-
-## UI Guidelines and Component System
-
-### Design Principles
-- **Consistency**: Use predefined components and styles
-- **Accessibility**: Follow WCAG 2.1 guidelines
-- **Responsiveness**: Mobile-first approach
-- **Performance**: Optimize for Core Web Vitals
-
-### Component Library Structure
-- **Primitives**: Basic building blocks (Typography, Layout, Feedback)
-- **UI Components**: Shadcn/UI based components
-- **Composite Components**: Complex, application-specific components
-
-### Typography
-- **Font**: Commit Mono for code, System UI for content
-- **Scale**:
-  - xs: 0.75rem
-  - sm: 0.875rem
-  - base: 1rem
-  - lg: 1.125rem
-  - xl: 1.25rem
-
-### Colors
-- **Base**
-  - background: Light/Dark mode system colors
-  - foreground: Text and primary content
-- **UI Elements**
-  - primary: System accent color
-  - secondary: Neutral greys
-  - muted: Subtle backgrounds
-  - border: Separation and structure
-
-### Spacing
-- **Grid**: 4px base unit (0.25rem)
-- **Padding**:
-  - Compact: 0.5rem
-  - Default: 1rem
-  - Loose: 1.5rem
-- **Gaps**: 0.5rem - 1rem between related items
-
-### Interactive Elements
-- **Hover States**: Subtle background change (5% opacity)
-- **Focus States**: Visible outline with 2px width
-- **Active States**: Slight depression effect
-- **Transitions**: 200ms duration, ease-in-out
-
-### Container Queries
-- xs: < 640px (mobile)
-- sm: ≥ 640px (tablet portrait)
-- md: ≥ 768px (tablet landscape)
-- lg: ≥ 1024px (desktop)
-- xl: ≥ 1280px (large desktop)
-- 2xl: ≥ 1536px (extra large)
-
-### Component Usage Guidelines
-1. **Windows**
-   - Use Card component as base
-   - Consistent header styling
-   - Standard padding (1rem)
-   - Unified drag handle area
-
-2. **Lists and Grids**
-   - Responsive grid system
-   - Consistent gap spacing
-   - Standard card dimensions
-
-3. **Forms and Inputs**
-   - Label alignment
-   - Error state handling
-   - Loading state indicators
-
-4. **Navigation**
-   - Consistent hover states
-   - Active state indicators
-   - Focus management
-
-### Accessibility Requirements
-- Proper heading hierarchy
-- ARIA labels where needed
-- Keyboard navigation support
-- Sufficient color contrast
-- Focus visible states
-
-## Component Library Overview
-
-### Window System
-- **Window**: Base window component with macOS-style controls (red, yellow, green buttons)
-- **WindowHeader**: Title bar with controls and drag handle
-- **WindowContent**: Main content area with overflow handling
-
-### Main Windows
-- **SuccessStories**
-  - Project header with year and client
-  - Impact metrics display
-  - Technology tags
-  - Client chat/feedback section
-- **Notes**
-  - Sidebar navigation with note list
-  - Note editor with metadata
-  - Search and filter functionality
-- **WebProjects**
-  - Project grid with image cards
-  - Technology filter system
-  - Search functionality
-  - Project card with hover effects
-
-### UI Components
-- **Metrics**
-  - StatisticCard: For displaying KPIs (e.g., 28% increase)
-  - ImpactGrid: Layout for multiple statistics
-- **Navigation**
-  - TechnologyFilter: Horizontal scrolling filter bar
-  - Sidebar: For notes navigation
-  - Dock: macOS-style app launcher
-- **Cards**
-  - ProjectCard: Image, title, description layout
-  - ClientCard: Client project showcase
-- **Interactive**
-  - SearchBar: With icon and placeholder
-  - FilterTags: Clickable technology filters
-  - WindowControls: Close, minimize, maximize buttons
-
-### Layout Components
-- **Grid**: Responsive project grid (1-4 columns)
-- **Container**: Content wrapper with padding
-- **Stack**: Vertical and horizontal stacks
-- **Flex**: Flexible box layouts
-
-### Feedback Components
-- **Loading**: Loading states for images and content
-- **Empty**: Empty state displays
-- **Error**: Error handling displays
-
-### Theme Components
-- **ThemeToggle**: Light/dark mode switch (visible in top bar)
-- **ThemeProvider**: Theme context management
-
-### Shadcn/UI Integration
-- **Card**: Base for project cards
-- **Badge**: For technology tags
-- **Button**: For interactive elements
-- **Input**: For search fields
-- **ScrollArea**: For scrollable content
-
-Each component is designed to:
-- Support both light and dark modes
-- Follow macOS design patterns
-- Use consistent spacing and typography
-- Implement responsive layouts
-- Handle loading and error states
-
----
-
-Set in [Commit Mono](https://commitmono.com/) · [GitHub](https://github.com/Martinhessmann/martinhessmann.com) · [Vercel](https://vercel.com)
-<details>
-<summary>Legal Information</summary>
-
-**Contact & Legal Notice (Impressum)**
-Martin Heßmann
-Kadiner Str. 20a
-10243 Berlin
-Germany
-
-Email: hi@martinhessmann.com
-
-*This legal notice complies with § 5 TMG (German Telemedia Act)*
-</details>
+- Next.js 14
+- React
+- Tailwind CSS
+- Shadcn/UI
+- Zustand for state management

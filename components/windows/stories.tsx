@@ -1,10 +1,10 @@
 'use client'
 
 import { useState } from 'react'
-import { getAllSuccessStories } from '@/lib/app-content'
-import { SuccessStory } from '@/types/app-content'
+import { getAllSuccessStories } from '@/lib/content'
+import { SuccessStory } from '@/types/types'
 
-export function SuccessStories() {
+export function Stories() {
   const stories = getAllSuccessStories()
   const [currentStoryIndex, setCurrentStoryIndex] = useState(0)
   const currentStory = stories[currentStoryIndex]

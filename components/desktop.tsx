@@ -4,9 +4,9 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { Dock } from './dock'
 import { Window } from './window'
-import { WebProjects } from './windows/web-projects'
-import { SuccessStories } from './windows/success-stories'
-import { ClientPartnerships } from './windows/client-partnerships'
+import { Projects } from './windows/projects'
+import { Stories } from './windows/stories'
+import { Messages } from './windows/messages'
 import { Notes } from './windows/notes'
 import { ThemeToggle } from './theme-toggle'
 
@@ -53,36 +53,36 @@ function ClientOnlyClock() {
 export function Desktop() {
   const [windows, setWindows] = useState<WindowState[]>([
     {
-      id: 'web-projects',
-      title: 'Web Projects',
+      id: 'projects',
+      title: 'Projects',
       icon: '/images/app-icons/04 Chrome.png',
-      isOpen: true,
+      isOpen: false,
       isMinimized: false,
       isFocused: false,
       position: { x: 400, y: 100 },
-      component: <WebProjects />,
+      component: <Projects />,
       zIndex: 102
     },
     {
-      id: 'success-stories',
-      title: 'Success Stories',
+      id: 'stories',
+      title: 'Stories',
       icon: '/images/app-icons/07 Photos.png',
-      isOpen: true,
+      isOpen: false,
       isMinimized: false,
       isFocused: false,
       position: { x: 200, y: 150 },
-      component: <SuccessStories />,
+      component: <Stories />,
       zIndex: 101
     },
     {
-      id: 'client-partnerships',
-      title: 'Client Partnerships',
+      id: 'messages',
+      title: 'Messages',
       icon: '/images/app-icons/31 Messages.png',
-      isOpen: true,
+      isOpen: false,
       isMinimized: false,
       isFocused: false,
       position: { x: 300, y: 200 },
-      component: <ClientPartnerships />,
+      component: <Messages />,
       zIndex: 100
     },
     {
@@ -148,15 +148,33 @@ export function Desktop() {
   // Function to open a window from the dock
   const openWindow = (windowId: string) => {
     setWindows((current) => {
-      // Find the window
-      const windowIndex = current.findIndex((w) => w.id === windowId)
-
-      if (windowIndex === -1) return current
-
       const updatedWindows = [...current]
-      const windowToOpen = { ...updatedWindows[windowIndex] }
+      const windowIndex = updatedWindows.findIndex(w => w.id === windowId)
 
-      // If it's not already open, position it in a cascading manner
+      if (windowIndex === -1) {
+        return updatedWindows
+      }
+
+      const windowToOpen = {...updatedWindows[windowIndex]}
+
+      // If the window is already open, just focus it and bring it to front
+      if (windowToOpen.isOpen) {
+        // Focus the window
+        updatedWindows.forEach(w => {
+          w.isFocused = (w.id === windowId)
+        })
+
+        // Set this window to have the highest z-index
+        const highestZIndex = Math.max(...updatedWindows.map(w => w.zIndex))
+        windowToOpen.zIndex = highestZIndex + 1
+        windowToOpen.isMinimized = false
+        windowToOpen.isFocused = true
+
+        updatedWindows[windowIndex] = windowToOpen
+        return updatedWindows
+      }
+
+      // If the window is not open, open it and position it in a cascading manner
       if (!windowToOpen.isOpen) {
         // Count how many windows are already open
         const openWindowsCount = updatedWindows.filter(w => w.isOpen).length
@@ -182,10 +200,10 @@ export function Desktop() {
       // Focus the window
       updatedWindows.forEach(w => {
         w.isFocused = (w.id === windowId)
-        if (w.id === windowId) {
-          w.zIndex = Math.max(...updatedWindows.map(w => w.zIndex)) + 1
-        }
       })
+
+      // Set the highest z-index
+      windowToOpen.zIndex = Math.max(...updatedWindows.map(w => w.zIndex)) + 1
 
       updatedWindows[windowIndex] = windowToOpen
 

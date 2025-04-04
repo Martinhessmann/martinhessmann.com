@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { getAllNotes } from '@/lib/app-content'
-import { Note } from '@/types/app-content'
+import { getAllNotes } from '@/lib/content'
+import { Note } from '@/types/types'
 import { cn } from '@/lib/utils'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Button } from '@/components/ui/button'
