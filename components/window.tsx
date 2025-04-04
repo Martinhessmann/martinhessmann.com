@@ -224,30 +224,30 @@ export function Window({
             onClick={onClose}
             className={`w-3 h-3 rounded-full ${isFocused
               ? 'bg-[#FF5F57] hover:bg-[#FF5F57]/80'
-              : 'bg-[#404040]'}
+              : 'bg-[#404040] hover:bg-[#FF5F57]'}
               group flex items-center justify-center transition-colors`}
             aria-label="Close window"
           >
-            {isFocused && <span className="hidden group-hover:inline text-[8px] text-[#FF5F57]/30 font-bold">×</span>}
+            <span className="hidden group-hover:inline text-[8px] text-[#4c0002] font-bold">×</span>
           </button>
           <button
             onClick={onMinimize}
             className={`w-3 h-3 rounded-full ${isFocused
               ? 'bg-[#FEBC2E] hover:bg-[#FEBC2E]/80'
-              : 'bg-[#404040]'}
+              : 'bg-[#404040] hover:bg-[#FEBC2E]'}
               group flex items-center justify-center transition-colors`}
             aria-label="Minimize window"
           >
-            {isFocused && <span className="hidden group-hover:inline text-[8px] text-[#FEBC2E]/30 font-bold">−</span>}
+            <span className="hidden group-hover:inline text-[8px] text-[#9a5f00] font-bold">−</span>
           </button>
           <button
             className={`w-3 h-3 rounded-full ${isFocused
               ? 'bg-[#28C840] hover:bg-[#28C840]/80'
-              : 'bg-[#404040]'}
+              : 'bg-[#404040] hover:bg-[#28C840]'}
               group flex items-center justify-center transition-colors`}
             aria-label="Maximize window"
           >
-            {isFocused && <span className="hidden group-hover:inline text-[8px] text-[#28C840]/30 font-bold">+</span>}
+            <span className="hidden group-hover:inline text-[8px] text-[#0b4913] font-bold">+</span>
           </button>
         </div>
 
