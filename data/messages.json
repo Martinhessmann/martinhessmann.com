@@ -2,62 +2,147 @@
   "conversations": [
     {
       "client": {
-        "id": "teambank",
-        "name": "TeamBank AG",
-        "industry": "Banking & Finance",
-        "icon": "/images/clients/teambank-icon.png"
+        "id": "evg",
+        "name": "EVG / WoMoFonds",
+        "contact": "Tanja Trost",
+        "icon": "/images/clients/evg-icon.png",
+        "contactImage": "/images/contacts/tanja-trost.jpg"
       },
       "messages": [
         {
           "id": "1",
-          "content": "Maddin, we're impressed with the customer feedback on the new app interface. Transactions are up 28% since launch!",
-          "timestamp": "2 days ago",
+          "content": "Bei uns hat sich der Versand des Newsletters verschoben, da mir noch der Beschluss des Vorstands fehlt. Ich hab aber jetzt eine Version so geschrieben, dass ich den Beschluss nicht wirklich brauche.",
+          "timestamp": "2025-02-04",
           "sender": "client"
         },
         {
           "id": "2",
-          "content": "That's great to hear! The user-centered approach really paid off. We should consider expanding the personalization features in the next sprint.",
-          "timestamp": "2 days ago",
+          "content": "Hey Tanja und danke für die Infos und Texte! Der Newsletter 15 ist angelegt, auch schon mit coolen Emojis, Grafik und Info Box. Ich bin mir aber etwas unsicher, ob ich die richtige Grafik von der Website genommen habe.",
+          "timestamp": "2025-02-05",
           "sender": "me"
         },
         {
           "id": "3",
-          "content": "Agreed. Let's schedule a workshop to explore those ideas. The board is very pleased with the results so far.",
-          "timestamp": "2 days ago",
+          "content": "Ich habe textlich doch noch einiges geändert, aber das ist normal bei mir. Wenn Du nichts mehr findest, dann kann der Newsletter ab 12 Uhr raus.",
+          "timestamp": "2025-02-06",
+          "sender": "client"
+        },
+        {
+          "id": "4",
+          "content": "Liebe Grüße zurück – ich schau alles nochmal final durch und geb dir dann gegen 11:30 Uhr das Go für den Versand.",
+          "timestamp": "2025-02-06",
+          "sender": "me"
+        }
+      ],
+      "lastActivity": "2025-02-06"
+    },
+    {
+      "client": {
+        "id": "gruenberlin",
+        "name": "Grün Berlin",
+        "contact": "Max Duhr",
+        "icon": "/images/clients/gruenberlin-icon.png",
+        "contactImage": "/images/contacts/max-duhr.jpg"
+      },
+      "messages": [
+        {
+          "id": "1",
+          "content": "Bei manchen Fotos nimmt das Copyright in der mobilen Ansicht fast die gesamte Bildfläche ein. Könnten wir die Bildbeschreibung immer unterhalb der Bilder in kleinerer Schriftgröße platzieren?",
+          "timestamp": "2025-02-18",
+          "sender": "client"
+        },
+        {
+          "id": "2",
+          "content": "Das würde viele Abhängigkeiten betreffen. Ich schlage vor, gezielt die problematischen Stellen zu optimieren – das ist ca. 200x effizienter :)",
+          "timestamp": "2025-02-28",
+          "sender": "me"
+        },
+        {
+          "id": "3",
+          "content": "Ist der Kontrast ausreichend für Barrierefreiheit?",
+          "timestamp": "2025-02-28",
+          "sender": "client"
+        },
+        {
+          "id": "4",
+          "content": "Ja, wir haben diesmal auf den empfohlenen 7:0-Kontrast für kleine Schriftgrößen geachtet.",
+          "timestamp": "2025-02-28",
+          "sender": "me"
+        },
+        {
+          "id": "5",
+          "content": "Alright, d.h. ich muss nicht selbst nochmal aktiv werden? Wo reist du denn eigentlich hin?",
+          "timestamp": "2025-03-14",
+          "sender": "client"
+        },
+        {
+          "id": "6",
+          "content": "Genau, sieht jetzt alles gut aus! Ich fliege das erste Mal nach Asien – Shanghai, Shenzhen und die Küste entlang!",
+          "timestamp": "2025-03-14",
+          "sender": "me"
+        }
+      ],
+      "lastActivity": "2025-03-14"
+    },
+    {
+      "client": {
+        "id": "dpf",
+        "name": "DPF Investment",
+        "contact": "Amelie Drews",
+        "icon": "/images/clients/dpf-icon.png",
+        "contactImage": "/images/contacts/amelie-drews.jpg"
+      },
+      "messages": [
+        {
+          "id": "1",
+          "content": "Ich nehme Martin Heßmann von unserer Webagentur AN mit rein. Martin, siehe bitte unten den Mailverkehr. Kannst du hier unterstützen?",
+          "timestamp": "2025-02-26",
+          "sender": "client"
+        },
+        {
+          "id": "2",
+          "content": "Wenn es nur um das Bearbeiten der DKIM, DMARC und SPF-Einträge geht, brauchen wir keinen Termin. Schickt uns die nötigen Records oder gebt uns Zugang zum Cloudflare-Projekt.",
+          "timestamp": "2025-02-27",
+          "sender": "me"
+        },
+        {
+          "id": "3",
+          "content": "Lediglich dellest.eu ist aktuell noch nicht in Cloudflare enthalten. Amelie, kannst du mir sagen, in welchem df.eu-Konto ich die Domain finde?",
+          "timestamp": "2025-02-27",
+          "sender": "me"
+        },
+        {
+          "id": "4",
+          "content": "Genau das ist es, was wir benötigen. Wir brauchen 'nur' die Zugänge zu den Konten, bei denen die Domains registriert sind.",
+          "timestamp": "2025-02-27",
           "sender": "client"
         }
       ],
-      "lastActivity": "2 days ago"
+      "lastActivity": "2025-02-27"
     },
     {
       "client": {
-        "id": "evg",
-        "name": "EVG / WoMoFonds",
-        "industry": "Real Estate & Investment",
-        "icon": "/images/clients/evg-icon.png"
+        "id": "teambank",
+        "name": "TeamBank AG",
+        "contact": "Florian Stoevesandt",
+        "icon": "/images/clients/teambank-icon.png",
+        "contactImage": "/images/contacts/florian-stoevesandt.jpg"
       },
-      "messages": [],
-      "lastActivity": "1 week ago"
-    },
-    {
-      "client": {
-        "id": "bundesministerium",
-        "name": "Bundesministerium",
-        "industry": "Government",
-        "icon": "/images/clients/bundesministerium-icon.png"
-      },
-      "messages": [],
-      "lastActivity": "2 weeks ago"
-    },
-    {
-      "client": {
-        "id": "medical",
-        "name": "Medical Group GmbH",
-        "industry": "Healthcare",
-        "icon": "/images/clients/medical-icon.png"
-      },
-      "messages": [],
-      "lastActivity": "1 month ago"
+      "messages": [
+        {
+          "id": "1",
+          "content": "Sehr schön – kann ich das Formular dann einfach umstellen oder muss ich gleichzeitig das Browser Caching abschalten?",
+          "timestamp": "2025-04-02",
+          "sender": "client"
+        },
+        {
+          "id": "2",
+          "content": "Hab es angepasst – kannst du mal auf den Knopf drücken? :)",
+          "timestamp": "2025-04-02",
+          "sender": "me"
+        }
+      ],
+      "lastActivity": "2025-04-02"
     }
   ]
 }
