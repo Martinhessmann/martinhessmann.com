@@ -107,3 +107,30 @@ The previous semantic color system using `bg-bg`, `text-txt`, and `border-bd` pr
 | `border-bd` | `border-border` |
 
 This standardization ensures consistency with the component library and simplifies maintainability.
+
+## Planned Theme System Improvements
+
+The current theme implementation is limited to a forced dark theme without user preferences. We plan to make the following improvements:
+
+1. **User preference detection**
+   - Respect the `prefers-color-scheme` media query
+   - Store user theme preference in localStorage
+   - Apply the preferred theme on initial load
+
+2. **Theme toggle component**
+   - Add a minimalistic theme switch button in the header
+   - Create smooth transitions between themes
+   - Ensure the toggle is accessible
+
+3. **Complete semantic color usage**
+   - Audit all components to ensure they use semantic color variables
+   - Eliminate any hardcoded color values
+   - Ensure all components respond correctly to theme changes
+
+4. **Implementation plan**
+   - Reintroduce ThemeProvider with proper configuration
+   - Create a theme toggle component using Shadcn UI
+   - Update the CSS variables in globals.css
+   - Test theme switching with all components
+
+These improvements will create a more user-friendly experience while maintaining the macOS desktop simulation aesthetic in both light and dark modes.

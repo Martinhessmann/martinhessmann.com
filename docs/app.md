@@ -50,12 +50,58 @@ The App component doesn't directly use a specific JSON file, but it orchestrates
 - **Stories**: Uses `data/stories.json`
 - **Messages**: Uses `data/messages.json`
 
+## Next.js File Architecture
+
+The application uses the Next.js App Router architecture with a clear separation of concerns:
+
+1. **app/layout.tsx**:
+   - Root layout that defines the overall HTML structure
+   - Sets up metadata (title, description, favicon, etc.)
+   - Configures ThemeProvider and global styles
+   - Includes font imports and the Header component
+   - Serves as a shell that wraps all pages
+
+2. **app/page.tsx**:
+   - Simple component for the root route (/)
+   - Required by Next.js App Router for the homepage
+   - Only responsible for rendering the Desktop component
+
+3. **components/desktop.tsx**:
+   - Client component that implements the actual desktop simulation UI
+   - Manages window state (position, focus, minimize, etc.)
+   - Handles the window initialization logic
+   - Includes the dock, windows, background, and other UI elements
+
+These files should not be combined as they serve different purposes in the Next.js architecture. This separation follows Next.js best practices and provides better code organization by separating:
+- App-wide layout configuration
+- Route definition
+- Actual interactive UI implementation
+
 ## TODO - Header Bar Enhancements
-- [ ] Add MH Ligatur Logo in top left corner
-- [ ] Make logo clickable to show "About the Author" dropdown menu
-- [ ] Add menu items: "About Martin Heßmann" and "About the Project"
-- [ ] Create "About Martin Heßmann" window with photo, name, address, email, URL, and copyright info
-- [ ] Create "About the Project" window describing the development process (built in Cursor, first commit date, GitHub project link, Vercel hosting info, and concept behind the desktop simulation)
+- [x] Add MH Ligatur Logo in top left corner
+- [x] Make logo clickable to show "About the Author" dropdown menu
+- [x] Add menu items: "About Martin Heßmann" and "About the Project"
+- [x] Create "About Martin Heßmann" window with photo, name, address, email, URL, and copyright info
+- [x] Create "About the Project" window describing the development process (built in Cursor, first commit date, GitHub project link, Vercel hosting info, and concept behind the desktop simulation)
 
 ## TODO - Date Section
-- [ ] Enhance to display day, date, and time in the header
+- [x] Enhance to display day, date, and time in the header
+
+## Current Issues and TODOs
+
+### Theme System Improvements
+- [ ] Reimplement user preferred color scheme detection (respect `prefers-color-scheme`)
+- [ ] Add a minimalistic theme switch button in the header.tsx component
+- [ ] Refactor UI components to use semantic color variables for easy theme switching
+- [ ] Create a consistent color system where theme changes only need to modify root CSS variables
+
+### Window Interaction Fixes
+- [ ] Fix window movement issues when dragging close to screen boundaries
+- [ ] Improve resizing behavior for windows, especially corner resizing
+- [ ] Ensure resizing maintains minimum window dimensions
+- [ ] Fix z-index management when interacting with multiple windows
+
+### Performance Optimizations
+- [ ] Optimize window rendering to reduce repaints during movement
+- [ ] Implement proper cleanup for event listeners
+- [ ] Add debouncing for window resize events

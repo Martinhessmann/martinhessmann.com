@@ -1,17 +1,8 @@
 'use client'
 
-import { useState, useRef, useEffect, MouseEvent, ReactNode } from 'react'
+import { useState, useRef, useEffect, MouseEvent as ReactMouseEvent, ReactNode } from 'react'
 import Image from 'next/image'
-
-interface WindowPosition {
-  x: number
-  y: number
-}
-
-interface WindowSize {
-  width: number
-  height: number
-}
+import { WindowPosition, WindowSize } from '@/lib/store/window-store'
 
 interface WindowProps {
   id: string
@@ -21,11 +12,13 @@ interface WindowProps {
   isFocused: boolean
   isMinimized: boolean
   position: WindowPosition
+  size: WindowSize
   zIndex: number
   onFocus: () => void
   onMinimize: () => void
   onClose: () => void
   updatePosition: (position: WindowPosition) => void
+  updateSize: (size: WindowSize) => void
 }
 
 export function Window({
@@ -36,209 +29,153 @@ export function Window({
   isFocused,
   isMinimized,
   position,
+  size,
   zIndex,
   onFocus,
   onMinimize,
   onClose,
-  updatePosition
+  updatePosition,
+  updateSize
 }: WindowProps) {
   const [isDragging, setIsDragging] = useState(false)
   const [isResizing, setIsResizing] = useState(false)
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 })
-  const [wasFocused, setWasFocused] = useState(isFocused)
-  const [preventNextClick, setPreventNextClick] = useState(false)
-
-  // Set different default sizes based on window type
-  const getDefaultSize = () => {
-    switch (id) {
-      case 'notes':
-        return { width: 800, height: 580 }
-      case 'messages':
-        return { width: 720, height: 520 }
-      case 'projects':
-        return { width: 880, height: 580 }
-      case 'stories':
-        return { width: 700, height: 500 }
-      default:
-        return { width: 600, height: 420 }
-    }
-  }
-
-  const [windowSize, setWindowSize] = useState(getDefaultSize())
   const [resizeDirection, setResizeDirection] = useState({ x: 0, y: 0 })
-  const [resizeStartPosition, setResizeStartPosition] = useState({ x: 0, y: 0 })
+  const [resizeStartPos, setResizeStartPos] = useState({ x: 0, y: 0 })
   const [resizeStartSize, setResizeStartSize] = useState({ width: 0, height: 0 })
+  const [windowSize, setWindowSize] = useState(size)
+
   const windowRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
 
-  // Track focus changes
+  // Update internal state when props change
   useEffect(() => {
-    // If window is newly focused, prevent the next click
-    if (isFocused && !wasFocused) {
-      setPreventNextClick(true)
-    }
-    setWasFocused(isFocused)
-  }, [isFocused, wasFocused])
+    setWindowSize(size)
+  }, [size])
 
-  // Clear the prevent click state after a short delay
-  useEffect(() => {
-    if (preventNextClick) {
-      const timer = setTimeout(() => {
-        setPreventNextClick(false)
-      }, 100)
-      return () => clearTimeout(timer)
-    }
-  }, [preventNextClick])
+  // General mouse move handler for both dragging and resizing
+  const handleMouseMove = (e: MouseEvent) => {
+    if (isDragging) {
+      // Calculate new position
+      const newX = e.clientX - dragOffset.x
+      const newY = e.clientY - dragOffset.y
 
-  // Handle window drag
-  const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
-    if (!isFocused) {
-      onFocus()
+      // Enforce boundaries
+      const boundedX = Math.max(newX, -windowSize.width + 50)
+      const boundedY = Math.max(newY, 0)
+
+      // Update position
+      updatePosition({ x: boundedX, y: boundedY })
     }
 
-    // Only allow dragging from the title bar
-    if ((e.target as HTMLElement).closest('.window-controls, .window-buttons')) {
-      return
-    }
+    if (isResizing) {
+      // Calculate size changes
+      const deltaX = (e.clientX - resizeStartPos.x) * resizeDirection.x
+      const deltaY = (e.clientY - resizeStartPos.y) * resizeDirection.y
 
-    setIsDragging(true)
+      // Apply changes to base size
+      let newWidth = resizeStartSize.width + deltaX
+      let newHeight = resizeStartSize.height + deltaY
 
-    const rect = windowRef.current?.getBoundingClientRect()
-    if (rect) {
-      setDragOffset({
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top
-      })
-    }
-  }
+      // Enforce minimum size
+      newWidth = Math.max(newWidth, 320)
+      newHeight = Math.max(newHeight, 200)
 
-  // Handle resize start
-  const handleResizeStart = (e: MouseEvent<HTMLDivElement>, direction: { x: number, y: number }) => {
-    e.stopPropagation()
-    if (!isFocused) {
-      onFocus()
-    }
+      // Create new size object
+      const newSize = { width: newWidth, height: newHeight }
 
-    setIsResizing(true)
-    setResizeDirection(direction)
-    setResizeStartPosition({ x: e.clientX, y: e.clientY })
-    setResizeStartSize({ width: windowSize.width, height: windowSize.height })
-  }
+      // Update visual state immediately
+      setWindowSize(newSize)
 
-  // Handle window mouse move for dragging and resizing
-  useEffect(() => {
-    const handleMouseMove = (e: globalThis.MouseEvent) => {
-      if (isDragging) {
-        // Calculate new position
-        const newX = e.clientX - dragOffset.x
-        const newY = e.clientY - dragOffset.y
-
-        // Apply boundary constraints to keep header visible
-        // Header height is 36px (9px for title bar + some buffer)
-        const minY = 28 // Updated to prevent windows from moving over the menu bar (which is 28px tall)
-        const maxY = window.innerHeight - 36
-        const minX = -windowSize.width + 100 // Keep at least 100px of window visible horizontally
-        const maxX = window.innerWidth - 100 // Keep at least 100px of window visible horizontally
-
-        // Apply constraints
-        const constrainedX = Math.min(Math.max(newX, minX), maxX)
-        const constrainedY = Math.min(Math.max(newY, minY), maxY)
-
-        updatePosition({
-          x: constrainedX,
-          y: constrainedY
-        })
-      } else if (isResizing) {
-        const deltaX = e.clientX - resizeStartPosition.x
-        const deltaY = e.clientY - resizeStartPosition.y
-
-        // Calculate new size and position in a single step to ensure consistency
-        let newWidth = windowSize.width
-        let newHeight = windowSize.height
-        let newX = position.x
-        let newY = position.y
-
-        // Handle resizing (both diagonal and edge)
-        if (resizeDirection.x !== 0) {
-          if (resizeDirection.x > 0) {
-            // Right edge resize
-            newWidth = Math.max(300, resizeStartSize.width + deltaX)
-          } else {
-            // Left edge resize
-            newWidth = Math.max(300, resizeStartSize.width - deltaX)
-            newX = resizeStartPosition.x + deltaX
-          }
-        }
-
-        if (resizeDirection.y !== 0) {
-          if (resizeDirection.y > 0) {
-            // Bottom edge resize
-            newHeight = Math.max(200, resizeStartSize.height + deltaY)
-          } else {
-            // Top edge resize
-            newHeight = Math.max(200, resizeStartSize.height - deltaY)
-            newY = resizeStartPosition.y + deltaY
-          }
-        }
-
-        // Apply boundary constraints
-        const minY = 28 // Updated to prevent windows from moving over the menu bar
-        const maxY = window.innerHeight - 36
-        const minX = -newWidth + 100
-        const maxX = window.innerWidth - 100
-
-        // Apply constraints to position
-        const constrainedX = Math.min(Math.max(newX, minX), maxX)
-        const constrainedY = Math.min(Math.max(newY, minY), maxY)
-
-        // Update size
-        setWindowSize({ width: newWidth, height: newHeight })
-
-        // Update position
-        updatePosition({
-          x: constrainedX,
-          y: constrainedY
-        })
+      // Also directly update DOM for smooth resizing
+      if (windowRef.current) {
+        windowRef.current.style.width = `${newWidth}px`
+        windowRef.current.style.height = `${newHeight}px`
       }
     }
+  }
 
-    const handleMouseUp = () => {
-      setIsDragging(false)
-      setIsResizing(false)
+  // General mouse up handler
+  const handleMouseUp = () => {
+    if (isResizing && windowRef.current) {
+      // Get the final size directly from the element
+      const width = windowRef.current.offsetWidth
+      const height = windowRef.current.offsetHeight
+
+      // Update the store with final size
+      updateSize({ width, height })
     }
 
-    if (isDragging || isResizing) {
-      document.addEventListener('mousemove', handleMouseMove)
-      document.addEventListener('mouseup', handleMouseUp)
-    }
+    // Reset drag/resize state
+    setIsDragging(false)
+    setIsResizing(false)
 
-    return () => {
-      document.removeEventListener('mousemove', handleMouseMove)
-      document.removeEventListener('mouseup', handleMouseUp)
-    }
-  }, [isDragging, isResizing, dragOffset, resizeDirection, resizeStartPosition, resizeStartSize, updatePosition, position, windowSize.width])
+    // Remove global event listeners
+    window.removeEventListener('mousemove', handleMouseMove)
+    window.removeEventListener('mouseup', handleMouseUp)
+  }
 
-  // Handle focus on click
-  const handleWindowClick = (e: MouseEvent<HTMLDivElement>) => {
+  // Start window dragging
+  const handleTitleBarMouseDown = (e: ReactMouseEvent<HTMLDivElement>) => {
+    if (e.button !== 0) return // Only handle left click
+
+    e.preventDefault()
+
+    // Focus window
     if (!isFocused) {
       onFocus()
-      e.preventDefault()
-      e.stopPropagation()
+    }
+
+    // Calculate drag offset
+    setDragOffset({
+      x: e.clientX - position.x,
+      y: e.clientY - position.y
+    })
+
+    // Start dragging
+    setIsDragging(true)
+
+    // Add global event listeners
+    window.addEventListener('mousemove', handleMouseMove)
+    window.addEventListener('mouseup', handleMouseUp)
+  }
+
+  // Start window resizing
+  const handleResizeStart = (e: ReactMouseEvent<HTMLDivElement>, dirX: number, dirY: number) => {
+    if (e.button !== 0) return // Only handle left click
+
+    e.preventDefault()
+    e.stopPropagation()
+
+    // Focus window
+    if (!isFocused) {
+      onFocus()
+    }
+
+    // Set resize parameters
+    setResizeDirection({ x: dirX, y: dirY })
+    setResizeStartPos({ x: e.clientX, y: e.clientY })
+    setResizeStartSize({ width: windowSize.width, height: windowSize.height })
+
+    // Start resizing
+    setIsResizing(true)
+
+    // Add global event listeners
+    window.addEventListener('mousemove', handleMouseMove)
+    window.addEventListener('mouseup', handleMouseUp)
+  }
+
+  // Handle window click
+  const handleWindowClick = () => {
+    if (!isFocused) {
+      onFocus()
     }
   }
 
-  // Handle content click
-  const handleContentClick = (e: MouseEvent<HTMLDivElement>) => {
-    if (preventNextClick) {
-      e.preventDefault()
-      e.stopPropagation()
-      setPreventNextClick(false)
-    }
-  }
-
-  if (isMinimized) {
-    return null
-  }
+  // Compute animation class for minimization
+  const animationClass = isMinimized
+    ? 'scale-[0.05] opacity-0 pointer-events-none'
+    : 'scale-100 opacity-100'
 
   return (
     <div
@@ -248,8 +185,8 @@ export function Window({
         ring-[0.5px] ring-ring/10
         ${isDragging || isResizing ? 'cursor-grabbing select-none' : ''}
         ${isFocused
-        ? 'bg-background shadow-lg shadow-foreground/10'
-        : 'bg-background'}`}
+          ? 'bg-background shadow-lg shadow-foreground/10'
+          : 'bg-background'}`}
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
@@ -266,38 +203,44 @@ export function Window({
             ? 'bg-secondary border-border'
             : 'bg-secondary border-border'}
           flex items-center px-2 cursor-grab select-none`}
-        onMouseDown={handleMouseDown}
+        onMouseDown={handleTitleBarMouseDown}
       >
         {/* Window control buttons */}
-        <div className="window-buttons flex space-x-[6px] mr-2 pl-2 group">
+        <div className={`flex space-x-[6px] mr-2 pl-2 ${isFocused ? 'group' : 'hover:group'}`}>
           <button
-            onClick={onClose}
+            onClick={(e) => {
+              e.stopPropagation();
+              onClose();
+            }}
             className={`w-3 h-3 rounded-full ${isFocused
-              ? 'bg-red-500 group-hover:bg-red-500 hover:bg-red-500/90'
+              ? 'bg-red-500 hover:bg-red-500/90'
               : 'bg-muted-foreground group-hover:bg-red-500'}
               flex items-center justify-center transition-colors`}
             aria-label="Close window"
           >
-            <span className="opacity-0 group-hover:opacity-100 text-[10px] text-red-900 font-bold leading-none relative -top-[0.5px]">×</span>
+            <span className={`text-[10px] text-red-900 font-bold leading-none relative -top-[0.5px] opacity-0 group-hover:opacity-100`}>×</span>
           </button>
           <button
-            onClick={onMinimize}
+            onClick={(e) => {
+              e.stopPropagation();
+              onMinimize();
+            }}
             className={`w-3 h-3 rounded-full ${isFocused
-              ? 'bg-yellow-500 group-hover:bg-yellow-500 hover:bg-yellow-500/90'
+              ? 'bg-yellow-500 hover:bg-yellow-500/90'
               : 'bg-muted-foreground group-hover:bg-yellow-500'}
               flex items-center justify-center transition-colors`}
             aria-label="Minimize window"
           >
-            <span className="opacity-0 group-hover:opacity-100 text-[10px] text-yellow-800 font-bold leading-none relative -top-[1px]">−</span>
+            <span className={`text-[10px] text-yellow-800 font-bold leading-none relative -top-[1px] opacity-0 group-hover:opacity-100`}>−</span>
           </button>
           <button
             className={`w-3 h-3 rounded-full ${isFocused
-              ? 'bg-green-500 group-hover:bg-green-500 hover:bg-green-500/90'
+              ? 'bg-green-500 hover:bg-green-500/90'
               : 'bg-muted-foreground group-hover:bg-green-500'}
               flex items-center justify-center transition-colors`}
             aria-label="Maximize window"
           >
-            <span className="opacity-0 group-hover:opacity-100 text-green-900 font-bold">
+            <span className={`text-green-900 font-bold opacity-0 group-hover:opacity-100`}>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8" width="8" height="8" fill="none" stroke="currentColor" strokeWidth="1.2" className="scale-90">
                 <path d="M1.5,1.5 h3 v3 M6.5,6.5 h-3 v-3" />
               </svg>
@@ -306,53 +249,69 @@ export function Window({
         </div>
 
         {/* Window title with icon */}
-        <div className="flex items-center justify-center flex-grow text-xs font-medium text-foreground">
-          {icon && (
-            <div className="h-4 w-4 mr-1.5 relative">
-              <Image
-                src={icon}
-                alt={title}
-                fill
-                sizes="16px"
-                className="object-contain"
-              />
-            </div>
-          )}
-          <span>{title}</span>
+        <div className="flex items-center">
+          <div className="h-4 w-4 mr-2 relative">
+            <Image
+              src={icon}
+              alt={title}
+              fill
+              sizes="16px"
+              className="object-contain"
+            />
+          </div>
+          <span className="text-xs font-medium">{title}</span>
         </div>
-
-        {/* Spacer to balance title */}
-        <div className="w-[68px]"></div>
       </div>
 
-      {/* Window content */}
+      {/* Window content - prevent direct interaction with non-focused windows */}
       <div
         ref={contentRef}
-        className={`h-[calc(100%-28px)] bg-background overflow-auto window-content`}
-        onClick={handleContentClick}
+        className={`h-[calc(100%-1.75rem)] overflow-auto transition-all duration-300 transform origin-bottom ${animationClass}`}
+        onClick={(e) => {
+          if (!isFocused) {
+            e.stopPropagation();
+            onFocus();
+          }
+        }}
+        style={{
+          pointerEvents: isFocused ? 'auto' : 'none'
+        }}
       >
         {children}
       </div>
 
-      {/* Resize handles - corners with higher z-index */}
-      <div className="absolute bottom-0 right-0 w-4 h-4 cursor-se-resize z-20"
-           onMouseDown={(e) => handleResizeStart(e, { x: 1, y: 1 })} />
-      <div className="absolute bottom-0 left-0 w-4 h-4 cursor-sw-resize z-20"
-           onMouseDown={(e) => handleResizeStart(e, { x: -1, y: 1 })} />
-      <div className="absolute top-0 right-0 w-4 h-4 cursor-ne-resize z-20"
-           onMouseDown={(e) => handleResizeStart(e, { x: 1, y: -1 })} />
-      <div className="absolute top-0 left-0 w-4 h-4 cursor-nw-resize z-20"
-           onMouseDown={(e) => handleResizeStart(e, { x: -1, y: -1 })} />
+      {/* Resize handles - made more visible and easier to grab */}
+      {/* Bottom right corner - main resize handle */}
+      <div
+        className="absolute bottom-0 right-0 w-6 h-6 cursor-se-resize
+                  hover:bg-primary/10 hover:border-t hover:border-l hover:border-primary/30
+                  transition-colors"
+        onMouseDown={(e) => handleResizeStart(e, 1, 1)}
+      />
 
-      {/* Edge resize handles */}
-      <div className="absolute right-0 top-0 bottom-0 w-2 cursor-e-resize z-10"
-           onMouseDown={(e) => handleResizeStart(e, { x: 1, y: 0 })} />
-      <div className="absolute left-0 top-0 bottom-0 w-2 cursor-w-resize z-10"
-           onMouseDown={(e) => handleResizeStart(e, { x: -1, y: 0 })} />
-      <div className="absolute bottom-0 left-0 right-0 h-2 cursor-s-resize z-10"
-           onMouseDown={(e) => handleResizeStart(e, { x: 0, y: 1 })} />
-      <div className="absolute top-0 left-0 right-0 h-2 cursor-n-resize z-10"
-           onMouseDown={(e) => handleResizeStart(e, { x: 0, y: -1 })} />
+      {/* Bottom left corner */}
+      <div
+        className="absolute bottom-0 left-0 w-6 h-6 cursor-sw-resize
+                  hover:bg-primary/10 hover:border-t hover:border-r hover:border-primary/30
+                  transition-colors"
+        onMouseDown={(e) => handleResizeStart(e, -1, 1)}
+      />
+
+      {/* Top right corner */}
+      <div
+        className="absolute top-7 right-0 w-6 h-6 cursor-ne-resize
+                  hover:bg-primary/10 hover:border-b hover:border-l hover:border-primary/30
+                  transition-colors"
+        onMouseDown={(e) => handleResizeStart(e, 1, -1)}
+      />
+
+      {/* Top left corner */}
+      <div
+        className="absolute top-7 left-0 w-6 h-6 cursor-nw-resize
+                  hover:bg-primary/10 hover:border-b hover:border-r hover:border-primary/30
+                  transition-colors"
+        onMouseDown={(e) => handleResizeStart(e, -1, -1)}
+      />
     </div>
   )
 }
