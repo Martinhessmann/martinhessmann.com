@@ -119,39 +119,26 @@ export function Window({
         let newX = position.x
         let newY = position.y
 
-        // Handle horizontal resizing
+        // Handle resizing (both diagonal and edge)
         if (resizeDirection.x !== 0) {
           if (resizeDirection.x > 0) {
             // Right edge resize
             newWidth = Math.max(300, resizeStartSize.width + deltaX)
           } else {
-            // Left edge resize - move the window's left edge
+            // Left edge resize
             newWidth = Math.max(300, resizeStartSize.width - deltaX)
-            newX = resizeStartPosition.x - dragOffset.x + deltaX
+            newX = resizeStartPosition.x + deltaX
           }
         }
 
-        // Handle vertical resizing
         if (resizeDirection.y !== 0) {
           if (resizeDirection.y > 0) {
             // Bottom edge resize
             newHeight = Math.max(200, resizeStartSize.height + deltaY)
           } else {
-            // Top edge resize - move the window's top edge
-            // Simply set the top position to the current mouse position minus the initial drag offset
+            // Top edge resize
             newHeight = Math.max(200, resizeStartSize.height - deltaY)
-            newY = resizeStartPosition.y - dragOffset.y + deltaY
-
-            console.log('Top Resize Debug (improved):', {
-              mouseY: e.clientY,
-              startY: resizeStartPosition.y,
-              deltaY,
-              dragOffsetY: dragOffset.y,
-              originalY: position.y,
-              newY: newY,
-              currentHeight: windowSize.height,
-              newHeight: newHeight
-            })
+            newY = resizeStartPosition.y + deltaY
           }
         }
 
@@ -190,7 +177,7 @@ export function Window({
       document.removeEventListener('mousemove', handleMouseMove)
       document.removeEventListener('mouseup', handleMouseUp)
     }
-  }, [isDragging, isResizing, dragOffset, resizeDirection, resizeStartPosition, resizeStartSize, updatePosition, position])
+  }, [isDragging, isResizing, dragOffset, resizeDirection, resizeStartPosition, resizeStartSize, updatePosition, position, windowSize.width])
 
   // Handle focus on click
   const handleWindowClick = () => {
@@ -206,7 +193,9 @@ export function Window({
   return (
     <div
       ref={windowRef}
-      className={`absolute rounded-lg shadow-2xl overflow-hidden transition-shadow ${isDragging || isResizing ? 'cursor-grabbing' : ''} ${isFocused ? 'shadow-2xl' : 'shadow-lg'}`}
+      className={`absolute rounded-lg shadow-2xl overflow-hidden transition-shadow
+        ${isDragging || isResizing ? 'cursor-grabbing select-none' : ''}
+        ${isFocused ? 'shadow-2xl' : 'shadow-lg'}`}
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
@@ -218,7 +207,8 @@ export function Window({
     >
       {/* Title bar */}
       <div
-        className={`h-9 ${isFocused ? 'bg-gray-200 dark:bg-gray-800' : 'bg-gray-100 dark:bg-gray-700'} flex items-center px-2 cursor-grab`}
+        className={`h-9 ${isFocused ? 'bg-gray-200 dark:bg-gray-800' : 'bg-gray-100 dark:bg-gray-700'}
+          flex items-center px-2 cursor-grab select-none`}
         onMouseDown={handleMouseDown}
       >
         {/* Window control buttons */}
@@ -267,22 +257,24 @@ export function Window({
         {children}
       </div>
 
-      {/* Resize handles */}
-      <div className="absolute bottom-0 right-0 w-4 h-4 cursor-se-resize"
+      {/* Resize handles - corners with higher z-index */}
+      <div className="absolute bottom-0 right-0 w-4 h-4 cursor-se-resize z-20"
            onMouseDown={(e) => handleResizeStart(e, { x: 1, y: 1 })} />
-      <div className="absolute bottom-0 left-0 w-4 h-4 cursor-sw-resize"
+      <div className="absolute bottom-0 left-0 w-4 h-4 cursor-sw-resize z-20"
            onMouseDown={(e) => handleResizeStart(e, { x: -1, y: 1 })} />
-      <div className="absolute top-0 right-0 w-4 h-4 cursor-ne-resize"
+      <div className="absolute top-0 right-0 w-4 h-4 cursor-ne-resize z-20"
            onMouseDown={(e) => handleResizeStart(e, { x: 1, y: -1 })} />
-      <div className="absolute top-0 left-0 w-4 h-4 cursor-nw-resize"
+      <div className="absolute top-0 left-0 w-4 h-4 cursor-nw-resize z-20"
            onMouseDown={(e) => handleResizeStart(e, { x: -1, y: -1 })} />
-      <div className="absolute right-0 top-0 bottom-0 w-2 cursor-e-resize"
+
+      {/* Edge resize handles */}
+      <div className="absolute right-0 top-0 bottom-0 w-2 cursor-e-resize z-10"
            onMouseDown={(e) => handleResizeStart(e, { x: 1, y: 0 })} />
-      <div className="absolute left-0 top-0 bottom-0 w-2 cursor-w-resize"
+      <div className="absolute left-0 top-0 bottom-0 w-2 cursor-w-resize z-10"
            onMouseDown={(e) => handleResizeStart(e, { x: -1, y: 0 })} />
-      <div className="absolute bottom-0 left-0 right-0 h-2 cursor-s-resize"
+      <div className="absolute bottom-0 left-0 right-0 h-2 cursor-s-resize z-10"
            onMouseDown={(e) => handleResizeStart(e, { x: 0, y: 1 })} />
-      <div className="absolute top-0 left-0 right-0 h-2 cursor-n-resize"
+      <div className="absolute top-0 left-0 right-0 h-2 cursor-n-resize z-10"
            onMouseDown={(e) => handleResizeStart(e, { x: 0, y: -1 })} />
     </div>
   )
