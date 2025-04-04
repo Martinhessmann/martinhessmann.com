@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { MacAppBar } from '@/components/mac-app-bar'
+import { AppBar } from '@/components/app-bar'
 
 export const metadata: Metadata = {
   title: 'Blog | Martin Heßmann',
@@ -28,7 +28,7 @@ export default function BlogLayout({
             </Link>
           </div>
 
-          <MacAppBar />
+          <AppBar />
           <div className="bg-secondary rounded-b-lg p-6 md:p-8 shadow-md">
             {children}
           </div>
