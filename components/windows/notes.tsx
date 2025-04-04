@@ -21,7 +21,7 @@ export function Notes() {
   return (
     <div className="h-full flex bg-background">
       {/* Sidebar */}
-      <div className="w-64 border-r border-border flex flex-col bg-card">
+      <div className="w-[240px] flex-shrink-0 border-r border-border flex flex-col bg-card">
         {/* Toolbar */}
         <div className="p-2 border-b border-border flex items-center gap-1">
           <Button variant="ghost" size="icon" className="h-8 w-8">
@@ -86,7 +86,7 @@ export function Notes() {
         </div>
 
         {/* Note Content */}
-        <ScrollArea className="flex-grow p-6">
+        <ScrollArea className="flex-grow">
           <div className="prose dark:prose-invert max-w-none">
             <p className="text-lg mb-6">{selectedNote.content}</p>
 
