@@ -1,0 +1,63 @@
+{
+  "conversations": [
+    {
+      "client": {
+        "id": "teambank",
+        "name": "TeamBank AG",
+        "industry": "Banking & Finance",
+        "icon": "/images/clients/teambank-icon.png"
+      },
+      "messages": [
+        {
+          "id": "1",
+          "content": "Maddin, we're impressed with the customer feedback on the new app interface. Transactions are up 28% since launch!",
+          "timestamp": "2 days ago",
+          "sender": "client"
+        },
+        {
+          "id": "2",
+          "content": "That's great to hear! The user-centered approach really paid off. We should consider expanding the personalization features in the next sprint.",
+          "timestamp": "2 days ago",
+          "sender": "me"
+        },
+        {
+          "id": "3",
+          "content": "Agreed. Let's schedule a workshop to explore those ideas. The board is very pleased with the results so far.",
+          "timestamp": "2 days ago",
+          "sender": "client"
+        }
+      ],
+      "lastActivity": "2 days ago"
+    },
+    {
+      "client": {
+        "id": "evg",
+        "name": "EVG / WoMoFonds",
+        "industry": "Real Estate & Investment",
+        "icon": "/images/clients/evg-icon.png"
+      },
+      "messages": [],
+      "lastActivity": "1 week ago"
+    },
+    {
+      "client": {
+        "id": "bundesministerium",
+        "name": "Bundesministerium",
+        "industry": "Government",
+        "icon": "/images/clients/bundesministerium-icon.png"
+      },
+      "messages": [],
+      "lastActivity": "2 weeks ago"
+    },
+    {
+      "client": {
+        "id": "medical",
+        "name": "Medical Group GmbH",
+        "industry": "Healthcare",
+        "icon": "/images/clients/medical-icon.png"
+      },
+      "messages": [],
+      "lastActivity": "1 month ago"
+    }
+  ]
+}

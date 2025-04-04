@@ -2,147 +2,14 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-
-interface Message {
-  id: string
-  sender: string
-  content: string
-  timestamp: string
-  isClient?: boolean
-}
-
-interface Conversation {
-  id: string
-  clientName: string
-  clientLogo: string
-  industry: string
-  messages: Message[]
-  lastActivity: string
-}
+import { ClientConversation, Message } from '@/types/app-content'
+import { getAllConversations } from '@/lib/app-content'
 
 export function ClientPartnerships() {
   const [selectedConversation, setSelectedConversation] = useState<string>('teambank')
 
-  const conversations: Conversation[] = [
-    {
-      id: 'teambank',
-      clientName: 'TeamBank AG',
-      clientLogo: '/images/clients/teambank.png',
-      industry: 'Banking & Finance',
-      lastActivity: '2 days ago',
-      messages: [
-        {
-          id: 'tb1',
-          sender: 'TeamBank AG',
-          content: "Martin, we're impressed with the customer feedback on the new app interface. Transactions are up 28% since launch!",
-          timestamp: '2 days ago',
-          isClient: true
-        },
-        {
-          id: 'tb2',
-          sender: 'Martin',
-          content: "That's great to hear! The user-centered approach really paid off. We should consider expanding the personalization features in the next sprint.",
-          timestamp: '2 days ago'
-        },
-        {
-          id: 'tb3',
-          sender: 'TeamBank AG',
-          content: "Agreed. Let's schedule a workshop to explore those ideas. The board is very pleased with the results so far.",
-          timestamp: '2 days ago',
-          isClient: true
-        }
-      ]
-    },
-    {
-      id: 'evg',
-      clientName: 'EVG / WoMoFonds',
-      clientLogo: '/images/clients/evg.png',
-      industry: 'Real Estate & Investment',
-      lastActivity: '1 week ago',
-      messages: [
-        {
-          id: 'evg1',
-          sender: 'EVG / WoMoFonds',
-          content: "We've hit 12,000 users on the platform! The investment flow you designed is working exceptionally well.",
-          timestamp: '1 week ago',
-          isClient: true
-        },
-        {
-          id: 'evg2',
-          sender: 'Martin',
-          content: "That's fantastic news! How are the conversion rates looking?",
-          timestamp: '1 week ago'
-        },
-        {
-          id: 'evg3',
-          sender: 'EVG / WoMoFonds',
-          content: 'Conversion is at 4.8%, up from 3.2% with the old system. The simplified verification process made a huge difference.',
-          timestamp: '1 week ago',
-          isClient: true
-        }
-      ]
-    },
-    {
-      id: 'bundesministerium',
-      clientName: 'Bundesministerium',
-      clientLogo: '/images/clients/government.png',
-      industry: 'Government',
-      lastActivity: '2 weeks ago',
-      messages: [
-        {
-          id: 'bm1',
-          sender: 'Bundesministerium',
-          content: 'The accessibility improvements have received positive feedback from advocacy groups. Thank you for the thorough implementation.',
-          timestamp: '2 weeks ago',
-          isClient: true
-        },
-        {
-          id: 'bm2',
-          sender: 'Martin',
-          content: "I'm glad to hear that. Accessibility should be a standard, not an afterthought. Have you gathered any metrics on increased usage?",
-          timestamp: '2 weeks ago'
-        },
-        {
-          id: 'bm3',
-          sender: 'Bundesministerium',
-          content: 'Yes, service utilization is up 31% across all demographics, with the most significant increase in older users and those with disabilities.',
-          timestamp: '2 weeks ago',
-          isClient: true
-        }
-      ]
-    },
-    {
-      id: 'medical',
-      clientName: 'Medical Group GmbH',
-      clientLogo: '/images/clients/medical.png',
-      industry: 'Healthcare',
-      lastActivity: '1 month ago',
-      messages: [
-        {
-          id: 'mg1',
-          sender: 'Medical Group GmbH',
-          content: "The patient management system has reduced our administrative overhead by 35%. The staff can't stop praising the intuitive design.",
-          timestamp: '1 month ago',
-          isClient: true
-        },
-        {
-          id: 'mg2',
-          sender: 'Martin',
-          content: "That's what we aimed for - allowing the staff to focus on patient care rather than wrestling with software. How's the mobile experience working?",
-          timestamp: '1 month ago'
-        },
-        {
-          id: 'mg3',
-          sender: 'Medical Group GmbH',
-          content: "Doctors love being able to access records on their tablets during rounds. It's transformed their workflow completely.",
-          timestamp: '1 month ago',
-          isClient: true
-        }
-      ]
-    }
-  ]
-
-  const currentConversation = conversations.find(c => c.id === selectedConversation)
+  const conversations = getAllConversations()
+  const currentConversation = conversations.find(c => c.client.id === selectedConversation)
 
   return (
     <div className="h-full flex flex-col">
@@ -188,18 +55,18 @@ export function ClientPartnerships() {
           <div className="conversations-list">
             {conversations.map((convo) => (
               <div
-                key={convo.id}
+                key={convo.client.id}
                 className={`p-3 flex items-center cursor-pointer ${
-                  selectedConversation === convo.id
+                  selectedConversation === convo.client.id
                     ? 'bg-blue-100 dark:bg-blue-900/30'
                     : 'hover:bg-gray-100 dark:hover:bg-gray-800'
                 }`}
-                onClick={() => setSelectedConversation(convo.id)}
+                onClick={() => setSelectedConversation(convo.client.id)}
               >
                 <div className="w-10 h-10 relative rounded-full overflow-hidden mr-3">
                   <Image
-                    src={convo.clientLogo}
-                    alt={convo.clientName}
+                    src={convo.client.icon || '/images/placeholder-client.png'}
+                    alt={convo.client.name}
                     fill
                     sizes="40px"
                     className="object-cover"
@@ -207,11 +74,11 @@ export function ClientPartnerships() {
                 </div>
                 <div className="flex-grow">
                   <div className="flex justify-between">
-                    <span className="font-medium text-sm">{convo.clientName}</span>
+                    <span className="font-medium text-sm">{convo.client.name}</span>
                     <span className="text-xs text-gray-500">{convo.lastActivity}</span>
                   </div>
                   <div className="text-xs text-gray-500 truncate">
-                    <span className="text-gray-400">{convo.industry}</span>
+                    <span className="text-gray-400">{convo.client.industry}</span>
                   </div>
                 </div>
               </div>
@@ -226,16 +93,16 @@ export function ClientPartnerships() {
             <div className="border-b border-gray-200 dark:border-gray-700 p-3 flex items-center sticky top-0 bg-white dark:bg-gray-800 z-10">
               <div className="w-8 h-8 relative rounded-full overflow-hidden mr-3">
                 <Image
-                  src={currentConversation.clientLogo}
-                  alt={currentConversation.clientName}
+                  src={currentConversation.client.icon || '/images/placeholder-client.png'}
+                  alt={currentConversation.client.name}
                   fill
                   sizes="32px"
                   className="object-cover"
                 />
               </div>
               <div>
-                <div className="font-medium text-sm">{currentConversation.clientName}</div>
-                <div className="text-xs text-gray-500">{currentConversation.industry}</div>
+                <div className="font-medium text-sm">{currentConversation.client.name}</div>
+                <div className="text-xs text-gray-500">{currentConversation.client.industry}</div>
               </div>
             </div>
 
@@ -245,11 +112,11 @@ export function ClientPartnerships() {
                 {currentConversation.messages.map((message) => (
                   <div
                     key={message.id}
-                    className={`flex ${message.isClient ? 'justify-start' : 'justify-end'}`}
+                    className={`flex ${message.sender === 'client' ? 'justify-start' : 'justify-end'}`}
                   >
                     <div
                       className={`max-w-xs rounded-lg p-3 ${
-                        message.isClient
+                        message.sender === 'client'
                           ? 'bg-gray-200 dark:bg-gray-700'
                           : 'bg-blue-500 text-white'
                       }`}

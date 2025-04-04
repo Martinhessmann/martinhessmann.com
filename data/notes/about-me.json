@@ -1,0 +1,35 @@
+{
+  "notes": [
+    {
+      "id": "about-me-draft",
+      "title": "About Me Draft",
+      "lastEdited": "March 2, 2023",
+      "wordCount": 123,
+      "content": "I'm Martin Heßmann, a Product Generalist who bridges the gap between design, development, and business needs.",
+      "sections": [
+        {
+          "title": "Introduction",
+          "content": "I'm neither exclusively a PM, Developer, nor Designer—but a blend of all three, helping teams create intuitive, accessible, and impactful digital experiences."
+        },
+        {
+          "title": "Approach",
+          "content": "With over a decade in the tech industry, I've developed a holistic approach to product development:"
+        }
+      ]
+    },
+    {
+      "id": "skills-overview",
+      "title": "Skills Overview",
+      "lastEdited": "February 28, 2023",
+      "wordCount": 85,
+      "content": "Core Skills: - Product Strategy..."
+    },
+    {
+      "id": "work-philosophy",
+      "title": "Work Philosophy",
+      "lastEdited": "February 25, 2023",
+      "wordCount": 150,
+      "content": "My Product Philosophy: 1. Use..."
+    }
+  ]
+}

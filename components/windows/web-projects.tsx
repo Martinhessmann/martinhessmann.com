@@ -2,204 +2,149 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-
-interface WebProject {
-  id: string
-  title: string
-  description: string
-  image: string
-  url: string
-  technologies: string[]
-  year: string
-}
+import { Search, ExternalLink, Tag, ImageIcon } from 'lucide-react'
+import { getAllWebProjects, getProjectCategories, getTechnologyColor } from '@/lib/app-content'
+import { WebProject, Technology } from '@/types/app-content'
 
 export function WebProjects() {
-  const [activeTab, setActiveTab] = useState('all')
+  const allCategories = getProjectCategories()
+  const projects = getAllWebProjects()
+  const [selectedCategory, setSelectedCategory] = useState<'All Projects' | Technology>('All Projects')
 
-  const projects: WebProject[] = [
-    {
-      id: 'ecommerce-platform',
-      title: 'E-Commerce Platform',
-      description: 'A modern e-commerce solution with headless CMS integration, custom product configurator, and international payment processing.',
-      image: '/images/projects/ecommerce.jpg',
-      url: 'https://example-ecommerce.com',
-      technologies: ['Next.js', 'Stripe', 'Contentful', 'Tailwind CSS'],
-      year: '2023'
-    },
-    {
-      id: 'fintech-dashboard',
-      title: 'FinTech Dashboard',
-      description: 'A comprehensive financial analytics dashboard with real-time data visualization, user authentication, and reporting features.',
-      image: '/images/projects/fintech.jpg',
-      url: 'https://fintech-dashboard.com',
-      technologies: ['React', 'D3.js', 'Firebase', 'Material UI'],
-      year: '2022'
-    },
-    {
-      id: 'social-platform',
-      title: 'Social Media Platform',
-      description: 'A community platform with real-time messaging, content sharing, and customizable user profiles.',
-      image: '/images/projects/social.jpg',
-      url: 'https://social-platform.com',
-      technologies: ['React', 'Socket.io', 'MongoDB', 'Express', 'Node.js'],
-      year: '2022'
-    },
-    {
-      id: 'health-tracker',
-      title: 'Health & Fitness Tracker',
-      description: 'A wellness application for tracking health metrics, workout routines, and nutrition with personalized recommendations.',
-      image: '/images/projects/health.jpg',
-      url: 'https://health-tracker.app',
-      technologies: ['React Native', 'Redux', 'Firebase', 'Chart.js'],
-      year: '2021'
-    },
-    {
-      id: 'education-platform',
-      title: 'Education Platform',
-      description: 'An interactive learning platform with course management, video lessons, quizzes, and progress tracking.',
-      image: '/images/projects/education.jpg',
-      url: 'https://education-platform.com',
-      technologies: ['Vue.js', 'Laravel', 'PostgreSQL', 'AWS'],
-      year: '2021'
-    },
-    {
-      id: 'realestate-app',
-      title: 'Real Estate Application',
-      description: 'A property listing and management system with map integration, virtual tours, and agent collaboration tools.',
-      image: '/images/projects/realestate.jpg',
-      url: 'https://realestate-app.com',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Mapbox', 'ThreeJS'],
-      year: '2020'
-    }
-  ]
-
-  // Filter projects based on active tab
-  const filteredProjects = activeTab === 'all'
+  const filteredProjects = selectedCategory === 'All Projects'
     ? projects
-    : projects.filter(project => project.technologies.some(tech =>
-        tech.toLowerCase().includes(activeTab.toLowerCase())
-      ))
+    : projects.filter(project => project.technologies.includes(selectedCategory))
 
   return (
     <div className="h-full flex flex-col">
-      {/* Safari-like toolbar */}
-      <div className="bg-gray-100 dark:bg-gray-800 px-4 py-1 flex items-center space-x-2 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-20">
-        <div className="flex space-x-1">
-          <button className="text-gray-600 dark:text-gray-400 px-1">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-          <button className="text-gray-600 dark:text-gray-400 px-1">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-        </div>
+      {/* Search and filters */}
+      <div className="p-4 border-b border-border">
+        <div className="flex flex-col md:flex-row gap-4 justify-between items-start md:items-center">
+          <div className="relative w-full md:w-1/3">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <Search className="h-4 w-4 text-muted-foreground" />
+            </div>
+            <input
+              type="text"
+              placeholder="Search projects..."
+              className="w-full pl-10 pr-4 py-2 bg-background border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50"
+            />
+          </div>
 
-        <div className="flex-grow">
-          <div className="max-w-md mx-auto bg-white dark:bg-gray-700 rounded-md flex items-center px-3 py-1 text-xs">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-gray-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-            <span className="text-gray-500 dark:text-gray-300">martinhessmann.com/projects</span>
+          {/* Category filters */}
+          <div className="flex flex-wrap gap-2">
+            <div className="flex items-center space-x-1">
+              <Tag className="h-4 w-4 text-muted-foreground" />
+              <div className="flex gap-1 flex-wrap">
+                <button
+                  key="All Projects"
+                  className={`px-3 py-1 text-xs rounded-full transition-colors ${
+                    selectedCategory === 'All Projects'
+                      ? 'bg-primary text-primary-foreground'
+                      : 'bg-secondary hover:bg-secondary/80'
+                  }`}
+                  onClick={() => setSelectedCategory('All Projects')}
+                >
+                  All Projects
+                </button>
+                {allCategories.map(category => (
+                  <button
+                    key={category}
+                    className={`px-3 py-1 text-xs rounded-full transition-colors ${
+                      selectedCategory === category
+                        ? getTechnologyColor(category)
+                        : 'bg-secondary hover:bg-secondary/80'
+                    } text-white`}
+                    onClick={() => setSelectedCategory(category)}
+                  >
+                    {category}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
-
-        <button className="text-gray-600 dark:text-gray-400">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-          </svg>
-        </button>
-
-        <button className="text-gray-600 dark:text-gray-400">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
-          </svg>
-        </button>
       </div>
 
-      {/* Filter tabs */}
-      <div className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 px-4 py-2 sticky top-9 z-10">
-        <div className="flex space-x-4 overflow-x-auto text-sm">
-          <button
-            className={`px-3 py-1 rounded-md ${activeTab === 'all' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300' : 'text-gray-600 dark:text-gray-300'}`}
-            onClick={() => setActiveTab('all')}
-          >
-            All Projects
-          </button>
-          <button
-            className={`px-3 py-1 rounded-md ${activeTab === 'react' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300' : 'text-gray-600 dark:text-gray-300'}`}
-            onClick={() => setActiveTab('react')}
-          >
-            React
-          </button>
-          <button
-            className={`px-3 py-1 rounded-md ${activeTab === 'next' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300' : 'text-gray-600 dark:text-gray-300'}`}
-            onClick={() => setActiveTab('next')}
-          >
-            Next.js
-          </button>
-          <button
-            className={`px-3 py-1 rounded-md ${activeTab === 'vue' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300' : 'text-gray-600 dark:text-gray-300'}`}
-            onClick={() => setActiveTab('vue')}
-          >
-            Vue.js
-          </button>
-          <button
-            className={`px-3 py-1 rounded-md whitespace-nowrap ${activeTab === 'node' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300' : 'text-gray-600 dark:text-gray-300'}`}
-            onClick={() => setActiveTab('node')}
-          >
-            Node.js
-          </button>
-        </div>
-      </div>
-
-      {/* Projects grid */}
-      <div className="flex-grow overflow-y-auto p-6 bg-gray-50 dark:bg-gray-900">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {/* Project Grid */}
+      <div className="flex-1 overflow-y-auto p-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {filteredProjects.map((project) => (
-            <div key={project.id} className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-              <div className="h-48 relative">
+            <a
+              key={project.id}
+              href={`https://${project.url}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative flex flex-col overflow-hidden rounded-lg bg-card border border-border hover:border-border-hover transition-all duration-300 hover:-translate-y-1"
+            >
+              {/* Project Image */}
+              <div className="relative aspect-video bg-muted overflow-hidden">
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement
+                    target.style.display = 'none'
+                    const parent = target.parentElement
+                    if (parent) {
+                      parent.classList.add('flex', 'items-center', 'justify-center')
+                      const fallback = document.createElement('div')
+                      fallback.className = 'flex items-center justify-center w-full h-full bg-muted'
+                      const icon = document.createElement('div')
+                      icon.className = 'text-muted-foreground'
+                      icon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>'
+                      fallback.appendChild(icon)
+                      parent.appendChild(fallback)
+                    }
+                  }}
                 />
-              </div>
-
-              <div className="p-4">
-                <h3 className="font-semibold text-lg mb-2">{project.title}</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">
-                  {project.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2 mb-3">
-                  {project.technologies.map((tech, index) => (
+                {/* Technology Badge */}
+                <div className="absolute top-2 right-2">
+                  {project.technologies.map((tech) => (
                     <span
-                      key={index}
-                      className="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded-md"
+                      key={tech}
+                      className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium text-white ${getTechnologyColor(tech)} ml-1`}
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
+              </div>
 
-                <div className="flex justify-between items-center text-xs text-gray-500 dark:text-gray-400">
-                  <span>{project.year}</span>
-                  <a
-                    href={project.url}
-                    className="text-blue-600 dark:text-blue-400 hover:underline"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Visit Project →
-                  </a>
+              <div className="flex-1 p-4">
+                {/* Title */}
+                <h3 className="font-medium mb-1 group-hover:text-primary transition-colors line-clamp-2">
+                  {project.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-sm text-muted-foreground mb-2 line-clamp-2">
+                  {project.description}
+                </p>
+
+                {/* URL and External Link */}
+                <div className="flex items-center text-xs text-muted-foreground">
+                  <span className="flex-1 truncate">{project.url}</span>
+                  <ExternalLink className="h-3 w-3 flex-shrink-0 ml-1 opacity-70" />
+                </div>
+
+                {/* Roles */}
+                <div className="mt-3 flex flex-wrap gap-1">
+                  {project.roles.map((role) => (
+                    <span
+                      key={role}
+                      className="inline-flex items-center px-2 py-0.5 rounded-full text-xs bg-secondary text-secondary-foreground"
+                    >
+                      {role}
+                    </span>
+                  ))}
                 </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>

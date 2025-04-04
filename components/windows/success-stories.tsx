@@ -1,198 +1,114 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
-
-interface SuccessStory {
-  id: string
-  title: string
-  description: string
-  technologies: string
-  clientName: string
-  year: string
-  imageSrc: string
-  impact: string
-}
+import { getAllSuccessStories } from '@/lib/app-content'
+import { SuccessStory } from '@/types/app-content'
 
 export function SuccessStories() {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [imageError, setImageError] = useState(false)
+  const stories = getAllSuccessStories()
+  const [currentStoryIndex, setCurrentStoryIndex] = useState(0)
+  const currentStory = stories[currentStoryIndex]
 
-  const stories: SuccessStory[] = [
-    {
-      id: 'banking-platform',
-      title: 'Digital Banking Platform',
-      description: 'Led the redesign of a major banking platform, improving user satisfaction by 35% and increasing mobile transactions by 28%.',
-      clientName: 'TeamBank AG',
-      year: '2022',
-      technologies: 'UX Research, Figma, Design System, Prototyping',
-      imageSrc: '/images/projects/banking-platform.jpg',
-      impact: 'Increased mobile transactions by 28%, improved user satisfaction by 35%, reduced support tickets by 42%'
-    },
-    {
-      id: 'womofonds',
-      title: 'WoMo Fonds Platform',
-      description: 'Designed and developed a funding platform for sustainable mobile living, enabling users to invest in eco-friendly mobile homes.',
-      clientName: 'EVG / WoMoFonds',
-      year: '2021',
-      technologies: 'Next.js, User Flows, Authentication, Payment Integration',
-      imageSrc: '/images/projects/womofonds.jpg',
-      impact: 'Facilitated €2.5M in investments, 12,000+ registered users, 98% payment success rate'
-    },
-    {
-      id: 'government-services',
-      title: 'Government Services Portal',
-      description: 'Revamped a digital services platform for a government agency, focusing on accessibility and streamlined user journeys.',
-      clientName: 'Bundesministerium',
-      year: '2021',
-      technologies: 'React, Accessibility Testing, Design Systems, User Research',
-      imageSrc: '/images/projects/government.jpg',
-      impact: 'Improved WCAG compliance from 65% to 98%, reduced form completion time by 47%, increased service utilization by 31%'
-    },
-    {
-      id: 'healthcare-platform',
-      title: 'Healthcare Management System',
-      description: 'Developed a comprehensive patient management system for healthcare providers, integrating appointment scheduling, medical records, and billing.',
-      clientName: 'Medical Group GmbH',
-      year: '2020',
-      technologies: 'React, Node.js, MongoDB, Express, HIPAA Compliance',
-      imageSrc: '/images/projects/healthcare.jpg',
-      impact: 'Reduced administrative time by 35%, improved appointment adherence by 28%, 99.9% uptime'
-    }
-  ]
-
-  const currentStory = stories[currentIndex]
-
-  const goToNext = () => {
-    setCurrentIndex((prev) => (prev === stories.length - 1 ? 0 : prev + 1))
-    setImageError(false)
-  }
-
-  const goToPrevious = () => {
-    setCurrentIndex((prev) => (prev === 0 ? stories.length - 1 : prev - 1))
-    setImageError(false)
+  const goToSlide = (index: number) => {
+    setCurrentStoryIndex(index)
   }
 
   return (
-    <div className="h-full flex flex-col bg-gray-50 dark:bg-gray-900">
-      {/* Preview toolbar */}
-      <div className="bg-gray-100 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-4 py-2 flex items-center sticky top-0 z-10">
-        <div className="flex items-center space-x-2">
-          <button
-            onClick={goToPrevious}
-            className="p-1 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 rounded"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-          <button
-            onClick={goToNext}
-            className="p-1 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 rounded"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
+    <div className="h-full flex flex-col">
+      {/* Toolbar */}
+      <div className="bg-gray-100 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-4 py-2 flex items-center">
+        <div className="flex items-center">
+          <span className="text-sm font-medium">Success Stories</span>
         </div>
-
-        <div className="ml-4 text-xs">
-          {currentIndex + 1} of {stories.length}
-        </div>
-
         <div className="flex-grow"></div>
-
         <div className="flex items-center space-x-2">
-          <button className="p-1 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 rounded">
+          <button className="p-1 text-gray-500 hover:bg-gray-200 dark:hover:bg-gray-700 rounded">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
             </svg>
           </button>
-          <button className="p-1 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 rounded">
+          <button className="p-1 text-gray-500 hover:bg-gray-200 dark:hover:bg-gray-700 rounded">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-          </button>
-          <button className="p-1 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 rounded">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
             </svg>
           </button>
         </div>
       </div>
 
-      {/* Content area */}
-      <div className="flex-grow overflow-y-auto p-6">
-        <div className="max-w-xl mx-auto">
-          {/* Image with error handling */}
-          <div className="mb-6 rounded-lg overflow-hidden shadow-md relative h-64 bg-gray-200 dark:bg-gray-800">
-            {!imageError ? (
-              <Image
-                src={currentStory.imageSrc}
-                alt={currentStory.title}
-                fill
-                sizes="(max-width: 768px) 100vw, 576px"
-                className="object-cover"
-                onError={() => setImageError(true)}
-              />
-            ) : (
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center p-4">
-                  <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                  <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Image not available</p>
+      {/* Content */}
+      {currentStory && (
+        <div className="flex-grow p-6 bg-gray-50 dark:bg-gray-900">
+          <div className="max-w-4xl mx-auto">
+            {/* Story Header */}
+            <div className="mb-6">
+              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center space-x-3">
+                  <span className="text-sm font-medium text-gray-500">{currentStory.year}</span>
+                  <span className="text-sm text-gray-400">•</span>
+                  <span className="text-sm font-medium text-gray-500">Client: {currentStory.client}</span>
                 </div>
               </div>
-            )}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-            <div className="absolute bottom-0 left-0 p-4 text-white">
-              <div className="flex items-center">
-                <span className="text-xs py-1 px-2 bg-white/20 backdrop-blur-sm rounded mr-2">
-                  {currentStory.year}
-                </span>
-                <span className="text-xs">Client: {currentStory.clientName}</span>
+              <h1 className="text-2xl font-bold mb-2">{currentStory.title}</h1>
+              <p className="text-gray-600 dark:text-gray-400">{currentStory.description}</p>
+            </div>
+
+            {/* Technologies */}
+            <div className="mb-8">
+              <h2 className="text-sm font-semibold text-gray-500 mb-2">Technologies</h2>
+              <div className="flex flex-wrap gap-2">
+                {currentStory.technologies.map((tech, index) => (
+                  <span
+                    key={index}
+                    className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-full text-sm"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Impact Metrics */}
+            <div>
+              <h2 className="text-sm font-semibold text-gray-500 mb-4">Impact</h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {currentStory.impact.map((metric, index) => (
+                  <div
+                    key={index}
+                    className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm"
+                  >
+                    <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-1">
+                      {metric.value}
+                    </div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">
+                      {metric.metric}
+                    </div>
+                    {metric.change && (
+                      <div className="text-sm text-green-600 dark:text-green-400 mt-1">
+                        {metric.change}
+                      </div>
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
           </div>
+        </div>
+      )}
 
-          {/* Content */}
-          <h2 className="text-xl font-bold mb-3">{currentStory.title}</h2>
-          <p className="text-gray-700 dark:text-gray-300 mb-4">
-            {currentStory.description}
-          </p>
-
-          <div className="mb-4">
-            <h3 className="text-sm font-semibold mb-2 text-gray-600 dark:text-gray-400">Technologies</h3>
-            <p className="text-gray-700 dark:text-gray-300 text-sm">
-              {currentStory.technologies}
-            </p>
-          </div>
-
-          <div className="mb-6">
-            <h3 className="text-sm font-semibold mb-2 text-gray-600 dark:text-gray-400">Impact</h3>
-            <div className="bg-green-50 dark:bg-green-900/20 border-l-4 border-green-500 p-3">
-              <p className="text-green-800 dark:text-green-300 text-sm">
-                {currentStory.impact}
-              </p>
-            </div>
-          </div>
-
-          {/* Navigation dots - Sticky at the bottom */}
-          <div className="py-4 sticky bottom-0 bg-gradient-to-t from-gray-50 to-transparent dark:from-gray-900">
-            <div className="flex justify-center space-x-2">
-              {stories.map((_, index) => (
-                <button
-                  key={index}
-                  className={`w-2 h-2 rounded-full ${
-                    index === currentIndex ? 'bg-blue-600 dark:bg-blue-400' : 'bg-gray-300 dark:bg-gray-600'
-                  }`}
-                  onClick={() => setCurrentIndex(index)}
-                />
-              ))}
-            </div>
-          </div>
+      {/* Navigation */}
+      <div className="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 p-4">
+        <div className="flex justify-center items-center space-x-2">
+          {stories.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`w-2 h-2 rounded-full transition-all ${
+                index === currentStoryIndex
+                  ? 'bg-blue-500 w-4'
+                  : 'bg-gray-300 dark:bg-gray-600'
+              }`}
+            />
+          ))}
         </div>
       </div>
     </div>

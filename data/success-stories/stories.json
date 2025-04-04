@@ -1,0 +1,31 @@
+{
+  "stories": [
+    {
+      "id": "digital-banking",
+      "year": 2022,
+      "client": "TeamBank AG",
+      "title": "Digital Banking Platform",
+      "description": "Led the redesign of a major banking platform, improving user satisfaction by 35% and increasing mobile transactions by 28%.",
+      "technologies": ["UX Research", "Figma", "Design System", "Prototyping"],
+      "impact": [
+        {
+          "metric": "Mobile transactions",
+          "value": "28%",
+          "change": "increase"
+        },
+        {
+          "metric": "User satisfaction",
+          "value": "35%",
+          "change": "improvement"
+        },
+        {
+          "metric": "Support tickets",
+          "value": "42%",
+          "change": "reduction"
+        }
+      ],
+      "totalSlides": 4,
+      "currentSlide": 1
+    }
+  ]
+}
