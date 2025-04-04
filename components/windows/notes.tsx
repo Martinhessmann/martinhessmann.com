@@ -3,68 +3,90 @@
 import { useState } from 'react'
 import { getAllNotes } from '@/lib/app-content'
 import { Note } from '@/types/app-content'
+import { cn } from '@/lib/utils'
+import { ScrollArea } from '@/components/ui/scroll-area'
+import { Button } from '@/components/ui/button'
+import { Plus, Calendar, Search } from 'lucide-react'
 
 export function Notes() {
   const notes = getAllNotes()
   const [selectedNote, setSelectedNote] = useState<Note>(notes[0])
+  const [searchQuery, setSearchQuery] = useState('')
+
+  const filteredNotes = notes.filter(note =>
+    note.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    note.content.toLowerCase().includes(searchQuery.toLowerCase())
+  )
 
   return (
     <div className="h-full flex">
       {/* Sidebar */}
-      <div className="w-64 border-r border-gray-200 dark:border-gray-700 flex flex-col">
+      <div className="w-64 border-r border-border flex flex-col">
         {/* Toolbar */}
-        <div className="p-2 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <button className="p-1 text-gray-500 hover:bg-gray-200 dark:hover:bg-gray-700 rounded">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-              </svg>
-            </button>
-            <button className="p-1 text-gray-500 hover:bg-gray-200 dark:hover:bg-gray-700 rounded">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-            </button>
-          </div>
+        <div className="p-2 border-b border-border flex items-center gap-1">
+          <Button variant="ghost" size="icon" className="h-8 w-8">
+            <Plus className="h-4 w-4" />
+          </Button>
+          <Button variant="ghost" size="icon" className="h-8 w-8">
+            <Calendar className="h-4 w-4" />
+          </Button>
+          <div className="flex-grow" />
+          <Button variant="ghost" size="icon" className="h-8 w-8">
+            <Search className="h-4 w-4" />
+          </Button>
+        </div>
+
+        {/* Search (initially hidden) */}
+        <div className="px-3 py-2 border-b border-border">
+          <input
+            type="text"
+            placeholder="Search notes..."
+            className="w-full px-2 py-1 text-sm bg-background border border-input rounded-md"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
         </div>
 
         {/* Notes List */}
-        <div className="flex-grow overflow-y-auto">
+        <ScrollArea className="flex-grow">
           <div className="p-3">
-            <h2 className="text-sm font-medium text-gray-500 mb-2">On My Mac</h2>
-            <div className="text-xs text-gray-500 mb-4">Notes: {notes.length}</div>
-            {notes.map((note) => (
+            <h2 className="text-sm font-medium text-muted-foreground mb-2">On My Mac</h2>
+            <div className="text-xs text-muted-foreground mb-4">Notes: {filteredNotes.length}</div>
+            {filteredNotes.map((note) => (
               <button
                 key={note.id}
                 onClick={() => setSelectedNote(note)}
-                className={`w-full text-left p-2 rounded-lg mb-1 ${
+                className={cn(
+                  'w-full text-left p-2 rounded-lg mb-1',
+                  'transition-colors duration-200',
                   selectedNote.id === note.id
-                    ? 'bg-blue-100 dark:bg-blue-900/30'
-                    : 'hover:bg-gray-100 dark:hover:bg-gray-800'
-                }`}
+                    ? 'bg-secondary text-secondary-foreground'
+                    : 'hover:bg-secondary/50'
+                )}
               >
                 <div className="font-medium text-sm mb-1">{note.title}</div>
-                <div className="text-xs text-gray-500">
-                  {note.lastEdited} • {note.wordCount} words
+                <div className="text-xs text-muted-foreground flex items-center justify-between">
+                  <span>{note.lastEdited}</span>
+                  <span>{note.wordCount} words</span>
                 </div>
               </button>
             ))}
           </div>
-        </div>
+        </ScrollArea>
       </div>
 
       {/* Content */}
       <div className="flex-grow flex flex-col">
         {/* Note Header */}
-        <div className="border-b border-gray-200 dark:border-gray-700 p-4">
+        <div className="border-b border-border p-4 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
           <h1 className="text-xl font-bold mb-1">{selectedNote.title}</h1>
-          <div className="text-sm text-gray-500">
+          <div className="text-sm text-muted-foreground">
             Last edited on {selectedNote.lastEdited} • {selectedNote.wordCount} words
           </div>
         </div>
 
         {/* Note Content */}
-        <div className="flex-grow p-6 overflow-y-auto">
+        <ScrollArea className="flex-grow p-6">
           <div className="prose dark:prose-invert max-w-none">
             <p className="text-lg mb-6">{selectedNote.content}</p>
 
@@ -75,7 +97,7 @@ export function Notes() {
               </div>
             ))}
           </div>
-        </div>
+        </ScrollArea>
       </div>
     </div>
   )
