@@ -56,34 +56,34 @@ export function Desktop() {
       id: 'projects',
       title: 'Projects',
       icon: '/images/app-icons/04 Chrome.png',
-      isOpen: false,
+      isOpen: true,
       isMinimized: false,
       isFocused: false,
-      position: { x: 400, y: 100 },
+      position: { x: 100, y: 340 },
       component: <Projects />,
-      zIndex: 102
+      zIndex: 101
     },
     {
       id: 'stories',
       title: 'Stories',
       icon: '/images/app-icons/07 Photos.png',
-      isOpen: false,
+      isOpen: true,
       isMinimized: false,
       isFocused: false,
-      position: { x: 200, y: 150 },
+      position: { x: 480, y: 280 },
       component: <Stories />,
-      zIndex: 101
+      zIndex: 100
     },
     {
       id: 'messages',
       title: 'Messages',
       icon: '/images/app-icons/31 Messages.png',
-      isOpen: false,
+      isOpen: true,
       isMinimized: false,
       isFocused: false,
-      position: { x: 300, y: 200 },
+      position: { x: 670, y: 140 },
       component: <Messages />,
-      zIndex: 100
+      zIndex: 102
     },
     {
       id: 'notes',
@@ -97,7 +97,7 @@ export function Desktop() {
       zIndex: 103
     }
   ])
-  const [nextZIndex, setNextZIndex] = useState(100)
+  const [nextZIndex, setNextZIndex] = useState(104)
 
   // Function to focus a window
   const focusWindow = (windowId: string) => {

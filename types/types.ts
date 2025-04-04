@@ -3,7 +3,9 @@ export type ClientInfo = {
   id: string
   name: string
   industry: string
+  contact?: string
   icon?: string
+  contactImage?: string
 }
 
 export type Message = {

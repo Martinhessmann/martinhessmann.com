@@ -65,8 +65,8 @@ export function Messages() {
               >
                 <div className="w-10 h-10 relative rounded-full overflow-hidden mr-3">
                   <Image
-                    src={convo.client.icon || '/images/placeholder-client.png'}
-                    alt={convo.client.name}
+                    src={convo.client.contactImage || convo.client.icon || '/images/placeholder-client.png'}
+                    alt={convo.client.contact || convo.client.name}
                     fill
                     sizes="40px"
                     className="object-cover"
@@ -74,11 +74,13 @@ export function Messages() {
                 </div>
                 <div className="flex-grow">
                   <div className="flex justify-between">
-                    <span className="font-medium text-sm">{convo.client.name}</span>
+                    <span className="font-medium text-base">
+                      {convo.client.contact || 'Contact'}
+                    </span>
                     <span className="text-xs text-gray-500">{convo.lastActivity}</span>
                   </div>
                   <div className="text-xs text-gray-500 truncate">
-                    <span className="text-gray-400">{convo.client.industry}</span>
+                    <span className="text-gray-400">{convo.client.name}</span>
                   </div>
                 </div>
               </div>
@@ -93,16 +95,16 @@ export function Messages() {
             <div className="border-b border-gray-200 dark:border-gray-700 p-3 flex items-center sticky top-0 bg-white dark:bg-gray-800 z-10">
               <div className="w-8 h-8 relative rounded-full overflow-hidden mr-3">
                 <Image
-                  src={currentConversation.client.icon || '/images/placeholder-client.png'}
-                  alt={currentConversation.client.name}
+                  src={currentConversation.client.contactImage || currentConversation.client.icon || '/images/placeholder-client.png'}
+                  alt={currentConversation.client.contact || currentConversation.client.name}
                   fill
                   sizes="32px"
                   className="object-cover"
                 />
               </div>
               <div>
-                <div className="font-medium text-sm">{currentConversation.client.name}</div>
-                <div className="text-xs text-gray-500">{currentConversation.client.industry}</div>
+                <div className="font-medium text-sm">{currentConversation.client.contact || 'Contact'}</div>
+                <div className="text-xs text-gray-500">{currentConversation.client.name}</div>
               </div>
             </div>
 

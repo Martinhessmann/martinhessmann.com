@@ -45,11 +45,50 @@ export function Window({
   const [isDragging, setIsDragging] = useState(false)
   const [isResizing, setIsResizing] = useState(false)
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 })
-  const [windowSize, setWindowSize] = useState({ width: 600, height: 420 })
+  const [wasFocused, setWasFocused] = useState(isFocused)
+  const [preventNextClick, setPreventNextClick] = useState(false)
+
+  // Set different default sizes based on window type
+  const getDefaultSize = () => {
+    switch (id) {
+      case 'notes':
+        return { width: 800, height: 580 }
+      case 'messages':
+        return { width: 720, height: 520 }
+      case 'projects':
+        return { width: 880, height: 580 }
+      case 'stories':
+        return { width: 700, height: 500 }
+      default:
+        return { width: 600, height: 420 }
+    }
+  }
+
+  const [windowSize, setWindowSize] = useState(getDefaultSize())
   const [resizeDirection, setResizeDirection] = useState({ x: 0, y: 0 })
   const [resizeStartPosition, setResizeStartPosition] = useState({ x: 0, y: 0 })
   const [resizeStartSize, setResizeStartSize] = useState({ width: 0, height: 0 })
   const windowRef = useRef<HTMLDivElement>(null)
+  const contentRef = useRef<HTMLDivElement>(null)
+
+  // Track focus changes
+  useEffect(() => {
+    // If window is newly focused, prevent the next click
+    if (isFocused && !wasFocused) {
+      setPreventNextClick(true)
+    }
+    setWasFocused(isFocused)
+  }, [isFocused, wasFocused])
+
+  // Clear the prevent click state after a short delay
+  useEffect(() => {
+    if (preventNextClick) {
+      const timer = setTimeout(() => {
+        setPreventNextClick(false)
+      }, 100)
+      return () => clearTimeout(timer)
+    }
+  }, [preventNextClick])
 
   // Handle window drag
   const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
@@ -180,9 +219,20 @@ export function Window({
   }, [isDragging, isResizing, dragOffset, resizeDirection, resizeStartPosition, resizeStartSize, updatePosition, position, windowSize.width])
 
   // Handle focus on click
-  const handleWindowClick = () => {
+  const handleWindowClick = (e: MouseEvent<HTMLDivElement>) => {
     if (!isFocused) {
       onFocus()
+      e.preventDefault()
+      e.stopPropagation()
+    }
+  }
+
+  // Handle content click
+  const handleContentClick = (e: MouseEvent<HTMLDivElement>) => {
+    if (preventNextClick) {
+      e.preventDefault()
+      e.stopPropagation()
+      setPreventNextClick(false)
     }
   }
 
@@ -219,35 +269,39 @@ export function Window({
         onMouseDown={handleMouseDown}
       >
         {/* Window control buttons */}
-        <div className="window-buttons flex space-x-[6px] mr-2 pl-2">
+        <div className="window-buttons flex space-x-[6px] mr-2 pl-2 group">
           <button
             onClick={onClose}
             className={`w-3 h-3 rounded-full ${isFocused
-              ? 'bg-[#FF5F57] hover:bg-[#FF5F57]/80'
-              : 'bg-[#404040] hover:bg-[#FF5F57]'}
-              group flex items-center justify-center transition-colors`}
+              ? 'bg-[#FF5F57] group-hover:bg-[#FF5F57] hover:bg-[#FF5F57]/90'
+              : 'bg-[#404040] group-hover:bg-[#FF5F57]'}
+              flex items-center justify-center transition-colors`}
             aria-label="Close window"
           >
-            <span className="hidden group-hover:inline text-[8px] text-[#4c0002] font-bold">×</span>
+            <span className="opacity-0 group-hover:opacity-100 text-[10px] text-[#4c0002] font-bold leading-none relative -top-[0.5px]">×</span>
           </button>
           <button
             onClick={onMinimize}
             className={`w-3 h-3 rounded-full ${isFocused
-              ? 'bg-[#FEBC2E] hover:bg-[#FEBC2E]/80'
-              : 'bg-[#404040] hover:bg-[#FEBC2E]'}
-              group flex items-center justify-center transition-colors`}
+              ? 'bg-[#FEBC2E] group-hover:bg-[#FEBC2E] hover:bg-[#FEBC2E]/90'
+              : 'bg-[#404040] group-hover:bg-[#FEBC2E]'}
+              flex items-center justify-center transition-colors`}
             aria-label="Minimize window"
           >
-            <span className="hidden group-hover:inline text-[8px] text-[#9a5f00] font-bold">−</span>
+            <span className="opacity-0 group-hover:opacity-100 text-[10px] text-[#9a5f00] font-bold leading-none relative -top-[1px]">−</span>
           </button>
           <button
             className={`w-3 h-3 rounded-full ${isFocused
-              ? 'bg-[#28C840] hover:bg-[#28C840]/80'
-              : 'bg-[#404040] hover:bg-[#28C840]'}
-              group flex items-center justify-center transition-colors`}
+              ? 'bg-[#28C840] group-hover:bg-[#28C840] hover:bg-[#28C840]/90'
+              : 'bg-[#404040] group-hover:bg-[#28C840]'}
+              flex items-center justify-center transition-colors`}
             aria-label="Maximize window"
           >
-            <span className="hidden group-hover:inline text-[8px] text-[#0b4913] font-bold">+</span>
+            <span className="opacity-0 group-hover:opacity-100 text-[#0b4913] font-bold">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8" width="8" height="8" fill="none" stroke="currentColor" strokeWidth="1.2" className="scale-90">
+                <path d="M1.5,1.5 h3 v3 M6.5,6.5 h-3 v-3" />
+              </svg>
+            </span>
           </button>
         </div>
 
@@ -272,7 +326,11 @@ export function Window({
       </div>
 
       {/* Window content */}
-      <div className={`h-[calc(100%-28px)] bg-[#252525]/95 backdrop-blur-xl p-4 overflow-auto window-content`}>
+      <div
+        ref={contentRef}
+        className={`h-[calc(100%-28px)] bg-[#252525]/95 backdrop-blur-xl p-4 overflow-auto window-content`}
+        onClick={handleContentClick}
+      >
         {children}
       </div>
 
