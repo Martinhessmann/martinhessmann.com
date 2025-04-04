@@ -194,12 +194,12 @@ export function Window({
     <div
       ref={windowRef}
       className={`absolute rounded-xl overflow-hidden backdrop-blur-xl
-        border border-[#2e2e2e] dark:border-neutral-700
-        ring-1 ring-white/10 dark:ring-white/5
+        border border-[#1e1e1e] dark:border-[#1e1e1e]
+        ring-[0.5px] ring-white/10
         ${isDragging || isResizing ? 'cursor-grabbing select-none' : ''}
         ${isFocused
-          ? 'bg-white/90 dark:bg-neutral-900/90 shadow-lg shadow-black/20'
-          : 'bg-white/80 dark:bg-neutral-900/80'}`}
+          ? 'bg-[#252525]/90 shadow-lg shadow-black/20'
+          : 'bg-[#252525]/80'}`}
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
@@ -213,8 +213,8 @@ export function Window({
       <div
         className={`h-7 border-b backdrop-blur-xl
           ${isFocused
-            ? 'bg-gray-100/90 dark:bg-neutral-800/90 border-gray-200/20 dark:border-neutral-700'
-            : 'bg-gray-100/70 dark:bg-neutral-800/70 border-gray-200/10 dark:border-neutral-800'}
+            ? 'bg-[#252525]/95 border-[#1e1e1e]'
+            : 'bg-[#252525]/90 border-[#1e1e1e]'}
           flex items-center px-2 cursor-grab select-none`}
         onMouseDown={handleMouseDown}
       >
@@ -243,7 +243,7 @@ export function Window({
         </div>
 
         {/* Window title with icon */}
-        <div className="flex items-center justify-center flex-grow text-xs font-medium text-gray-600 dark:text-neutral-300">
+        <div className="flex items-center justify-center flex-grow text-xs font-medium text-white/70">
           {icon && (
             <div className="h-4 w-4 mr-1.5 relative">
               <Image
@@ -263,7 +263,7 @@ export function Window({
       </div>
 
       {/* Window content */}
-      <div className={`h-[calc(100%-28px)] bg-white/95 dark:bg-neutral-900/95 backdrop-blur-xl p-4 overflow-auto window-content`}>
+      <div className={`h-[calc(100%-28px)] bg-[#252525]/95 backdrop-blur-xl p-4 overflow-auto window-content`}>
         {children}
       </div>
 

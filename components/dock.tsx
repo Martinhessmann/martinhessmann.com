@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 
 interface WindowState {
@@ -19,6 +19,17 @@ interface DockProps {
 
 export function Dock({ windows, openWindow }: DockProps) {
   const [hoveredApp, setHoveredApp] = useState<string | null>(null)
+  const [initialRender, setInitialRender] = useState(true)
+
+  // Reset initial render flag after component mounts
+  useEffect(() => {
+    // Wait a brief moment to ensure all animations have time to start properly
+    const timer = setTimeout(() => {
+      setInitialRender(false)
+    }, 100)
+
+    return () => clearTimeout(timer)
+  }, [])
 
   // List of apps to show in the dock
   const dockApps = [
@@ -39,52 +50,71 @@ export function Dock({ windows, openWindow }: DockProps) {
   }
 
   return (
-    <div className="bg-white/30 dark:bg-black/30 backdrop-blur-lg rounded-2xl px-2 py-1 flex items-end space-x-2">
-      {dockApps.map((app) => {
-        // Find if the app is open
-        const appWindow = windows.find(w => w.id === app.id)
-        const isOpen = appWindow?.isOpen
-        const isActive = appWindow?.isFocused
+    <div className="fixed bottom-2 left-1/2 -translate-x-1/2 px-2 py-1 z-[60]">
+      <div className="bg-[#252525]/90 backdrop-blur-2xl rounded-2xl
+        px-1.5 py-1 flex items-end space-x-1.5
+        shadow-[0_0_0_0.5px_rgba(0,0,0,0.5)]
+        ring-[0.5px] ring-white/10
+        relative">
+        {/* Subtle gradient overlay */}
+        <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/20 to-transparent opacity-50" />
 
-        return (
-          <div
-            key={app.id}
-            className="relative group"
-            onMouseEnter={() => setHoveredApp(app.id)}
-            onMouseLeave={() => setHoveredApp(null)}
-          >
-            {/* App icon */}
-            <button
-              onClick={() => handleAppClick(app.id)}
-              className={`relative transition-all duration-200 ease-in-out
-                         ${hoveredApp === app.id ? 'scale-125 -translate-y-2' : 'scale-100'}
-                         ${isActive ? 'scale-110' : ''}`}
+        {dockApps.map((app) => {
+          const appWindow = windows.find(w => w.id === app.id)
+          const isOpen = appWindow?.isOpen
+          const isActive = appWindow?.isFocused && !initialRender
+
+          return (
+            <div
+              key={app.id}
+              className="relative group z-10"
+              onMouseEnter={() => setHoveredApp(app.id)}
+              onMouseLeave={() => setHoveredApp(null)}
             >
-              <div className="h-12 w-12 relative">
-                <Image
-                  src={app.icon}
-                  alt={app.title}
-                  fill
-                  sizes="48px"
-                  className="object-contain"
-                />
+              {/* App icon */}
+              <button
+                onClick={() => handleAppClick(app.id)}
+                className={`relative ${isActive ? 'scale-110' : ''}`}
+              >
+                <div className="h-12 w-12 relative">
+                  <Image
+                    src={app.icon}
+                    alt={app.title}
+                    fill
+                    sizes="48px"
+                    className="object-contain drop-shadow-md"
+                  />
+                </div>
+
+                {/* Indicator dot for open apps */}
+                {isOpen && (
+                  <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2
+                    w-1.5 h-1.5 rounded-full bg-white/40" />
+                )}
+              </button>
+
+              {/* Tooltip with app name */}
+              <div className="absolute left-1/2 -top-12 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-150">
+                <div className="relative flex flex-col items-center">
+                  <div className="bg-[#252525] rounded-lg py-[3px] px-3 text-xs text-white whitespace-nowrap
+                    shadow-[0_0_0_0.5px_rgba(0,0,0,0.8)]
+                    ring-[0.5px] ring-white/10
+                    relative z-10">
+                    {app.title}
+                  </div>
+                  {/* Tooltip arrow */}
+                  <div className="w-4 h-4 bg-[#252525] rotate-45 transform
+                    -mt-[8px]
+                    rounded-sm
+                    shadow-[0_0_0_0.5px_rgba(0,0,0,0.8)]
+                    ring-[0.5px] ring-white/10
+                    relative z-[1]" />
+                </div>
               </div>
-
-              {/* Indicator dot for open apps */}
-              {isOpen && (
-                <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-white rounded-full" />
-              )}
-            </button>
-
-            {/* Tooltip with app name */}
-            <div className={`absolute left-1/2 transform -translate-x-1/2 -top-8
-                          bg-gray-800/80 text-white text-xs py-1 px-2 rounded whitespace-nowrap
-                          opacity-0 group-hover:opacity-100 transition-opacity duration-200`}>
-              {app.title}
             </div>
-          </div>
-        )
-      })}
+          )
+        })}
+      </div>
     </div>
   )
 }
