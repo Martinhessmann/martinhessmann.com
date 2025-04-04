@@ -83,7 +83,7 @@ export function WebProjects() {
   return (
     <div className="h-full flex flex-col">
       {/* Safari-like toolbar */}
-      <div className="bg-gray-100 dark:bg-gray-800 px-4 py-1 flex items-center space-x-2 border-b border-gray-200 dark:border-gray-700">
+      <div className="bg-gray-100 dark:bg-gray-800 px-4 py-1 flex items-center space-x-2 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-20">
         <div className="flex space-x-1">
           <button className="text-gray-600 dark:text-gray-400 px-1">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -120,7 +120,7 @@ export function WebProjects() {
       </div>
 
       {/* Filter tabs */}
-      <div className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 px-4 py-2">
+      <div className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 px-4 py-2 sticky top-9 z-10">
         <div className="flex space-x-4 overflow-x-auto text-sm">
           <button
             className={`px-3 py-1 rounded-md ${activeTab === 'all' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300' : 'text-gray-600 dark:text-gray-300'}`}
@@ -156,7 +156,7 @@ export function WebProjects() {
       </div>
 
       {/* Projects grid */}
-      <div className="flex-grow overflow-auto p-6 bg-gray-50 dark:bg-gray-900">
+      <div className="flex-grow overflow-y-auto p-6 bg-gray-50 dark:bg-gray-900">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {filteredProjects.map((project) => (
             <div key={project.id} className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">

@@ -8,6 +8,7 @@ import { AboutNotes } from './windows/about-notes'
 import { WebProjects } from './windows/web-projects'
 import { SuccessStories } from './windows/success-stories'
 import { ClientPartnerships } from './windows/client-partnerships'
+import { ThemeToggle } from './theme-toggle'
 
 // Window position types
 interface WindowPosition {
@@ -26,6 +27,27 @@ interface WindowState {
   position: WindowPosition
   component: React.ReactNode
   zIndex: number
+}
+
+// Create a client-only clock component
+function ClientOnlyClock() {
+  const [time, setTime] = useState('')
+
+  useEffect(() => {
+    // Set time immediately on mount
+    const updateTime = () => {
+      setTime(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }))
+    }
+
+    updateTime() // Initial update
+
+    // Update every minute
+    const interval = setInterval(updateTime, 60000)
+
+    return () => clearInterval(interval)
+  }, [])
+
+  return <span>{time}</span>
 }
 
 export function MacDesktop() {
@@ -70,8 +92,8 @@ export function MacDesktop() {
       },
       {
         id: 'client-partnerships',
-        title: 'Client Partnerships',
-        icon: '/images/app-icons/26 Telegram.png',
+        title: 'Messages - Client Feedback',
+        icon: '/images/app-icons/31 Messages.png',
         isOpen: true,
         isMinimized: false,
         isFocused: false,
@@ -84,16 +106,15 @@ export function MacDesktop() {
 
   // Function to focus a window
   const focusWindow = (windowId: string) => {
-    const newZIndex = nextZIndex + 1
-    setNextZIndex(newZIndex)
+    setWindows(prevWindows => {
+      const highestZIndex = Math.max(...prevWindows.map(w => w.zIndex))
 
-    setWindows(prevWindows =>
-      prevWindows.map(window => ({
+      return prevWindows.map(window => ({
         ...window,
         isFocused: window.id === windowId,
-        zIndex: window.id === windowId ? newZIndex : window.zIndex
+        zIndex: window.id === windowId ? highestZIndex + 1 : window.zIndex
       }))
-    )
+    })
   }
 
   // Function to toggle window minimization
@@ -128,27 +149,94 @@ export function MacDesktop() {
 
   // Function to open a window from the dock
   const openWindow = (windowId: string) => {
-    setWindows(prevWindows => {
-      const windowExists = prevWindows.some(w => w.id === windowId)
+    setWindows((current) => {
+      // Find the window
+      const windowIndex = current.findIndex((w) => w.id === windowId)
 
-      if (windowExists) {
-        return prevWindows.map(window => ({
-          ...window,
-          isOpen: window.id === windowId ? true : window.isOpen,
-          isMinimized: window.id === windowId ? false : window.isMinimized,
-          isFocused: window.id === windowId
-        }))
+      if (windowIndex === -1) return current
+
+      const updatedWindows = [...current]
+      const windowToOpen = { ...updatedWindows[windowIndex] }
+
+      // If it's not already open, position it in a cascading manner
+      if (!windowToOpen.isOpen) {
+        // Count how many windows are already open
+        const openWindowsCount = updatedWindows.filter(w => w.isOpen).length
+
+        // Create cascade effect by offsetting each new window
+        const baseX = 100 + (openWindowsCount * 30)
+        const baseY = 80 + (openWindowsCount * 30)
+
+        // Ensure the window is positioned within view boundaries
+        const maxX = window.innerWidth - 100 // Keep at least 100px visible
+        const maxY = window.innerHeight - 36 // Keep header visible
+
+        windowToOpen.position = {
+          x: Math.min(baseX, maxX),
+          y: Math.min(baseY, maxY)
+        }
       }
 
-      return prevWindows
-    })
+      // Update the window properties
+      windowToOpen.isOpen = true
+      windowToOpen.isMinimized = false
 
-    focusWindow(windowId)
+      // Focus the window
+      updatedWindows.forEach(w => {
+        w.isFocused = (w.id === windowId)
+        if (w.id === windowId) {
+          w.zIndex = Math.max(...updatedWindows.map(w => w.zIndex)) + 1
+        }
+      })
+
+      updatedWindows[windowIndex] = windowToOpen
+
+      return updatedWindows
+    })
   }
 
   return (
     <div className="w-full h-screen overflow-hidden relative bg-cover bg-center"
-         style={{ backgroundImage: 'url(/images/desktop-background.png)' }}>
+         style={{ backgroundImage: 'url(/images/desktop-background.jpg)' }}>
+
+      {/* Top menu bar */}
+      <div className="absolute top-0 left-0 right-0 h-6 bg-gray-100/90 dark:bg-gray-900/90 backdrop-blur-md flex items-center px-3 z-50">
+        <div className="flex items-center mr-4">
+          <div className="h-4 w-4 mr-2 relative">
+            <Image
+              src="/favicon.ico"
+              alt="Martin Heßmann"
+              fill
+              sizes="16px"
+              className="object-contain"
+            />
+          </div>
+          <span className="text-xs font-medium">Martin Heßmann</span>
+        </div>
+
+        <div className="flex space-x-4 text-xs">
+          <span className="font-semibold">File</span>
+          <span>Edit</span>
+          <span>View</span>
+          <span>Go</span>
+          <span>Window</span>
+          <span>Help</span>
+        </div>
+
+        <div className="flex-grow"></div>
+
+        <div className="flex items-center space-x-3 text-xs">
+          <span>Imprint</span>
+          <span>Privacy</span>
+          <ThemeToggle />
+          <div className="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            <ClientOnlyClock />
+          </div>
+        </div>
+      </div>
 
       {/* Render windows */}
       {windows.map(window => (

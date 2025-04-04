@@ -16,6 +16,7 @@ interface SuccessStory {
 
 export function SuccessStories() {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [imageError, setImageError] = useState(false)
 
   const stories: SuccessStory[] = [
     {
@@ -64,16 +65,18 @@ export function SuccessStories() {
 
   const goToNext = () => {
     setCurrentIndex((prev) => (prev === stories.length - 1 ? 0 : prev + 1))
+    setImageError(false)
   }
 
   const goToPrevious = () => {
     setCurrentIndex((prev) => (prev === 0 ? stories.length - 1 : prev - 1))
+    setImageError(false)
   }
 
   return (
     <div className="h-full flex flex-col bg-gray-50 dark:bg-gray-900">
       {/* Preview toolbar */}
-      <div className="bg-gray-100 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-4 py-2 flex items-center">
+      <div className="bg-gray-100 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-4 py-2 flex items-center sticky top-0 z-10">
         <div className="flex items-center space-x-2">
           <button
             onClick={goToPrevious}
@@ -120,17 +123,29 @@ export function SuccessStories() {
       </div>
 
       {/* Content area */}
-      <div className="flex-grow overflow-auto p-6">
+      <div className="flex-grow overflow-y-auto p-6">
         <div className="max-w-xl mx-auto">
-          {/* Image */}
-          <div className="mb-6 rounded-lg overflow-hidden shadow-md relative h-64">
-            <Image
-              src={currentStory.imageSrc}
-              alt={currentStory.title}
-              fill
-              sizes="(max-width: 768px) 100vw, 576px"
-              className="object-cover"
-            />
+          {/* Image with error handling */}
+          <div className="mb-6 rounded-lg overflow-hidden shadow-md relative h-64 bg-gray-200 dark:bg-gray-800">
+            {!imageError ? (
+              <Image
+                src={currentStory.imageSrc}
+                alt={currentStory.title}
+                fill
+                sizes="(max-width: 768px) 100vw, 576px"
+                className="object-cover"
+                onError={() => setImageError(true)}
+              />
+            ) : (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center p-4">
+                  <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Image not available</p>
+                </div>
+              </div>
+            )}
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
             <div className="absolute bottom-0 left-0 p-4 text-white">
               <div className="flex items-center">
@@ -164,17 +179,19 @@ export function SuccessStories() {
             </div>
           </div>
 
-          {/* Navigation dots */}
-          <div className="flex justify-center space-x-2 mt-6">
-            {stories.map((_, index) => (
-              <button
-                key={index}
-                className={`w-2 h-2 rounded-full ${
-                  index === currentIndex ? 'bg-blue-600 dark:bg-blue-400' : 'bg-gray-300 dark:bg-gray-600'
-                }`}
-                onClick={() => setCurrentIndex(index)}
-              />
-            ))}
+          {/* Navigation dots - Sticky at the bottom */}
+          <div className="py-4 sticky bottom-0 bg-gradient-to-t from-gray-50 to-transparent dark:from-gray-900">
+            <div className="flex justify-center space-x-2">
+              {stories.map((_, index) => (
+                <button
+                  key={index}
+                  className={`w-2 h-2 rounded-full ${
+                    index === currentIndex ? 'bg-blue-600 dark:bg-blue-400' : 'bg-gray-300 dark:bg-gray-600'
+                  }`}
+                  onClick={() => setCurrentIndex(index)}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>

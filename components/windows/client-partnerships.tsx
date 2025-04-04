@@ -171,8 +171,8 @@ export function ClientPartnerships() {
 
       <div className="flex-grow flex">
         {/* Conversations sidebar */}
-        <div className="w-1/3 border-r border-gray-200 dark:border-gray-700 overflow-auto">
-          <div className="p-3">
+        <div className="w-1/3 border-r border-gray-200 dark:border-gray-700 overflow-y-auto">
+          <div className="p-3 sticky top-0 bg-white dark:bg-gray-800 z-10">
             <div className="relative">
               <input
                 type="text"
@@ -185,43 +185,45 @@ export function ClientPartnerships() {
             </div>
           </div>
 
-          {conversations.map((convo) => (
-            <div
-              key={convo.id}
-              className={`p-3 flex items-center cursor-pointer ${
-                selectedConversation === convo.id
-                  ? 'bg-blue-100 dark:bg-blue-900/30'
-                  : 'hover:bg-gray-100 dark:hover:bg-gray-800'
-              }`}
-              onClick={() => setSelectedConversation(convo.id)}
-            >
-              <div className="w-10 h-10 relative rounded-full overflow-hidden mr-3">
-                <Image
-                  src={convo.clientLogo}
-                  alt={convo.clientName}
-                  fill
-                  sizes="40px"
-                  className="object-cover"
-                />
-              </div>
-              <div className="flex-grow">
-                <div className="flex justify-between">
-                  <span className="font-medium text-sm">{convo.clientName}</span>
-                  <span className="text-xs text-gray-500">{convo.lastActivity}</span>
+          <div className="conversations-list">
+            {conversations.map((convo) => (
+              <div
+                key={convo.id}
+                className={`p-3 flex items-center cursor-pointer ${
+                  selectedConversation === convo.id
+                    ? 'bg-blue-100 dark:bg-blue-900/30'
+                    : 'hover:bg-gray-100 dark:hover:bg-gray-800'
+                }`}
+                onClick={() => setSelectedConversation(convo.id)}
+              >
+                <div className="w-10 h-10 relative rounded-full overflow-hidden mr-3">
+                  <Image
+                    src={convo.clientLogo}
+                    alt={convo.clientName}
+                    fill
+                    sizes="40px"
+                    className="object-cover"
+                  />
                 </div>
-                <div className="text-xs text-gray-500 truncate">
-                  <span className="text-gray-400">{convo.industry}</span>
+                <div className="flex-grow">
+                  <div className="flex justify-between">
+                    <span className="font-medium text-sm">{convo.clientName}</span>
+                    <span className="text-xs text-gray-500">{convo.lastActivity}</span>
+                  </div>
+                  <div className="text-xs text-gray-500 truncate">
+                    <span className="text-gray-400">{convo.industry}</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {/* Conversation content */}
         {currentConversation && (
           <div className="w-2/3 flex flex-col">
-            {/* Header */}
-            <div className="border-b border-gray-200 dark:border-gray-700 p-3 flex items-center">
+            {/* Header - Sticky */}
+            <div className="border-b border-gray-200 dark:border-gray-700 p-3 flex items-center sticky top-0 bg-white dark:bg-gray-800 z-10">
               <div className="w-8 h-8 relative rounded-full overflow-hidden mr-3">
                 <Image
                   src={currentConversation.clientLogo}
@@ -237,8 +239,8 @@ export function ClientPartnerships() {
               </div>
             </div>
 
-            {/* Messages */}
-            <div className="flex-grow overflow-auto p-4 bg-gray-50 dark:bg-gray-900">
+            {/* Messages - Scrollable */}
+            <div className="flex-grow overflow-y-auto p-4 bg-gray-50 dark:bg-gray-900">
               <div className="space-y-4">
                 {currentConversation.messages.map((message) => (
                   <div
@@ -262,8 +264,8 @@ export function ClientPartnerships() {
               </div>
             </div>
 
-            {/* Input area */}
-            <div className="p-3 border-t border-gray-200 dark:border-gray-700">
+            {/* Input area - Sticky */}
+            <div className="p-3 border-t border-gray-200 dark:border-gray-700 sticky bottom-0 bg-white dark:bg-gray-800">
               <div className="flex items-center">
                 <button className="p-2 text-gray-500">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

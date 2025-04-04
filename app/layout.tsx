@@ -1,8 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { ThemeProvider } from '@/components/theme-provider'
-import { Navigation } from '@/components/navigation'
-import { ThemeToggle } from '@/components/theme-toggle'
 
 export const metadata: Metadata = {
   title: 'Martin Heßmann - Digital Product Manager & UX Designer',
@@ -42,12 +40,8 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="flex flex-col min-h-screen">
-            <Navigation />
             <div className="flex-1">
               {children}
-            </div>
-            <div className="fixed bottom-4 right-4 z-50">
-              <ThemeToggle />
             </div>
           </div>
         </ThemeProvider>
