@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { SocialLinks } from './social-links'
 import { ProfileImage } from './profile-image'
-import { MacAppBar } from './mac-app-bar'
+import { AppBar } from './app-bar'
 
 export function HeroAboutSection() {
   return (
@@ -9,7 +9,7 @@ export function HeroAboutSection() {
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
           {/* Mac App Bar (now sticky) */}
-          <MacAppBar />
+          <AppBar />
 
           <div className="bg-secondary rounded-b-lg p-8 shadow-md">
             {/* Hero content */}

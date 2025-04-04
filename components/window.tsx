@@ -13,7 +13,7 @@ interface WindowSize {
   height: number
 }
 
-interface MacWindowProps {
+interface WindowProps {
   id: string
   title: string
   icon: string
@@ -28,7 +28,7 @@ interface MacWindowProps {
   updatePosition: (position: WindowPosition) => void
 }
 
-export function MacWindow({
+export function Window({
   id,
   title,
   icon,
@@ -41,7 +41,7 @@ export function MacWindow({
   onMinimize,
   onClose,
   updatePosition
-}: MacWindowProps) {
+}: WindowProps) {
   const [isDragging, setIsDragging] = useState(false)
   const [isResizing, setIsResizing] = useState(false)
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 })

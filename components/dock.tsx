@@ -12,12 +12,12 @@ interface WindowState {
   isFocused: boolean
 }
 
-interface MacDockProps {
+interface DockProps {
   windows: WindowState[]
   openWindow: (id: string) => void
 }
 
-export function MacDock({ windows, openWindow }: MacDockProps) {
+export function Dock({ windows, openWindow }: DockProps) {
   const [hoveredApp, setHoveredApp] = useState<string | null>(null)
 
   // List of apps to show in the dock

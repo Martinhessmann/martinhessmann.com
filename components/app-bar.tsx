@@ -10,7 +10,11 @@ interface AppIcon {
   tools?: string[]
 }
 
-export function MacAppBar() {
+interface AppBarProps {
+  // ... props
+}
+
+export function AppBar() {
   const [activeApp, setActiveApp] = useState<string | null>(null)
   const [isSticky, setIsSticky] = useState(false)
   const tooltipRef = useRef<HTMLDivElement>(null)

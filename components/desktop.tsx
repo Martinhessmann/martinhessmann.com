@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { MacDock } from './mac-dock'
-import { MacWindow } from './mac-window'
+import { Dock } from './dock'
+import { Window } from './window'
 import { AboutNotes } from './windows/about-notes'
 import { WebProjects } from './windows/web-projects'
 import { SuccessStories } from './windows/success-stories'
@@ -50,7 +50,7 @@ function ClientOnlyClock() {
   return <span>{time}</span>
 }
 
-export function MacDesktop() {
+export function Desktop() {
   const [windows, setWindows] = useState<WindowState[]>([])
   const [nextZIndex, setNextZIndex] = useState(100)
 
@@ -241,7 +241,7 @@ export function MacDesktop() {
       {/* Render windows */}
       {windows.map(window => (
         window.isOpen && (
-          <MacWindow
+          <Window
             key={window.id}
             id={window.id}
             title={window.title}
@@ -256,13 +256,13 @@ export function MacDesktop() {
             updatePosition={(newPos: WindowPosition) => updatePosition(window.id, newPos)}
           >
             {window.component}
-          </MacWindow>
+          </Window>
         )
       ))}
 
       {/* Dock at the bottom */}
       <div className="absolute bottom-0 left-0 right-0 flex justify-center py-2">
-        <MacDock
+        <Dock
           windows={windows}
           openWindow={openWindow}
         />
