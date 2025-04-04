@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { ClientConversation, Message } from '@/types/types'
 import { getAllConversations } from '@/lib/content'
+import { ScrollArea } from '@/components/ui/scroll-area'
 
 export function Messages() {
   const [selectedConversation, setSelectedConversation] = useState<string>('teambank')
@@ -36,10 +37,10 @@ export function Messages() {
         </div>
       </div>
 
-      <div className="flex-grow flex">
+      <div className="flex-grow flex overflow-hidden">
         {/* Conversations sidebar */}
-        <div className="w-1/3 border-r border-border overflow-y-auto bg-card">
-          <div className="p-3 sticky top-0 bg-card z-10">
+        <div className="w-[280px] flex-shrink-0 border-r border-border bg-card flex flex-col">
+          <div className="p-3 sticky top-0 bg-card z-10 border-b border-border">
             <div className="relative">
               <input
                 type="text"
@@ -52,47 +53,49 @@ export function Messages() {
             </div>
           </div>
 
-          <div className="conversations-list">
-            {conversations.map((convo) => (
-              <div
-                key={convo.client.id}
-                className={`p-3 flex items-center cursor-pointer ${
-                  selectedConversation === convo.client.id
-                    ? 'bg-primary/10 text-primary'
-                    : 'hover:bg-muted text-foreground'
-                }`}
-                onClick={() => setSelectedConversation(convo.client.id)}
-              >
-                <div className="w-10 h-10 relative rounded-full overflow-hidden mr-3">
-                  <Image
-                    src={convo.client.contactImage || convo.client.icon || '/images/placeholder-client.png'}
-                    alt={convo.client.contact || convo.client.name}
-                    fill
-                    sizes="40px"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="flex-grow">
-                  <div className="flex justify-between">
-                    <span className="font-medium text-base">
-                      {convo.client.contact || 'Contact'}
-                    </span>
-                    <span className="text-xs text-muted-foreground">{convo.lastActivity}</span>
+          <ScrollArea className="flex-grow">
+            <div className="conversations-list">
+              {conversations.map((convo) => (
+                <div
+                  key={convo.client.id}
+                  className={`p-3 flex items-center cursor-pointer ${
+                    selectedConversation === convo.client.id
+                      ? 'bg-primary/10 text-primary'
+                      : 'hover:bg-muted text-foreground'
+                  }`}
+                  onClick={() => setSelectedConversation(convo.client.id)}
+                >
+                  <div className="w-10 h-10 relative rounded-full overflow-hidden mr-3">
+                    <Image
+                      src={convo.client.contactImage || convo.client.icon || '/images/placeholder-client.png'}
+                      alt={convo.client.contact || convo.client.name}
+                      fill
+                      sizes="40px"
+                      className="object-cover"
+                    />
                   </div>
-                  <div className="text-xs text-muted-foreground truncate">
-                    <span className="text-muted-foreground">{convo.client.name}</span>
+                  <div className="flex-grow">
+                    <div className="flex justify-between">
+                      <span className="font-medium text-base">
+                        {convo.client.contact || 'Contact'}
+                      </span>
+                      <span className="text-xs text-muted-foreground">{convo.lastActivity}</span>
+                    </div>
+                    <div className="text-xs text-muted-foreground truncate">
+                      <span className="text-muted-foreground">{convo.client.name}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          </ScrollArea>
         </div>
 
         {/* Conversation content */}
         {currentConversation && (
-          <div className="w-2/3 flex flex-col">
+          <div className="flex-grow flex flex-col h-full overflow-hidden">
             {/* Header - Sticky */}
-            <div className="border-b border-border p-3 flex items-center sticky top-0 bg-card z-10">
+            <div className="border-b border-border p-3 flex items-center bg-card z-10">
               <div className="w-8 h-8 relative rounded-full overflow-hidden mr-3">
                 <Image
                   src={currentConversation.client.contactImage || currentConversation.client.icon || '/images/placeholder-client.png'}
@@ -109,7 +112,7 @@ export function Messages() {
             </div>
 
             {/* Messages - Scrollable */}
-            <div className="flex-grow overflow-y-auto p-4 bg-background">
+            <ScrollArea className="flex-grow">
               <div className="space-y-4">
                 {currentConversation.messages.map((message) => (
                   <div
@@ -131,10 +134,10 @@ export function Messages() {
                   </div>
                 ))}
               </div>
-            </div>
+            </ScrollArea>
 
             {/* Input area - Sticky */}
-            <div className="p-3 border-t border-border sticky bottom-0 bg-card">
+            <div className="p-3 border-t border-border bg-card">
               <div className="flex items-center">
                 <button className="p-2 text-muted-foreground">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
