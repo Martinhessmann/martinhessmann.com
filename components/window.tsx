@@ -395,15 +395,15 @@ export function Window({
           <button
             onClick={(e) => {
               e.stopPropagation();
-              onMinimize();
+              onClose();
             }}
             className={`w-3 h-3 rounded-full ${isFocused
               ? 'bg-yellow-500 hover:bg-yellow-500/90'
               : 'bg-muted-foreground group-hover:bg-yellow-500'}
               flex items-center justify-center transition-colors`}
-            aria-label="Minimize window"
+            aria-label="Close window"
           >
-            <span className={`text-[10px] text-yellow-800 font-bold leading-none relative -top-[1px] opacity-0 group-hover:opacity-100`}>−</span>
+            <span className={`text-[10px] text-yellow-800 font-bold leading-none relative -top-[1px] opacity-0 group-hover:opacity-100`}>×</span>
           </button>
           <button
             className={`w-3 h-3 rounded-full ${isFocused
@@ -413,8 +413,8 @@ export function Window({
             aria-label="Maximize window"
           >
             <span className={`text-green-900 font-bold opacity-0 group-hover:opacity-100`}>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8" width="7" height="7" fill="currentColor" stroke="none" className="scale-90">
-                <path d="M1.5,1.5 L3.5,1.5 L1.5,3.5 Z M6.5,6.5 L6.5,4.5 L4.5,6.5 Z" />
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8" width="8" height="8" fill="currentColor" stroke="none">
+                <path d="M1,1 L4,1 L1,4 Z M7,7 L7,4 L4,7 Z" />
               </svg>
             </span>
           </button>
