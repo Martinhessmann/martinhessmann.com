@@ -39,10 +39,10 @@ export function Dock({ windows, openWindow }: DockProps) {
 
   return (
     <div className="fixed bottom-2 left-1/2 -translate-x-1/2 px-2 py-1 z-[60]">
-      <div className="bg-popover/90 backdrop-blur-2xl rounded-2xl
-        px-1.5 py-1 flex items-end space-x-1
+      <div className="bg-background/60 backdrop-blur-xl rounded-2xl
+        px-0.5 py-0.5 flex items-end
         shadow-[0_0_0_0.5px_rgba(0,0,0,0.5)]
-        ring-[0.5px] ring-border
+        ring-[0.5px] ring-border/50
         relative">
         {/* Subtle gradient overlay */}
         <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/20 to-transparent opacity-50" />
@@ -63,8 +63,7 @@ export function Dock({ windows, openWindow }: DockProps) {
                 onClick={() => handleAppClick(app.id)}
                 onMouseEnter={() => setHoveredApp(app.id)}
                 onMouseLeave={() => setHoveredApp(null)}
-                className={`relative p-1 rounded-lg transition-all duration-300
-                `}
+                className="relative p-0.5 rounded-lg transition-all duration-300"
               >
                 <div className="h-12 w-12 relative">
                   <Image
@@ -86,19 +85,19 @@ export function Dock({ windows, openWindow }: DockProps) {
               {/* Tooltip with app name */}
               <div className="absolute left-1/2 -top-12 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-150 whitespace-nowrap">
                 <div className="relative flex flex-col items-center">
-                  <div className="bg-popover rounded-lg py-[3px] px-3 text-xs text-popover-foreground
+                  <div className="bg-background/60 backdrop-blur-xl rounded-lg py-[3px] px-3 text-xs text-popover-foreground
                     shadow-[0_0_0_0.5px_rgba(0,0,0,0.8)]
-                    ring-[0.5px] ring-border
+                    ring-[0.5px] ring-border/50
                     relative z-10">
                     {app.title}
                     {isMinimized && " (Minimized)"}
                   </div>
                   {/* Tooltip arrow */}
-                  <div className="w-4 h-4 bg-popover rotate-45 transform
+                  <div className="w-4 h-4 bg-background/60 backdrop-blur-xl rotate-45 transform
                     -mt-[8px]
                     rounded-sm
                     shadow-[0_0_0_0.5px_rgba(0,0,0,0.8)]
-                    ring-[0.5px] ring-border
+                    ring-[0.5px] ring-border/50
                     relative z-[1]" />
                 </div>
               </div>
