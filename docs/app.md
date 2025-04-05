@@ -98,8 +98,8 @@ These files should not be combined as they serve different purposes in the Next.
 ### Window Interaction Fixes
 - [ ] Fix window movement issues when dragging close to screen boundaries
 - [ ] Improve resizing behavior for windows, especially corner resizing
-- [ ] Ensure resizing maintains minimum window dimensions
-- [ ] Fix z-index management when interacting with multiple windows
+- [ ] Ensure resizing maintains minimum window dimensions (w=400px,h=270px)
+- [x] Fix z-index management when interacting with multiple windows
 
 ### Performance Optimizations
 - [ ] Optimize window rendering to reduce repaints during movement

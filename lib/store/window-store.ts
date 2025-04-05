@@ -53,12 +53,14 @@ export const useWindowStore = create<WindowStoreState>((set) => ({
 
   // Add/open a window
   addWindow: (options: WindowOptions) => {
+    console.log('[store] addWindow:', { options })
     set((state: WindowStoreState) => {
       // Check if window already exists
       const existingWindow = state.windows.find(w => w.id === options.id)
 
       // If window exists, open/restore it and focus it
       if (existingWindow) {
+        console.log('[store] Window exists, updating:', { windowId: options.id })
         const highestZIndex = Math.max(...state.windows.map(w => w.zIndex), 0)
 
         return {
@@ -74,6 +76,7 @@ export const useWindowStore = create<WindowStoreState>((set) => ({
       }
 
       // Otherwise create new window
+      console.log('[store] Creating new window:', { windowId: options.id })
       const newWindow: WindowState = {
         ...options,
         isOpen: true,
@@ -97,14 +100,19 @@ export const useWindowStore = create<WindowStoreState>((set) => ({
 
   // Focus a window and bring it to front
   focusWindow: (windowId: string) => {
+    console.log('[store] focusWindow:', { windowId })
     set((state: WindowStoreState) => {
       const windowToFocus = state.windows.find(w => w.id === windowId)
 
       // If window doesn't exist, return current state
-      if (!windowToFocus) return state
+      if (!windowToFocus) {
+        console.log('[store] Window not found:', { windowId })
+        return state
+      }
 
       // Find highest z-index
       const highestZIndex = Math.max(...state.windows.map(w => w.zIndex), 0)
+      console.log('[store] Focusing window:', { windowId, newZIndex: highestZIndex + 1 })
 
       return {
         windows: state.windows.map(window => ({
@@ -124,11 +132,20 @@ export const useWindowStore = create<WindowStoreState>((set) => ({
 
   // Toggle window minimization
   toggleMinimize: (windowId: string) => {
+    console.log('[store] toggleMinimize:', { windowId })
     set((state: WindowStoreState) => {
       const windowToUpdate = state.windows.find(w => w.id === windowId)
 
       // If window doesn't exist, return current state
-      if (!windowToUpdate) return state
+      if (!windowToUpdate) {
+        console.log('[store] Window not found:', { windowId })
+        return state
+      }
+
+      console.log('[store] Toggling minimize:', {
+        windowId,
+        currentlyMinimized: windowToUpdate.isMinimized
+      })
 
       return {
         windows: state.windows.map(window => ({
@@ -144,6 +161,7 @@ export const useWindowStore = create<WindowStoreState>((set) => ({
 
   // Close a window
   closeWindow: (windowId: string) => {
+    console.log('[store] closeWindow:', { windowId })
     set((state: WindowStoreState) => ({
       windows: state.windows.map(window => ({
         ...window,
@@ -157,23 +175,53 @@ export const useWindowStore = create<WindowStoreState>((set) => ({
 
   // Update window position
   updatePosition: (windowId: string, newPosition: WindowPosition) => {
-    set((state: WindowStoreState) => ({
-      windows: state.windows.map(window => ({
-        ...window,
-        // Update position for this window only
-        position: window.id === windowId ? newPosition : window.position
-      }))
-    }))
+    console.log('[store] updatePosition:', { windowId, newPosition })
+    set((state: WindowStoreState) => {
+      const windowToUpdate = state.windows.find(w => w.id === windowId)
+      if (!windowToUpdate) {
+        console.log('[store] Window not found for position update:', { windowId })
+        return state
+      }
+
+      console.log('[store] Current window position:', {
+        windowId,
+        oldPosition: windowToUpdate.position,
+        newPosition
+      })
+
+      return {
+        windows: state.windows.map(window => ({
+          ...window,
+          // Update position for this window only
+          position: window.id === windowId ? newPosition : window.position
+        }))
+      }
+    })
   },
 
   // Update window size
   updateSize: (windowId: string, newSize: WindowSize) => {
-    set((state: WindowStoreState) => ({
-      windows: state.windows.map(window => ({
-        ...window,
-        // Update size for this window only
-        size: window.id === windowId ? newSize : window.size
-      }))
-    }))
+    console.log('[store] updateSize:', { windowId, newSize })
+    set((state: WindowStoreState) => {
+      const windowToUpdate = state.windows.find(w => w.id === windowId)
+      if (!windowToUpdate) {
+        console.log('[store] Window not found for size update:', { windowId })
+        return state
+      }
+
+      console.log('[store] Current window size:', {
+        windowId,
+        oldSize: windowToUpdate.size,
+        newSize
+      })
+
+      return {
+        windows: state.windows.map(window => ({
+          ...window,
+          // Update size for this window only
+          size: window.id === windowId ? newSize : window.size
+        }))
+      }
+    })
   }
 }))
