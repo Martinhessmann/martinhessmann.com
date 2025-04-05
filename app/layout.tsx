@@ -15,6 +15,28 @@ export const metadata: Metadata = {
     shortcut: '/favicons/favicon.ico',
     apple: '/favicons/apple-touch-icon.png',
   },
+  openGraph: {
+    title: 'Martin Heßmann - Digital Product Manager & Design Generalist',
+    description: 'Digital Product Manager and Design Generalist who bridges UX, development, and business needs.',
+    url: 'https://martinhessmann.com',
+    siteName: 'Martin Heßmann',
+    images: [
+      {
+        url: '/og.png',
+        width: 1200,
+        height: 630,
+        alt: 'Martin Heßmann - Digital Product Manager & Design Generalist'
+      }
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Martin Heßmann - Digital Product Manager & Design Generalist',
+    description: 'Digital Product Manager and Design Generalist who bridges UX, development, and business needs.',
+    images: ['/og.png'],
+  },
   appleWebApp: {
     title: 'Martin Heßmann',
     statusBarStyle: 'default',
