@@ -5,6 +5,9 @@ import Image from 'next/image'
 import { WindowPosition, WindowSize } from '@/lib/store/window-store'
 import { ThemeFavicon } from '@/components/theme-favicon'
 
+// Constants
+const HEADER_HEIGHT = 8 // Height of the main app header
+
 interface WindowProps {
   id: string
   title: string
@@ -76,7 +79,7 @@ export function Window({
       // Calculate boundaries to keep window header visible and prevent going too far left/right
       const minX = -windowSize.width + 100 // Keep at least 100px visible from left
       const maxX = viewportWidth - 100 // Keep at least 100px visible from right
-      const minY = 0 // Don't allow dragging above viewport
+      const minY = HEADER_HEIGHT // Don't allow dragging above header
       const maxY = viewportHeight - 40 // Keep at least the title bar visible at bottom
 
       // Enforce boundaries
@@ -163,9 +166,9 @@ export function Window({
         newWidth += newX // Reduce width by how much we're out of bounds
         newX = 0
       }
-      if (newY < 0) {
-        newHeight += newY // Reduce height by how much we're out of bounds
-        newY = 0
+      if (newY < HEADER_HEIGHT) {
+        newHeight += newY - HEADER_HEIGHT // Reduce height by how much we're out of bounds
+        newY = HEADER_HEIGHT
       }
 
       // Get viewport dimensions
