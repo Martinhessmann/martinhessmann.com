@@ -1,30 +1,90 @@
 {
   "stories": [
     {
-      "id": "digital-banking",
-      "year": 2022,
-      "client": "TeamBank AG",
-      "title": "Digital Banking Platform",
-      "description": "Led the redesign of a major banking platform, improving user satisfaction by 35% and increasing mobile transactions by 28%.",
-      "technologies": ["UX Research", "Figma", "Design System", "Prototyping"],
+      "id": "gruen-berlin",
+      "year": 2023,
+      "client": "Grün Berlin",
+      "title": "Digital Communication Platform",
+      "description": "Developed a digital communication platform that visualizes municipal infrastructure projects and enables citizen participation in sustainable urban development. The platform creates transparency and promotes acceptance for sustainable urban projects through real-time progress tracking and interactive participation opportunities.",
+      "technologies": ["React", "UX Design", "Digital Platform", "Public Participation"],
       "impact": [
         {
-          "metric": "Mobile transactions",
-          "value": "28%",
-          "change": "increase"
-        },
-        {
-          "metric": "User satisfaction",
-          "value": "35%",
+          "metric": "Citizen Engagement",
+          "value": "Active",
           "change": "improvement"
         },
         {
-          "metric": "Support tickets",
-          "value": "42%",
-          "change": "reduction"
+          "metric": "Project Transparency",
+          "value": "Real-time",
+          "change": "increase"
+        },
+        {
+          "metric": "Urban Development",
+          "value": "Sustainable",
+          "change": "improvement"
         }
       ],
-      "totalSlides": 4,
+      "image": "/images/projects/gruen-berlin-1730x1800.webp",
+      "url": "https://gruen-berlin.de/",
+      "totalSlides": 3,
+      "currentSlide": 1
+    },
+    {
+      "id": "eon-whats-netz",
+      "year": 2023,
+      "client": "E.ON",
+      "title": "What's Netz - Energy Grid Simulation",
+      "description": "Created an interactive energy grid simulation that makes complex network structures understandable through gamification elements. The application serves as an educational tool for politicians, media, and schools, demonstrating how energy networks function and how municipalities can actively shape the energy transition.",
+      "technologies": ["React Three Fiber", "3D Graphics", "Gamification", "UX Design"],
+      "impact": [
+        {
+          "metric": "Understanding",
+          "value": "Interactive",
+          "change": "improvement"
+        },
+        {
+          "metric": "Engagement",
+          "value": "Multi-platform",
+          "change": "increase"
+        },
+        {
+          "metric": "Education",
+          "value": "Gamified",
+          "change": "innovation"
+        }
+      ],
+      "image": "/images/projects/whats-netz-2880x1726.webp",
+      "url": "https://www.eon.com/de/c/whatsnetz.html",
+      "totalSlides": 3,
+      "currentSlide": 1
+    },
+    {
+      "id": "tertianum",
+      "year": 2023,
+      "client": "Tertianum Premium Residences",
+      "title": "Digital Services Platform",
+      "description": "Developed innovative digital solutions for an aging society, including personalized services and AI-based visual experiences. The comprehensive platform combines technological innovation with service excellence to redefine modern living for seniors.",
+      "technologies": ["AI", "Digital Services", "UX Design", "Web Platform"],
+      "impact": [
+        {
+          "metric": "Service Innovation",
+          "value": "AI-driven",
+          "change": "improvement"
+        },
+        {
+          "metric": "User Experience",
+          "value": "Personalized",
+          "change": "enhancement"
+        },
+        {
+          "metric": "Digital Integration",
+          "value": "Seamless",
+          "change": "transformation"
+        }
+      ],
+      "image": "/images/projects/tertianum-1730x1800.webp",
+      "url": "https://tertianum.de/",
+      "totalSlides": 3,
       "currentSlide": 1
     }
   ]

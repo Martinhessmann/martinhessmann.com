@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { getAllSuccessStories } from '@/lib/content'
 import { SuccessStory } from '@/types/types'
 
@@ -37,7 +38,7 @@ export function Stories() {
 
       {/* Content */}
       {currentStory && (
-        <div className="flex-grow p-6 bg-background">
+        <div className="flex-grow p-6 bg-background overflow-y-auto">
           <div className="max-w-4xl mx-auto">
             {/* Story Header */}
             <div className="mb-6">
@@ -48,9 +49,45 @@ export function Stories() {
                   <span className="text-sm font-medium text-muted-foreground">Client: {currentStory.client}</span>
                 </div>
               </div>
-              <h1 className="text-2xl font-bold mb-2 text-foreground">{currentStory.title}</h1>
+              {currentStory.url ? (
+                <a
+                  href={currentStory.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block group"
+                >
+                  <h1 className="text-2xl font-bold mb-2 text-foreground group-hover:text-primary transition-colors">
+                    {currentStory.title}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="inline-block w-5 h-5 ml-1 -mt-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </h1>
+                </a>
+              ) : (
+                <h1 className="text-2xl font-bold mb-2 text-foreground">{currentStory.title}</h1>
+              )}
               <p className="text-muted-foreground">{currentStory.description}</p>
             </div>
+
+            {/* Project Image */}
+            {currentStory.image && (
+              <div className="mb-8 relative aspect-video w-full overflow-hidden rounded-lg border border-border">
+                <Image
+                  src={currentStory.image}
+                  alt={`${currentStory.client} - ${currentStory.title}`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  priority={currentStoryIndex === 0}
+                />
+              </div>
+            )}
 
             {/* Technologies */}
             <div className="mb-8">
@@ -67,30 +104,32 @@ export function Stories() {
               </div>
             </div>
 
-            {/* Impact Metrics */}
-            <div>
-              <h2 className="text-sm font-semibold text-muted-foreground mb-4">Impact</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {currentStory.impact.map((metric, index) => (
-                  <div
-                    key={index}
-                    className="p-4 bg-card rounded-lg shadow-sm"
-                  >
-                    <div className="text-2xl font-bold text-primary mb-1">
-                      {metric.value}
-                    </div>
-                    <div className="text-sm text-muted-foreground">
-                      {metric.metric}
-                    </div>
-                    {metric.change && (
-                      <div className="text-sm text-green-600 dark:text-green-400 mt-1">
-                        {metric.change}
+            {/* Impact Metrics - Temporarily hidden until real tracking data is available */}
+            {/* {currentStory.impact && currentStory.impact.length > 0 && (
+              <div>
+                <h2 className="text-sm font-semibold text-muted-foreground mb-4">Impact</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  {currentStory.impact.map((metric, index) => (
+                    <div
+                      key={index}
+                      className="p-4 bg-card rounded-lg shadow-sm"
+                    >
+                      <div className="text-2xl font-bold text-primary mb-1">
+                        {metric.value}
                       </div>
-                    )}
-                  </div>
-                ))}
+                      <div className="text-sm text-muted-foreground">
+                        {metric.metric}
+                      </div>
+                      {metric.change && (
+                        <div className="text-sm text-green-600 dark:text-green-400 mt-1">
+                          {metric.change}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            )} */}
           </div>
         </div>
       )}

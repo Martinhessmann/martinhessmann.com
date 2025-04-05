@@ -42,6 +42,8 @@ export type SuccessStory = {
   impact: SuccessMetric[]
   totalSlides: number
   currentSlide: number
+  image?: string
+  url?: string
 }
 
 export type SuccessStories = {
