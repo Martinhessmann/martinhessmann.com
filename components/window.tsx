@@ -41,9 +41,6 @@ export function Window({
   const [isDragging, setIsDragging] = useState(false)
   const [isResizing, setIsResizing] = useState(false)
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 })
-  const [resizeDirection, setResizeDirection] = useState({ x: 0, y: 0 })
-  const [resizeStartPos, setResizeStartPos] = useState({ x: 0, y: 0 })
-  const [resizeStartSize, setResizeStartSize] = useState({ width: 0, height: 0 })
   const [windowSize, setWindowSize] = useState(size)
 
   const windowRef = useRef<HTMLDivElement>(null)
@@ -51,7 +48,10 @@ export function Window({
   const dragStateRef = useRef({
     isDragging: false,
     isResizing: false,
-    offset: { x: 0, y: 0 }
+    offset: { x: 0, y: 0 },
+    resizeDirection: { x: 0, y: 0 },
+    resizeStartPos: { x: 0, y: 0 },
+    resizeStartSize: { width: 0, height: 0 }
   })
 
   // Update internal state when props change
@@ -61,24 +61,7 @@ export function Window({
 
   // General mouse move handler for both dragging and resizing
   const handleMouseMove = useCallback((e: MouseEvent) => {
-    console.log('Mouse Move Event:', {
-      isDragging: dragStateRef.current.isDragging,
-      isResizing: dragStateRef.current.isResizing,
-      clientX: e.clientX,
-      clientY: e.clientY
-    })
-
     if (dragStateRef.current.isDragging) {
-      console.log('Dragging:', {
-        clientX: e.clientX,
-        clientY: e.clientY,
-        offset: dragStateRef.current.offset,
-        newPosition: {
-          x: e.clientX - dragStateRef.current.offset.x,
-          y: e.clientY - dragStateRef.current.offset.y
-        }
-      })
-
       e.preventDefault()
       e.stopPropagation()
 
@@ -100,12 +83,6 @@ export function Window({
       const boundedX = Math.min(Math.max(newX, minX), maxX)
       const boundedY = Math.min(Math.max(newY, minY), maxY)
 
-      console.log('Bounded Position:', {
-        boundedX,
-        boundedY,
-        bounds: { minX, maxX, minY, maxY }
-      })
-
       // Update position immediately in DOM for smooth dragging
       if (windowRef.current) {
         windowRef.current.style.left = `${boundedX}px`
@@ -119,88 +96,126 @@ export function Window({
     }
 
     if (dragStateRef.current.isResizing) {
-      console.log('Resizing:', {
-        clientX: e.clientX,
-        clientY: e.clientY,
-        startPos: resizeStartPos,
-        startSize: resizeStartSize,
-        direction: resizeDirection
-      })
-
       e.preventDefault()
       e.stopPropagation()
 
       // Calculate size changes
-      const deltaX = (e.clientX - resizeStartPos.x) * resizeDirection.x
-      const deltaY = (e.clientY - resizeStartPos.y) * resizeDirection.y
+      const deltaX = e.clientX - dragStateRef.current.resizeStartPos.x
+      // Adjust mouse Y position if resizing from top edge
+      const adjustedClientY = dragStateRef.current.resizeDirection.y < 0
+        ? e.clientY - 28 // Subtract title bar height (28px)
+        : e.clientY
+      const deltaY = adjustedClientY - dragStateRef.current.resizeStartPos.y
 
       // Apply changes to base size
-      let newWidth = resizeStartSize.width + deltaX
-      let newHeight = resizeStartSize.height + deltaY
+      let newWidth = dragStateRef.current.resizeStartSize.width
+      let newHeight = dragStateRef.current.resizeStartSize.height
+      let newX = position.x
+      let newY = position.y
 
-      console.log('Size Deltas:', {
-        deltaX,
-        deltaY,
-        newWidth,
-        newHeight
-      })
+      // Handle horizontal resizing
+      if (dragStateRef.current.resizeDirection.x !== 0) {
+        if (dragStateRef.current.resizeDirection.x > 0) {
+          // Right edge: just adjust width
+          newWidth = dragStateRef.current.resizeStartSize.width + deltaX
+        } else {
+          // Left edge: adjust both width and position
+          newWidth = dragStateRef.current.resizeStartSize.width - deltaX
+          newX = dragStateRef.current.resizeStartPos.x + deltaX
+        }
+      }
+
+      // Handle vertical resizing
+      if (dragStateRef.current.resizeDirection.y !== 0) {
+        if (dragStateRef.current.resizeDirection.y > 0) {
+          // Bottom edge: just adjust height
+          newHeight = dragStateRef.current.resizeStartSize.height + deltaY
+        } else {
+          // Top edge: adjust both height and position
+          newHeight = dragStateRef.current.resizeStartSize.height - deltaY
+          newY = dragStateRef.current.resizeStartPos.y + deltaY
+        }
+      }
 
       // Enforce minimum dimensions (400px width, 270px height)
-      newWidth = Math.max(newWidth, 400)
-      newHeight = Math.max(newHeight, 270)
+      const minWidth = 400
+      const minHeight = 270
+
+      // Adjust position and size to maintain minimum dimensions
+      if (newWidth < minWidth) {
+        if (dragStateRef.current.resizeDirection.x < 0) {
+          // If resizing from left, adjust position to maintain right edge
+          newX = dragStateRef.current.resizeStartPos.x + deltaX - (minWidth - newWidth)
+        }
+        newWidth = minWidth
+      }
+
+      if (newHeight < minHeight) {
+        if (dragStateRef.current.resizeDirection.y < 0) {
+          // If resizing from top, adjust position to maintain bottom edge
+          newY = dragStateRef.current.resizeStartPos.y + deltaY - (minHeight - newHeight)
+        }
+        newHeight = minHeight
+      }
+
+      // Enforce viewport boundaries
+      if (newX < 0) {
+        newWidth += newX // Reduce width by how much we're out of bounds
+        newX = 0
+      }
+      if (newY < 0) {
+        newHeight += newY // Reduce height by how much we're out of bounds
+        newY = 0
+      }
 
       // Get viewport dimensions
       const viewportWidth = window.innerWidth
       const viewportHeight = window.innerHeight
 
       // Ensure window doesn't grow beyond viewport
-      if (position.x + newWidth > viewportWidth) {
-        newWidth = viewportWidth - position.x
+      if (newX + newWidth > viewportWidth) {
+        newWidth = viewportWidth - newX
       }
-      if (position.y + newHeight > viewportHeight) {
-        newHeight = viewportHeight - position.y
+      if (newY + newHeight > viewportHeight) {
+        newHeight = viewportHeight - newY
       }
 
-      console.log('Final Size:', {
-        width: newWidth,
-        height: newHeight,
-        viewportConstraints: {
-          width: viewportWidth,
-          height: viewportHeight
-        }
-      })
-
-      // Create new size object
+      // Create new size and position objects
       const newSize = { width: newWidth, height: newHeight }
+      const newPosition = { x: newX, y: newY }
 
       // Update visual state immediately for smooth resizing
       if (windowRef.current) {
         windowRef.current.style.width = `${newWidth}px`
         windowRef.current.style.height = `${newHeight}px`
+        windowRef.current.style.left = `${newX}px`
+        windowRef.current.style.top = `${newY}px`
       }
 
-      // Update size in store
+      // Update size and position in store
       requestAnimationFrame(() => {
         setWindowSize(newSize)
         updateSize(newSize)
+        updatePosition(newPosition)
       })
     }
   }, [windowSize, updatePosition, updateSize, position])
 
   // General mouse up handler
   const handleMouseUp = useCallback(() => {
-    console.log('Mouse Up:', {
-      isResizing: dragStateRef.current.isResizing,
-      isDragging: dragStateRef.current.isDragging,
-      finalSize: windowRef.current ? {
-        width: windowRef.current.offsetWidth,
-        height: windowRef.current.offsetHeight
-      } : null,
-      finalPosition: windowRef.current ? {
-        left: windowRef.current.style.left,
-        top: windowRef.current.style.top
-      } : null
-    })
+    if (dragStateRef.current.isResizing || dragStateRef.current.isDragging) {
+      console.log('Interaction End:', {
+        type: dragStateRef.current.isResizing ? 'resize' : 'drag',
+        finalSize: windowRef.current ? {
+          width: windowRef.current.offsetWidth,
+          height: windowRef.current.offsetHeight
+        } : null,
+        finalPosition: windowRef.current ? {
+          x: parseInt(windowRef.current.style.left, 10),
+          y: parseInt(windowRef.current.style.top, 10)
+        } : null
+      })
+    }
 
     if (dragStateRef.current.isResizing && windowRef.current) {
       // Get the final size directly from the element
@@ -229,21 +244,19 @@ export function Window({
     // Remove global event listeners
     window.removeEventListener('mousemove', handleMouseMove)
     window.removeEventListener('mouseup', handleMouseUp)
-
-    // Log event listener cleanup
-    console.log('Removed event listeners')
   }, [updatePosition, updateSize])
 
   // Start window dragging
   const handleTitleBarMouseDown = useCallback((e: ReactMouseEvent<HTMLDivElement>) => {
-    console.log('Title Bar MouseDown:', {
-      button: e.button,
-      clientX: e.clientX,
-      clientY: e.clientY,
-      currentPosition: position
-    })
-
     if (e.button !== 0) return // Only handle left click
+
+    console.log('Drag Start:', {
+      position,
+      offset: {
+        x: e.clientX - position.x,
+        y: e.clientY - position.y
+      }
+    })
 
     e.preventDefault()
     e.stopPropagation()
@@ -258,7 +271,6 @@ export function Window({
       x: e.clientX - position.x,
       y: e.clientY - position.y
     }
-    console.log('Setting Drag Offset:', newOffset)
 
     // Update both state and ref
     dragStateRef.current = {
@@ -272,26 +284,23 @@ export function Window({
     // Add global event listeners
     window.addEventListener('mousemove', handleMouseMove, { passive: false })
     window.addEventListener('mouseup', handleMouseUp)
-
-    // Log event listener status
-    console.log('Added event listeners:', {
-      mousemove: true,
-      mouseup: true,
-      isDragging: dragStateRef.current.isDragging
-    })
   }, [position, isFocused, onFocus, handleMouseMove, handleMouseUp])
 
   // Start window resizing
   const handleResizeStart = useCallback((e: ReactMouseEvent<HTMLDivElement>, dirX: number, dirY: number) => {
-    console.log('Resize Start:', {
-      button: e.button,
-      clientX: e.clientX,
-      clientY: e.clientY,
-      direction: { x: dirX, y: dirY },
-      currentSize: windowSize
-    })
-
     if (e.button !== 0) return // Only handle left click
+
+    // Calculate the title bar height (1.75rem = 28px)
+    const titleBarHeight = 28
+
+    // Adjust the start position Y coordinate if resizing from top edge
+    const adjustedY = dirY < 0 ? e.clientY - titleBarHeight : e.clientY
+
+    console.log('Resize Start:', {
+      size: windowSize,
+      direction: { x: dirX, y: dirY },
+      startPos: { x: e.clientX, y: adjustedY }
+    })
 
     e.preventDefault()
     e.stopPropagation()
@@ -301,12 +310,16 @@ export function Window({
       onFocus()
     }
 
-    // Set resize parameters
-    setResizeDirection({ x: dirX, y: dirY })
-    setResizeStartPos({ x: e.clientX, y: e.clientY })
-    setResizeStartSize({ width: windowSize.width, height: windowSize.height })
+    // Set resize parameters in ref
+    dragStateRef.current = {
+      ...dragStateRef.current,
+      isResizing: true,
+      resizeDirection: { x: dirX, y: dirY },
+      resizeStartPos: { x: e.clientX, y: adjustedY },
+      resizeStartSize: { width: windowSize.width, height: windowSize.height }
+    }
 
-    // Start resizing
+    // Update React state for UI
     setIsResizing(true)
 
     // Add global event listeners
@@ -441,8 +454,8 @@ export function Window({
         {children}
       </div>
 
-      {/* Resize handles - made more visible and easier to grab */}
-      {/* Bottom right corner - main resize handle */}
+      {/* Resize handles - corners and edges */}
+      {/* Bottom right corner */}
       <div
         className="absolute bottom-0 right-0 w-6 h-6 cursor-se-resize
                   hover:bg-primary/10 hover:border-t hover:border-l hover:border-primary/30
@@ -472,6 +485,38 @@ export function Window({
                   hover:bg-primary/10 hover:border-b hover:border-r hover:border-primary/30
                   transition-colors"
         onMouseDown={(e) => handleResizeStart(e, -1, -1)}
+      />
+
+      {/* Right edge */}
+      <div
+        className="absolute top-6 right-0 w-2 h-[calc(100%-3rem)] cursor-ew-resize
+                  hover:bg-primary/10 hover:border-l hover:border-primary/30
+                  transition-colors"
+        onMouseDown={(e) => handleResizeStart(e, 1, 0)}
+      />
+
+      {/* Left edge */}
+      <div
+        className="absolute top-6 left-0 w-2 h-[calc(100%-3rem)] cursor-ew-resize
+                  hover:bg-primary/10 hover:border-r hover:border-primary/30
+                  transition-colors"
+        onMouseDown={(e) => handleResizeStart(e, -1, 0)}
+      />
+
+      {/* Bottom edge */}
+      <div
+        className="absolute bottom-0 left-6 w-[calc(100%-3rem)] h-2 cursor-ns-resize
+                  hover:bg-primary/10 hover:border-t hover:border-primary/30
+                  transition-colors"
+        onMouseDown={(e) => handleResizeStart(e, 0, 1)}
+      />
+
+      {/* Top edge */}
+      <div
+        className="absolute top-0 left-6 w-[calc(100%-3rem)] h-2 cursor-ns-resize
+                  hover:bg-primary/10 hover:border-b hover:border-primary/30
+                  transition-colors"
+        onMouseDown={(e) => handleResizeStart(e, 0, -1)}
       />
     </div>
   )
