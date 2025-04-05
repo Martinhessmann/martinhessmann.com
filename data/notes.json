@@ -25,22 +25,30 @@
     {
       "id": "skills-overview",
       "title": "Skills Overview",
-      "lastEdited": "February 28, 2023",
-      "wordCount": 85,
+      "lastEdited": "April 15, 2024",
+      "wordCount": 185,
       "category": "profile",
-      "content": "A comprehensive overview of my technical and professional capabilities.",
+      "content": "A comprehensive overview of my capabilities as a Digital Product Manager, with roots in design and development, focusing on creating impactful user experiences.",
       "sections": [
         {
-          "title": "Core Skills",
-          "content": "• Product Strategy & Roadmapping\n• UX/UI Design\n• Front-End Development\n• Team Leadership\n• Stakeholder Management"
+          "title": "Design & UX",
+          "content": "• UI/UX Design in Figma & Framer\n• Design System Development\n• Wireframing & Prototyping\n• User Testing & Feedback Loops\n• Accessibility Standards\n• Visual Design Principles"
         },
         {
-          "title": "Technologies",
-          "content": "• Design: Figma, Adobe Creative Suite\n• Frontend: React, Next.js, TypeScript, Tailwind\n• Documentation: Notion, Confluence"
+          "title": "Product Leadership",
+          "content": "• Product Strategy & Vision Development\n• Agile Project Management (Scrum/Kanban)\n• Stakeholder Management & Communication\n• User Research & Customer Journey Mapping\n• Data-Driven Decision Making\n• Cross-functional Team Leadership"
+        },
+        {
+          "title": "Technical Skills",
+          "content": "• Frontend: React, Next.js, TypeScript, Tailwind\n• Performance Optimization & Monitoring\n• Technical Documentation\n• SEO & Analytics Integration\n• CI/CD Understanding\n• Development Best Practices"
+        },
+        {
+          "title": "Tools & Platforms",
+          "content": "• Project Management: Notion, Confluence, Miro\n• Version Control: GitHub, GitLab\n• Development: Cursor, Warp Terminal\n• Collaboration: Slack, Airtable\n• AI & Automation: ChatGPT, GitHub Copilot\n• Analytics: Screaming Frog SEO Spider\n• Infrastructure: Docker, Cyberduck (SFTP)\n• Time Tracking: Toggl Track"
         },
         {
           "title": "Superpower",
-          "content": "My superpower is connecting these disciplines to create cohesive product experiences that deliver both user and business value."
+          "content": "My superpower is combining design thinking with technical understanding and business acumen to create exceptional digital products. I excel at translating user needs and business objectives into actionable strategies while ensuring technical feasibility and design excellence."
         }
       ]
     },
