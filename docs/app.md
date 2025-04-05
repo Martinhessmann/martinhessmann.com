@@ -97,8 +97,16 @@ These files should not be combined as they serve different purposes in the Next.
 
 ### Window Interaction Fixes
 - [ ] Fix window movement issues when dragging close to screen boundaries
-- [ ] Improve resizing behavior for windows, especially corner resizing
-- [ ] Ensure resizing maintains minimum window dimensions (w=400px,h=270px)
+- [x] Improve resizing behavior for windows, especially corner resizing
+  - Added edge resizing (top, right, bottom, left)
+  - Fixed resize anchor points to maintain opposite corner position
+  - Corrected title bar offset for top edge resizing
+  - Refined resize handle sizes (16px corners, 4px edges)
+  - Added hover effects and proper cursors for all resize handles
+- [x] Ensure resizing maintains minimum window dimensions (w=400px,h=270px)
+  - Implemented minimum size constraints (400x270)
+  - Added viewport boundary checks
+  - Properly handle minimum size when resizing from any edge/corner
 - [x] Fix z-index management when interacting with multiple windows
 
 ### Performance Optimizations
