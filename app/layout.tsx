@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     siteName: 'Martin Heßmann',
     images: [
       {
-        url: '/og.png',
+        url: '/images/og.png',
         width: 1200,
         height: 630,
         alt: 'Martin Heßmann - Digital Product Manager & Design Generalist'
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Martin Heßmann - Digital Product Manager & Design Generalist',
     description: 'Digital Product Manager and Design Generalist who bridges UX, development, and business needs.',
-    images: ['/og.png'],
+    images: ['/images/og.png'],
   },
   appleWebApp: {
     title: 'Martin Heßmann',
