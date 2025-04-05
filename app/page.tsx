@@ -1,28 +1,10 @@
-import { promises as fs } from 'fs'
-import path from 'path'
-import { MDXRemote } from 'next-mdx-remote/rsc'
+import { Desktop } from '../components/desktop'
 
-import { ThemeToggle } from '@/components/theme-toggle'
-
-export default async function Home() {
-  const filePath = path.join(process.cwd(), 'README.md')
-  const content = await fs.readFile(filePath, 'utf8')
-
+export default function Home() {
   return (
-    <>
-      <ThemeToggle />
-      <main className="min-h-screen w-full max-w-3xl mx-auto px-4 py-8 md:py-16 prose">
-        <MDXRemote
-          source={content}
-          options={{
-            parseFrontmatter: true,
-            mdxOptions: {
-              development: process.env.NODE_ENV === 'development'
-            }
-          }}
-        />
-      </main>
-    </>
+    <main className="w-full h-screen relative overflow-hidden">
+      <Desktop />
+    </main>
   )
 }
 
