@@ -457,7 +457,7 @@ export function Window({
       {/* Resize handles - corners and edges */}
       {/* Bottom right corner */}
       <div
-        className="absolute bottom-0 right-0 w-6 h-6 cursor-se-resize
+        className="absolute bottom-0 right-0 w-4 h-4 cursor-se-resize
                   hover:bg-primary/10 hover:border-t hover:border-l hover:border-primary/30
                   transition-colors"
         onMouseDown={(e) => handleResizeStart(e, 1, 1)}
@@ -465,7 +465,7 @@ export function Window({
 
       {/* Bottom left corner */}
       <div
-        className="absolute bottom-0 left-0 w-6 h-6 cursor-sw-resize
+        className="absolute bottom-0 left-0 w-4 h-4 cursor-sw-resize
                   hover:bg-primary/10 hover:border-t hover:border-r hover:border-primary/30
                   transition-colors"
         onMouseDown={(e) => handleResizeStart(e, -1, 1)}
@@ -473,7 +473,7 @@ export function Window({
 
       {/* Top right corner */}
       <div
-        className="absolute top-0 right-0 w-6 h-6 cursor-ne-resize
+        className="absolute top-0 right-0 w-4 h-4 cursor-ne-resize
                   hover:bg-primary/10 hover:border-b hover:border-l hover:border-primary/30
                   transition-colors"
         onMouseDown={(e) => handleResizeStart(e, 1, -1)}
@@ -481,7 +481,7 @@ export function Window({
 
       {/* Top left corner */}
       <div
-        className="absolute top-0 left-0 w-6 h-6 cursor-nw-resize
+        className="absolute top-0 left-0 w-4 h-4 cursor-nw-resize
                   hover:bg-primary/10 hover:border-b hover:border-r hover:border-primary/30
                   transition-colors"
         onMouseDown={(e) => handleResizeStart(e, -1, -1)}
@@ -489,7 +489,7 @@ export function Window({
 
       {/* Right edge */}
       <div
-        className="absolute top-6 right-0 w-2 h-[calc(100%-3rem)] cursor-ew-resize
+        className="absolute top-6 right-0 w-1 h-[calc(100%-3rem)] cursor-ew-resize
                   hover:bg-primary/10 hover:border-l hover:border-primary/30
                   transition-colors"
         onMouseDown={(e) => handleResizeStart(e, 1, 0)}
@@ -497,7 +497,7 @@ export function Window({
 
       {/* Left edge */}
       <div
-        className="absolute top-6 left-0 w-2 h-[calc(100%-3rem)] cursor-ew-resize
+        className="absolute top-6 left-0 w-1 h-[calc(100%-3rem)] cursor-ew-resize
                   hover:bg-primary/10 hover:border-r hover:border-primary/30
                   transition-colors"
         onMouseDown={(e) => handleResizeStart(e, -1, 0)}
@@ -505,7 +505,7 @@ export function Window({
 
       {/* Bottom edge */}
       <div
-        className="absolute bottom-0 left-6 w-[calc(100%-3rem)] h-2 cursor-ns-resize
+        className="absolute bottom-0 left-4 w-[calc(100%-2rem)] h-1 cursor-ns-resize
                   hover:bg-primary/10 hover:border-t hover:border-primary/30
                   transition-colors"
         onMouseDown={(e) => handleResizeStart(e, 0, 1)}
@@ -513,7 +513,7 @@ export function Window({
 
       {/* Top edge */}
       <div
-        className="absolute top-0 left-6 w-[calc(100%-3rem)] h-2 cursor-ns-resize
+        className="absolute top-0 left-4 w-[calc(100%-2rem)] h-1 cursor-ns-resize
                   hover:bg-primary/10 hover:border-b hover:border-primary/30
                   transition-colors"
         onMouseDown={(e) => handleResizeStart(e, 0, -1)}
