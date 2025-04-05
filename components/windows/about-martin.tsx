@@ -22,7 +22,7 @@ export function AboutMartin() {
           <div>
             <h1 className="text-2xl font-bold mb-2">Martin Heßmann</h1>
             <p className="text-muted-foreground mb-4">
-              Product Generalist | Frontend Engineer | React & Next.js Expert
+              Digital Product Manager & Design Generalist | From UX to Product Strategy
             </p>
             <div className="flex flex-col space-y-1 text-sm">
               <p className="flex items-center gap-2">
@@ -57,17 +57,26 @@ export function AboutMartin() {
           <div>
             <h2 className="text-lg font-semibold mb-2">About Me</h2>
             <p className="text-muted-foreground">
-              I'm a Product Generalist who bridges the gap between design, development, and business needs.
-              With over a decade in the tech industry, I've worked on various projects ranging from finance
-              platforms to interactive 3D games. I live in Friedrichshain, former East-Berlin.
+              I'm a Digital Product Manager and Design Generalist with a unique journey from UX Design through Frontend Development to Product Management.
+              With over a decade in the tech industry, I combine design thinking, technical understanding, and business acumen to create impactful digital experiences.
+              Based in Friedrichshain, Berlin, I specialize in bridging the gap between user needs, technical possibilities, and business objectives.
             </p>
           </div>
 
           <div>
             <h2 className="text-lg font-semibold mb-2">Skills</h2>
             <div className="flex flex-wrap gap-2">
-              {['React', 'Next.js', 'TypeScript', 'Node.js', 'TailwindCSS', 'UI/UX Design',
-                'Product Management', 'Frontend Architecture', 'Performance Optimization'].map((skill) => (
+              {[
+                'Product Strategy',
+                'UX/UI Design',
+                'Design Systems',
+                'User Research',
+                'Frontend Development',
+                'React & Next.js',
+                'TypeScript',
+                'Performance',
+                'Team Leadership'
+              ].map((skill) => (
                 <span
                   key={skill}
                   className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full"

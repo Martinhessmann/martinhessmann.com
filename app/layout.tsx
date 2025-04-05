@@ -4,8 +4,8 @@ import { ThemeProvider } from '@/components/theme-provider'
 import { Header } from '@/components/header'
 
 export const metadata: Metadata = {
-  title: 'Martin Heßmann - Digital Product Manager & UX Designer',
-  description: 'Personal website of Martin Heßmann, a Digital Product Manager and UX Designer based in Berlin, Germany.',
+  title: 'Martin Heßmann - Digital Product Manager & Design Generalist',
+  description: 'Personal website of Martin Heßmann, a Digital Product Manager and Design Generalist who bridges UX, development, and business needs, based in Berlin.',
   manifest: '/favicons/site.webmanifest',
   icons: {
     icon: [
