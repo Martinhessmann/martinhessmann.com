@@ -16,7 +16,7 @@ import {
 import { useWindowStore } from '@/lib/store/window-store'
 import { AboutMartin } from '@/components/windows/about-martin'
 import { ProjectInfo } from '@/components/windows/project-info'
-import { ChevronRight } from 'lucide-react'
+import { ChevronRight, Wifi, Bluetooth } from 'lucide-react'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { ThemeFavicon } from '@/components/theme-favicon'
 import { useThemeStore } from '@/lib/store/theme-store'
@@ -25,23 +25,32 @@ export function Header() {
   const { addWindow, focusWindow } = useWindowStore()
   const { resolvedTheme } = useThemeStore()
   const [currentTime, setCurrentTime] = useState('')
+  const [currentDate, setCurrentDate] = useState('')
 
   // Theme-based favicon source
   const faviconSrc = resolvedTheme === 'light'
     ? '/favicons/favicon.svg'
     : '/favicons/favicon-white.svg'
 
-  // Update time every minute
+  // Update time and date every minute
   useEffect(() => {
-    const updateTime = () => {
+    const updateDateTime = () => {
       const now = new Date()
       const hours = now.getHours().toString().padStart(2, '0')
       const mins = now.getMinutes().toString().padStart(2, '0')
       setCurrentTime(`${hours}:${mins}`)
+
+      // Format: "Sat 5. Apr"
+      const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+      const dayName = days[now.getDay()]
+      const date = now.getDate()
+      const month = months[now.getMonth()]
+      setCurrentDate(`${dayName} ${date}. ${month}`)
     }
 
-    updateTime()
-    const interval = setInterval(updateTime, 60000)
+    updateDateTime()
+    const interval = setInterval(updateDateTime, 60000)
     return () => clearInterval(interval)
   }, [])
 
@@ -155,9 +164,6 @@ export function Header() {
           <DropdownMenuSub>
             <DropdownMenuSubTrigger className="cursor-default text-popover-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground rounded-[4px] mx-1 my-0.5 py-[6px] px-3 font-normal w-full">
               Recent Items
-              <span className="ml-auto">
-                <ChevronRight className="h-3 w-3 text-muted-foreground" />
-              </span>
             </DropdownMenuSubTrigger>
             <DropdownMenuSubContent
               className="w-[220px] bg-popover backdrop-blur-2xl border-[0.5px] border-border rounded-xl shadow-[0_10px_38px_-10px_rgba(0,0,0,0.35),0_10px_20px_-15px_rgba(0,0,0,0.2)] pt-1 pb-1 px-0 text-[13px] mr-1"
@@ -215,29 +221,16 @@ export function Header() {
       </DropdownMenu>
 
       {/* App name - weight and spacing are crucial for macOS look */}
-      <div className="font-medium text-[13px] flex items-center ml-2 text-white">MartinHessmann.com</div>
+      <div className="font-semibold text-[13px] flex items-center ml-2 text-white">MartinHessmann.com</div>
 
       {/* Right side status items - simplified and true to macOS */}
-      <div className="ml-auto flex items-center h-full gap-[4px] pr-[8px]">
-        <div className="text-[13px] font-medium flex items-center text-white">{currentTime}</div>
-        <div className="flex items-center gap-[4px] ml-[8px]">
-          {/* Theme toggle */}
-          <ThemeToggle />
-
-          {/* Status icons - subtle, clean appearance */}
-          <div className="w-4 h-4 flex items-center justify-center">
-            <div className="w-[10px] h-[10px] rounded-full bg-muted-foreground"></div>
-          </div>
-          <div className="w-4 h-4 flex items-center justify-center">
-            <div className="w-[10px] h-[10px] rounded-full bg-muted-foreground"></div>
-          </div>
-          <div className="w-4 h-4 flex items-center justify-center">
-            <div className="w-[10px] h-[10px] rounded-full bg-muted-foreground"></div>
-          </div>
-          {/* Control center icon */}
-          <div className="w-5 h-4 flex items-center justify-center">
-            <div className="h-2 w-[10px] bg-warning rounded-[2px]"></div>
-          </div>
+      <div className="ml-auto flex items-center h-full gap-[8px] pr-[8px]">
+        <Bluetooth className="w-[16px] h-[16px] text-white" />
+        <Wifi className="w-[16px] h-[16px] text-white" />
+        <ThemeToggle />
+        <div className="text-[13px] font-normal flex items-center gap-[8px] text-white">
+          <span>{currentDate}</span>
+          <span>{currentTime}</span>
         </div>
       </div>
     </div>
