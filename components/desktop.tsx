@@ -116,7 +116,7 @@ export function Desktop() {
 
         {/* Copyright info */}
         <div className="absolute bottom-2 right-2 text-muted-foreground text-xs">
-          © {new Date().getFullYear()} Martin Heßmann
+          Photo by <a href="https://unsplash.com/@nasa?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash" className="hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">NASA</a> on <a href="https://unsplash.com/?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash" className="hover:text-primary transition-colors" target="_blank" rel="noopener noreferrer">Unsplash</a>
         </div>
       </div>
     </div>

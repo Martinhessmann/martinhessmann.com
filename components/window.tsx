@@ -413,8 +413,8 @@ export function Window({
             aria-label="Maximize window"
           >
             <span className={`text-green-900 font-bold opacity-0 group-hover:opacity-100`}>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8" width="8" height="8" fill="none" stroke="currentColor" strokeWidth="1.2" className="scale-90">
-                <path d="M1.5,1.5 h3 v3 M6.5,6.5 h-3 v-3" />
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8" width="7" height="7" fill="currentColor" stroke="none" className="scale-90">
+                <path d="M1.5,1.5 L3.5,1.5 L1.5,3.5 Z M6.5,6.5 L6.5,4.5 L4.5,6.5 Z" />
               </svg>
             </span>
           </button>
@@ -460,65 +460,49 @@ export function Window({
       {/* Resize handles - corners and edges */}
       {/* Bottom right corner */}
       <div
-        className="absolute bottom-0 right-0 w-4 h-4 cursor-se-resize
-                  hover:bg-primary/10 hover:border-t hover:border-l hover:border-primary/30
-                  transition-colors"
+        className="absolute bottom-0 right-0 w-4 h-4 cursor-se-resize"
         onMouseDown={(e) => handleResizeStart(e, 1, 1)}
       />
 
       {/* Bottom left corner */}
       <div
-        className="absolute bottom-0 left-0 w-4 h-4 cursor-sw-resize
-                  hover:bg-primary/10 hover:border-t hover:border-r hover:border-primary/30
-                  transition-colors"
+        className="absolute bottom-0 left-0 w-4 h-4 cursor-sw-resize"
         onMouseDown={(e) => handleResizeStart(e, -1, 1)}
       />
 
       {/* Top right corner */}
       <div
-        className="absolute top-0 right-0 w-4 h-4 cursor-ne-resize
-                  hover:bg-primary/10 hover:border-b hover:border-l hover:border-primary/30
-                  transition-colors"
+        className="absolute top-0 right-0 w-4 h-4 cursor-ne-resize"
         onMouseDown={(e) => handleResizeStart(e, 1, -1)}
       />
 
       {/* Top left corner */}
       <div
-        className="absolute top-0 left-0 w-4 h-4 cursor-nw-resize
-                  hover:bg-primary/10 hover:border-b hover:border-r hover:border-primary/30
-                  transition-colors"
+        className="absolute top-0 left-0 w-4 h-4 cursor-nw-resize"
         onMouseDown={(e) => handleResizeStart(e, -1, -1)}
       />
 
       {/* Right edge */}
       <div
-        className="absolute top-6 right-0 w-1 h-[calc(100%-3rem)] cursor-ew-resize
-                  hover:bg-primary/10 hover:border-l hover:border-primary/30
-                  transition-colors"
+        className="absolute top-6 right-0 w-1 h-[calc(100%-3rem)] cursor-ew-resize"
         onMouseDown={(e) => handleResizeStart(e, 1, 0)}
       />
 
       {/* Left edge */}
       <div
-        className="absolute top-6 left-0 w-1 h-[calc(100%-3rem)] cursor-ew-resize
-                  hover:bg-primary/10 hover:border-r hover:border-primary/30
-                  transition-colors"
+        className="absolute top-6 left-0 w-1 h-[calc(100%-3rem)] cursor-ew-resize"
         onMouseDown={(e) => handleResizeStart(e, -1, 0)}
       />
 
       {/* Bottom edge */}
       <div
-        className="absolute bottom-0 left-4 w-[calc(100%-2rem)] h-1 cursor-ns-resize
-                  hover:bg-primary/10 hover:border-t hover:border-primary/30
-                  transition-colors"
+        className="absolute bottom-0 left-4 w-[calc(100%-2rem)] h-1 cursor-ns-resize"
         onMouseDown={(e) => handleResizeStart(e, 0, 1)}
       />
 
       {/* Top edge */}
       <div
-        className="absolute top-0 left-4 w-[calc(100%-2rem)] h-1 cursor-ns-resize
-                  hover:bg-primary/10 hover:border-b hover:border-primary/30
-                  transition-colors"
+        className="absolute top-0 left-4 w-[calc(100%-2rem)] h-1 cursor-ns-resize"
         onMouseDown={(e) => handleResizeStart(e, 0, -1)}
       />
     </div>
