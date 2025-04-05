@@ -1,10 +1,11 @@
-import type React from "react"
-import { ThemeProvider } from "@/components/theme-provider"
-import "./globals.css"
+import './globals.css'
+import type { Metadata } from 'next'
+import { ThemeProvider } from '@/components/theme-provider'
+import { Header } from '@/components/header'
 
-export const metadata = {
-  title: "Martin Heßmann",
-  description: "Digital Product Manager, Designer, and Developer",
+export const metadata: Metadata = {
+  title: 'Martin Heßmann - Digital Product Manager & Design Generalist',
+  description: 'Personal website of Martin Heßmann, a Digital Product Manager and Design Generalist who bridges UX, development, and business needs, based in Berlin.',
   manifest: '/favicons/site.webmanifest',
   icons: {
     icon: [
@@ -26,22 +27,20 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head />
-      <body className="min-h-screen antialiased">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <body className="font-sans h-screen overflow-hidden">
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <div className="relative h-screen">
+            <Header />
+            {children}
+          </div>
         </ThemeProvider>
       </body>
     </html>
   )
 }
-
-
-
-import './globals.css'

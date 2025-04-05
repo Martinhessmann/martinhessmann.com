@@ -2,133 +2,172 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: 'Commit Mono';
-  src: url('/fonts/CommitMonomartinhessmann-Regular.woff2') format('woff2'),
-       url('/fonts/CommitMonomartinhessmann-Regular.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  font-feature-settings:
-    'ss01' on,
-    'ss02' on,
-    'ss03' on,
-    'ss04' on,
-    'ss05' on,
-    'cv01' on,
-    'cv02' on,
-    'cv03' on,
-    'cv04' on,
-    'cv05' on,
-    'cv06' on,
-    'cv07' on,
-    'cv08' on,
-    'cv09' on,
-    'cv10' on,
-    'cv11' on;
-}
-
-@font-face {
-  font-family: 'Commit Mono';
-  src: url('/fonts/CommitMonomartinhessmann-Italic.woff2') format('woff2'),
-       url('/fonts/CommitMonomartinhessmann-Italic.woff') format('woff');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-  font-feature-settings:
-    'ss01' on,
-    'ss02' on,
-    'ss03' on,
-    'ss04' on,
-    'ss05' on,
-    'cv01' on,
-    'cv02' on,
-    'cv03' on,
-    'cv04' on,
-    'cv05' on,
-    'cv06' on,
-    'cv07' on,
-    'cv08' on,
-    'cv09' on,
-    'cv10' on,
-    'cv11' on;
-}
-
-@font-face {
-  font-family: 'Commit Mono';
-  src: url('/fonts/CommitMonomartinhessmann-Bold.woff2') format('woff2'),
-       url('/fonts/CommitMonomartinhessmann-Bold.woff') format('woff');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-  font-feature-settings:
-    'ss01' on,
-    'ss02' on,
-    'ss03' on,
-    'ss04' on,
-    'ss05' on,
-    'cv01' on,
-    'cv02' on,
-    'cv03' on,
-    'cv04' on,
-    'cv05' on,
-    'cv06' on,
-    'cv07' on,
-    'cv08' on,
-    'cv09' on,
-    'cv10' on,
-    'cv11' on;
-}
-
-@font-face {
-  font-family: 'Commit Mono';
-  src: url('/fonts/CommitMonomartinhessmann-BoldItalic.woff2') format('woff2'),
-       url('/fonts/CommitMonomartinhessmann-BoldItalic.woff') format('woff');
-  font-weight: 700;
-  font-style: italic;
-  font-display: swap;
-  font-feature-settings:
-    'ss01' on,
-    'ss02' on,
-    'ss03' on,
-    'ss04' on,
-    'ss05' on,
-    'cv01' on,
-    'cv02' on,
-    'cv03' on,
-    'cv04' on,
-    'cv05' on,
-    'cv06' on,
-    'cv07' on,
-    'cv08' on,
-    'cv09' on,
-    'cv10' on,
-    'cv11' on;
-}
-
 @layer base {
   :root {
-    --background: #F5F9FF;
-    --foreground: #00004e;
-    --secondary: #f5f5f5;
-    --secondary-foreground: #00004e;
-    --tertiary: #e8e8fa;
-    --tertiary-foreground: #00004e;
-    --accent: #0033FF;
-    --accent-foreground: #00004e;
-    --border: #babaed;
+    /* Base color scale HSL values */
+    --slate-50: 210 40% 98%;
+    --slate-100: 210 40% 96%;
+    --slate-200: 214 32% 91%;
+    --slate-300: 213 27% 84%;
+    --slate-400: 215 20% 65%;
+    --slate-500: 215 16% 47%;
+    --slate-600: 215 19% 35%;
+    --slate-700: 215 25% 27%;
+    --slate-800: 217 33% 17%;
+    --slate-900: 222 47% 11%;
+    --slate-950: 229 84% 5%;
+
+    /* Gray color scale - matching Tailwind's official gray palette */
+    --gray-50: 210 20% 98%;
+    --gray-100: 220 14% 96%;
+    --gray-200: 220 13% 91%;
+    --gray-300: 216 12% 84%;
+    --gray-400: 220 9% 65%;
+    --gray-500: 220 9% 46%;
+    --gray-600: 215 14% 34%;
+    --gray-700: 215 25% 27%;
+    --gray-800: 217 33% 17%;
+    --gray-900: 222 47% 11%;
+    --gray-950: 224 71% 4%;
+
+    --blue-50: 210 100% 97%;
+    --blue-100: 210 100% 92%;
+    --blue-200: 210 100% 85%;
+    --blue-300: 210 100% 70%;
+    --blue-400: 210 100% 60%;
+    --blue-500: 210 100% 50%;
+    --blue-600: 210 100% 45%;
+    --blue-700: 210 100% 40%;
+    --blue-800: 210 100% 35%;
+    --blue-900: 210 100% 25%;
+    --blue-950: 210 100% 20%;
+
+    --red-50: 0 100% 97%;
+    --red-100: 0 100% 92%;
+    --red-200: 0 100% 85%;
+    --red-300: 0 100% 70%;
+    --red-400: 0 100% 60%;
+    --red-500: 0 100% 50%;
+    --red-600: 0 100% 45%;
+    --red-700: 0 100% 40%;
+    --red-800: 0 100% 35%;
+    --red-900: 0 100% 25%;
+    --red-950: 0 100% 20%;
+
+    --green-50: 140 100% 97%;
+    --green-100: 140 100% 92%;
+    --green-200: 140 100% 85%;
+    --green-300: 140 100% 70%;
+    --green-400: 140 100% 60%;
+    --green-500: 140 100% 50%;
+    --green-600: 140 100% 45%;
+    --green-700: 140 100% 40%;
+    --green-800: 140 100% 35%;
+    --green-900: 140 100% 25%;
+    --green-950: 140 100% 20%;
+
+    --yellow-50: 45 100% 97%;
+    --yellow-100: 45 100% 92%;
+    --yellow-200: 45 100% 85%;
+    --yellow-300: 45 100% 70%;
+    --yellow-400: 45 100% 60%;
+    --yellow-500: 45 100% 50%;
+    --yellow-600: 45 100% 45%;
+    --yellow-700: 45 100% 40%;
+    --yellow-800: 45 100% 35%;
+    --yellow-900: 45 100% 25%;
+    --yellow-950: 45 100% 20%;
+
+    /* Base semantic colors */
+    --background: var(--gray-50);
+    --foreground: var(--gray-950);
+    --card: var(--gray-50);
+    --card-foreground: var(--gray-950);
+    --popover: var(--gray-50);
+    --popover-foreground: var(--gray-950);
+    --primary: var(--blue-600);
+    --primary-foreground: var(--gray-50);
+    --secondary: var(--gray-100);
+    --secondary-foreground: var(--gray-950);
+    --muted: var(--gray-100);
+    --muted-foreground: var(--gray-500);
+    --accent: var(--blue-600);
+    --accent-foreground: var(--gray-950);
+    --destructive: var(--red-700);
+    --destructive-foreground: var(--gray-50);
+    --success: var(--green-600);
+    --success-foreground: var(--gray-50);
+    --warning: var(--yellow-500);
+    --warning-foreground: var(--gray-950);
+    --border: var(--gray-200);
+    --input: var(--gray-200);
+    --ring: var(--blue-600);
+    --radius: 0.5rem;
+
+    /* Semantic UI colors */
+    --bg-default: var(--gray-50);
+    --bg-subtle: var(--gray-100);
+    --bg-strong: var(--gray-200);
+    --bg-disabled: var(--gray-100);
+    --bg-overlap: var(--gray-100);
+    --bg-section: var(--gray-200);
+    --bg-overlay: var(--gray-950 / 0.4);
+
+    --border-default: var(--gray-200);
+    --border-subtle: var(--gray-100);
+    --border-strong: var(--gray-300);
+    --border-transparent: var(--gray-950 / 0);
+
+    --text-default: var(--gray-950);
+    --text-subtle: var(--gray-500);
+    --text-disabled: var(--gray-400);
+    --text-inverted: var(--gray-50);
   }
 
-  .dark {
-    --background: #070915;
-    --foreground: #ffffff;
-    --secondary: #0e0c2b;
-    --secondary-foreground: #ffffff;
-    --tertiary: #0e0c2b;
-    --tertiary-foreground: #ffffff;
-    --accent: #f6cd00;
-    --accent-foreground: #ffffff;
-    --border: #2b2660;
+  [data-theme="dark"] {
+    /* Base semantic colors */
+    --background: var(--gray-950);
+    --foreground: var(--gray-50);
+    --card: var(--gray-950);
+    --card-foreground: var(--gray-50);
+    --popover: var(--gray-950);
+    --popover-foreground: var(--gray-50);
+    --primary: var(--blue-600);
+    --primary-foreground: var(--gray-50);
+    --secondary: var(--gray-800);
+    --secondary-foreground: var(--gray-50);
+    --muted: var(--gray-800);
+    --muted-foreground: var(--gray-400);
+    --accent: var(--blue-600);
+    --accent-foreground: var(--gray-50);
+    --destructive: var(--red-700);
+    --destructive-foreground: var(--gray-50);
+    --success: var(--green-600);
+    --success-foreground: var(--gray-50);
+    --warning: var(--yellow-500);
+    --warning-foreground: var(--gray-950);
+    --border: var(--gray-700);
+    --input: var(--gray-700);
+    --ring: var(--blue-600);
+
+    /* Semantic UI colors */
+    --bg-default: var(--gray-950);
+    --bg-subtle: var(--gray-900);
+    --bg-strong: var(--gray-800);
+    --bg-disabled: var(--gray-900);
+    --bg-overlap: var(--gray-900);
+    --bg-section: var(--gray-800);
+    --bg-overlay: var(--gray-950 / 0.64);
+
+    --border-default: var(--gray-700);
+    --border-subtle: var(--gray-800);
+    --border-strong: var(--gray-600);
+    --border-transparent: var(--gray-950 / 0);
+
+    --text-default: var(--gray-50);
+    --text-subtle: var(--gray-400);
+    --text-disabled: var(--gray-600);
+    --text-inverted: var(--gray-950);
   }
 
   * {
@@ -146,62 +185,57 @@
     @apply max-w-3xl mx-auto;
   }
 
+  .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+    @apply font-bold text-foreground;
+  }
+
   .prose h1 {
-    font-weight: 700;
-    margin-block-start: 4rem;
+    @apply text-3xl md:text-4xl mb-6;
   }
 
-  .prose a {
-    color: var(--foreground);
-    text-decoration: underline;
-    text-decoration-color: var(--border);
-    text-decoration-thickness: 3px;
-    text-underline-offset: 5px;
-    transition: all 150ms ease;
+  .prose h2 {
+    @apply text-2xl md:text-3xl mt-8 mb-4;
   }
 
-  .prose a:hover {
-    color: var(--accent-foreground);
-    text-decoration-color: var(--accent);
-    text-decoration-thickness: 3px;
-    text-underline-offset: 7px;
+  .prose h3 {
+    @apply text-xl md:text-2xl mt-6 mb-3;
   }
 
-  .prose pre {
-    background-color: var(--tertiary);
-    color: var(--tertiary-foreground);
-    padding: 1.5rem 2rem;
-    margin: 2rem auto;
-    border-radius: 0.75rem;
-    font-weight: 600;
-    font-size: 1.1em;
-    line-height: 2;
-    width: fit-content;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  .prose p, .prose ul, .prose ol {
+    @apply mb-4 text-base md:text-lg;
   }
 
-  .prose code {
-    background-color: var(--tertiary);
-    color: var(--tertiary-foreground);
-    padding: 0.125rem 0.375rem;
-    border-radius: 0.375rem;
-    font-size: 0.875em;
-    font-weight: 600;
+  .prose ul {
+    @apply list-disc pl-6;
+  }
+
+  .prose ol {
+    @apply list-decimal pl-6;
   }
 
   .prose blockquote {
-    border-left: 4px solid var(--tertiary);
-    opacity: 0.8;
+    @apply border-l-4 border-primary pl-4 italic;
+  }
+
+  .prose code {
+    @apply bg-secondary px-1 py-0.5 rounded text-sm;
+  }
+
+  .prose pre {
+    @apply bg-secondary p-4 rounded-md overflow-x-auto;
+  }
+
+  .prose img {
+    @apply rounded-md my-6;
   }
 
   .prose hr {
-    border: none;
-    border-top: 2.5px solid var(--border);
-    margin: 2rem 0;
-    width: 100%;
-    opacity: 0.8;
+    @apply my-8 border-muted-foreground/30;
+  }
+
+  .prose a {
+    @apply text-primary underline underline-offset-4 hover:text-primary/80 transition-colors;
+    text-decoration-thickness: 1px;
   }
 
   .prose details {
@@ -259,6 +293,24 @@
   .theme-toggle:focus-visible {
     outline: 2px solid var(--tertiary);
     outline-offset: 2px;
+  }
+}
+
+/* Scrollbar Hiding */
+@layer utilities {
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .permanent-marker-regular {
+    font-family: "Permanent Marker", cursive;
+    font-weight: 400;
+    font-style: normal;
   }
 }
 
