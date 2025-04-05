@@ -5,14 +5,39 @@ This component showcases client success stories with metrics and impact data in 
 ## Features
 
 - Timeline-based presentation of success stories
-- Metrics display with increase/decrease indicators
 - Client and project information
 - Technology tags
+- Project images with responsive display
+- External project links
 - Slide-based navigation for detailed content
 
 ## Component Structure
 
 The Stories component presents each success story as a slide with key metrics, client information, and project details.
+
+## Impact Metrics (Currently Hidden)
+
+The impact metrics section is temporarily hidden until real tracking data is available. To re-enable this section:
+
+1. Collect real impact data for each project including:
+   - Quantifiable metrics (e.g., "28% increase in user engagement")
+   - Qualitative improvements with concrete evidence
+   - Before/after comparisons where applicable
+
+2. Update the stories.json file with the verified metrics:
+```json
+{
+  "impact": [
+    {
+      "metric": "Metric Name",
+      "value": "Quantifiable Value",
+      "change": "increase|decrease|improvement|reduction"
+    }
+  ]
+}
+```
+
+3. Uncomment the Impact Metrics section in components/windows/stories.tsx
 
 ## Data Source
 
@@ -24,19 +49,15 @@ This component uses the data from `data/stories.json`.
   "stories": [
     {
       "id": "story-id",
-      "year": 2022,
+      "year": 2023,
       "client": "Client Name",
       "title": "Story Title",
       "description": "Description of the success story",
       "technologies": ["Tech1", "Tech2"],
-      "impact": [
-        {
-          "metric": "Metric Name",
-          "value": "28%",
-          "change": "increase|decrease|improvement|reduction"
-        }
-      ],
-      "totalSlides": 4,
+      "url": "https://project-url.com",
+      "image": "/images/projects/image.webp",
+      "impact": [], // Currently not displayed
+      "totalSlides": 3,
       "currentSlide": 1
     }
   ]
@@ -84,15 +105,9 @@ Each success story contains:
 - Client and project information
 - Year of completion
 - Technologies used
-- Impact metrics with directional indicators
+- Project image
+- External project URL
 - Multi-slide content structure
-
-## Metrics Display
-
-Metrics are displayed with:
-- Visual indicators for positive/negative change
-- Percentage or value representation
-- Category labels
 
 ## Configuration
 
@@ -106,5 +121,6 @@ To modify the success stories:
    - title: Project/story title
    - description: Brief description
    - technologies: Array of technologies used
-   - impact: Array of metrics with values and change type
+   - url: Project website URL
+   - image: Path to project image
    - slide information for navigation
