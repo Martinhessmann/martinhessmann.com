@@ -8,6 +8,7 @@ import { Projects } from './windows/projects'
 import { Stories } from './windows/stories'
 import { Messages } from './windows/messages'
 import { Notes } from './windows/notes'
+import { LegalNotice } from './windows/legal-notice'
 import { useWindowStore, WindowPosition, WindowSize } from '@/lib/store/window-store'
 
 // Create a client-only clock component
@@ -76,6 +77,22 @@ export function Desktop() {
     }
   }, [windows.length, addWindow])
 
+  // Handle Legal Notice dock click (for legal compliance - one click access)
+  const handleDockClick = (id: string) => {
+    if (id === 'legal-notice') {
+      // Ensure Legal Notice window exists and open it
+      addWindow({
+        id: 'legal-notice',
+        title: 'Legal Notice',
+        icon: '/images/app-icons/02 System Settings.png',
+        component: <LegalNotice />,
+        position: { x: 300, y: 200 },
+        size: { width: 600, height: 400 }
+      })
+    }
+    focusWindow(id)
+  }
+
   return (
     <div className="relative h-full pt-[24px] bg-gradient-to-b from-background to-background/80 overflow-hidden">
       {/* Desktop background */}
@@ -110,7 +127,7 @@ export function Desktop() {
         <div className="absolute bottom-0 left-0 right-0 flex justify-center py-2 z-[200]">
           <Dock
             windows={windows}
-            openWindow={focusWindow}
+            openWindow={handleDockClick}
           />
         </div>
 
