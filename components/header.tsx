@@ -16,6 +16,7 @@ import {
 import { useWindowStore } from '@/lib/store/window-store'
 import { AboutMartin } from '@/components/windows/about-martin'
 import { ProjectInfo } from '@/components/windows/project-info'
+import { LegalNotice } from '@/components/windows/legal-notice'
 import { ChevronRight, Wifi, Bluetooth } from 'lucide-react'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { ThemeFavicon } from '@/components/theme-favicon'
@@ -82,6 +83,20 @@ export function Header() {
     focusWindow(windowId)
   }
 
+  // Function to open Legal Notice window
+  const openLegalNotice = () => {
+    const windowId = 'legal-notice'
+    addWindow({
+      id: windowId,
+      title: 'Legal Notice',
+      icon: faviconSrc,
+      component: <LegalNotice />,
+      position: { x: 300, y: 200 },
+      size: { width: 600, height: 400 }
+    })
+    focusWindow(windowId)
+  }
+
   // Function to open System Settings window
   const openSystemSettings = () => {
     const windowId = 'system-settings'
@@ -140,6 +155,13 @@ export function Header() {
             onClick={openProjectInfo}
           >
             About This Project
+          </DropdownMenuItem>
+
+          <DropdownMenuItem
+            className="cursor-default text-popover-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground rounded-[4px] mx-1 my-0.5 py-[6px] px-3 font-normal"
+            onClick={openLegalNotice}
+          >
+            Legal Notice
           </DropdownMenuItem>
 
           <DropdownMenuSeparator className="bg-border my-1 mx-0" />
