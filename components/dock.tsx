@@ -25,7 +25,8 @@ export function Dock({ windows, openWindow }: DockProps) {
     { id: 'projects', icon: '/images/app-icons/04 Chrome.png', title: 'Projects' },
     { id: 'stories', icon: '/images/app-icons/07 Photos.png', title: 'Stories' },
     { id: 'messages', icon: '/images/app-icons/31 Messages.png', title: 'Messages' },
-    { id: 'notes', icon: '/images/app-icons/15 Notes.png', title: 'Notes' }
+    { id: 'notes', icon: '/images/app-icons/15 Notes.png', title: 'Notes' },
+    { id: 'legal-notice', icon: '/images/app-icons/02 System Settings.png', title: 'Legal Notice' }
   ]
 
   // Handle app click in dock
