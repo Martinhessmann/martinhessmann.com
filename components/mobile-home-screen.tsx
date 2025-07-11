@@ -53,40 +53,40 @@ export function MobileHomeScreen() {
   return (
     <div className="h-screen bg-gradient-to-b from-blue-400 via-blue-500 to-blue-600 overflow-hidden relative">
       {/* iOS-style background wallpaper */}
-      <div className="absolute inset-0 bg-[url('/images/desktop-background.jpg')] bg-cover bg-center opacity-30" />
+      <div className="absolute inset-0 bg-[url('/images/desktop-background.jpg')] bg-cover bg-center" />
 
-      {/* Profile Widget - iOS style with photo background and text overlay */}
-      <div className="relative z-10 mt-12 mb-8 mx-6">
-        <div className="relative h-32 rounded-2xl overflow-hidden">
-          {/* Background image */}
-          <Image
-            src="/images/profile.png"
-            alt="Martin Heßmann"
-            fill
-            className="object-cover"
-            priority
-          />
-          {/* Dark overlay for text readability */}
-          <div className="absolute inset-0 bg-black/30" />
-          {/* Text overlay */}
-          <div className="absolute inset-0 flex flex-col justify-end p-4">
-            <h1 className="text-white text-2xl font-light mb-1">Martin Heßmann</h1>
-            <p className="text-white/90 text-sm">Product Generalist • Berlin</p>
-          </div>
-        </div>
-      </div>
-
-      {/* App grid with larger icons and less padding */}
-      <div className="relative z-10 px-6">
+      {/* iOS Grid Container */}
+      <div className="relative z-10 px-6 pt-16">
+        {/* iOS Grid - 4 columns layout */}
         <div className="grid grid-cols-4 gap-4 max-w-sm mx-auto">
+
+          {/* Profile Widget - spans all 4 columns */}
+          <div className="col-span-4 mb-4">
+            <div className="relative h-32 rounded-2xl overflow-hidden">
+              {/* Background image */}
+              <Image
+                src="/images/profile.png"
+                alt="Martin Heßmann"
+                fill
+                className="object-cover"
+                priority
+              />
+              {/* Dark overlay for text readability */}
+              <div className="absolute inset-0 bg-black/30" />
+              {/* Text overlay */}
+              <div className="absolute inset-0 flex flex-col justify-end p-4">
+                <h1 className="text-white text-2xl font-light mb-1">Martin Heßmann</h1>
+                <p className="text-white/90 text-sm">Product Generalist • Berlin</p>
+              </div>
+            </div>
+          </div>
+
+          {/* App Icons Grid - each app takes 1 column */}
           {apps.map((app) => (
             <div key={app.id} className="flex flex-col items-center">
               <button
                 onClick={() => handleAppTap(app.id)}
-                className="w-16 h-16 mb-2 rounded-xl overflow-hidden shadow-lg active:scale-95 transition-transform duration-150"
-                style={{
-                  boxShadow: '0 4px 8px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1) inset'
-                }}
+                className="w-16 h-16 mb-2 active:scale-95 transition-transform duration-150"
               >
                 <Image
                   src={app.icon}
@@ -101,6 +101,7 @@ export function MobileHomeScreen() {
               </span>
             </div>
           ))}
+
         </div>
       </div>
 
