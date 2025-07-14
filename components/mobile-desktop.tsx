@@ -9,6 +9,8 @@ import { Stories } from './windows/stories'
 import { Messages } from './windows/messages'
 import { Notes } from './windows/notes'
 import { LegalNotice } from './windows/legal-notice'
+import { AboutMartin } from './windows/about-martin'
+import { ProjectInfo } from './windows/project-info'
 
 export function MobileDesktop() {
   const { currentApp, closeApp, registerApp } = useMobileAppStore()
@@ -22,7 +24,7 @@ export function MobileDesktop() {
       component: <Projects />
     },
     'stories': {
-      id: 'stories', 
+      id: 'stories',
       title: 'Stories',
       icon: '/images/app-icons/07 Photos.png',
       component: <Stories />
@@ -44,6 +46,18 @@ export function MobileDesktop() {
       title: 'Legal Notice',
       icon: '/images/app-icons/02 System Settings.png',
       component: <LegalNotice />
+    },
+    'about-martin': {
+      id: 'about-martin',
+      title: 'About Martin',
+      icon: '/images/app-icons/16 ChatGPT.png',
+      component: <AboutMartin />
+    },
+    'project-info': {
+      id: 'project-info',
+      title: 'Project Info',
+      icon: '/images/app-icons/12 Notion.png',
+      component: <ProjectInfo />
     }
   }), [])
 
@@ -52,7 +66,7 @@ export function MobileDesktop() {
     const handleAppOpen = (event: CustomEvent) => {
       const appId = event.detail.appId
       const appConfig = appConfigs[appId as keyof typeof appConfigs]
-      
+
       if (appConfig) {
         registerApp(appConfig)
       }
@@ -60,7 +74,7 @@ export function MobileDesktop() {
 
     // Listen for custom app-open events
     window.addEventListener('mobile-app-open', handleAppOpen as EventListener)
-    
+
     return () => {
       window.removeEventListener('mobile-app-open', handleAppOpen as EventListener)
     }
@@ -69,7 +83,7 @@ export function MobileDesktop() {
   // Enhanced mobile app store hook to handle app opening
   React.useEffect(() => {
     const originalOpenApp = useMobileAppStore.getState().openApp
-    
+
     useMobileAppStore.setState({
       openApp: (appId: string) => {
         const appConfig = appConfigs[appId as keyof typeof appConfigs]
@@ -92,7 +106,7 @@ export function MobileDesktop() {
     <div className="h-screen w-screen overflow-hidden">
       {/* Home Screen */}
       {!currentApp && <MobileHomeScreen />}
-      
+
       {/* Current App */}
       {currentApp && (
         <MobileAppContainer
