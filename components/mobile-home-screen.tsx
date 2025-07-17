@@ -2,7 +2,6 @@
 
 import * as React from 'react'
 import Image from 'next/image'
-import { Search } from 'lucide-react'
 import { useMobileAppStore } from '@/lib/store/mobile-app-store'
 
 // iOS-style home screen with widgets and apps like iPhone 16 Pro Max
@@ -68,17 +67,11 @@ export function MobileHomeScreen() {
     openApp(appId)
   }
 
-  const handleSearchTap = () => {
-    if ('vibrate' in navigator) {
-      navigator.vibrate(50)
-    }
-    // Could implement search functionality
-  }
 
   return (
-    <div className="h-screen bg-gradient-to-b from-blue-400 via-blue-500 to-blue-600 overflow-hidden relative">
+    <div className="h-screen overflow-hidden relative">
       {/* iOS-style background wallpaper */}
-      <div className="absolute inset-0 bg-[url('/images/desktop-background.jpg')] bg-cover bg-center" />
+      <div className="absolute inset-0 bg-[url('/images/desktop-background.jpg')] bg-cover bg-left" />
 
       {/* Status bar space */}
       <div className="h-12" />
@@ -90,7 +83,10 @@ export function MobileHomeScreen() {
         <div className="grid grid-cols-4 gap-2 auto-rows-[80px]">
 
           {/* Large Widget - Profile (spans 4 columns, 2 rows) */}
-          <div className="col-span-4 row-span-2 bg-black/20 backdrop-blur-lg rounded-2xl overflow-hidden border border-white/10">
+          <button
+            onClick={() => handleAppTap('about-martin')}
+            className="col-span-4 row-span-2 bg-black/20 backdrop-blur-lg rounded-2xl overflow-hidden border border-white/5 active:scale-95 transition-transform duration-150"
+          >
             <div className="relative h-full">
               <Image
                 src="/images/profile.png"
@@ -105,36 +101,42 @@ export function MobileHomeScreen() {
                 <p className="text-white/80 text-sm">Product Generalist • Berlin</p>
               </div>
             </div>
-          </div>
+          </button>
 
           {/* Medium Widget - Projects Overview (spans 2 columns, 2 rows) */}
-          <div className="col-span-2 row-span-2 bg-blue-500/20 backdrop-blur-lg rounded-2xl p-3 border border-white/10">
-            <div className="text-white text-xs font-medium mb-1">Projects</div>
-            <div className="text-white text-lg font-semibold mb-1">5</div>
-            <div className="text-white/80 text-xs">Active projects</div>
-            <div className="mt-2 flex -space-x-1">
-              <div className="w-4 h-4 bg-orange-500 rounded-full border border-white/20"></div>
-              <div className="w-4 h-4 bg-green-500 rounded-full border border-white/20"></div>
-              <div className="w-4 h-4 bg-purple-500 rounded-full border border-white/20"></div>
+          <button
+            onClick={() => handleAppTap('projects')}
+            className="col-span-2 row-span-2 bg-white/10 backdrop-blur-lg rounded-2xl p-4 border border-white/5 active:scale-95 transition-transform duration-150 text-left"
+          >
+            <div className="text-white/80 text-xs font-medium mb-1">Projects</div>
+            <div className="text-white text-2xl font-semibold mb-1">5</div>
+            <div className="text-white/70 text-sm">Active projects</div>
+            <div className="mt-3 flex -space-x-1">
+              <div className="w-4 h-4 bg-orange-500 rounded-full border border-white/5"></div>
+              <div className="w-4 h-4 bg-green-500 rounded-full border border-white/5"></div>
+              <div className="w-4 h-4 bg-purple-500 rounded-full border border-white/5"></div>
             </div>
-          </div>
+          </button>
 
           {/* Medium Widget - Messages (spans 2 columns, 2 rows) */}
-          <div className="col-span-2 row-span-2 bg-green-500/20 backdrop-blur-lg rounded-2xl p-3 border border-white/10">
-            <div className="text-white text-xs font-medium mb-1">Messages</div>
-            <div className="text-white text-lg font-semibold mb-1">4</div>
-            <div className="text-white/80 text-xs">Client conversations</div>
-            <div className="mt-2">
-              <div className="text-white/80 text-xs truncate">Latest: TeamBank project update</div>
+          <button
+            onClick={() => handleAppTap('messages')}
+            className="col-span-2 row-span-2 bg-white/10 backdrop-blur-lg rounded-2xl p-4 border border-white/5 active:scale-95 transition-transform duration-150 text-left"
+          >
+            <div className="text-white/80 text-xs font-medium mb-1">Messages</div>
+            <div className="text-white text-2xl font-semibold mb-1">4</div>
+            <div className="text-white/70 text-sm">Client conversations</div>
+            <div className="mt-3">
+              <div className="text-white/60 text-xs truncate">Latest: TeamBank project update</div>
             </div>
-          </div>
+          </button>
 
           {/* App Icons Row 1 */}
           {apps.slice(0, 4).map((app) => (
             <button
               key={app.id}
               onClick={() => handleAppTap(app.id)}
-              className="aspect-square rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 active:scale-95 transition-transform duration-150 flex flex-col items-center justify-center p-2"
+              className="aspect-square rounded-2xl active:scale-95 transition-transform duration-150 flex flex-col items-center justify-center p-2"
             >
               <div className="w-12 h-12 mb-1">
                 <Image
@@ -156,7 +158,7 @@ export function MobileHomeScreen() {
             <button
               key={app.id}
               onClick={() => handleAppTap(app.id)}
-              className="aspect-square rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 active:scale-95 transition-transform duration-150 flex flex-col items-center justify-center p-2"
+              className="aspect-square rounded-2xl active:scale-95 transition-transform duration-150 flex flex-col items-center justify-center p-2"
             >
               <div className="w-12 h-12 mb-1">
                 <Image
@@ -175,29 +177,19 @@ export function MobileHomeScreen() {
 
         </div>
 
-        {/* Search bar (like iPhone) */}
-        <div className="mt-8 mb-4">
-          <button
-            onClick={handleSearchTap}
-            className="w-full bg-white/10 backdrop-blur-lg rounded-full px-4 py-3 border border-white/20 flex items-center active:scale-98 transition-transform duration-150"
-          >
-            <Search className="w-5 h-5 text-white/60 mr-3" />
-            <span className="text-white/60 text-sm">Search</span>
-          </button>
-        </div>
 
       </div>
 
       {/* Dock - iPhone style with 4 apps */}
       <div className="absolute bottom-0 left-0 right-0 z-20">
         <div className="mx-4 mb-8">
-          <div className="bg-white/10 backdrop-blur-xl rounded-2xl px-4 py-3 border border-white/20">
+          <div className="bg-white/10 backdrop-blur-xl rounded-2xl px-4 py-3 border border-white/5">
             <div className="grid grid-cols-4 gap-4">
               {dockApps.map((app) => (
                 <button
                   key={app.id}
                   onClick={() => handleAppTap(app.id)}
-                  className="aspect-square rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 active:scale-95 transition-transform duration-150 flex items-center justify-center"
+                  className="aspect-square rounded-2xl active:scale-95 transition-transform duration-150 flex items-center justify-center"
                 >
                   <Image
                     src={app.icon}

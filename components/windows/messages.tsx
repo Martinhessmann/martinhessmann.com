@@ -252,8 +252,8 @@ export function Messages() {
                     <div className="text-sm text-muted-foreground truncate">
                       {convo.client.name}
                     </div>
-                    <div className="text-sm text-muted-foreground mt-1 truncate">
-                      {convo.messages[convo.messages.length - 1]?.content.substring(0, 60)}...
+                    <div className="text-sm text-muted-foreground mt-1 line-clamp-2">
+                      {convo.messages[convo.messages.length - 1]?.content}
                     </div>
                   </div>
                 </button>
