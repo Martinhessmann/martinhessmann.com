@@ -159,53 +159,7 @@ export function Projects() {
               ) : (
                 <div className="space-y-4">
                   {filteredProjects.map((project) => (
-                    <button
-                      key={project.id}
-                      onClick={() => handleProjectSelect(project)}
-                      className="w-full text-left bg-card rounded-lg overflow-hidden hover:bg-muted transition-colors"
-                    >
-                      {/* Project Image */}
-                      <div className="relative aspect-video w-full bg-muted overflow-hidden">
-                        <Image
-                          src={project.image}
-                          alt={project.title}
-                          fill
-                          sizes="100vw"
-                          className="object-cover"
-                          loading="lazy"
-                        />
-                      </div>
-
-                      {/* Project Info */}
-                      <div className="p-4">
-                        <div className="flex items-center justify-between mb-2">
-                          <h3 className="text-lg font-semibold line-clamp-1">{project.title}</h3>
-                          <ExternalLink className="h-4 w-4 text-muted-foreground flex-shrink-0" />
-                        </div>
-                        <p className="text-sm text-muted-foreground line-clamp-2 mb-2">{project.description}</p>
-
-                        <div className="text-sm text-muted-foreground mb-3">
-                          <span>{project.url}</span> • <span>Since {project.since}</span>
-                        </div>
-
-                        {/* Technologies */}
-                        <div className="flex flex-wrap gap-1">
-                          {project.technologies.slice(0, 3).map((tech) => (
-                            <span
-                              key={tech}
-                              className="px-2 py-1 bg-primary/10 text-primary rounded-full text-xs"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                          {project.technologies.length > 3 && (
-                            <span className="px-2 py-1 bg-muted text-muted-foreground rounded-full text-xs">
-                              +{project.technologies.length - 3}
-                            </span>
-                          )}
-                        </div>
-                      </div>
-                    </button>
+                    <ProjectCard key={project.id} project={project} onSelect={handleProjectSelect} />
                   ))}
                 </div>
               )}
