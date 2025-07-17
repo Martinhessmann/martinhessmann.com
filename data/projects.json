@@ -1,19 +1,6 @@
 {
   "projects": [
     {
-      "id": "afurnet",
-      "title": "The African Forum for Utility Regulators",
-      "url": "afurnet.org",
-      "description": "Facilitating the development of effective utility regulation in support of Africa's infrastructure development.",
-      "lastUpdated": "5 days ago",
-      "technologies": ["WordPress"],
-      "category": "CMS",
-      "roles": ["Design", "Project Management"],
-      "since": "2022",
-      "image": "/images/clients/afurnet.org-og.jpg",
-      "themeColor": "#ffffff"
-    },
-    {
       "id": "brasserie-colette",
       "title": "Brasserie Colette",
       "url": "brasseriecolette.de",
@@ -25,6 +12,18 @@
       "since": "2020",
       "image": "/images/clients/brasseriecolette.de-og.jpg",
       "themeColor": "#c9db5b"
+    },
+    {
+      "id": "dein-womo",
+      "title": "Dein WoMo",
+      "url": "dein-womo.de",
+      "description": "Dein-WoMo.de ist die neue Plattform für förderberechtigte EVG-Mitglieder außerhalb der DB AG",
+      "lastUpdated": "6 days ago",
+      "technologies": ["TYPO3"],
+      "category": "Web Application",
+      "roles": ["Design", "Development"],
+      "since": "2021",
+      "image": "/images/clients/dein-womo.de-og.jpg"
     },
     {
       "id": "dpf-investment",
@@ -39,55 +38,17 @@
       "image": "/images/clients/dpf-investment.de-og.jpg"
     },
     {
-      "id": "ras-services",
-      "title": "RAS Services",
-      "url": "ras-services.de",
-      "description": "RAS Services - Concierge-Dienste Beyond Service ✓Home & Office Concierge ✓digitaler Concierge ✓After Sales ✓für Unternehmen und Projektentwickler.",
-      "lastUpdated": "Last month",
+      "id": "easycredit-partner",
+      "title": "easyCredit Partner",
+      "url": "partner.easycredit.de",
+      "description": "Business Services von easyCredit - Ihr Partner für ✓Onlineshops, am ✓PoS und im ✓Direktvertrieb. Jetzt Ratenkauf und Rechnung anbieten!",
+      "lastUpdated": "2 days ago",
       "technologies": ["WordPress"],
       "category": "CMS",
       "roles": ["Design", "Development", "Project Management"],
-      "since": "2019",
-      "image": "/images/clients/ras-services.de-og.jpg",
+      "since": "2020",
+      "image": "/images/clients/partner.easycredit.de-og.jpg",
       "themeColor": "#ffffff"
-    },
-    {
-      "id": "tertianum-premium",
-      "title": "Tertianum Premium Residences",
-      "url": "tertianum-premiumresidences.de",
-      "description": "Tertianum► Exklusives Premium Wohnen im Alter mit Serviceleistungen in bester urbaner Lage in Berlin, München oder Konstanz.",
-      "lastUpdated": "6 days ago",
-      "technologies": ["WordPress"],
-      "category": "Headless CMS",
-      "roles": ["Design", "Development", "Project Management"],
-      "since": "2018",
-      "image": "/images/clients/tertianum-premiumresidences.de-og.jpg",
-      "themeColor": "#8B7E70"
-    },
-    {
-      "id": "tertianum-group",
-      "title": "Tertianum Premium Group",
-      "url": "tertianum.de",
-      "description": "Tertianum Premium Group ✓innovative Wohnkonzepte für das Leben im Alter ✓ambulante & stationäre First-Class-Pflege ✓Gourmet Restaurants",
-      "lastUpdated": "1 week ago",
-      "technologies": ["WordPress"],
-      "category": "CMS",
-      "roles": ["Design", "Project Management"],
-      "since": "2019",
-      "image": "/images/clients/tertianum.de-og.jpg",
-      "themeColor": "#191919"
-    },
-    {
-      "id": "spotsup",
-      "title": "SPOTS UP",
-      "url": "spotsup.rent",
-      "description": "Ihr Licht entscheidet: Mit Premium-Leuchten von SPOTS UP strahlen Sie und Ihre Kunden um die Wette. Sie sind auf der Suche nach der perfekten Beleuchtung für Ihre Messe, einen Event, Ihre Galerie oder ein Handelsgeschäft?",
-      "lastUpdated": "2 weeks ago",
-      "technologies": ["Vue.js"],
-      "category": "Web Application",
-      "roles": ["Development", "Project Management"],
-      "since": "2022",
-      "image": "/images/clients/spotsup.rent-og.jpg"
     },
     {
       "id": "electronica",
@@ -102,6 +63,18 @@
       "image": "/images/clients/electronica.group-og.jpg"
     },
     {
+      "id": "elodiecarstensen",
+      "title": "Elodie Carstensen",
+      "url": "elodiecarstensen.com",
+      "description": "Berlin-based artist and designer creating worlds through fashion, immersive installations, and custom costume designs.",
+      "lastUpdated": "1 week ago",
+      "technologies": ["React"],
+      "category": "Web Application",
+      "roles": ["Design", "Development"],
+      "since": "2024",
+      "image": "/images/clients/elodiecarstensen-og.jpg"
+    },
+    {
       "id": "fairworks",
       "title": "Fairworks",
       "url": "fairworks.com",
@@ -113,6 +86,18 @@
       "since": "2021",
       "image": "/images/clients/fairworks.com-og.jpg",
       "themeColor": "#ffffff"
+    },
+    {
+      "id": "womofonds",
+      "title": "Fonds für Wohnen und Mobilität",
+      "url": "womofonds.de",
+      "description": "Der Wo-Mo-Fonds zahlt Zuschüsse zu den Kosten von Wohnen und Mobilität für alle EVG-Mitglieder, die bei der DB AG oder ihren Tochterunternehmen arbeiten.",
+      "lastUpdated": "5 days ago",
+      "technologies": ["TYPO3"],
+      "category": "Web Application",
+      "roles": ["Design", "Project Management"],
+      "since": "2021",
+      "image": "/images/clients/womofonds.de-og.jpg"
     },
     {
       "id": "gruen-berlin",
@@ -139,31 +124,6 @@
       "image": "/images/clients/infrasignal.de-og.jpg"
     },
     {
-      "id": "stadt-weide-land",
-      "title": "Stadt Weide Land",
-      "url": "stadtweideland.de",
-      "description": "Stadt Weide Land transformiert Grünflächen in wertvolle Stadtnatur. Mit dem Einsatz von bedrohten Nutztierrassen in der Landschaftspflege tragen wir zu mehr Biodiversität und Artenschutz in Berlin bei.",
-      "lastUpdated": "3 weeks ago",
-      "technologies": ["TYPO3"],
-      "category": "CMS",
-      "roles": ["Design", "Project Management"],
-      "since": "2022",
-      "image": "/images/clients/stadtweideland.de-og.jpg"
-    },
-    {
-      "id": "easycredit-partner",
-      "title": "easyCredit Partner",
-      "url": "partner.easycredit.de",
-      "description": "Business Services von easyCredit - Ihr Partner für ✓Onlineshops, am ✓PoS und im ✓Direktvertrieb. Jetzt Ratenkauf und Rechnung anbieten!",
-      "lastUpdated": "2 days ago",
-      "technologies": ["WordPress"],
-      "category": "CMS",
-      "roles": ["Design", "Development", "Project Management"],
-      "since": "2020",
-      "image": "/images/clients/partner.easycredit.de-og.jpg",
-      "themeColor": "#ffffff"
-    },
-    {
       "id": "porsche-lifestyle",
       "title": "Porsche Lifestyle Group Pressroom",
       "url": "press.porsche-design.com",
@@ -175,6 +135,43 @@
       "since": "2019",
       "image": "/images/clients/press.porsche-design.com-og.jpg",
       "themeColor": "#000000"
+    },
+    {
+      "id": "ras-services",
+      "title": "RAS Services",
+      "url": "ras-services.de",
+      "description": "RAS Services - Concierge-Dienste Beyond Service ✓Home & Office Concierge ✓digitaler Concierge ✓After Sales ✓für Unternehmen und Projektentwickler.",
+      "lastUpdated": "Last month",
+      "technologies": ["WordPress"],
+      "category": "CMS",
+      "roles": ["Design", "Development", "Project Management"],
+      "since": "2019",
+      "image": "/images/clients/ras-services.de-og.jpg",
+      "themeColor": "#ffffff"
+    },
+    {
+      "id": "spotsup",
+      "title": "SPOTS UP",
+      "url": "spotsup.rent",
+      "description": "Ihr Licht entscheidet: Mit Premium-Leuchten von SPOTS UP strahlen Sie und Ihre Kunden um die Wette. Sie sind auf der Suche nach der perfekten Beleuchtung für Ihre Messe, einen Event, Ihre Galerie oder ein Handelsgeschäft?",
+      "lastUpdated": "2 weeks ago",
+      "technologies": ["Vue.js"],
+      "category": "Web Application",
+      "roles": ["Development", "Project Management"],
+      "since": "2022",
+      "image": "/images/clients/spotsup.rent-og.jpg"
+    },
+    {
+      "id": "stadt-weide-land",
+      "title": "Stadt Weide Land",
+      "url": "stadtweideland.de",
+      "description": "Stadt Weide Land transformiert Grünflächen in wertvolle Stadtnatur. Mit dem Einsatz von bedrohten Nutztierrassen in der Landschaftspflege tragen wir zu mehr Biodiversität und Artenschutz in Berlin bei.",
+      "lastUpdated": "3 weeks ago",
+      "technologies": ["TYPO3"],
+      "category": "CMS",
+      "roles": ["Design", "Project Management"],
+      "since": "2022",
+      "image": "/images/clients/stadtweideland.de-og.jpg"
     },
     {
       "id": "teambank",
@@ -189,40 +186,43 @@
       "image": "/images/clients/teambank.de-og.jpg"
     },
     {
-      "id": "dein-womo",
-      "title": "Dein WoMo",
-      "url": "dein-womo.de",
-      "description": "Dein-WoMo.de ist die neue Plattform für förderberechtigte EVG-Mitglieder außerhalb der DB AG",
-      "lastUpdated": "6 days ago",
-      "technologies": ["TYPO3"],
-      "category": "Web Application",
-      "roles": ["Design", "Development"],
-      "since": "2021",
-      "image": "/images/clients/dein-womo.de-og.jpg"
-    },
-    {
-      "id": "womofonds",
-      "title": "Fonds für Wohnen und Mobilität",
-      "url": "womofonds.de",
-      "description": "Der Wo-Mo-Fonds zahlt Zuschüsse zu den Kosten von Wohnen und Mobilität für alle EVG-Mitglieder, die bei der DB AG oder ihren Tochterunternehmen arbeiten.",
-      "lastUpdated": "5 days ago",
-      "technologies": ["TYPO3"],
-      "category": "Web Application",
-      "roles": ["Design", "Project Management"],
-      "since": "2021",
-      "image": "/images/clients/womofonds.de-og.jpg"
-    },
-    {
-      "id": "elodiecarstensen",
-      "title": "Elodie Carstensen",
-      "url": "elodiecarstensen.com",
-      "description": "Berlin-based artist and designer creating worlds through fashion, immersive installations, and custom costume designs.",
+      "id": "tertianum-group",
+      "title": "Tertianum Premium Group",
+      "url": "tertianum.de",
+      "description": "Tertianum Premium Group ✓innovative Wohnkonzepte für das Leben im Alter ✓ambulante & stationäre First-Class-Pflege ✓Gourmet Restaurants",
       "lastUpdated": "1 week ago",
-      "technologies": ["React"],
-      "category": "Web Application",
-      "roles": ["Design", "Development"],
-      "since": "2024",
-      "image": "/images/clients/elodiecarstensen-og.jpg"
+      "technologies": ["WordPress"],
+      "category": "CMS",
+      "roles": ["Design", "Project Management"],
+      "since": "2019",
+      "image": "/images/clients/tertianum.de-og.jpg",
+      "themeColor": "#191919"
+    },
+    {
+      "id": "tertianum-premium",
+      "title": "Tertianum Premium Residences",
+      "url": "tertianum-premiumresidences.de",
+      "description": "Tertianum► Exklusives Premium Wohnen im Alter mit Serviceleistungen in bester urbaner Lage in Berlin, München oder Konstanz.",
+      "lastUpdated": "6 days ago",
+      "technologies": ["WordPress"],
+      "category": "Headless CMS",
+      "roles": ["Design", "Development", "Project Management"],
+      "since": "2018",
+      "image": "/images/clients/tertianum-premiumresidences.de-og.jpg",
+      "themeColor": "#8B7E70"
+    },
+    {
+      "id": "afurnet",
+      "title": "The African Forum for Utility Regulators",
+      "url": "afurnet.org",
+      "description": "Facilitating the development of effective utility regulation in support of Africa's infrastructure development.",
+      "lastUpdated": "5 days ago",
+      "technologies": ["WordPress"],
+      "category": "CMS",
+      "roles": ["Design", "Project Management"],
+      "since": "2022",
+      "image": "/images/clients/afurnet.org-og.jpg",
+      "themeColor": "#ffffff"
     }
   ],
   "metadata": {
