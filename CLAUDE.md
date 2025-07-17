@@ -64,6 +64,9 @@ JSON files in `data/` directory provide content:
 - iOS-style interface with home screen and app switching
 - Touch-friendly components and gestures
 - Separate mobile components for optimized experience
+- Uses same desktop background aligned to left half for consistency
+- Interactive widgets that open corresponding apps
+- Unified app styling across mobile and desktop components
 
 ### File Structure Notes
 
@@ -72,7 +75,7 @@ JSON files in `data/` directory provide content:
 - `components/ui/` - Shadcn/UI components
 - `components/primitives/` - Reusable UI building blocks
 - `lib/` - Utilities, stores, and helper functions
-- `data/` - JSON content files
+- `data/` - JSON content files (projects.json sorted alphabetically by title)
 - `docs/` - Comprehensive project documentation
 - `public/` - Static assets including app icons and images
 
@@ -83,3 +86,6 @@ JSON files in `data/` directory provide content:
 - Theme switching uses next-themes with CSS variables
 - All images use Next.js Image component for optimization
 - TypeScript is configured with strict mode enabled
+- Mobile interface uses consistent styling with desktop (same ProjectCard components)
+- All borders use subtle `border-white/5` for dark mode consistency
+- Projects data includes comprehensive technology and role information
