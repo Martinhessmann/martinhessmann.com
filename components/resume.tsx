@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge'
 import { ExternalLink } from 'lucide-react'
 import { useAdminStore } from '@/lib/store/admin-store'
 import Image from 'next/image'
-import { useEffect } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 
 interface ResumeProps {
   resume: Resume
@@ -13,11 +13,47 @@ interface ResumeProps {
 
 export function Resume({ resume }: ResumeProps) {
   const { isAdminMode, setHydrated } = useAdminStore()
+  const [activeFilters, setActiveFilters] = useState<string[]>([])
 
   // Hydrate admin mode from localStorage on mount
   useEffect(() => {
     setHydrated()
   }, [])
+
+  // Get all unique skills from all skill categories
+  const allSkills = useMemo(() => {
+    if (!resume.skills) return []
+    return resume.skills.flatMap(skill => skill.keywords || [])
+  }, [resume.skills])
+
+  // Filter projects based on active skill filters
+  const filteredProjects = useMemo(() => {
+    if (!resume.projects || activeFilters.length === 0) return resume.projects || []
+
+    return resume.projects.filter(project => {
+      const projectKeywords = project.keywords || []
+      return activeFilters.some(filter =>
+        projectKeywords.some(keyword =>
+          keyword.toLowerCase().includes(filter.toLowerCase()) ||
+          filter.toLowerCase().includes(keyword.toLowerCase())
+        )
+      )
+    })
+  }, [resume.projects, activeFilters])
+
+  // Toggle skill filter
+  const toggleFilter = (skill: string) => {
+    setActiveFilters(prev =>
+      prev.includes(skill)
+        ? prev.filter(f => f !== skill)
+        : [...prev, skill]
+    )
+  }
+
+  // Clear all filters
+  const clearFilters = () => {
+    setActiveFilters([])
+  }
 
   // Define section order and render functions
   const sectionConfig = [
@@ -27,6 +63,7 @@ export function Resume({ resume }: ResumeProps) {
     { key: 'education', title: 'Education', render: renderEducation },
     { key: 'languages', title: 'Languages', render: renderLanguages },
     { key: 'interests', title: 'Interests', render: renderInterests },
+    { key: 'stories', title: 'Stories', render: renderStories },
   ]
 
   return (
@@ -120,66 +157,127 @@ export function Resume({ resume }: ResumeProps) {
   // Render functions for each section type
   function renderSkills(skills: Skill[]) {
     return (
-      <div className="grid gap-6 md:grid-cols-2">
-        {skills.map((skill, index) => (
-          <div key={index} className="space-y-2">
-            <h3 className="font-semibold text-foreground">
-              {skill.name}
-            </h3>
-            {skill.keywords && skill.keywords.length > 0 && (
-              <div className="flex flex-wrap gap-1">
-                {skill.keywords.map((keyword, keywordIndex) => (
-                  <Badge key={keywordIndex} variant="outline" className="text-xs">
-                    {keyword}
-                  </Badge>
-                ))}
-              </div>
-            )}
+      <div className="space-y-6">
+        {/* Filter Status */}
+        {activeFilters.length > 0 && (
+          <div className="flex items-center justify-between p-4 bg-muted/50 rounded-lg">
+            <div className="text-sm text-muted-foreground">
+              Showing {filteredProjects?.length || 0} of {resume.projects?.length || 0} projects
+            </div>
+            <button
+              onClick={clearFilters}
+              className="text-sm text-primary hover:text-primary/80 transition-colors"
+            >
+              Clear all ({activeFilters.length})
+            </button>
           </div>
-        ))}
+        )}
+
+        {/* Interactive Skills Categories */}
+        <div className="grid gap-6 md:grid-cols-2">
+          {skills.map((skill, index) => (
+            <div key={index} className="space-y-2">
+              <h3 className="font-semibold text-foreground">
+                {skill.name}
+              </h3>
+              {skill.keywords && skill.keywords.length > 0 && (
+                <div className="flex flex-wrap gap-1">
+                  {skill.keywords.map((keyword, keywordIndex) => {
+                    const isActive = activeFilters.includes(keyword)
+                    return (
+                      <button
+                        key={keywordIndex}
+                        onClick={() => toggleFilter(keyword)}
+                        className={`inline-flex items-center px-2 py-1 rounded text-xs font-medium transition-all duration-200 ${
+                          isActive
+                            ? 'bg-primary text-primary-foreground shadow-sm'
+                            : 'bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground'
+                        }`}
+                      >
+                        {keyword}
+                      </button>
+                    )
+                  })}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     )
   }
 
   function renderProjects(projects: Project[]) {
+    // Use filtered projects instead of the passed projects parameter
+    const projectsToRender = filteredProjects || projects
+
+    if (projectsToRender.length === 0 && activeFilters.length > 0) {
+      return (
+        <div className="text-center py-12">
+          <p className="text-muted-foreground mb-4">
+            No projects found matching the selected skills.
+          </p>
+          <button
+            onClick={clearFilters}
+            className="text-primary hover:text-primary/80 transition-colors"
+          >
+            Clear filters to see all projects
+          </button>
+        </div>
+      )
+    }
+
     return (
       <div className="grid gap-6 md:gap-8">
-        {projects.map((project, index) => (
+        {projectsToRender.map((project, index) => (
           <div key={index} className="border-l-2 border-muted pl-4">
-            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
-              <div>
-                <h3 className="text-lg font-semibold text-foreground">
-                  {project.name}
-                </h3>
-                {project.entity && (
-                  <p className="text-sm text-muted-foreground">
-                    {project.entity}
+            <div className="flex gap-4 mb-3">
+              {project.image && (
+                <div className="flex-shrink-0">
+                  <img
+                    src={project.image}
+                    alt={`${project.name} project screenshot`}
+                    className="w-20 h-20 object-cover rounded-md border border-muted"
+                  />
+                </div>
+              )}
+              <div className="flex-1 min-w-0">
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
+                  <div>
+                    <h3 className="text-lg font-semibold text-foreground">
+                      {project.name}
+                    </h3>
+                    {project.entity && (
+                      <p className="text-sm text-muted-foreground">
+                        {project.entity}
+                      </p>
+                    )}
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    {project.startDate && (
+                      <span>{project.startDate}</span>
+                    )}
+                    {project.url && (
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 hover:text-foreground transition-colors"
+                      >
+                        <ExternalLink size={14} />
+                        Visit
+                      </a>
+                    )}
+                  </div>
+                </div>
+
+                {project.description && (
+                  <p className="text-sm text-foreground mb-3 leading-relaxed">
+                    {project.description}
                   </p>
                 )}
               </div>
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                {project.startDate && (
-                  <span>{project.startDate}</span>
-                )}
-                {project.url && (
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 hover:text-foreground transition-colors"
-                  >
-                    <ExternalLink size={14} />
-                    Visit
-                  </a>
-                )}
-              </div>
             </div>
-
-            {project.description && (
-              <p className="text-sm text-foreground mb-3 leading-relaxed">
-                {project.description}
-              </p>
-            )}
 
             <div className="flex flex-wrap gap-2 mb-2">
               {project.roles && project.roles.map((role, roleIndex) => (
@@ -212,55 +310,60 @@ export function Resume({ resume }: ResumeProps) {
   function renderWork(work: Work[]) {
     return (
       <div className="space-y-6">
-        {work.map((job, index) => (
-          <div key={index} className="border-l-2 border-muted pl-4">
-            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
-              <div>
-                <h3 className="text-lg font-semibold text-foreground">
-                  {job.position}
-                </h3>
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <span>{job.name}</span>
-                  {job.url && (
-                    <a
-                      href={job.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 hover:text-foreground transition-colors"
-                    >
-                      <ExternalLink size={14} />
-                    </a>
+        {work.map((job, index) => {
+          // Check if this is the current job (no endDate or endDate is empty)
+          const isCurrentJob = !job.endDate || job.endDate === ''
+
+          return (
+            <div key={index} className={`border-l-2 pl-4 ${isCurrentJob ? 'border-foreground' : 'border-muted'}`}>
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
+                <div>
+                  <h3 className="text-lg font-semibold text-foreground">
+                    {job.position}
+                  </h3>
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <span>{job.name}</span>
+                    {job.url && (
+                      <a
+                        href={job.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 hover:text-foreground transition-colors"
+                      >
+                        <ExternalLink size={14} />
+                      </a>
+                    )}
+                  </div>
+                </div>
+                <div className="text-sm text-muted-foreground">
+                  {job.startDate && (
+                    <span>
+                      {job.startDate}
+                      {job.endDate ? ` - ${job.endDate}` : ' - Present'}
+                    </span>
                   )}
                 </div>
               </div>
-              <div className="text-sm text-muted-foreground">
-                {job.startDate && (
-                  <span>
-                    {job.startDate}
-                    {job.endDate ? ` - ${job.endDate}` : ' - Present'}
-                  </span>
-                )}
-              </div>
+
+              {job.summary && (
+                <p className="text-sm text-foreground mb-3 leading-relaxed">
+                  {job.summary}
+                </p>
+              )}
+
+              {job.highlights && job.highlights.length > 0 && (
+                <ul className="text-sm text-foreground space-y-1">
+                  {job.highlights.map((highlight, highlightIndex) => (
+                    <li key={highlightIndex} className="flex items-start gap-2">
+                      <span className="text-muted-foreground mt-1">•</span>
+                      <span>{highlight}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
-
-            {job.summary && (
-              <p className="text-sm text-foreground mb-3 leading-relaxed">
-                {job.summary}
-              </p>
-            )}
-
-            {job.highlights && job.highlights.length > 0 && (
-              <ul className="text-sm text-foreground space-y-1">
-                {job.highlights.map((highlight, highlightIndex) => (
-                  <li key={highlightIndex} className="flex items-start gap-2">
-                    <span className="text-muted-foreground mt-1">•</span>
-                    <span>{highlight}</span>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        ))}
+          )
+        })}
       </div>
     )
   }
@@ -328,21 +431,72 @@ export function Resume({ resume }: ResumeProps) {
 
   function renderInterests(interests: Interest[]) {
     return (
-      <div className="space-y-4">
-        {interests.map((interest, index) => (
-          <div key={index} className="space-y-2">
-            <h3 className="font-semibold text-foreground">
-              {interest.name}
-            </h3>
-            {interest.keywords && interest.keywords.length > 0 && (
-              <div className="flex flex-wrap gap-1">
-                {interest.keywords.map((keyword, keywordIndex) => (
-                  <Badge key={keywordIndex} variant="outline" className="text-xs">
-                    {keyword}
-                  </Badge>
-                ))}
-              </div>
-            )}
+      <div className="space-y-6">
+        {/* Filter Status */}
+        {activeFilters.length > 0 && (
+          <div className="flex items-center justify-between p-4 bg-muted/50 rounded-lg">
+            <div className="text-sm text-muted-foreground">
+              Showing {filteredProjects?.length || 0} of {resume.projects?.length || 0} projects
+            </div>
+            <button
+              onClick={clearFilters}
+              className="text-sm text-primary hover:text-primary/80 transition-colors"
+            >
+              Clear all ({activeFilters.length})
+            </button>
+          </div>
+        )}
+
+        {/* Interactive Interests Categories */}
+        <div className="grid gap-6 md:grid-cols-2">
+          {interests.map((interest, index) => (
+            <div key={index} className="space-y-2">
+              <h3 className="font-semibold text-foreground">
+                {interest.name}
+              </h3>
+              {interest.keywords && interest.keywords.length > 0 && (
+                <div className="flex flex-wrap gap-1">
+                  {interest.keywords.map((keyword, keywordIndex) => {
+                    const isActive = activeFilters.includes(keyword)
+                    return (
+                      <button
+                        key={keywordIndex}
+                        onClick={() => toggleFilter(keyword)}
+                        className={`inline-flex items-center px-2 py-1 rounded text-xs font-medium transition-all duration-200 ${
+                          isActive
+                            ? 'bg-primary text-primary-foreground shadow-sm'
+                            : 'bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground'
+                        }`}
+                      >
+                        {keyword}
+                      </button>
+                    )
+                  })}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
+  function renderStories(stories: any[]) {
+    // Placeholder for future stories section
+    if (!stories || stories.length === 0) {
+      return (
+        <div className="text-center py-8 text-muted-foreground">
+          <p>Success stories coming soon...</p>
+        </div>
+      )
+    }
+
+    return (
+      <div className="space-y-6">
+        {stories.map((story, index) => (
+          <div key={index} className="border-l-2 border-muted pl-4">
+            {/* Story content will be implemented later */}
+            <p>Story content placeholder</p>
           </div>
         ))}
       </div>
