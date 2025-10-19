@@ -40,7 +40,7 @@
       "startDate": "2021-03",
       "url": "https://brasseriecolette.de",
       "image": "/images/clients/brasseriecolette.de-og.jpg",
-      "roles": ["Design", "Development"],
+      "roles": ["Design", "Development", "Project Management"],
       "entity": "Brasserie Colette"
     },
     {
@@ -50,7 +50,7 @@
       "startDate": "2021",
       "url": "https://dein-womo.de",
       "image": "/images/clients/dein-womo.de-og.jpg",
-      "roles": ["Design", "Development"],
+      "roles": ["Design", "Development", "Project Management"],
       "entity": "EVG"
     },
     {
@@ -60,14 +60,14 @@
       "startDate": "2019-07",
       "url": "https://dpf-investment.de",
       "image": "/images/clients/dpf-investment.de-og.jpg",
-      "roles": ["Design", "Project Management"],
+      "roles": ["Design", "Development", "Project Management"],
       "entity": "DPF Group"
     },
     {
       "name": "easyCredit Partner",
       "description": "Business Services von easyCredit - Ihr Partner für ✓Onlineshops, am ✓PoS und im ✓Direktvertrieb. Jetzt Ratenkauf und Rechnung anbieten!",
       "keywords": ["WordPress", "TeamBank"],
-      "startDate": "2020",
+      "startDate": "2020-01",
       "url": "https://partner.easycredit.de",
       "image": "/images/clients/partner.easycredit.de-og.jpg",
       "roles": ["Design", "Development", "Project Management"],
@@ -80,7 +80,7 @@
       "startDate": "2020-11",
       "url": "https://electronica.group",
       "image": "/images/clients/electronica.group-og.jpg",
-      "roles": ["Design", "Development"],
+      "roles": ["Project Management"],
       "entity": "Electronica Group"
     },
     {
@@ -90,7 +90,7 @@
       "startDate": "2024",
       "url": "https://elodiecarstensen.com",
       "image": "/images/clients/elodiecarstensen-og.jpg",
-      "roles": ["Design", "Development"],
+      "roles": ["Design", "Development", "Project Management"],
       "entity": "Elodie Carstensen"
     },
     {
@@ -100,7 +100,7 @@
       "startDate": "2023-05",
       "url": "https://fairworks.com",
       "image": "/images/clients/fairworks.com-og.jpg",
-      "roles": ["Design", "Project Management"],
+      "roles": ["Project Management"],
       "entity": "Fairworks"
     },
     {
@@ -110,7 +110,7 @@
       "startDate": "2021",
       "url": "https://womofonds.de",
       "image": "/images/clients/womofonds.de-og.jpg",
-      "roles": ["Design", "Project Management"],
+      "roles": ["Design", "Project Management", "Development"],
       "entity": "EVG"
     },
     {
@@ -130,7 +130,7 @@
       "startDate": "2020",
       "url": "https://infrasignal.de",
       "image": "/images/clients/infrasignal.de-og.jpg",
-      "roles": ["Design", "Development"],
+      "roles": ["Design", "Development", "Project Management"],
       "entity": "Grün Berlin"
     },
     {
@@ -140,7 +140,7 @@
       "startDate": "2019",
       "url": "https://press.porsche-design.com",
       "image": "/images/clients/press.porsche-design.com-og.jpg",
-      "roles": ["Design", "Project Management"],
+      "roles": ["Project Management"],
       "entity": "Porsche Lifestyle Group"
     },
     {
@@ -160,7 +160,7 @@
       "startDate": "2019-01",
       "url": "https://spotsup.rent",
       "image": "/images/clients/spotsup.rent-og.jpg",
-      "roles": ["Development", "Project Management"],
+      "roles": ["Project Management"],
       "entity": "Electronica Group"
     },
     {
@@ -180,7 +180,7 @@
       "startDate": "2018",
       "url": "https://teambank.de",
       "image": "/images/clients/teambank.de-og.jpg",
-      "roles": ["Design", "Development", "Project Management"],
+      "roles": ["Project Management"],
       "entity": "TeamBank"
     },
     {
@@ -190,7 +190,7 @@
       "startDate": "2019",
       "url": "https://tertianum.de",
       "image": "/images/clients/tertianum.de-og.jpg",
-      "roles": ["Design", "Project Management"],
+      "roles": ["Design", "Development", "Project Management"],
       "entity": "DPF Group"
     },
     {
@@ -210,7 +210,7 @@
       "startDate": "2022",
       "url": "https://afurnet.org",
       "image": "/images/clients/afurnet.org-og.jpg",
-      "roles": ["Design", "Project Management"],
+      "roles": ["Development", "Project Management"],
       "entity": "AFURN"
     }
   ],
