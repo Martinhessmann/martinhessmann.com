@@ -1,9 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { Moon, Sun, Monitor, Printer, Shield } from "lucide-react"
+import { Moon, Sun, Monitor, FileText, Briefcase } from "lucide-react"
 import { useThemeStore } from "@/lib/store/theme-store"
-import { useAdminStore } from "@/lib/store/admin-store"
+import { useResumeStore } from "@/lib/store/admin-store"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,39 +13,33 @@ import {
 
 export function ThemeToggle() {
   const { theme, resolvedTheme, setTheme } = useThemeStore()
-  const { isAdminMode, toggleAdminMode } = useAdminStore()
-
-  const handlePrint = () => {
-    window.print()
-  }
+  const { isResumeMode, toggleResumeMode } = useResumeStore()
 
   return (
     <div className="fixed top-4 right-4 print:hidden flex items-center gap-2">
-      {/* Admin Mode Toggle */}
+      {/* Resume/Portfolio Mode Toggle */}
       <button
-        onClick={toggleAdminMode}
-        className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
-          isAdminMode
+        onClick={toggleResumeMode}
+        className={`h-8 px-3 rounded-full flex items-center justify-center gap-2 transition-colors text-xs font-medium ${
+          isResumeMode
             ? 'bg-primary text-primary-foreground'
-            : 'bg-transparent hover:bg-muted text-foreground'
+            : 'bg-transparent hover:bg-muted text-foreground border border-border'
         }`}
-        aria-label="Toggle admin mode"
-        title={isAdminMode ? "Admin mode enabled" : "Admin mode disabled"}
+        aria-label={isResumeMode ? "Switch to Portfolio mode" : "Switch to Resume mode"}
+        title={isResumeMode ? "Portfolio mode" : "Resume mode"}
       >
-        <Shield className="h-4 w-4" />
+        {isResumeMode ? (
+          <>
+            <FileText className="h-3.5 w-3.5" />
+            <span>Resume</span>
+          </>
+        ) : (
+          <>
+            <Briefcase className="h-3.5 w-3.5" />
+            <span>Portfolio</span>
+          </>
+        )}
       </button>
-
-      {/* Print Button (only in admin mode) */}
-      {isAdminMode && (
-        <button
-          onClick={handlePrint}
-          className="w-8 h-8 rounded-full flex items-center justify-center bg-transparent hover:bg-muted text-foreground transition-colors"
-          aria-label="Print resume"
-          title="Print resume (Cmd+P)"
-        >
-          <Printer className="h-4 w-4" />
-        </button>
-      )}
 
       {/* Theme Toggle Dropdown */}
       <DropdownMenu>

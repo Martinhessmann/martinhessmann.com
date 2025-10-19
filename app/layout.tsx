@@ -1,7 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { ThemeProvider } from '@/components/theme-provider'
-import { ThemeToggle } from '@/components/theme-toggle'
 
 export const metadata: Metadata = {
   title: 'Martin Heßmann - Resume',
@@ -62,9 +61,6 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
-
-          {/* All controls in top-right corner */}
-          <ThemeToggle />
         </ThemeProvider>
       </body>
     </html>

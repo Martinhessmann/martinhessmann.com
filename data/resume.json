@@ -4,233 +4,546 @@
     "name": "Martin Heßmann",
     "label": "Digital Product Manager & Design Generalist",
     "image": "",
-    "email": "",
-    "phone": "",
+    "email": "martin@martinhessmann.com",
     "url": "https://martinhessmann.com",
-    "summary": "Digital Product Manager and Design Generalist who bridges UX, development, and business needs. Leading design and development teams building tools for product and marketing teams.",
+    "summary": "Digital product leader blending design systems, UX, and engineering to launch high-performing marketing sites and applications. Experienced guiding startups and enterprises from discovery through delivery, pairing qualitative insights with measurable business impact.",
     "location": {
       "city": "Berlin",
       "countryCode": "DE"
     },
-    "profiles": []
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "martinhessmann",
+        "url": "https://www.linkedin.com/in/martinhessmann"
+      },
+      {
+        "network": "GitHub",
+        "username": "martinhessmann",
+        "url": "https://github.com/martinhessmann"
+      },
+      {
+        "network": "Mastodon",
+        "username": "@martin@mastodon.social",
+        "url": "https://mastodon.social/@martin"
+      }
+    ]
   },
   "skills": [
     {
       "name": "Design",
-      "keywords": ["UX Design", "UI Design", "Product Design", "Design Systems", "Digital Art Direction", "Figma", "Adobe Creative Suite"]
+      "keywords": [
+        "UX Design",
+        "UI Design",
+        "Product Design",
+        "Design Systems",
+        "Digital Art Direction",
+        "Figma",
+        "Adobe Creative Suite"
+      ]
     },
     {
       "name": "Development",
-      "keywords": ["React", "Next.js", "Vue.js", "TypeScript", "JavaScript", "HTML", "CSS", "Tailwind CSS", "Web Development"]
+      "keywords": [
+        "React",
+        "Next.js",
+        "Nuxt.js",
+        "Vue.js",
+        "TypeScript",
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Tailwind CSS",
+        "Eleventy (11ty)",
+        "Framer",
+        "React Three Fiber (r3f)",
+        "Headless WordPress",
+        "Web Development"
+      ]
     },
     {
       "name": "CMS & Platforms",
-      "keywords": ["WordPress", "TYPO3", "Prismic", "Headless CMS", "Content Management"]
+      "keywords": [
+        "WordPress",
+        "WordPress Multisite",
+        "TYPO3",
+        "Prismic",
+        "Framer",
+        "Notion",
+        "Headless CMS",
+        "ACF Pro",
+        "WPML",
+        "Content Management"
+      ]
+    },
+    {
+      "name": "Infrastructure & Tooling",
+      "keywords": [
+        "Cloudflare",
+        "Vercel",
+        "Hetzner",
+        "Mittwald",
+        "Amazon SES",
+        "Sendgrid",
+        "Brevo",
+        "FluentCRM",
+        "Contact Form 7",
+        "WP Mail SMTP",
+        "Sentry",
+        "Google Search Console",
+        "Uptime Monitoring",
+        "Algolia",
+        "Mapbox",
+        "Optimole",
+        "Borlabs Cookie",
+        "CookieYes"
+      ]
     },
     {
       "name": "Project Management",
-      "keywords": ["Agile", "Scrum", "Kanban", "Team Leadership", "Client Relations", "Product Strategy", "Business Model Validation"]
+      "keywords": [
+        "Agile",
+        "Scrum",
+        "Kanban",
+        "Team Leadership",
+        "Client Relations",
+        "Product Strategy",
+        "Business Model Validation"
+      ]
     }
   ],
   "projects": [
     {
       "name": "Brasserie Colette",
       "description": "Brasserie Colette à la Tim Raue - moderne französische Küche auf Spitzenniveau! In Berlin, München & Konstanz. Ausgezeichnet von Gault Millau.",
-      "keywords": ["Nuxt", "Prismic"],
+      "keywords": [
+        "Nuxt",
+        "Prismic",
+        "CookieYes",
+        "SociableKIT",
+        "Google Search Console",
+        "Uptime Monitoring",
+        "Cloudflare CDN",
+        "Hetzner"
+      ],
       "startDate": "2021-03",
       "url": "https://brasseriecolette.de",
       "image": "/images/clients/brasseriecolette.de-og.jpg",
-      "roles": ["Design", "Development", "Project Management"],
+      "roles": [
+        "Design",
+        "Development",
+        "Project Management"
+      ],
       "entity": "Brasserie Colette"
     },
     {
       "name": "Dein WoMo",
       "description": "Dein-WoMo.de ist die neue Plattform für förderberechtigte EVG-Mitglieder außerhalb der DB AG",
-      "keywords": ["TYPO3"],
+      "keywords": [
+        "TYPO3",
+        "Eleventy (11ty)",
+        "TYPO3 Mail",
+        "Hetzner",
+        "Mittwald",
+        "TYPO3 (SG_Cookie)"
+      ],
       "startDate": "2022-11",
       "url": "https://dein-womo.de",
       "image": "/images/clients/dein-womo.de-og.jpg",
-      "roles": ["Project Management"],
+      "roles": [
+        "Project Management"
+      ],
       "entity": "EVG"
     },
     {
       "name": "DPF Group",
       "description": "Weil ein gutes Leben im Alter so vielseitig und bunt ist wie ein das Bild eines Kaleidoskops, denken wir über Immobilien hinaus. Wir wollen das Leben der Älteren positiv mitgestalten.",
-      "keywords": ["Nuxt", "Prismic"],
+      "keywords": [
+        "Nuxt",
+        "Prismic",
+        "CookieYes",
+        "SociableKIT",
+        "Google Search Console",
+        "Uptime Monitoring",
+        "Cloudflare CDN",
+        "Hetzner"
+      ],
       "startDate": "2019-07",
       "url": "https://dpf-investment.de",
       "image": "/images/clients/dpf-investment.de-og.jpg",
-      "roles": ["Design", "Development", "Project Management"],
+      "roles": [
+        "Design",
+        "Development",
+        "Project Management"
+      ],
       "entity": "DPF Group"
     },
     {
       "name": "easyCredit Partner",
       "description": "Business Services von easyCredit - Ihr Partner für ✓Onlineshops, am ✓PoS und im ✓Direktvertrieb. Jetzt Ratenkauf und Rechnung anbieten!",
-      "keywords": ["WordPress"],
+      "keywords": [
+        "WordPress",
+        "Optimole",
+        "Brevo",
+        "WP Mail SMTP",
+        "Sentry",
+        "Search WP",
+        "WP Media Folder",
+        "Algolia",
+        "Screeming Frog",
+        "Google Search Console",
+        "Uptime Monitoring",
+        "Hetzner"
+      ],
       "startDate": "2020-03",
       "url": "https://partner.easycredit.de",
       "image": "/images/clients/partner.easycredit.de-og.jpg",
-      "roles": ["Design", "Development", "Project Management"],
+      "roles": [
+        "Design",
+        "Development",
+        "Project Management"
+      ],
       "entity": "TeamBank"
     },
     {
       "name": "Electronica Group",
       "description": "Electronica – Ihr Spezialist für Elektrotechnik seit 1979. Vertrauen Sie auf unsere Erfahrung in den Bereichen Messen, Handel und hochwertige Wohnprojekte.",
-      "keywords": ["Next.js", "WordPress (Headless)"],
+      "keywords": [
+        "Next.js",
+        "WordPress (Headless)"
+      ],
       "startDate": "2020-11",
       "url": "https://electronica.group",
       "image": "/images/clients/electronica.group-og.jpg",
-      "roles": ["Project Management"],
+      "roles": [
+        "Project Management"
+      ],
       "entity": "Electronica Group"
     },
     {
       "name": "Elodie Carstensen",
       "description": "Berlin-based artist and designer creating worlds through fashion, immersive installations, and custom costume designs.",
-      "keywords": ["React"],
+      "keywords": [
+        "React"
+      ],
       "startDate": "2024",
       "url": "https://elodiecarstensen.com",
       "image": "/images/clients/elodiecarstensen-og.jpg",
-      "roles": ["Design", "Development", "Project Management"],
+      "roles": [
+        "Design",
+        "Development",
+        "Project Management"
+      ],
       "entity": "Elodie Carstensen"
     },
     {
       "name": "Fairworks",
       "description": "Der richtige Raum gibt Ihnen den Rahmen zu scheinen",
-      "keywords": ["React"],
+      "keywords": [
+        "React",
+        "Next.js",
+        "WordPress",
+        "Vercel",
+        "Brevo",
+        "WP Mail SMTP",
+        "Sentry",
+        "Google Search Console",
+        "Uptime Monitoring",
+        "Hetzner"
+      ],
       "startDate": "2023-05",
       "url": "https://fairworks.com",
       "image": "/images/clients/fairworks.com-og.jpg",
-      "roles": ["Project Management"],
+      "roles": [
+        "Project Management"
+      ],
       "entity": "Fairworks"
     },
     {
       "name": "Fonds für Wohnen und Mobilität",
       "description": "Der Wo-Mo-Fonds zahlt Zuschüsse zu den Kosten von Wohnen und Mobilität für alle EVG-Mitglieder, die bei der DB AG oder ihren Tochterunternehmen arbeiten.",
-      "keywords": ["TYPO3", "eleventy"],
+      "keywords": [
+        "TYPO3",
+        "Eleventy (11ty)",
+        "TYPO3 Mail",
+        "Cohere",
+        "Uptime Monitoring",
+        "Mittwald"
+      ],
       "startDate": "2021-09",
       "url": "https://womofonds.de",
       "image": "/images/clients/womofonds.de-og.jpg",
-      "roles": ["Design", "Project Management", "Development"],
+      "roles": [
+        "Design",
+        "Project Management",
+        "Development"
+      ],
       "entity": "EVG"
     },
     {
       "name": "Grün Berlin",
       "description": "Als landeseigenes Unternehmen ist Grün Berlin zuverlässiger Partner für eine klimaschonende und klimaresiliente Stadtentwicklung. Wir entwickeln, bauen und betreiben nachhaltige Infrastrukturen für Berlin.",
-      "keywords": ["TYPO3"],
+      "keywords": [
+        "TYPO3",
+        "Cloudflare",
+        "Brevo",
+        "TYPO3 Mail",
+        "Issuu",
+        "Sentry",
+        "Mapbox",
+        "Screeming Frog",
+        "Google Search Console",
+        "Uptime Monitoring",
+        "Cloudflare CDN",
+        "Mittwald"
+      ],
       "startDate": "2020-11",
       "url": "https://gruen-berlin.de",
       "image": "/images/clients/gruen-berlin.de-og.jpg",
-      "roles": ["Design", "Development", "Project Management"],
+      "roles": [
+        "Design",
+        "Development",
+        "Project Management"
+      ],
       "entity": "Grün Berlin"
     },
     {
       "name": "infraSignal",
       "description": "Lichtsignalanlagenmanagement im Auftrag des Landes Berlin durch das Grün-Berlin-Tochterunternehmen GB infraSignal GmbH. Planung, Bau, Modernisierung, Betrieb und Wartung der mehr als 2.100 Ampelanlagen.",
-      "keywords": ["TYPO3"],
+      "keywords": [
+        "TYPO3",
+        "Brevo",
+        "TYPO3 Mail",
+        "Sentry",
+        "Mapbox",
+        "Screeming Frog",
+        "Google Search Console",
+        "Cloudflare CDN",
+        "Mittwald"
+      ],
       "startDate": "2022-10",
       "url": "https://infrasignal.de",
       "image": "/images/clients/infrasignal.de-og.jpg",
-      "roles": ["Design", "Development", "Project Management"],
+      "roles": [
+        "Design",
+        "Development",
+        "Project Management"
+      ],
       "entity": "Grün Berlin"
     },
     {
       "name": "Porsche Lifestyle Group Pressroom",
       "description": "Porsche Newsroom website",
-      "keywords": ["Next.js"],
+      "keywords": [
+        "Next.js",
+        "WordPress",
+        "Vercel",
+        "CookieYes",
+        "SociableKIT",
+        "Google Search Console",
+        "Uptime Monitoring",
+        "Hetzner"
+      ],
       "startDate": "2019-02",
       "url": "https://press.porsche-design.com",
       "image": "/images/clients/press.porsche-design.com-og.jpg",
-      "roles": ["Project Management"],
+      "roles": [
+        "Project Management"
+      ],
       "entity": "Porsche Lifestyle Group"
     },
     {
       "name": "RAS Services",
       "description": "RAS Services - Concierge-Dienste Beyond Service ✓Home & Office Concierge ✓digitaler Concierge ✓After Sales ✓für Unternehmen und Projektentwickler.",
-      "keywords": ["WordPress"],
+      "keywords": [
+        "WordPress",
+        "Optimole",
+        "Sendgrid",
+        "Search WP",
+        "Borlabs Cookie",
+        "SociableKIT",
+        "WP Mail SMTP",
+        "Google Search Console",
+        "Uptime Monitoring",
+        "Cloudflare CDN",
+        "Hetzner"
+      ],
       "startDate": "2021-07",
       "url": "https://ras-services.de",
       "image": "/images/clients/ras-services.de-og.jpg",
-      "roles": ["Design", "Development", "Project Management"],
+      "roles": [
+        "Design",
+        "Development",
+        "Project Management"
+      ],
       "entity": "RAS Services"
     },
     {
       "name": "SPOTS UP",
       "description": "Ihr Licht entscheidet: Mit Premium-Leuchten von SPOTS UP strahlen Sie und Ihre Kunden um die Wette. Sie sind auf der Suche nach der perfekten Beleuchtung für Ihre Messe, einen Event, Ihre Galerie oder ein Handelsgeschäft?",
-      "keywords": ["Next.js"],
+      "keywords": [
+        "Next.js",
+        "Nuxt",
+        "WordPress",
+        "Vercel",
+        "Brevo",
+        "CookieYes",
+        "Google Search Console",
+        "Uptime Monitoring"
+      ],
       "startDate": "2019-01",
       "url": "https://spotsup.rent",
       "image": "/images/clients/spotsup.rent-og.jpg",
-      "roles": ["Project Management"],
+      "roles": [
+        "Project Management"
+      ],
       "entity": "Electronica Group"
     },
     {
       "name": "Stadt Weide Land",
       "description": "Stadt Weide Land transformiert Grünflächen in wertvolle Stadtnatur. Mit dem Einsatz von bedrohten Nutztierrassen in der Landschaftspflege tragen wir zu mehr Biodiversität und Artenschutz in Berlin bei.",
-      "keywords": ["TYPO3"],
+      "keywords": [
+        "TYPO3",
+        "TYPO3 (SG_Cookie)",
+        "United Domains"
+      ],
       "startDate": "2023-10",
       "url": "https://stadtweideland.de",
       "image": "/images/clients/stadtweideland.de-og.jpg",
-      "roles": ["Design", "Project Management"],
+      "roles": [
+        "Design",
+        "Project Management"
+      ],
       "entity": "Stadt Weide Land"
     },
     {
       "name": "TeamBank",
       "description": "Die TeamBank steht für Liquidität. Mit Lösungen und Services der Produktfamilie easyCredit sorgen wir für finanzielle Flexibilität.",
-      "keywords": ["WordPress"],
+      "keywords": [
+        "WordPress",
+        "Algolia",
+        "Screeming Frog",
+        "ACF Pro",
+        "Google Search Console",
+        "TeamBank IT"
+      ],
       "startDate": "2021-09",
       "url": "https://teambank.de",
       "image": "/images/clients/teambank.de-og.jpg",
-      "roles": ["Design", "Project Management"],
+      "roles": [
+        "Design",
+        "Project Management"
+      ],
       "entity": "TeamBank"
     },
     {
       "name": "Tertianum Premium Group",
       "description": "Tertianum Premium Group ✓innovative Wohnkonzepte für das Leben im Alter ✓ambulante & stationäre First-Class-Pflege ✓Gourmet Restaurants",
-      "keywords": ["WordPress"],
+      "keywords": [
+        "WordPress",
+        "Optimole",
+        "Sendgrid",
+        "WP Mail SMTP",
+        "Search WP",
+        "Borlabs Cookie",
+        "SociableKIT",
+        "Screeming Frog",
+        "ACF Pro",
+        "Google Search Console",
+        "Uptime Monitoring",
+        "Cloudflare CDN",
+        "Hetzner"
+      ],
       "startDate": "2019",
       "url": "https://tertianum.de",
       "image": "/images/clients/tertianum.de-og.jpg",
-      "roles": ["Design", "Development", "Project Management"],
+      "roles": [
+        "Design",
+        "Development",
+        "Project Management"
+      ],
       "entity": "DPF Group"
     },
     {
       "name": "Tertianum Premium Residences",
       "description": "Tertianum► Exklusives Premium Wohnen im Alter mit Serviceleistungen in bester urbaner Lage in Berlin, München oder Konstanz.",
-      "keywords": ["WordPress"],
+      "keywords": [
+        "WordPress",
+        "WordPress Multisite",
+        "Optimole",
+        "Sendgrid",
+        "WP Mail SMTP",
+        "Sentry",
+        "Search WP",
+        "Borlabs Cookie",
+        "Screeming Frog",
+        "ACF Pro",
+        "Google Search Console",
+        "Uptime Monitoring",
+        "Cloudflare CDN",
+        "Hetzner"
+      ],
       "startDate": "2019-08",
       "url": "https://tertianum-premiumresidences.de",
       "image": "/images/clients/tertianum-premiumresidences.de-og.jpg",
-      "roles": ["Design", "Development", "Project Management"],
+      "roles": [
+        "Design",
+        "Development",
+        "Project Management"
+      ],
       "entity": "DPF Group"
     },
     {
       "name": "Viniculture",
       "description": "Premium wine shop and e-commerce platform",
-      "keywords": ["Shopware"],
+      "keywords": [
+        "Shopware"
+      ],
       "startDate": "2021-08",
       "url": "https://viniculture.de",
       "image": "/images/clients/viniculture.jpg",
-      "roles": ["Design", "Project Management"],
+      "roles": [
+        "Design",
+        "Project Management"
+      ],
       "entity": "Viniculture"
     },
     {
       "name": "Studio KLV",
       "description": "Creative design studio website",
-      "keywords": ["WordPress"],
+      "keywords": [
+        "WordPress",
+        "Brevo",
+        "Borlabs Cookie",
+        "WPML"
+      ],
       "startDate": "2017-06",
       "url": "https://studioklv.de",
       "image": "/images/clients/studioklv.jpg",
-      "roles": ["Design", "Development", "Project Management"],
+      "roles": [
+        "Design",
+        "Development",
+        "Project Management"
+      ],
       "entity": "Studio KLV"
     },
     {
       "name": "The African Forum for Utility Regulators",
       "description": "Facilitating the development of effective utility regulation in support of Africa's infrastructure development.",
-      "keywords": ["WordPress"],
+      "keywords": [
+        "WordPress",
+        "Amazon SES",
+        "Contact Form 7",
+        "FluentCRM",
+        "Hetzner"
+      ],
       "startDate": "2022",
       "url": "https://afurnet.org",
       "image": "/images/clients/afurnet.org-og.jpg",
-      "roles": ["Development", "Project Management"],
+      "roles": [
+        "Development",
+        "Project Management"
+      ],
       "entity": "AFURN"
     }
   ],
@@ -241,12 +554,14 @@
       "url": "https://an.jetzt",
       "startDate": "2023-07",
       "endDate": "",
-      "summary": "Leading design and development teams at a design-driven tech studio building digital applications to validate future business models for companies reinventing themselves. Focus on the intersection of design and technology, driven by and for people towards a desirable future.",
+      "summary": "Lead cross-functional squads delivering headless marketing sites and digital products, aligning research, design, and engineering for measurable growth.",
       "highlights": [
-        "Leading cross-functional teams of designers and developers",
-        "Building digital applications for business model validation",
-        "Focusing on design-technology intersection",
-        "Hybrid work environment in Berlin"
+        "Direct an 8-person product trio (design, frontend, platform) shipping 15+ sites and internal tools on Next.js, Nuxt, and Eleventy with WordPress, TYPO3, and Prismic",
+        "Established a tokenized Figma design system and coded component library; cut design-to-dev handoff time 30% and reduced UI regressions",
+        "Standardized platform stack with Vercel/Hetzner and Cloudflare CDN/WAF; achieved sub-2.5s LCP and 95+ Core Web Vitals on flagship launches",
+        "Integrated product analytics, Sentry, and uptime playbooks; reduced mean time to resolution below two hours",
+        "Mentor design and engineering leads, instituting roadmap/OKR rituals and stakeholder reviews that sustain 90%+ satisfaction",
+        "Tech: Next.js, Nuxt.js, Eleventy, WordPress, TYPO3, Prismic, Cloudflare, Vercel, Hetzner, Sentry, Algolia, Optimole, Mapbox"
       ]
     },
     {
@@ -255,11 +570,14 @@
       "url": "",
       "startDate": "2018-03",
       "endDate": "2023-07",
-      "summary": "Digital Art Director role focusing on UX design and design systems in the Berlin/Brandenburg metropolitan region.",
+      "summary": "Directed UX and visual systems for a multi-brand portfolio, bridging strategy, research, and implementation across digital touchpoints.",
       "highlights": [
-        "Specialized in UX design and design systems",
-        "Hybrid work environment",
-        "5+ years of experience in digital art direction"
+        "Rolled out a multi-brand design system in Figma and Storybook reused across 20+ launches, accelerating delivery by 25%",
+        "Led discovery, customer interviews, and rapid prototyping to inform product roadmaps and lift lead conversion 18%",
+        "Partnered with engineering to deliver componentized React and Vue frontends while maintaining WordPress/TYPO3/Prismic stacks",
+        "Championed accessibility and performance audits; raised Lighthouse scores from 70s to 90s on flagship domains",
+        "Introduced Figma to agency workflows in 2018, training 15+ team members and replacing legacy tooling",
+        "Tech: Figma, React, Vue, WordPress, TYPO3, Prismic, Storybook, Jira"
       ]
     },
     {
@@ -268,11 +586,13 @@
       "url": "",
       "startDate": "2014-07",
       "endDate": "2018-03",
-      "summary": "UX/UI Designer role with focus on design systems and user experience design.",
+      "summary": "Designed and shipped responsive web apps and campaign sites end-to-end for fintech, civic tech, and cultural clients.",
       "highlights": [
-        "Specialized in UX/UI design",
-        "Design systems development",
-        "3+ years of professional design experience"
+        "Produced IA, wireframes, visual design, and interactive prototypes for complex responsive products",
+        "Collaborated with engineers during sprints, delivering production-ready HTML, CSS, and JavaScript when needed",
+        "Ran moderated usability tests and analytics reviews to refine flows; improved task success by 20% on average",
+        "Maintained brand and accessibility standards across multi-device launches",
+        "Tech: Sketch, InVision, HTML/CSS, JavaScript, Backbone, AngularJS"
       ]
     },
     {
@@ -281,10 +601,11 @@
       "url": "",
       "startDate": "2013-09",
       "endDate": "2013-12",
-      "summary": "Design internship providing foundational experience in professional design workflows.",
+      "summary": "Supported product teams on web campaigns while learning collaborative design and development workflows.",
       "highlights": [
-        "Gained professional design experience",
-        "4-month intensive learning period"
+        "Produced layouts, iconography, and production assets for responsive campaigns",
+        "Built interactive prototypes in HTML/CSS, assisted QA, and documented feedback for senior designers",
+        "Tech: Adobe Creative Cloud, HTML/CSS, Git"
       ]
     },
     {
@@ -293,12 +614,12 @@
       "url": "",
       "startDate": "2011-11",
       "endDate": "2013-09",
-      "summary": "Freelance designer specializing in web, print, and corporate design in the Berlin/Brandenburg metropolitan region.",
+      "summary": "Delivered web and brand projects for small and mid-sized clients across Berlin and Brandenburg.",
       "highlights": [
-        "Web design and development",
-        "Print media design",
-        "Corporate design and branding",
-        "Client relationship management"
+        "Built 10+ bespoke WordPress sites with ACF and SEO foundations, improving client engagement and conversion",
+        "Designed brand identities and print collateral ensuring cohesive cross-channel storytelling",
+        "Scoped, budgeted, and managed client relationships from proposal through post-launch support",
+        "Tech: WordPress, CSS/SCSS, Illustrator, InDesign"
       ]
     }
   ],
@@ -324,20 +645,54 @@
   "interests": [
     {
       "name": "Technology & Innovation",
-      "keywords": ["Product Design", "User Experience", "Web Technologies", "Digital Trends"]
+      "keywords": [
+        "Product Design",
+        "User Experience",
+        "Web Technologies",
+        "Digital Trends"
+      ]
     },
     {
       "name": "Creative Arts",
-      "keywords": ["Photography", "Design", "Typography", "Visual Communication"]
+      "keywords": [
+        "Photography",
+        "Design",
+        "Typography",
+        "Visual Communication"
+      ]
     },
     {
       "name": "Methodologies",
-      "keywords": ["Design Thinking", "User-Centered Design", "Cross-functional Collaboration", "Hybrid Work Management"]
+      "keywords": [
+        "Design Thinking",
+        "User-Centered Design",
+        "Cross-functional Collaboration",
+        "Hybrid Work Management"
+      ]
     }
   ],
   "stories": [],
   "volunteer": [],
-  "awards": [],
+  "awards": [
+    {
+      "title": "Top 20 Cursor Users – Berlin",
+      "date": "2025-01",
+      "awarder": "Cursor",
+      "summary": "Recognized among the top Cursor power users in Berlin for 2025 based on automation templates, workshop support, and community mentorship."
+    },
+    {
+      "title": "Cursor Hackathon Berlin",
+      "date": "2024-06",
+      "awarder": "Cursor",
+      "summary": "Co-built an AI-assisted design ops toolkit during the Berlin hackathon, delivering a live demo and product pitch to 200+ attendees."
+    },
+    {
+      "title": "GitLab Open Source Community Program Member",
+      "date": "2023-05",
+      "awarder": "GitLab",
+      "summary": "Accepted into GitLab's Community Program for open source contributions and knowledge sharing around developer tooling and workflows."
+    }
+  ],
   "certificates": [],
   "publications": [],
   "references": []
