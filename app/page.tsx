@@ -1,15 +1,15 @@
-'use client'
+import { Resume } from '@/types/resume'
+import { Resume as ResumeComponent } from '@/components/resume'
 
-import { Desktop } from '../components/desktop'
-import { MobileDesktop } from '../components/mobile-desktop'
-import { useIsMobile } from '../hooks/use-mobile'
+// Load resume data
+import resumeData from '@/data/resume.json'
 
-export default function Home() {
-  const isMobile = useIsMobile()
+export default function ResumePage() {
+  const resume = resumeData as Resume
 
   return (
-    <main className="w-full h-screen relative overflow-hidden">
-      {isMobile ? <MobileDesktop /> : <Desktop />}
+    <main className="container mx-auto px-4 py-8 max-w-4xl">
+      <ResumeComponent resume={resume} />
     </main>
   )
 }

@@ -1,11 +1,11 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { ThemeProvider } from '@/components/theme-provider'
-import { Header } from '@/components/header'
+import { ThemeToggle } from '@/components/theme-toggle'
 
 export const metadata: Metadata = {
-  title: 'Martin Heßmann - Digital Product Manager & Design Generalist',
-  description: 'Personal website of Martin Heßmann, a Digital Product Manager and Design Generalist who bridges UX, development, and business needs, based in Berlin.',
+  title: 'Martin Heßmann - Resume',
+  description: 'Digital Product Manager and Design Generalist who bridges UX, development, and business needs.',
   manifest: '/favicons/site.webmanifest',
   icons: {
     icon: [
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     apple: '/favicons/apple-touch-icon.png',
   },
   openGraph: {
-    title: 'Martin Heßmann - Digital Product Manager & Design Generalist',
+    title: 'Martin Heßmann - Resume',
     description: 'Digital Product Manager and Design Generalist who bridges UX, development, and business needs.',
     url: 'https://martinhessmann.com',
     siteName: 'Martin Heßmann',
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
         url: '/images/og.png',
         width: 1200,
         height: 630,
-        alt: 'Martin Heßmann - Digital Product Manager & Design Generalist'
+        alt: 'Martin Heßmann - Resume'
       }
     ],
     locale: 'en_US',
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Martin Heßmann - Digital Product Manager & Design Generalist',
+    title: 'Martin Heßmann - Resume',
     description: 'Digital Product Manager and Design Generalist who bridges UX, development, and business needs.',
     images: ['/images/og.png'],
   },
@@ -50,16 +50,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <body className="font-sans h-screen overflow-hidden">
+      <body className="font-sans min-h-screen">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
-          <div className="relative h-screen">
-            <Header />
-            {children}
+          {children}
+
+          {/* Theme toggle in top-right corner */}
+          <div className="fixed top-4 right-4 print:hidden">
+            <ThemeToggle />
           </div>
         </ThemeProvider>
       </body>
