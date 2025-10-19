@@ -1,35 +1,34 @@
 # Project Documentation
 
-This directory contains documentation for various aspects of the project.
+This directory contains documentation for the resume website project.
 
 ## Available Documentation
 
 ### Project Overview
-- [App](app.md) - Overview of the macOS desktop simulation application
-
-### Window Components
-- [Projects](projects.md) - Documentation for the Projects component
-- [Stories](stories.md) - Documentation for the Success Stories component
-- [Notes](notes.md) - Documentation for the Notes component
-- [Messages](messages.md) - Documentation for the Messages component
+- [Resume Refactoring](resume-refactoring.md) - Complete transformation plan from desktop simulation to clean resume site
 
 ### Design System
-- [Theme System](theme.md) - Documentation of the color system
+- [Theme System](theme.md) - Documentation of the color system and theming
 - [Color System Refactoring](color-system-refactoring.md) - Details about April 2024 color system improvements
 - [UI Guidelines](ui-guidelines.md) - Design principles, spacing, typography, and accessibility guidelines
 
-### Component Documentation
-- [Components](components.md) - Overview of all available components
-- [Primitives](primitives.md) - Reusable UI building blocks and their usage
+## Project Structure
 
-### Data & Content
-- [Data](data.md) - How components consume data from JSON files
+This is now a clean, content-focused resume website built with:
+- **Next.js 14** with App Router
+- **TypeScript** for type safety
+- **Tailwind CSS** for styling
+- **JSON Resume** standard as single source of truth
+- **Shadcn/ui** components for consistent UI
 
-## Future Documentation
+## Key Features
 
-The following documentation is planned but not yet available:
+- Single unified `Resume` component that dynamically renders JSON Resume schema
+- Print-optimized layout for PDF generation
+- Dark/light theme support
+- Mobile-responsive design
+- Clean, minimal styling with zero custom CSS needed
 
-- Development Workflow - Setup and contribution guidelines
-- Architecture Overview - System design and data flow
-- State Management - Global state with Zustand
-- Performance Optimization - Strategies for optimal performance
+## Content Management
+
+All resume content is managed through `data/resume.json` following the JSON Resume standard. The component automatically renders any section that contains data.

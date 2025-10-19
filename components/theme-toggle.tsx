@@ -1,8 +1,9 @@
 "use client"
 
 import * as React from "react"
-import { Moon, Sun, Monitor } from "lucide-react"
+import { Moon, Sun, Monitor, Printer, Shield } from "lucide-react"
 import { useThemeStore } from "@/lib/store/theme-store"
+import { useAdminStore } from "@/lib/store/admin-store"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,43 +13,77 @@ import {
 
 export function ThemeToggle() {
   const { theme, resolvedTheme, setTheme } = useThemeStore()
+  const { isAdminMode, toggleAdminMode } = useAdminStore()
+
+  const handlePrint = () => {
+    window.print()
+  }
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <button
-          className="w-6 h-6 rounded-full flex items-center justify-center bg-transparent hover:bg-white/10 transition-colors"
-          aria-label="Toggle theme"
-        >
-          {/* Show the icon based on current theme (system shows monitor) */}
-          <Sun className={`h-4 w-4 absolute text-white transition-all ${resolvedTheme === 'light' && theme !== 'system' ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`} />
-          <Moon className={`h-4 w-4 absolute text-white transition-all ${resolvedTheme === 'dark' && theme !== 'system' ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`} />
-          <Monitor className={`h-4 w-4 absolute text-white transition-all ${theme === 'system' ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`} />
-        </button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent
-        className="w-[160px] bg-popover backdrop-blur-2xl border-[0.5px] border-border rounded-xl shadow-[0_10px_38px_-10px_rgba(0,0,0,0.35),0_10px_20px_-15px_rgba(0,0,0,0.2)] mt-1 pt-1 pb-1 px-0 text-[13px]"
-        sideOffset={6}
+    <div className="fixed top-4 right-4 print:hidden flex items-center gap-2">
+      {/* Admin Mode Toggle */}
+      <button
+        onClick={toggleAdminMode}
+        className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
+          isAdminMode
+            ? 'bg-primary text-primary-foreground'
+            : 'bg-transparent hover:bg-muted text-foreground'
+        }`}
+        aria-label="Toggle admin mode"
+        title={isAdminMode ? "Admin mode enabled" : "Admin mode disabled"}
       >
-        <DropdownMenuItem
-          className={`cursor-default text-popover-foreground ${theme === 'light' ? 'bg-primary text-primary-foreground' : 'hover:bg-primary hover:text-primary-foreground'} focus:bg-primary focus:text-primary-foreground rounded-[4px] mx-1 my-0.5 py-[6px] px-3 font-normal`}
-          onClick={() => setTheme('light')}
+        <Shield className="h-4 w-4" />
+      </button>
+
+      {/* Print Button (only in admin mode) */}
+      {isAdminMode && (
+        <button
+          onClick={handlePrint}
+          className="w-8 h-8 rounded-full flex items-center justify-center bg-transparent hover:bg-muted text-foreground transition-colors"
+          aria-label="Print resume"
+          title="Print resume (Cmd+P)"
         >
-          Light
-        </DropdownMenuItem>
-        <DropdownMenuItem
-          className={`cursor-default text-popover-foreground ${theme === 'dark' ? 'bg-primary text-primary-foreground' : 'hover:bg-primary hover:text-primary-foreground'} focus:bg-primary focus:text-primary-foreground rounded-[4px] mx-1 my-0.5 py-[6px] px-3 font-normal`}
-          onClick={() => setTheme('dark')}
+          <Printer className="h-4 w-4" />
+        </button>
+      )}
+
+      {/* Theme Toggle Dropdown */}
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <button
+            className="w-8 h-8 rounded-full flex items-center justify-center bg-transparent hover:bg-muted transition-colors"
+            aria-label="Toggle theme"
+          >
+            {/* Show the icon based on current theme (system shows monitor) */}
+            <Sun className={`h-4 w-4 absolute text-foreground transition-all ${resolvedTheme === 'light' && theme !== 'system' ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`} />
+            <Moon className={`h-4 w-4 absolute text-foreground transition-all ${resolvedTheme === 'dark' && theme !== 'system' ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`} />
+            <Monitor className={`h-4 w-4 absolute text-foreground transition-all ${theme === 'system' ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`} />
+          </button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent
+          className="w-[160px] bg-popover backdrop-blur-2xl border-[0.5px] border-border rounded-xl shadow-[0_10px_38px_-10px_rgba(0,0,0,0.35),0_10px_20px_-15px_rgba(0,0,0,0.2)] mt-1 pt-1 pb-1 px-0 text-[13px]"
+          sideOffset={6}
         >
-          Dark
-        </DropdownMenuItem>
-        <DropdownMenuItem
-          className={`cursor-default text-popover-foreground ${theme === 'system' ? 'bg-primary text-primary-foreground' : 'hover:bg-primary hover:text-primary-foreground'} focus:bg-primary focus:text-primary-foreground rounded-[4px] mx-1 my-0.5 py-[6px] px-3 font-normal`}
-          onClick={() => setTheme('system')}
-        >
-          System
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+          <DropdownMenuItem
+            className={`cursor-default text-popover-foreground ${theme === 'light' ? 'bg-primary text-primary-foreground' : 'hover:bg-primary hover:text-primary-foreground'} focus:bg-primary focus:text-primary-foreground rounded-[4px] mx-1 my-0.5 py-[6px] px-3 font-normal`}
+            onClick={() => setTheme('light')}
+          >
+            Light
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            className={`cursor-default text-popover-foreground ${theme === 'dark' ? 'bg-primary text-primary-foreground' : 'hover:bg-primary hover:text-primary-foreground'} focus:bg-primary focus:text-primary-foreground rounded-[4px] mx-1 my-0.5 py-[6px] px-3 font-normal`}
+            onClick={() => setTheme('dark')}
+          >
+            Dark
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            className={`cursor-default text-popover-foreground ${theme === 'system' ? 'bg-primary text-primary-foreground' : 'hover:bg-primary hover:text-primary-foreground'} focus:bg-primary focus:text-primary-foreground rounded-[4px] mx-1 my-0.5 py-[6px] px-3 font-normal`}
+            onClick={() => setTheme('system')}
+          >
+            System
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </div>
   )
 }
