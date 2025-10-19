@@ -115,7 +115,7 @@
   "projects": [
     {
       "name": "Brasserie Colette",
-      "description": "Brasserie Colette à la Tim Raue - moderne französische Küche auf Spitzenniveau! In Berlin, München & Konstanz. Ausgezeichnet von Gault Millau.",
+      "description": "Directed the end-to-end redesign and headless rebuild for Tim Raue's Brasserie Colette, shaping UX and Nuxt/Prismic architecture to support multi-city menus and reservations.",
       "keywords": [
         "Nuxt",
         "Prismic",
@@ -138,7 +138,7 @@
     },
     {
       "name": "Dein WoMo",
-      "description": "Dein-WoMo.de ist die neue Plattform für förderberechtigte EVG-Mitglieder außerhalb der DB AG",
+      "description": "Managed the rollout of EVG's Dein WoMo information hub, coordinating TYPO3 and Eleventy workflows with union stakeholders and accessibility requirements.",
       "keywords": [
         "TYPO3",
         "Eleventy (11ty)",
@@ -157,7 +157,7 @@
     },
     {
       "name": "DPF Group",
-      "description": "Weil ein gutes Leben im Alter so vielseitig und bunt ist wie ein das Bild eines Kaleidoskops, denken wir über Immobilien hinaus. Wir wollen das Leben der Älteren positiv mitgestalten.",
+      "description": "Led the DPF Group brand refresh and Nuxt-based platform, aligning investor storytelling, senior-living services, and marketing automation in one experience.",
       "keywords": [
         "Nuxt",
         "Prismic",
@@ -180,7 +180,7 @@
     },
     {
       "name": "easyCredit Partner",
-      "description": "Business Services von easyCredit - Ihr Partner für ✓Onlineshops, am ✓PoS und im ✓Direktvertrieb. Jetzt Ratenkauf und Rechnung anbieten!",
+      "description": "Co-owned product, design, and development for easyCredit's partner portal, delivering a conversion-focused WordPress build with Algolia search and automated compliance updates.",
       "keywords": [
         "WordPress",
         "Optimole",
@@ -207,7 +207,7 @@
     },
     {
       "name": "Electronica Group",
-      "description": "Electronica – Ihr Spezialist für Elektrotechnik seit 1979. Vertrauen Sie auf unsere Erfahrung in den Bereichen Messen, Handel und hochwertige Wohnprojekte.",
+      "description": "Guided the Electronica Group corporate site migration to a headless Next.js front end on WordPress, showcasing reference projects and capturing B2B leads.",
       "keywords": [
         "Next.js",
         "WordPress (Headless)"
@@ -222,7 +222,7 @@
     },
     {
       "name": "Elodie Carstensen",
-      "description": "Berlin-based artist and designer creating worlds through fashion, immersive installations, and custom costume designs.",
+      "description": "Designed and built an immersive React portfolio for Elodie Carstensen, blending modular storytelling, rapid content updates, and performant 3D-inspired interactions.",
       "keywords": [
         "React"
       ],
@@ -238,7 +238,7 @@
     },
     {
       "name": "Fairworks",
-      "description": "Der richtige Raum gibt Ihnen den Rahmen zu scheinen",
+      "description": "Delivered Fairworks' launch stack by pairing Next.js with WordPress content ops, marketing automations, and analytics for the flexible workspace brand.",
       "keywords": [
         "React",
         "Next.js",
@@ -261,7 +261,7 @@
     },
     {
       "name": "Fonds für Wohnen und Mobilität",
-      "description": "Der Wo-Mo-Fonds zahlt Zuschüsse zu den Kosten von Wohnen und Mobilität für alle EVG-Mitglieder, die bei der DB AG oder ihren Tochterunternehmen arbeiten.",
+      "description": "Built EVG's Wohnen & Mobilität hub with Eleventy and TYPO3, delivering multilingual content journeys, accessibility, and streamlined stakeholder approvals.",
       "keywords": [
         "TYPO3",
         "Eleventy (11ty)",
@@ -282,7 +282,7 @@
     },
     {
       "name": "Grün Berlin",
-      "description": "Als landeseigenes Unternehmen ist Grün Berlin zuverlässiger Partner für eine klimaschonende und klimaresiliente Stadtentwicklung. Wir entwickeln, bauen und betreiben nachhaltige Infrastrukturen für Berlin.",
+      "description": "Oversaw the Grün Berlin digital platform, introducing a reusable component library, TYPO3 enhancements, and live service updates across city projects.",
       "keywords": [
         "TYPO3",
         "Cloudflare",
@@ -309,7 +309,7 @@
     },
     {
       "name": "infraSignal",
-      "description": "Lichtsignalanlagenmanagement im Auftrag des Landes Berlin durch das Grün-Berlin-Tochterunternehmen GB infraSignal GmbH. Planung, Bau, Modernisierung, Betrieb und Wartung der mehr als 2.100 Ampelanlagen.",
+      "description": "Extended the Grün Berlin engagement with the infraSignal site, streamlining service communication, maintenance updates, and map integrations for traffic infrastructure teams.",
       "keywords": [
         "TYPO3",
         "Brevo",
@@ -333,7 +333,7 @@
     },
     {
       "name": "Porsche Lifestyle Group Pressroom",
-      "description": "Porsche Newsroom website",
+      "description": "Managed the Porsche Lifestyle pressroom relaunch on Next.js and WordPress, enabling editors to schedule global releases and automate embargo workflows.",
       "keywords": [
         "Next.js",
         "WordPress",
@@ -354,7 +354,7 @@
     },
     {
       "name": "RAS Services",
-      "description": "RAS Services - Concierge-Dienste Beyond Service ✓Home & Office Concierge ✓digitaler Concierge ✓After Sales ✓für Unternehmen und Projektentwickler.",
+      "description": "Designed and developed the RAS Services concierge platform, integrating WordPress automations, CRM touchpoints, and performance monitoring for nationwide roll-out.",
       "keywords": [
         "WordPress",
         "Optimole",
@@ -380,7 +380,7 @@
     },
     {
       "name": "SPOTS UP",
-      "description": "Ihr Licht entscheidet: Mit Premium-Leuchten von SPOTS UP strahlen Sie und Ihre Kunden um die Wette. Sie sind auf der Suche nach der perfekten Beleuchtung für Ihre Messe, einen Event, Ihre Galerie oder ein Handelsgeschäft?",
+      "description": "Delivered the SPOTS UP hybrid marketing site, merging Next.js and Nuxt product catalogues with automation-ready lead capture and content workflows.",
       "keywords": [
         "Next.js",
         "Nuxt",
@@ -401,7 +401,7 @@
     },
     {
       "name": "Stadt Weide Land",
-      "description": "Stadt Weide Land transformiert Grünflächen in wertvolle Stadtnatur. Mit dem Einsatz von bedrohten Nutztierrassen in der Landschaftspflege tragen wir zu mehr Biodiversität und Artenschutz in Berlin bei.",
+      "description": "Crafted the Stadt Weide Land storytelling site, prototyping brand visuals and TYPO3 experience pages to support conservation partnerships with Berlin boroughs.",
       "keywords": [
         "TYPO3",
         "TYPO3 (SG_Cookie)",
@@ -418,7 +418,7 @@
     },
     {
       "name": "TeamBank",
-      "description": "Die TeamBank steht für Liquidität. Mit Lösungen und Services der Produktfamilie easyCredit sorgen wir für finanzielle Flexibilität.",
+      "description": "Led the cross-functional squad behind teambank.de, implementing Algolia search, SEO guardrails, and conversion analytics for the easyCredit brand.",
       "keywords": [
         "WordPress",
         "Algolia",
@@ -438,7 +438,7 @@
     },
     {
       "name": "Tertianum Premium Group",
-      "description": "Tertianum Premium Group ✓innovative Wohnkonzepte für das Leben im Alter ✓ambulante & stationäre First-Class-Pflege ✓Gourmet Restaurants",
+      "description": "Evolved Tertianum's premium brand presence with a WordPress design system, marketing automation, and observability to support nationwide residences.",
       "keywords": [
         "WordPress",
         "Optimole",
@@ -466,7 +466,7 @@
     },
     {
       "name": "Tertianum Premium Residences",
-      "description": "Tertianum► Exklusives Premium Wohnen im Alter mit Serviceleistungen in bester urbaner Lage in Berlin, München oder Konstanz.",
+      "description": "Scaled Tertianum Premium Residences microsites with a multilingual WordPress Multisite setup, consent management, and operations dashboards for local teams.",
       "keywords": [
         "WordPress",
         "WordPress Multisite",
@@ -495,7 +495,7 @@
     },
     {
       "name": "Viniculture",
-      "description": "Premium wine shop and e-commerce platform",
+      "description": "Partnered with Viniculture on a premium wine e-commerce refresh, defining brand tone and guiding Shopware UX improvements to drive higher order values.",
       "keywords": [
         "Shopware"
       ],
@@ -510,7 +510,7 @@
     },
     {
       "name": "Studio KLV",
-      "description": "Creative design studio website",
+      "description": "Maintained the Studio KLV digital presence, shipping a WordPress theme refresh, CRM-ready forms, and multilingual workflows for ongoing campaigns.",
       "keywords": [
         "WordPress",
         "Brevo",
@@ -529,7 +529,7 @@
     },
     {
       "name": "The African Forum for Utility Regulators",
-      "description": "Facilitating the development of effective utility regulation in support of Africa's infrastructure development.",
+      "description": "Launched AFURN's knowledge portal on WordPress, implementing secure communications, CRM integrations, and low-connectivity optimisations for regulators across Africa.",
       "keywords": [
         "WordPress",
         "Amazon SES",
