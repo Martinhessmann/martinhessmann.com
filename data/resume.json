@@ -36,7 +36,7 @@
     {
       "name": "Brasserie Colette",
       "description": "Brasserie Colette à la Tim Raue - moderne französische Küche auf Spitzenniveau! In Berlin, München & Konstanz. Ausgezeichnet von Gault Millau.",
-      "keywords": ["Nuxt", "Prismic", "Brasserie Colette"],
+      "keywords": ["Nuxt", "Prismic"],
       "startDate": "2021-03",
       "url": "https://brasseriecolette.de",
       "image": "/images/clients/brasseriecolette.de-og.jpg",
@@ -46,17 +46,17 @@
     {
       "name": "Dein WoMo",
       "description": "Dein-WoMo.de ist die neue Plattform für förderberechtigte EVG-Mitglieder außerhalb der DB AG",
-      "keywords": ["TYPO3", "EVG"],
+      "keywords": ["TYPO3"],
       "startDate": "2022-11",
       "url": "https://dein-womo.de",
       "image": "/images/clients/dein-womo.de-og.jpg",
-      "roles": ["Design", "Development", "Project Management"],
+      "roles": ["Project Management"],
       "entity": "EVG"
     },
     {
       "name": "DPF Group",
       "description": "Weil ein gutes Leben im Alter so vielseitig und bunt ist wie ein das Bild eines Kaleidoskops, denken wir über Immobilien hinaus. Wir wollen das Leben der Älteren positiv mitgestalten.",
-      "keywords": ["Nuxt", "Prismic", "DPF Group"],
+      "keywords": ["Nuxt", "Prismic"],
       "startDate": "2019-07",
       "url": "https://dpf-investment.de",
       "image": "/images/clients/dpf-investment.de-og.jpg",
@@ -66,7 +66,7 @@
     {
       "name": "easyCredit Partner",
       "description": "Business Services von easyCredit - Ihr Partner für ✓Onlineshops, am ✓PoS und im ✓Direktvertrieb. Jetzt Ratenkauf und Rechnung anbieten!",
-      "keywords": ["WordPress", "TeamBank"],
+      "keywords": ["WordPress"],
       "startDate": "2020-03",
       "url": "https://partner.easycredit.de",
       "image": "/images/clients/partner.easycredit.de-og.jpg",
@@ -76,7 +76,7 @@
     {
       "name": "Electronica Group",
       "description": "Electronica – Ihr Spezialist für Elektrotechnik seit 1979. Vertrauen Sie auf unsere Erfahrung in den Bereichen Messen, Handel und hochwertige Wohnprojekte.",
-      "keywords": ["Next.js", "WordPress (Headless)", "Electronica Group"],
+      "keywords": ["Next.js", "WordPress (Headless)"],
       "startDate": "2020-11",
       "url": "https://electronica.group",
       "image": "/images/clients/electronica.group-og.jpg",
@@ -86,7 +86,7 @@
     {
       "name": "Elodie Carstensen",
       "description": "Berlin-based artist and designer creating worlds through fashion, immersive installations, and custom costume designs.",
-      "keywords": ["React", "Elodie Carstensen"],
+      "keywords": ["React"],
       "startDate": "2024",
       "url": "https://elodiecarstensen.com",
       "image": "/images/clients/elodiecarstensen-og.jpg",
@@ -96,7 +96,7 @@
     {
       "name": "Fairworks",
       "description": "Der richtige Raum gibt Ihnen den Rahmen zu scheinen",
-      "keywords": ["React", "Fairworks"],
+      "keywords": ["React"],
       "startDate": "2023-05",
       "url": "https://fairworks.com",
       "image": "/images/clients/fairworks.com-og.jpg",
@@ -106,7 +106,7 @@
     {
       "name": "Fonds für Wohnen und Mobilität",
       "description": "Der Wo-Mo-Fonds zahlt Zuschüsse zu den Kosten von Wohnen und Mobilität für alle EVG-Mitglieder, die bei der DB AG oder ihren Tochterunternehmen arbeiten.",
-      "keywords": ["TYPO3", "EVG"],
+      "keywords": ["TYPO3", "eleventy"],
       "startDate": "2021-09",
       "url": "https://womofonds.de",
       "image": "/images/clients/womofonds.de-og.jpg",
@@ -116,7 +116,7 @@
     {
       "name": "Grün Berlin",
       "description": "Als landeseigenes Unternehmen ist Grün Berlin zuverlässiger Partner für eine klimaschonende und klimaresiliente Stadtentwicklung. Wir entwickeln, bauen und betreiben nachhaltige Infrastrukturen für Berlin.",
-      "keywords": ["TYPO3", "Grün Berlin"],
+      "keywords": ["TYPO3"],
       "startDate": "2020-11",
       "url": "https://gruen-berlin.de",
       "image": "/images/clients/gruen-berlin.de-og.jpg",
@@ -126,7 +126,7 @@
     {
       "name": "infraSignal",
       "description": "Lichtsignalanlagenmanagement im Auftrag des Landes Berlin durch das Grün-Berlin-Tochterunternehmen GB infraSignal GmbH. Planung, Bau, Modernisierung, Betrieb und Wartung der mehr als 2.100 Ampelanlagen.",
-      "keywords": ["TYPO3", "Grün Berlin"],
+      "keywords": ["TYPO3"],
       "startDate": "2022-10",
       "url": "https://infrasignal.de",
       "image": "/images/clients/infrasignal.de-og.jpg",
@@ -136,7 +136,7 @@
     {
       "name": "Porsche Lifestyle Group Pressroom",
       "description": "Porsche Newsroom website",
-      "keywords": ["Next.js", "Porsche Lifestyle Group"],
+      "keywords": ["Next.js"],
       "startDate": "2019-02",
       "url": "https://press.porsche-design.com",
       "image": "/images/clients/press.porsche-design.com-og.jpg",
@@ -146,7 +146,7 @@
     {
       "name": "RAS Services",
       "description": "RAS Services - Concierge-Dienste Beyond Service ✓Home & Office Concierge ✓digitaler Concierge ✓After Sales ✓für Unternehmen und Projektentwickler.",
-      "keywords": ["WordPress", "RAS Services"],
+      "keywords": ["WordPress"],
       "startDate": "2021-07",
       "url": "https://ras-services.de",
       "image": "/images/clients/ras-services.de-og.jpg",
@@ -156,7 +156,7 @@
     {
       "name": "SPOTS UP",
       "description": "Ihr Licht entscheidet: Mit Premium-Leuchten von SPOTS UP strahlen Sie und Ihre Kunden um die Wette. Sie sind auf der Suche nach der perfekten Beleuchtung für Ihre Messe, einen Event, Ihre Galerie oder ein Handelsgeschäft?",
-      "keywords": ["Next.js", "Electronica Group"],
+      "keywords": ["Next.js"],
       "startDate": "2019-01",
       "url": "https://spotsup.rent",
       "image": "/images/clients/spotsup.rent-og.jpg",
@@ -166,7 +166,7 @@
     {
       "name": "Stadt Weide Land",
       "description": "Stadt Weide Land transformiert Grünflächen in wertvolle Stadtnatur. Mit dem Einsatz von bedrohten Nutztierrassen in der Landschaftspflege tragen wir zu mehr Biodiversität und Artenschutz in Berlin bei.",
-      "keywords": ["TYPO3", "Stadt Weide Land"],
+      "keywords": ["TYPO3"],
       "startDate": "2023-10",
       "url": "https://stadtweideland.de",
       "image": "/images/clients/stadtweideland.de-og.jpg",
@@ -176,17 +176,17 @@
     {
       "name": "TeamBank",
       "description": "Die TeamBank steht für Liquidität. Mit Lösungen und Services der Produktfamilie easyCredit sorgen wir für finanzielle Flexibilität.",
-      "keywords": ["WordPress", "TeamBank"],
+      "keywords": ["WordPress"],
       "startDate": "2021-09",
       "url": "https://teambank.de",
       "image": "/images/clients/teambank.de-og.jpg",
-      "roles": ["Project Management"],
+      "roles": ["Design", "Project Management"],
       "entity": "TeamBank"
     },
     {
       "name": "Tertianum Premium Group",
       "description": "Tertianum Premium Group ✓innovative Wohnkonzepte für das Leben im Alter ✓ambulante & stationäre First-Class-Pflege ✓Gourmet Restaurants",
-      "keywords": ["WordPress", "DPF Group"],
+      "keywords": ["WordPress"],
       "startDate": "2019",
       "url": "https://tertianum.de",
       "image": "/images/clients/tertianum.de-og.jpg",
@@ -196,7 +196,7 @@
     {
       "name": "Tertianum Premium Residences",
       "description": "Tertianum► Exklusives Premium Wohnen im Alter mit Serviceleistungen in bester urbaner Lage in Berlin, München oder Konstanz.",
-      "keywords": ["WordPress", "DPF Group"],
+      "keywords": ["WordPress"],
       "startDate": "2019-08",
       "url": "https://tertianum-premiumresidences.de",
       "image": "/images/clients/tertianum-premiumresidences.de-og.jpg",
@@ -206,7 +206,7 @@
     {
       "name": "Viniculture",
       "description": "Premium wine shop and e-commerce platform",
-      "keywords": ["Shopware", "Viniculture"],
+      "keywords": ["Shopware"],
       "startDate": "2021-08",
       "url": "https://viniculture.de",
       "image": "/images/clients/viniculture.jpg",
@@ -216,17 +216,17 @@
     {
       "name": "Studio KLV",
       "description": "Creative design studio website",
-      "keywords": ["WordPress", "Studio KLV"],
+      "keywords": ["WordPress"],
       "startDate": "2017-06",
       "url": "https://studioklv.de",
       "image": "/images/clients/studioklv.jpg",
-      "roles": ["Development", "Project Management"],
+      "roles": ["Design", "Development", "Project Management"],
       "entity": "Studio KLV"
     },
     {
       "name": "The African Forum for Utility Regulators",
       "description": "Facilitating the development of effective utility regulation in support of Africa's infrastructure development.",
-      "keywords": ["WordPress", "AFURN"],
+      "keywords": ["WordPress"],
       "startDate": "2022",
       "url": "https://afurnet.org",
       "image": "/images/clients/afurnet.org-og.jpg",

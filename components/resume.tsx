@@ -249,7 +249,7 @@ export function Resume({ resume }: ResumeProps) {
             rel={project.url ? "noopener noreferrer" : undefined}
             className="group relative bg-muted/30 hover:bg-muted/50 rounded-xl transition-all duration-200 flex flex-col cursor-pointer overflow-hidden"
           >
-            {/* Project Image - Full width, no padding */}
+            {/* Project Image - Full width, with role tags overlay */}
             {project.image && (
               <div className="w-full relative bg-muted">
                 <img
@@ -257,6 +257,22 @@ export function Resume({ resume }: ResumeProps) {
                   alt={`${project.name} project screenshot`}
                   className="w-full h-40 object-cover"
                 />
+                {/* Role tags overlay on image - only show active roles */}
+                <div className="absolute top-3 left-3 flex gap-1">
+                  {['Design', 'Dev', 'PM'].map((mainRole) => {
+                    const roleKey = mainRole === 'Design' ? 'Design' : mainRole === 'Dev' ? 'Development' : 'Project Management'
+                    const isActive = project.roles?.includes(roleKey) || false
+                    if (!isActive) return null
+                    return (
+                      <div
+                        key={mainRole}
+                        className="bg-background/90 backdrop-blur-sm px-2 py-1 rounded text-xs font-medium text-foreground"
+                      >
+                        {mainRole}
+                      </div>
+                    )
+                  })}
+                </div>
               </div>
             )}
 
@@ -274,38 +290,31 @@ export function Resume({ resume }: ResumeProps) {
                 </p>
               )}
 
-              {/* Date - Safari bottom-left style */}
+              {/* Date - Show as ongoing partnership */}
               {project.startDate && (
                 <p className="text-xs text-muted-foreground group-hover:text-foreground/70 transition-colors mt-2">
                   {(() => {
                     const startYear = parseInt(project.startDate.split('-')[0])
-                    const currentYear = new Date().getFullYear()
-                    const yearsAgo = currentYear - startYear
-
-                    if (yearsAgo === 0) return 'This year'
-                    if (yearsAgo === 1) return '1 year ago'
-                    if (yearsAgo >= 5) return `${yearsAgo}+ years`
-                    return `${yearsAgo} years ago`
+                    return `since ${startYear}`
                   })()}
                 </p>
               )}
 
-              {/* Roles and Technologies - Very minimal */}
-              <div className="mt-auto pt-3">
-                <div className="text-xs text-muted-foreground group-hover:text-foreground/70 transition-colors">
-                  {/* Roles inline */}
-                  {['Design', 'Dev', 'PM'].map((mainRole, index) => {
-                    const roleKey = mainRole === 'Design' ? 'Design' : mainRole === 'Dev' ? 'Development' : 'Project Management'
-                    const isActive = project.roles?.includes(roleKey) || false
-                    return (
-                      <span key={mainRole} className={isActive ? '' : 'opacity-50'}>
-                        {mainRole}
-                        {index < 2 && <span className="mx-1.5">•</span>}
-                      </span>
-                    )
-                  })}
+              {/* Project Keywords/Specs - Filter out client/entity names */}
+              {project.keywords && project.keywords.length > 0 && (
+                <div className="mt-auto pt-3">
+                  <div className="flex flex-wrap gap-1 text-xs text-muted-foreground group-hover:text-foreground/70 transition-colors">
+                    {project.keywords
+                      .filter(keyword => keyword !== project.entity)
+                      .map((keyword, keywordIndex, filteredArray) => (
+                        <span key={keywordIndex}>
+                          {keyword}
+                          {keywordIndex < filteredArray.length - 1 && <span className="mx-1">•</span>}
+                        </span>
+                      ))}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </a>
         ))}
