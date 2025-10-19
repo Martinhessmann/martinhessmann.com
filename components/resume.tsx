@@ -26,19 +26,31 @@ export function Resume({ resume }: ResumeProps) {
     return resume.skills.flatMap(skill => skill.keywords || [])
   }, [resume.skills])
 
-  // Filter projects based on active skill filters
+  // Filter projects based on active skill filters and sort alphabetically
   const filteredProjects = useMemo(() => {
-    if (!resume.projects || activeFilters.length === 0) return resume.projects || []
+    if (!resume.projects) return []
 
-    return resume.projects.filter(project => {
-      const projectKeywords = project.keywords || []
-      return activeFilters.some(filter =>
-        projectKeywords.some(keyword =>
-          keyword.toLowerCase().includes(filter.toLowerCase()) ||
-          filter.toLowerCase().includes(keyword.toLowerCase())
-        )
+    // If no filters, return all projects sorted alphabetically
+    if (activeFilters.length === 0) {
+      return [...resume.projects].sort((a, b) =>
+        a.name.localeCompare(b.name, undefined, { sensitivity: 'base' })
       )
-    })
+    }
+
+    // Filter projects and sort alphabetically
+    return resume.projects
+      .filter(project => {
+        const projectKeywords = project.keywords || []
+        return activeFilters.some(filter =>
+          projectKeywords.some(keyword =>
+            keyword.toLowerCase().includes(filter.toLowerCase()) ||
+            filter.toLowerCase().includes(keyword.toLowerCase())
+          )
+        )
+      })
+      .sort((a, b) =>
+        a.name.localeCompare(b.name, undefined, { sensitivity: 'base' })
+      )
   }, [resume.projects, activeFilters])
 
   // Toggle skill filter
@@ -190,8 +202,8 @@ export function Resume({ resume }: ResumeProps) {
                         onClick={() => toggleFilter(keyword)}
                         className={`inline-flex items-center px-2 py-1 rounded text-xs font-medium transition-all duration-200 ${
                           isActive
-                            ? 'bg-primary text-primary-foreground shadow-sm'
-                            : 'bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground'
+                            ? 'bg-muted/50 text-foreground'
+                            : 'bg-muted/30 text-muted-foreground hover:bg-muted/50 hover:text-foreground'
                         }`}
                       >
                         {keyword}
