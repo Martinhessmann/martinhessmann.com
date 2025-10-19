@@ -1,7 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { ThemeProvider } from '@/components/theme-provider'
-import { ResumeControls } from '@/components/resume-controls'
+import { ThemeToggle } from '@/components/theme-toggle'
 
 export const metadata: Metadata = {
   title: 'Martin Heßmann - Resume',
@@ -63,8 +63,8 @@ export default function RootLayout({
         >
           {children}
 
-          {/* Resume controls in top-right corner */}
-          <ResumeControls />
+          {/* All controls in top-right corner */}
+          <ThemeToggle />
         </ThemeProvider>
       </body>
     </html>
