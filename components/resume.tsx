@@ -1,24 +1,53 @@
+"use client"
+
 import { Resume, Work, Project, Skill, Education, Language, Interest } from '@/types/resume'
 import { Badge } from '@/components/ui/badge'
 import { ExternalLink } from 'lucide-react'
+import { useAdminStore } from '@/lib/store/admin-store'
+import Image from 'next/image'
+import { useEffect } from 'react'
 
 interface ResumeProps {
   resume: Resume
 }
 
 export function Resume({ resume }: ResumeProps) {
+  const { isAdminMode, setHydrated } = useAdminStore()
+
+  // Hydrate admin mode from localStorage on mount
+  useEffect(() => {
+    setHydrated()
+  }, [])
   return (
     <div className="space-y-12 print:space-y-8">
       {/* Header Section */}
       <header className="mb-12 print:mb-8">
-        <h1 className="text-4xl font-bold mb-2 print:text-3xl text-foreground">
-          {resume.basics.name}
-        </h1>
-        {resume.basics.label && (
-          <p className="text-xl text-muted-foreground mb-4 print:text-lg">
-            {resume.basics.label}
-          </p>
-        )}
+        <div className="flex items-start gap-6 mb-6">
+          {/* Profile Image (only in admin mode) */}
+          {isAdminMode && resume.basics.image && (
+            <div className="flex-shrink-0">
+              <Image
+                src={resume.basics.image}
+                alt={resume.basics.name}
+                width={120}
+                height={120}
+                className="rounded-full"
+              />
+            </div>
+          )}
+
+          <div className="flex-1">
+            <h1 className="text-4xl font-bold mb-2 print:text-3xl text-foreground">
+              {resume.basics.name}
+            </h1>
+            {resume.basics.label && (
+              <p className="text-xl text-muted-foreground mb-4 print:text-lg">
+                {resume.basics.label}
+              </p>
+            )}
+          </div>
+        </div>
+
         {resume.basics.summary && (
           <p className="text-base text-foreground leading-relaxed max-w-3xl">
             {resume.basics.summary}
@@ -31,7 +60,7 @@ export function Resume({ resume }: ResumeProps) {
               {resume.basics.location.countryCode && `, ${resume.basics.location.countryCode}`}
             </span>
           )}
-          {resume.basics.email && (
+          {isAdminMode && resume.basics.email && (
             <a
               href={`mailto:${resume.basics.email}`}
               className="hover:text-foreground transition-colors"
@@ -39,7 +68,7 @@ export function Resume({ resume }: ResumeProps) {
               {resume.basics.email}
             </a>
           )}
-          {resume.basics.phone && (
+          {isAdminMode && resume.basics.phone && (
             <a
               href={`tel:${resume.basics.phone}`}
               className="hover:text-foreground transition-colors"

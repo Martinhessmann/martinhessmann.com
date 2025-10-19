@@ -1,7 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { ThemeProvider } from '@/components/theme-provider'
-import { ThemeToggle } from '@/components/theme-toggle'
+import { ResumeControls } from '@/components/resume-controls'
 
 export const metadata: Metadata = {
   title: 'Martin Heßmann - Resume',
@@ -40,6 +40,10 @@ export const metadata: Metadata = {
   appleWebApp: {
     title: 'Martin Heßmann',
     statusBarStyle: 'default',
+    capable: true,
+  },
+  other: {
+    'mobile-web-app-capable': 'yes',
   },
 }
 
@@ -59,10 +63,8 @@ export default function RootLayout({
         >
           {children}
 
-          {/* Theme toggle in top-right corner */}
-          <div className="fixed top-4 right-4 print:hidden">
-            <ThemeToggle />
-          </div>
+          {/* Resume controls in top-right corner */}
+          <ResumeControls />
         </ThemeProvider>
       </body>
     </html>

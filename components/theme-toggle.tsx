@@ -17,13 +17,13 @@ export function ThemeToggle() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <button
-          className="w-6 h-6 rounded-full flex items-center justify-center bg-transparent hover:bg-white/10 transition-colors"
+          className="w-6 h-6 rounded-full flex items-center justify-center bg-transparent hover:bg-muted transition-colors"
           aria-label="Toggle theme"
         >
           {/* Show the icon based on current theme (system shows monitor) */}
-          <Sun className={`h-4 w-4 absolute text-white transition-all ${resolvedTheme === 'light' && theme !== 'system' ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`} />
-          <Moon className={`h-4 w-4 absolute text-white transition-all ${resolvedTheme === 'dark' && theme !== 'system' ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`} />
-          <Monitor className={`h-4 w-4 absolute text-white transition-all ${theme === 'system' ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`} />
+          <Sun className={`h-4 w-4 absolute text-foreground transition-all ${resolvedTheme === 'light' && theme !== 'system' ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`} />
+          <Moon className={`h-4 w-4 absolute text-foreground transition-all ${resolvedTheme === 'dark' && theme !== 'system' ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`} />
+          <Monitor className={`h-4 w-4 absolute text-foreground transition-all ${theme === 'system' ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`} />
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
