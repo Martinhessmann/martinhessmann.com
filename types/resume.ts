@@ -77,6 +77,7 @@ export interface Project {
   startDate?: string
   endDate?: string
   url?: string
+  image?: string
   roles?: string[]
   entity?: string
   type?: string
