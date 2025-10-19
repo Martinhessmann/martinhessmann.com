@@ -228,80 +228,74 @@ export function Resume({ resume }: ResumeProps) {
     }
 
     return (
-      <div className="grid gap-6 md:gap-8">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projectsToRender.map((project, index) => (
-          <div key={index} className="border-l-2 border-muted pl-4">
-            <div className="flex gap-4 mb-3">
-              {project.image && (
-                <div className="flex-shrink-0">
-                  <img
-                    src={project.image}
-                    alt={`${project.name} project screenshot`}
-                    className="w-20 h-20 object-cover rounded-md border border-muted"
-                  />
-                </div>
-              )}
-              <div className="flex-1 min-w-0">
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
-                  <div>
-                    <h3 className="text-lg font-semibold text-foreground">
-                      {project.name}
-                    </h3>
-                    {project.entity && (
-                      <p className="text-sm text-muted-foreground">
-                        {project.entity}
-                      </p>
-                    )}
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    {project.startDate && (
-                      <span>{project.startDate}</span>
-                    )}
-                    {project.url && (
-                      <a
-                        href={project.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 hover:text-foreground transition-colors"
-                      >
-                        <ExternalLink size={14} />
-                        Visit
-                      </a>
-                    )}
-                  </div>
-                </div>
-
-                {project.description && (
-                  <p className="text-sm text-foreground mb-3 leading-relaxed">
-                    {project.description}
-                  </p>
-                )}
-              </div>
-            </div>
-
-            <div className="flex flex-wrap gap-2 mb-2">
-              {project.roles && project.roles.map((role, roleIndex) => (
-                <Badge key={roleIndex} variant="secondary" className="text-xs">
-                  {role}
-                </Badge>
-              ))}
-              {project.type && (
-                <Badge variant="outline" className="text-xs">
-                  {project.type}
-                </Badge>
-              )}
-            </div>
-
-            {project.keywords && project.keywords.length > 0 && (
-              <div className="flex flex-wrap gap-1">
-                {project.keywords.map((keyword, keywordIndex) => (
-                  <Badge key={keywordIndex} variant="outline" className="text-xs">
-                    {keyword}
-                  </Badge>
-                ))}
+          <a
+            key={index}
+            href={project.url || '#'}
+            target={project.url ? "_blank" : undefined}
+            rel={project.url ? "noopener noreferrer" : undefined}
+            className="group relative bg-muted/30 hover:bg-muted/50 rounded-xl transition-all duration-200 flex flex-col cursor-pointer overflow-hidden"
+          >
+            {/* Project Image - Full width, no padding */}
+            {project.image && (
+              <div className="w-full relative bg-muted">
+                <img
+                  src={project.image}
+                  alt={`${project.name} project screenshot`}
+                  className="w-full h-40 object-cover"
+                />
               </div>
             )}
-          </div>
+
+            {/* Project Content - Safari style */}
+            <div className="p-4 flex-1 flex flex-col gap-1">
+              {/* Project Title */}
+              <h3 className="text-base font-medium text-foreground group-hover:text-foreground transition-colors line-clamp-1">
+                {project.name}
+              </h3>
+
+              {/* URL */}
+              {project.url && (
+                <p className="text-xs text-muted-foreground group-hover:text-foreground/80 transition-colors line-clamp-1">
+                  {project.url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')}
+                </p>
+              )}
+
+              {/* Date - Safari bottom-left style */}
+              {project.startDate && (
+                <p className="text-xs text-muted-foreground group-hover:text-foreground/70 transition-colors mt-2">
+                  {(() => {
+                    const startYear = parseInt(project.startDate.split('-')[0])
+                    const currentYear = new Date().getFullYear()
+                    const yearsAgo = currentYear - startYear
+
+                    if (yearsAgo === 0) return 'This year'
+                    if (yearsAgo === 1) return '1 year ago'
+                    if (yearsAgo >= 5) return `${yearsAgo}+ years`
+                    return `${yearsAgo} years ago`
+                  })()}
+                </p>
+              )}
+
+              {/* Roles and Technologies - Very minimal */}
+              <div className="mt-auto pt-3">
+                <div className="text-xs text-muted-foreground group-hover:text-foreground/70 transition-colors">
+                  {/* Roles inline */}
+                  {['Design', 'Dev', 'PM'].map((mainRole, index) => {
+                    const roleKey = mainRole === 'Design' ? 'Design' : mainRole === 'Dev' ? 'Development' : 'Project Management'
+                    const isActive = project.roles?.includes(roleKey) || false
+                    return (
+                      <span key={mainRole} className={isActive ? '' : 'opacity-50'}>
+                        {mainRole}
+                        {index < 2 && <span className="mx-1.5">•</span>}
+                      </span>
+                    )
+                  })}
+                </div>
+              </div>
+            </div>
+          </a>
         ))}
       </div>
     )
