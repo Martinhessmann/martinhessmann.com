@@ -14,41 +14,14 @@
     },
     "profiles": []
   },
-  "work": [
-    {
-      "name": "AN® (Apeunit)",
-      "position": "Digital Design Manager",
-      "url": "https://apeunit.com",
-      "startDate": "2020",
-      "summary": "Leading design and development teams building tools for product and marketing teams in a small tech company.",
-      "highlights": [
-        "Led cross-functional teams of designers and developers",
-        "Established design systems and development workflows",
-        "Managed client relationships and project delivery"
-      ]
-    }
-  ],
-  "volunteer": [],
-  "education": [
-    {
-      "institution": "University of Applied Sciences",
-      "area": "Digital Media / Communication Design",
-      "studyType": "Bachelor",
-      "startDate": "2010",
-      "endDate": "2014"
-    }
-  ],
-  "awards": [],
-  "certificates": [],
-  "publications": [],
   "skills": [
     {
       "name": "Design",
-      "keywords": ["UX Design", "UI Design", "Product Design", "Design Systems", "Figma", "Adobe Creative Suite"]
+      "keywords": ["UX Design", "UI Design", "Product Design", "Design Systems", "Digital Art Direction", "Figma", "Adobe Creative Suite", "Print Design", "Corporate Design"]
     },
     {
       "name": "Development",
-      "keywords": ["React", "Next.js", "Vue.js", "TypeScript", "JavaScript", "HTML", "CSS", "Tailwind CSS"]
+      "keywords": ["React", "Next.js", "Vue.js", "TypeScript", "JavaScript", "HTML", "CSS", "Tailwind CSS", "Web Development"]
     },
     {
       "name": "CMS & Platforms",
@@ -56,7 +29,11 @@
     },
     {
       "name": "Project Management",
-      "keywords": ["Agile", "Scrum", "Team Leadership", "Client Relations", "Product Strategy"]
+      "keywords": ["Agile", "Scrum", "Kanban", "Team Leadership", "Client Relations", "Product Strategy", "Business Model Validation"]
+    },
+    {
+      "name": "Methodologies",
+      "keywords": ["Design Thinking", "User-Centered Design", "Cross-functional Collaboration", "Hybrid Work Management"]
     }
   ],
   "projects": [
@@ -241,6 +218,83 @@
       "type": "CMS"
     }
   ],
+  "work": [
+    {
+      "name": "AN® (an.jetzt)",
+      "position": "Digital Design Manager",
+      "url": "https://an.jetzt",
+      "startDate": "2023-07",
+      "endDate": "",
+      "summary": "Leading design and development teams at a design-driven tech studio building digital applications to validate future business models for companies reinventing themselves. Focus on the intersection of design and technology, driven by and for people towards a desirable future.",
+      "highlights": [
+        "Leading cross-functional teams of designers and developers",
+        "Building digital applications for business model validation",
+        "Focusing on design-technology intersection",
+        "Hybrid work environment in Berlin"
+      ]
+    },
+    {
+      "name": "Unit U+2463 GmbH",
+      "position": "Digital Art Director",
+      "url": "",
+      "startDate": "2018-03",
+      "endDate": "2023-07",
+      "summary": "Digital Art Director role focusing on UX design and design systems in the Berlin/Brandenburg metropolitan region.",
+      "highlights": [
+        "Specialized in UX design and design systems",
+        "Hybrid work environment",
+        "5+ years of experience in digital art direction"
+      ]
+    },
+    {
+      "name": "Ape Unit GmbH",
+      "position": "UX/UI Designer",
+      "url": "",
+      "startDate": "2014-07",
+      "endDate": "2018-03",
+      "summary": "UX/UI Designer role with focus on design systems and user experience design.",
+      "highlights": [
+        "Specialized in UX/UI design",
+        "Design systems development",
+        "3+ years of professional design experience"
+      ]
+    },
+    {
+      "name": "Ape Unit GmbH",
+      "position": "Design Internship",
+      "url": "",
+      "startDate": "2013-09",
+      "endDate": "2013-12",
+      "summary": "Design internship providing foundational experience in professional design workflows.",
+      "highlights": [
+        "Gained professional design experience",
+        "4-month intensive learning period"
+      ]
+    },
+    {
+      "name": "Martin Heßmann",
+      "position": "Freelance Designer",
+      "url": "",
+      "startDate": "2011-11",
+      "endDate": "2013-09",
+      "summary": "Freelance designer specializing in web, print, and corporate design in the Berlin/Brandenburg metropolitan region.",
+      "highlights": [
+        "Web design and development",
+        "Print media design",
+        "Corporate design and branding",
+        "Client relationship management"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of Applied Sciences",
+      "area": "Digital Media / Communication Design",
+      "studyType": "Bachelor",
+      "startDate": "2010",
+      "endDate": "2014"
+    }
+  ],
   "languages": [
     {
       "language": "German",
@@ -261,5 +315,9 @@
       "keywords": ["Photography", "Design", "Typography", "Visual Communication"]
     }
   ],
+  "volunteer": [],
+  "awards": [],
+  "certificates": [],
+  "publications": [],
   "references": []
 }
