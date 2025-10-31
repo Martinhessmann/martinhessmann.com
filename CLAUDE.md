@@ -1,5 +1,7 @@
 # CLAUDE.md
 
+Martin Heßmann – Digital Design Manager & Product Generalist.
+
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Development Commands
@@ -38,9 +40,46 @@ This is a Next.js 14 application that renders a clean resume website using the J
 ### Data Layer
 
 - `data/resume.json` - All resume content following JSON Resume schema
-- Extended fields for projects: `roles`, `entity`, `image`, `description`
+- Extended fields for projects: `roles`, `entity`, `image`, `description`, `startDate`, `keywords`
 - All content is type-safe via `types/resume.ts`
 - Projects are sorted alphabetically by name
+
+## Editing Playbook (for agents)
+
+1) Update content
+- Edit `data/resume.json` only. Projects include:
+  - `entity` (client), `roles` (subset of ['Design','Development','Project Management']), `image` (under `public/images/clients/`), `startDate` (YYYY or YYYY-MM), `keywords` (tech/specs only).
+- Do NOT include client names in `keywords` – the UI renders `entity` separately and filters it out from keywords.
+ - The first sentence of `basics.summary` must be: "Martin Heßmann – Digital Design Manager & Product Generalist."
+
+2) Image handling
+- Store files in `public/images/clients/` (e.g. `viniculture.jpg`).
+- Prefer landscape 1200–1600px width, keep files <300KB when possible.
+- Cards intentionally use `<img>` (not Next/Image).
+
+3) Rendering rules (in `components/resume.tsx`)
+- Cards: `bg-muted/30` → hover `bg-muted/50`, no borders or shadows.
+- Grid: 1 col mobile, 2 cols tablet (`md`), 3 cols desktop (`lg`).
+- Role tags: overlay on image; only active roles display (inactive hidden).
+- Keywords: dot-separated inline text; `entity` is filtered out.
+- Date: rendered as `since YYYY` from `startDate`.
+- URL: displayed as a clean domain (https/www stripped).
+
+4) Skills/filters
+- Skill chips mirror card color system: inactive `bg-muted/30`, hover/active `bg-muted/50`.
+
+5) Quality checks
+```bash
+npm run type-check
+npm run lint
+npm run build
+```
+Print: browser print (A4, normal margins, background graphics enabled).
+
+### Guardrails
+- Keep styling minimal (no borders/shadows/primary accents on cards).
+- Restrict `roles` to the canonical set.
+- All project images live under `public/images/clients/`.
 
 ### Styling System
 
