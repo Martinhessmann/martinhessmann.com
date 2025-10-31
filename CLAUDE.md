@@ -23,23 +23,24 @@ This is a Next.js 14 application that renders a clean resume website using the J
 
 ### Key Components
 
-- `app/layout.tsx` - Root layout with ThemeProvider
+- `app/layout.tsx` - Root layout with ThemeProvider, metadata, and favicon
 - `app/page.tsx` - Main resume page that renders Resume component
-- `components/resume.tsx` - Single unified Resume component that renders JSON Resume schema
-- `components/theme-provider.tsx` - Theme switching functionality
-- `components/theme-toggle.tsx` - Theme toggle button
+- `components/resume.tsx` - Single unified Resume component that renders JSON Resume schema sections
+- `components/theme-provider.tsx` - Theme context and system preference detection
+- `components/theme-toggle.tsx` - Theme switcher UI (light/dark/system) with resume/portfolio toggle
 - `components/theme-favicon.tsx` - Dynamic favicon based on theme
 
 ### State Management
 
-- **Theme Store** (`lib/store/theme-store.ts`) - Theme switching functionality
-- **Zustand** - Minimal state management where needed
+- **Theme Store** (`lib/store/theme-store.ts`) - Zustand store for theme state (light/dark/system)
+- **Zustand persist middleware** - Theme preference persisted to localStorage
 
 ### Data Layer
 
 - `data/resume.json` - All resume content following JSON Resume schema
-- Extended fields: `roles`, `entity`, `image` for projects
+- Extended fields for projects: `roles`, `entity`, `image`, `description`
 - All content is type-safe via `types/resume.ts`
+- Projects are sorted alphabetically by name
 
 ### Styling System
 
@@ -64,11 +65,14 @@ This is a Next.js 14 application that renders a clean resume website using the J
 
 ## Important Development Notes
 
-- All resume content is managed through `data/resume.json`
-- The Resume component automatically renders any section that contains data
-- Project data includes extended fields: `roles`, `entity`, `image`
-- All images use Next.js Image component for optimization
+- All resume content is managed through `data/resume.json` (JSON Resume standard)
+- The Resume component renders sections conditionally based on data availability
+- Project data includes extended fields: `roles`, `entity`, `image`, `description`
+- Project images use `<img>` tags (not Next.js Image) for flexbox card layout
+- Roles are displayed as overlay tags on project images
+- Responsive grid: 1 column mobile, 2 tablet, 3 desktop
+- Print layout converts grid to simple list with border-left styling
 - TypeScript is configured with strict mode enabled
 - Theme switching uses next-themes with CSS variables
-- Print styles ensure clean PDF exports
+- Print styles optimized for PDF exports (smaller fonts, reduced spacing, hidden interactive elements)
 

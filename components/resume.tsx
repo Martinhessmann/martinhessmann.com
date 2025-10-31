@@ -2,12 +2,21 @@
 
 import { Resume, Work, Project, Skill, Education, Language, Interest } from '@/types/resume'
 import { ExternalLink } from 'lucide-react'
+import { useMemo } from 'react'
 
 interface ResumeProps {
   resume: Resume
 }
 
 export function Resume({ resume }: ResumeProps) {
+  // Sort projects alphabetically
+  const sortedProjects = useMemo(() => {
+    if (!resume.projects) return []
+    return [...resume.projects].sort((a, b) =>
+      a.name.localeCompare(b.name, undefined, { sensitivity: 'base' })
+    )
+  }, [resume.projects])
+
   return (
     <div className="space-y-12 print:space-y-6">
       {/* Header Section */}
@@ -135,7 +144,7 @@ export function Resume({ resume }: ResumeProps) {
 
           {/* Grid layout for screen, list for print */}
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 print:block print:space-y-3">
-            {resume.projects.map((project, index) => (
+            {sortedProjects.map((project, index) => (
               <div
                 key={index}
                 className="group relative bg-muted/30 hover:bg-muted/50 rounded-xl transition-all duration-200 flex flex-col overflow-hidden print:bg-transparent print:rounded-none print:border-l-2 print:border-muted print:pl-4"

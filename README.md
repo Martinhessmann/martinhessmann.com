@@ -40,13 +40,16 @@ The project follows Next.js App Router conventions with a clear separation of co
 
 - **app/layout.tsx** - Root layout with HTML structure, metadata, and ThemeProvider
 - **app/page.tsx** - Homepage route component that renders the Resume
-- **components/resume.tsx** - Single unified Resume component that dynamically renders JSON Resume schema
+- **components/resume.tsx** - Single unified Resume component that renders JSON Resume schema in a clean, print-optimized layout
 - **data/resume.json** - All resume content following JSON Resume standard
+- **components/theme-toggle.tsx** - Theme switcher (light/dark/system) with portfolio/resume mode toggle
 
 ## Key Features
 
-- Single unified `Resume` component that dynamically renders JSON Resume schema
-- Print-optimized layout for PDF generation
-- Dark/light theme support
-- Mobile-responsive design
-- Clean, minimal styling
+- Single unified `Resume` component that renders JSON Resume schema
+- Print-optimized layout with responsive grid-to-list conversion
+- Dark/light/system theme support with next-themes
+- Mobile-first responsive design
+- Clean, minimal styling with Tailwind CSS
+- Project cards with images, role tags, and technology keywords
+- Sections: Work, Projects, Skills, Education, Languages, Interests
