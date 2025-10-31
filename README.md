@@ -6,28 +6,11 @@ Hey, I'm Martin 👋 I live in Friedrichshain, former East-Berlin. I'm a Product
 
 ## Project Overview
 
-This is my personal website project that transforms a traditional portfolio into a macOS desktop simulation with draggable windows, a dock, and other macOS-inspired UI elements.
+This is my personal resume website built with Next.js and TypeScript. The site uses the JSON Resume standard as a single source of truth for all content.
 
 ### Documentation
 
-For detailed documentation about the project, please check the [docs directory](docs/README.md).
-
-Here's what you'll find in the documentation:
-
-#### Project Components
-- [App](docs/app.md) - Overview of the macOS desktop simulation application
-- [Projects](docs/projects.md) - Project showcase component
-
-#### Design System
-- [Theme System](docs/theme.md) - Dark mode color system documentation
-- [UI Guidelines](docs/ui-guidelines.md) - Design principles and component guidelines
-
-#### Component Library
-- [Components](docs/components.md) - All available components
-- [Primitives](docs/primitives.md) - Reusable UI building blocks
-
-#### Data & Content
-- [Data](docs/data.md) - How components consume data from JSON files
+For detailed documentation about the project, please check the [docs directory](docs/).
 
 ## Getting Started
 
@@ -46,16 +29,24 @@ Here's what you'll find in the documentation:
 
 - Next.js 14
 - React
+- TypeScript
 - Tailwind CSS
+- JSON Resume standard
 - Shadcn/UI
-- Zustand for state management
 
 ## Application Architecture
 
 The project follows Next.js App Router conventions with a clear separation of concerns:
 
 - **app/layout.tsx** - Root layout with HTML structure, metadata, and ThemeProvider
-- **app/page.tsx** - Homepage route component that renders the Desktop
-- **components/desktop.tsx** - Core UI implementation with window management
+- **app/page.tsx** - Homepage route component that renders the Resume
+- **components/resume.tsx** - Single unified Resume component that dynamically renders JSON Resume schema
+- **data/resume.json** - All resume content following JSON Resume standard
 
-These files serve different purposes and shouldn't be combined. For more details on the architecture, see [App Documentation](docs/app.md#next-js-file-architecture).
+## Key Features
+
+- Single unified `Resume` component that dynamically renders JSON Resume schema
+- Print-optimized layout for PDF generation
+- Dark/light theme support
+- Mobile-responsive design
+- Clean, minimal styling
