@@ -275,7 +275,7 @@ export function ResumePdf({ resume }: ResumePdfProps) {
             <View style={styles.projectsGrid}>
               {sortedProjects.map((project, index) => (
                 <View key={index} style={styles.projectItem}>
-                  <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: '0.2rem' }}>
+                  <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 2 }}>
                     <Text style={styles.projectName}>{project.name}</Text>
                     {project.startDate && (
                       <Text style={styles.projectUrl}>
