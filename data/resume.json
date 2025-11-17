@@ -6,7 +6,7 @@
     "image": "",
     "email": "martin@martinhessmann.com",
     "url": "https://martinhessmann.com",
-    "summary": "Digital product leader across UX, design systems, and headless engineering. Scales design ops and dev teams to ship headless marketing and product sites with AI-assisted workflows and tight discovery-to-delivery cycles.",
+    "summary": "Digital product leader across UX, design systems, and headless engineering. Scales design ops and dev teams to ship headless marketing/product sites with AI-assisted workflows and tight discovery-to-delivery cycles.",
     "location": {
       "city": "Berlin",
       "countryCode": "DE"
@@ -31,7 +31,7 @@
   },
   "skills": [
     {
-      "name": "UI/UX",
+      "name": "UI/UX, Design Management, Frontend & Content",
       "level": "Expert",
       "keywords": [
         "UX Design",
@@ -39,18 +39,12 @@
         "Product Design",
         "Design Systems",
         "Design Tokens",
+        "Interaction Design",
+        "Information Architecture",
         "Figma",
         "Prototyping",
         "User Research",
         "Usability Testing",
-        "Interaction Design",
-        "Information Architecture"
-      ]
-    },
-    {
-      "name": "Design Management",
-      "level": "Expert",
-      "keywords": [
         "Design Ops",
         "Team Leadership",
         "Design Strategy",
@@ -59,41 +53,32 @@
         "Stakeholder Management",
         "Cross-functional Delivery",
         "Resource Planning",
-        "Hiring & Coaching"
-      ]
-    },
-    {
-      "name": "Frontend & Content",
-      "level": "Expert",
-      "keywords": [
+        "Hiring & Coaching",
         "HTML",
         "CSS",
         "React",
         "Next.js",
         "Nuxt.js",
         "TypeScript",
-        "Prototyping",
+        "Headless Architecture",
+        "Platform Architecture",
         "Content Management",
-        "SEO",
-        "Performance Optimization"
+        "Content Automation",
+        "Developer Experience"
       ]
     },
     {
       "name": "Dev Management & AI",
       "level": "Advanced",
       "keywords": [
-        "Headless Architecture",
-        "Platform Architecture",
-        "Developer Experience",
-        "Automation",
-        "AI Integration",
-        "AI-assisted Workflows",
-        "Content Automation",
         "GitOps (GitLab)",
         "CI/CD Pipelines",
         "Pipeline Management",
         "Sentry Automations",
         "Playwright Testing",
+        "AI-assisted Workflows",
+        "AI Integration",
+        "Automation",
         "Observability"
       ]
     }
@@ -666,34 +651,34 @@
   ],
   "successes": [
     {
-      "icon": "chart",
-      "title": "Performance",
-      "summary": "Raised Lighthouse scores from 70s to 90s on redesigned domains"
+      "icon": "rocket",
+      "title": "Design Systems & Ops",
+      "summary": "Tokenized design system; cut design→dev handoff 30% and reduced UI regressions"
     },
     {
-      "icon": "rocket",
-      "title": "Design Ops",
-      "summary": "Tokenized design system; cut design→dev handoff time 30%"
+      "icon": "layers",
+      "title": "Headless Delivery",
+      "summary": "Shipped 15+ headless marketing/product sites on standardized stacks"
     },
     {
       "icon": "users",
       "title": "Team Leadership",
-      "summary": "Led 8-person trio across design, frontend, platform for 15+ launches"
+      "summary": "Led an 8-person triad across design, frontend, and platform"
     },
     {
       "icon": "chip",
       "title": "AI & Automation",
-      "summary": "Built AI-assisted design/content ops; accelerated prototyping and QA"
+      "summary": "Built AI-assisted design/content pipelines; accelerated prototyping and QA"
     },
     {
       "icon": "git",
       "title": "GitOps & CI/CD",
-      "summary": "Standardized GitLab flows and pipelines with Sentry automations"
+      "summary": "Standardized GitLab flows, environments, and pipelines with Sentry automations"
     },
     {
       "icon": "shield",
-      "title": "Quality",
-      "summary": "Codified Playwright and monitoring to keep releases stable"
+      "title": "Quality Engineering",
+      "summary": "Codified Playwright smoke/regression tests and monitoring to keep releases stable"
     }
   ],
   "interests": [

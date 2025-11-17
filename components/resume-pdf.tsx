@@ -122,6 +122,22 @@ function IconTarget() {
   )
 }
 
+function IconGit() {
+  return (
+    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING }}>
+      <Path d={PHOSPHOR_FILL_PATHS.GIT} fill="#2563EB" />
+    </Svg>
+  )
+}
+
+function IconShield() {
+  return (
+    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING }}>
+      <Path d={PHOSPHOR_FILL_PATHS.SHIELD} fill="#2563EB" />
+    </Svg>
+  )
+}
+
 const styles = StyleSheet.create({
   page: {
     padding: '28.35 42.52', // 1cm = 28.35pt, 1.5cm = 42.52pt
@@ -547,14 +563,16 @@ export function ResumePdf({ resume }: ResumePdfProps) {
                 <Text style={styles.h2}>KEY ACHIEVEMENTS</Text>
                  {resume.successes.map((success, index) => (
                    <View key={index} style={styles.successItem}>
-                     <View style={styles.successIconContainer}>
-                       {success.icon === 'trophy' && <IconTrophy />}
-                       {success.icon === 'rocket' && <IconRocket />}
-                       {success.icon === 'users' && <IconUsers />}
-                       {success.icon === 'chip' && <IconChip />}
-                       {success.icon === 'chart' && <IconChart />}
-                       {success.icon === 'target' && <IconTarget />}
-                     </View>
+                    <View style={styles.successIconContainer}>
+                      {success.icon === 'trophy' && <IconTrophy />}
+                      {success.icon === 'rocket' && <IconRocket />}
+                      {success.icon === 'users' && <IconUsers />}
+                      {success.icon === 'chip' && <IconChip />}
+                      {success.icon === 'chart' && <IconChart />}
+                      {success.icon === 'target' && <IconTarget />}
+                      {success.icon === 'git' && <IconGit />}
+                      {success.icon === 'shield' && <IconShield />}
+                    </View>
                      <View style={styles.successContent}>
                        <Text style={styles.successTitle}>{success.title}</Text>
                        <Text style={styles.successSummary}>{success.summary}</Text>

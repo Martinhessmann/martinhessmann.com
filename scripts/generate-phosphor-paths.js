@@ -15,6 +15,8 @@ const icons = [
   { name: 'Cpu', var: 'CPU' },
   { name: 'ChartBar', var: 'CHART_BAR' },
   { name: 'Target', var: 'TARGET' },
+  { name: 'GitBranch', var: 'GIT' },
+  { name: 'Shield', var: 'SHIELD' },
 ]
 
 const nodeModulesPath = path.join(__dirname, '..', 'node_modules/@phosphor-icons/react/dist')

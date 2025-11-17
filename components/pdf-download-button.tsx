@@ -23,6 +23,15 @@ export function PdfDownloadButton() {
     setMounted(true)
   }, [])
 
+  // Generate filename with current date
+  const getFileName = () => {
+    const today = new Date()
+    const year = today.getFullYear()
+    const month = String(today.getMonth() + 1).padStart(2, '0')
+    const day = String(today.getDate()).padStart(2, '0')
+    return `martin-hessmann-resume-${year}-${month}-${day}.pdf`
+  }
+
   if (!mounted) {
     return (
       <div className="print:hidden fixed top-4 right-4 z-50 pdf-download-button">
@@ -41,7 +50,7 @@ export function PdfDownloadButton() {
     <div className="print:hidden fixed top-4 right-4 z-50 pdf-download-button">
       <PDFDownloadLink
         document={<ResumePdf resume={resume} />}
-        fileName="resume.pdf"
+        fileName={getFileName()}
         className="flex items-center gap-2 px-4 py-2 bg-foreground text-background rounded-lg hover:bg-foreground/90 transition-colors shadow-lg no-underline"
       >
         {({ loading }) => (
