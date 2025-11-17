@@ -2,9 +2,6 @@ import React from 'react'
 import { Document, Page, View, Text, Link, StyleSheet, Font } from '@react-pdf/renderer'
 import { Resume } from '@/types/resume'
 
-// Create styles matching print CSS
-// React-PDF uses points (pt) as default unit - numbers are treated as points
-// Base font size is 10pt, so: 1rem = 10pt, 0.75rem = 7.5pt, 0.5rem = 5pt, etc.
 // Disable hyphenation to avoid mid-word breaks
 Font.registerHyphenationCallback((word) => [word])
 
@@ -12,62 +9,105 @@ Font.registerHyphenationCallback((word) => [word])
 const ACCENT = '#2563EB' // Blue 600-ish
 const DATE_RAIL_WIDTH = 90 // fixed rail for right-aligned dates
 
+// Icon mapping for successes (using simple text symbols that work in PDF)
+const ICON_MAP: Record<string, string> = {
+  trophy: '★',
+  rocket: '→',
+  users: '●',
+  chart: '▲',
+  target: '●',
+  star: '★',
+}
+
+// Simple text icons for dates/locations
+const ICON_DATE = '•'
+const ICON_LOCATION = '•'
+const ICON_EMAIL = '•'
+const ICON_PHONE = '•'
+const ICON_WEB = '•'
+const ICON_TECH = '•'
+
 const styles = StyleSheet.create({
   page: {
     padding: '28.35 42.52', // 1cm = 28.35pt, 1.5cm = 42.52pt
     fontSize: 10,
-    lineHeight: 1.35, // slightly looser for dense bullets
+    lineHeight: 1.35,
     fontFamily: 'Helvetica',
     color: '#111',
   },
+  // Header styles
   header: {
-    marginBottom: 10, // 1rem = 10pt
+    marginBottom: 12,
   },
   h1: {
-    fontSize: 20,
-    marginBottom: 2.5, // 0.25rem = 2.5pt
+    fontSize: 24,
+    marginBottom: 3,
     lineHeight: 1.2,
     fontWeight: 'bold',
   },
   label: {
     fontSize: 11,
-    marginBottom: 5, // 0.5rem = 5pt
-    color: '#333',
+    marginBottom: 4,
+    color: ACCENT,
   },
   summary: {
     fontSize: 9,
-    marginBottom: 5, // 0.5rem = 5pt
-    lineHeight: 1.37,
+    marginBottom: 4,
+    lineHeight: 1.35,
   },
   contact: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: 7.5, // 0.75rem = 7.5pt
-    fontSize: 9,
-    marginTop: 5, // 0.5rem = 5pt
+    gap: 6,
+    fontSize: 8,
+    marginTop: 4,
     color: '#333',
   },
+  contactItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 3,
+  },
+  icon: {
+    fontSize: 8,
+  },
+  // Two-column layout
+  twoColumn: {
+    flexDirection: 'row',
+    gap: 10,
+  },
+  leftColumn: {
+    width: '67%',
+  },
+  rightColumn: {
+    width: '33%',
+  },
+  // Section styles
   section: {
-    marginTop: 17, // stronger separation between sections (16-18pt range)
-    marginBottom: 10, // 1rem = 10pt
+    marginTop: 12,
+    marginBottom: 8,
   },
   h2: {
-    fontSize: 13,
-    marginBottom: 6, // 0.6rem = 6pt
-    marginTop: 7.5, // 0.75rem = 7.5pt
+    fontSize: 12,
+    marginBottom: 6,
+    marginTop: 0,
     fontWeight: 'bold',
-    color: ACCENT, // Introduce color instead of underline
+    color: ACCENT,
+    textTransform: 'uppercase',
+    borderBottom: `1px solid ${ACCENT}`,
+    paddingBottom: 2,
   },
+  // Work Experience styles
   workItem: {
     borderLeft: `2px solid ${ACCENT}`,
-    paddingLeft: 7.5, // 0.75rem = 7.5pt
-    marginBottom: 11, // increased spacing between work items (10-12pt range)
-    minHeight: 0, // Allow React-PDF to calculate
+    paddingLeft: 7.5,
+    marginBottom: 10,
+    minHeight: 0,
   },
   workHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 5, // 0.5rem = 5pt
+    marginBottom: 4,
   },
   workHeaderLeft: {
     flex: 1,
@@ -78,80 +118,84 @@ const styles = StyleSheet.create({
   },
   h3: {
     fontSize: 11,
-    marginBottom: 2.5, // 0.25rem = 2.5pt (micro-spacing after role title)
+    marginBottom: 2,
     fontWeight: 'bold',
   },
   company: {
     fontSize: 9,
-    color: '#222', // improved contrast
+    color: ACCENT,
+    marginBottom: 2,
   },
-  date: {
-    fontSize: 9,
-    color: '#222', // improved contrast
+  dateLocation: {
+    fontSize: 8,
+    color: '#222',
     textAlign: 'right',
+    lineHeight: 1.3,
   },
   workSummary: {
     fontSize: 9,
-    marginBottom: 6, // a bit more space before bullets
+    marginBottom: 5,
     lineHeight: 1.35,
   },
   highlights: {
     fontSize: 9,
     lineHeight: 1.35,
+    marginBottom: 4,
   },
   highlightItem: {
     flexDirection: 'row',
-    marginBottom: 4, // 0.4rem = 4pt for rhythm
+    marginBottom: 3,
   },
   bullet: {
-    marginRight: 5, // 0.5rem = 5pt
+    marginRight: 5,
     color: ACCENT,
   },
-  projectsGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 5, // 0.5rem = 5pt
+  techChips: {
+    fontSize: 7,
+    color: '#444',
+    lineHeight: 1.3,
   },
-  projectItem: {
-    width: '48%',
+  // Education styles
+  educationItem: {
     borderLeft: `2px solid ${ACCENT}`,
-    paddingLeft: 7.5, // 0.75rem = 7.5pt
-    marginBottom: 6, // 0.6rem = 6pt
-    paddingTop: 3, // 0.3rem = 3pt
-    paddingBottom: 3, // 0.3rem = 3pt
-    minHeight: 0, // Allow React-PDF to calculate
+    paddingLeft: 7.5,
+    marginBottom: 8,
+    minHeight: 0,
   },
-  projectName: {
+  educationHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 4,
+  },
+  // Successes styles
+  successItem: {
+    flexDirection: 'row',
+    marginBottom: 5,
+    gap: 6,
+  },
+  successIcon: {
+    fontSize: 10,
+    width: 12,
+  },
+  successContent: {
+    flex: 1,
+  },
+  successTitle: {
     fontSize: 9,
     fontWeight: 'bold',
-    marginBottom: 2, // 0.2rem = 2pt
+    marginBottom: 1,
   },
-  projectUrl: {
+  successSummary: {
     fontSize: 8,
     color: '#444',
-    marginBottom: 2, // 0.2rem = 2pt
+    lineHeight: 1.3,
   },
-  projectDescription: {
-    fontSize: 9,
-    color: '#444',
-    marginBottom: 3, // 0.3rem = 3pt
-    lineHeight: 1.35,
-  },
-  projectKeywords: {
-    fontSize: 8,
-    color: '#444',
-    lineHeight: 1.25,
-  },
-  skillsGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 7.5, // 0.75rem = 7.5pt
-  },
+  // Skills styles
   skillsLevels: {
-    gap: 5,
+    gap: 4,
   },
   skillLevelRow: {
-    marginBottom: 6,
+    marginBottom: 5,
   },
   skillLevelLabel: {
     fontSize: 9,
@@ -159,34 +203,16 @@ const styles = StyleSheet.create({
     color: '#111',
     marginBottom: 2,
   },
-  skillItem: {
-    width: '48%',
-    marginBottom: 6, // 0.6rem = 6pt
-  },
-  skillName: {
-    fontSize: 9,
-    fontWeight: 'bold',
-    marginBottom: 2, // 0.2rem = 2pt
-  },
-  skillKeywords: {
+  skillChips: {
     fontSize: 8,
     color: '#444',
+    lineHeight: 1.3,
   },
-  educationItem: {
-    borderLeft: `2px solid ${ACCENT}`,
-    paddingLeft: 7.5, // 0.75rem = 7.5pt
-    marginBottom: 11, // match work item spacing (10-12pt range)
-    minHeight: 0, // Allow React-PDF to calculate
-  },
-  educationHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 5, // 0.5rem = 5pt
-  },
+  // Languages styles
   languageItem: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 4, // 0.4rem = 4pt
+    marginBottom: 4,
   },
   languageName: {
     fontSize: 9,
@@ -196,22 +222,45 @@ const styles = StyleSheet.create({
     fontSize: 8,
     color: '#444',
   },
-  interestItem: {
-    width: '48%',
-    marginBottom: 6, // 0.6rem = 6pt
+  // Projects (Page 2) styles
+  projectsGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
   },
-  interestName: {
+  projectItem: {
+    width: '48%',
+    borderLeft: `2px solid ${ACCENT}`,
+    paddingLeft: 7.5,
+    marginBottom: 8,
+    paddingTop: 4,
+    paddingBottom: 4,
+    minHeight: 0,
+  },
+  projectName: {
     fontSize: 9,
     fontWeight: 'bold',
-    marginBottom: 2, // 0.2rem = 2pt
+    marginBottom: 2,
   },
-  interestKeywords: {
+  projectYear: {
     fontSize: 8,
     color: '#444',
+    marginBottom: 3,
+  },
+  projectDescription: {
+    fontSize: 8,
+    color: '#444',
+    marginBottom: 3,
+    lineHeight: 1.3,
+  },
+  projectTech: {
+    fontSize: 7,
+    color: '#555',
+    lineHeight: 1.25,
   },
   link: {
     color: ACCENT,
-    textDecoration: 'underline', // clearer affordance like the sample
+    textDecoration: 'underline',
   },
 })
 
@@ -220,29 +269,56 @@ interface ResumePdfProps {
 }
 
 export function ResumePdf({ resume }: ResumePdfProps) {
-  // Sort projects alphabetically
-  const sortedProjects = resume.projects
-    ? [...resume.projects].sort((a, b) =>
-        (a.name || '').localeCompare(b.name || '', undefined, { sensitivity: 'base' })
-      )
+  // Filter and limit work experience to 3-4 most recent roles
+  const recentWork = resume.work
+    ? [...resume.work]
+        .sort((a, b) => {
+          const dateA = a.startDate || ''
+          const dateB = b.startDate || ''
+          return dateB.localeCompare(dateA)
+        })
+        .slice(0, 4)
     : []
+
+  // Filter highlights to max 4, excluding tech lines
+  const filterHighlights = (highlights: string[] = []) => {
+    return highlights
+      .filter((h) => !h.startsWith('Tech:'))
+      .slice(0, 4)
+  }
+
+  // Sort projects: featured first, then by priority, then alphabetically
+  const sortedProjects = resume.projects
+    ? [...resume.projects].sort((a, b) => {
+        if (a.featured && !b.featured) return -1
+        if (!a.featured && b.featured) return 1
+        if (a.priority && b.priority) return a.priority - b.priority
+        return (a.name || '').localeCompare(b.name || '', undefined, { sensitivity: 'base' })
+      })
+    : []
+
+  // Projects for page 2 (non-featured or all if no featured flag)
+  const page2Projects = sortedProjects.filter((p) => !p.featured).slice(0, 10)
 
   return (
     <Document>
+      {/* Page 1: Key Facts */}
       <Page size="A4" style={styles.page}>
-        {/* Header */}
+        {/* Header - Full Width */}
         <View style={styles.header}>
           <Text style={styles.h1}>{resume.basics.name}</Text>
           {resume.basics.label && <Text style={styles.label}>{resume.basics.label}</Text>}
-          {resume.basics.summary && <Text style={styles.summary}>{resume.basics.summary}</Text>}
           <View style={styles.contact}>
             {resume.basics.location && (
               <>
-                <Text>
-                  {resume.basics.location.city || ''}
-                  {resume.basics.location.city && resume.basics.location.countryCode && ', '}
-                  {resume.basics.location.countryCode || ''}
-                </Text>
+                <View style={styles.contactItem}>
+                  <Text style={styles.icon}>{ICON_LOCATION}</Text>
+                  <Text>
+                    {resume.basics.location.city || ''}
+                    {resume.basics.location.city && resume.basics.location.countryCode && ', '}
+                    {resume.basics.location.countryCode || ''}
+                  </Text>
+                </View>
                 {(resume.basics.email || resume.basics.phone || resume.basics.url) && (
                   <Text> • </Text>
                 )}
@@ -250,81 +326,229 @@ export function ResumePdf({ resume }: ResumePdfProps) {
             )}
             {resume.basics.email && (
               <>
-                <Link src={`mailto:${resume.basics.email}`} style={styles.link}>
-                  {resume.basics.email}
-                </Link>
+                <View style={styles.contactItem}>
+                  <Text style={styles.icon}>{ICON_EMAIL}</Text>
+                  <Link src={`mailto:${resume.basics.email}`} style={styles.link}>
+                    {resume.basics.email}
+                  </Link>
+                </View>
                 {(resume.basics.phone || resume.basics.url) && <Text> • </Text>}
               </>
             )}
             {resume.basics.phone && (
               <>
-                <Link src={`tel:${resume.basics.phone}`} style={styles.link}>
-                  {resume.basics.phone}
-                </Link>
+                <View style={styles.contactItem}>
+                  <Text style={styles.icon}>{ICON_PHONE}</Text>
+                  <Link src={`tel:${resume.basics.phone}`} style={styles.link}>
+                    {resume.basics.phone}
+                  </Link>
+                </View>
                 {resume.basics.url && <Text> • </Text>}
               </>
             )}
             {resume.basics.url && (
-              <Link src={resume.basics.url} style={styles.link}>
-                {resume.basics.url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')}
-              </Link>
+              <View style={styles.contactItem}>
+                <Text style={styles.icon}>{ICON_WEB}</Text>
+                <Link src={resume.basics.url} style={styles.link}>
+                  {resume.basics.url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')}
+                </Link>
+              </View>
             )}
           </View>
         </View>
 
-        {/* Work Experience */}
-        {resume.work && resume.work.length > 0 && (
-          <View style={styles.section}>
-            <Text style={styles.h2}>Work Experience</Text>
-            {resume.work.map((job, index) => (
-              <View key={index} style={styles.workItem} wrap={false}>
-                <View style={styles.workHeader}>
-                  <View style={styles.workHeaderLeft}>
-                    <Text style={styles.h3}>{job.position}</Text>
-                    <Text style={styles.company}>{job.name}</Text>
-                  </View>
-                  <View style={styles.dateRail}>
-                    {job.startDate && (
-                      <Text style={styles.date}>
-                        {job.startDate}
-                        {job.endDate ? ` – ${job.endDate}` : ' – Present'}
-                      </Text>
+        {/* Two-Column Layout */}
+        <View style={styles.twoColumn}>
+          {/* Left Column: Work Experience & Education */}
+          <View style={styles.leftColumn}>
+            {/* Work Experience */}
+            {recentWork.length > 0 && (
+              <View style={styles.section}>
+                <Text style={styles.h2}>WORK EXPERIENCE</Text>
+                {recentWork.map((job, index) => (
+                  <View key={index} style={styles.workItem} wrap={false}>
+                    <View style={styles.workHeader}>
+                      <View style={styles.workHeaderLeft}>
+                        <Text style={styles.h3}>{job.position}</Text>
+                        <Text style={styles.company}>{job.name}</Text>
+                      </View>
+                      <View style={styles.dateRail}>
+                        {job.startDate && (
+                          <View>
+                            <Text style={styles.dateLocation}>
+                              {ICON_DATE} {job.startDate}
+                              {job.endDate ? ` – ${job.endDate}` : ' – Present'}
+                            </Text>
+                            {job.location && (
+                              <Text style={styles.dateLocation}>
+                                {ICON_LOCATION} {job.location.city || ''}
+                                {job.location.city && job.location.countryCode && ', '}
+                                {job.location.countryCode || ''}
+                              </Text>
+                            )}
+                          </View>
+                        )}
+                      </View>
+                    </View>
+                    {job.summary && <Text style={styles.workSummary}>{job.summary}</Text>}
+                    {job.highlights && filterHighlights(job.highlights).length > 0 && (
+                      <View style={styles.highlights}>
+                        {filterHighlights(job.highlights).map((highlight, highlightIndex) => (
+                          <View key={highlightIndex} style={styles.highlightItem}>
+                            <Text style={styles.bullet}>•</Text>
+                            <Text style={{ flex: 1 }}>{highlight}</Text>
+                          </View>
+                        ))}
+                      </View>
                     )}
                   </View>
-                </View>
-                {job.summary && <Text style={styles.workSummary}>{job.summary}</Text>}
-                {job.highlights && job.highlights.length > 0 && (
-                  <View style={styles.highlights}>
-                    {job.highlights.map((highlight, highlightIndex) => (
-                      <View key={highlightIndex} style={styles.highlightItem}>
-                        <Text style={styles.bullet}>•</Text>
-                        <Text style={{ flex: 1 }}>{highlight}</Text>
-                      </View>
-                    ))}
-                  </View>
-                )}
+                ))}
               </View>
-            ))}
-          </View>
-        )}
+            )}
 
-        {/* Projects */}
-        {sortedProjects.length > 0 && (
+            {/* Education */}
+            {resume.education && resume.education.length > 0 && (
+              <View style={styles.section}>
+                <Text style={styles.h2}>EDUCATION</Text>
+                {resume.education.map((edu, index) => (
+                  <View key={index} style={styles.educationItem} wrap={false}>
+                    <View style={styles.educationHeader}>
+                      <View>
+                        <Text style={styles.h3}>
+                          {edu.studyType} in {edu.area}
+                        </Text>
+                        <Text style={styles.company}>{edu.institution}</Text>
+                      </View>
+                      <View style={styles.dateRail}>
+                        {edu.startDate && (
+                          <View>
+                            <Text style={styles.dateLocation}>
+                              {ICON_DATE} {edu.startDate}
+                              {edu.endDate ? ` – ${edu.endDate}` : ''}
+                            </Text>
+                            {edu.location && (
+                              <Text style={styles.dateLocation}>
+                                {ICON_LOCATION} {edu.location.city || ''}
+                                {edu.location.city && edu.location.countryCode && ', '}
+                                {edu.location.countryCode || ''}
+                              </Text>
+                            )}
+                          </View>
+                        )}
+                      </View>
+                    </View>
+                  </View>
+                ))}
+              </View>
+            )}
+          </View>
+
+          {/* Right Column: Summary, Successes, Skills, Languages */}
+          <View style={styles.rightColumn}>
+            {/* Summary */}
+            {resume.basics.summary && (
+              <View style={styles.section}>
+                <Text style={styles.h2}>SUMMARY</Text>
+                <Text style={styles.summary}>{resume.basics.summary}</Text>
+              </View>
+            )}
+
+            {/* Successes */}
+            {resume.successes && resume.successes.length > 0 && (
+              <View style={styles.section}>
+                <Text style={styles.h2}>KEY ACHIEVEMENTS</Text>
+                {resume.successes.map((success, index) => (
+                  <View key={index} style={styles.successItem}>
+                    <Text style={styles.successIcon}>
+                      {success.icon ? ICON_MAP[success.icon] || '•' : '•'}
+                    </Text>
+                    <View style={styles.successContent}>
+                      <Text style={styles.successTitle}>{success.title}</Text>
+                      <Text style={styles.successSummary}>{success.summary}</Text>
+                    </View>
+                  </View>
+                ))}
+              </View>
+            )}
+
+            {/* Skills */}
+            {resume.skills && resume.skills.length > 0 && (
+              <View style={styles.section}>
+                <Text style={styles.h2}>SKILLS</Text>
+                {(() => {
+                  const hasLevels = resume.skills?.some((s) => s.level)
+                  if (hasLevels) {
+                    const order = ['Expert', 'Advanced', 'Intermediate', 'Familiar', 'Beginner']
+                    const grouped = new Map<string, typeof resume.skills>()
+                    resume.skills?.forEach((s) => {
+                      const level = (s.level || 'Other').trim()
+                      if (!grouped.has(level)) grouped.set(level, [])
+                      grouped.get(level)!.push(s)
+                    })
+                    const keys = Array.from(grouped.keys()).sort((a, b) => {
+                      const ia = order.indexOf(a)
+                      const ib = order.indexOf(b)
+                      if (ia !== -1 && ib !== -1) return ia - ib
+                      if (ia !== -1) return -1
+                      if (ib !== -1) return 1
+                      return a.localeCompare(b)
+                    })
+                    return (
+                      <View style={styles.skillsLevels}>
+                        {keys.map((level) => (
+                          <View key={level} style={styles.skillLevelRow} wrap={false}>
+                            <Text style={styles.skillLevelLabel}>{level}</Text>
+                            <Text style={styles.skillChips}>
+                              {grouped
+                                .get(level)!
+                                .map((s) => s.name)
+                                .filter(Boolean)
+                                .join(', ')}
+                            </Text>
+                          </View>
+                        ))}
+                      </View>
+                    )
+                  }
+                  return null
+                })()}
+              </View>
+            )}
+
+            {/* Languages */}
+            {resume.languages && resume.languages.length > 0 && (
+              <View style={styles.section}>
+                <Text style={styles.h2}>LANGUAGES</Text>
+                {resume.languages.map((lang, index) => (
+                  <View key={index} style={styles.languageItem}>
+                    <Text style={styles.languageName}>{lang.language}</Text>
+                    <Text style={styles.languageFluency}>{lang.fluency}</Text>
+                  </View>
+                ))}
+              </View>
+            )}
+          </View>
+        </View>
+      </Page>
+
+      {/* Page 2: Projects Only */}
+      {page2Projects.length > 0 && (
+        <Page size="A4" style={styles.page}>
           <View style={styles.section}>
-            <Text style={styles.h2}>Projects</Text>
+            <Text style={styles.h2}>PROJECTS</Text>
             <View style={styles.projectsGrid}>
-              {sortedProjects.map((project, index) => (
+              {page2Projects.map((project, index) => (
                 <View key={index} style={styles.projectItem} wrap={false}>
-                  <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 2 }}>
+                  <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 3 }}>
                     <Text style={styles.projectName}>{project.name}</Text>
                     {project.startDate && (
-                      <Text style={styles.projectUrl}>
-                        since {parseInt(project.startDate.split('-')[0])}
+                      <Text style={styles.projectYear}>
+                        {ICON_DATE} {parseInt(project.startDate.split('-')[0])}
                       </Text>
                     )}
                   </View>
                   {project.url && (
-                    <Link src={project.url} style={[styles.projectUrl, styles.link]}>
+                    <Link src={project.url} style={[styles.projectDescription, styles.link, { marginBottom: 3 }]}>
                       {project.url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')}
                     </Link>
                   )}
@@ -332,131 +556,24 @@ export function ResumePdf({ resume }: ResumePdfProps) {
                     <Text style={styles.projectDescription}>{project.description}</Text>
                   )}
                   {project.keywords && project.keywords.length > 0 && (
-                    <Text style={styles.projectKeywords}>
-                      {project.keywords
-                        .filter((keyword) => keyword !== project.entity)
-                        .join(' • ')}
-                    </Text>
-                  )}
-                </View>
-              ))}
-            </View>
-          </View>
-        )}
-
-        {/* Skills */}
-        {resume.skills && resume.skills.length > 0 && (
-          <View style={styles.section}>
-            <Text style={styles.h2}>Skills</Text>
-            {(() => {
-              const hasLevels = resume.skills?.some((s) => s.level)
-              if (hasLevels) {
-                const order = ['Expert', 'Advanced', 'Intermediate', 'Familiar', 'Beginner']
-                const grouped = new Map<string, typeof resume.skills>()
-                resume.skills?.forEach((s) => {
-                  const level = (s.level || 'Other').trim()
-                  if (!grouped.has(level)) grouped.set(level, [])
-                  grouped.get(level)!.push(s)
-                })
-                const keys = Array.from(grouped.keys()).sort((a, b) => {
-                  const ia = order.indexOf(a)
-                  const ib = order.indexOf(b)
-                  if (ia !== -1 && ib !== -1) return ia - ib
-                  if (ia !== -1) return -1
-                  if (ib !== -1) return 1
-                  return a.localeCompare(b)
-                })
-                return (
-                  <View style={styles.skillsLevels}>
-                    {keys.map((level) => (
-                      <View key={level} style={styles.skillLevelRow} wrap={false}>
-                        <Text style={styles.skillLevelLabel}>{level}</Text>
-                        <Text style={styles.skillKeywords}>
-                          {grouped
-                            .get(level)!
-                            .map((s) => s.name)
-                            .filter(Boolean)
-                            .join(', ')}
-                        </Text>
-                      </View>
-                    ))}
-                  </View>
-                )
-              }
-              // Fallback to grid when no levels are provided
-              return (
-                <View style={styles.skillsGrid}>
-                  {resume.skills!.map((skill, index) => (
-                    <View key={index} style={styles.skillItem}>
-                      <Text style={styles.skillName}>{skill.name}</Text>
-                      {skill.keywords && skill.keywords.length > 0 && (
-                        <Text style={styles.skillKeywords}>{skill.keywords.join(', ')}</Text>
-                      )}
-                    </View>
-                  ))}
-                </View>
-              )
-            })()}
-          </View>
-        )}
-
-        {/* Education */}
-        {resume.education && resume.education.length > 0 && (
-          <View style={styles.section}>
-            <Text style={styles.h2}>Education</Text>
-            {resume.education.map((edu, index) => (
-              <View key={index} style={styles.educationItem} wrap={false}>
-                <View style={styles.educationHeader}>
-                  <View>
-                    <Text style={styles.h3}>
-                      {edu.studyType} in {edu.area}
-                    </Text>
-                    <Text style={styles.company}>{edu.institution}</Text>
-                  </View>
-                  <View style={styles.dateRail}>
-                    {edu.startDate && (
-                      <Text style={styles.date}>
-                        {edu.startDate}
-                        {edu.endDate ? ` – ${edu.endDate}` : ''}
+                    <View style={{ marginTop: 3 }}>
+                      <Text style={[styles.projectTech, { fontWeight: 'bold', marginBottom: 1 }]}>
+                        {ICON_TECH} Tech:
                       </Text>
-                    )}
-                  </View>
-                </View>
-              </View>
-            ))}
-          </View>
-        )}
-
-        {/* Languages */}
-        {resume.languages && resume.languages.length > 0 && (
-          <View style={styles.section}>
-            <Text style={styles.h2}>Languages</Text>
-            {resume.languages.map((lang, index) => (
-              <View key={index} style={styles.languageItem}>
-                <Text style={styles.languageName}>{lang.language}</Text>
-                <Text style={styles.languageFluency}>{lang.fluency}</Text>
-              </View>
-            ))}
-          </View>
-        )}
-
-        {/* Interests */}
-        {resume.interests && resume.interests.length > 0 && (
-          <View style={styles.section}>
-            <Text style={styles.h2}>Interests</Text>
-            <View style={styles.skillsGrid}>
-              {resume.interests.map((interest, index) => (
-                <View key={index} style={styles.interestItem}>
-                  <Text style={styles.interestName}>{interest.name}</Text>
-                  {interest.keywords && interest.keywords.length > 0 && (
-                    <Text style={styles.interestKeywords}>{interest.keywords.join(', ')}</Text>
+                      <Text style={styles.projectTech}>
+                        {project.keywords
+                          .filter((keyword) => keyword !== project.entity)
+                          .slice(0, 6)
+                          .join(' • ')}
+                      </Text>
+                    </View>
                   )}
                 </View>
               ))}
             </View>
           </View>
-        )}
-      </Page>
+        </Page>
+      )}
     </Document>
   )
 }

@@ -14,6 +14,7 @@ export interface Resume {
   interests?: Interest[]
   references?: Reference[]
   projects?: Project[]
+  successes?: Success[]
 }
 
 export interface Basics {
@@ -50,6 +51,8 @@ export interface Work {
   endDate?: string
   summary?: string
   highlights?: string[]
+  location?: Location
+  tech?: string[]
 }
 
 export interface Education {
@@ -61,6 +64,7 @@ export interface Education {
   endDate?: string
   score?: string
   courses?: string[]
+  location?: Location
 }
 
 export interface Skill {
@@ -81,11 +85,20 @@ export interface Project {
   roles?: string[]
   entity?: string
   type?: string
+  featured?: boolean
+  priority?: number
 }
 
 export interface Language {
   language?: string
   fluency?: string
+  level?: number
+}
+
+export interface Success {
+  icon?: string
+  title: string
+  summary: string
 }
 
 export interface Interest {

@@ -6,7 +6,7 @@
     "image": "",
     "email": "martin@martinhessmann.com",
     "url": "https://martinhessmann.com",
-    "summary": "Martin Heßmann – Digital Design Manager & Product Generalist. Digital product leader blending design systems, UX, and engineering to launch high-performing marketing sites and applications. Experienced guiding startups and enterprises from discovery through delivery, pairing qualitative insights with measurable business impact.",
+    "summary": "Digital product leader blending design systems, UX, and engineering to launch high-performing marketing sites and applications. Experienced guiding startups and enterprises from discovery through delivery.",
     "location": {
       "city": "Berlin",
       "countryCode": "DE"
@@ -31,7 +31,8 @@
   },
   "skills": [
     {
-      "name": "Design",
+      "name": "UI/UX",
+      "level": "Expert",
       "keywords": [
         "UX Design",
         "UI Design",
@@ -39,76 +40,38 @@
         "Design Systems",
         "Digital Art Direction",
         "Figma",
-        "Adobe Creative Suite"
+        "Adobe Creative Suite",
+        "User Research",
+        "Prototyping",
+        "Usability Testing"
       ]
     },
     {
-      "name": "Development",
+      "name": "Design Management",
+      "level": "Expert",
+      "keywords": [
+        "Design Ops",
+        "Team Leadership",
+        "Design Systems",
+        "Design Strategy",
+        "Stakeholder Management",
+        "Design Process Optimization"
+      ]
+    },
+    {
+      "name": "Dev Management & AI",
+      "level": "Advanced",
       "keywords": [
         "React",
         "Next.js",
         "Nuxt.js",
-        "Vue.js",
         "TypeScript",
         "JavaScript",
-        "HTML",
-        "CSS",
-        "Tailwind CSS",
-        "Eleventy (11ty)",
-        "Framer",
-        "React Three Fiber (r3f)",
-        "Headless WordPress",
-        "Web Development"
-      ]
-    },
-    {
-      "name": "CMS & Platforms",
-      "keywords": [
-        "WordPress",
-        "WordPress Multisite",
-        "TYPO3",
-        "Prismic",
-        "Framer",
-        "Notion",
-        "Headless CMS",
-        "ACF Pro",
-        "WPML",
-        "Content Management"
-      ]
-    },
-    {
-      "name": "Infrastructure & Tooling",
-      "keywords": [
-        "Cloudflare",
-        "Vercel",
-        "Hetzner",
-        "Mittwald",
-        "Amazon SES",
-        "Sendgrid",
-        "Brevo",
-        "FluentCRM",
-        "Contact Form 7",
-        "WP Mail SMTP",
-        "Sentry",
-        "Google Search Console",
-        "Uptime Monitoring",
-        "Algolia",
-        "Mapbox",
-        "Optimole",
-        "Borlabs Cookie",
-        "CookieYes"
-      ]
-    },
-    {
-      "name": "Project Management",
-      "keywords": [
-        "Agile",
-        "Scrum",
-        "Kanban",
-        "Team Leadership",
-        "Client Relations",
-        "Product Strategy",
-        "Business Model Validation"
+        "Headless Architecture",
+        "AI Integration",
+        "Automation",
+        "Developer Experience",
+        "Technical Strategy"
       ]
     }
   ],
@@ -134,7 +97,9 @@
         "Development",
         "Project Management"
       ],
-      "entity": "Brasserie Colette"
+      "entity": "Brasserie Colette",
+      "featured": true,
+      "priority": 1
     },
     {
       "name": "Dein WoMo",
@@ -234,7 +199,9 @@
         "Development",
         "Project Management"
       ],
-      "entity": "Elodie Carstensen"
+      "entity": "Elodie Carstensen",
+      "featured": true,
+      "priority": 3
     },
     {
       "name": "Fairworks",
@@ -257,7 +224,9 @@
       "roles": [
         "Project Management"
       ],
-      "entity": "Fairworks"
+      "entity": "Fairworks",
+      "featured": true,
+      "priority": 2
     },
     {
       "name": "Fonds für Wohnen und Mobilität",
@@ -554,15 +523,18 @@
       "url": "https://an.jetzt",
       "startDate": "2023-07",
       "endDate": "",
+      "location": {
+        "city": "Berlin",
+        "countryCode": "DE"
+      },
       "summary": "Lead cross-functional squads delivering headless marketing sites and digital products, aligning research, design, and engineering for measurable growth.",
       "highlights": [
-        "Direct an 8-person product trio (design, frontend, platform) shipping 15+ sites and internal tools on Next.js, Nuxt, and Eleventy with WordPress, TYPO3, and Prismic",
+        "Direct an 8-person product trio (design, frontend, platform) shipping 15+ sites and internal tools",
         "Established a tokenized Figma design system and coded component library; cut design-to-dev handoff time 30% and reduced UI regressions",
         "Standardized platform stack with Vercel/Hetzner and Cloudflare CDN/WAF; achieved sub-2.5s LCP and 95+ Core Web Vitals on flagship launches",
-        "Integrated product analytics, Sentry, and uptime playbooks; reduced mean time to resolution below two hours",
-        "Mentor design and engineering leads, instituting roadmap/OKR rituals and stakeholder reviews that sustain 90%+ satisfaction",
-        "Tech: Next.js, Nuxt.js, Eleventy, WordPress, TYPO3, Prismic, Cloudflare, Vercel, Hetzner, Sentry, Algolia, Optimole, Mapbox"
-      ]
+        "Integrated product analytics, Sentry, and uptime playbooks; reduced mean time to resolution below two hours"
+      ],
+      "tech": ["Next.js", "Nuxt.js", "Eleventy", "WordPress", "TYPO3", "Prismic", "Cloudflare", "Vercel", "Hetzner", "Sentry", "Algolia", "Optimole", "Mapbox"]
     },
     {
       "name": "Unit U+2463 GmbH",
@@ -570,15 +542,18 @@
       "url": "",
       "startDate": "2018-03",
       "endDate": "2023-07",
+      "location": {
+        "city": "Berlin",
+        "countryCode": "DE"
+      },
       "summary": "Directed UX and visual systems for a multi-brand portfolio, bridging strategy, research, and implementation across digital touchpoints.",
       "highlights": [
         "Rolled out a multi-brand design system in Figma and Storybook reused across 20+ launches, accelerating delivery by 25%",
         "Led discovery, customer interviews, and rapid prototyping to inform product roadmaps and lift lead conversion 18%",
         "Partnered with engineering teams to deliver componentized frontends while maintaining WordPress/TYPO3/Prismic stacks",
-        "Championed accessibility and performance audits; raised Lighthouse scores from 70s to 90s on flagship domains",
-        "Introduced Figma to agency and client work environments in 2018, training 15+ team members and replacing legacy tooling",
-        "Tech: Figma, Storybook, WordPress, TYPO3, Prismic, Jira"
-      ]
+        "Championed accessibility and performance audits; raised Lighthouse scores from 70s to 90s on flagship domains"
+      ],
+      "tech": ["Figma", "Storybook", "WordPress", "TYPO3", "Prismic", "Jira"]
     },
     {
       "name": "Ape Unit GmbH",
@@ -586,15 +561,18 @@
       "url": "",
       "startDate": "2014-07",
       "endDate": "2018-03",
+      "location": {
+        "city": "Berlin",
+        "countryCode": "DE"
+      },
       "summary": "Designed and shipped responsive web apps and campaign sites end-to-end for fintech, civic tech, and cultural clients.",
       "highlights": [
         "Produced IA, wireframes, visual design, and interactive prototypes for complex responsive products",
         "Delivered first full Digital Brand Execution, establishing component-based UI workflows",
-        "Collaborated with engineers during sprints, delivering production-ready HTML, CSS, and JavaScript when needed",
         "Ran moderated usability tests and analytics reviews to refine flows; improved task success by 20% on average",
-        "Maintained brand and accessibility standards across multi-device launches",
-        "Tech: Sketch, Zeplin, InVision, HTML/CSS, JavaScript"
-      ]
+        "Maintained brand and accessibility standards across multi-device launches"
+      ],
+      "tech": ["Sketch", "Zeplin", "InVision", "HTML/CSS", "JavaScript"]
     },
     {
       "name": "Ape Unit GmbH",
@@ -602,13 +580,17 @@
       "url": "",
       "startDate": "2013-09",
       "endDate": "2013-12",
+      "location": {
+        "city": "Berlin",
+        "countryCode": "DE"
+      },
       "summary": "Supported product teams on web campaigns while learning collaborative design and development workflows.",
       "highlights": [
         "Built web and app UI designs in Photoshop and created icons in Illustrator for responsive campaigns",
         "Worked on a Natural User Interface study that accompanied bachelor's thesis research",
-        "Built interactive prototypes in HTML/CSS, assisted QA, and documented feedback for senior designers",
-        "Tech: Photoshop, Illustrator, HTML/CSS, GitLab"
-      ]
+        "Built interactive prototypes in HTML/CSS, assisted QA, and documented feedback for senior designers"
+      ],
+      "tech": ["Photoshop", "Illustrator", "HTML/CSS", "GitLab"]
     },
     {
       "name": "Martin Heßmann",
@@ -616,14 +598,17 @@
       "url": "",
       "startDate": "2011-11",
       "endDate": "2013-09",
+      "location": {
+        "city": "Berlin",
+        "countryCode": "DE"
+      },
       "summary": "Brand and Graphic Designer working with local small businesses in Berlin, focusing on logo design, brand identity, and print production.",
       "highlights": [
         "Designed logos and brand identities for local small businesses across Berlin",
         "Produced print collateral including business cards, flyers, and marketing materials",
-        "Created small static websites without CMS for client web presence",
-        "Scoped, budgeted, and managed client relationships from concept through production",
-        "Tech: Illustrator, InDesign, Photoshop, HTML, CSS"
-      ]
+        "Scoped, budgeted, and managed client relationships from concept through production"
+      ],
+      "tech": ["Illustrator", "InDesign", "Photoshop", "HTML", "CSS"]
     }
   ],
   "education": [
@@ -632,17 +617,55 @@
       "area": "Digital Media / Communication Design",
       "studyType": "Bachelor",
       "startDate": "2010",
-      "endDate": "2014"
+      "endDate": "2014",
+      "location": {
+        "city": "Berlin",
+        "countryCode": "DE"
+      }
     }
   ],
   "languages": [
     {
       "language": "German",
-      "fluency": "Native speaker"
+      "fluency": "Native speaker",
+      "level": 5
     },
     {
       "language": "English",
-      "fluency": "Fluent"
+      "fluency": "Fluent",
+      "level": 4
+    }
+  ],
+  "successes": [
+    {
+      "icon": "trophy",
+      "title": "Core Web Vitals",
+      "summary": "Cut LCP to 2.3s and 95+ CWV on flagship launches"
+    },
+    {
+      "icon": "rocket",
+      "title": "Design ops",
+      "summary": "Tokenized design system; cut handoff time 30%"
+    },
+    {
+      "icon": "users",
+      "title": "Team leadership",
+      "summary": "Ran 8-person trio across design/frontend/platform"
+    },
+    {
+      "icon": "chart",
+      "title": "Performance",
+      "summary": "Raised Lighthouse scores from 70s to 90s"
+    },
+    {
+      "icon": "target",
+      "title": "Conversion",
+      "summary": "Lifted lead conversion 18% through discovery"
+    },
+    {
+      "icon": "star",
+      "title": "Satisfaction",
+      "summary": "Sustained 90%+ stakeholder satisfaction"
     }
   ],
   "interests": [

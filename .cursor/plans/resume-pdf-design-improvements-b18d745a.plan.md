@@ -1,17 +1,20 @@
-<!-- b18d745a-ab53-48ea-be91-189312412fb7 cfbebd72-296e-4a15-89c9-910b054239fd -->
+<!-- b18d745a-ab53-48ea-be91-189312412fb7 dcebf090-999a-4fa5-b5ab-20a36467bd1c -->
 # Complete Resume Redesign - Professional 2-Page Layout
 
 ## Critical Issues Identified
 
 1. **Length**: Currently 4 pages - needs to be 2 pages max (1 for key facts, 1 for projects)
-2. **Too many bullets**: 5-6 bullets per job (including "Tech:" line) - should be max 4 achievement bullets
-3. **Tech mixed in**: "Tech: ..." lines are mixed into highlights - should be removed entirely
+2. **Too many bullets**: 5-6 bullets per job (including "Tech:" line) - should be max 3-4 achievement bullets, 1-2 lines each
+3. **Tech mixed in**: "Tech: ..." lines are mixed into highlights - should be removed entirely, moved to chip lines
 4. **No location**: Work/education entries don't show location
 5. **No icons**: Missing icons for dates, locations, contact info
-6. **All projects shown**: Every project listed with full details - should be simplified on page 2
-7. **Single column**: Not using 2-column layout for efficiency
+6. **All projects shown**: Every project listed with full details - should be 6-10 top projects only on page 2
+7. **Single column**: Not using 2-column layout (65-70% left, 30-35% right with clear gutter)
 8. **No successes section**: Missing icon-based achievements/successes section
-9. **Skills too detailed**: Skills section probably too verbose
+9. **Skills too detailed**: Skills section needs to be chips/tags, not long lists
+10. **Summary too long**: Currently verbose - needs to be 35-45 words max
+11. **Role selection**: Show only 3-4 most recent roles on page 1, push older roles down or to page 2
+12. **Bullet length**: Bullets are too long/narrative - need to be 1-2 lines max, impact-focused
 
 ## Page Structure
 
@@ -30,89 +33,191 @@
 - No full URLs/links in PDF
 - Possibly 2-column grid
 
-## Implementation Plan
+## Implementation Plan - Organized by Task Type
 
-### 1. Extract Tech from Highlights
+### PART 1: CONTENT & DATA STRUCTURE
 
-- Filter out any highlight that starts with "Tech:"
-- Remove tech from work experience entirely (skills section handles this)
-- Limit highlights to max 4 per job (take first 4 non-tech items)
+#### 1.1 Update TypeScript Types (`types/resume.ts`)
 
-### 2. Add Location to Work/Education
+- Add `location?: Location` to `Work` interface
+- Add `location?: Location` to `Education` interface  
+- Add `tech?: string[]` to `Work` interface (dedicated tech array)
+- Add `level?: string` to `Skill` interface (for proficiency grouping)
+- Add `level?: number` to `Language` interface (optional, 1-5 scale)
+- Add new `Success` interface:
+  ```typescript
+  interface Success {
+    icon?: string  // e.g., "trophy", "rocket", "users"
+    title: string
+    summary: string
+  }
+  ```
 
-- Check if Work/Education types support location (may need to extend schema or use summary field)
-- Display location next to dates with icon
-- Format: "📍 Berlin, DE" or similar
+- Add `successes?: Success[]` to `Resume` interface
+- Add `featured?: boolean` and `priority?: number` to `Project` interface
 
-### 3. Add Icons for Dates/Locations
+#### 1.2 Update Resume Data (`data/resume.json`)
 
-- Use Unicode icons or simple text symbols for:
-- 📅 Dates
-- 📍 Locations  
-- ✉️ Email
-- 📞 Phone
-- 🌐 Website
-- Style icons consistently
+- **Work entries:**
+  - Add `location: { city: string, countryCode: string }` to each work item
+  - Remove "Tech: ..." lines from highlights array
+  - Add `tech: string[]` array to each work item with technologies
+  - Cap highlights to 3-4 impact bullets (remove tech/tool lines)
 
-### 4. Create Successes Section
+- **Skills:**
+  - Add `level` field (Expert/Advanced/Familiar/etc.) to skills for grouping
 
-- New section called "Key Achievements" or "Successes"
-- Icon-based layout (2-column grid)
-- Extract notable achievements from work experience
-- Format: Icon + Title + Brief description
-- Examples from data: "30% faster handoff", "95+ CWV scores", "90%+ satisfaction", etc.
+- **Successes:**
+  - Add new top-level `successes` array with icon, title, summary
+  - Extract 3-6 key achievements from work experience
 
-### 5. Implement 2-Column Layout
+- **Projects:**
+  - Add `featured: boolean` and `priority: number` to control page 1 vs page 2 display
 
-- Use React-PDF's flexDirection: 'row' for sections that benefit
-- Right column: Languages, Skills (condensed), Successes
-- Left column: Work Experience, Education
-- Header spans full width
+- **Education:**
+  - Add `location: { city: string, countryCode: string }` to education entries
 
-### 6. Limit Work Experience Bullets
+- **Summary:**
+  - Shorten `basics.summary` to 35-45 words (content edit, not structure)
 
-- Slice highlights array to max 4 items
-- Filter out "Tech:" lines before slicing
-- Ensure most impactful bullets are shown
+- **Languages:**
+  - Optionally add `level: number` (1-5) for visual proficiency meters
 
-### 7. Simplify Projects on Page 2
+### PART 2: STRUCTURE & LAYOUT
 
-- Remove full URLs (or make them optional)
-- Remove detailed descriptions
-- Show: Name, Year, maybe 1-line summary
-- 2-column grid layout
-- Remove keywords/tech from projects
+#### 2.1 Page 1 Structure (Two-Column Layout)
 
-### 8. Condense Skills Section
+- **Header (Full Width):**
+  - Name (large, bold)
+  - Title/role
+  - Location with icon
+  - Contact: phone/email/URL with icons, bullet separators
 
-- If using levels, show only level labels with comma-separated skills
-- Remove detailed keyword lists
-- Make it more scannable
+- **Two-Column Split:**
+  - **Left Column (65-70% width):**
+    - Work Experience (3-4 most recent roles only)
+      - Title, Company (accent color), Location (icon), Dates (icon)
+      - 3-4 bullets max (from highlights array, filtered)
+      - Tech chips line below bullets (from tech array)
+    - Education (with location icon)
 
-### 9. Optimize Spacing for 1 Page
+  - **Right Column (30-35% width):**
+    - Summary (2-3 lines, 35-45 words)
+    - Successes/Key Achievements (3-6 icon-labeled chips)
+    - Skills (grouped by level, displayed as chips/tags)
+    - Languages (with optional proficiency meters)
+    - Education (if space allows, otherwise left column)
 
-- Reduce section margins
-- Tighter line heights where appropriate
-- Remove summary paragraph if too long
-- Optimize font sizes
+#### 2.2 Page 2 Structure (Projects Only)
 
-### 10. Section Headers
+- Select projects: Use `featured: false` or sort by `priority` to show 6-10 top projects
+- Two-column card grid layout
+- Each card: Name (bold), Year, One-line purpose, One outcome/metric, Tech tags
+- No URLs in project list (or minimal)
+- Remove detailed descriptions and long keyword lists
 
-- Make uppercase, bold, with underline
-- Use accent color
-- Consistent styling
+#### 2.3 Component Structure Changes
 
-## Data Structure Considerations
+- Restructure `ResumePdf` component:
+  - Page 1: Two-column container with left/right sections
+  - Page 2: Projects grid
+- Filter work experience: Show only 3-4 most recent roles on page 1
+- Filter highlights: Remove "Tech:" lines, limit to 3-4 bullets
+- Extract tech: Display from `tech` array as chips, not from highlights
+- Project selection: Use `featured`/`priority` flags to determine page 1 vs page 2
 
-- Work type may not have location field - may need to parse from summary or add to data
-- Need to identify which achievements to extract for "Successes" section
-- May need to add location data to resume.json if not present
+### PART 3: DESIGN & STYLING
+
+#### 3.1 Icons & Visual Elements
+
+- **Icon System:**
+  - 📅 Dates
+  - 📍 Locations
+  - ✉️ Email
+  - 📞 Phone
+  - 🌐 Website
+  - 🎯 Successes (or map icon names to Unicode/glyphs)
+- Style icons consistently (size, spacing, color)
+- Map success icon names ("trophy", "rocket", "users") to actual glyphs
+
+#### 3.2 Typography & Hierarchy
+
+- **Section Headers:**
+  - UPPERCASE, bold, with underline (borderBottom)
+  - Accent color (#2563EB)
+  - Consistent spacing
+
+- **Font Sizes:**
+  - Name: 24-26pt (larger for impact)
+  - Section headers: 13pt, uppercase
+  - Job titles: 11pt, bold
+  - Body text: 9-10pt
+  - Small text (dates, tech chips): 8pt
+
+- **Line Heights:**
+  - Body: 1.35
+  - Summary: 1.37
+  - Headers: 1.2-1.3
+
+#### 3.3 Layout Styles
+
+- **Two-Column Container:**
+  - flexDirection: 'row'
+  - Left: 65-70% width
+  - Right: 30-35% width
+  - Clear gutter: 8-10pt between columns
+
+- **Spacing Optimization:**
+  - Section margins: 12-14pt (reduced from 17pt)
+  - Work item margins: 10-11pt
+  - Tighter line heights where needed
+  - Remove unnecessary whitespace
+
+#### 3.4 Component-Specific Styles
+
+- **Tech Chips:**
+  - Small font (8pt)
+  - Comma-separated or small rounded boxes
+  - Subtle background or border
+  - Below bullets, not inline
+
+- **Successes Section:**
+  - Icon + Title (bold) + Summary (1 line)
+  - Vertical list or compact grid
+  - Icon on left, text on right
+
+- **Skills Section:**
+  - Display as chips/tags (comma-separated or small boxes)
+  - Group by level if provided
+  - Remove long keyword lists
+
+- **Projects (Page 2):**
+  - Two-column card grid
+  - Compact cards with minimal padding
+  - Name, year, one-line description, tech tags
+
+#### 3.5 Color & Contrast
+
+- Body text: #111 (already updated)
+- Company names: Accent color (#2563EB)
+- Labels: #333
+- Keywords/chips: #444
+- Dates/locations: #222
 
 ## Files to Modify
 
-- `components/resume-pdf.tsx`: Complete restructure for 2-page layout
-- `data/resume.json`: May need location data added to work/education entries
-- Styles: New styles for 2-column layout, icons, successes section
+### Content/Data:
+
+- `types/resume.ts`: Add new interfaces and fields
+- `data/resume.json`: Update all entries with new structure
+
+### Structure:
+
+- `components/resume-pdf.tsx`: Complete restructure for 2-page, 2-column layout
+
+### Design:
+
+- `components/resume-pdf.tsx`: New styles for 2-column layout, icons, chips, successes section
 
 ### To-dos
 
