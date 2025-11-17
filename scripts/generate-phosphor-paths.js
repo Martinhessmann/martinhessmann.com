@@ -29,14 +29,22 @@ icons.forEach(({ name, var: varName }) => {
 
   if (fs.existsSync(defsFile)) {
     const content = fs.readFileSync(defsFile, 'utf-8')
-    // Match all path d attributes in the fill variant
-    const pathMatches = content.matchAll(/"fill"[^]*?d:\s*"([^"]+)"/g)
-    const allPaths = Array.from(pathMatches).map(m => m[1])
-    if (allPaths.length > 0) {
-      // For icons with multiple paths, combine them (Stack has 3 paths)
-      paths[varName] = allPaths.join(' ')
+    // Try to find fill variant - it can be either a single path or Fragment with multiple paths
+    const fillSection = content.match(/"fill"[^]*?(?:createElement\(l\.Fragment[^]*?\)\)|createElement\("path"[^]*?\)\))/)
+    if (fillSection) {
+      // Extract all path d attributes from the fill section
+      const pathMatches = fillSection[0].matchAll(/d:\s*"([^"]+)"/g)
+      const allPaths = Array.from(pathMatches).map(m => m[1])
+      if (allPaths.length > 0) {
+        // For icons with multiple paths (like Stack), join with comma for storage
+        // Single path icons just get the string
+        paths[varName] = allPaths.length === 1 ? allPaths[0] : allPaths.join(',')
+      } else {
+        console.warn(`⚠️  Could not extract fill path for ${name}`)
+        paths[varName] = '' // fallback empty path
+      }
     } else {
-      console.warn(`⚠️  Could not extract fill path for ${name}`)
+      console.warn(`⚠️  Could not find fill variant for ${name}`)
       paths[varName] = '' // fallback empty path
     }
   } else {

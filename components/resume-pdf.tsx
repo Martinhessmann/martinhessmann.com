@@ -139,9 +139,16 @@ function IconShield() {
 }
 
 function IconLayers() {
+  // Stack icon has multiple paths separated by comma
+  const paths = typeof PHOSPHOR_FILL_PATHS.LAYERS === 'string'
+    ? PHOSPHOR_FILL_PATHS.LAYERS.split(',')
+    : [PHOSPHOR_FILL_PATHS.LAYERS]
+
   return (
     <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING }}>
-      <Path d={PHOSPHOR_FILL_PATHS.LAYERS} fill="#2563EB" />
+      {paths.map((path, index) => (
+        <Path key={index} d={path} fill="#2563EB" />
+      ))}
     </Svg>
   )
 }
