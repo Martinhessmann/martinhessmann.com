@@ -1,6 +1,19 @@
 "use client"
 
-import { Resume, Work, Project, Skill, Education, Language, Interest } from '@/types/resume'
+import {
+  Resume,
+  Work,
+  Project,
+  Skill,
+  Education,
+  Language,
+  Interest,
+  Volunteer,
+  Award,
+  Certificate,
+  Publication,
+  Reference,
+} from '@/types/resume'
 import { ExternalLink } from 'lucide-react'
 import { useMemo } from 'react'
 
@@ -231,6 +244,27 @@ export function Resume({ resume }: ResumeProps) {
         </section>
       )}
 
+      {/* Key Achievements */}
+      {resume.successes && resume.successes.length > 0 && (
+        <section className="mb-12 print:mb-6">
+          <h2 className="text-2xl font-bold mb-6 print:text-lg print:mb-3 text-foreground">
+            Key Achievements
+          </h2>
+          <div className="grid gap-4 md:grid-cols-2 print:gap-2">
+            {resume.successes.map((item, index) => (
+              <div key={index} className="space-y-1 print:space-y-0.5">
+                <h3 className="font-semibold text-foreground print:text-sm">{item.title}</h3>
+                {item.summary && (
+                  <p className="text-sm text-muted-foreground print:text-xs leading-relaxed">
+                    {item.summary}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* Skills */}
       {resume.skills && resume.skills.length > 0 && (
         <section className="mb-12 print:mb-6">
@@ -302,6 +336,131 @@ export function Resume({ resume }: ResumeProps) {
                 <span className="text-sm text-muted-foreground print:text-xs">
                   {lang.fluency}
                 </span>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Awards */}
+      {resume.awards && resume.awards.length > 0 && (
+        <section className="mb-12 print:mb-6">
+          <h2 className="text-2xl font-bold mb-6 print:text-lg print:mb-3 text-foreground">Awards</h2>
+          <div className="space-y-4 print:space-y-2">
+            {resume.awards.map((award, index) => (
+              <div key={index} className="border-l-2 border-muted pl-4 space-y-1 print:space-y-0.5">
+                <h3 className="text-lg font-semibold text-foreground print:text-base">{award.title}</h3>
+                <p className="text-sm text-muted-foreground print:text-xs">{award.awarder}</p>
+                <div className="text-sm text-muted-foreground print:text-xs">
+                  {award.date}
+                </div>
+                {award.summary && (
+                  <p className="text-sm text-foreground leading-relaxed print:text-xs">{award.summary}</p>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Volunteer */}
+      {resume.volunteer && resume.volunteer.length > 0 && (
+        <section className="mb-12 print:mb-6">
+          <h2 className="text-2xl font-bold mb-6 print:text-lg print:mb-3 text-foreground">Volunteer</h2>
+          <div className="space-y-4 print:space-y-2">
+            {resume.volunteer.map((item, index) => (
+              <div key={index} className="border-l-2 border-muted pl-4 space-y-1 print:space-y-0.5">
+                <h3 className="text-lg font-semibold text-foreground print:text-base">{item.position}</h3>
+                <p className="text-sm text-muted-foreground print:text-xs">{item.organization}</p>
+                <div className="text-sm text-muted-foreground print:text-xs">
+                  {item.startDate}
+                  {item.endDate ? ` - ${item.endDate}` : ''}
+                </div>
+                {item.summary && (
+                  <p className="text-sm text-foreground leading-relaxed print:text-xs">{item.summary}</p>
+                )}
+                {item.highlights && item.highlights.length > 0 && (
+                  <ul className="text-sm text-foreground space-y-1 print:text-xs">
+                    {item.highlights.map((hl, hlIndex) => (
+                      <li key={hlIndex} className="flex items-start gap-2">
+                        <span className="text-muted-foreground mt-1">•</span>
+                        <span>{hl}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Certificates */}
+      {resume.certificates && resume.certificates.length > 0 && (
+        <section className="mb-12 print:mb-6">
+          <h2 className="text-2xl font-bold mb-6 print:text-lg print:mb-3 text-foreground">Certificates</h2>
+          <div className="space-y-4 print:space-y-2">
+            {resume.certificates.map((cert, index) => (
+              <div key={index} className="border-l-2 border-muted pl-4 space-y-1 print:space-y-0.5">
+                <h3 className="text-lg font-semibold text-foreground print:text-base">{cert.name}</h3>
+                <p className="text-sm text-muted-foreground print:text-xs">{cert.issuer}</p>
+                <div className="text-sm text-muted-foreground print:text-xs">{cert.date}</div>
+                {cert.url && (
+                  <a
+                    href={cert.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-muted-foreground hover:text-foreground underline print:text-xs"
+                  >
+                    {cert.url}
+                  </a>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Publications */}
+      {resume.publications && resume.publications.length > 0 && (
+        <section className="mb-12 print:mb-6">
+          <h2 className="text-2xl font-bold mb-6 print:text-lg print:mb-3 text-foreground">Publications</h2>
+          <div className="space-y-4 print:space-y-2">
+            {resume.publications.map((pub, index) => (
+              <div key={index} className="border-l-2 border-muted pl-4 space-y-1 print:space-y-0.5">
+                <h3 className="text-lg font-semibold text-foreground print:text-base">{pub.name}</h3>
+                <p className="text-sm text-muted-foreground print:text-xs">{pub.publisher}</p>
+                <div className="text-sm text-muted-foreground print:text-xs">{pub.releaseDate}</div>
+                {pub.url && (
+                  <a
+                    href={pub.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-muted-foreground hover:text-foreground underline print:text-xs"
+                  >
+                    {pub.url}
+                  </a>
+                )}
+                {pub.summary && (
+                  <p className="text-sm text-foreground leading-relaxed print:text-xs">{pub.summary}</p>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* References */}
+      {resume.references && resume.references.length > 0 && (
+        <section className="mb-12 print:mb-6">
+          <h2 className="text-2xl font-bold mb-6 print:text-lg print:mb-3 text-foreground">References</h2>
+          <div className="space-y-4 print:space-y-2">
+            {resume.references.map((ref, index) => (
+              <div key={index} className="border-l-2 border-muted pl-4 space-y-1 print:space-y-0.5">
+                <h3 className="text-lg font-semibold text-foreground print:text-base">{ref.name}</h3>
+                {ref.reference && (
+                  <p className="text-sm text-foreground leading-relaxed print:text-xs">{ref.reference}</p>
+                )}
               </div>
             ))}
           </div>
