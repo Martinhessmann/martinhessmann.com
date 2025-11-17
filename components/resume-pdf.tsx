@@ -17,9 +17,10 @@ const ICON_SPACING = 4
 
 // Icon components using Phosphor fill paths
 // Using function declarations for React-PDF compatibility
+// Icons use consistent styling - marginTop removed to rely on flexbox alignment
 function IconDate() {
   return (
-    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
+    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING }}>
       <Path d={PHOSPHOR_FILL_PATHS.CALENDAR} fill="#222" />
     </Svg>
   )
@@ -27,7 +28,7 @@ function IconDate() {
 
 function IconLocation() {
   return (
-    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
+    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING }}>
       <Path d={PHOSPHOR_FILL_PATHS.MAP_PIN} fill="#222" />
     </Svg>
   )
@@ -35,7 +36,7 @@ function IconLocation() {
 
 function IconEmail() {
   return (
-    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
+    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING }}>
       <Path d={PHOSPHOR_FILL_PATHS.ENVELOPE} fill="#222" />
     </Svg>
   )
@@ -43,7 +44,7 @@ function IconEmail() {
 
 function IconPhone() {
   return (
-    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
+    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING }}>
       <Path d={PHOSPHOR_FILL_PATHS.PHONE} fill="#222" />
     </Svg>
   )
@@ -51,7 +52,7 @@ function IconPhone() {
 
 function IconWeb() {
   return (
-    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
+    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING }}>
       <Path d={PHOSPHOR_FILL_PATHS.GLOBE} fill="#222" />
     </Svg>
   )
@@ -59,7 +60,7 @@ function IconWeb() {
 
 function IconTech() {
   return (
-    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
+    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING }}>
       <Path d={PHOSPHOR_FILL_PATHS.CODE} fill="#222" />
     </Svg>
   )
@@ -67,7 +68,7 @@ function IconTech() {
 
 function IconSkill() {
   return (
-    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
+    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING }}>
       <Path d={PHOSPHOR_FILL_PATHS.STAR} fill="#2563EB" />
     </Svg>
   )
@@ -75,7 +76,7 @@ function IconSkill() {
 
 function IconTrophy() {
   return (
-    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
+    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING }}>
       <Path d={PHOSPHOR_FILL_PATHS.TROPHY} fill="#2563EB" />
     </Svg>
   )
@@ -83,7 +84,7 @@ function IconTrophy() {
 
 function IconRocket() {
   return (
-    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
+    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING }}>
       <Path d={PHOSPHOR_FILL_PATHS.ROCKET} fill="#2563EB" />
     </Svg>
   )
@@ -91,7 +92,7 @@ function IconRocket() {
 
 function IconUsers() {
   return (
-    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
+    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING }}>
       <Path d={PHOSPHOR_FILL_PATHS.USERS} fill="#2563EB" />
     </Svg>
   )
@@ -99,7 +100,7 @@ function IconUsers() {
 
 function IconChip() {
   return (
-    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
+    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING }}>
       <Path d={PHOSPHOR_FILL_PATHS.CPU} fill="#2563EB" />
     </Svg>
   )
@@ -107,7 +108,7 @@ function IconChip() {
 
 function IconChart() {
   return (
-    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
+    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING }}>
       <Path d={PHOSPHOR_FILL_PATHS.CHART_BAR} fill="#2563EB" />
     </Svg>
   )
@@ -115,7 +116,7 @@ function IconChart() {
 
 function IconTarget() {
   return (
-    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
+    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING }}>
       <Path d={PHOSPHOR_FILL_PATHS.TARGET} fill="#2563EB" />
     </Svg>
   )
@@ -131,7 +132,7 @@ const styles = StyleSheet.create({
   },
   // Header styles
   header: {
-    marginBottom: 12,
+    marginBottom: 10,
   },
   h1: {
     fontSize: 24,
@@ -180,8 +181,8 @@ const styles = StyleSheet.create({
   },
   // Section styles
   section: {
-    marginTop: 12,
-    marginBottom: 8,
+    marginTop: 10,
+    marginBottom: 6,
   },
   h2: {
     fontSize: 12,
@@ -197,7 +198,7 @@ const styles = StyleSheet.create({
   workItem: {
     borderLeft: `2px solid ${ACCENT}`,
     paddingLeft: 7.5,
-    marginBottom: 10,
+    marginBottom: 8,
     minHeight: 0,
   },
   workHeader: {
@@ -228,19 +229,14 @@ const styles = StyleSheet.create({
     textAlign: 'right',
     lineHeight: 1.3,
   },
-  workSummary: {
-    fontSize: 9,
-    marginBottom: 5,
-    lineHeight: 1.35,
-  },
   highlights: {
     fontSize: 9,
-    lineHeight: 1.35,
-    marginBottom: 4,
+    lineHeight: 1.3,
+    marginBottom: 3,
   },
   highlightItem: {
     flexDirection: 'row',
-    marginBottom: 3,
+    marginBottom: 2,
   },
   bullet: {
     marginRight: 5,
@@ -268,6 +264,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginBottom: 5,
     alignItems: 'flex-start',
+  },
+  successIconContainer: {
+    width: ICON_SIZE + ICON_SPACING,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    paddingTop: 1, // Small offset to align with first line of text
   },
   successContent: {
     flex: 1,
@@ -372,11 +374,11 @@ export function ResumePdf({ resume }: ResumePdfProps) {
         .slice(0, 4)
     : []
 
-  // Filter highlights to max 4, excluding tech lines
+  // Filter highlights to max 3, excluding tech lines (reduced for page 1 fit)
   const filterHighlights = (highlights: string[] = []) => {
     return highlights
       .filter((h) => !h.startsWith('Tech:'))
-      .slice(0, 4)
+      .slice(0, 3)
   }
 
   // Sort projects: featured first, then by priority, then alphabetically
@@ -447,11 +449,15 @@ export function ResumePdf({ resume }: ResumePdfProps) {
               </View>
             )}
           </View>
+          {/* Summary in header */}
+          {resume.basics.summary && (
+            <Text style={[styles.summary, { marginTop: 6 }]}>{resume.basics.summary}</Text>
+          )}
         </View>
 
         {/* Two-Column Layout */}
         <View style={styles.twoColumn}>
-          {/* Left Column: Work Experience & Education */}
+          {/* Left Column: Work Experience Only */}
           <View style={styles.leftColumn}>
             {/* Work Experience */}
             {recentWork.length > 0 && (
@@ -488,7 +494,6 @@ export function ResumePdf({ resume }: ResumePdfProps) {
                         )}
                       </View>
                     </View>
-                    {job.summary && <Text style={styles.workSummary}>{job.summary}</Text>}
                     {job.highlights && filterHighlights(job.highlights).length > 0 && (
                       <View style={styles.highlights}>
                         {filterHighlights(job.highlights).map((highlight, highlightIndex) => (
@@ -503,7 +508,10 @@ export function ResumePdf({ resume }: ResumePdfProps) {
                 ))}
               </View>
             )}
+          </View>
 
+          {/* Right Column: Education, Successes, Skills, Languages */}
+          <View style={styles.rightColumn}>
             {/* Education */}
             {resume.education && resume.education.length > 0 && (
               <View style={styles.section}>
@@ -545,17 +553,6 @@ export function ResumePdf({ resume }: ResumePdfProps) {
                 ))}
               </View>
             )}
-          </View>
-
-          {/* Right Column: Summary, Successes, Skills, Languages */}
-          <View style={styles.rightColumn}>
-            {/* Summary */}
-            {resume.basics.summary && (
-              <View style={styles.section}>
-                <Text style={styles.h2}>SUMMARY</Text>
-                <Text style={styles.summary}>{resume.basics.summary}</Text>
-              </View>
-            )}
 
             {/* Successes */}
             {resume.successes && resume.successes.length > 0 && (
@@ -563,7 +560,7 @@ export function ResumePdf({ resume }: ResumePdfProps) {
                 <Text style={styles.h2}>KEY ACHIEVEMENTS</Text>
                  {resume.successes.map((success, index) => (
                    <View key={index} style={styles.successItem}>
-                     <View style={{ width: ICON_SIZE + ICON_SPACING }}>
+                     <View style={styles.successIconContainer}>
                        {success.icon === 'trophy' && <IconTrophy />}
                        {success.icon === 'rocket' && <IconRocket />}
                        {success.icon === 'users' && <IconUsers />}
