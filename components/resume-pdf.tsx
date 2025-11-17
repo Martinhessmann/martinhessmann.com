@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
     borderLeft: '2px solid #ddd',
     paddingLeft: 7.5, // 0.75rem = 7.5pt
     marginBottom: 7.5, // 0.75rem = 7.5pt
+    minHeight: 0, // Allow React-PDF to calculate
   },
   workHeader: {
     flexDirection: 'row',
@@ -106,6 +107,7 @@ const styles = StyleSheet.create({
     marginBottom: 6, // 0.6rem = 6pt
     paddingTop: 3, // 0.3rem = 3pt
     paddingBottom: 3, // 0.3rem = 3pt
+    minHeight: 0, // Allow React-PDF to calculate
   },
   projectName: {
     fontSize: 9,
@@ -150,6 +152,7 @@ const styles = StyleSheet.create({
     borderLeft: '2px solid #ddd',
     paddingLeft: 7.5, // 0.75rem = 7.5pt
     marginBottom: 5, // 0.5rem = 5pt
+    minHeight: 0, // Allow React-PDF to calculate
   },
   educationHeader: {
     flexDirection: 'row',
@@ -239,7 +242,7 @@ export function ResumePdf({ resume }: ResumePdfProps) {
           <View style={styles.section}>
             <Text style={styles.h2}>Work Experience</Text>
             {resume.work.map((job, index) => (
-              <View key={index} style={styles.workItem}>
+              <View key={index} style={styles.workItem} wrap={false}>
                 <View style={styles.workHeader}>
                   <View style={styles.workHeaderLeft}>
                     <Text style={styles.h3}>{job.position}</Text>
@@ -274,7 +277,7 @@ export function ResumePdf({ resume }: ResumePdfProps) {
             <Text style={styles.h2}>Projects</Text>
             <View style={styles.projectsGrid}>
               {sortedProjects.map((project, index) => (
-                <View key={index} style={styles.projectItem}>
+                <View key={index} style={styles.projectItem} wrap={false}>
                   <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 2 }}>
                     <Text style={styles.projectName}>{project.name}</Text>
                     {project.startDate && (
@@ -326,7 +329,7 @@ export function ResumePdf({ resume }: ResumePdfProps) {
           <View style={styles.section}>
             <Text style={styles.h2}>Education</Text>
             {resume.education.map((edu, index) => (
-              <View key={index} style={styles.educationItem}>
+              <View key={index} style={styles.educationItem} wrap={false}>
                 <View style={styles.educationHeader}>
                   <View>
                     <Text style={styles.h3}>
