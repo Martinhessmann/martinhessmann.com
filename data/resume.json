@@ -574,10 +574,10 @@
       "highlights": [
         "Rolled out a multi-brand design system in Figma and Storybook reused across 20+ launches, accelerating delivery by 25%",
         "Led discovery, customer interviews, and rapid prototyping to inform product roadmaps and lift lead conversion 18%",
-        "Partnered with engineering to deliver componentized React and Vue frontends while maintaining WordPress/TYPO3/Prismic stacks",
+        "Partnered with engineering teams to deliver componentized frontends while maintaining WordPress/TYPO3/Prismic stacks",
         "Championed accessibility and performance audits; raised Lighthouse scores from 70s to 90s on flagship domains",
-        "Introduced Figma to agency workflows in 2018, training 15+ team members and replacing legacy tooling",
-        "Tech: Figma, React, Vue, WordPress, TYPO3, Prismic, Storybook, Jira"
+        "Introduced Figma to agency and client work environments in 2018, training 15+ team members and replacing legacy tooling",
+        "Tech: Figma, Storybook, WordPress, TYPO3, Prismic, Jira"
       ]
     },
     {
@@ -589,10 +589,11 @@
       "summary": "Designed and shipped responsive web apps and campaign sites end-to-end for fintech, civic tech, and cultural clients.",
       "highlights": [
         "Produced IA, wireframes, visual design, and interactive prototypes for complex responsive products",
+        "Delivered first full Digital Brand Execution, establishing component-based UI workflows",
         "Collaborated with engineers during sprints, delivering production-ready HTML, CSS, and JavaScript when needed",
         "Ran moderated usability tests and analytics reviews to refine flows; improved task success by 20% on average",
         "Maintained brand and accessibility standards across multi-device launches",
-        "Tech: Sketch, InVision, HTML/CSS, JavaScript, Backbone, AngularJS"
+        "Tech: Sketch, Zeplin, InVision, HTML/CSS, JavaScript"
       ]
     },
     {
@@ -603,23 +604,25 @@
       "endDate": "2013-12",
       "summary": "Supported product teams on web campaigns while learning collaborative design and development workflows.",
       "highlights": [
-        "Produced layouts, iconography, and production assets for responsive campaigns",
+        "Built web and app UI designs in Photoshop and created icons in Illustrator for responsive campaigns",
+        "Worked on a Natural User Interface study that accompanied bachelor's thesis research",
         "Built interactive prototypes in HTML/CSS, assisted QA, and documented feedback for senior designers",
-        "Tech: Adobe Creative Cloud, HTML/CSS, Git"
+        "Tech: Photoshop, Illustrator, HTML/CSS, GitLab"
       ]
     },
     {
       "name": "Martin Heßmann",
-      "position": "Freelance Designer",
+      "position": "Freelance Brand & Graphic Designer",
       "url": "",
       "startDate": "2011-11",
       "endDate": "2013-09",
-      "summary": "Delivered web and brand projects for small and mid-sized clients across Berlin and Brandenburg.",
+      "summary": "Brand and Graphic Designer working with local small businesses in Berlin, focusing on logo design, brand identity, and print production.",
       "highlights": [
-        "Built 10+ bespoke WordPress sites with ACF and SEO foundations, improving client engagement and conversion",
-        "Designed brand identities and print collateral ensuring cohesive cross-channel storytelling",
-        "Scoped, budgeted, and managed client relationships from proposal through post-launch support",
-        "Tech: WordPress, CSS/SCSS, Illustrator, InDesign"
+        "Designed logos and brand identities for local small businesses across Berlin",
+        "Produced print collateral including business cards, flyers, and marketing materials",
+        "Created small static websites without CMS for client web presence",
+        "Scoped, budgeted, and managed client relationships from concept through production",
+        "Tech: Illustrator, InDesign, Photoshop, HTML, CSS"
       ]
     }
   ],

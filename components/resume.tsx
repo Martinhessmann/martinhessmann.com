@@ -142,8 +142,8 @@ export function Resume({ resume }: ResumeProps) {
             Projects
           </h2>
 
-          {/* Grid layout for screen, list for print */}
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 print:block print:space-y-3">
+          {/* Grid layout for screen and print - 2 columns for print */}
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 print:grid-cols-2 print:gap-3">
             {sortedProjects.map((project, index) => (
               <div
                 key={index}
