@@ -1,6 +1,7 @@
 import React from 'react'
 import { Document, Page, View, Text, Link, StyleSheet, Font, Svg, Path, Circle, Rect } from '@react-pdf/renderer'
 import { Resume } from '@/types/resume'
+import { PHOSPHOR_FILL_PATHS } from './phosphor-paths'
 
 // Disable hyphenation to avoid mid-word breaks
 Font.registerHyphenationCallback((word) => [word])
@@ -10,128 +11,115 @@ const ACCENT = '#2563EB' // Blue 600-ish
 const DATE_RAIL_WIDTH = 90 // fixed rail for right-aligned dates
 
 // SVG Icon Components with consistent sizing and spacing
-// Using Phosphor Icons (https://github.com/phosphor-icons/react)
+// Using Phosphor Icons fill weight (https://github.com/phosphor-icons/react)
 const ICON_SIZE = 6
 const ICON_SPACING = 4
 
-const IconDate = () => (
-  <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
-    <Path
-      d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Z"
-      fill="#222"
-    />
-  </Svg>
-)
+// Icon components using Phosphor fill paths
+// Using function declarations for React-PDF compatibility
+function IconDate() {
+  return (
+    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
+      <Path d={PHOSPHOR_FILL_PATHS.CALENDAR} fill="#222" />
+    </Svg>
+  )
+}
 
-const IconLocation = () => (
-  <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
-    <Path
-      d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"
-      fill="#222"
-    />
-  </Svg>
-)
+function IconLocation() {
+  return (
+    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
+      <Path d={PHOSPHOR_FILL_PATHS.MAP_PIN} fill="#222" />
+    </Svg>
+  )
+}
 
-const IconEmail = () => (
-  <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
-    <Path
-      d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48Zm-96,85.15L52.57,64H203.43ZM98.71,128,40,181.81V74.19Zm11.84,10.85,12,11.05a8,8,0,0,0,10.82,0l12-11.05,58,53.15H52.57ZM157.29,128,216,74.18V181.82Z"
-      fill="#222"
-    />
-  </Svg>
-)
+function IconEmail() {
+  return (
+    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
+      <Path d={PHOSPHOR_FILL_PATHS.ENVELOPE} fill="#222" />
+    </Svg>
+  )
+}
 
-const IconPhone = () => (
-  <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
-    <Path
-      d="M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16,16,0,0,0,1.32-15.06l0-.12L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.4,64.6,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46ZM176,208A128.14,128.14,0,0,1,48,80,40.2,40.2,0,0,1,82.87,40a.61.61,0,0,0,0,.12l21,47L83.2,111.86a6.13,6.13,0,0,0-.57.77,16,16,0,0,0-1,15.7c9.06,18.53,27.73,37.06,46.46,46.11a16,16,0,0,0,15.75-1.14,8.44,8.44,0,0,0,.74-.56L168.89,152l47,21.05h0s.08,0,.11,0A40.21,40.21,0,0,1,176,208Z"
-      fill="#222"
-    />
-  </Svg>
-)
+function IconPhone() {
+  return (
+    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
+      <Path d={PHOSPHOR_FILL_PATHS.PHONE} fill="#222" />
+    </Svg>
+  )
+}
 
-const IconWeb = () => (
-  <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
-    <Path
-      d="M128,24h0A104,104,0,1,0,232,128,104.12,104.12,0,0,0,128,24Zm88,104a87.61,87.61,0,0,1-3.33,24H174.16a157.44,157.44,0,0,0,0-48h38.51A87.61,87.61,0,0,1,216,128ZM102,168H154a115.11,115.11,0,0,1-26,45A115.27,115.27,0,0,1,102,168Zm-3.9-16a140.84,140.84,0,0,1,0-48h59.88a140.84,140.84,0,0,1,0,48ZM40,128a87.61,87.61,0,0,1,3.33-24H81.84a157.44,157.44,0,0,0,0,48H43.33A87.61,87.61,0,0,1,40,128ZM154,88H102a115.11,115.11,0,0,1,26-45A115.27,115.27,0,0,1,154,88Zm52.33,0H170.71a135.28,135.28,0,0,0-22.3-45.6A88.29,88.29,0,0,1,206.37,88ZM107.59,42.4A135.28,135.28,0,0,0,85.29,88H49.63A88.29,88.29,0,0,1,107.59,42.4ZM49.63,168H85.29a135.28,135.28,0,0,0,22.3,45.6A88.29,88.29,0,0,1,49.63,168Zm98.78,45.6a135.28,135.28,0,0,0,22.3-45.6h35.66A88.29,88.29,0,0,1,148.41,213.6Z"
-      fill="#222"
-    />
-  </Svg>
-)
+function IconWeb() {
+  return (
+    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
+      <Path d={PHOSPHOR_FILL_PATHS.GLOBE} fill="#222" />
+    </Svg>
+  )
+}
 
-const IconTech = () => (
-  <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
-    <Path
-      d="M69.12,94.15,28.5,128l40.62,33.85a8,8,0,1,1-10.24,12.29l-48-40a8,8,0,0,1,0-12.29l48-40a8,8,0,0,1,10.24,12.3Zm176,27.7-48-40a8,8,0,1,0-10.24,12.3L227.5,128l-40.62,33.85a8,8,0,1,0,10.24,12.29l48-40a8,8,0,0,0,0-12.29ZM162.73,32.48a8,8,0,0,0-10.25,4.79l-64,176a8,8,0,0,0,4.79,10.26A8.14,8.14,0,0,0,96,224a8,8,0,0,0,7.52-5.27l64-176A8,8,0,0,0,162.73,32.48Z"
-      fill="#222"
-    />
-  </Svg>
-)
+function IconTech() {
+  return (
+    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
+      <Path d={PHOSPHOR_FILL_PATHS.CODE} fill="#222" />
+    </Svg>
+  )
+}
 
-const IconSkill = () => (
-  <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
-    <Path
-      d="M239.18,97.26A16.38,16.38,0,0,0,224.92,86l-59-4.76L143.14,26.15a16.36,16.36,0,0,0-30.27,0L90.11,81.23,31.08,86a16.46,16.46,0,0,0-9.37,28.86l45,38.83L53,211.75a16.38,16.38,0,0,0,24.5,17.82L128,198.49l50.53,31.08A16.4,16.4,0,0,0,203,211.75l-13.76-58.07,45-38.83A16.43,16.43,0,0,0,239.18,97.26Zm-15.34,5.47-48.7,42a8,8,0,0,0-2.56,7.91l14.88,62.8a.37.37,0,0,1-.17.48c-.18.14-.23.11-.38,0l-54.72-33.65a8,8,0,0,0-8.38,0L69.09,215.94c-.15.09-.19.12-.38,0a.37.37,0,0,1-.17-.48l14.88-62.8a8,8,0,0,0-2.56-7.91l-48.7-42c-.12-.1-.23-.19-.13-.5s.18-.27.33-.29l63.92-5.16A8,8,0,0,0,103,91.86l24.62-59.61c.08-.17.11-.25.35-.25s.27.08.35.25L153,91.86a8,8,0,0,0,6.75,4.92l63.92,5.16c.15,0,.24,0,.33.29S224,102.63,223.84,102.73Z"
-      fill="#2563EB"
-    />
-  </Svg>
-)
+function IconSkill() {
+  return (
+    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
+      <Path d={PHOSPHOR_FILL_PATHS.STAR} fill="#2563EB" />
+    </Svg>
+  )
+}
 
-// Success/Achievement Icons
-const IconTrophy = () => (
-  <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
-    <Path
-      d="M232,64H208V48a8,8,0,0,0-8-8H56a8,8,0,0,0-8,8V64H24A16,16,0,0,0,8,80V96a40,40,0,0,0,40,40h3.65A80.13,80.13,0,0,0,120,191.61V216H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16H136V191.58c31.94-3.23,58.44-25.64,68.08-55.58H208a40,40,0,0,0,40-40V80A16,16,0,0,0,232,64ZM48,120A24,24,0,0,1,24,96V80H48v32q0,4,.39,8Zm144-8.9c0,35.52-29,64.64-64,64.9a64,64,0,0,1-64-64V56H192ZM232,96a24,24,0,0,1-24,24h-.5a81.81,81.81,0,0,0,.5-8.9V80h24Z"
-      fill="#2563EB"
-    />
-  </Svg>
-)
+function IconTrophy() {
+  return (
+    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
+      <Path d={PHOSPHOR_FILL_PATHS.TROPHY} fill="#2563EB" />
+    </Svg>
+  )
+}
 
-const IconRocket = () => (
-  <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
-    <Path
-      d="M152,224a8,8,0,0,1-8,8H112a8,8,0,0,1,0-16h32A8,8,0,0,1,152,224ZM128,112a12,12,0,1,0-12-12A12,12,0,0,0,128,112Zm95.62,43.83-12.36,55.63a16,16,0,0,1-25.51,9.11L158.51,200h-61L70.25,220.57a16,16,0,0,1-25.51-9.11L32.38,155.83a16.09,16.09,0,0,1,3.32-13.71l28.56-34.26a123.07,123.07,0,0,1,8.57-36.67c12.9-32.34,36-52.63,45.37-59.85a16,16,0,0,1,19.6,0c9.34,7.22,32.47,27.51,45.37,59.85a123.07,123.07,0,0,1,8.57,36.67l28.56,34.26A16.09,16.09,0,0,1,223.62,155.83ZM99.43,184h57.14c21.12-37.54,25.07-73.48,11.74-106.88C156.55,47.64,134.49,29,128,24c-6.51,5-28.57,23.64-40.33,53.12C74.36,110.52,78.31,146.46,99.43,184Zm-15,5.85Q68.28,160.5,64.83,132.16L48,152.36,60.36,208l.18-.13ZM208,152.36l-16.83-20.2q-3.42,28.28-19.56,57.69l23.85,18,.18.13Z"
-      fill="#2563EB"
-    />
-  </Svg>
-)
+function IconRocket() {
+  return (
+    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
+      <Path d={PHOSPHOR_FILL_PATHS.ROCKET} fill="#2563EB" />
+    </Svg>
+  )
+}
 
-const IconUsers = () => (
-  <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
-    <Path
-      d="M117.25,157.92a60,60,0,1,0-66.5,0A95.83,95.83,0,0,0,3.53,195.63a8,8,0,1,0,13.4,8.74,80,80,0,0,1,134.14,0,8,8,0,0,0,13.4-8.74A95.83,95.83,0,0,0,117.25,157.92ZM40,108a44,44,0,1,1,44,44A44.05,44.05,0,0,1,40,108Zm210.14,98.7a8,8,0,0,1-11.07-2.33A79.83,79.83,0,0,0,172,168a8,8,0,0,1,0-16,44,44,0,1,0-16.34-84.87,8,8,0,1,1-5.94-14.85,60,60,0,0,1,55.53,105.64,95.83,95.83,0,0,1,47.22,37.71A8,8,0,0,1,250.14,206.7Z"
-      fill="#2563EB"
-    />
-  </Svg>
-)
+function IconUsers() {
+  return (
+    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
+      <Path d={PHOSPHOR_FILL_PATHS.USERS} fill="#2563EB" />
+    </Svg>
+  )
+}
 
-const IconChip = () => (
-  <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
-    <Path
-      d="M152,96H104a8,8,0,0,0-8,8v48a8,8,0,0,0,8,8h48a8,8,0,0,0,8-8V104A8,8,0,0,0,152,96Zm-8,48H112V112h32Zm88,0H216V112h16a8,8,0,0,0,0-16H216V56a16,16,0,0,0-16-16H160V24a8,8,0,0,0-16,0V40H112V24a8,8,0,0,0-16,0V40H56A16,16,0,0,0,40,56V96H24a8,8,0,0,0,0,16H40v32H24a8,8,0,0,0,0,16H40v40a16,16,0,0,0,16,16H96v16a8,8,0,0,0,16,0V216h32v16a8,8,0,0,0,16,0V216h40a16,16,0,0,0,16-16V160h16a8,8,0,0,0,0-16Zm-32,56H56V56H200v95.87s0,.09,0,.13,0,.09,0,.13V200Z"
-      fill="#2563EB"
-    />
-  </Svg>
-)
+function IconChip() {
+  return (
+    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
+      <Path d={PHOSPHOR_FILL_PATHS.CPU} fill="#2563EB" />
+    </Svg>
+  )
+}
 
-const IconChart = () => (
-  <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
-    <Path
-      d="M224,200h-8V40a8,8,0,0,0-8-8H152a8,8,0,0,0-8,8V80H96a8,8,0,0,0-8,8v40H48a8,8,0,0,0-8,8v64H32a8,8,0,0,0,0,16H224a8,8,0,0,0,0-16ZM160,48h40V200H160ZM104,96h40V200H104ZM56,144H88v56H56Z"
-      fill="#2563EB"
-    />
-  </Svg>
-)
+function IconChart() {
+  return (
+    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
+      <Path d={PHOSPHOR_FILL_PATHS.CHART_BAR} fill="#2563EB" />
+    </Svg>
+  )
+}
 
-const IconTarget = () => (
-  <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
-    <Path
-      d="M221.87,83.16A104.1,104.1,0,1,1,195.67,49l22.67-22.68a8,8,0,0,1,11.32,11.32l-96,96a8,8,0,0,1-11.32-11.32l27.72-27.72a40,40,0,1,0,17.87,31.09,8,8,0,1,1,16-.9,56,56,0,1,1-22.38-41.65L184.3,60.39a87.88,87.88,0,1,0,23.13,29.67,8,8,0,0,1,14.44-6.9Z"
-      fill="#2563EB"
-    />
-  </Svg>
-)
-
+function IconTarget() {
+  return (
+    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING, marginTop: 1 }}>
+      <Path d={PHOSPHOR_FILL_PATHS.TARGET} fill="#2563EB" />
+    </Svg>
+  )
+}
 
 const styles = StyleSheet.create({
   page: {
@@ -573,27 +561,22 @@ export function ResumePdf({ resume }: ResumePdfProps) {
             {resume.successes && resume.successes.length > 0 && (
               <View style={styles.section}>
                 <Text style={styles.h2}>KEY ACHIEVEMENTS</Text>
-                {resume.successes.map((success, index) => {
-                  let IconComponent = null
-                  if (success.icon === 'trophy') IconComponent = IconTrophy
-                  else if (success.icon === 'rocket') IconComponent = IconRocket
-                  else if (success.icon === 'users') IconComponent = IconUsers
-                  else if (success.icon === 'chip') IconComponent = IconChip
-                  else if (success.icon === 'chart') IconComponent = IconChart
-                  else if (success.icon === 'target') IconComponent = IconTarget
-
-                  return (
-                    <View key={index} style={styles.successItem}>
-                      <View style={{ width: ICON_SIZE + ICON_SPACING }}>
-                        {IconComponent ? <IconComponent /> : null}
-                      </View>
-                      <View style={styles.successContent}>
-                        <Text style={styles.successTitle}>{success.title}</Text>
-                        <Text style={styles.successSummary}>{success.summary}</Text>
-                      </View>
-                    </View>
-                  )
-                })}
+                 {resume.successes.map((success, index) => (
+                   <View key={index} style={styles.successItem}>
+                     <View style={{ width: ICON_SIZE + ICON_SPACING }}>
+                       {success.icon === 'trophy' && <IconTrophy />}
+                       {success.icon === 'rocket' && <IconRocket />}
+                       {success.icon === 'users' && <IconUsers />}
+                       {success.icon === 'chip' && <IconChip />}
+                       {success.icon === 'chart' && <IconChart />}
+                       {success.icon === 'target' && <IconTarget />}
+                     </View>
+                     <View style={styles.successContent}>
+                       <Text style={styles.successTitle}>{success.title}</Text>
+                       <Text style={styles.successSummary}>{success.summary}</Text>
+                     </View>
+                   </View>
+                 ))}
               </View>
             )}
 
