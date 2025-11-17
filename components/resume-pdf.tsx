@@ -138,6 +138,14 @@ function IconShield() {
   )
 }
 
+function IconLayers() {
+  return (
+    <Svg width={ICON_SIZE} height={ICON_SIZE} viewBox="0 0 256 256" style={{ marginRight: ICON_SPACING }}>
+      <Path d={PHOSPHOR_FILL_PATHS.LAYERS} fill="#2563EB" />
+    </Svg>
+  )
+}
+
 const styles = StyleSheet.create({
   page: {
     padding: '28.35 42.52', // 1cm = 28.35pt, 1.5cm = 42.52pt
@@ -572,6 +580,7 @@ export function ResumePdf({ resume }: ResumePdfProps) {
                       {success.icon === 'target' && <IconTarget />}
                       {success.icon === 'git' && <IconGit />}
                       {success.icon === 'shield' && <IconShield />}
+                      {success.icon === 'layers' && <IconLayers />}
                     </View>
                      <View style={styles.successContent}>
                        <Text style={styles.successTitle}>{success.title}</Text>

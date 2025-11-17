@@ -17,6 +17,7 @@ const icons = [
   { name: 'Target', var: 'TARGET' },
   { name: 'GitBranch', var: 'GIT' },
   { name: 'Shield', var: 'SHIELD' },
+  { name: 'Stack', var: 'LAYERS' },
 ]
 
 const nodeModulesPath = path.join(__dirname, '..', 'node_modules/@phosphor-icons/react/dist')
@@ -28,9 +29,12 @@ icons.forEach(({ name, var: varName }) => {
 
   if (fs.existsSync(defsFile)) {
     const content = fs.readFileSync(defsFile, 'utf-8')
-    const match = content.match(/"fill"[^]*?d:\s*"([^"]+)"/)
-    if (match) {
-      paths[varName] = match[1]
+    // Match all path d attributes in the fill variant
+    const pathMatches = content.matchAll(/"fill"[^]*?d:\s*"([^"]+)"/g)
+    const allPaths = Array.from(pathMatches).map(m => m[1])
+    if (allPaths.length > 0) {
+      // For icons with multiple paths, combine them (Stack has 3 paths)
+      paths[varName] = allPaths.join(' ')
     } else {
       console.warn(`⚠️  Could not extract fill path for ${name}`)
       paths[varName] = '' // fallback empty path
