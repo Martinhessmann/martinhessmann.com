@@ -6,7 +6,7 @@
     "image": "",
     "email": "martin@martinhessmann.com",
     "url": "https://martinhessmann.com",
-    "summary": "Digital product leader blending design systems, UX, and engineering to launch high-performing marketing sites and applications. Experienced guiding startups and enterprises from discovery through delivery.",
+    "summary": "Digital product leader across UX, design systems, and headless engineering. Scales design ops and dev teams to ship headless marketing and product sites with AI-assisted workflows and tight discovery-to-delivery cycles.",
     "location": {
       "city": "Berlin",
       "countryCode": "DE"
@@ -38,12 +38,13 @@
         "UI Design",
         "Product Design",
         "Design Systems",
-        "Digital Art Direction",
+        "Design Tokens",
         "Figma",
-        "Adobe Creative Suite",
-        "User Research",
         "Prototyping",
-        "Usability Testing"
+        "User Research",
+        "Usability Testing",
+        "Interaction Design",
+        "Information Architecture"
       ]
     },
     {
@@ -52,10 +53,13 @@
       "keywords": [
         "Design Ops",
         "Team Leadership",
-        "Design Systems",
         "Design Strategy",
+        "Design System Governance",
+        "Roadmapping",
         "Stakeholder Management",
-        "Design Process Optimization"
+        "Cross-functional Delivery",
+        "Resource Planning",
+        "Hiring & Coaching"
       ]
     },
     {
@@ -66,12 +70,19 @@
         "Next.js",
         "Nuxt.js",
         "TypeScript",
-        "JavaScript",
         "Headless Architecture",
-        "AI Integration",
-        "Automation",
+        "Platform Architecture",
         "Developer Experience",
-        "Technical Strategy"
+        "Automation",
+        "AI Integration",
+        "AI-assisted Workflows",
+        "Content Automation",
+        "GitOps (GitLab)",
+        "CI/CD Pipelines",
+        "Pipeline Management",
+        "Sentry Automations",
+        "Playwright Testing",
+        "Observability"
       ]
     }
   ],
@@ -87,7 +98,8 @@
         "Google Search Console",
         "Uptime Monitoring",
         "Cloudflare CDN",
-        "Hetzner"
+        "Hetzner",
+        "Automation"
       ],
       "startDate": "2021-03",
       "url": "https://brasseriecolette.de",
@@ -145,7 +157,7 @@
     },
     {
       "name": "easyCredit Partner",
-      "description": "Co-owned product, design, and development for easyCredit's partner portal, delivering a conversion-focused WordPress build with Algolia search and automated compliance updates.",
+      "description": "Co-owned product, design, and development for easyCredit's partner portal, delivering a compliance-ready WordPress build with Algolia search and automated updates.",
       "keywords": [
         "WordPress",
         "Optimole",
@@ -189,7 +201,9 @@
       "name": "Elodie Carstensen",
       "description": "Designed and built an immersive React portfolio for Elodie Carstensen, blending modular storytelling, rapid content updates, and performant 3D-inspired interactions.",
       "keywords": [
-        "React"
+        "React",
+        "Content Workflows",
+        "Performance Optimization"
       ],
       "startDate": "2024",
       "url": "https://elodiecarstensen.com",
@@ -216,7 +230,9 @@
         "Sentry",
         "Google Search Console",
         "Uptime Monitoring",
-        "Hetzner"
+        "Hetzner",
+        "Automation",
+        "AI-assisted QA"
       ],
       "startDate": "2023-05",
       "url": "https://fairworks.com",
@@ -323,7 +339,7 @@
     },
     {
       "name": "RAS Services",
-      "description": "Designed and developed the RAS Services concierge platform, integrating WordPress automations, CRM touchpoints, and performance monitoring for nationwide roll-out.",
+      "description": "Designed and developed the RAS Services concierge platform, integrating WordPress automations, CRM touchpoints, and monitoring for nationwide roll-out.",
       "keywords": [
         "WordPress",
         "Optimole",
@@ -387,7 +403,7 @@
     },
     {
       "name": "TeamBank",
-      "description": "Led the cross-functional squad behind teambank.de, implementing Algolia search, SEO guardrails, and conversion analytics for the easyCredit brand.",
+      "description": "Led the cross-functional squad behind teambank.de, implementing Algolia search, SEO guardrails, and content analytics for the easyCredit brand.",
       "keywords": [
         "WordPress",
         "Algolia",
@@ -529,12 +545,12 @@
       },
       "summary": "Lead cross-functional squads delivering headless marketing sites and digital products, aligning research, design, and engineering for measurable growth.",
       "highlights": [
-        "Direct an 8-person product trio (design, frontend, platform) shipping 15+ sites and internal tools",
-        "Established a tokenized Figma design system and coded component library; cut design-to-dev handoff time 30% and reduced UI regressions",
-        "Standardized platform stack with Vercel/Hetzner and Cloudflare CDN/WAF; achieved sub-2.5s LCP and 95+ Core Web Vitals on flagship launches",
-        "Integrated product analytics, Sentry, and uptime playbooks; reduced mean time to resolution below two hours"
+        "Directed an 8-person product trio (design, frontend, platform) shipping 15+ headless marketing sites and internal tools",
+        "Established a tokenized design system and coded component library; cut design-to-dev handoff time 30% and reduced UI regressions",
+        "Standardized platform stack with Vercel/Hetzner + Cloudflare CDN/WAF; codified GitLab CI/CD and release pipelines",
+        "Instrumented Sentry automations, uptime monitors, and Playwright smoke tests; reduced mean time to resolution below two hours"
       ],
-      "tech": ["Next.js", "Nuxt.js", "Eleventy", "WordPress", "TYPO3", "Prismic", "Cloudflare", "Vercel", "Hetzner", "Sentry", "Algolia", "Optimole", "Mapbox"]
+      "tech": ["Next.js", "Nuxt.js", "Eleventy", "WordPress", "TYPO3", "Prismic", "Cloudflare", "Vercel", "Hetzner", "GitLab", "GitOps", "CI/CD", "Sentry Automations", "Playwright", "Algolia", "Optimole", "Mapbox", "AI-assisted workflows"]
     },
     {
       "name": "Unit U+2463 GmbH",
@@ -549,11 +565,11 @@
       "summary": "Directed UX and visual systems for a multi-brand portfolio, bridging strategy, research, and implementation across digital touchpoints.",
       "highlights": [
         "Rolled out a multi-brand design system in Figma and Storybook reused across 20+ launches, accelerating delivery by 25%",
-        "Led discovery, customer interviews, and rapid prototyping to inform product roadmaps and lift lead conversion 18%",
-        "Partnered with engineering teams to deliver componentized frontends while maintaining WordPress/TYPO3/Prismic stacks",
-        "Championed accessibility and performance audits; raised Lighthouse scores from 70s to 90s on flagship domains"
+        "Led discovery, customer interviews, and rapid prototyping to inform product roadmaps and prioritize releases",
+        "Partnered with engineering to deliver componentized frontends while maintaining WordPress/TYPO3/Prismic stacks",
+        "Introduced GitLab CI/CD, Storybook templates, and handoff rituals to streamline launches"
       ],
-      "tech": ["Figma", "Storybook", "WordPress", "TYPO3", "Prismic", "Jira"]
+      "tech": ["Figma", "Storybook", "WordPress", "TYPO3", "Prismic", "Jira", "GitLab", "CI/CD", "Design tokens"]
     },
     {
       "name": "Ape Unit GmbH",
@@ -644,28 +660,28 @@
     },
     {
       "icon": "rocket",
-      "title": "Design ops",
-      "summary": "Tokenized design system; cut handoff time 30%"
+      "title": "Design Ops",
+      "summary": "Tokenized design system; cut design→dev handoff time 30%"
     },
     {
       "icon": "users",
-      "title": "Team leadership",
-      "summary": "Ran 8-person trio across design/frontend/platform"
+      "title": "Team Leadership",
+      "summary": "Led 8-person trio across design, frontend, platform for 15+ launches"
     },
     {
-      "icon": "chart",
-      "title": "Performance",
-      "summary": "Raised Lighthouse scores from 70s to 90s"
+      "icon": "chip",
+      "title": "AI & Automation",
+      "summary": "Built AI-assisted design/content ops; accelerated prototyping and QA"
     },
     {
-      "icon": "target",
-      "title": "Conversion",
-      "summary": "Lifted lead conversion 18% through discovery"
+      "icon": "git",
+      "title": "GitOps & CI/CD",
+      "summary": "Standardized GitLab flows and pipelines with Sentry automations"
     },
     {
-      "icon": "star",
-      "title": "Satisfaction",
-      "summary": "Sustained 90%+ stakeholder satisfaction"
+      "icon": "shield",
+      "title": "Quality",
+      "summary": "Codified Playwright and monitoring to keep releases stable"
     }
   ],
   "interests": [
