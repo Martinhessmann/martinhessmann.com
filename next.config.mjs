@@ -25,6 +25,8 @@ const nextConfig = {
       },
     ],
   },
+  // Transpile ESM packages
+  transpilePackages: ['@react-pdf/renderer'],
   // Ensure Tailwind has enough time to build
   webpack: (config) => {
     // This is to ensure the CSS is properly generated

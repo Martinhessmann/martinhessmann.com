@@ -1,10 +1,24 @@
 "use client"
 
 import { useEffect, useState } from 'react'
-import { PDFViewer } from '@react-pdf/renderer'
+import dynamic from 'next/dynamic'
 import { ResumePdf } from './resume-pdf'
 import { Resume } from '@/types/resume'
 import resumeData from '@/data/resume.json'
+
+// Dynamically import PDFViewer to avoid SSR issues
+// Using default import syntax for ESM compatibility
+const PDFViewer = dynamic(
+  () => import('@react-pdf/renderer').then((mod) => ({ default: mod.PDFViewer })),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="fixed inset-0 bg-gray-100 flex items-center justify-center">
+        <div className="text-gray-600">Loading PDF preview...</div>
+      </div>
+    ),
+  }
+)
 
 export function PdfPreview() {
   const [mounted, setMounted] = useState(false)

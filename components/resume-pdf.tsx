@@ -5,8 +5,12 @@ import { Resume } from '@/types/resume'
 // Create styles matching print CSS
 // React-PDF uses points (pt) as default unit - numbers are treated as points
 // Base font size is 10pt, so: 1rem = 10pt, 0.75rem = 7.5pt, 0.5rem = 5pt, etc.
+// Disable hyphenation to avoid mid-word breaks
+Font.registerHyphenationCallback((word) => [word])
+
 // Accent color for section cues and links
 const ACCENT = '#2563EB' // Blue 600-ish
+const DATE_RAIL_WIDTH = 90 // fixed rail for right-aligned dates
 
 const styles = StyleSheet.create({
   page: {
@@ -14,7 +18,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
     lineHeight: 1.35, // slightly looser for dense bullets
     fontFamily: 'Helvetica',
-    color: '#000',
+    color: '#111',
   },
   header: {
     marginBottom: 10, // 1rem = 10pt
@@ -28,12 +32,12 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 11,
     marginBottom: 5, // 0.5rem = 5pt
-    color: '#555',
+    color: '#333',
   },
   summary: {
     fontSize: 9,
     marginBottom: 5, // 0.5rem = 5pt
-    lineHeight: 1.25,
+    lineHeight: 1.37,
   },
   contact: {
     flexDirection: 'row',
@@ -41,9 +45,10 @@ const styles = StyleSheet.create({
     gap: 7.5, // 0.75rem = 7.5pt
     fontSize: 9,
     marginTop: 5, // 0.5rem = 5pt
-    color: '#555',
+    color: '#333',
   },
   section: {
+    marginTop: 17, // stronger separation between sections (16-18pt range)
     marginBottom: 10, // 1rem = 10pt
   },
   h2: {
@@ -56,7 +61,7 @@ const styles = StyleSheet.create({
   workItem: {
     borderLeft: `2px solid ${ACCENT}`,
     paddingLeft: 7.5, // 0.75rem = 7.5pt
-    marginBottom: 7.5, // 0.75rem = 7.5pt
+    marginBottom: 11, // increased spacing between work items (10-12pt range)
     minHeight: 0, // Allow React-PDF to calculate
   },
   workHeader: {
@@ -67,18 +72,23 @@ const styles = StyleSheet.create({
   workHeaderLeft: {
     flex: 1,
   },
+  dateRail: {
+    width: DATE_RAIL_WIDTH,
+    alignItems: 'flex-end',
+  },
   h3: {
     fontSize: 11,
-    marginBottom: 2.5, // 0.25rem = 2.5pt
+    marginBottom: 2.5, // 0.25rem = 2.5pt (micro-spacing after role title)
     fontWeight: 'bold',
   },
   company: {
     fontSize: 9,
-    color: '#333', // improve contrast
+    color: '#222', // improved contrast
   },
   date: {
     fontSize: 9,
-    color: '#333', // improve contrast
+    color: '#222', // improved contrast
+    textAlign: 'right',
   },
   workSummary: {
     fontSize: 9,
@@ -118,18 +128,18 @@ const styles = StyleSheet.create({
   },
   projectUrl: {
     fontSize: 8,
-    color: '#555',
+    color: '#444',
     marginBottom: 2, // 0.2rem = 2pt
   },
   projectDescription: {
     fontSize: 9,
-    color: '#555',
+    color: '#444',
     marginBottom: 3, // 0.3rem = 3pt
     lineHeight: 1.35,
   },
   projectKeywords: {
     fontSize: 8,
-    color: '#555',
+    color: '#444',
     lineHeight: 1.25,
   },
   skillsGrid: {
@@ -160,12 +170,12 @@ const styles = StyleSheet.create({
   },
   skillKeywords: {
     fontSize: 8,
-    color: '#555',
+    color: '#444',
   },
   educationItem: {
     borderLeft: `2px solid ${ACCENT}`,
     paddingLeft: 7.5, // 0.75rem = 7.5pt
-    marginBottom: 5, // 0.5rem = 5pt
+    marginBottom: 11, // match work item spacing (10-12pt range)
     minHeight: 0, // Allow React-PDF to calculate
   },
   educationHeader: {
@@ -184,7 +194,7 @@ const styles = StyleSheet.create({
   },
   languageFluency: {
     fontSize: 8,
-    color: '#555',
+    color: '#444',
   },
   interestItem: {
     width: '48%',
@@ -197,7 +207,7 @@ const styles = StyleSheet.create({
   },
   interestKeywords: {
     fontSize: 8,
-    color: '#555',
+    color: '#444',
   },
   link: {
     color: ACCENT,
@@ -227,25 +237,36 @@ export function ResumePdf({ resume }: ResumePdfProps) {
           {resume.basics.summary && <Text style={styles.summary}>{resume.basics.summary}</Text>}
           <View style={styles.contact}>
             {resume.basics.location && (
-              <Text>
-                {resume.basics.location.city || ''}
-                {resume.basics.location.city && resume.basics.location.countryCode && ', '}
-                {resume.basics.location.countryCode || ''}
-              </Text>
+              <>
+                <Text>
+                  {resume.basics.location.city || ''}
+                  {resume.basics.location.city && resume.basics.location.countryCode && ', '}
+                  {resume.basics.location.countryCode || ''}
+                </Text>
+                {(resume.basics.email || resume.basics.phone || resume.basics.url) && (
+                  <Text> • </Text>
+                )}
+              </>
             )}
             {resume.basics.email && (
-              <Link src={`mailto:${resume.basics.email}`} style={styles.link}>
-                {resume.basics.email}
-              </Link>
+              <>
+                <Link src={`mailto:${resume.basics.email}`} style={styles.link}>
+                  {resume.basics.email}
+                </Link>
+                {(resume.basics.phone || resume.basics.url) && <Text> • </Text>}
+              </>
             )}
             {resume.basics.phone && (
-              <Link src={`tel:${resume.basics.phone}`} style={styles.link}>
-                {resume.basics.phone}
-              </Link>
+              <>
+                <Link src={`tel:${resume.basics.phone}`} style={styles.link}>
+                  {resume.basics.phone}
+                </Link>
+                {resume.basics.url && <Text> • </Text>}
+              </>
             )}
             {resume.basics.url && (
               <Link src={resume.basics.url} style={styles.link}>
-                {resume.basics.url}
+                {resume.basics.url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')}
               </Link>
             )}
           </View>
@@ -262,12 +283,14 @@ export function ResumePdf({ resume }: ResumePdfProps) {
                     <Text style={styles.h3}>{job.position}</Text>
                     <Text style={styles.company}>{job.name}</Text>
                   </View>
-                  {job.startDate && (
-                    <Text style={styles.date}>
-                      {job.startDate}
-                      {job.endDate ? ` - ${job.endDate}` : ' - Present'}
-                    </Text>
-                  )}
+                  <View style={styles.dateRail}>
+                    {job.startDate && (
+                      <Text style={styles.date}>
+                        {job.startDate}
+                        {job.endDate ? ` – ${job.endDate}` : ' – Present'}
+                      </Text>
+                    )}
+                  </View>
                 </View>
                 {job.summary && <Text style={styles.workSummary}>{job.summary}</Text>}
                 {job.highlights && job.highlights.length > 0 && (
@@ -390,12 +413,14 @@ export function ResumePdf({ resume }: ResumePdfProps) {
                     </Text>
                     <Text style={styles.company}>{edu.institution}</Text>
                   </View>
-                  {edu.startDate && (
-                    <Text style={styles.date}>
-                      {edu.startDate}
-                      {edu.endDate ? ` - ${edu.endDate}` : ''}
-                    </Text>
-                  )}
+                  <View style={styles.dateRail}>
+                    {edu.startDate && (
+                      <Text style={styles.date}>
+                        {edu.startDate}
+                        {edu.endDate ? ` – ${edu.endDate}` : ''}
+                      </Text>
+                    )}
+                  </View>
                 </View>
               </View>
             ))}

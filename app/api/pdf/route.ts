@@ -24,6 +24,9 @@ export async function GET(request: NextRequest) {
       headers: {
         'Content-Type': 'application/pdf',
         'Content-Disposition': 'attachment; filename="resume.pdf"',
+        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+        Pragma: 'no-cache',
+        Expires: '0',
       },
     })
   } catch (error) {
@@ -34,4 +37,6 @@ export async function GET(request: NextRequest) {
     )
   }
 }
-
+// Ensure this route is never cached by Next.js or the browser
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
