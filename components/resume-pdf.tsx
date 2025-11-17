@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   page: {
     padding: '28.35 42.52', // 1cm = 28.35pt, 1.5cm = 42.52pt
     fontSize: 10,
-    lineHeight: 1.25,
+    lineHeight: 1.35, // slightly looser for dense bullets
     fontFamily: 'Helvetica',
     color: '#000',
   },
@@ -74,28 +74,28 @@ const styles = StyleSheet.create({
   },
   company: {
     fontSize: 9,
-    color: '#555',
+    color: '#333', // improve contrast
   },
   date: {
     fontSize: 9,
-    color: '#555',
+    color: '#333', // improve contrast
   },
   workSummary: {
     fontSize: 9,
-    marginBottom: 5, // 0.5rem = 5pt
-    lineHeight: 1.25,
+    marginBottom: 6, // a bit more space before bullets
+    lineHeight: 1.35,
   },
   highlights: {
     fontSize: 9,
-    lineHeight: 1.25,
+    lineHeight: 1.35,
   },
   highlightItem: {
     flexDirection: 'row',
-    marginBottom: 3, // 0.3rem = 3pt
+    marginBottom: 4, // 0.4rem = 4pt for rhythm
   },
   bullet: {
     marginRight: 5, // 0.5rem = 5pt
-    color: '#555',
+    color: ACCENT,
   },
   projectsGrid: {
     flexDirection: 'row',
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     fontSize: 9,
     color: '#555',
     marginBottom: 3, // 0.3rem = 3pt
-    lineHeight: 1.25,
+    lineHeight: 1.35,
   },
   projectKeywords: {
     fontSize: 8,
@@ -136,6 +136,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: 7.5, // 0.75rem = 7.5pt
+  },
+  skillsLevels: {
+    gap: 5,
+  },
+  skillLevelRow: {
+    marginBottom: 6,
+  },
+  skillLevelLabel: {
+    fontSize: 9,
+    fontWeight: 'bold',
+    color: '#111',
+    marginBottom: 2,
   },
   skillItem: {
     width: '48%',
@@ -189,7 +201,7 @@ const styles = StyleSheet.create({
   },
   link: {
     color: ACCENT,
-    textDecoration: 'none',
+    textDecoration: 'underline', // clearer affordance like the sample
   },
 })
 
@@ -313,16 +325,55 @@ export function ResumePdf({ resume }: ResumePdfProps) {
         {resume.skills && resume.skills.length > 0 && (
           <View style={styles.section}>
             <Text style={styles.h2}>Skills</Text>
-            <View style={styles.skillsGrid}>
-              {resume.skills.map((skill, index) => (
-                <View key={index} style={styles.skillItem}>
-                  <Text style={styles.skillName}>{skill.name}</Text>
-                  {skill.keywords && skill.keywords.length > 0 && (
-                    <Text style={styles.skillKeywords}>{skill.keywords.join(', ')}</Text>
-                  )}
+            {(() => {
+              const hasLevels = resume.skills?.some((s) => s.level)
+              if (hasLevels) {
+                const order = ['Expert', 'Advanced', 'Intermediate', 'Familiar', 'Beginner']
+                const grouped = new Map<string, typeof resume.skills>()
+                resume.skills?.forEach((s) => {
+                  const level = (s.level || 'Other').trim()
+                  if (!grouped.has(level)) grouped.set(level, [])
+                  grouped.get(level)!.push(s)
+                })
+                const keys = Array.from(grouped.keys()).sort((a, b) => {
+                  const ia = order.indexOf(a)
+                  const ib = order.indexOf(b)
+                  if (ia !== -1 && ib !== -1) return ia - ib
+                  if (ia !== -1) return -1
+                  if (ib !== -1) return 1
+                  return a.localeCompare(b)
+                })
+                return (
+                  <View style={styles.skillsLevels}>
+                    {keys.map((level) => (
+                      <View key={level} style={styles.skillLevelRow} wrap={false}>
+                        <Text style={styles.skillLevelLabel}>{level}</Text>
+                        <Text style={styles.skillKeywords}>
+                          {grouped
+                            .get(level)!
+                            .map((s) => s.name)
+                            .filter(Boolean)
+                            .join(', ')}
+                        </Text>
+                      </View>
+                    ))}
+                  </View>
+                )
+              }
+              // Fallback to grid when no levels are provided
+              return (
+                <View style={styles.skillsGrid}>
+                  {resume.skills!.map((skill, index) => (
+                    <View key={index} style={styles.skillItem}>
+                      <Text style={styles.skillName}>{skill.name}</Text>
+                      {skill.keywords && skill.keywords.length > 0 && (
+                        <Text style={styles.skillKeywords}>{skill.keywords.join(', ')}</Text>
+                      )}
+                    </View>
+                  ))}
                 </View>
-              ))}
-            </View>
+              )
+            })()}
           </View>
         )}
 
