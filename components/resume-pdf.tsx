@@ -5,6 +5,9 @@ import { Resume } from '@/types/resume'
 // Create styles matching print CSS
 // React-PDF uses points (pt) as default unit - numbers are treated as points
 // Base font size is 10pt, so: 1rem = 10pt, 0.75rem = 7.5pt, 0.5rem = 5pt, etc.
+// Accent color for section cues and links
+const ACCENT = '#2563EB' // Blue 600-ish
+
 const styles = StyleSheet.create({
   page: {
     padding: '28.35 42.52', // 1cm = 28.35pt, 1.5cm = 42.52pt
@@ -48,11 +51,10 @@ const styles = StyleSheet.create({
     marginBottom: 6, // 0.6rem = 6pt
     marginTop: 7.5, // 0.75rem = 7.5pt
     fontWeight: 'bold',
-    borderBottom: '1px solid #ddd',
-    paddingBottom: 2.5, // 0.25rem = 2.5pt
+    color: ACCENT, // Introduce color instead of underline
   },
   workItem: {
-    borderLeft: '2px solid #ddd',
+    borderLeft: `2px solid ${ACCENT}`,
     paddingLeft: 7.5, // 0.75rem = 7.5pt
     marginBottom: 7.5, // 0.75rem = 7.5pt
     minHeight: 0, // Allow React-PDF to calculate
@@ -102,7 +104,7 @@ const styles = StyleSheet.create({
   },
   projectItem: {
     width: '48%',
-    borderLeft: '2px solid #ddd',
+    borderLeft: `2px solid ${ACCENT}`,
     paddingLeft: 7.5, // 0.75rem = 7.5pt
     marginBottom: 6, // 0.6rem = 6pt
     paddingTop: 3, // 0.3rem = 3pt
@@ -149,7 +151,7 @@ const styles = StyleSheet.create({
     color: '#555',
   },
   educationItem: {
-    borderLeft: '2px solid #ddd',
+    borderLeft: `2px solid ${ACCENT}`,
     paddingLeft: 7.5, // 0.75rem = 7.5pt
     marginBottom: 5, // 0.5rem = 5pt
     minHeight: 0, // Allow React-PDF to calculate
@@ -186,7 +188,7 @@ const styles = StyleSheet.create({
     color: '#555',
   },
   link: {
-    color: '#000',
+    color: ACCENT,
     textDecoration: 'none',
   },
 })
@@ -382,4 +384,3 @@ export function ResumePdf({ resume }: ResumePdfProps) {
     </Document>
   )
 }
-
