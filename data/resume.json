@@ -63,13 +63,25 @@
       ]
     },
     {
-      "name": "Dev Management & AI",
-      "level": "Advanced",
+      "name": "Frontend & Content",
+      "level": "Expert",
       "keywords": [
+        "HTML",
+        "CSS",
         "React",
         "Next.js",
         "Nuxt.js",
         "TypeScript",
+        "Prototyping",
+        "Content Management",
+        "SEO",
+        "Performance Optimization"
+      ]
+    },
+    {
+      "name": "Dev Management & AI",
+      "level": "Advanced",
+      "keywords": [
         "Headless Architecture",
         "Platform Architecture",
         "Developer Experience",
@@ -654,9 +666,9 @@
   ],
   "successes": [
     {
-      "icon": "trophy",
-      "title": "Core Web Vitals",
-      "summary": "Cut LCP to 2.3s and 95+ CWV on flagship launches"
+      "icon": "chart",
+      "title": "Performance",
+      "summary": "Raised Lighthouse scores from 70s to 90s on redesigned domains"
     },
     {
       "icon": "rocket",

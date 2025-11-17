@@ -249,15 +249,8 @@ const styles = StyleSheet.create({
   },
   // Education styles
   educationItem: {
-    borderLeft: `2px solid ${ACCENT}`,
-    paddingLeft: 7.5,
-    marginBottom: 8,
+    marginBottom: 6,
     minHeight: 0,
-  },
-  educationHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 4,
   },
   // Successes styles
   successItem: {
@@ -518,36 +511,30 @@ export function ResumePdf({ resume }: ResumePdfProps) {
                 <Text style={styles.h2}>EDUCATION</Text>
                 {resume.education.map((edu, index) => (
                   <View key={index} style={styles.educationItem} wrap={false}>
-                    <View style={styles.educationHeader}>
-                      <View>
-                        <Text style={styles.h3}>
-                          {edu.studyType} in {edu.area}
-                        </Text>
-                        <Text style={styles.company}>{edu.institution}</Text>
-                      </View>
-                      <View style={styles.dateRail}>
-                        {edu.startDate && (
-                          <View>
-                            <View style={styles.iconTextRow}>
-                              <IconDate />
-                              <Text style={styles.dateLocation}>
-                                {edu.startDate}
-                                {edu.endDate ? ` – ${edu.endDate}` : ''}
-                              </Text>
-                            </View>
-                            {edu.location && (
-                              <View style={[styles.iconTextRow, { marginTop: 2 }]}>
-                                <IconLocation />
-                                <Text style={styles.dateLocation}>
-                                  {edu.location.city || ''}
-                                  {edu.location.city && edu.location.countryCode && ', '}
-                                  {edu.location.countryCode || ''}
-                                </Text>
-                              </View>
-                            )}
-                          </View>
-                        )}
-                      </View>
+                    <View>
+                      <Text style={styles.h3}>
+                        {edu.studyType} in {edu.area}
+                      </Text>
+                      <Text style={styles.company}>{edu.institution}</Text>
+                      {edu.startDate && (
+                        <View style={[styles.iconTextRow, { marginTop: 3 }]}>
+                          <IconDate />
+                          <Text style={styles.dateLocation}>
+                            {edu.startDate}
+                            {edu.endDate ? ` – ${edu.endDate}` : ''}
+                          </Text>
+                        </View>
+                      )}
+                      {edu.location && (
+                        <View style={[styles.iconTextRow, { marginTop: 2 }]}>
+                          <IconLocation />
+                          <Text style={styles.dateLocation}>
+                            {edu.location.city || ''}
+                            {edu.location.city && edu.location.countryCode && ', '}
+                            {edu.location.countryCode || ''}
+                          </Text>
+                        </View>
+                      )}
                     </View>
                   </View>
                 ))}
@@ -654,7 +641,7 @@ export function ResumePdf({ resume }: ResumePdfProps) {
                       <View style={styles.iconTextRow}>
                         <IconDate />
                         <Text style={styles.projectYear}>
-                          {parseInt(project.startDate.split('-')[0])}
+                          since {parseInt(project.startDate.split('-')[0])}
                         </Text>
                       </View>
                     )}
