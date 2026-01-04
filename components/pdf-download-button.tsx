@@ -34,29 +34,31 @@ export function PdfDownloadButton() {
 
   if (!mounted) {
     return (
-      <div className="print:hidden fixed top-4 right-4 z-50 pdf-download-button">
+      <div className="print:hidden fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 pdf-download-button">
         <button
           disabled
-          className="flex items-center gap-2 px-4 py-2 bg-foreground text-background rounded-lg opacity-50 cursor-not-allowed shadow-lg"
+          className="group flex items-center gap-2 px-4 py-2.5 sm:px-5 sm:py-3 bg-foreground text-background rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 opacity-50 cursor-not-allowed backdrop-blur-sm border border-foreground/10"
         >
-          <Download size={16} />
-          Download Resume
+          <Download size={18} className="group-hover:scale-110 transition-transform duration-300" />
+          <span className="font-medium text-sm sm:text-base">Download Resume</span>
         </button>
       </div>
     )
   }
 
   return (
-    <div className="print:hidden fixed top-4 right-4 z-50 pdf-download-button">
+    <div className="print:hidden fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 pdf-download-button">
       <PDFDownloadLink
         document={<ResumePdf resume={resume} />}
         fileName={getFileName()}
-        className="flex items-center gap-2 px-4 py-2 bg-foreground text-background rounded-lg hover:bg-foreground/90 transition-colors shadow-lg no-underline"
+        className="group flex items-center gap-2 px-4 py-2.5 sm:px-5 sm:py-3 bg-foreground text-background rounded-full shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 no-underline backdrop-blur-sm border border-foreground/10"
       >
         {({ loading }) => (
           <>
-            <Download size={16} />
-            {loading ? 'Generating...' : 'Download Resume'}
+            <Download size={18} className="group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300" />
+            <span className="font-medium text-sm sm:text-base">
+              {loading ? 'Generating...' : 'Download Resume'}
+            </span>
           </>
         )}
       </PDFDownloadLink>
