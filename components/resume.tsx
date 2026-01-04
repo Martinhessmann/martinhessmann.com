@@ -16,6 +16,7 @@ import {
 } from '@/types/resume'
 import { ExternalLink } from 'lucide-react'
 import { useMemo } from 'react'
+import { AnimatedSection } from './animated-section'
 
 interface ResumeProps {
   resume: Resume
@@ -33,7 +34,8 @@ export function Resume({ resume }: ResumeProps) {
   return (
     <div className="space-y-12 print:space-y-6">
       {/* Header Section */}
-      <header className="mb-12 print:mb-6">
+      <AnimatedSection delay={0}>
+        <header className="mb-12 print:mb-6">
         <h1 className="text-4xl font-bold mb-2 print:text-2xl text-foreground">
           {resume.basics.name}
         </h1>
@@ -84,9 +86,11 @@ export function Resume({ resume }: ResumeProps) {
           )}
         </div>
       </header>
+      </AnimatedSection>
 
       {/* Work Experience */}
       {resume.work && resume.work.length > 0 && (
+        <AnimatedSection delay={100}>
         <section className="mb-12 print:mb-6">
           <h2 className="text-2xl font-bold mb-6 print:text-lg print:mb-3 text-foreground">
             Work Experience
@@ -146,10 +150,12 @@ export function Resume({ resume }: ResumeProps) {
             })}
           </div>
         </section>
+        </AnimatedSection>
       )}
 
       {/* Projects */}
       {resume.projects && resume.projects.length > 0 && (
+        <AnimatedSection delay={150}>
         <section className="mb-12 print:mb-6">
           <h2 className="text-2xl font-bold mb-6 print:text-lg print:mb-3 text-foreground">
             Projects
@@ -242,10 +248,12 @@ export function Resume({ resume }: ResumeProps) {
             ))}
           </div>
         </section>
+        </AnimatedSection>
       )}
 
       {/* Key Achievements */}
       {resume.successes && resume.successes.length > 0 && (
+        <AnimatedSection delay={200}>
         <section className="mb-12 print:mb-6">
           <h2 className="text-2xl font-bold mb-6 print:text-lg print:mb-3 text-foreground">
             Key Achievements
@@ -263,10 +271,12 @@ export function Resume({ resume }: ResumeProps) {
             ))}
           </div>
         </section>
+        </AnimatedSection>
       )}
 
       {/* Skills */}
       {resume.skills && resume.skills.length > 0 && (
+        <AnimatedSection delay={250}>
         <section className="mb-12 print:mb-6">
           <h2 className="text-2xl font-bold mb-6 print:text-lg print:mb-3 text-foreground">
             Skills
@@ -286,10 +296,12 @@ export function Resume({ resume }: ResumeProps) {
             ))}
           </div>
         </section>
+        </AnimatedSection>
       )}
 
       {/* Education */}
       {resume.education && resume.education.length > 0 && (
+        <AnimatedSection delay={300}>
         <section className="mb-12 print:mb-6">
           <h2 className="text-2xl font-bold mb-6 print:text-lg print:mb-3 text-foreground">
             Education
@@ -319,10 +331,12 @@ export function Resume({ resume }: ResumeProps) {
             ))}
           </div>
         </section>
+        </AnimatedSection>
       )}
 
       {/* Languages */}
       {resume.languages && resume.languages.length > 0 && (
+        <AnimatedSection delay={350}>
         <section className="mb-12 print:mb-6">
           <h2 className="text-2xl font-bold mb-6 print:text-lg print:mb-3 text-foreground">
             Languages
@@ -340,10 +354,12 @@ export function Resume({ resume }: ResumeProps) {
             ))}
           </div>
         </section>
+        </AnimatedSection>
       )}
 
       {/* Awards */}
       {resume.awards && resume.awards.length > 0 && (
+        <AnimatedSection delay={400}>
         <section className="mb-12 print:mb-6">
           <h2 className="text-2xl font-bold mb-6 print:text-lg print:mb-3 text-foreground">Awards</h2>
           <div className="space-y-4 print:space-y-2">
@@ -361,10 +377,12 @@ export function Resume({ resume }: ResumeProps) {
             ))}
           </div>
         </section>
+        </AnimatedSection>
       )}
 
       {/* Volunteer */}
       {resume.volunteer && resume.volunteer.length > 0 && (
+        <AnimatedSection delay={450}>
         <section className="mb-12 print:mb-6">
           <h2 className="text-2xl font-bold mb-6 print:text-lg print:mb-3 text-foreground">Volunteer</h2>
           <div className="space-y-4 print:space-y-2">
@@ -393,10 +411,12 @@ export function Resume({ resume }: ResumeProps) {
             ))}
           </div>
         </section>
+        </AnimatedSection>
       )}
 
       {/* Certificates */}
       {resume.certificates && resume.certificates.length > 0 && (
+        <AnimatedSection delay={500}>
         <section className="mb-12 print:mb-6">
           <h2 className="text-2xl font-bold mb-6 print:text-lg print:mb-3 text-foreground">Certificates</h2>
           <div className="space-y-4 print:space-y-2">
@@ -419,10 +439,12 @@ export function Resume({ resume }: ResumeProps) {
             ))}
           </div>
         </section>
+        </AnimatedSection>
       )}
 
       {/* Publications */}
       {resume.publications && resume.publications.length > 0 && (
+        <AnimatedSection delay={550}>
         <section className="mb-12 print:mb-6">
           <h2 className="text-2xl font-bold mb-6 print:text-lg print:mb-3 text-foreground">Publications</h2>
           <div className="space-y-4 print:space-y-2">
@@ -448,10 +470,12 @@ export function Resume({ resume }: ResumeProps) {
             ))}
           </div>
         </section>
+        </AnimatedSection>
       )}
 
       {/* References */}
       {resume.references && resume.references.length > 0 && (
+        <AnimatedSection delay={600}>
         <section className="mb-12 print:mb-6">
           <h2 className="text-2xl font-bold mb-6 print:text-lg print:mb-3 text-foreground">References</h2>
           <div className="space-y-4 print:space-y-2">
@@ -465,10 +489,12 @@ export function Resume({ resume }: ResumeProps) {
             ))}
           </div>
         </section>
+        </AnimatedSection>
       )}
 
       {/* Interests */}
       {resume.interests && resume.interests.length > 0 && (
+        <AnimatedSection delay={650}>
         <section className="mb-12 print:mb-6">
           <h2 className="text-2xl font-bold mb-6 print:text-lg print:mb-3 text-foreground">
             Interests
@@ -488,6 +514,7 @@ export function Resume({ resume }: ResumeProps) {
             ))}
           </div>
         </section>
+        </AnimatedSection>
       )}
     </div>
   )
