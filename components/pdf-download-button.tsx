@@ -34,20 +34,20 @@ export function PdfDownloadButton() {
 
   if (!mounted) {
     return (
-      <div className="print:hidden fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 pdf-download-button animate-in fade-in slide-in-from-bottom-4 duration-500">
+      <div className="print:hidden fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 pdf-download-button">
         <button
           disabled
           className="group flex items-center gap-2 px-4 py-2.5 sm:px-5 sm:py-3 bg-foreground text-background rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 opacity-50 cursor-not-allowed backdrop-blur-sm border border-foreground/10"
         >
           <Download size={18} className="group-hover:scale-110 transition-transform duration-300" />
-          <span className="font-medium hidden sm:inline">Download Resume</span>
+          <span className="font-medium text-sm sm:text-base">Download Resume</span>
         </button>
       </div>
     )
   }
 
   return (
-    <div className="print:hidden fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 pdf-download-button animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <div className="print:hidden fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 pdf-download-button">
       <PDFDownloadLink
         document={<ResumePdf resume={resume} />}
         fileName={getFileName()}
@@ -56,7 +56,7 @@ export function PdfDownloadButton() {
         {({ loading }) => (
           <>
             <Download size={18} className="group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300" />
-            <span className="font-medium hidden sm:inline">
+            <span className="font-medium text-sm sm:text-base">
               {loading ? 'Generating...' : 'Download Resume'}
             </span>
           </>

@@ -34,7 +34,7 @@ export function Resume({ resume }: ResumeProps) {
   return (
     <div className="space-y-12 print:space-y-6">
       {/* Header Section */}
-      <AnimatedSection delay={0}>
+      <AnimatedSection delay={0} immediate={true}>
         <header className="mb-12 print:mb-6">
         <h1 className="text-4xl font-bold mb-2 print:text-2xl text-foreground">
           {resume.basics.name}
@@ -90,7 +90,7 @@ export function Resume({ resume }: ResumeProps) {
 
       {/* Work Experience */}
       {resume.work && resume.work.length > 0 && (
-        <AnimatedSection delay={100}>
+        <AnimatedSection delay={50}>
         <section className="mb-12 print:mb-6">
           <h2 className="text-2xl font-bold mb-6 print:text-lg print:mb-3 text-foreground">
             Work Experience
@@ -155,7 +155,7 @@ export function Resume({ resume }: ResumeProps) {
 
       {/* Projects */}
       {resume.projects && resume.projects.length > 0 && (
-        <AnimatedSection delay={150}>
+        <AnimatedSection delay={100}>
         <section className="mb-12 print:mb-6">
           <h2 className="text-2xl font-bold mb-6 print:text-lg print:mb-3 text-foreground">
             Projects
@@ -253,7 +253,7 @@ export function Resume({ resume }: ResumeProps) {
 
       {/* Key Achievements */}
       {resume.successes && resume.successes.length > 0 && (
-        <AnimatedSection delay={200}>
+        <AnimatedSection delay={150}>
         <section className="mb-12 print:mb-6">
           <h2 className="text-2xl font-bold mb-6 print:text-lg print:mb-3 text-foreground">
             Key Achievements
@@ -276,7 +276,7 @@ export function Resume({ resume }: ResumeProps) {
 
       {/* Skills */}
       {resume.skills && resume.skills.length > 0 && (
-        <AnimatedSection delay={250}>
+        <AnimatedSection delay={200}>
         <section className="mb-12 print:mb-6">
           <h2 className="text-2xl font-bold mb-6 print:text-lg print:mb-3 text-foreground">
             Skills
@@ -301,7 +301,7 @@ export function Resume({ resume }: ResumeProps) {
 
       {/* Education */}
       {resume.education && resume.education.length > 0 && (
-        <AnimatedSection delay={300}>
+        <AnimatedSection delay={250}>
         <section className="mb-12 print:mb-6">
           <h2 className="text-2xl font-bold mb-6 print:text-lg print:mb-3 text-foreground">
             Education
@@ -336,7 +336,7 @@ export function Resume({ resume }: ResumeProps) {
 
       {/* Languages */}
       {resume.languages && resume.languages.length > 0 && (
-        <AnimatedSection delay={350}>
+        <AnimatedSection delay={300}>
         <section className="mb-12 print:mb-6">
           <h2 className="text-2xl font-bold mb-6 print:text-lg print:mb-3 text-foreground">
             Languages
@@ -359,7 +359,7 @@ export function Resume({ resume }: ResumeProps) {
 
       {/* Awards */}
       {resume.awards && resume.awards.length > 0 && (
-        <AnimatedSection delay={400}>
+        <AnimatedSection delay={350}>
         <section className="mb-12 print:mb-6">
           <h2 className="text-2xl font-bold mb-6 print:text-lg print:mb-3 text-foreground">Awards</h2>
           <div className="space-y-4 print:space-y-2">
@@ -382,7 +382,7 @@ export function Resume({ resume }: ResumeProps) {
 
       {/* Volunteer */}
       {resume.volunteer && resume.volunteer.length > 0 && (
-        <AnimatedSection delay={450}>
+        <AnimatedSection delay={400}>
         <section className="mb-12 print:mb-6">
           <h2 className="text-2xl font-bold mb-6 print:text-lg print:mb-3 text-foreground">Volunteer</h2>
           <div className="space-y-4 print:space-y-2">
@@ -416,7 +416,7 @@ export function Resume({ resume }: ResumeProps) {
 
       {/* Certificates */}
       {resume.certificates && resume.certificates.length > 0 && (
-        <AnimatedSection delay={500}>
+        <AnimatedSection delay={450}>
         <section className="mb-12 print:mb-6">
           <h2 className="text-2xl font-bold mb-6 print:text-lg print:mb-3 text-foreground">Certificates</h2>
           <div className="space-y-4 print:space-y-2">
@@ -444,7 +444,7 @@ export function Resume({ resume }: ResumeProps) {
 
       {/* Publications */}
       {resume.publications && resume.publications.length > 0 && (
-        <AnimatedSection delay={550}>
+        <AnimatedSection delay={500}>
         <section className="mb-12 print:mb-6">
           <h2 className="text-2xl font-bold mb-6 print:text-lg print:mb-3 text-foreground">Publications</h2>
           <div className="space-y-4 print:space-y-2">
@@ -475,7 +475,7 @@ export function Resume({ resume }: ResumeProps) {
 
       {/* References */}
       {resume.references && resume.references.length > 0 && (
-        <AnimatedSection delay={600}>
+        <AnimatedSection delay={550}>
         <section className="mb-12 print:mb-6">
           <h2 className="text-2xl font-bold mb-6 print:text-lg print:mb-3 text-foreground">References</h2>
           <div className="space-y-4 print:space-y-2">
@@ -494,7 +494,7 @@ export function Resume({ resume }: ResumeProps) {
 
       {/* Interests */}
       {resume.interests && resume.interests.length > 0 && (
-        <AnimatedSection delay={650}>
+        <AnimatedSection delay={600}>
         <section className="mb-12 print:mb-6">
           <h2 className="text-2xl font-bold mb-6 print:text-lg print:mb-3 text-foreground">
             Interests
