@@ -2,6 +2,78 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: 'TeXGyreHeros';
+    src: url('/fonts/TeXGyreHeros-Regular.woff2') format('woff2'),
+        url('/fonts/TeXGyreHeros-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'TeXGyreHeros';
+    src: url('/fonts/TeXGyreHeros-Italic.woff2') format('woff2'),
+        url('/fonts/TeXGyreHeros-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'TeXGyreHeros';
+    src: url('/fonts/TeXGyreHeros-Bold.woff2') format('woff2'),
+        url('/fonts/TeXGyreHeros-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'TeXGyreHeros';
+    src: url('/fonts/TeXGyreHeros-BoldItalic.woff2') format('woff2'),
+        url('/fonts/TeXGyreHeros-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'TeXGyreHerosCondensed';
+    src: url('/fonts/TeXGyreHerosCondensed-Regular.woff2') format('woff2'),
+        url('/fonts/TeXGyreHerosCondensed-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'TeXGyreHerosCondensed';
+    src: url('/fonts/TeXGyreHerosCondensed-Italic.woff2') format('woff2'),
+        url('/fonts/TeXGyreHerosCondensed-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'TeXGyreHerosCondensed';
+    src: url('/fonts/TeXGyreHerosCondensed-Bold.woff2') format('woff2'),
+        url('/fonts/TeXGyreHerosCondensed-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'TeXGyreHerosCondensed';
+    src: url('/fonts/TeXGyreHerosCondensed-BoldItalic.woff2') format('woff2'),
+        url('/fonts/TeXGyreHerosCondensed-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
 @layer base {
   :root {
     /* Base color scale HSL values */
@@ -30,17 +102,18 @@
     --gray-900: 222 47% 11%;
     --gray-950: 224 71% 4%;
 
-    --blue-50: 210 100% 97%;
-    --blue-100: 210 100% 92%;
-    --blue-200: 210 100% 85%;
-    --blue-300: 210 100% 70%;
-    --blue-400: 210 100% 60%;
-    --blue-500: 210 100% 50%;
-    --blue-600: 210 100% 45%;
-    --blue-700: 210 100% 40%;
-    --blue-800: 210 100% 35%;
-    --blue-900: 210 100% 25%;
-    --blue-950: 210 100% 20%;
+    /* Blue scale - harmonized with brand colors (#1D1DFF at 600) */
+    --blue-50: 240 241 255;
+    --blue-100: 225 227 255;
+    --blue-200: 194 199 255;
+    --blue-300: 163 171 255;
+    --blue-400: 133 143 255;
+    --blue-500: 102 115 255;
+    --blue-600: 29 29 255;
+    --blue-700: 23 24 204;
+    --blue-800: 17 18 153;
+    --blue-900: 11 12 102;
+    --blue-950: 5 6 51;
 
     --red-50: 0 100% 97%;
     --red-100: 0 100% 92%;
@@ -66,17 +139,41 @@
     --green-900: 140 100% 25%;
     --green-950: 140 100% 20%;
 
-    --yellow-50: 45 100% 97%;
-    --yellow-100: 45 100% 92%;
-    --yellow-200: 45 100% 85%;
-    --yellow-300: 45 100% 70%;
-    --yellow-400: 45 100% 60%;
-    --yellow-500: 45 100% 50%;
-    --yellow-600: 45 100% 45%;
-    --yellow-700: 45 100% 40%;
-    --yellow-800: 45 100% 35%;
-    --yellow-900: 45 100% 25%;
-    --yellow-950: 45 100% 20%;
+    --amber-50: 255 251 234;
+    --amber-100: 255 247 213;
+    --amber-200: 255 239 171;
+    --amber-300: 255 231 129;
+    --amber-400: 255 223 87;
+    --amber-500: 245 215 46;
+    --amber-600: 230 200 41;
+    --amber-700: 184 159 32;
+    --amber-800: 138 118 24;
+    --amber-900: 92 78 16;
+    --amber-950: 46 39 8;
+
+    /* Lime scale - harmonized with brand colors */
+    --lime-50: 247 255 232;
+    --lime-100: 239 255 209;
+    --lime-200: 223 255 163;
+    --lime-300: 207 255 117;
+    --lime-400: 191 255 71;
+    --lime-500: 219 255 111;
+    --lime-600: 184 230 93;
+    --lime-700: 149 204 75;
+    --lime-800: 114 179 57;
+    --lime-900: 79 153 39;
+
+    /* Lilac scale - harmonized with brand colors */
+    --lilac-50: 250 247 252;
+    --lilac-100: 245 239 249;
+    --lilac-200: 235 223 243;
+    --lilac-300: 219 190 237;
+    --lilac-400: 203 158 231;
+    --lilac-500: 187 126 225;
+    --lilac-600: 171 94 219;
+    --lilac-700: 139 78 175;
+    --lilac-800: 107 62 131;
+    --lilac-900: 75 46 87;
 
     /* Base semantic colors */
     --background: var(--gray-50);
@@ -97,7 +194,7 @@
     --destructive-foreground: var(--gray-50);
     --success: var(--green-600);
     --success-foreground: var(--gray-50);
-    --warning: var(--yellow-500);
+    --warning: var(--amber-500);
     --warning-foreground: var(--gray-950);
     --border: var(--gray-200);
     --input: var(--gray-200);
@@ -144,7 +241,7 @@
     --destructive-foreground: var(--gray-50);
     --success: var(--green-600);
     --success-foreground: var(--gray-50);
-    --warning: var(--yellow-500);
+    --warning: var(--amber-500);
     --warning-foreground: var(--gray-950);
     --border: var(--gray-700);
     --input: var(--gray-700);
