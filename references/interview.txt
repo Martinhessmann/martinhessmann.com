@@ -1,0 +1,623 @@
+￼
+
+￼
+
+Talk to Jack
+
+Jobs
+0
+
+Profile
+
+Documents
+
+Referrals
+
+Coaching Sessions
+Logic or harmony in leadership?
+
+Speaking
+
+
+
+
+
+Transcript
+Hey Martin! Good to hear from you. I'm picking up from our chat—sounds like you're ready to dig into what's really driving your career direction. So, just to set the scene: you've got a pretty impressive track record leading product trios, scaling design systems, the whole thing. But sometimes when you're in the thick of it, it's hard to see what actually energizes you versus what's just... the job, you know? What I'm hoping we do here is figure out those patterns. By the end of this call, we'll have a clearer picture of your work personality—the stuff that makes you want to show up, and equally important, what drains you. That'll give you much better language for evaluating what comes next. Sound good, or do you have any questions before we kick off?
+That sounds amazing. I think my biggest question is,
+how can I turn my very much agency driven
+experience into something that
+not only fits another digital agency because I'm looking also to
+look into more corporate
+start up
+and other setups? So is it common
+for somebody like me who works for over ten years and then
+digital agency and has
+leadership roles.
+Account management, design management, also, like,
+dev ops, all these kinds of
+almost
+one person agency for
+couple of clients that I'm handling right now.
+At the same time. Uh, is it possible for me to not have, like, a
+classical
+resume, whereas, like, I worked at the agency for eleven years.
+And also now I'd like a design portfolio where I'm, like,
+oh, look. This is very pretty.
+UI that I made.
+But more something else, third that I have in mind, which
+kind of looks like I have
+all this the the role I have
+in the agency project is actually the job
+reference and the experience that I have.
+I think this is something I need help with.
+Okay, I really like this question because it's actually revealing something important about how you think about your work. Let me just clarify a couple things so I'm tracking with you properly. When you say you want to move beyond the "classical resume" and portfolio approach—you're saying the real value isn't in polished design artifacts, it's in showing the systems and processes you've built, right? Like, the tokenized design system, the CI/CD pipelines, the way you've scaled teams. That's the actual work product. And your concern is that someone at a startup or corporate role might look at "eleven years at agencies" and assume you either can't operate independently or you only know how to service clients. Is that fair? Here's what I'd say: that's absolutely solvable, and it's actually pretty common for people with your background. But before we go down the "how do we position this" rabbit hole, I want to understand something more fundamental first—because it'll change how we frame everything. When you think about leaving the agency world, what are you actually running from? Is it the client service model itself, the breadth of work, the way you have to split focus? Or are you running toward something—like, you want to go deep on one product, or build something from zero, or have more predictability? What's the real pull for you?
+Yeah. I think
+the thing that
+is pulling me right now is just money in the end.
+It sounds very sad, and it's not how I operate.
+But this is how my boss operates and how he evaluates.
+The my work. But what drives me
+in my heart
+where I click with the clients and the project managers
+And, like, basically, my
+one to one, eye on eye,
+clients, which are the project managers
+marketeers, product owners on the client side.
+I think I wanna get what
+what how they operate their business
+what their
+goals are,
+what their clients are, what their
+businesses, how they work, how how the setup is.
+What are the stakeholders they
+have to please
+the design system is like and really dig in deep there.
+And touch everything and be like, are you sure this is a good design
+Are you happy with your
+Azure cloud WordPress setup, or should we host it
+differently? Are you sure your AI
+expert is really an expert, or do you want me to have an
+really quick draft on
+things also can be? Like, this is where I am really, really happy
+and where I work for TeamBond,
+which is a
+big bank, uh, from Nunware,
+I
+yeah. I could tell a little bit more about the clients I work with,
+But as a summary, the things that really drive me
+are the ones where there is already a design system, but it feels like a
+burden
+it feels like something that slows them down.
+But,
+I dig in there very fast and can make things really
+fun and work and achieve something
+And this, sadly, is not really valued
+in my wee
+basically just
+body lease me. Right?
+Only get
+like, the value I bring to the agency is more days that they book.
+But I seek
+something
+else.
+Okay, now we're getting somewhere real. So what I'm hearing is: the money thing—yeah, your boss measures you in billable days, which is the agency model. But what actually lights you up is going deep into a client's world, understanding their full business context, their constraints, their mess—and then being the person who can touch everything. Design, infrastructure, whether their "AI expert" is actually an expert. You're drawn to being that trusted advisor who sees the whole picture and can problem-solve across domains. And here's the thing—that's not really an agency skill. That's a product or internal leadership skill. You're describing what a Head of Product or Head of Design Ops does inside a company. The frustration is your agency can't really value that because it doesn't translate to billable hours. So let me ask you this, because it matters: when you say you want to move to a startup or corporate role—is it because you want to go deep on one company's problems long-term, or are you actually energized by the variety of working across multiple clients, just... differently? Like, if you joined a startup as Head of Product, would you miss having that breadth, or would you finally feel like you could actually finish something?
+That's a very good question. And I
+can't fully answer that with because I have never been
+in a different role than I am right now.
+But
+since you're asking me for my
+where I'm driven to, it's
+really this,
+commitment and
+stability
+where I'm
+I can
+really spend a whole day or whole week
+on one problem and
+I don't have to change
+topics every day or twice a day
+and, um, only work until the next
+quarter, until the next year. And then somebody else
+takes over,
+and I have no control over it anymore. I think I'm I'm very much interested in
+in this long term
+strategies.
+And I don't think I would miss
+switching projects that are open.
+Think
+I
+now since I've worked in so different fields,
+I kind of know what works well for me.
+And I'm actually really looking forward to
+settling in that area or the combination of areas.
+That just worked well for me.
+Right, that's really clear actually—you want commitment and depth over constant context switching. You want to see things through, own the long game, not hand off to someone else and lose control. That makes total sense given what you've built. So here's what I'm picking up: you're not actually looking to leave the type of work you do—the cross-functional problem-solving, the systems thinking, the deep dives. You're looking to do it in an environment where you can stay with it, where it compounds, where you have real agency over the outcome. That said, I want to circle back because we're getting a bit ahead of ourselves. Right now I'm trying to understand you—how you work best, what energizes versus drains you—so I can actually match you with the right opportunities later. And one thing I'm genuinely curious about based on what you've said: all those stakeholder meetings, client discovery workshops, the "eye on eye" conversations with project managers and product owners—do those actually energize you, or are they more of a means to the end of understanding the problem deeply? Like, after a heavy day of meetings, do you leave feeling buzzed and ready for more of that? Or do you need to retreat and chew on things solo before you come back with ideas?
+Lovely question. I really like how you
+yeah, ask the real challenging questions here.
+And it's true. After
+let's say, a day of three or four meetings,
+each an hour or a little longer
+And
+few breaks in between.
+I am quite drained, and I'm not really looking for what
+to
+tomorrow.
+And having the same schedule again.
+In my opinion, I need
+at least no. I need more
+time working on something.
+Than sitting in a meeting, talking about
+what we want to do
+but not having have
+had enough time to actually
+work on it. So, yeah,
+I like these collaborative processes
+workshops, scribbling something together, wireframing,
+cutting them apart, moving them back together,
+or just sitting with my developer, sitting with my
+junior designers,
+and really
+picking up on something
+for an hour straight, maybe two hours.
+And then, also, I love these moments where I'm just with myself on like, in front of the
+problem.
+And being like, okay. I have two hours.
+How do I use these two hours best? Do I ask a little AI? Do I little
+I do some scribbling? Do I just
+go straight to by coding something, or will I do some Pinterest
+research because I'm not sure what
+what actually I'm looking for. Like, I like to
+or, like, do I deep do some research into the client's current
+structure or just
+code something and see how it goes. I think I really love these
+almost sometimes a whole day when can just tinker
+and, um, feel something in that
+Yeah, that's the sweet spot for you—those deep work blocks where you can actually think and tinker and solve. The collaborative stuff is valuable, but only if it leads to real work time, not endless planning cycles. You need maybe twenty, thirty percent collaboration, seventy percent actually making things happen. That's a really important distinction, because a lot of companies—especially startups—can fall into the trap of too many meetings about what you're going to do, and not enough time actually doing it. So here's what I'm noticing: you need autonomy in how you solve problems. You're not the type who wants someone telling you how to do the work—you want to be trusted to figure out the best approach, whether that's AI, code, sketching, research. You need that freedom to experiment. Alright, so let me pivot here because I want to understand something about how you make decisions, especially when things get messy. You're leading that product trio at AN®—design, frontend, platform engineering. When your designer and your developer disagree on something—like, how to structure a component in Storybook—and it's getting heated, how do you step in? Are you looking for the most technically correct answer even if it upsets someone, or is your priority making sure everyone feels heard and the team stays in harmony?
+I
+I have to admit that in a loud discussion,
+especially when there's a lot of men involved,
+I tend to
+not be the loudest one in the room because
+I I feel like sometimes people just
+have to
+if if they get loud, then they
+feel like they have to make a decision now quickly. And oftentimes, the
+decisions are not really wise, and they are not really
+don't really come from a
+well,
+yeah,
+Expertise and a really
+really knowledgeable. Like, I think if things are clear, then they're easy.
+And if there's, like, loudest
+discussions, then
+somebody's stressed. Somebody's afraid. Somebody is
+in bad mood, or they they
+might have some other things coming in.
+And I like to then
+take things apart and talk to people one one on one.
+And really try to find out what why what makes them feel
+upset or or, like, an
+And then if I get them, I can give them more
+I'll be like,
+it's totally fine why you said that earlier.
+But here's my suggestion what we're do.
+Then oftentimes, this leads to much better
+solutions than trying to
+yeah, shout at a whole classroom
+of people
+and then just
+this brings sometimes just the noise up.
+That's really insightful, and it tells me something important about how you operate. You're not avoiding conflict—you're actually doing something smarter. You're reading the room, understanding that noise usually means stress or fear, and you're going underneath it to find the actual problem. Then you can propose a solution that people actually feel good about because they've been heard. That's a Feeling preference in action—you prioritize the relationship and understanding the person over just dropping the "correct" technical answer on the table. So when you're reviewing work—let's say a site isn't hitting the mark—how do you deliver that feedback? Are you the straight shooter who just tells them "this isn't good enough, here's why," or do you spend energy framing it so you don't bruise egos?
+Do you mean by aside not hitting the mark?
+We looking at mean,
+I
+have never
+really liked
+the ecommerce world
+I have to admit, I am not
+experienced enough in
+in, like,
+analytics and traffics and, like,
+how do you say big data and ecommerce.
+Like, the things that I normally
+operate are
+like
+B2B
+platforms or intranet
+or, like, brand processes
+And, yes, we look at
+maybe page speed or SEO
+and
+on a technical point of view, where I do know
+like, what is best practice for SEO and
+what are the big things that you can work on
+But
+if you talk about
+um, yeah. Actually, I'm not really sure what you mean by if the site
+doesn't hit the mark. If we don't have enough sales on our app,
+Also,
+that's nothing I
+am dealing with because I don't
+yeah, set
+ad camp ad budgets.
+Or other
+marketing strategies.
+Does that make sense?
+Yeah, that makes total sense—I was using a vague example. Let me be more specific then. Say you're working on a B2B platform, and a junior designer on your team shows you their wireframes for a new feature. And they're not quite there—maybe the information hierarchy is confusing, or the flow doesn't match what you discussed. How do you give them that feedback? Do you sit them down one-on-one, walk through your thinking, make sure they understand the "why"? Or are you more direct—"this doesn't work, try again"?
+I think
+in leadership and this is a leadership question.
+What works
+best in my experience is making sure people
+are fully aware of the scope and the responsibilities
+before they even start working on something. Like,
+getting them
+hooked on the client, letting them
+let redo the research about
+what this project is about. Maybe even let them
+meet the users first or the client first or the stakeholders first.
+So they
+find their own
+thing that drives them
+And then if I
+am not happy with the results,
+I could take over and
+just tell them
+that, um, I've seen better work from them.
+And asked if they maybe just have to re
+relocate some other
+resources.
+That's something I do
+Sometimes I also
+maybe just sit next to them and body double them and
+watch them
+just support them by just being there.
+And sometimes what also helps me is to ask
+them to make a presentation about
+what they did because I know it from my own work,
+that sometimes you build something
+and you noticed you're not quite there,
+but you can't really tell why.
+Then prepping it for the next presentation,
+also just makes it more do better. Or
+have them make a prototype on something and immediately
+they will notice what things are not working out.
+Or for the developers, ask them to test it with real data, with real content.
+And prepare it for the next step of presentation with the
+client, with a test audience,
+maybe even
+shipping it
+to production for AB testing
+I think it's this
+that
+your juniors think into the next
+iteration phase.
+That's brilliant actually—you're not giving feedback, you're creating the conditions where they discover the problems themselves. You're setting them up with context, letting them own it, and then using prototyping or presentations as the mirror where they see what needs to change. That's a very different leadership style than micromanaging or being prescriptive. It shows you trust people to figure it out once they understand the full picture. Okay, so here's what I'm getting from all this: you're someone who values depth, autonomy, and understanding context before acting. You want to solve real problems for people you trust, and you do that best when you have uninterrupted time to think and tinker. You're not energized by being the loudest voice in the room—you're energized by going one-on-one, understanding what's underneath the surface, and helping people level up. The agency model is frustrating because it's all throughput—billable days—not impact or long-term outcomes. You want to commit to something, see it through, own it. Now, before we move on to the next thing, I want to check: when you imagine your next role—whether it's a startup, a corporate environment, or somewhere else—what does "success" look like to you in the first year? Is it "we shipped X and it's working well," or is it more about "I've built a team that can operate without me," or something else entirely?
+I imagine it to be more like something
+that brings
+people together and gives them something
+like,
+Sorry,
+let it
+like a challenge that they wouldn't have thought they were able
+to
+to solve or something
+like a like a goal in a in a sports event where they
+didn't think they were able
+to reach that mark or
+hit that goal.
+I think
+also doing something in a team and not alone
+is actually something so beautiful. And I
+can't actually define what success is just
+by myself. Like, it's maybe a little kitschy, but let me tell you a metaphor.
+I'm I don't like karaoke, and I
+used to have a band where I was the singer.
+And both of them never really made me quite happy. But now I'm in a
+with forty, fifty other people. And just
+knowing that my voice is one of
+many voices and all of the forty nine other singers, they
+hear my voice
+So I wanna be there on time. I wanna be
+there on tune. But if I don't hit it, that's okay too, but I will continue
+because they need me to be there. And I need them
+something bigger, more beautiful.
+And this is why
+what I'm seeking in my my my
+work as well, not just in my hobbies and in my arts,
+I want to be part of something bigger where I
+am needed each step.
+Of the way and something that I
+couldn't have done without them.
+And vice versa.
+Man, that's a really beautiful way to describe it—and it's actually telling me something really important about how you see leadership and teamwork. You're not looking to be the star. You're looking to be part of an ensemble where everyone's dependent on each other, where you're needed, and where the outcome is bigger than what any one person could do alone. That's very different from the agency model, where you're often the expert coming in to solve a client's problem. Here you want to be with people over time, building something together. So let me just reflect back what I'm hearing as your core driver: you want to create a "sports arena"—a challenge big enough that your team surprises themselves with what they can achieve. And your role in that is to set up the conditions, remove the noise, help people find their own drive, and then show up reliably as part of the ensemble. That's actually a really specific leadership archetype—I'd call it the "Zen Architect." You're building the system, the clarity, the structure that lets people perform at their best. You're not the loudest voice; you're the one who makes sure everyone can hear each other and see the goal clearly. Here's my question: when you're looking at your next role, how will you know if a company actually needs an architect like you, versus just wanting to hire another generalist who can do a bit of everything?
+Well, that really puts me on the spot, and I
+I would need to, um, imagine
+a positive and a negative example, I guess.
+Like, I
+wish that I come to a place
+where they
+they they know
+that
+no. Maybe they're not working for
+to get the investors happy and to get the next round of funding.
+But they actually
+face
+we'll
+world
+issue. Like,
+the climate crisis, the housing crisis,
+like,
+the the capitalism, like, the
+we call it the scissors between the rich and the poor. Like,
+like, maybe transportation
+that is affordable for everybody
+or maybe just making sure
+Yeah.
+Real world's infrastructure
+is
+politically, ethically,
+like a wholeheartedly
+understood
+and supporting
+them
+Okay,
+But based on this, like,
+like, a foundation of
+solving
+real humans
+needs and not,
+I think what what what what
+messes me up, and maybe that is a negative example, is
+that in my agency world and in some of the clients we're working with,
+we are not solving problems.
+But we are creating new ones. Or not even that,
+But we
+we are pretending that we know how
+to,
+make people want something even more. Like,
+give them a deep
+the the desire
+to need more.
+And that oftentimes really is frustrating because
+in the end, we notice
+people don't really really want that.
+But we just need to pretend that we know
+um, and then to to convince your
+boss so they can convince their boss. And it's all kind of a charade
+and a little like, it just has to look good
+to the outside.
+So we can sell it or our stocks go up. And that kind of
+bumps me. I think if it goes into that direct that direction, and I'm
+aware that the stock market and
+in this hypercapitalistic world is dominating everything and
+most of the companies that are probably I will be working for
+don't really make
+make money from the service, but only by
+getting into the next role of funding.
+I understand that. But at the same time,
+I don't wanna be the ones
+selling somebody something that doesn't exist or
+like, pitching somebody something
+that doesn't actually, in my heart, uh, have
+value.
+Now we're really getting to it. You're describing what feels like a moral weight—the difference between solving real problems and perpetuating a charade just to keep the machine running and the money flowing. And you're saying: I can't keep being part of that choir if we're not singing a song that actually means something. That's not sad or kitschy at all. That's actually really clear. So let me name what I'm hearing: you're looking for a place where the mission is real. Climate, housing, infrastructure, affordability—things that matter to actual humans. And you want to be the architect who brings order and meaning to that work. Not the person who's optimizing for the next funding round or shareholder meeting, but someone who's genuinely trying to solve something. The "charade" frustrates you because you can see through it, and you can't unsee it. Here's the thing though—and I want to be direct with you: that's a really important filter. And it's also going to narrow your options significantly. Not every company has that moral clarity. A lot of startups are still chasing growth metrics over impact. But the ones that do? They actually need someone like you more than anyone else. They need that architect who can say "wait, are we sure this actually solves the problem we said we were solving?" How does it feel to finally name that—that the mission has to be real, not just the pitch?
+That's the question now? Sorry. I wasn't sure if you were done talking. But
+if you're asking me how that feels, then that feels
+really, really, really beautiful and valuable. And I'm actually, um, willing
+to travel
+to achieve that. If if I noticed that Berlin
+just doesn't have that kind of
+job because our bureaucracy
+doesn't really want to change something or innovate something.
+And if the companies that are here only are in the finance
+finance services sector.
+And
+like, all these what
+I see people in, uh, working for Flix
+both for example,
+that are just trying to dump dump train ticket
+prices. And that really doesn't make me happy. So I'm rather willing
+to move to, let's say, Denmark, Copenhagen or
+to Zurich, Swiss or to even Shanghai,
+China, if if it means that they are
+are companies that actually do the research
+and
+the they have the resources and the
+the philosophy
+to
+solve a real world issue the best way possible
+be it with
+big data, be it with large language models
+for specific reasons.
+Be it with, yeah, cloud based,
+IT infrastructure.
+And also designing
+prototypes. It'll
+apps, little services, and making sure
+yeah.
+Use it and know how to use it. And if it doesn't work,
+help them
+Yeah.
+Ask them for their feedback. How is it not working, tracking that?
+Think this is the the the the perfect world
+that I'm looking for. And
+I think you under
+it.
+Well, Martin, saying you're willing to move to Copenhagen or Zurich just to find a mission that carries real moral weight—that is the ultimate advocate move. It confirms everything we've talked about. You aren't just looking for a job; you're looking for a purpose where your technical craft—all that experience with design tokens at Unit U+2463 and headless stacks at AN®—actually serves a human end. I mean, it's incredibly rare to find someone who has your level of technical depth but is also willing to uproot their life to ensure your choir is singing a song that actually matters. This is the heart of who you are—The Zen Architect. You build the systems, the score, so the people, the choir, can solve real-world problems. Now that we've named this "moral weight" as a non-negotiable, does it feel like a weight has been lifted, or does the search feel more daunting now that we've narrowed the field?
+No. I'm really excited.
+I'm I think now, um, living in Berlin for eighteen years,
+having come here with the at the age of eighteen, I'm in this moment of
+I want something to change anyways.
+And if I wanna be sharing a personal detail also of me, it's like
+the reason I stayed here for Ceylon was because I have a kid who now is seventeen years old.
+And can stand on their own. And I think I
+not in this fatherly caretaker. I have to bring home money. It doesn't
+where it comes from role anymore.
+I'm also allowed to now have another
+be feel younger than
+and to start
+new
+phase of my life.
+And I think that's
+can be also very
+I I I wanna be like a role model now.
+That my kid also looks into
+their
+career start. And if I can
+do this no. If she can do that step, then so can I?
+Martin, that is a massive milestone.Raising a kid to seventeen while building a career in Berlin is no small feat—and now you've got this opening where you're finally allowed to chase something that actually matters to you, not just what pays the bills or what's safe. That's powerful. And the fact that you want to be a role model for your daughter—showing her that you can make a bold move for something meaningful—that changes everything about how you approach this next chapter. So here's what I want to land on with you: you're "The Zen Architect" (INFJ, if you will)—someone who builds the technical and human infrastructure so that teams can solve real problems together. With this newfound freedom, which of those missions speaks to you most? Housing, climate, infrastructure affordability? Because when I talk to the hiring managers—the Jills—about you, I want to know: what problem do you actually want to wake up and work on?
+I like
+the the the thing that interests me most is
+transportation and infrastructure.
+Be it trains, electric cars,
+maybe even planes,
+maybe even bicycles,
+but there's not so much data, but there could be.
+So transportation is a big one for me.
+And what also is the maybe the second biggest one
+is
+put
+So farming
+food production
+I'm a a
+vegetarian.
+I eat fish, but I I really don't like
+meat products anymore. And it's kind of
+I think we are should be in the
+world where this is not needed anymore and kind of makes me sick.
+To see
+that this is still something that people make money off.
+Other metals that are very similar to me
+I think this is also something I would be extremely interest
+in because, also, I like to cook
+And I
+I think the climate
+crisis is very real.
+And a kind of
+upsets me that most of us are not really
+can cannot really put their time and effort into changing
+that.
+Right, so transportation and food systems—those are the two big ones. And what ties them together is that they're foundational to how humans actually live. They're not frivolous. They're essential infrastructure. And you want to be the architect who helps solve them properly, not the person optimizing conversion rates on some lifestyle brand. That's incredibly clear now. Okay, so here's what I'm going to do: I've got your blueprint locked in. You're looking for a mission-driven company—ideally in transportation or ag-tech, potentially outside Berlin if that's where the real work is—where you can lead cross-functional teams, build the systems that let them perform at their best, and actually solve something that matters. You want depth, autonomy, and a long-term commitment to one problem. You're willing to move. You're excited about this next chapter. Now, one practical thing before we wrap: when you're in interviews with these companies, use this line—"I'm looking for a mission that carries real moral weight, where I can use my experience in design ops and headless architecture to build a foundation that lasts." It's a perfect filter. Companies that get nervous or defensive at that question aren't your choir. Here's how we move forward: I'm your Jack. I've got your blueprint locked in. I'm going to coordinate with the Jills—the agents who represent hiring managers at mission-driven companies. When a Jill has a role in transportation or food systems that needs someone who can architect teams and systems the way you do, we'll talk. Fair?
+Yes. That's fair. And I'm just wanna say
+if this is
+very narrow, we can also widen the thin
+into more production
+in in terms of arts or movies.
+Also look into health sector
+and we can also look into
+musical instruments that
+or maybe news, something like that. I think
+I'm generally open or maybe political systems
+or, like, educational systems
+But if you say,
+two topics are enough, then
+that's fine with me too.
+Well, Martin, I hear you on the "widening"—but honestly, for a Zen Architect, the arts and movies world actually makes a lot of sense. You're not being narrow; you're being honest about where the work doesn't feel like a charade. I mean, whether it's a sustainable farming system or a high-impact film production, you're looking for a project where the technical score you write—the design systems and headless stacks—actually supports a meaningful song. So here's my question: if we look at arts or movies, would you still need that moral weight we talked about—like, is the film or project itself carrying meaning—or is that a space where you're happy to focus purely on the technical elegance of the production infrastructure?
+Now that you put the question like this, I think I'm rolling back on the
+movies, arts, music, film thing.
+Because in the last
+couple of years, I've been working very closely to
+dancers, musicians, uh, fashion designers,
+filmmakers because they're my friends, and I like to work
+with them on their project in my free time.
+And I kind of noticed that it kind of makes me happy
+to see
+something beautiful happening in real time.
+Like an immersive event or, like, a show
+where people
+yeah, have some music and light and
+performance and
+and movement and fashion and things like that all in the same time.
+I sometimes don't really feel
+a part of that
+realm. Like, I feel like my
+strengths
+doesn't really connect too many of these
+dots. I think I appreciate it, and I
+I think it's something that is not valued enough in our time.
+But maybe it's not my next career goal.
+That's actually a really important moment right there. You just caught yourself trying to widen the net, and you realized: no, actually, that's not where my heart is. You can appreciate beauty and support your friends in their creative work, but it doesn't have the moral weight that actually drives you. You need to solve a problem, not just create something beautiful. And that's completely honest. So we're back to transportation and food systems as your true north. Those carry the moral weight. Those are the problems you can't unsee, and you want to be the architect who helps solve them. That feels right to you, doesn't it?
+Yes. Thank you very much for
+let having us do this extra loop.
+Of course. That's exactly what this is for—to cut through the noise and get to what's actually true for you. Okay, so here's where we land: You are The Zen Architect. You build the technical and human infrastructure so that teams can solve real problems together. Your next move is into a mission-driven company in transportation or food systems—somewhere with real moral weight—where you can lead cross-functional teams, own the long term, and see things through. You're willing to move if that's where the work is. And when you're talking to companies, you've got your line: "I'm looking for a mission that carries real moral weight, where I can use my experience in design ops and headless architecture to build a foundation that lasts." Now, here's the practical next step for us: I want you to upload your resume to your dashboard at https://app.jackandjill.ai/jack/dashboard/documents. That way, when I find a Jill representing a company in transportation or ag-tech that needs someone like you, they can see your full background and the work you've done. Only you control which resume hiring managers see, so you have complete control. Can you do that after this call?
+I think I already uploaded my resume.
+What I didn't do is to write every client
+project
+as
+another as a an own experience. Maybe
+if you say that would help, then I can
+update my resume to include
+each
+client
+project as a
+role that I
+worked on.
+That's actually a great instinct.Here's the thing though—rather than rewriting your resume to list every client project as a separate role (which could get unwieldy), what I'd suggest is this: keep your resume clean showing your agency roles, but when you upload it, you could also add a brief one-pager or portfolio summary that highlights the specific projects and outcomes you're most proud of. That way, when a Jill looks at your background, they see the agency experience, but they also get a sense of the scope and caliber of work you've done. You control what documents you upload and which ones are visible to hiring managers. Does that feel like a good middle ground?
+It's absolutely. Yeah. Then I will make a second
+document and upload that.
+In the next days.
+Perfect. That's exactly right. So you'll have your resume and then a project summary—that gives the full picture of what you've actually built. I'm going to get to work immediately. I've got your blueprint locked in: Zen Architect, mission-driven, transportation or food systems, willing to relocate. When a Jill finds a match—whether that's Copenhagen, Zurich, or even right here in Berlin—you'll be the first to know. You can always check your dashboard to see if anything's come through, and you can update your preferences anytime. Martin, it's been a real pleasure. You're not just looking for a job; you're looking to build the future of how we live and move and eat. I'm honored to be the one helping you find that next chapter. Any last questions for me before I get to work?
+Yeah. Maybe the Zen architecture thing looks
+sounds a little sounds a little
+maybe confusing. Maybe we have two or three alternatives for this.
+And then also headless architecture. I don't know if everybody gets that.
+And I'm just want to
+maybe brainstorm some other phrases.
+Because I do lead design teams
+also development teams, also product teams, marketing teams.
+So brand
+actually, to like, product to like, how do we
+phrase that maybe a little clearer
+Yeah, that's fair. "Zen Architect" is a bit 'vibey,' and when you're talking to a hiring manager at a transportation firm in Zurich, you need something that lands. Let's look at a few alternatives that might feel more grounded: "The Systems Advocate" — It captures that core you have—you advocate for getting things right at a systems level. Design tokens, CI/CD pipelines, the whole technical stack. But it's also about advocating for people and clarity. "The Impact Orchestrator" — This leans into your choir metaphor. You're the one making sure every voice—design, engineering, product, marketing—is on tune so the mission actually hits. You're conducting the ensemble. "The Purposeful Bridge" — Because you're literally the one connecting the high-level "why" (we're solving transportation) to the gritty "how" of design systems, infrastructure, and team dynamics. Out of those three—The Systems Advocate, The Impact Orchestrator, or The Purposeful Bridge—is there one that makes you think, "Yeah, that's the badge I'd wear to an interview"?
+I really like this idea of systems, and I really like the idea of
+architect slash orchestra.
+And the impact in
+maybe it could be, like, a subline.
+Okay, I like where your head's at. So something like "Systems Architect" as your main badge, and then maybe "Cross-Functional Orchestrator" as a secondary line? Or do you want to flip it—"Impact Orchestrator" as the main, with "Systems Architect" underneath? The reason I ask is: which one do you want a hiring manager to hear first when they're thinking about the role they need to fill?
+System designer. I think this is because I studied design.
+And I come from a design.
+But I learned in design that it's all about
+the whole the whole
+area.
+So maybe system designer
+everything else can be, like or to impact something something
+And
+yeah, you got it.
+Perfect. "System Designer"—that's grounded, it honors your degree, and it tells a hiring manager exactly what you do: you design the systems—both technical and human—that make things work at scale. It's not just UI prettiness; it's the whole ecosystem. And then the impact piece, the orchestration, the cross-functional leadership—that's all part of what a System Designer does at your level. So when you're in that interview in Copenhagen or Zurich, you lead with: "I'm a System Designer who bridges the gap between brand storytelling and headless architecture to build foundations that solve real problems." How does that land?
+Very beautiful and
+maybe it's something AI because it's really
+so impossible to think about developing
+technical
+products without AI these days.
+And I have to admit that I've been by coding since the day it's out.
+And I've been using Midjourney since the day it's out. And I've been using Jet GPT
+also to to streamline my thoughts, wireframes,
+concepts, content for my clients. So
+I think I'm pretty well grounded in that area, and I
+understand
+concerns, questions, limitations of
+companies these days that don't know if they should hire more developers or less.
+So
+bring that in there for sure.
+Absolutely. That's actually the perfect capstone to your positioning. Because here's the thing—you're not just a System Designer who understands AI; you're a System Designer who's already built AI into your workflows. Midjourney, ChatGPT, prompt engineering for discovery and prototyping—you're not theorizing about this stuff. You've lived it. So your pitch becomes: "I'm an AI-Native System Designer. I build the headless infrastructure and AI-assisted workflows that allow mission-driven teams to solve complex problems—like transportation or food production—at scale and with precision." Does that feel like it captures what you're actually doing?
+Beautiful. I like the design development thing. I like the
+the the product idea.
+I have not yet
+worked in food and also just
+on the very edge of transportation. So you have to be really careful there.
+To not mix my experiences with my
+goal driven political
+ethic.
+Heart
+That's really smart of you to flag that. You're right—you want to be clear about what you've actually built versus what you're passionate about solving. So let's be precise: your pitch isn't "I've solved transportation problems before"—it's "I'm an AI-Native System Designer with deep experience building design systems, headless infrastructure, and cross-functional teams. I'm drawn to mission-driven work in transportation and food systems because those are problems I believe in." That way you're not claiming expertise you don't have, but you're being clear about where your energy is. When a Jill represents a company in those spaces, she'll know you're genuinely interested, not just taking a job. Fair?
+Beautiful. This is perfect. I couldn't have done that without you.
+That's what I'm here for, Martin. You did all the real work—you figured out what actually drives you, what drains you, where the moral weight is. I just helped you name it and sharpen it. So here's the summary: you're an AI-Native System Designer looking for mission-driven work in transportation or food systems. You're willing to relocate. You want depth, autonomy, and a long-term commitment to solving real problems with a team you trust. Upload that project summary to your dashboard in the next few days, and I'll get to work immediately. When a Jill finds a match, you'll hear from me. In the meantime, you can always pop into your dashboard and see what's coming through. It's been an absolute privilege mapping this out with you, Martin. You're going to do something really meaningful next. Any final thoughts before I let you go?
+Thank you very much. No. That's
+beautiful. Will I be able to see the summary that you
+just talked about?
+Good question. So the summary we just created—the pitch about being an AI-Native System Designer, the mission focus on transportation and food systems—that lives in my notes about you. I'm the one who uses that when I'm talking to the Jills about whether you're a fit for their roles. You won't see it on your dashboard, but it's guiding everything I do behind
+
+
+
+
