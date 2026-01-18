@@ -22,8 +22,8 @@ const config: Config = {
   	},
   	extend: {
   		fontFamily: {
-  			sans: ['TeXGyreHeros', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-  			condensed: ['TeXGyreHerosCondensed', 'TeXGyreHeros', 'system-ui', 'sans-serif'],
+  			sans: ['TeXGyreHeros', 'EB Garamond', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+  			condensed: ['TeXGyreHerosCondensed', 'TeXGyreHeros', 'EB Garamond', 'system-ui', 'sans-serif'],
   			marker: ['"Permanent Marker"', 'cursive'],
   		},
   		colors: {

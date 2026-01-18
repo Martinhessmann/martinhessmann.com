@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* TeX Gyre Heros – upright only; italic uses EB Garamond */
 @font-face {
     font-family: 'TeXGyreHeros';
-    src: url('/fonts/TeXGyreHeros-Regular.woff2') format('woff2'),
-        url('/fonts/TeXGyreHeros-Regular.woff') format('woff');
+    src: url('/fonts/TeXGyreHeros-Regular.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -13,35 +13,16 @@
 
 @font-face {
     font-family: 'TeXGyreHeros';
-    src: url('/fonts/TeXGyreHeros-Italic.woff2') format('woff2'),
-        url('/fonts/TeXGyreHeros-Italic.woff') format('woff');
-    font-weight: normal;
-    font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'TeXGyreHeros';
-    src: url('/fonts/TeXGyreHeros-Bold.woff2') format('woff2'),
-        url('/fonts/TeXGyreHeros-Bold.woff') format('woff');
+    src: url('/fonts/TeXGyreHeros-Bold.woff2') format('woff2');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
 }
 
-@font-face {
-    font-family: 'TeXGyreHeros';
-    src: url('/fonts/TeXGyreHeros-BoldItalic.woff2') format('woff2'),
-        url('/fonts/TeXGyreHeros-BoldItalic.woff') format('woff');
-    font-weight: bold;
-    font-style: italic;
-    font-display: swap;
-}
-
+/* TeX Gyre Heros Condensed – upright only */
 @font-face {
     font-family: 'TeXGyreHerosCondensed';
-    src: url('/fonts/TeXGyreHerosCondensed-Regular.woff2') format('woff2'),
-        url('/fonts/TeXGyreHerosCondensed-Regular.woff') format('woff');
+    src: url('/fonts/TeXGyreHerosCondensed-Regular.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -49,27 +30,49 @@
 
 @font-face {
     font-family: 'TeXGyreHerosCondensed';
-    src: url('/fonts/TeXGyreHerosCondensed-Italic.woff2') format('woff2'),
-        url('/fonts/TeXGyreHerosCondensed-Italic.woff') format('woff');
+    src: url('/fonts/TeXGyreHerosCondensed-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* EB Garamond – italic only (used for all italic text) */
+@font-face {
+    font-family: 'EB Garamond';
+    src: url('/fonts/EBGaramond-Italic.woff2') format('woff2');
     font-weight: normal;
     font-style: italic;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'TeXGyreHerosCondensed';
-    src: url('/fonts/TeXGyreHerosCondensed-Bold.woff2') format('woff2'),
-        url('/fonts/TeXGyreHerosCondensed-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
+    font-family: 'EB Garamond';
+    src: url('/fonts/EBGaramond-MediumItalic.woff2') format('woff2');
+    font-weight: 500;
+    font-style: italic;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'TeXGyreHerosCondensed';
-    src: url('/fonts/TeXGyreHerosCondensed-BoldItalic.woff2') format('woff2'),
-        url('/fonts/TeXGyreHerosCondensed-BoldItalic.woff') format('woff');
+    font-family: 'EB Garamond';
+    src: url('/fonts/EBGaramond-SemiBoldItalic.woff2') format('woff2');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'EB Garamond';
+    src: url('/fonts/EBGaramond-BoldItalic.woff2') format('woff2');
     font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'EB Garamond';
+    src: url('/fonts/EBGaramond-ExtraBoldItalic.woff2') format('woff2');
+    font-weight: 800;
     font-style: italic;
     font-display: swap;
 }
