@@ -1,24 +1,46 @@
 Project: WoMoFonds + Dein-WoMo (EVG / Fonds soziale Sicherung)
 
-Role statement (1–2 sentences):
-Ich habe die digitalen Antragsplattformen für Zuschüsse zu Wohnen & Mobilität konzipiert und weiterentwickelt — inklusive Support-Entlastung durch einen mehrsprachigen Chatbot.
+---
 
-Context / constraints (stack, org, complexity):
-Wo-Mo-Fonds ist ein Ergebnis von Tarifverhandlungen und zahlt EVG-Mitgliedern bei DB AG (und Töchter) Zuschüsse für Wohnen & Mobilität.  ￼
-Dein-WoMo richtet sich an förderberechtigte EVG-Mitglieder außerhalb der DB AG und wird durch den Fonds soziale Sicherung betrieben.  ￼
-Die Plattform muss verständlich, zugänglich und “low support” sein, weil viele Fragen immer wiederkommen.
+Ich habe bei WoMoFonds und Dein-WoMo nicht „einfach Antragsformulare“ gebaut, sondern zwei digitale Plattformen mitgeprägt, die echte Zuschüsse an echte Menschen auszahlen – und einen KI-Assistant so konzipiert, dass er Support entlastet, ohne dass die Kontrolle aus der Hand gegeben wird.
 
-2–4 system decisions you made (bullets):
-	•	Antragslogik so strukturiert, dass Nutzer:innen Zuschüsse online beantragen können (klarer Prozess statt Bürokratiegefühl).  ￼
-	•	Content + Hilfetexte direkt in den Prozess gelegt, damit weniger Rückfragen entstehen.  ￼
-	•	KI-Chatbot als kontrollierte Support-Schicht umgesetzt: sofortige Antworten, mehrsprachig (15 Sprachen), ohne Kontrolle aus der Hand zu geben.  ￼
-	•	Plattform so gedacht, dass sich Leistungen/Varianten pro Jahr erweitern lassen (z. B. 120€-Förderlogik).  ￼
+Der Kontext: Beide Plattformen gehen auf Tarifverhandlungen zurück – Wo-Mo-Fonds für EVG-Mitglieder bei DB AG und Töchtern, Dein-WoMo für förderberechtigte Mitglieder außerhalb der DB, getragen vom Fonds soziale Sicherung. Die Herausforderung: sehr viele Mitglieder, tausend individuelle Situationen. Das eine fragt nach dem Jobticket, das andere nach Zuschuss für privaten Internetanschluss bei Nutzung für den Beruf, wieder ein anderes nach Unterstützung in einer besonderen Lebenslage. Manche schreiben auf Deutsch, andere auf Englisch, Türkisch oder Französisch. Die Frage des Teams war: Wie können wir allen gerecht werden, ohne dass die Antwortzeiten explodieren?
 
-Enablement / team shift (1 sentence):
-Das Team kann wiederkehrende Fragen automatisiert abfangen und Änderungen an Leistungen sauber über das System ausrollen.  ￼
+Die Antragslogik habe ich so strukturiert, dass der Ablauf sich wie ein klarer Prozess anfühlt, nicht wie Bürokratie; Content und Hilfetexte liegen direkt im Flow, damit weniger Rückfragen entstehen. Die Plattform ist von vornherein so gedacht, dass sich Leistungen und Varianten pro Jahr erweitern lassen – z. B. eine 120€-Förderlogik.
 
-Impact line (≤18 words):
+Der Assistant musste mehr sein als ein einfacher FAQ-Bot. Mitglieder brauchen präzise Antworten auf individuelle Fragen, möglichst schnell – und er darf keine Fantasie-Antworten erfinden, wenn er etwas nicht weiß. Es geht um konkrete Ansprüche und Fristen, da muss er zuverlässig sein. Das Prinzip: Er denkt erst, dann handelt er. Vor jeder Antwort prüft die KI: Kann ich das direkt beantworten oder muss ich in der Wissensdatenbank nachschlagen? Bei Standardfragen („Wer ist die EVG?“, „Was bietet der Fonds?“) antwortet er sofort, meist in Sekunden; bei Detailfragen zu Anträgen oder besonderen Lagen recherchiert er gezielt nur das Nötige. Wenn das Nachschlagen einmal hakt, gibt es eine stimmige Antwort mit dem, was da ist – kein harter Abbruch. Mehrsprachigkeit ist mitgedacht: Der Assistant spiegelt die Sprache der Fragenden, auch wenn mitten im Gespräch gewechselt wird. Die Ausgabe erfolgt in der Nutzersprache; die Website muss nicht in 15 Sprachen übersetzt werden. Routinefragen laufen automatisiert, Sonderfälle landen beim Team – die Mitarbeitenden können sich auf die Fälle konzentrieren, die menschliche Expertise brauchen; Mitglieder bekommen auch außerhalb der Bürozeiten sofort Antworten. Wenn etwas fehlt oder unklar ist, gibt es direktes Feedback; das kommt bei den Verantwortlichen an, wird nachgezogen, und das Team kann die Wissensdatenbank gezielt erweitern.
+
+Datenschutz steht von Anfang an im Zentrum, nicht als nachträgliche Überlegung. Bevor externe Dienste ins Spiel kommen, werden persönliche Angaben neutralisiert – E-Mail, Telefon, Adresse, IBAN, Ausweisnummer, Kreditkarte, Postleitzahl, Sozialversicherungsnummer werden zu Platzhaltern; Namen und Beträge nur soweit nötig, damit Antworten verständlich bleiben. Die Verarbeitung liegt überwiegend in der EU, Protokolle werden nur kurz gehalten, Zero-Retention ist beantragt; Zustimmung ist Pflicht, Widerruf jederzeit z. B. per „datenschutz widerrufen“ oder „privacy revoke“. Der Ansatz ist extern geprüft (u. a. PwC). Ohne diese Sicherheitsmaßnahmen wäre der Assistant nicht einsatzbereit – Datenschutz ist Voraussetzung, keine Option.
+
+Wenn ich das in einem Satz zusammenfasse: Ich habe Förderleistungen als verständlichen digitalen Ablauf gebaut und einen KI-Assistant so gestaltet, dass er präzise, mehrsprachig und datenschutzkonform antwortet – ohne Fantasie, mit klarer Abgrenzung zu menschlichem Support – und Teams messbar entlastet.
+
+Refined One-line Impact (≤18 Wörter):
 „Ich habe Förderleistungen als verständlichen digitalen Ablauf gebaut — mit Chatbot-Support, der Teams messbar entlastet.“
+
+Ich-Aussagen (für Interview / Projektüberblick):
+• Ich habe dafür gesorgt, dass diese beiden Plattformen komplizierte, bürokratische Förderprozesse digital und barrierefrei abbilden.
+• Mir war wichtig, dass berechtigte Nutzer:innen ihre Anträge möglichst einfach stellen können, ohne im Papierkram unterzugehen.
+• Ich habe neue Features eingeführt, unter anderem einen Chatbot, um den Support spürbar zu entlasten.
+• Der Chatbot funktioniert multilingual und ist datenschutzkonform umgesetzt.
+• Ich habe das System nicht nur konzipiert, sondern das Ganze auch selbst entwickelt und sicher eingebunden.
+• Ich habe eine Feedback-Schleife integriert, damit wir den Chatbot kontinuierlich verbessern können.
+• Insgesamt habe ich die Plattform so gebaut, dass sie im Alltag zuverlässig funktioniert: für Nutzer:innen klar, für das Team im Betrieb tragbar.
+
+---
+
+Chatbot / Assistant – Input für Systemprompt oder Wissensbasis (Stichpunkte):
+
+• Herausforderung: Viele Mitglieder, tausend individuelle Situationen (Jobticket, Zuschuss Internet für Beruf, besondere Lebenslage); Sprachen DE, EN, TR, FR u. a. Ziel: allen gerecht werden, ohne dass Antwortzeiten explodieren.
+
+• Lösung: Mehr als FAQ-Bot. Präzise Antworten, schnell; keine Fantasie/Halluzination; zuverlässig (Ansprüche, Fristen).
+
+• Prinzip „Denkt erst, dann handelt“: Vor jeder Antwort prüfen – direkt beantwortbar oder Wissensdatenbank? Standardfragen (EVG, Fonds) sofort; Detailfragen gezielt recherchieren. Bei Haken: stimmige Antwort mit dem Vorhandenen, kein Abbruch.
+
+• Mehrsprachigkeit: Sprache der Fragenden spiegeln, auch Wechsel mitten im Gespräch. Ausgabe in Nutzersprache → Website nicht in 15 Sprachen nötig.
+
+• Routinefragen automatisiert, Sonderfälle beim Team; Antworten auch außerhalb Bürozeiten. Feedback → Verantwortliche, Nachziehen; Wissensdatenbank gezielt erweiterbar.
+
+• Datenschutz: Fundament, nicht nachträglich. Vor externen Diensten Neutralisierung (E-Mail, Telefon, Adresse, IBAN, Ausweisnr, Kreditkarte, PLZ, SV-Nr → Platzhalter); Namen/Beträge nur für Verständlichkeit. Verarbeitung überwiegend EU; Protokolle kurz; Zero-Retention beantragt; Zustimmung Pflicht, Widerruf „datenschutz widerrufen“ / „privacy revoke“. Extern geprüft (u. a. PwC). Voraussetzung, keine Option.
 
 
 
@@ -39,23 +61,36 @@ Enablement / team shift: Unsere Kunden und internen Teams können so ihre Marken
 
 Impact line: „Ich sorge dafür, dass unsere KI-Tools im Alltag markengerecht funktionieren und gleichzeitig genug kreative Freiräume bieten.“
 
+Ich-Aussagen (für Interview / Projektüberblick):
+• Ich bin in den Dailies dabei und denke ständig mit, ob das ganze Ding überhaupt funktioniert.
+• Ich denke nicht nur „Feature“, sondern System: Wenn jemand etwas reinpromptet — womit wird das gecheckt?
+• Ich frage mich: Wer definiert diesen LLM-Prozess? Wie kann man ihn verändern?
+• Ich denke über Verantwortung nach: Wie soll eine Marke in Zukunft kommunizieren — und wer ist dafür eigentlich „zuständig“? Wer ist da der Fotograf oder Creative Director? Wem gibt man diese Verantwortlichkeit?
+• Ich beschäftige mich mit Governance auf Scale: Wenn viele verschiedene Leute solche Tools verwenden, wie findet man heraus, wie viele Restrictions man geben darf? Und wie viel Freiheit man trotzdem lassen muss?
+• Ich bin vorne mit dabei — auf beiden Seiten: nicht nur im Produkt/Workflow, sondern auch in der Entwicklung.
+• In der Entwicklung setzen wir KI ein, z. B. Agenten/Tracer-Agenten, die für uns das Ding bauen.
+• Und das verändert den Prozess komplett: wie man entwickelt, wie man testet, wie man iteriert.
+• Ich sehe mich dabei als jemand, der diese beiden Ebenen gleichzeitig mitdenkt: die Nutzung im Alltag und die technische Umsetzung, damit das System nicht nur „in Theorie“ gut ist.
+
 ⸻
 
 
-Project: DPF Group
+Project: DPF Group / Tertianum
 
-Role statement: Ich habe als System Designer die digitalen Auftritte verschiedener Premium-Immobilienmarken und ihrer Services unter jeweils eigenen, markenspezifischen Designsystemen betreut.
+---
 
-Context / constraints: Unterschiedliche Marken mit eigenen Systemen (Residenzen, Concierge, Restaurant), diverse technische Setups (WordPress, Nuxt.js mit Prisma CMS), und ein Wechsel des CRM-Systems auf Microsoft Dynamics.
+Bei der DPF Group habe ich nicht „eine Website“ betreut, sondern ein ganzes Ökosystem aus Immobilienmarken und Services – und bin dafür die zentrale Ansprechstelle geworden, wenn es um alles Digitale geht.
 
-2–4 system decisions you made:
-	•	Ich habe sichergestellt, dass jede Marke ihr eigenes Designsystem behält, während wir den Gesamtauftritt konsistent und wartbar halten.
-	•	Ich habe den Übergang auf ein neues CRM (Microsoft Dynamics) begleitet und sichergestellt, dass die Integration in die bestehenden Web-Workflows reibungslos funktioniert.
-	•	Ich habe den SEO-freundlichen Ausbau von Content-Bereichen wie Blogs und Reiseführern unterstützt und darauf geachtet, dass neue Features und Performance-Optimierungen manageable bleiben, ohne die Teams zu überfordern.
+DPF ist ein Immobilieninvestor mit Fokus auf die alternde Gesellschaft: Premiumresidenzen in Berlin, Konstanz und München, ein zweites Gebäude in Konstanz, ein Projekt in Frankfurt, für das wir erstmal ein Entwicklungs-Branding brauchten. Dazu kam die Beteiligung am Concierge-Service RIS – gerebranded, heute eine von Deutschlands bekanntesten Concierge-Company – und die Brasserie Colette, ein Sternerestaurant, das an die Residenzen angebunden ist und sein eigenes Branding, eigene Strategie und eigene Website hat. Jede dieser Marken hat ihr eigenes Designsystem, nicht ein gemeinsames Komponenten-Set: Die Ansprüche – neue Features, Redesigns, Refactorings, Performance, Kundenkommunikation – sind ähnlich, aber die Brands bleiben bewusst getrennt.
 
-Enablement / team shift: Die Teams konnten durch meine Koordination neue Anforderungen – vom Refactoring bis zu neuen Funktionen – kontinuierlich umsetzen, ohne die Markenidentität oder die Systemstabilität zu gefährden.
+Technisch ist das genauso divers: Die meisten Auftritte laufen auf WordPress, die Brasserie Colette auf Next mit Prismic als CMS. Dazu der CRM-Wechsel: von einem proprietären System zu Microsoft Dynamics und Mailchimp. Kontaktformulare mussten sicherer werden, an das neue CRM angebunden werden, Newsletter, Pressebereich, HR-Bereich – das geht alles durch meinen Kopf, wird von mir geprüft und konzipiert. Ich hole mir Entwickler und Designer dazu, wenn es das braucht, arbeite aber mit Brandexperten, Marketing, SEO, HR und Google-Ads-Teams direkt zusammen. Alle sprechen mit mir, wenn es um die Website geht und was sie können muss: Brand ins Digitale übersetzen, aktuell halten, neue Sachen ausprobieren, ohne dass das System zu kompliziert wird oder die Teams stuck sind.
 
-Impact line: „Ich habe die digitalen Markenauftritte flexibel und wartbar gehalten, während wir stetig neue Anforderungen integrierten.“
+Konkret bedeutet das: Reiseführer digitalisieren, das Journal bzw. den Blog-Bereich SEO-freundlich aufsetzen für die Keywords, die sich die Teams überlegt haben. CI/CD am Laufen halten, Error-Tracking, Performance im Blick. Beim Refactoring schauen, dass es manageable bleibt – und trotzdem Raum lassen, damit sie neue Features einbauen können. Die Brasserie will ihre Menüs selbst auf der Website pflegen können; die Residenzen brauchen einen erneuerten Pressebereich und eine verbesserte HR-Story. Das alles bündelt sich bei mir: Konzeption, Prüfung, Übersetzung zwischen Fachbereichen und Technik.
+
+Wenn ich das in einem Satz zusammenfasse: Ich bin bei DPF die Stelle, an der alle digitalen Fäden zusammenlaufen – mehrere Marken, eigene Design-Systeme, unterschiedliche Stacks und ein CRM-Wechsel – und sorge dafür, dass es wartbar bleibt und die Teams handlungsfähig.
+
+Refined One-line Impact (≤18 Wörter):
+„Ich halte die digitalen Markenauftritte von DPF flexibel und wartbar – mit eigenem System pro Brand und zentraler Koordination aller Anforderungen.“
 
 ⸻
 
@@ -63,25 +98,28 @@ Impact line: „Ich habe die digitalen Markenauftritte flexibel und wartbar geha
 
 Project: TeamBank
 
-Role statement:
-Ich habe bei TeamBank nicht „eine Website“ gebaut, sondern mehrere Plattformen und Teams zusammengehalten — und als Designer bewusst technische Verantwortung mit übernommen, damit das Ganze im Alltag funktioniert.
+---
 
-Context / constraints:
-Mehrere Plattformen parallel: teambank.de (Corporate/HR, Karriere), teambank.welt (Partnerbanken, Handbücher), Markenportal (Assets, Suche, Tagging, perspektivisch Chatbot) plus easyCredit Ratenkauf als B2B-Produkt (Händlerportal, Registrierung, Banner-Konfigurator, Developer-Portal).
-Tech-Setup: WordPress auf Azure (ACF Pro, PHP, modulare Komponenten, teils React), Docker/Composer, CI/CD, hohe Anforderungen an Accessibility, Performance und Wartbarkeit.
-Team: Brand Designer, Head of Development, Junior Dev, Junior Design + Stakeholder aus HR, Marketing, SEO/Ads, Partner- und Kundenservice, Produkt/DevRel.
+Ich war bei TeamBank in einer Rolle, in der ich nicht „eine Website“ gemacht habe, sondern ein ganzes Ökosystem aus Plattformen und Teams zusammengehalten habe – und dabei gelernt habe, mich als Designer bewusst in technische Verantwortung reinzubewegen.
 
-2–4 system decisions you made:
-	•	Ich habe die Inhalte nicht einfach migriert, sondern als System modelliert: modular, durchsuchbar und langfristig pflegbar (inkl. komplexer Tabellen, Footnotes, Navigation).
-	•	Ich habe die Brand aus Präsentationen in eine funktionale UI-Logik übersetzt, die auch bei Formularen, Tabellen, States und Accessibility nicht auseinanderfällt.
-	•	Ich bin bewusst in technische Blackboxen rein (Azure, CI/CD, WordPress-Architektur, Suche/Indexierung) und habe das so übersetzt, dass Teams wieder entscheidungsfähig werden.
-	•	Ich habe die Experience über Rollen hinweg zusammen gedacht: Partnerbanken, Händler, interne Teams und Developer — damit sich Portale und Produkt nicht auseinanderentwickeln.
+Der Kontext war komplex: mehrere Plattformen auf WordPress-Basis (ACF Pro, PHP, modulare Komponenten, teils React für komplexere Anforderungen), betrieben in der Azure-Umgebung des Kunden, mit Docker/Composer und einer stark regulierten Corporate-Struktur. Gleichzeitig gab es unterschiedliche Ziele und Zielgruppen: teambank.de als Corporate-/HR-Brand-Website (v. a. Karriere), teambank.welt als Partnerportal für die Banken im easyCredit-Ökosystem, und das Markenportal als internes Brand-System/Asset-Hub mit Suche, Tagging und perspektivisch Chatbot-Interface.
 
-Enablement / team shift:
-Ich habe die Menschen, die das System wirklich nutzen und betreiben, aktiv eingebunden — und sie so enabled, Inhalte und Weiterentwicklung später selbst sicher zu tragen.
+Ich habe in diesem Setup nicht den Brand Lead gespielt – dafür gab es einen eigenen Brand Designer – sondern ich war die Schnittstelle zwischen Brand-Vision, funktionaler UI, Content-Struktur und technischer Machbarkeit. Ich habe den Kunden und die Ziele zuerst durch Research und Interviews sauber verstanden: Welche Inhalte existieren schon? Wo sind Abhängigkeiten? Was ist wirklich geschäftskritisch? Welche Prozesse blockieren Teams? Und was davon lässt sich in ein System übersetzen, das nicht nur gut aussieht, sondern wartbar bleibt und intern wirklich benutzt wird.
 
-Impact line:
-„Ich habe Teams aus Corporate-Blackboxen heraus wieder handlungsfähig gemacht — mit Systemen, die sie selbst weiterentwickeln können.“
+Das Team war klassisch cross-funktional aufgestellt: ein Head of Development, ein Junior Developer, ein Junior Designer, dazu Stakeholder aus Marketing, HR, SEO/Ads, Partner- und Kundenservice sowie Produktteams rund um easyCredit Ratenkauf. Ich habe bewusst mit den Leuten gesprochen, die das System später wirklich nutzen oder operativ tragen – nicht nur mit den „Lautesten im Raum“. Mein Job war oft, die richtigen Gespräche in der richtigen Reihenfolge zu führen: Ich wusste, wann ich wen dazuhole, wie ich Entscheidungen vorbereite, und wie ich Teams aus starren Corporate-Prozessen wieder handlungsfähig bekomme.
+
+Ein konkretes Beispiel ist die Digitalisierung der Partner-Handbücher: Das Ziel war nicht „PDFs ins Web kippen“, sondern ein System aufzubauen, das strukturiert, durchsuchbar und langfristig pflegbar ist – inklusive komplexer Inhalte wie Tabellen mit Fußnoten, Sidebar-Navigation und modularer Inhaltslogik. Ich habe vorgeschlagen, das nicht als Big Bang zu bauen, sondern prototypisch: Inhalte gemeinsam analysieren, Schritt für Schritt digitalisieren, vereinfachen und daraus ein wiederverwendbares Modulsystem entwickeln. Der entscheidende Punkt war Enablement: Ich habe nicht nur umgesetzt, sondern das Team befähigt, Inhalte selbst zu übertragen und das System später eigenständig weiterzuführen.
+
+Parallel dazu habe ich geholfen, die neue Brand-Vision in eine funktionale UI zu übersetzen. Das ist ein typischer Bruch: Eine Marke funktioniert in Key Visuals und Präsentationen oft super – aber in einem Interface mit Formularen, Tabellen, Downloads, States und Accessibility-Constraints muss sie sich beweisen. Ich habe dafür gesorgt, dass die Brand-Logik als konsistentes UI-System über mehrere Portale hinweg tragfähig wird, statt nur „schön“ zu sein.
+
+Technisch habe ich mich nie hinter „Blackboxen“ versteckt. Wenn Azure-Setup, CI/CD-Prozesse, WordPress-Architektur oder AI-Themen unklar waren, habe ich das aufgemacht, reingeschaut, gelernt – und dann so übersetzt, dass das Team damit Entscheidungen treffen kann. Dazu gehörten auch Themen wie Performance und Findability: Ich habe z. B. vorgeschlagen, Algolia für Suche/Indexierung einzusetzen, weil das bei großen Content-Mengen und Asset-Bibliotheken ein echter Hebel ist.
+
+Und zusätzlich zum Portal-Ökosystem kam noch das easyCredit Ratenkauf B2B-Produkt dazu – also Payment-Service-Provider-Logik mit Händlerportal, Registrierungsstrecke, Banner-Konfigurator und einem Developer-Bereich inklusive Plugins, Anleitungen und API-Dokumentation. Dort habe ich direkt mit dem Head of Product gearbeitet und Design- und Development-Management übernommen, damit sich Produkt, Partner-Experience und Developer-Experience nicht auseinanderentwickeln.
+
+Wenn ich das in einem Satz zusammenfasse: Ich bin in TeamBank zu jemandem geworden, der keine Angst davor hat, Verantwortung über Disziplinen hinweg zu übernehmen – ich gehe dahin, wo die Komplexität ist, hole Wissen von Expert:innen ab, mache es für Teams nutzbar und forme daraus ein System, das über mehrere Plattformen hinweg konsistent, wartbar und realistisch betreibbar ist.
+
+Refined One-line Impact (≤18 Wörter):
+„Ich verband Brand, Content und Technik zu einem wartbaren Plattform-Ökosystem, das Teams entscheidungsfähig und autonom macht.“
 
 
 ⸻
@@ -90,21 +128,17 @@ Impact line:
 
 Project: Grün Berlin + InfraSignal
 
-Role statement:
-Ich habe den digitalen Rebranding-Prozess von Grün Berlin übernommen, den eine Brand-Agentur gestartet hat, und dabei die Inhalte, Fotos und komplexen Branding-Anforderungen in ein modulares, verständliches Typo3-System übersetzt.
+---
 
-Context / constraints:
-Grün Berlin ist die landeseigene Gesellschaft, die Parks und Erholungsgebiete in Berlin betreibt und jetzt mit einem neuen Branding in Typo3 arbeiten wollte. InfraSignal ist ein Tochterunternehmen, das später die gleichen digitalen Templates für ihr Ampel- und Störungsmanagement übernommen hat. Zusätzlich haben wir interaktive Projektkarten und Newsletter-Templates für verschiedene Parks umgesetzt.
+Ich habe in einem Projekt mitgearbeitet, in dem wir als Digitalagentur beauftragt wurden, den Rebranding-Prozess von Grün Berlin – von einer Brandagentur gestartet – digital zu übersetzen. Meine Aufgabe war: die große Menge an Fotomaterial und die beauftragten Texte in eine sinnvolle, verständliche Sitemap zu bringen und das im TYPO3-CMS modularisierbar zu machen. TYPO3 ist nicht unsere Hauptexpertise, wir sind im Frontend und in JavaScript-Applikationen stark – also habe ich einen Dienstleister mit TYPO3-Erfahrung im Backend und Templating gesucht und unser Frontend-Know-how mit deren Backend-Expertise verbunden. So wurden Branding und Inhalte modular und gut pflegbar.
 
-2–4 system decisions you made:
-	•	Ich habe mit einem Typo3-Partner zusammengearbeitet, um unser Frontend-Know-how mit ihrer Backend-Expertise zu verbinden, sodass das Branding und die Inhalte modular und leicht pflegbar wurden.
-	•	Für InfraSignal haben wir dieselben Templates wiederverwendet, damit das Team mit vertrauten Werkzeugen arbeiten kann, aber trotzdem ein eigenes Webportal mit eigenem Branding bekam.
-	•	Wir haben eine interaktive Projektkarte integriert, die Stadtplanern und Bürgern zeigt, wie weit die einzelnen Projekte sind, und ein Ampel-Störungsformular entwickelt, das direkt auf einer Karte den Standort der Störung abbildet, damit das Team schneller reagieren kann.
+Rund ein Jahr nach dem Relaunch wurde das Ampelmanagement an die Tochter InfraSignal ausgelagert. Ich habe dafür gesorgt, dass InfraSignal das Template-Theme von Grün Berlin geklont bekommt: Die Content-Manager können wiederverwenden, was sie schon kennen – InfraSignal ist aber eigenständig ein Webportal mit eigenem Branding, weil völlig andere Stakeholder und Betreiber. Ein Kernthema bei InfraSignal ist das Störungsmanagement: Fällt eine Ampel aus, können Bürger:innen eine Störung melden. Ich habe das Formular so konzipiert, dass Störungen auf einer Karte erscheinen, und die Datenbank aller Ampeln der Stadt Berlin auf Mapbox abbilden lassen – die Nutzer:innen wählen auf der Karte die Kreuzung, die tatsächlich betroffen ist. Das macht es den Managern und Serviceteams der Betreiber wesentlich leichter, Störungen zu verwalten und die nächsten Schritte einzuleiten.
 
-Enablement / team shift:
-Das Team von Grün Berlin und InfraSignal kann jetzt mit einem vertrauten, modularen System arbeiten, das wir einmal aufgebaut haben und das sie selbst weiter pflegen können.
+Bei Grün Berlin selbst kamen weitere Bausteine dazu: Geschäftsberichte digitalisiert und in TYPO3 eingebettet; eine interaktive Projektkarte, die den Status der Projekte zeigt, die Grün Berlin entwickelt – Stadtplaner:innen und Bürger:innen sehen, wie weit die Entwicklungen in der Stadt sind. Grün Berlin betreibt zudem Parks und Erholungsgebiete – Britzer Garten, Gärten der Welt und weitere –, die jeweils eigenes Branding, eigene Webseiten und eigene Newsletter haben. Auch dabei habe ich mitgewirkt: Newsletter als manageable, responsive Templates für Mailchimp, mit den komplexen Brandinganforderungen so runtergebrochen, dass sie im Newsletter-Kontext funktionieren.
 
-Impact line:
+Wenn ich das in einem Satz zusammenfasse: Ich habe das Rebranding von Grün Berlin in ein modulares TYPO3-System übersetzt, InfraSignal mit geklontem Theme, eigenem Branding und Störungsmanagement inklusive Ampeldaten auf Mapbox ausgestattet – und Projektkarte sowie Park-Newsletter so umgesetzt, dass Teams und Bürger:innen gleichermaßen davon profitieren.
+
+Refined One-line Impact (≤18 Wörter):
 „Ich habe städtische Infrastruktur und Bürgerbeteiligung so digital übersetzt, dass Teams und Bürger gleichermaßen davon profitieren.“
 
 ⸻
