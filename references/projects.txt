@@ -1,0 +1,110 @@
+Project: WoMoFonds + Dein-WoMo (EVG / Fonds soziale Sicherung)
+
+Role statement (1–2 sentences):
+Ich habe die digitalen Antragsplattformen für Zuschüsse zu Wohnen & Mobilität konzipiert und weiterentwickelt — inklusive Support-Entlastung durch einen mehrsprachigen Chatbot.
+
+Context / constraints (stack, org, complexity):
+Wo-Mo-Fonds ist ein Ergebnis von Tarifverhandlungen und zahlt EVG-Mitgliedern bei DB AG (und Töchter) Zuschüsse für Wohnen & Mobilität.  ￼
+Dein-WoMo richtet sich an förderberechtigte EVG-Mitglieder außerhalb der DB AG und wird durch den Fonds soziale Sicherung betrieben.  ￼
+Die Plattform muss verständlich, zugänglich und “low support” sein, weil viele Fragen immer wiederkommen.
+
+2–4 system decisions you made (bullets):
+	•	Antragslogik so strukturiert, dass Nutzer:innen Zuschüsse online beantragen können (klarer Prozess statt Bürokratiegefühl).  ￼
+	•	Content + Hilfetexte direkt in den Prozess gelegt, damit weniger Rückfragen entstehen.  ￼
+	•	KI-Chatbot als kontrollierte Support-Schicht umgesetzt: sofortige Antworten, mehrsprachig (15 Sprachen), ohne Kontrolle aus der Hand zu geben.  ￼
+	•	Plattform so gedacht, dass sich Leistungen/Varianten pro Jahr erweitern lassen (z. B. 120€-Förderlogik).  ￼
+
+Enablement / team shift (1 sentence):
+Das Team kann wiederkehrende Fragen automatisiert abfangen und Änderungen an Leistungen sauber über das System ausrollen.  ￼
+
+Impact line (≤18 words):
+„Ich habe Förderleistungen als verständlichen digitalen Ablauf gebaut — mit Chatbot-Support, der Teams messbar entlastet.“
+
+
+
+⸻
+
+Project: Open Wonder
+
+Role statement: Ich bin direkt in die täglichen Abläufe eingebunden und gestalte mit, wie unser KI-System sowohl die kreativen Freiheiten der Marken als auch die technischen Restriktionen und Entwicklungsprozesse in Einklang bringt.
+
+Context / constraints: Ein flexibles KI-Produkt mit integrierten Agenten (z. B. Cursor), bei dem ich sowohl an der Definition der LLM-Prozesse als auch an der täglichen Balance zwischen Nutzerfreiheit und Markenrestriktionen mitarbeite.
+
+2–4 system decisions you made:
+	•	Ich habe mitgestaltet, wie wir die LLM-Prozesse so aufsetzen, dass Marken ihre Identität wahren, während sie gleichzeitig genug kreative Freiheiten haben.
+	•	Ich habe sichergestellt, dass unsere technischen Workflows – von der Nutzung von KI-Entwicklungsagenten bis hin zur Einbindung von Feedback und Error-Tracking – im Alltag realistisch funktionieren und ständig weiterentwickelt werden.
+	•	Ich habe in den Dailies daran mitgearbeitet, herauszufinden, wie viel Struktur und wie viel Flexibilität unsere Nutzer brauchen, um markenkonforme, aber dennoch kreative Ergebnisse zu erzielen.
+
+Enablement / team shift: Unsere Kunden und internen Teams können so ihre Markenidentität mit unserer KI flexibel gestalten, während ich darauf achte, dass die technischen Prozesse für alle Beteiligten klar und anpassbar bleiben.
+
+Impact line: „Ich sorge dafür, dass unsere KI-Tools im Alltag markengerecht funktionieren und gleichzeitig genug kreative Freiräume bieten.“
+
+⸻
+
+
+Project: DPF Group
+
+Role statement: Ich habe als System Designer die digitalen Auftritte verschiedener Premium-Immobilienmarken und ihrer Services unter jeweils eigenen, markenspezifischen Designsystemen betreut.
+
+Context / constraints: Unterschiedliche Marken mit eigenen Systemen (Residenzen, Concierge, Restaurant), diverse technische Setups (WordPress, Nuxt.js mit Prisma CMS), und ein Wechsel des CRM-Systems auf Microsoft Dynamics.
+
+2–4 system decisions you made:
+	•	Ich habe sichergestellt, dass jede Marke ihr eigenes Designsystem behält, während wir den Gesamtauftritt konsistent und wartbar halten.
+	•	Ich habe den Übergang auf ein neues CRM (Microsoft Dynamics) begleitet und sichergestellt, dass die Integration in die bestehenden Web-Workflows reibungslos funktioniert.
+	•	Ich habe den SEO-freundlichen Ausbau von Content-Bereichen wie Blogs und Reiseführern unterstützt und darauf geachtet, dass neue Features und Performance-Optimierungen manageable bleiben, ohne die Teams zu überfordern.
+
+Enablement / team shift: Die Teams konnten durch meine Koordination neue Anforderungen – vom Refactoring bis zu neuen Funktionen – kontinuierlich umsetzen, ohne die Markenidentität oder die Systemstabilität zu gefährden.
+
+Impact line: „Ich habe die digitalen Markenauftritte flexibel und wartbar gehalten, während wir stetig neue Anforderungen integrierten.“
+
+⸻
+
+
+
+Project: TeamBank
+
+Role statement:
+Ich habe bei TeamBank nicht „eine Website“ gebaut, sondern mehrere Plattformen und Teams zusammengehalten — und als Designer bewusst technische Verantwortung mit übernommen, damit das Ganze im Alltag funktioniert.
+
+Context / constraints:
+Mehrere Plattformen parallel: teambank.de (Corporate/HR, Karriere), teambank.welt (Partnerbanken, Handbücher), Markenportal (Assets, Suche, Tagging, perspektivisch Chatbot) plus easyCredit Ratenkauf als B2B-Produkt (Händlerportal, Registrierung, Banner-Konfigurator, Developer-Portal).
+Tech-Setup: WordPress auf Azure (ACF Pro, PHP, modulare Komponenten, teils React), Docker/Composer, CI/CD, hohe Anforderungen an Accessibility, Performance und Wartbarkeit.
+Team: Brand Designer, Head of Development, Junior Dev, Junior Design + Stakeholder aus HR, Marketing, SEO/Ads, Partner- und Kundenservice, Produkt/DevRel.
+
+2–4 system decisions you made:
+	•	Ich habe die Inhalte nicht einfach migriert, sondern als System modelliert: modular, durchsuchbar und langfristig pflegbar (inkl. komplexer Tabellen, Footnotes, Navigation).
+	•	Ich habe die Brand aus Präsentationen in eine funktionale UI-Logik übersetzt, die auch bei Formularen, Tabellen, States und Accessibility nicht auseinanderfällt.
+	•	Ich bin bewusst in technische Blackboxen rein (Azure, CI/CD, WordPress-Architektur, Suche/Indexierung) und habe das so übersetzt, dass Teams wieder entscheidungsfähig werden.
+	•	Ich habe die Experience über Rollen hinweg zusammen gedacht: Partnerbanken, Händler, interne Teams und Developer — damit sich Portale und Produkt nicht auseinanderentwickeln.
+
+Enablement / team shift:
+Ich habe die Menschen, die das System wirklich nutzen und betreiben, aktiv eingebunden — und sie so enabled, Inhalte und Weiterentwicklung später selbst sicher zu tragen.
+
+Impact line:
+„Ich habe Teams aus Corporate-Blackboxen heraus wieder handlungsfähig gemacht — mit Systemen, die sie selbst weiterentwickeln können.“
+
+
+⸻
+
+
+
+Project: Grün Berlin + InfraSignal
+
+Role statement:
+Ich habe den digitalen Rebranding-Prozess von Grün Berlin übernommen, den eine Brand-Agentur gestartet hat, und dabei die Inhalte, Fotos und komplexen Branding-Anforderungen in ein modulares, verständliches Typo3-System übersetzt.
+
+Context / constraints:
+Grün Berlin ist die landeseigene Gesellschaft, die Parks und Erholungsgebiete in Berlin betreibt und jetzt mit einem neuen Branding in Typo3 arbeiten wollte. InfraSignal ist ein Tochterunternehmen, das später die gleichen digitalen Templates für ihr Ampel- und Störungsmanagement übernommen hat. Zusätzlich haben wir interaktive Projektkarten und Newsletter-Templates für verschiedene Parks umgesetzt.
+
+2–4 system decisions you made:
+	•	Ich habe mit einem Typo3-Partner zusammengearbeitet, um unser Frontend-Know-how mit ihrer Backend-Expertise zu verbinden, sodass das Branding und die Inhalte modular und leicht pflegbar wurden.
+	•	Für InfraSignal haben wir dieselben Templates wiederverwendet, damit das Team mit vertrauten Werkzeugen arbeiten kann, aber trotzdem ein eigenes Webportal mit eigenem Branding bekam.
+	•	Wir haben eine interaktive Projektkarte integriert, die Stadtplanern und Bürgern zeigt, wie weit die einzelnen Projekte sind, und ein Ampel-Störungsformular entwickelt, das direkt auf einer Karte den Standort der Störung abbildet, damit das Team schneller reagieren kann.
+
+Enablement / team shift:
+Das Team von Grün Berlin und InfraSignal kann jetzt mit einem vertrauten, modularen System arbeiten, das wir einmal aufgebaut haben und das sie selbst weiter pflegen können.
+
+Impact line:
+„Ich habe städtische Infrastruktur und Bürgerbeteiligung so digital übersetzt, dass Teams und Bürger gleichermaßen davon profitieren.“
+
+⸻
