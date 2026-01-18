@@ -1,0 +1,90 @@
+Project: Martin Heßmann One Pager
+
+1. Core Concept & Design System
+Philosophy
+Visual Language
+Typography: High contrast. Elza (Humanist, Sans) + EB Garamond Semi Bold Italic (Italic Serif Highlights). + Strict Typescale 1.333 (16 Baseline)
+Color Palette: Tetradic System (Blue, Amber, Lime, Lilac) + Strict B/W Contrast.
+Layout: Left-aligned, high whitespace, grid-based, sequential storytelling.
+Visual Anchors: Geometric shapes and gradient auras illustrating each section.
+
+2. Content Structure & Copy Deck
+
+I. Hero & Introduction
+
+Component: Section01About.tsx
+
+Headline
+Interactive Principles (4 Columns)
+
+II. Case Studies (Deep Dives)
+
+Component: Section02TeamBank.tsx
+
+Title: "TeamBank"
+Subline: Plattform-Ökosystem aus Brand, Content und Technik
+Core Narrative: Moving from single products to a platform ecosystem. Replacing PDF workflows with maintainable, searchable modular content.
+
+Component: Section03DPF.tsx
+
+Title: "DPF / Tertianum"
+Subline: Premium-Marken mit eigenen Systemen konsistent geführt
+Core Narrative: Managing multiple premium real estate brands with distinct identities but a shared digital backbone. CRM migration to MS Dynamics.
+
+Component: Section04OpenWonder.tsx
+
+Title: "Open Wonder"
+Subline: KI-Workflows zwischen Freiheit und Markenrestriktion
+Core Narrative: Balancing creative freedom with brand guardrails in an AI-driven environment. Defining daily workflows for AI agents.
+
+Component: Section05Womofonds.tsx
+
+Title: "WoMoFonds / Dein-WoMo"
+Subline: Förderlogik als klaren digitalen Prozess aufgebaut
+Core Narrative: Digitizing bureaucratic subsidy applications for DB AG employees into a simple, guided flow with AI chatbot support.
+
+Component: Section06GrunBerlin.tsx
+
+Title: "Grün Berlin + InfraSignal"
+Subline: Branding in modulares Typo3-System übersetzt
+Core Narrative: Rebranding for Berlin's parks management. Merging frontend aesthetics with Typo3 backend modularity for maintainability.
+
+III. Context & History
+
+Component: Section07Timeline.tsx
+
+Headline: "Zeitleiste"
+Description: "Meine wichtigsten Projekte und Meilensteine von 2017 bis heute – farbig markiert sind die Hero-Projekte, unten die technischen Meilensteine."
+
+Key Events (Selected):
+2018:
+2019: Grün Berlin Launch
+2021: KI-Chatbot Integration (15 Languages)
+2022: WoMoFonds Launch
+2023: TeamBank Markenportal Relaunch
+2024: Open Wonder Alpha Launch
+
+Component: Section08Skills.tsx
+
+Headline: "Profile"
+Visual Data: Vertical bars visualizing the 30/25/25/20 split.
+Summary: "System Design und AI-Workflows bilden das Fundament. Technisch in React, TypeScript, Headless CMS."
+
+Component: Section09Resume.tsx
+
+Sections:
+Work History: 2024 – today (Open Wonder), ...
+Skills/Tools: Figma, React, TypeScript, Headless CMS, Design Systems...
+
+Education: Bachelor of Arts Communication Design (HTW Berlin)
+
+Languages: German (Native), English (C1).
+Interests: Vegetariasm, Biking, Choir, Cooking
+
+IV. Footer
+
+Component: Section10Footer.tsx
+
+Contact: Martin Heßmann, hello@martinhessmann.com, +49 151 50158038.
+Based in: "Berlin, Germany: Hybrid / Remote"
+Legal: Impressum, Datenschutz.
