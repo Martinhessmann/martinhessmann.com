@@ -9,8 +9,6 @@ import {
   Section04OpenWonder,
   Section05WoMoFonds,
   Section06GrunBerlin,
-  Section07Timeline,
-  Section08Skills,
   Section09Resume,
   Section10Footer
 } from '@/components/sections'
@@ -58,8 +56,6 @@ export default async function ResumePage({ searchParams }: PageProps) {
       <Section04OpenWonder />
       <Section05WoMoFonds />
       <Section06GrunBerlin />
-      <Section07Timeline />
-      <Section08Skills />
       <Section09Resume work={resume.work ?? []} />
       <Section10Footer />
     </main>

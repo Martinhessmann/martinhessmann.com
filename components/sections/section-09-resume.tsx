@@ -22,6 +22,30 @@ interface Section09ResumeProps {
   work: Work[]
 }
 
+const profileSegments = [
+  { label: "Design", value: 30, className: "bg-blue-300/80" },
+  { label: "Code", value: 30, className: "bg-amber-300/80" },
+  { label: "Leadership", value: 20, className: "bg-lime-300/80" },
+  { label: "Alignment", value: 20, className: "bg-lilac-200/80" },
+]
+
+function MicroProfileGraph() {
+  const summary = "Profile mix: Design 30%, Code 30%, Leadership 20%, Alignment 20%"
+  return (
+    <div className="flex items-center gap-2" role="img" aria-label={summary}>
+      <div className="flex h-1.5 w-24 overflow-hidden rounded-full bg-gray-200/70">
+        {profileSegments.map((segment) => (
+          <span
+            key={segment.label}
+            className={`h-full ${segment.className}`}
+            style={{ width: `${segment.value}%` }}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export function Section09Resume({ work }: Section09ResumeProps) {
   if (!work?.length) return null
 
@@ -86,9 +110,12 @@ export function Section09Resume({ work }: Section09ResumeProps) {
                       )}
                     </p>
                   </div>
-                  <p className="text-[10px] uppercase tracking-[0.22em] text-gray-500 whitespace-nowrap">
-                    {formatDateRange(job.startDate, job.endDate)}
-                  </p>
+                  <div className="flex flex-col sm:items-end gap-2">
+                    <p className="text-[10px] uppercase tracking-[0.22em] text-gray-500 whitespace-nowrap">
+                      {formatDateRange(job.startDate, job.endDate)}
+                    </p>
+                    <MicroProfileGraph />
+                  </div>
                 </div>
 
                 {/* Summary */}
