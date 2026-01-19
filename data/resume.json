@@ -2,11 +2,11 @@
   "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
   "basics": {
     "name": "Martin Heßmann",
-    "label": "Digital Product Manager & Design Generalist",
+    "label": "Systems Designer — Design, Engineering, AI",
     "image": "",
     "email": "martin@martinhessmann.com",
     "url": "https://martinhessmann.com",
-    "summary": "Digital product leader across UX, design systems, and headless engineering. Scales design ops and dev teams to ship headless marketing/product sites with AI-assisted workflows and tight discovery-to-delivery cycles.",
+    "summary": "I connect brand, product, and technology into systems that make teams autonomous. 10+ years bridging design and engineering — building maintainable platforms, AI-assisted workflows, and design systems at scale. Seeking long-term partnerships where I can drive sustained impact across the full product lifecycle.",
     "location": {
       "city": "Berlin",
       "countryCode": "DE"
@@ -31,7 +31,7 @@
   },
   "skills": [
     {
-      "name": "UI/UX, Design Management, Frontend & Content",
+      "name": "Design (30%)",
       "level": "Expert",
       "keywords": [
         "UX Design",
@@ -44,42 +44,52 @@
         "Figma",
         "Prototyping",
         "User Research",
-        "Usability Testing",
-        "Design Ops",
-        "Team Leadership",
-        "Design Strategy",
-        "Design System Governance",
-        "Roadmapping",
-        "Stakeholder Management",
-        "Cross-functional Delivery",
-        "Resource Planning",
-        "Hiring & Coaching",
-        "HTML",
-        "CSS",
+        "Usability Testing"
+      ]
+    },
+    {
+      "name": "Code & Build (30%)",
+      "level": "Expert",
+      "keywords": [
         "React",
         "Next.js",
         "Nuxt.js",
         "TypeScript",
+        "HTML/CSS",
         "Headless Architecture",
-        "Platform Architecture",
-        "Content Management",
-        "Content Automation",
-        "Developer Experience"
+        "WordPress",
+        "TYPO3",
+        "Prismic",
+        "AI-assisted Workflows",
+        "AI Integration"
       ]
     },
     {
-      "name": "Dev Management & AI",
+      "name": "Leadership (20%)",
       "level": "Advanced",
       "keywords": [
+        "Team Leadership",
+        "Design Ops",
+        "Resource Planning",
+        "Hiring & Coaching",
         "GitOps (GitLab)",
         "CI/CD Pipelines",
-        "Pipeline Management",
         "Sentry Automations",
         "Playwright Testing",
-        "AI-assisted Workflows",
-        "AI Integration",
-        "Automation",
         "Observability"
+      ]
+    },
+    {
+      "name": "Stakeholder Alignment (20%)",
+      "level": "Advanced",
+      "keywords": [
+        "Discovery Workshops",
+        "Cross-functional Collaboration",
+        "Stakeholder Management",
+        "Client Strategy",
+        "Roadmapping",
+        "Design System Governance",
+        "Content Strategy"
       ]
     }
   ],
@@ -111,6 +121,28 @@
       "priority": 1
     },
     {
+      "name": "Open Wonder",
+      "description": "Shaping how AI systems balance creative freedom with brand restrictions. Daily involvement in LLM process definition, governance at scale, and AI-assisted development with Cursor agents. Product design and development on both sides simultaneously.",
+      "keywords": [
+        "Next.js",
+        "Supabase",
+        "fal.ai",
+        "AI Workflows",
+        "LLM Integration",
+        "Brand Governance"
+      ],
+      "startDate": "2025-01",
+      "url": "https://openwonder.com",
+      "roles": [
+        "Product Design",
+        "Development",
+        "AI Workflows"
+      ],
+      "entity": "Open Wonder",
+      "featured": true,
+      "priority": 0
+    },
+    {
       "name": "Dein WoMo",
       "description": "Managed the rollout of EVG's Dein WoMo information hub, coordinating TYPO3 and Eleventy workflows with union stakeholders and accessibility requirements.",
       "keywords": [
@@ -131,7 +163,7 @@
     },
     {
       "name": "DPF Group",
-      "description": "Led the DPF Group brand refresh and Nuxt-based platform, aligning investor storytelling, senior-living services, and marketing automation in one experience.",
+      "description": "Central point of contact for everything digital across 6 premium brands — each with distinct design systems and stacks. Led CRM migration to Microsoft Dynamics, coordinated brand, marketing, SEO, HR, and Google Ads teams while keeping it all maintainable.",
       "keywords": [
         "Nuxt",
         "Prismic",
@@ -154,7 +186,7 @@
     },
     {
       "name": "easyCredit Partner",
-      "description": "Co-owned product, design, and development for easyCredit's partner portal, delivering a compliance-ready WordPress build with Algolia search and automated updates.",
+      "description": "Owned design and development management for the B2B payment services portal — registration flows, banner configurator, developer docs, and shop plugins. Partnered directly with Head of Product to align product, partner experience, and developer experience.",
       "keywords": [
         "WordPress",
         "Optimole",
@@ -243,7 +275,7 @@
     },
     {
       "name": "Fonds für Wohnen und Mobilität",
-      "description": "Built EVG's Wohnen & Mobilität hub with Eleventy and TYPO3, delivering multilingual content journeys, accessibility, and streamlined stakeholder approvals.",
+      "description": "Built subsidy applications as understandable digital flows — with AI chatbot support that measurably relieves teams. Multilingual assistant (15+ languages), privacy-compliant (PwC audited), with 'think first' principle: no hallucinations, routine automated, edge cases to humans.",
       "keywords": [
         "TYPO3",
         "Eleventy (11ty)",
@@ -264,7 +296,7 @@
     },
     {
       "name": "Grün Berlin",
-      "description": "Oversaw the Grün Berlin digital platform, introducing a reusable component library, TYPO3 enhancements, and live service updates across city projects.",
+      "description": "Translated urban infrastructure and civic participation into digital systems benefiting teams and citizens equally. Rebrand into modular TYPO3, interactive project maps, digitized annual reports, and park newsletters across Berlin's green spaces.",
       "keywords": [
         "TYPO3",
         "Cloudflare",
@@ -291,7 +323,7 @@
     },
     {
       "name": "infraSignal",
-      "description": "Extended the Grün Berlin engagement with the infraSignal site, streamlining service communication, maintenance updates, and map integrations for traffic infrastructure teams.",
+      "description": "Spin-off from Grün Berlin with cloned template, distinct branding, and fault reporting system. Citizens report traffic signal issues via Mapbox-powered interface linked to Berlin's 2,100+ signal installations database.",
       "keywords": [
         "TYPO3",
         "Brevo",
@@ -400,7 +432,7 @@
     },
     {
       "name": "TeamBank",
-      "description": "Led the cross-functional squad behind teambank.de, implementing Algolia search, SEO guardrails, and content analytics for the easyCredit brand.",
+      "description": "Connected brand, content, and tech into a maintainable platform ecosystem across 4 portals. Translated brand vision into functional UI, digitized partner handbooks into structured searchable systems, and bridged design-tech-stakeholder alignment.",
       "keywords": [
         "WordPress",
         "Algolia",
@@ -420,7 +452,7 @@
     },
     {
       "name": "Tertianum Premium Group",
-      "description": "Evolved Tertianum's premium brand presence with a WordPress design system, marketing automation, and observability to support nationwide residences.",
+      "description": "Evolved premium senior residence brand with WordPress design system, CRM integration, and observability. Balanced distinct brand identity with shared digital backbone across nationwide locations.",
       "keywords": [
         "WordPress",
         "Optimole",
@@ -651,34 +683,24 @@
   ],
   "successes": [
     {
-      "icon": "rocket",
-      "title": "Design Systems & Ops",
-      "summary": "Tokenized design system; cut design→dev handoff 30% and reduced UI regressions"
+      "icon": "compass",
+      "title": "Go Where the Complexity Is",
+      "summary": "I take cross-disciplinary responsibility. I open black boxes, learn what's inside, and translate it so teams can make decisions."
     },
     {
-      "icon": "layers",
-      "title": "Headless Delivery",
-      "summary": "Shipped 15+ headless marketing/product sites on standardized stacks"
+      "icon": "sparkles",
+      "title": "Make Design Systems Fun Again",
+      "summary": "When a design system becomes a burden instead of an enabler, I dig in, simplify the complexity, and get teams back to shipping."
     },
     {
       "icon": "users",
-      "title": "Team Leadership",
-      "summary": "Led an 8-person triad across design, frontend, and platform"
+      "title": "Enable, Don't Just Execute",
+      "summary": "I don't just build — I make teams capable of building themselves. Enablement over handoff."
     },
     {
-      "icon": "chip",
-      "title": "AI & Automation",
-      "summary": "Built AI-assisted design/content pipelines; accelerated prototyping and QA"
-    },
-    {
-      "icon": "git",
-      "title": "GitOps & CI/CD",
-      "summary": "Standardized GitLab flows, environments, and pipelines with Sentry automations"
-    },
-    {
-      "icon": "shield",
-      "title": "Quality Engineering",
-      "summary": "Codified Playwright smoke/regression tests and monitoring to keep releases stable"
+      "icon": "layers",
+      "title": "Think in Systems, Ship in Iterations",
+      "summary": "I prototype, test, iterate. Big-bang launches are risky; small bets compound into real impact."
     }
   ],
   "interests": [
