@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 
 export function Section10Footer() {
   return (
-    <footer id="contact" className="py-16 lg:py-24 bg-gray-950 text-white">
+    <footer id="contact" className="py-20 lg:py-28 bg-gray-950 bg-[radial-gradient(640px_420px_at_18%_12%,rgba(245,158,11,0.18),rgba(17,24,39,0))] text-white">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Left: CTA */}
@@ -37,7 +37,7 @@ export function Section10Footer() {
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <a
                 href="mailto:martin@martinhessmann.com"
-                className="inline-flex items-center justify-center px-6 py-3 bg-amber-500 text-gray-950 font-medium rounded hover:bg-amber-400 transition-colors"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-amber-400 text-gray-950 font-semibold shadow-[0_12px_30px_rgba(245,158,11,0.35)] hover:bg-amber-300 hover:shadow-[0_16px_36px_rgba(245,158,11,0.35)] transition-all active:translate-y-0.5"
               >
                 Get in touch
               </a>
@@ -45,7 +45,7 @@ export function Section10Footer() {
                 href="https://linkedin.com/in/martinhessmann"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-6 py-3 border border-gray-600 text-white font-medium rounded hover:border-gray-400 transition-colors"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-gray-600/70 text-white font-semibold hover:border-white/70 hover:text-white transition-colors"
               >
                 LinkedIn
               </a>
@@ -62,7 +62,7 @@ export function Section10Footer() {
           >
             {/* Mission alignment */}
             <div>
-              <h3 className="text-sm text-gray-500 uppercase tracking-wider mb-3">
+              <h3 className="text-xs text-gray-500 uppercase tracking-[0.3em] mb-3">
                 Drawn to
               </h3>
               <p className="text-gray-300">
@@ -72,7 +72,7 @@ export function Section10Footer() {
 
             {/* Links */}
             <div>
-              <h3 className="text-sm text-gray-500 uppercase tracking-wider mb-3">
+              <h3 className="text-xs text-gray-500 uppercase tracking-[0.3em] mb-3">
                 Links
               </h3>
               <div className="flex flex-wrap gap-4">
@@ -105,7 +105,7 @@ export function Section10Footer() {
 
         {/* Bottom bar */}
         <motion.div
-          className="mt-16 pt-8 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center gap-4"
+          className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

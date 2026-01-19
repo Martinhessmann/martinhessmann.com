@@ -28,13 +28,25 @@ function MetaLine({ url, technologies }: { url?: string; technologies?: string[]
   const text = parts.join(" · ")
   if (!text) return null
 
+  if (hasTech && !displayUrl) {
+    return (
+      <div className="flex flex-wrap gap-2 text-sm">
+        {technologies!.map((tech) => (
+          <span key={tech} className="rounded-full border border-gray-200 bg-white/80 px-3 py-1 text-xs font-medium tracking-[0.06em] text-gray-600 uppercase">
+            {tech}
+          </span>
+        ))}
+      </div>
+    )
+  }
+
   if (displayUrl && !hasTech) {
     return (
       <a
         href={url}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-blue-600 transition-colors"
+        className="inline-flex items-center gap-2 text-sm font-semibold text-gray-900 underline underline-offset-4 decoration-amber-400/80 hover:decoration-amber-600 transition-colors"
       >
         <span>{displayUrl}</span>
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="shrink-0">
@@ -45,18 +57,33 @@ function MetaLine({ url, technologies }: { url?: string; technologies?: string[]
   }
   if (hasTech && displayUrl) {
     return (
-      <p className="text-sm text-gray-500">
-        {technologies!.join(", ")} ·{" "}
-        <a href={url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-700 transition-colors">
+      <div className="flex flex-wrap items-center gap-2 text-sm">
+        <div className="flex flex-wrap gap-2">
+          {technologies!.map((tech) => (
+            <span key={tech} className="rounded-full border border-gray-200 bg-white/80 px-3 py-1 text-xs font-medium tracking-[0.06em] text-gray-600 uppercase">
+              {tech}
+            </span>
+          ))}
+        </div>
+        <span className="text-gray-400">·</span>
+        <a href={url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-medium text-gray-900 hover:text-gray-700 transition-colors">
           {displayUrl}
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
             <path d="M3.5 8.5L8.5 3.5M8.5 3.5H4.5M8.5 3.5V7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </a>
-      </p>
+      </div>
     )
   }
-  return <p className="text-sm text-gray-500">{technologies!.join(", ")}</p>
+  return (
+    <div className="flex flex-wrap gap-2 text-sm">
+      {technologies!.map((tech) => (
+        <span key={tech} className="rounded-full border border-gray-200 bg-white/80 px-3 py-1 text-xs font-medium tracking-[0.06em] text-gray-600 uppercase">
+          {tech}
+        </span>
+      ))}
+    </div>
+  )
 }
 
 export function CaseStudy({
@@ -76,13 +103,19 @@ export function CaseStudy({
     : "right-0 lg:-right-16"
 
   return (
-    <section id={id} className={`py-16 lg:py-24 ${bg} overflow-hidden`}>
-      <div className="container mx-auto px-6 lg:px-12">
+    <section id={id} className={`py-24 lg:py-32 ${bg} overflow-hidden relative`}>
+      <motion.div
+        className="absolute inset-0 bg-[radial-gradient(820px_480px_at_20%_30%,rgba(56,189,248,0.22),transparent),radial-gradient(820px_480px_at_80%_60%,rgba(245,158,11,0.22),transparent)]"
+        animate={{ x: ["0%", "2%", "0%"], y: ["0%", "-2%", "0%"] }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+        aria-hidden="true"
+      />
+      <div className="container mx-auto px-6 lg:px-12 relative">
         <div className="relative">
           {/* Background illustration — positioned behind text, fades on edges */}
           {illustration && (
             <motion.div
-              className={`absolute top-1/2 -translate-y-1/2 ${positionClass} w-[320px] h-[320px] sm:w-[420px] sm:h-[420px] lg:w-[520px] lg:h-[520px] pointer-events-none select-none text-gray-300`}
+              className={`absolute top-1/2 -translate-y-1/2 ${positionClass} w-[320px] h-[320px] sm:w-[460px] sm:h-[460px] lg:w-[560px] lg:h-[560px] pointer-events-none select-none text-gray-800/60 mix-blend-multiply`}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-100px" }}
@@ -95,25 +128,25 @@ export function CaseStudy({
 
           {/* Content — flows over the illustration */}
           <motion.div
-            className="relative z-10 max-w-2xl space-y-5"
+            className="relative z-10 max-w-2xl space-y-6 rounded-[28px] border border-gray-200/80 bg-white/85 backdrop-blur-md p-10 md:p-12 shadow-[0_28px_70px_rgba(15,23,42,0.12)] transition-transform hover:-translate-y-1"
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.5 }}
           >
             <h2
-              className="text-3xl md:text-4xl font-bold text-gray-950 tracking-tight"
+              className="text-3xl md:text-4xl font-semibold text-gray-950 tracking-tight"
               style={{ fontFamily: "'TeXGyreHeros', sans-serif" }}
             >
               {title}
             </h2>
             {subline && (
-              <p className="text-lg text-gray-500 italic" style={{ fontFamily: "'EB Garamond', serif" }}>
+              <p className="text-base md:text-lg text-gray-500 italic" style={{ fontFamily: "'EB Garamond', serif" }}>
                 {subline}
               </p>
             )}
             <div
-              className="text-lg lg:text-xl text-gray-700 leading-relaxed"
+              className="text-base md:text-lg text-gray-700 leading-relaxed"
               style={{ fontFamily: "'TeXGyreHeros', sans-serif" }}
             >
               {body.split("\n\n").map((p, i) => (

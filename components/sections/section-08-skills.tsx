@@ -38,7 +38,7 @@ const skillCategories: SkillCategory[] = [
 
 export function Section08Skills() {
   return (
-    <section id="skills" className="py-16 lg:py-24 bg-white">
+    <section id="skills" className="py-20 lg:py-28 bg-white">
       <div className="container mx-auto px-6 lg:px-12">
         {/* Header */}
         <motion.div
@@ -49,7 +49,7 @@ export function Section08Skills() {
           transition={{ duration: 0.6 }}
         >
           <h2
-            className="text-3xl md:text-4xl font-bold text-gray-950 tracking-tight"
+            className="text-3xl md:text-4xl font-semibold text-gray-950 tracking-tight"
             style={{ fontFamily: "'TeXGyreHeros', sans-serif" }}
           >
             Profile
@@ -67,14 +67,14 @@ export function Section08Skills() {
           {skillCategories.map((category, index) => (
             <motion.div
               key={category.name}
-              className="space-y-4"
+              className="space-y-5 rounded-2xl border border-gray-200/70 bg-white/90 p-5 shadow-[0_16px_40px_rgba(15,23,42,0.08)] transition-transform hover:-translate-y-1"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               {/* Bar visualization */}
-              <div className="relative h-32 bg-gray-100 rounded overflow-hidden">
+              <div className="relative h-36 rounded-2xl border border-gray-200/60 bg-gradient-to-b from-gray-50 to-gray-100 overflow-hidden">
                 <motion.div
                   className={`absolute bottom-0 left-0 right-0 ${category.color}`}
                   initial={{ height: 0 }}
@@ -83,7 +83,7 @@ export function Section08Skills() {
                   transition={{ duration: 0.8, delay: 0.2 + index * 0.1, ease: "easeOut" }}
                 />
                 <div className="absolute inset-0 flex items-end justify-center pb-2">
-                  <span className="text-2xl font-bold text-white drop-shadow-sm">
+                  <span className="text-xl font-semibold text-white drop-shadow-sm">
                     {category.percentage}%
                   </span>
                 </div>

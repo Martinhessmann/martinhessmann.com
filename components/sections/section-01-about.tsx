@@ -2,13 +2,12 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
-import { ChevronDown } from "lucide-react"
 
 // Geometric wireframe icons for principles
 const PrincipleIcon = ({ type, size = 64 }: { type: "empathy" | "research" | "responsibility" | "ensemble"; size?: number }) => {
   const iconSize = size
-  // Scale stroke width with icon size for visual consistency
-  const strokeWidth = size >= 200 ? 3.5 : size > 100 ? 2.5 : size > 60 ? 2 : 1.5
+  // Keep the mark thin and precise.
+  const strokeWidth = size >= 200 ? 1.4 : size > 100 ? 1.2 : size > 60 ? 1.1 : 1
   const strokeColor = "currentColor"
 
   switch (type) {
@@ -68,10 +67,10 @@ const BLUR_COLORS: Record<"blue" | "amber" | "lime" | "lilac", { blur1: string; 
 
 // Icon color inside the orb - darker for contrast
 const ICON_STROKE_COLOR: Record<"blue" | "amber" | "lime" | "lilac", string> = {
-  blue:  "rgb(20, 20, 200)",
-  amber: "rgb(160, 130, 20)",
-  lime:  "rgb(60, 140, 30)",
-  lilac: "rgb(120, 60, 160)",
+  blue:  "rgb(12, 12, 12)",
+  amber: "rgb(12, 12, 12)",
+  lime:  "rgb(12, 12, 12)",
+  lilac: "rgb(12, 12, 12)",
 }
 
 // Orb: large icon with bold blur background, no outline
@@ -89,34 +88,34 @@ const PrincipleOrb = ({
   const duration = reducedMotion ? 0.15 : 0.4
 
   return (
-    <div className="relative w-[400px] h-[400px] mx-auto flex items-center justify-center">
+    <div className="relative w-[320px] h-[320px] sm:w-[380px] sm:h-[380px] lg:w-[440px] lg:h-[440px] mx-auto flex items-center justify-center">
       {/* Large gradient blur layers - more opaque */}
       <motion.div
-        className="absolute w-[500px] h-[500px] rounded-full"
-        style={{ filter: "blur(90px)", opacity: 0.85 }}
+        className="absolute w-[520px] h-[520px] sm:w-[600px] sm:h-[600px] lg:w-[680px] lg:h-[680px] rounded-full"
+        style={{ filter: "blur(110px)", opacity: 0.82 }}
         animate={{
           background: blur1,
-          x: reducedMotion ? "-8%" : ["-8%", "5%", "-8%"],
-          y: reducedMotion ? "-5%" : ["-5%", "8%", "-5%"],
+          x: reducedMotion ? "-10%" : ["-10%", "6%", "-10%"],
+          y: reducedMotion ? "-6%" : ["-6%", "9%", "-6%"],
+        }}
+        transition={{
+          background: { duration },
+          x: reducedMotion ? { duration: 0 } : { duration: 18, repeat: Infinity, ease: "easeInOut" },
+          y: reducedMotion ? { duration: 0 } : { duration: 18, repeat: Infinity, ease: "easeInOut" },
+        }}
+      />
+      <motion.div
+        className="absolute w-[480px] h-[480px] sm:w-[560px] sm:h-[560px] lg:w-[620px] lg:h-[620px] rounded-full"
+        style={{ filter: "blur(120px)", opacity: 0.68 }}
+        animate={{
+          background: blur2,
+          x: reducedMotion ? "14%" : ["14%", "0%", "14%"],
+          y: reducedMotion ? "10%" : ["10%", "-6%", "10%"],
         }}
         transition={{
           background: { duration },
           x: reducedMotion ? { duration: 0 } : { duration: 16, repeat: Infinity, ease: "easeInOut" },
           y: reducedMotion ? { duration: 0 } : { duration: 16, repeat: Infinity, ease: "easeInOut" },
-        }}
-      />
-      <motion.div
-        className="absolute w-[450px] h-[450px] rounded-full"
-        style={{ filter: "blur(100px)", opacity: 0.7 }}
-        animate={{
-          background: blur2,
-          x: reducedMotion ? "12%" : ["12%", "0%", "12%"],
-          y: reducedMotion ? "8%" : ["8%", "-5%", "8%"],
-        }}
-        transition={{
-          background: { duration },
-          x: reducedMotion ? { duration: 0 } : { duration: 14, repeat: Infinity, ease: "easeInOut" },
-          y: reducedMotion ? { duration: 0 } : { duration: 14, repeat: Infinity, ease: "easeInOut" },
         }}
       />
 
@@ -131,7 +130,14 @@ const PrincipleOrb = ({
           transition={{ duration: 0.25 }}
           style={{ color: iconColor }}
         >
-          <PrincipleIcon type={iconType} size={200} />
+          <div className="relative">
+            <svg width="220" height="220" viewBox="0 0 220 220" fill="none" className="absolute -left-4 -top-4">
+              <circle cx="110" cy="110" r="104" stroke="currentColor" strokeWidth="1" strokeDasharray="2 6" opacity="0.6" />
+              <circle cx="110" cy="110" r="78" stroke="currentColor" strokeWidth="0.9" opacity="0.5" />
+              <path d="M18 110a92 92 0 0 1 184 0" stroke="currentColor" strokeWidth="0.9" opacity="0.4" />
+            </svg>
+            <PrincipleIcon type={iconType} size={180} />
+          </div>
         </motion.div>
       </AnimatePresence>
     </div>
@@ -186,13 +192,13 @@ export function Section01About() {
   const active = principles[activeIndex]
 
   return (
-    <section className="min-h-screen bg-white">
-      <div className="container mx-auto px-6 lg:px-12 pt-16 lg:pt-24 pb-16 lg:pb-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <section className="relative min-h-screen bg-white bg-[radial-gradient(980px_680px_at_72%_18%,rgba(245,158,11,0.28),rgba(255,255,255,0))]">
+      <div className="container mx-auto px-6 lg:px-12 pt-20 lg:pt-28 pb-20 lg:pb-28">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left: Hero text + CTA */}
-          <div className="space-y-6">
+          <div className="space-y-7">
             <motion.p
-              className="font-serif italic text-lg text-gray-600"
+              className="text-sm uppercase tracking-[0.32em] text-gray-500"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -201,7 +207,7 @@ export function Section01About() {
               Martin Heßmann
             </motion.p>
             <motion.h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-gray-950"
+              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-[0.95] tracking-[-0.02em] text-gray-950"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
@@ -210,7 +216,7 @@ export function Section01About() {
               Systems<br />Designer —<br />Design,<br />Engineering, AI
             </motion.h1>
             <motion.p
-              className="text-base lg:text-lg text-gray-600 max-w-lg leading-relaxed"
+              className="text-base lg:text-lg text-gray-700 max-w-xl leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -228,10 +234,9 @@ export function Section01About() {
               <button
                 type="button"
                 onClick={scrollToWork}
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-500 text-gray-950 font-medium rounded hover:bg-amber-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2"
+                className="group inline-flex items-center gap-3 px-6 py-3 rounded-full bg-amber-400 text-gray-950 font-semibold border border-amber-300/60 hover:bg-amber-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2"
               >
                 See case studies
-                <ChevronDown className="w-4 h-4" aria-hidden />
               </button>
             </motion.div>
           </div>
@@ -278,8 +283,8 @@ export function Section01About() {
                   aria-selected={activeIndex === i}
                   aria-label={p.title}
                   onClick={() => { setActiveIndex(i); setHasInteracted(true) }}
-                  className={`w-2.5 h-2.5 rounded-full transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${DOT_RING_CLASS[p.color]} ${
-                    activeIndex === i ? `${DOT_BG_ACTIVE[p.color]} scale-125` : "bg-gray-300 hover:bg-gray-400"
+                  className={`w-8 h-2 rounded-full transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${DOT_RING_CLASS[p.color]} ${
+                    activeIndex === i ? `${DOT_BG_ACTIVE[p.color]} scale-110 shadow-[0_0_0_3px_rgba(0,0,0,0.06)]` : "bg-gray-200 hover:bg-gray-300"
                   }`}
                 />
               ))}

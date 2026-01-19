@@ -2,22 +2,23 @@
 
 import { CaseStudy } from "./case-study"
 
-// Abstract: modular platform blocks — stacked rectangles with connection lines
+// Abstract: layered system orbits — thin, architectural mark
 const TeamBankIllustration = () => (
   <svg viewBox="0 0 400 400" fill="none" className="w-full h-full">
-    {/* Platform blocks — modular ecosystem */}
-    <rect x="60" y="80" width="120" height="80" stroke="currentColor" strokeWidth="2" />
-    <rect x="100" y="120" width="120" height="80" stroke="currentColor" strokeWidth="2" />
-    <rect x="140" y="160" width="120" height="80" stroke="currentColor" strokeWidth="2" />
-    <rect x="180" y="200" width="120" height="80" stroke="currentColor" strokeWidth="2" fill="currentColor" fillOpacity="0.1" />
+    <circle cx="200" cy="200" r="140" stroke="currentColor" strokeWidth="1.2" opacity="0.5" />
+    <circle cx="200" cy="200" r="110" stroke="currentColor" strokeWidth="1" opacity="0.6" />
+    <circle cx="200" cy="200" r="80" stroke="currentColor" strokeWidth="0.9" opacity="0.55" />
 
-    {/* Connection lines — integration */}
-    <line x1="200" y1="280" x2="300" y2="340" stroke="currentColor" strokeWidth="1.5" strokeDasharray="6 6" />
-    <line x1="240" y1="280" x2="320" y2="340" stroke="currentColor" strokeWidth="1.5" strokeDasharray="6 6" />
+    <ellipse cx="200" cy="200" rx="155" ry="65" stroke="currentColor" strokeWidth="0.9" opacity="0.5" />
+    <ellipse cx="200" cy="200" rx="65" ry="155" stroke="currentColor" strokeWidth="0.9" opacity="0.5" />
+    <ellipse cx="200" cy="200" rx="130" ry="130" stroke="currentColor" strokeWidth="0.8" strokeDasharray="3 6" opacity="0.5" />
 
-    {/* Central node */}
-    <circle cx="310" cy="350" r="30" stroke="currentColor" strokeWidth="2" />
-    <circle cx="310" cy="350" r="12" fill="currentColor" />
+    <path d="M70 200c40-48 220-48 260 0" stroke="currentColor" strokeWidth="0.9" opacity="0.45" />
+    <path d="M70 200c40 48 220 48 260 0" stroke="currentColor" strokeWidth="0.9" opacity="0.45" />
+
+    <circle cx="200" cy="200" r="8" fill="currentColor" opacity="0.7" />
+    <circle cx="200" cy="200" r="18" stroke="currentColor" strokeWidth="0.9" opacity="0.7" />
+    <circle cx="200" cy="200" r="32" stroke="currentColor" strokeWidth="0.9" strokeDasharray="2 6" opacity="0.5" />
   </svg>
 )
 
