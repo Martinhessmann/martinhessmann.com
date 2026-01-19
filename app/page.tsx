@@ -4,11 +4,7 @@ import { PdfDownloadButton } from '@/components/pdf-download-button'
 import { PdfPreview } from '@/components/pdf-preview'
 import {
   Section01About,
-  Section02TeamBank,
-  Section03DPF,
-  Section04OpenWonder,
-  Section05WoMoFonds,
-  Section06GrunBerlin,
+  Section07ClientProjects,
   Section09Resume,
   Section10Footer
 } from '@/components/sections'
@@ -51,11 +47,7 @@ export default async function ResumePage({ searchParams }: PageProps) {
   return (
     <main className="min-h-screen bg-[#f4f2ee]">
       <Section01About />
-      <Section02TeamBank />
-      <Section03DPF />
-      <Section04OpenWonder />
-      <Section05WoMoFonds />
-      <Section06GrunBerlin />
+      <Section07ClientProjects />
       <Section09Resume work={resume.work ?? []} />
       <Section10Footer />
     </main>

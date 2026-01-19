@@ -30,7 +30,7 @@ export function Section10Footer() {
             </p>
 
             <p className="text-sm text-gray-400">
-              Berlin-based. Open to hybrid, remote (CET), or relocation for the right opportunity.
+              Berlin-based.
             </p>
 
             {/* Contact Links */}
@@ -42,7 +42,7 @@ export function Section10Footer() {
                 Get in touch
               </a>
               <a
-                href="https://linkedin.com/in/martinhessmann"
+                href="https://linkedin.com/in/martin-hessmann?originalSubdomain=de"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-gray-600/70 text-white text-xs font-semibold uppercase tracking-[0.2em] hover:border-white/70 hover:text-white transition-colors"
@@ -85,15 +85,15 @@ export function Section10Footer() {
                   GitHub
                 </a>
                 <a
-                  href="https://mastodon.social/@martin"
+                  href="https://www.instagram.com/martinhessmann/?hl=en"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-gray-400 hover:text-white transition-colors"
                 >
-                  Mastodon
+                  Instagram
                 </a>
                 <a
-                  href="?view=resume"
+                  href="/api/pdf"
                   className="text-sm text-gray-400 hover:text-white transition-colors"
                 >
                   Full Resume

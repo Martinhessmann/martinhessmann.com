@@ -1,184 +1,201 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
-
-// Geometric wireframe icons for principles
-const PrincipleIcon = ({ type, size = 64 }: { type: "empathy" | "research" | "responsibility" | "ensemble"; size?: number }) => {
-  const iconSize = size
-  // Keep the mark thin and precise.
-  const strokeWidth = size >= 200 ? 1.4 : size > 100 ? 1.2 : size > 60 ? 1.1 : 1
-  const strokeColor = "currentColor"
-
-  switch (type) {
-    case "empathy":
-      // Dashed circle - listening, understanding
-      return (
-        <svg width={iconSize} height={iconSize} viewBox="0 0 64 64" fill="none">
-          <circle
-            cx="32" cy="32" r="24"
-            stroke={strokeColor}
-            strokeWidth={strokeWidth}
-            strokeDasharray="4 4"
-          />
-        </svg>
-      )
-    case "research":
-      // Circle with inner arc - investigation, depth
-      return (
-        <svg width={iconSize} height={iconSize} viewBox="0 0 64 64" fill="none">
-          <circle cx="32" cy="32" r="24" stroke={strokeColor} strokeWidth={strokeWidth} />
-          <path
-            d="M 20 32 A 12 12 0 0 1 44 32"
-            stroke={strokeColor}
-            strokeWidth={strokeWidth}
-            fill="none"
-          />
-        </svg>
-      )
-    case "responsibility":
-      // Horizontal line with dots - connections, flow
-      return (
-        <svg width={iconSize} height={iconSize} viewBox="0 0 64 64" fill="none">
-          <line x1="8" y1="32" x2="56" y2="32" stroke={strokeColor} strokeWidth={strokeWidth} strokeDasharray="2 6" />
-          <circle cx="16" cy="32" r="3" fill={strokeColor} />
-          <circle cx="32" cy="32" r="3" fill={strokeColor} />
-          <circle cx="48" cy="32" r="3" fill={strokeColor} />
-        </svg>
-      )
-    case "ensemble":
-      // Overlapping circles - collaboration, collective
-      return (
-        <svg width={iconSize} height={iconSize} viewBox="0 0 64 64" fill="none">
-          <circle cx="24" cy="32" r="16" stroke={strokeColor} strokeWidth={strokeWidth} />
-          <circle cx="40" cy="32" r="16" stroke={strokeColor} strokeWidth={strokeWidth} />
-        </svg>
-      )
-  }
-}
-
-// Blur colors per principle - bold and saturated
-const BLUR_COLORS: Record<"blue" | "amber" | "lime" | "lilac", { blur1: string; blur2: string }> = {
-  blue:  { blur1: "rgb(150, 185, 225)", blur2: "rgb(244, 190, 150)" },
-  amber: { blur1: "rgb(244, 190, 150)", blur2: "rgb(160, 190, 220)" },
-  lime:  { blur1: "rgb(185, 215, 165)", blur2: "rgb(160, 190, 220)" },
-  lilac: { blur1: "rgb(200, 180, 220)", blur2: "rgb(165, 195, 225)" },
-}
-
-// Icon color inside the orb - darker for contrast
-const ICON_STROKE_COLOR: Record<"blue" | "amber" | "lime" | "lilac", string> = {
-  blue:  "rgb(12, 12, 12)",
-  amber: "rgb(12, 12, 12)",
-  lime:  "rgb(12, 12, 12)",
-  lilac: "rgb(12, 12, 12)",
-}
-
-// Orb: large icon with bold blur background, no outline
-const PrincipleOrb = ({
-  activeColor,
-  iconType,
-  reducedMotion,
-}: {
-  activeColor: "blue" | "amber" | "lime" | "lilac"
-  iconType: "empathy" | "research" | "responsibility" | "ensemble"
-  reducedMotion: boolean | null
-}) => {
-  const { blur1, blur2 } = BLUR_COLORS[activeColor]
-  const iconColor = ICON_STROKE_COLOR[activeColor]
-  const duration = reducedMotion ? 0.15 : 0.4
-
-  return (
-    <div className="relative w-[320px] h-[320px] sm:w-[380px] sm:h-[380px] lg:w-[520px] lg:h-[520px] mx-auto flex items-center justify-center">
-      {/* Large gradient blur layers - more opaque */}
-      <motion.div
-        className="absolute w-[560px] h-[560px] sm:w-[640px] sm:h-[640px] lg:w-[760px] lg:h-[760px] rounded-full z-0"
-        style={{ filter: "blur(110px)", opacity: 0.82 }}
-        animate={{
-          background: blur1,
-          x: reducedMotion ? "-10%" : ["-10%", "6%", "-10%"],
-          y: reducedMotion ? "-6%" : ["-6%", "9%", "-6%"],
-        }}
-        transition={{
-          background: { duration },
-          x: reducedMotion ? { duration: 0 } : { duration: 18, repeat: Infinity, ease: "easeInOut" },
-          y: reducedMotion ? { duration: 0 } : { duration: 18, repeat: Infinity, ease: "easeInOut" },
-        }}
-      />
-      <motion.div
-        className="absolute w-[520px] h-[520px] sm:w-[600px] sm:h-[600px] lg:w-[700px] lg:h-[700px] rounded-full z-0"
-        style={{ filter: "blur(120px)", opacity: 0.68 }}
-        animate={{
-          background: blur2,
-          x: reducedMotion ? "14%" : ["14%", "0%", "14%"],
-          y: reducedMotion ? "10%" : ["10%", "-6%", "10%"],
-        }}
-        transition={{
-          background: { duration },
-          x: reducedMotion ? { duration: 0 } : { duration: 16, repeat: Infinity, ease: "easeInOut" },
-          y: reducedMotion ? { duration: 0 } : { duration: 16, repeat: Infinity, ease: "easeInOut" },
-        }}
-      />
-
-      {/* Large icon centered */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={iconType}
-          className="relative z-10"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
-          transition={{ duration: 0.25 }}
-          style={{ color: iconColor }}
-        >
-          <div className="relative">
-            <svg width="260" height="260" viewBox="0 0 260 260" fill="none" className="absolute -left-6 -top-6">
-              <circle cx="130" cy="130" r="120" stroke="currentColor" strokeWidth="1" strokeDasharray="2 6" opacity="0.55" />
-              <circle cx="130" cy="130" r="96" stroke="currentColor" strokeWidth="0.9" opacity="0.5" />
-              <path d="M20 130a110 110 0 0 1 220 0" stroke="currentColor" strokeWidth="0.9" opacity="0.4" />
-            </svg>
-            <PrincipleIcon type={iconType} size={200} />
-          </div>
-        </motion.div>
-      </AnimatePresence>
-    </div>
-  )
-}
 
 type PrincipleColor = "blue" | "amber" | "lime" | "lilac"
 
 interface Principle {
   id: string
-  icon: "empathy" | "research" | "responsibility" | "ensemble"
   color: PrincipleColor
   title: string
   description: string
 }
 
 const principles: Principle[] = [
-  { id: "complexity", icon: "empathy", color: "blue",  title: "Go where the complexity is", description: "I don't shy away from cross-disciplinary responsibility. I open black boxes, learn what's inside, and translate it so teams can make decisions." },
-  { id: "systems",    icon: "research", color: "amber", title: "Make design systems fun again", description: "When a design system feels like a burden, I dig in quickly and achieve results. Systems should enable, not constrain." },
-  { id: "enable",     icon: "responsibility", color: "lime",  title: "Enable, don't just execute", description: "I don't just build — I make teams capable of building themselves. Enablement over handoff." },
-  { id: "iterate",    icon: "ensemble", color: "lilac", title: "Think in systems, ship in iterations", description: "I prototype, test, iterate. Big-bang launches are risky; small bets compound into real impact." },
+  { id: "complexity", color: "blue",  title: "Go where the complexity is", description: "I don't shy away from cross-disciplinary responsibility. I open black boxes, learn what's inside, and translate it so teams can make decisions." },
+  { id: "systems",    color: "amber", title: "Make design systems fun again", description: "When a design system feels like a burden, I dig in quickly and achieve results. Systems should enable, not constrain." },
+  { id: "enable",     color: "lime",  title: "Enable, don't just execute", description: "I don't just build — I make teams capable of building themselves. Enablement over handoff." },
+  { id: "iterate",    color: "lilac", title: "Think in systems, ship in iterations", description: "I prototype, test, iterate. Big-bang launches are risky; small bets compound into real impact." },
 ]
 
-const DOT_BG_ACTIVE: Record<PrincipleColor, string> = {
-  blue:  "bg-blue-400",
-  amber: "bg-amber-400",
-  lime:  "bg-lime-400",
-  lilac: "bg-lilac-300",
+type OrbLayout = {
+  glow: { core: string; edge: string; halo: string; x: string; y: string; x2: string; y2: string }
+  ellipses: Array<{
+    cx: number
+    cy: number
+    rx: number
+    ry: number
+    rotate: number
+    opacity: number
+    dash?: string
+  }>
 }
 
-const DOT_RING_CLASS: Record<PrincipleColor, string> = {
-  blue:  "focus-visible:ring-blue-400",
-  amber: "focus-visible:ring-amber-400",
-  lime:  "focus-visible:ring-lime-400",
-  lilac: "focus-visible:ring-lilac-300",
+const ORB_LAYOUTS: OrbLayout[] = [
+  {
+    glow: { core: "rgba(255, 122, 70, 0.95)", edge: "rgba(255, 200, 120, 0.75)", halo: "rgba(255, 160, 90, 0.55)", x: "40%", y: "50%", x2: "62%", y2: "36%" },
+    ellipses: [
+      { cx: 90, cy: 160, rx: 44, ry: 120, rotate: -8, opacity: 0.9 },
+      { cx: 120, cy: 160, rx: 54, ry: 126, rotate: -3, opacity: 0.86 },
+      { cx: 154, cy: 160, rx: 62, ry: 130, rotate: 2, opacity: 0.78, dash: "1.5 6" },
+      { cx: 190, cy: 160, rx: 70, ry: 124, rotate: 8, opacity: 0.84 },
+      { cx: 224, cy: 160, rx: 56, ry: 112, rotate: 14, opacity: 0.78 },
+    ],
+  },
+  {
+    glow: { core: "rgba(90, 130, 235, 0.95)", edge: "rgba(170, 200, 255, 0.75)", halo: "rgba(120, 150, 255, 0.5)", x: "58%", y: "52%", x2: "42%", y2: "68%" },
+    ellipses: [
+      { cx: 160, cy: 160, rx: 122, ry: 70, rotate: 0, opacity: 0.86 },
+      { cx: 160, cy: 160, rx: 108, ry: 56, rotate: 0, opacity: 0.7, dash: "2 6" },
+      { cx: 130, cy: 160, rx: 50, ry: 128, rotate: -14, opacity: 0.88 },
+      { cx: 190, cy: 160, rx: 50, ry: 128, rotate: 14, opacity: 0.88 },
+      { cx: 160, cy: 160, rx: 30, ry: 92, rotate: 90, opacity: 0.7 },
+    ],
+  },
+  {
+    glow: { core: "rgba(120, 205, 110, 0.93)", edge: "rgba(220, 230, 140, 0.7)", halo: "rgba(240, 190, 120, 0.45)", x: "46%", y: "44%", x2: "66%", y2: "60%" },
+    ellipses: [
+      { cx: 120, cy: 132, rx: 64, ry: 96, rotate: -22, opacity: 0.84 },
+      { cx: 148, cy: 150, rx: 74, ry: 108, rotate: -10, opacity: 0.86 },
+      { cx: 178, cy: 172, rx: 84, ry: 118, rotate: 4, opacity: 0.82, dash: "1.8 6" },
+      { cx: 208, cy: 194, rx: 46, ry: 86, rotate: 18, opacity: 0.72 },
+      { cx: 138, cy: 198, rx: 40, ry: 74, rotate: -32, opacity: 0.7 },
+    ],
+  },
+  {
+    glow: { core: "rgba(175, 130, 235, 0.9)", edge: "rgba(205, 190, 255, 0.72)", halo: "rgba(130, 165, 235, 0.55)", x: "52%", y: "50%", x2: "38%", y2: "42%" },
+    ellipses: [
+      { cx: 160, cy: 160, rx: 104, ry: 58, rotate: 90, opacity: 0.78 },
+      { cx: 160, cy: 160, rx: 96, ry: 62, rotate: 0, opacity: 0.78 },
+      { cx: 160, cy: 160, rx: 68, ry: 122, rotate: -24, opacity: 0.86 },
+      { cx: 160, cy: 160, rx: 68, ry: 122, rotate: 24, opacity: 0.86 },
+      { cx: 160, cy: 160, rx: 124, ry: 124, rotate: 0, opacity: 0.6, dash: "3 8" },
+    ],
+  },
+]
+
+type TransitionProfile = {
+  order: number[]
+  duration: number
+  ease: number[] | string
+  stagger: number
+  overshoot: number
+  rxPulse: number
+  ryPulse: number
+  opacityPulse: number
+  dashShift: number
+  drift: { x: number; y: number }
+}
+
+const ORDER_PATTERNS = [
+  [0, 1, 2, 3, 4],
+  [4, 3, 2, 1, 0],
+  [0, 2, 4, 3, 1],
+  [1, 3, 0, 4, 2],
+]
+
+const TRANSITION_STYLES: Omit<TransitionProfile, "order" | "drift">[] = [
+  { duration: 0.85, ease: [0.22, 1, 0.36, 1], stagger: 0.05, overshoot: 14, rxPulse: 1.08, ryPulse: 0.92, opacityPulse: 0.6, dashShift: 10 },
+  { duration: 0.95, ease: [0.55, 0, 0.25, 1], stagger: 0.06, overshoot: -18, rxPulse: 0.94, ryPulse: 1.1, opacityPulse: 0.5, dashShift: -12 },
+  { duration: 0.75, ease: [0.34, 1.56, 0.64, 1], stagger: 0.04, overshoot: 10, rxPulse: 1.12, ryPulse: 0.86, opacityPulse: 0.7, dashShift: 6 },
+  { duration: 0.9, ease: "easeInOut", stagger: 0.07, overshoot: 20, rxPulse: 0.9, ryPulse: 1.15, opacityPulse: 0.5, dashShift: 14 },
+]
+
+const REDUCED_PROFILE: TransitionProfile = {
+  order: [0, 1, 2, 3, 4],
+  duration: 0.2,
+  ease: "easeOut",
+  stagger: 0,
+  overshoot: 0,
+  rxPulse: 1,
+  ryPulse: 1,
+  opacityPulse: 1,
+  dashShift: 0,
+  drift: { x: 0, y: 0 },
+}
+
+const getTransitionProfile = (from: number, to: number, reducedMotion: boolean): TransitionProfile => {
+  if (reducedMotion || from === to) return REDUCED_PROFILE
+  const patternIndex = from * 4 + to
+  const style = TRANSITION_STYLES[patternIndex % TRANSITION_STYLES.length]
+  const order = ORDER_PATTERNS[Math.floor(patternIndex / TRANSITION_STYLES.length)]
+  const drift = {
+    x: ((patternIndex % 5) - 2) * 7,
+    y: (((patternIndex >> 2) % 5) - 2) * 7,
+  }
+  return { ...style, order, drift }
+}
+
+const PrincipleOrb = ({
+  layoutIndex,
+  fromIndex,
+  reducedMotion,
+}: {
+  layoutIndex: number
+  fromIndex: number
+  reducedMotion: boolean
+}) => {
+  const layout = ORB_LAYOUTS[layoutIndex % ORB_LAYOUTS.length]
+  const profile = getTransitionProfile(fromIndex, layoutIndex, reducedMotion)
+  const orderIndex = profile.order.reduce((acc, value, idx) => {
+    acc[value] = idx
+    return acc
+  }, Array(5).fill(0) as number[])
+
+  return (
+    <div className="relative w-[300px] h-[300px] sm:w-[360px] sm:h-[360px] lg:w-[480px] lg:h-[480px] mx-auto lg:mx-0 flex items-center justify-center isolate">
+      <motion.div
+        className="absolute inset-[8%] z-0 rounded-full pointer-events-none"
+        animate={{
+          background: `radial-gradient(circle at ${layout.glow.x} ${layout.glow.y}, ${layout.glow.core} 0%, ${layout.glow.edge} 52%, rgba(255,255,255,0) 78%), radial-gradient(circle at ${layout.glow.x2} ${layout.glow.y2}, ${layout.glow.halo} 0%, rgba(255,255,255,0) 64%)`,
+        }}
+        transition={{ duration: profile.duration, ease: profile.ease }}
+        style={{ filter: "blur(64px)", opacity: 1 }}
+        aria-hidden="true"
+      />
+      <motion.svg
+        viewBox="0 0 320 320"
+        className="absolute inset-0 z-10 pointer-events-none"
+        aria-hidden="true"
+      >
+        {layout.ellipses.map((ellipse, idx) => {
+          const delay = orderIndex[idx] * profile.stagger
+          const direction = idx % 2 === 0 ? 1 : -1
+          return (
+            <motion.ellipse
+              key={idx}
+              initial={false}
+              animate={{
+                cx: [ellipse.cx + profile.drift.x * direction, ellipse.cx],
+                cy: [ellipse.cy + profile.drift.y * direction, ellipse.cy],
+                rx: [ellipse.rx * profile.rxPulse, ellipse.rx],
+                ry: [ellipse.ry * profile.ryPulse, ellipse.ry],
+                rotate: [ellipse.rotate + profile.overshoot * direction, ellipse.rotate],
+                opacity: [Math.max(0.35, ellipse.opacity * profile.opacityPulse), ellipse.opacity],
+                strokeDashoffset: ellipse.dash ? [profile.dashShift * direction, 0] : 0,
+              }}
+              transition={{ duration: profile.duration, ease: profile.ease, delay }}
+              style={{ transformOrigin: `${ellipse.cx}px ${ellipse.cy}px` }}
+              stroke="rgba(15, 15, 15, 0.85)"
+              strokeWidth="1.4"
+              fill="none"
+              strokeDasharray={ellipse.dash}
+            />
+          )
+        })}
+      </motion.svg>
+    </div>
+  )
 }
 
 export function Section01About() {
   const [activeIndex, setActiveIndex] = useState(0)
   const [hasInteracted, setHasInteracted] = useState(false)
   const reducedMotion = useReducedMotion()
+  const prevIndexRef = useRef(0)
+
+  const fromIndex = prevIndexRef.current
 
   const scrollToWork = () => document.getElementById("teambank")?.scrollIntoView({ behavior: "smooth" })
 
@@ -189,43 +206,49 @@ export function Section01About() {
     return () => clearInterval(t)
   }, [hasInteracted, reducedMotion])
 
+  useEffect(() => {
+    prevIndexRef.current = activeIndex
+  }, [activeIndex])
+
   const active = principles[activeIndex]
 
   return (
-    <section className="relative min-h-screen bg-transparent overflow-hidden">
+    <section className="relative min-h-screen isolate bg-transparent overflow-hidden">
       <motion.div
-        className="absolute inset-0 z-0 pointer-events-none bg-[radial-gradient(1100px_760px_at_72%_16%,rgba(255,165,92,0.32),rgba(255,255,255,0)),radial-gradient(900px_680px_at_40%_70%,rgba(96,140,205,0.28),rgba(255,255,255,0)),radial-gradient(760px_520px_at_86%_62%,rgba(245,204,140,0.22),rgba(255,255,255,0))]"
-        animate={{ x: ["0%", "2%", "0%"], y: ["0%", "-2%", "0%"] }}
-        transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -inset-[16%] z-0 pointer-events-none bg-[radial-gradient(1100px_760px_at_74%_14%,rgba(255,175,120,0.28),rgba(255,255,255,0)),radial-gradient(900px_700px_at_22%_74%,rgba(96,140,205,0.22),rgba(255,255,255,0)),radial-gradient(760px_520px_at_86%_70%,rgba(245,204,140,0.2),rgba(255,255,255,0))]"
+        animate={{ x: ["-2%", "2%", "-2%"], y: ["2%", "-2%", "2%"], scale: [1, 1.04, 1] }}
+        transition={{ duration: 26, repeat: Infinity, ease: "easeInOut" }}
         aria-hidden="true"
       />
-      <div className="container mx-auto px-6 lg:px-12 pt-16 lg:pt-24 pb-20 lg:pb-28 relative z-10">
-        <div className="relative min-h-[70vh] flex items-center">
+      <div className="container mx-auto px-6 lg:px-12 pt-20 lg:pt-28 pb-20 lg:pb-28 relative z-10">
+        <div className="grid min-h-[72vh] items-center gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
           {/* Left: Hero text + CTA */}
-          <div className="relative z-20 max-w-[520px] space-y-5">
+          <div className="relative z-30 max-w-[560px] space-y-6">
             <motion.p
-              className="text-[11px] uppercase tracking-[0.4em] text-gray-500"
-              initial={{ opacity: 0, y: 20 }}
+              className="flex items-center gap-3 text-[11px] uppercase tracking-[0.45em] text-gray-500"
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               style={{ fontFamily: "'TeXGyreHeros', sans-serif" }}
             >
-              Martin Heßmann
+              <span className="text-gray-400">01 / About</span>
+              <span className="text-gray-700">Martin Heßmann</span>
             </motion.p>
             <motion.h1
-              className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-semibold leading-[1.1] tracking-[-0.015em] text-gray-950"
-              initial={{ opacity: 0, y: 20 }}
+              className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-semibold leading-[1.04] tracking-[-0.02em] text-gray-950"
+              initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               style={{ fontFamily: "'TeXGyreHeros', sans-serif" }}
             >
-              Systems<br />Designer —<br />Design,<br />Engineering, AI
+              Systems Designer —<br />Design, Engineering, AI
             </motion.h1>
             <motion.p
-              className="text-[13px] sm:text-sm text-gray-700 max-w-xl leading-[1.6]"
-              initial={{ opacity: 0, y: 20 }}
+              className="text-[13px] sm:text-sm text-gray-700 max-w-xl leading-[1.65]"
+              initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
+              style={{ fontFamily: "'TeXGyreHeros', sans-serif" }}
             >
               I connect brand, product, and technology into systems that make teams autonomous.
               10+ years bridging design and engineering — building maintainable platforms,
@@ -233,67 +256,69 @@ export function Section01About() {
               where I can drive sustained impact across the full product lifecycle.
             </motion.p>
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
               <button
                 type="button"
                 onClick={scrollToWork}
-                className="group inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-amber-400 text-gray-950 text-xs font-semibold uppercase tracking-[0.2em] border border-amber-300/60 hover:bg-amber-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2"
+                className="group inline-flex items-center gap-3 px-6 py-3 rounded-full bg-amber-400 text-gray-950 text-[11px] font-semibold uppercase tracking-[0.25em] border border-amber-300/60 shadow-[0_14px_24px_-18px_rgba(140,80,20,0.45)] transition-all hover:-translate-y-0.5 hover:bg-amber-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2"
               >
                 See case studies
               </button>
             </motion.div>
           </div>
 
-          {/* Right: Orb with icon + principle text + dot pagination */}
+          {/* Right: Orb with sketch + principle text + dot pagination */}
           <motion.div
-            className="relative z-20 mt-12 flex flex-col items-center lg:mt-0 lg:absolute lg:right-[-80px] lg:top-1/2 lg:-translate-y-1/2"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative z-20 flex flex-col items-center isolate"
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.25 }}
           >
-            {/* Orb: dashed outline with icon */}
-            <PrincipleOrb activeColor={active.color} iconType={active.icon} reducedMotion={reducedMotion} />
+            <div className="relative w-full flex justify-center z-10">
+              <PrincipleOrb layoutIndex={activeIndex} fromIndex={fromIndex} reducedMotion={Boolean(reducedMotion)} />
+            </div>
 
-            {/* Principle text */}
-            <div className="mt-6 text-center max-w-sm">
+            <div className="mt-8 w-full max-w-[420px] text-center relative z-20">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={active.id}
                   initial={{ opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -6 }}
-                  transition={{ duration: 0.2 }}
-                  className="space-y-2"
+                  transition={{ duration: 0.25 }}
+                  className="space-y-2 min-h-[96px]"
                 >
                   <h3
-                    className="font-serif italic text-sm text-gray-900"
+                    className="font-serif italic text-[13px] sm:text-sm text-gray-900"
                     style={{ fontFamily: "'EB Garamond', serif" }}
                   >
                     {active.title}
                   </h3>
-                  <p className="text-xs text-gray-600 leading-relaxed">{active.description}</p>
+                  <p className="text-[12px] sm:text-[13px] text-gray-700 leading-relaxed">{active.description}</p>
                 </motion.div>
               </AnimatePresence>
             </div>
 
-            {/* Dot pagination (no icons) */}
-            <div role="tablist" aria-label="Principles" className="flex justify-center gap-3 mt-6">
-              {principles.map((p, i) => (
-                <button
-                  key={p.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={activeIndex === i}
-                  aria-label={p.title}
-                  onClick={() => { setActiveIndex(i); setHasInteracted(true) }}
-                  className={`w-6 h-1.5 rounded-full transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${DOT_RING_CLASS[p.color]} ${
-                    activeIndex === i ? `${DOT_BG_ACTIVE[p.color]} scale-110` : "bg-gray-200 hover:bg-gray-300"
-                  }`}
-                />
-              ))}
+            <div role="tablist" aria-label="Principles" className="flex justify-center gap-3 mt-6 relative z-20">
+              {principles.map((p, i) => {
+                const isActive = activeIndex === i
+                return (
+                  <button
+                    key={p.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={isActive}
+                    aria-label={p.title}
+                    onClick={() => { setActiveIndex(i); setHasInteracted(true) }}
+                    className={`w-10 h-2 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/30 focus-visible:ring-offset-2 ${
+                      isActive ? "bg-black scale-110" : "bg-black/15 hover:bg-black/25"
+                    }`}
+                  />
+                )
+              })}
             </div>
           </motion.div>
         </div>

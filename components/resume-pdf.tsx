@@ -1,10 +1,26 @@
+import path from 'path'
 import React from 'react'
-import { Document, Page, View, Text, Link, StyleSheet, Font, Svg, Path, Circle, Rect } from '@react-pdf/renderer'
-import { Resume } from '@/types/resume'
+import { Document, Page, View, Text, Link, StyleSheet, Font, Svg, Path } from '@react-pdf/renderer'
+import { Resume, ProfileMix } from '@/types/resume'
 import { PHOSPHOR_FILL_PATHS } from './phosphor-paths'
 
 // Disable hyphenation to avoid mid-word breaks
 Font.registerHyphenationCallback((word) => [word])
+
+const FONT_DIR = path.join(process.cwd(), 'public', 'fonts')
+
+Font.register({
+  family: 'TeXGyreHeros',
+  fonts: [
+    { src: `${FONT_DIR}/TeXGyreHeros-Regular.woff2` },
+    { src: `${FONT_DIR}/TeXGyreHeros-Bold.woff2`, fontWeight: 'bold' },
+  ],
+})
+
+Font.register({
+  family: 'EB Garamond',
+  fonts: [{ src: `${FONT_DIR}/EBGaramond-Italic.woff2`, fontStyle: 'italic' }],
+})
 
 // Accent color for section cues and links
 const ACCENT = '#2563EB' // Blue 600-ish
@@ -153,13 +169,51 @@ function IconLayers() {
   )
 }
 
+const PROFILE_COLORS = ['#60A5FA', '#FBBF24', '#A3E635', '#CB9EE7']
+
+const defaultProfileMix: Required<ProfileMix> = {
+  design: 30,
+  code: 30,
+  lead: 20,
+  align: 20,
+}
+
+const profileSegmentConfig = [
+  { key: 'design', label: 'Design' },
+  { key: 'code', label: 'Code' },
+  { key: 'lead', label: 'Lead' },
+  { key: 'align', label: 'Align' },
+] as const
+
+function buildProfileSegments(profileMix?: ProfileMix) {
+  if (profileMix?.segments?.length) {
+    return profileMix.segments.map((segment, index) => ({
+      label: segment.label,
+      value: segment.value,
+      color: PROFILE_COLORS[index % PROFILE_COLORS.length],
+    }))
+  }
+  const mix = {
+    design: profileMix?.design ?? defaultProfileMix.design,
+    code: profileMix?.code ?? defaultProfileMix.code,
+    lead: profileMix?.lead ?? defaultProfileMix.lead,
+    align: profileMix?.align ?? defaultProfileMix.align,
+  }
+  return profileSegmentConfig.map((segment, index) => ({
+    label: segment.label,
+    value: mix[segment.key],
+    color: PROFILE_COLORS[index % PROFILE_COLORS.length],
+  }))
+}
+
 const styles = StyleSheet.create({
   page: {
-    padding: '28.35 42.52', // 1cm = 28.35pt, 1.5cm = 42.52pt
+    padding: '28.35 42.52',
     fontSize: 10,
     lineHeight: 1.35,
-    fontFamily: 'Helvetica',
+    fontFamily: 'TeXGyreHeros',
     color: '#111',
+    backgroundColor: '#F4F2EE',
   },
   // Header styles
   header: {
@@ -193,6 +247,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
+  },
+  seperator: {
+    marginHorizontal: 4,
+    color: '#888',
   },
   iconTextRow: {
     flexDirection: 'row',
@@ -277,6 +335,46 @@ const styles = StyleSheet.create({
     fontSize: 7,
     color: '#444',
     lineHeight: 1.3,
+  },
+  profileMix: {
+    marginTop: 6,
+    alignItems: 'stretch',
+  },
+  profileRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 2,
+  },
+  profileLabel: {
+    width: 44,
+    fontSize: 7,
+    textTransform: 'uppercase',
+    letterSpacing: 0.6,
+    color: '#555',
+  },
+  profileTrack: {
+    flex: 1,
+    height: 4,
+    borderRadius: 3,
+    backgroundColor: '#e5e0d5',
+    marginHorizontal: 6,
+    overflow: 'hidden',
+  },
+  profileFill: {
+    height: 4,
+    borderRadius: 3,
+  },
+  profileValue: {
+    width: 20,
+    fontSize: 7,
+    textAlign: 'right',
+    color: '#555',
+  },
+  profileValue: {
+    width: 20,
+    fontSize: 7,
+    textAlign: 'right',
+    color: '#555',
   },
   // Education styles
   educationItem: {
@@ -382,6 +480,23 @@ const styles = StyleSheet.create({
   },
 })
 
+function ProfileMixBars({ profileMix }: { profileMix?: ProfileMix }) {
+  const segments = buildProfileSegments(profileMix)
+  return (
+    <View style={styles.profileMix}>
+      {segments.map((segment) => (
+        <View key={segment.label} style={styles.profileRow}>
+          <Text style={styles.profileLabel}>{segment.label}</Text>
+          <View style={styles.profileTrack}>
+            <View style={[styles.profileFill, { width: `${segment.value}%`, backgroundColor: segment.color }]} />
+          </View>
+          <Text style={styles.profileValue}>{segment.value}%</Text>
+        </View>
+      ))}
+    </View>
+  )
+}
+
 interface ResumePdfProps {
   resume: Resume
 }
@@ -405,6 +520,81 @@ export function ResumePdf({ resume }: ResumePdfProps) {
       .slice(0, 3)
   }
 
+  const locationLabel = resume.basics.location
+    ? [
+        resume.basics.location.city,
+        resume.basics.location.countryCode,
+      ]
+        .filter(Boolean)
+        .join(', ')
+    : ''
+
+  const contactItems: Array<{
+    key: string
+    icon?: React.ReactElement
+    node: React.ReactElement
+  }> = []
+
+  if (locationLabel) {
+    contactItems.push({
+      key: 'location',
+      icon: <IconLocation />,
+      node: <Text>{locationLabel}</Text>,
+    })
+  }
+
+  if (resume.basics.email) {
+    contactItems.push({
+      key: 'email',
+      icon: <IconEmail />,
+      node: (
+        <Link src={`mailto:${resume.basics.email}`} style={styles.link}>
+          {resume.basics.email}
+        </Link>
+      ),
+    })
+  }
+
+  if (resume.basics.phone) {
+    contactItems.push({
+      key: 'phone',
+      icon: <IconPhone />,
+      node: (
+        <Link src={`tel:${resume.basics.phone}`} style={styles.link}>
+          {resume.basics.phone}
+        </Link>
+      ),
+    })
+  }
+
+  if (resume.basics.url) {
+    const displayUrl = resume.basics.url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')
+    contactItems.push({
+      key: 'website',
+      icon: <IconWeb />,
+      node: (
+        <Link src={resume.basics.url} style={styles.link}>
+          {displayUrl}
+        </Link>
+      ),
+    })
+  }
+
+  if (resume.basics.profiles?.length) {
+    resume.basics.profiles.forEach((profile) => {
+      if (!profile.url || !profile.network) return
+      contactItems.push({
+        key: `profile-${profile.network}`,
+        icon: <IconWeb />,
+        node: (
+          <Link src={profile.url} style={styles.link}>
+            {profile.network}
+          </Link>
+        ),
+      })
+    })
+  }
+
   // Sort projects: featured first, then by priority, then alphabetically
   const sortedProjects = resume.projects
     ? [...resume.projects].sort((a, b) => {
@@ -426,53 +616,19 @@ export function ResumePdf({ resume }: ResumePdfProps) {
         <View style={styles.header}>
           <Text style={styles.h1}>{resume.basics.name}</Text>
           {resume.basics.label && <Text style={styles.label}>{resume.basics.label}</Text>}
-          <View style={styles.contact}>
-            {resume.basics.location && (
-              <>
-                <View style={styles.contactItem}>
-                  <IconLocation />
-                  <Text>
-                    {resume.basics.location.city || ''}
-                    {resume.basics.location.city && resume.basics.location.countryCode && ', '}
-                    {resume.basics.location.countryCode || ''}
-                  </Text>
+          {contactItems.length > 0 && (
+            <View style={styles.contact}>
+              {contactItems.map((item, index) => (
+                <View key={item.key} style={styles.contactItem}>
+                  {item.icon}
+                  {item.node}
+                  {index < contactItems.length - 1 && (
+                    <Text style={styles.seperator}>•</Text>
+                  )}
                 </View>
-                {(resume.basics.email || resume.basics.phone || resume.basics.url) && (
-                  <Text> • </Text>
-                )}
-              </>
-            )}
-            {resume.basics.email && (
-              <>
-                <View style={styles.contactItem}>
-                  <IconEmail />
-                  <Link src={`mailto:${resume.basics.email}`} style={styles.link}>
-                    {resume.basics.email}
-                  </Link>
-                </View>
-                {(resume.basics.phone || resume.basics.url) && <Text> • </Text>}
-              </>
-            )}
-            {resume.basics.phone && (
-              <>
-                <View style={styles.contactItem}>
-                  <IconPhone />
-                  <Link src={`tel:${resume.basics.phone}`} style={styles.link}>
-                    {resume.basics.phone}
-                  </Link>
-                </View>
-                {resume.basics.url && <Text> • </Text>}
-              </>
-            )}
-            {resume.basics.url && (
-              <View style={styles.contactItem}>
-                <IconWeb />
-                <Link src={resume.basics.url} style={styles.link}>
-                  {resume.basics.url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')}
-                </Link>
-              </View>
-            )}
-          </View>
+              ))}
+            </View>
+          )}
           {/* Summary in header */}
           {resume.basics.summary && (
             <Text style={[styles.summary, { marginTop: 6 }]}>{resume.basics.summary}</Text>
@@ -528,6 +684,7 @@ export function ResumePdf({ resume }: ResumePdfProps) {
                         ))}
                       </View>
                     )}
+                    {job.profileMix && <ProfileMixBars profileMix={job.profileMix} />}
                   </View>
                 ))}
               </View>

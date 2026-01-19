@@ -15,7 +15,7 @@
       {
         "network": "LinkedIn",
         "username": "martinhessmann",
-        "url": "https://www.linkedin.com/in/martinhessmann"
+        "url": "https://www.linkedin.com/in/martin-hessmann?originalSubdomain=de"
       },
       {
         "network": "GitHub",
@@ -23,9 +23,9 @@
         "url": "https://github.com/martinhessmann"
       },
       {
-        "network": "Mastodon",
-        "username": "@martin@mastodon.social",
-        "url": "https://mastodon.social/@martin"
+        "network": "Instagram",
+        "username": "martinhessmann",
+        "url": "https://www.instagram.com/martinhessmann/?hl=en"
       }
     ]
   },
@@ -563,6 +563,32 @@
   ],
   "work": [
     {
+      "name": "Open Wonder",
+      "position": "Product Strategy (AI Brand Systems)",
+      "url": "https://openwonder.com",
+      "startDate": "2025-02",
+      "endDate": "",
+      "location": {
+        "city": "Berlin",
+        "countryCode": "DE"
+      },
+      "summary": "Own product strategy for Open Wonder’s AI platform, translating brand constraints and client requirements into system logic for scalable, on-brand image generation.",
+      "profileMix": {
+        "segments": [
+          { "label": "Strategy", "value": 40 },
+          { "label": "Systems", "value": 25 },
+          { "label": "AI", "value": 20 },
+          { "label": "Partner", "value": 15 }
+        ]
+      },
+      "highlights": [
+        "Define brand-system guardrails and evaluation criteria to keep AI outputs consistent across teams",
+        "Partner with product, design, and engineering to translate client needs into roadmap priorities",
+        "Establish feedback loops and documentation that improve adoption and reduce manual review"
+      ],
+      "tech": ["Product Strategy", "Product Management", "AI Platforms", "Brand Systems"]
+    },
+    {
       "name": "AN® (an.jetzt)",
       "position": "Digital Design Manager",
       "url": "https://an.jetzt",
@@ -572,12 +598,20 @@
         "city": "Berlin",
         "countryCode": "DE"
       },
-      "summary": "Lead cross-functional squads delivering headless marketing sites and digital products, aligning research, design, and engineering for measurable growth.",
+      "summary": "Lead cross-functional squads delivering headless marketing sites and digital products, driving design system strategy, accessibility, and delivery quality across stakeholders.",
+      "profileMix": {
+        "segments": [
+          { "label": "System", "value": 20 },
+          { "label": "Deliver", "value": 20 },
+          { "label": "Direct", "value": 35 },
+          { "label": "Strategy", "value": 25 }
+        ]
+      },
       "highlights": [
-        "Directed an 8-person product trio (design, frontend, platform) shipping 15+ headless marketing sites and internal tools",
-        "Established a tokenized design system and coded component library; cut design-to-dev handoff time 30% and reduced UI regressions",
-        "Standardized platform stack with Vercel/Hetzner + Cloudflare CDN/WAF; codified GitLab CI/CD and release pipelines",
-        "Instrumented Sentry automations, uptime monitors, and Playwright smoke tests; reduced mean time to resolution below two hours"
+        "Led an 8-person product trio (design, frontend, platform) delivering 15+ headless marketing sites and internal tools",
+        "Built a tokenized design system and coded component library with governance; cut handoff time by 30% and reduced UI regressions",
+        "Standardized delivery and QA workflows (CI/CD, observability, automated smoke tests) to keep MTTR under 2 hours",
+        "Aligned brand, marketing, and platform stakeholders on roadmaps, launch criteria, and quality standards"
       ],
       "tech": ["Next.js", "Nuxt.js", "Eleventy", "WordPress", "TYPO3", "Prismic", "Cloudflare", "Vercel", "Hetzner", "GitLab", "GitOps", "CI/CD", "Sentry Automations", "Playwright", "Algolia", "Optimole", "Mapbox", "AI-assisted workflows"]
     },
@@ -591,12 +625,20 @@
         "city": "Berlin",
         "countryCode": "DE"
       },
-      "summary": "Directed UX and visual systems for a multi-brand portfolio, bridging strategy, research, and implementation across digital touchpoints.",
+      "summary": "Directed UX and visual systems for a 6-brand portfolio, leading discovery, research, and design system governance across product teams.",
+      "profileMix": {
+        "segments": [
+          { "label": "Design", "value": 40 },
+          { "label": "Proto", "value": 15 },
+          { "label": "Direct", "value": 25 },
+          { "label": "Research", "value": 20 }
+        ]
+      },
       "highlights": [
-        "Rolled out a multi-brand design system in Figma and Storybook reused across 20+ launches, accelerating delivery by 25%",
-        "Led discovery, customer interviews, and rapid prototyping to inform product roadmaps and prioritize releases",
-        "Partnered with engineering to deliver componentized frontends while maintaining WordPress/TYPO3/Prismic stacks",
-        "Introduced GitLab CI/CD, Storybook templates, and handoff rituals to streamline launches"
+        "Built a multi-brand design system in Figma + Storybook adopted across 20+ launches, accelerating delivery by 25%",
+        "Led discovery, interviews, and prototyping to turn complex workflows into clear user journeys",
+        "Defined UX standards and ensured parity between design and production across WordPress/TYPO3/Prismic stacks",
+        "Introduced design reviews, Storybook templates, and handoff rituals to reduce rework and speed launch cycles"
       ],
       "tech": ["Figma", "Storybook", "WordPress", "TYPO3", "Prismic", "Jira", "GitLab", "CI/CD", "Design tokens"]
     },
@@ -610,12 +652,20 @@
         "city": "Berlin",
         "countryCode": "DE"
       },
-      "summary": "Designed and shipped responsive web apps and campaign sites end-to-end for fintech, civic tech, and cultural clients.",
+      "summary": "Designed end-to-end UX for responsive web apps and campaign sites, translating complex workflows into clear, accessible experiences.",
+      "profileMix": {
+        "segments": [
+          { "label": "Design", "value": 55 },
+          { "label": "Proto", "value": 25 },
+          { "label": "Team", "value": 10 },
+          { "label": "Research", "value": 10 }
+        ]
+      },
       "highlights": [
-        "Produced IA, wireframes, visual design, and interactive prototypes for complex responsive products",
-        "Delivered first full Digital Brand Execution, establishing component-based UI workflows",
-        "Ran moderated usability tests and analytics reviews to refine flows; improved task success by 20% on average",
-        "Maintained brand and accessibility standards across multi-device launches"
+        "Owned IA, user flows, visual design, and interactive prototypes across 10+ responsive sites and apps",
+        "Established reusable UI patterns and component-based workflows for multi-device delivery",
+        "Ran moderated usability tests and analytics reviews; improved task success by about 20% on average",
+        "Maintained brand consistency and accessibility standards across launches"
       ],
       "tech": ["Sketch", "Zeplin", "InVision", "HTML/CSS", "JavaScript"]
     },
@@ -629,10 +679,18 @@
         "city": "Berlin",
         "countryCode": "DE"
       },
-      "summary": "Supported product teams on web campaigns while learning collaborative design and development workflows.",
+      "summary": "3-month internship supporting web campaigns and early UX research, contributing UI assets, prototypes, and QA feedback.",
+      "profileMix": {
+        "segments": [
+          { "label": "Explore", "value": 65 },
+          { "label": "Build", "value": 20 },
+          { "label": "Learn", "value": 5 },
+          { "label": "Research", "value": 10 }
+        ]
+      },
       "highlights": [
-        "Built web and app UI designs in Photoshop and created icons in Illustrator for responsive campaigns",
-        "Worked on a Natural User Interface study that accompanied bachelor's thesis research",
+        "Created UI comps and icon sets for responsive campaigns in Photoshop/Illustrator",
+        "Contributed to a Natural User Interface study supporting a bachelor's thesis research track",
         "Built interactive prototypes in HTML/CSS, assisted QA, and documented feedback for senior designers"
       ],
       "tech": ["Photoshop", "Illustrator", "HTML/CSS", "GitLab"]
@@ -646,11 +704,19 @@
         "city": "Berlin",
         "countryCode": "DE"
       },
-      "summary": "Brand and Graphic Designer working with local small businesses in Berlin, focusing on logo design, brand identity, and print production.",
+      "summary": "Freelance brand and graphic designer delivering identity systems and multi-channel collateral for local businesses, owning client discovery, scope, and production delivery.",
+      "profileMix": {
+        "segments": [
+          { "label": "Brand", "value": 60 },
+          { "label": "Print", "value": 10 },
+          { "label": "Client", "value": 15 },
+          { "label": "Scope", "value": 15 }
+        ]
+      },
       "highlights": [
-        "Designed logos and brand identities for local small businesses across Berlin",
-        "Produced print collateral including business cards, flyers, and marketing materials",
-        "Scoped, budgeted, and managed client relationships from concept through production"
+        "Delivered logo and brand identity packages for 10+ local small businesses across Berlin",
+        "Produced print collateral (business cards, flyers, menus) with press-ready specs and vendor coordination",
+        "Scoped and budgeted projects end-to-end, managing client communication from kickoff through production"
       ],
       "tech": ["Illustrator", "InDesign", "Photoshop", "HTML", "CSS"]
     }

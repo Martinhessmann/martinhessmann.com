@@ -43,6 +43,19 @@ export interface Profile {
   url?: string
 }
 
+export interface ProfileMixSegment {
+  label: string
+  value: number
+}
+
+export interface ProfileMix {
+  segments?: ProfileMixSegment[]
+  design?: number
+  code?: number
+  lead?: number
+  align?: number
+}
+
 export interface Work {
   name?: string
   position?: string
@@ -51,6 +64,7 @@ export interface Work {
   endDate?: string
   summary?: string
   highlights?: string[]
+  profileMix?: ProfileMix
   location?: Location
   tech?: string[]
 }

@@ -106,9 +106,9 @@ export function CaseStudy({
   return (
     <section id={id} className={`py-24 lg:py-32 ${bg} overflow-hidden relative border-t border-gray-200/60`}>
       <motion.div
-        className="absolute inset-0 z-0 pointer-events-none bg-[radial-gradient(1100px_600px_at_15%_30%,rgba(116,173,213,0.2),transparent),radial-gradient(1100px_600px_at_85%_60%,rgba(244,173,121,0.22),transparent),radial-gradient(680px_520px_at_70%_10%,rgba(245,210,150,0.2),transparent)]"
-        animate={{ x: ["0%", "2%", "0%"], y: ["0%", "-2%", "0%"] }}
-        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -inset-[12%] z-0 pointer-events-none bg-[radial-gradient(1100px_600px_at_15%_30%,rgba(116,173,213,0.2),transparent),radial-gradient(1100px_600px_at_85%_60%,rgba(244,173,121,0.22),transparent),radial-gradient(680px_520px_at_70%_10%,rgba(245,210,150,0.2),transparent)]"
+        animate={{ x: ["-1%", "1%", "-1%"], y: ["1%", "-1%", "1%"], scale: [1, 1.02, 1] }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
         aria-hidden="true"
       />
       <div className="container mx-auto px-6 lg:px-12 relative">
