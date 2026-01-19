@@ -1,11 +1,14 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { useState, useEffect } from "react"
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
+import { ChevronDown } from "lucide-react"
 
 // Geometric wireframe icons for principles
-const PrincipleIcon = ({ type }: { type: "empathy" | "research" | "responsibility" | "ensemble" }) => {
-  const iconSize = 64
-  const strokeWidth = 1.5
+const PrincipleIcon = ({ type, size = 64 }: { type: "empathy" | "research" | "responsibility" | "ensemble"; size?: number }) => {
+  const iconSize = size
+  // Scale stroke width with icon size for visual consistency
+  const strokeWidth = size >= 200 ? 3.5 : size > 100 ? 2.5 : size > 60 ? 2 : 1.5
   const strokeColor = "currentColor"
 
   switch (type) {
@@ -55,107 +58,139 @@ const PrincipleIcon = ({ type }: { type: "empathy" | "research" | "responsibilit
   }
 }
 
-// Gradient Orb component
-const GradientOrb = () => {
-  return (
-    <div className="relative w-full h-full min-h-[400px] flex items-center justify-center">
-      {/* Soft gradient blur layers */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        {/* Lilac layer */}
-        <div
-          className="absolute w-[300px] h-[300px] rounded-full opacity-60"
-          style={{
-            background: "rgb(219, 190, 237)",
-            filter: "blur(80px)",
-            transform: "translate(-20%, -10%)"
-          }}
-        />
-        {/* Blue layer */}
-        <div
-          className="absolute w-[250px] h-[250px] rounded-full opacity-50"
-          style={{
-            background: "rgb(29, 29, 255)",
-            filter: "blur(100px)",
-            transform: "translate(30%, 20%)"
-          }}
-        />
-      </div>
+// Blur colors per principle - bold and saturated
+const BLUR_COLORS: Record<"blue" | "amber" | "lime" | "lilac", { blur1: string; blur2: string }> = {
+  blue:  { blur1: "rgb(80, 100, 255)",   blur2: "rgb(200, 170, 240)" },
+  amber: { blur1: "rgb(255, 210, 60)",   blur2: "rgb(210, 180, 240)" },
+  lime:  { blur1: "rgb(180, 255, 80)",   blur2: "rgb(80, 100, 255)" },
+  lilac: { blur1: "rgb(210, 170, 250)", blur2: "rgb(80, 100, 255)" },
+}
 
-      {/* Sharp geometric circle with amber fill */}
+// Icon color inside the orb - darker for contrast
+const ICON_STROKE_COLOR: Record<"blue" | "amber" | "lime" | "lilac", string> = {
+  blue:  "rgb(20, 20, 200)",
+  amber: "rgb(160, 130, 20)",
+  lime:  "rgb(60, 140, 30)",
+  lilac: "rgb(120, 60, 160)",
+}
+
+// Orb: large icon with bold blur background, no outline
+const PrincipleOrb = ({
+  activeColor,
+  iconType,
+  reducedMotion,
+}: {
+  activeColor: "blue" | "amber" | "lime" | "lilac"
+  iconType: "empathy" | "research" | "responsibility" | "ensemble"
+  reducedMotion: boolean | null
+}) => {
+  const { blur1, blur2 } = BLUR_COLORS[activeColor]
+  const iconColor = ICON_STROKE_COLOR[activeColor]
+  const duration = reducedMotion ? 0.15 : 0.4
+
+  return (
+    <div className="relative w-[400px] h-[400px] mx-auto flex items-center justify-center">
+      {/* Large gradient blur layers - more opaque */}
       <motion.div
-        className="relative z-10"
-        initial={{ scale: 0.9, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
-        <svg width="200" height="200" viewBox="0 0 200 200">
-          {/* Filled amber circle */}
-          <circle
-            cx="100"
-            cy="100"
-            r="80"
-            fill="rgb(245, 215, 46)"
-            fillOpacity="0.9"
-          />
-          {/* Dashed outline */}
-          <circle
-            cx="100"
-            cy="100"
-            r="90"
-            fill="none"
-            stroke="rgb(26, 26, 26)"
-            strokeWidth="1"
-            strokeDasharray="4 4"
-          />
-        </svg>
-      </motion.div>
+        className="absolute w-[500px] h-[500px] rounded-full"
+        style={{ filter: "blur(90px)", opacity: 0.85 }}
+        animate={{
+          background: blur1,
+          x: reducedMotion ? "-8%" : ["-8%", "5%", "-8%"],
+          y: reducedMotion ? "-5%" : ["-5%", "8%", "-5%"],
+        }}
+        transition={{
+          background: { duration },
+          x: reducedMotion ? { duration: 0 } : { duration: 16, repeat: Infinity, ease: "easeInOut" },
+          y: reducedMotion ? { duration: 0 } : { duration: 16, repeat: Infinity, ease: "easeInOut" },
+        }}
+      />
+      <motion.div
+        className="absolute w-[450px] h-[450px] rounded-full"
+        style={{ filter: "blur(100px)", opacity: 0.7 }}
+        animate={{
+          background: blur2,
+          x: reducedMotion ? "12%" : ["12%", "0%", "12%"],
+          y: reducedMotion ? "8%" : ["8%", "-5%", "8%"],
+        }}
+        transition={{
+          background: { duration },
+          x: reducedMotion ? { duration: 0 } : { duration: 14, repeat: Infinity, ease: "easeInOut" },
+          y: reducedMotion ? { duration: 0 } : { duration: 14, repeat: Infinity, ease: "easeInOut" },
+        }}
+      />
+
+      {/* Large icon centered */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={iconType}
+          className="relative z-10"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          transition={{ duration: 0.25 }}
+          style={{ color: iconColor }}
+        >
+          <PrincipleIcon type={iconType} size={200} />
+        </motion.div>
+      </AnimatePresence>
     </div>
   )
 }
 
+type PrincipleColor = "blue" | "amber" | "lime" | "lilac"
+
 interface Principle {
   id: string
   icon: "empathy" | "research" | "responsibility" | "ensemble"
+  color: PrincipleColor
   title: string
   description: string
 }
 
 const principles: Principle[] = [
-  {
-    id: "complexity",
-    icon: "empathy",
-    title: "Go where the complexity is",
-    description: "I don't shy away from cross-disciplinary responsibility. I open black boxes, learn what's inside, and translate it so teams can make decisions."
-  },
-  {
-    id: "systems",
-    icon: "research",
-    title: "Make design systems fun again",
-    description: "When a design system feels like a burden, I dig in quickly and achieve results. Systems should enable, not constrain."
-  },
-  {
-    id: "enable",
-    icon: "responsibility",
-    title: "Enable, don't just execute",
-    description: "I don't just build — I make teams capable of building themselves. Enablement over handoff."
-  },
-  {
-    id: "iterate",
-    icon: "ensemble",
-    title: "Think in systems, ship in iterations",
-    description: "I prototype, test, iterate. Big-bang launches are risky; small bets compound into real impact."
-  }
+  { id: "complexity", icon: "empathy", color: "blue",  title: "Go where the complexity is", description: "I don't shy away from cross-disciplinary responsibility. I open black boxes, learn what's inside, and translate it so teams can make decisions." },
+  { id: "systems",    icon: "research", color: "amber", title: "Make design systems fun again", description: "When a design system feels like a burden, I dig in quickly and achieve results. Systems should enable, not constrain." },
+  { id: "enable",     icon: "responsibility", color: "lime",  title: "Enable, don't just execute", description: "I don't just build — I make teams capable of building themselves. Enablement over handoff." },
+  { id: "iterate",    icon: "ensemble", color: "lilac", title: "Think in systems, ship in iterations", description: "I prototype, test, iterate. Big-bang launches are risky; small bets compound into real impact." },
 ]
 
+const DOT_BG_ACTIVE: Record<PrincipleColor, string> = {
+  blue:  "bg-blue-500",
+  amber: "bg-amber-500",
+  lime:  "bg-lime-500",
+  lilac: "bg-lilac-400",
+}
+
+const DOT_RING_CLASS: Record<PrincipleColor, string> = {
+  blue:  "focus-visible:ring-blue-500",
+  amber: "focus-visible:ring-amber-500",
+  lime:  "focus-visible:ring-lime-500",
+  lilac: "focus-visible:ring-lilac-400",
+}
+
 export function Section01About() {
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [hasInteracted, setHasInteracted] = useState(false)
+  const reducedMotion = useReducedMotion()
+
+  const scrollToWork = () => document.getElementById("teambank")?.scrollIntoView({ behavior: "smooth" })
+
+  // Auto-rotate every 4.5s when user hasn't interacted and reducedMotion is off
+  useEffect(() => {
+    if (hasInteracted || reducedMotion) return
+    const t = setInterval(() => setActiveIndex((prev) => (prev + 1) % 4), 4500)
+    return () => clearInterval(t)
+  }, [hasInteracted, reducedMotion])
+
+  const active = principles[activeIndex]
+
   return (
     <section className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <div className="container mx-auto px-6 lg:px-12 pt-16 lg:pt-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-          {/* Left: Content */}
+      <div className="container mx-auto px-6 lg:px-12 pt-16 lg:pt-24 pb-16 lg:pb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left: Hero text + CTA */}
           <div className="space-y-6">
-            {/* Name in italic serif */}
             <motion.p
               className="font-serif italic text-lg text-gray-600"
               initial={{ opacity: 0, y: 20 }}
@@ -165,8 +200,6 @@ export function Section01About() {
             >
               Martin Heßmann
             </motion.p>
-
-            {/* Large headline */}
             <motion.h1
               className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-gray-950"
               initial={{ opacity: 0, y: 20 }}
@@ -174,13 +207,8 @@ export function Section01About() {
               transition={{ duration: 0.6, delay: 0.1 }}
               style={{ fontFamily: "'TeXGyreHeros', sans-serif" }}
             >
-              Systems<br />
-              Designer —<br />
-              Design,<br />
-              Engineering, AI
+              Systems<br />Designer —<br />Design,<br />Engineering, AI
             </motion.h1>
-
-            {/* Summary */}
             <motion.p
               className="text-base lg:text-lg text-gray-600 max-w-lg leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
@@ -192,49 +220,71 @@ export function Section01About() {
               AI-assisted workflows, and design systems at scale. Seeking long-term partnerships
               where I can drive sustained impact across the full product lifecycle.
             </motion.p>
-          </div>
-
-          {/* Right: Gradient Orb */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.3 }}
-          >
-            <GradientOrb />
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Principles Section */}
-      <div className="container mx-auto px-6 lg:px-12 py-16 lg:py-24">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
-          {principles.map((principle, index) => (
             <motion.div
-              key={principle.id}
-              className="text-center space-y-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
             >
-              {/* Icon */}
-              <div className="flex justify-center text-gray-400">
-                <PrincipleIcon type={principle.icon} />
-              </div>
-
-              {/* Title in italic serif */}
-              <h3
-                className="font-serif italic text-lg text-gray-950"
-                style={{ fontFamily: "'EB Garamond', serif" }}
+              <button
+                type="button"
+                onClick={scrollToWork}
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-500 text-gray-950 font-medium rounded hover:bg-amber-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2"
               >
-                {principle.title}
-              </h3>
-
-              {/* Description */}
-              <p className="text-sm text-gray-600 leading-relaxed">
-                {principle.description}
-              </p>
+                See case studies
+                <ChevronDown className="w-4 h-4" aria-hidden />
+              </button>
             </motion.div>
-          ))}
+          </div>
+
+          {/* Right: Orb with icon + principle text + dot pagination */}
+          <motion.div
+            className="flex flex-col items-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            {/* Orb: dashed outline with icon */}
+            <PrincipleOrb activeColor={active.color} iconType={active.icon} reducedMotion={reducedMotion} />
+
+            {/* Principle text */}
+            <div className="mt-6 text-center max-w-sm">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={active.id}
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -6 }}
+                  transition={{ duration: 0.2 }}
+                  className="space-y-2"
+                >
+                  <h3
+                    className="font-serif italic text-lg text-gray-950"
+                    style={{ fontFamily: "'EB Garamond', serif" }}
+                  >
+                    {active.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">{active.description}</p>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Dot pagination (no icons) */}
+            <div role="tablist" aria-label="Principles" className="flex justify-center gap-3 mt-6">
+              {principles.map((p, i) => (
+                <button
+                  key={p.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={activeIndex === i}
+                  aria-label={p.title}
+                  onClick={() => { setActiveIndex(i); setHasInteracted(true) }}
+                  className={`w-2.5 h-2.5 rounded-full transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${DOT_RING_CLASS[p.color]} ${
+                    activeIndex === i ? `${DOT_BG_ACTIVE[p.color]} scale-125` : "bg-gray-300 hover:bg-gray-400"
+                  }`}
+                />
+              ))}
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
