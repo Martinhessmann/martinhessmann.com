@@ -2,25 +2,24 @@
 
 import { CaseStudy } from "./case-study"
 
-// Abstract: premium brand architecture — keyhole + floating cards
+// Abstract: premium brand architecture — thin frames + keyed core
 const DPFIllustration = () => (
   <svg viewBox="0 0 400 400" fill="none" className="w-full h-full">
-    {/* Architectural block with keyhole */}
-    <rect x="100" y="80" width="200" height="240" stroke="currentColor" strokeWidth="2" />
-    <circle cx="200" cy="180" r="40" stroke="currentColor" strokeWidth="2" />
-    <rect x="190" y="180" width="20" height="60" fill="currentColor" fillOpacity="0.2" />
+    {/* Architectural frame */}
+    <rect x="110" y="90" width="180" height="220" stroke="currentColor" strokeWidth="1.1" opacity="0.6" />
+    <circle cx="200" cy="180" r="36" stroke="currentColor" strokeWidth="1" opacity="0.7" />
+    <circle cx="200" cy="180" r="10" stroke="currentColor" strokeWidth="1" opacity="0.7" />
 
     {/* Floating brand cards */}
-    <rect x="60" y="120" width="50" height="35" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 4" />
-    <rect x="290" y="100" width="50" height="35" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 4" />
-    <rect x="290" y="160" width="50" height="35" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 4" />
-    <rect x="60" y="220" width="50" height="35" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 4" />
-    <rect x="290" y="240" width="50" height="35" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 4" />
-    <rect x="60" y="280" width="50" height="35" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 4" />
+    <rect x="70" y="120" width="48" height="32" stroke="currentColor" strokeWidth="0.9" strokeDasharray="3 6" opacity="0.6" />
+    <rect x="282" y="110" width="48" height="32" stroke="currentColor" strokeWidth="0.9" strokeDasharray="3 6" opacity="0.6" />
+    <rect x="286" y="165" width="48" height="32" stroke="currentColor" strokeWidth="0.9" strokeDasharray="3 6" opacity="0.6" />
+    <rect x="70" y="230" width="48" height="32" stroke="currentColor" strokeWidth="0.9" strokeDasharray="3 6" opacity="0.6" />
+    <rect x="286" y="238" width="48" height="32" stroke="currentColor" strokeWidth="0.9" strokeDasharray="3 6" opacity="0.6" />
+    <rect x="70" y="280" width="48" height="32" stroke="currentColor" strokeWidth="0.9" strokeDasharray="3 6" opacity="0.6" />
 
-    {/* Central coordination node */}
-    <circle cx="200" cy="350" r="20" stroke="currentColor" strokeWidth="2" />
-    <circle cx="200" cy="350" r="8" fill="currentColor" />
+    {/* Coordination ring */}
+    <circle cx="200" cy="320" r="24" stroke="currentColor" strokeWidth="0.9" strokeDasharray="2 6" opacity="0.6" />
   </svg>
 )
 

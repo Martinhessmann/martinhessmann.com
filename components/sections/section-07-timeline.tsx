@@ -93,11 +93,11 @@ const clientPhases: ClientPhase[] = [
 
 // Five unique legend colors for bars and legend dots (500 for even contrast).
 const legendColorMap: Record<ClientPhase["color"], string> = {
-  blue: "bg-blue-500",
-  amber: "bg-amber-500",
-  lime: "bg-lime-500",
-  lilac: "bg-lilac-500",
-  green: "bg-green-500",
+  blue: "bg-blue-400/70",
+  amber: "bg-amber-400/70",
+  lime: "bg-lime-400/70",
+  lilac: "bg-lilac-300/70",
+  green: "bg-green-400/70",
 }
 
 const years = [2019, 2020, 2021, 2022, 2023, 2024, 2025]
@@ -111,11 +111,11 @@ function MilestoneMarker({ label, pct }: { label: string; pct: number }) {
     >
       {/* Marker dot - larger, with ring on hover */}
       <span
-        className="block w-4 h-4 -ml-2 rounded-full bg-white border-2 border-gray-600 shadow-md transition-all duration-150 group-hover:scale-125 group-hover:border-gray-900 group-hover:ring-2 group-hover:ring-gray-900/20"
+        className="block w-2.5 h-2.5 -ml-1.5 rounded-full bg-white border border-gray-700 transition-all duration-150 group-hover:scale-125 group-hover:border-gray-900"
       />
       {/* Tooltip - hidden by default, shown on hover via group-hover */}
       <span
-        className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 px-3 py-1.5 rounded-md bg-gray-900 text-white text-sm whitespace-nowrap shadow-lg z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 pointer-events-none"
+        className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 px-3 py-1.5 rounded-md bg-gray-900 text-white text-xs whitespace-nowrap shadow-lg z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 pointer-events-none"
         style={{ fontFamily: "'TeXGyreHeros', sans-serif" }}
       >
         {label}
@@ -128,24 +128,24 @@ function MilestoneMarker({ label, pct }: { label: string; pct: number }) {
 
 export function Section07Timeline() {
   return (
-    <section id="timeline" className="py-16 lg:py-24 bg-white">
+    <section id="timeline" className="py-20 lg:py-28 bg-transparent border-t border-gray-200/60">
       <div className="container mx-auto px-6 lg:px-12">
         {/* Header */}
         <motion.div
-          className="mb-10"
+          className="mb-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
           <h2
-            className="text-3xl md:text-4xl font-bold text-gray-950 tracking-tight"
+            className="text-xl md:text-2xl font-semibold text-gray-950 tracking-tight"
             style={{ fontFamily: "'TeXGyreHeros', sans-serif" }}
           >
             Journey
           </h2>
           <p
-            className="text-lg text-gray-500 mt-2 italic"
+            className="text-sm md:text-base text-gray-500 mt-2 italic"
             style={{ fontFamily: "'EB Garamond', serif" }}
           >
             Client web projects and key milestones — 2019 to today
@@ -153,7 +153,7 @@ export function Section07Timeline() {
         </motion.div>
 
         {/* Timeline chart */}
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-5">
           {/* Year axis */}
           <div className="relative h-6">
             {years.map((y) => {
@@ -162,7 +162,7 @@ export function Section07Timeline() {
               return (
                 <div
                   key={y}
-                  className="absolute top-0 text-sm font-medium text-gray-400"
+                  className="absolute top-0 text-[11px] font-semibold uppercase tracking-[0.2em] text-gray-400"
                   style={{ left: `${left}%`, transform: "translateX(-50%)" }}
                 >
                   {y}
@@ -200,7 +200,7 @@ export function Section07Timeline() {
                     aria-hidden
                   />
                   <span
-                    className="text-sm font-semibold text-gray-900"
+                    className="text-xs font-semibold text-gray-900"
                     style={{ fontFamily: "'TeXGyreHeros', sans-serif" }}
                   >
                     {group.client}
@@ -208,7 +208,7 @@ export function Section07Timeline() {
                 </div>
 
                 {/* Bar track */}
-                <div className="relative h-6">
+                <div className="relative h-4">
                   {group.projects.map((p) => {
                     const start = parseStart(p.start)
                     const end = p.end ? parseStart(p.end) : null
@@ -218,7 +218,7 @@ export function Section07Timeline() {
                     return (
                       <div
                         key={p.name}
-                        className={`absolute top-1/2 -translate-y-1/2 h-3 rounded-full ${barBg} opacity-80`}
+                        className={`absolute top-1/2 -translate-y-1/2 h-1.5 rounded-full ${barBg} opacity-60`}
                         style={{
                           left: `${left}%`,
                           width: `${Math.min(width, 100 - left)}%`,
@@ -245,12 +245,12 @@ export function Section07Timeline() {
 
                 {/* Milestones list (visible labels) */}
                 {allMilestones.length > 0 && (
-                  <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-gray-600 pl-5">
+                  <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-600 pl-5">
                     {allMilestones.map((m, i) => (
                       <span key={`${m.date}-${i}`} className="flex items-center gap-1.5">
                         <span className="w-1.5 h-1.5 rounded-full bg-gray-400" />
                         <span>{m.label}</span>
-                        <span className="text-gray-400 text-xs">
+                        <span className="text-gray-400 text-[10px]">
                           ({parseStart(m.date).toLocaleDateString("en-US", { month: "short", year: "numeric" })})
                         </span>
                       </span>

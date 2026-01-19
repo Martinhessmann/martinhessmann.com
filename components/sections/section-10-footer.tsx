@@ -16,20 +16,20 @@ export function Section10Footer() {
             transition={{ duration: 0.6 }}
           >
             <h2
-              className="text-3xl md:text-4xl font-bold tracking-tight"
+              className="text-xl md:text-2xl font-semibold tracking-tight"
               style={{ fontFamily: "'TeXGyreHeros', sans-serif" }}
             >
               Let's build something lasting.
             </h2>
 
             <p
-              className="text-lg text-gray-400 italic"
+              className="text-sm md:text-base text-gray-400 italic"
               style={{ fontFamily: "'EB Garamond', serif" }}
             >
               "I seek partnerships where I can drive sustained impact — not project-hopping, but building something lasting."
             </p>
 
-            <p className="text-gray-400">
+            <p className="text-sm text-gray-400">
               Berlin-based. Open to hybrid, remote (CET), or relocation for the right opportunity.
             </p>
 
@@ -37,7 +37,7 @@ export function Section10Footer() {
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <a
                 href="mailto:martin@martinhessmann.com"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-amber-400 text-gray-950 font-semibold shadow-[0_12px_30px_rgba(245,158,11,0.35)] hover:bg-amber-300 hover:shadow-[0_16px_36px_rgba(245,158,11,0.35)] transition-all active:translate-y-0.5"
+                className="inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-amber-400 text-gray-950 text-xs font-semibold uppercase tracking-[0.2em] border border-amber-300/60 hover:bg-amber-300 transition-colors"
               >
                 Get in touch
               </a>
@@ -45,7 +45,7 @@ export function Section10Footer() {
                 href="https://linkedin.com/in/martinhessmann"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-gray-600/70 text-white font-semibold hover:border-white/70 hover:text-white transition-colors"
+                className="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-gray-600/70 text-white text-xs font-semibold uppercase tracking-[0.2em] hover:border-white/70 hover:text-white transition-colors"
               >
                 LinkedIn
               </a>
@@ -62,17 +62,17 @@ export function Section10Footer() {
           >
             {/* Mission alignment */}
             <div>
-              <h3 className="text-xs text-gray-500 uppercase tracking-[0.3em] mb-3">
+              <h3 className="text-[11px] text-gray-500 uppercase tracking-[0.3em] mb-3">
                 Drawn to
               </h3>
-              <p className="text-gray-300">
+              <p className="text-sm text-gray-300">
                 Work with real-world impact: sustainable infrastructure, mobility, civic technology, and services that solve genuine human needs.
               </p>
             </div>
 
             {/* Links */}
             <div>
-              <h3 className="text-xs text-gray-500 uppercase tracking-[0.3em] mb-3">
+              <h3 className="text-[11px] text-gray-500 uppercase tracking-[0.3em] mb-3">
                 Links
               </h3>
               <div className="flex flex-wrap gap-4">
@@ -80,7 +80,7 @@ export function Section10Footer() {
                   href="https://github.com/martinhessmann"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-sm text-gray-400 hover:text-white transition-colors"
                 >
                   GitHub
                 </a>
@@ -88,13 +88,13 @@ export function Section10Footer() {
                   href="https://mastodon.social/@martin"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-sm text-gray-400 hover:text-white transition-colors"
                 >
                   Mastodon
                 </a>
                 <a
                   href="?view=resume"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-sm text-gray-400 hover:text-white transition-colors"
                 >
                   Full Resume
                 </a>
@@ -111,10 +111,10 @@ export function Section10Footer() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <p className="text-sm text-gray-500">
+          <p className="text-xs text-gray-500">
             © {new Date().getFullYear()} Martin Heßmann
           </p>
-          <div className="flex gap-4 text-sm text-gray-500">
+          <div className="flex gap-4 text-xs text-gray-500">
             <a href="#" className="hover:text-gray-400 transition-colors">Impressum</a>
             <a href="#" className="hover:text-gray-400 transition-colors">Datenschutz</a>
           </div>

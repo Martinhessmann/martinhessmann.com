@@ -13,49 +13,49 @@ const skillCategories: SkillCategory[] = [
   {
     name: "Design",
     percentage: 30,
-    color: "bg-blue-600",
+    color: "bg-blue-300/70",
     skills: ["UX/UI Design", "Design Systems", "Figma", "Prototyping", "User Research"]
   },
   {
     name: "Code & Build",
     percentage: 30,
-    color: "bg-amber-500",
+    color: "bg-amber-300/70",
     skills: ["React", "Next.js", "TypeScript", "Headless CMS", "AI-assisted Workflows"]
   },
   {
     name: "Leadership",
     percentage: 20,
-    color: "bg-lime-500",
+    color: "bg-lime-300/70",
     skills: ["Team Coordination", "Resource Planning", "GitOps", "CI/CD"]
   },
   {
     name: "Stakeholder Alignment",
     percentage: 20,
-    color: "bg-lilac-400",
+    color: "bg-lilac-200/70",
     skills: ["Discovery Workshops", "Cross-functional Collaboration", "Client Strategy"]
   }
 ]
 
 export function Section08Skills() {
   return (
-    <section id="skills" className="py-20 lg:py-28 bg-white">
+    <section id="skills" className="py-20 lg:py-28 bg-transparent border-t border-gray-200/60">
       <div className="container mx-auto px-6 lg:px-12">
         {/* Header */}
         <motion.div
-          className="mb-12"
+          className="mb-10"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
           <h2
-            className="text-3xl md:text-4xl font-semibold text-gray-950 tracking-tight"
+            className="text-xl md:text-2xl font-semibold text-gray-950 tracking-tight"
             style={{ fontFamily: "'TeXGyreHeros', sans-serif" }}
           >
             Profile
           </h2>
           <p
-            className="text-lg text-gray-500 mt-2 italic"
+            className="text-sm md:text-base text-gray-500 mt-2 italic"
             style={{ fontFamily: "'EB Garamond', serif" }}
           >
             A balanced hybrid: 30% design, 30% code, 20% leadership, 20% stakeholder alignment
@@ -63,18 +63,18 @@ export function Section08Skills() {
         </motion.div>
 
         {/* Skills Bars */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="flex flex-col md:flex-row md:flex-wrap md:justify-between gap-8">
           {skillCategories.map((category, index) => (
             <motion.div
               key={category.name}
-              className="space-y-5 rounded-2xl border border-gray-200/70 bg-white/90 p-5 shadow-[0_16px_40px_rgba(15,23,42,0.08)] transition-transform hover:-translate-y-1"
+              className={`space-y-4 rounded-xl border border-gray-200/80 bg-white p-6 md:w-[48%] lg:w-[23%] ${index % 2 === 1 ? "lg:mt-6" : ""}`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               {/* Bar visualization */}
-              <div className="relative h-36 rounded-2xl border border-gray-200/60 bg-gradient-to-b from-gray-50 to-gray-100 overflow-hidden">
+              <div className="relative h-24 rounded-lg border border-gray-200/70 bg-gray-100/70 overflow-hidden">
                 <motion.div
                   className={`absolute bottom-0 left-0 right-0 ${category.color}`}
                   initial={{ height: 0 }}
@@ -83,21 +83,21 @@ export function Section08Skills() {
                   transition={{ duration: 0.8, delay: 0.2 + index * 0.1, ease: "easeOut" }}
                 />
                 <div className="absolute inset-0 flex items-end justify-center pb-2">
-                  <span className="text-xl font-semibold text-white drop-shadow-sm">
+                  <span className="text-xs font-semibold text-gray-900">
                     {category.percentage}%
                   </span>
                 </div>
               </div>
 
               {/* Category name */}
-              <h3 className="text-lg font-semibold text-gray-950">
+              <h3 className="text-sm font-semibold text-gray-950">
                 {category.name}
               </h3>
 
               {/* Skills list */}
-              <ul className="space-y-1">
+              <ul className="space-y-1.5">
                 {category.skills.map((skill, skillIndex) => (
-                  <li key={skillIndex} className="text-sm text-gray-600">
+                  <li key={skillIndex} className="text-[11px] text-gray-600">
                     {skill}
                   </li>
                 ))}

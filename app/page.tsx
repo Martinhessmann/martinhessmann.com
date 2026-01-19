@@ -51,7 +51,7 @@ export default async function ResumePage({ searchParams }: PageProps) {
 
   // Default: New one-pager design
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-[#f4f2ee]">
       <Section01About />
       <Section02TeamBank />
       <Section03DPF />
@@ -65,4 +65,3 @@ export default async function ResumePage({ searchParams }: PageProps) {
     </main>
   )
 }
-

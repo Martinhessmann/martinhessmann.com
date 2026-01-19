@@ -26,24 +26,24 @@ export function Section09Resume({ work }: Section09ResumeProps) {
   if (!work?.length) return null
 
   return (
-    <section id="work" className="py-16 lg:py-24 bg-gray-50">
+    <section id="work" className="py-20 lg:py-28 bg-transparent border-t border-gray-200/60">
       <div className="container mx-auto px-6 lg:px-12">
         {/* Header */}
         <motion.div
-          className="mb-12"
+          className="mb-10"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
           <h2
-            className="text-3xl md:text-4xl font-bold text-gray-950 tracking-tight"
+            className="text-xl md:text-2xl font-semibold text-gray-950 tracking-tight"
             style={{ fontFamily: "'TeXGyreHeros', sans-serif" }}
           >
             Work Experience
           </h2>
           <p
-            className="text-lg text-gray-500 mt-2 italic"
+            className="text-sm md:text-base text-gray-500 mt-2 italic"
             style={{ fontFamily: "'EB Garamond', serif" }}
           >
             Prior positions — from freelance design to leading product trios
@@ -51,27 +51,27 @@ export function Section09Resume({ work }: Section09ResumeProps) {
         </motion.div>
 
         {/* Work entries matrix */}
-        <div className="space-y-10 lg:space-y-12">
+        <div className="space-y-8 lg:space-y-10">
           {work.map((job, index) => (
             <motion.article
               key={`${job.name}-${job.position}-${job.startDate}-${index}`}
-              className="relative pl-6 md:pl-8 border-l-2 border-gray-200 hover:border-amber-500/60 transition-colors"
+              className="relative rounded-2xl border border-gray-200/70 bg-white p-6 md:p-7"
               initial={{ opacity: 0, x: -16 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
             >
               {/* Dot */}
-              <div className="absolute left-0 top-0 -translate-x-[9px] w-4 h-4 rounded-full bg-amber-500" />
+              <div className="absolute right-6 top-6 w-2 h-2 rounded-full bg-amber-300/70" />
 
-              <div className="space-y-3">
+              <div className="space-y-2">
                 {/* Role + company + dates */}
                 <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between gap-1">
                   <div>
-                    <h3 className="text-lg md:text-xl font-semibold text-gray-950">
+                    <h3 className="text-sm md:text-base font-semibold text-gray-950">
                       {job.position}
                     </h3>
-                    <p className="text-gray-600">
+                    <p className="text-xs text-gray-600">
                       {job.url ? (
                         <a
                           href={job.url}
@@ -86,22 +86,22 @@ export function Section09Resume({ work }: Section09ResumeProps) {
                       )}
                     </p>
                   </div>
-                  <p className="text-sm text-gray-500 whitespace-nowrap">
+                  <p className="text-[10px] uppercase tracking-[0.22em] text-gray-500 whitespace-nowrap">
                     {formatDateRange(job.startDate, job.endDate)}
                   </p>
                 </div>
 
                 {/* Summary */}
                 {job.summary && (
-                  <p className="text-gray-700 leading-relaxed">{job.summary}</p>
+                  <p className="text-[12px] text-gray-700 leading-[1.55]">{job.summary}</p>
                 )}
 
                 {/* Highlights */}
                 {job.highlights && job.highlights.length > 0 && (
                   <ul className="space-y-1.5">
                     {job.highlights.map((h, i) => (
-                      <li key={i} className="flex items-start gap-2 text-gray-600 text-sm md:text-base">
-                        <span className="text-amber-500 mt-1 shrink-0">•</span>
+                      <li key={i} className="flex items-start gap-2 text-gray-600 text-[11px] md:text-xs">
+                        <span className="text-gray-400 mt-1 shrink-0">•</span>
                         <span>{h}</span>
                       </li>
                     ))}

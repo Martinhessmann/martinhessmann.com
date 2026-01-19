@@ -59,10 +59,10 @@ const PrincipleIcon = ({ type, size = 64 }: { type: "empathy" | "research" | "re
 
 // Blur colors per principle - bold and saturated
 const BLUR_COLORS: Record<"blue" | "amber" | "lime" | "lilac", { blur1: string; blur2: string }> = {
-  blue:  { blur1: "rgb(80, 100, 255)",   blur2: "rgb(200, 170, 240)" },
-  amber: { blur1: "rgb(255, 210, 60)",   blur2: "rgb(210, 180, 240)" },
-  lime:  { blur1: "rgb(180, 255, 80)",   blur2: "rgb(80, 100, 255)" },
-  lilac: { blur1: "rgb(210, 170, 250)", blur2: "rgb(80, 100, 255)" },
+  blue:  { blur1: "rgb(150, 185, 225)", blur2: "rgb(244, 190, 150)" },
+  amber: { blur1: "rgb(244, 190, 150)", blur2: "rgb(160, 190, 220)" },
+  lime:  { blur1: "rgb(185, 215, 165)", blur2: "rgb(160, 190, 220)" },
+  lilac: { blur1: "rgb(200, 180, 220)", blur2: "rgb(165, 195, 225)" },
 }
 
 // Icon color inside the orb - darker for contrast
@@ -88,10 +88,10 @@ const PrincipleOrb = ({
   const duration = reducedMotion ? 0.15 : 0.4
 
   return (
-    <div className="relative w-[320px] h-[320px] sm:w-[380px] sm:h-[380px] lg:w-[440px] lg:h-[440px] mx-auto flex items-center justify-center">
+    <div className="relative w-[320px] h-[320px] sm:w-[380px] sm:h-[380px] lg:w-[520px] lg:h-[520px] mx-auto flex items-center justify-center">
       {/* Large gradient blur layers - more opaque */}
       <motion.div
-        className="absolute w-[520px] h-[520px] sm:w-[600px] sm:h-[600px] lg:w-[680px] lg:h-[680px] rounded-full"
+        className="absolute w-[560px] h-[560px] sm:w-[640px] sm:h-[640px] lg:w-[760px] lg:h-[760px] rounded-full z-0"
         style={{ filter: "blur(110px)", opacity: 0.82 }}
         animate={{
           background: blur1,
@@ -105,7 +105,7 @@ const PrincipleOrb = ({
         }}
       />
       <motion.div
-        className="absolute w-[480px] h-[480px] sm:w-[560px] sm:h-[560px] lg:w-[620px] lg:h-[620px] rounded-full"
+        className="absolute w-[520px] h-[520px] sm:w-[600px] sm:h-[600px] lg:w-[700px] lg:h-[700px] rounded-full z-0"
         style={{ filter: "blur(120px)", opacity: 0.68 }}
         animate={{
           background: blur2,
@@ -131,12 +131,12 @@ const PrincipleOrb = ({
           style={{ color: iconColor }}
         >
           <div className="relative">
-            <svg width="220" height="220" viewBox="0 0 220 220" fill="none" className="absolute -left-4 -top-4">
-              <circle cx="110" cy="110" r="104" stroke="currentColor" strokeWidth="1" strokeDasharray="2 6" opacity="0.6" />
-              <circle cx="110" cy="110" r="78" stroke="currentColor" strokeWidth="0.9" opacity="0.5" />
-              <path d="M18 110a92 92 0 0 1 184 0" stroke="currentColor" strokeWidth="0.9" opacity="0.4" />
+            <svg width="260" height="260" viewBox="0 0 260 260" fill="none" className="absolute -left-6 -top-6">
+              <circle cx="130" cy="130" r="120" stroke="currentColor" strokeWidth="1" strokeDasharray="2 6" opacity="0.55" />
+              <circle cx="130" cy="130" r="96" stroke="currentColor" strokeWidth="0.9" opacity="0.5" />
+              <path d="M20 130a110 110 0 0 1 220 0" stroke="currentColor" strokeWidth="0.9" opacity="0.4" />
             </svg>
-            <PrincipleIcon type={iconType} size={180} />
+            <PrincipleIcon type={iconType} size={200} />
           </div>
         </motion.div>
       </AnimatePresence>
@@ -162,17 +162,17 @@ const principles: Principle[] = [
 ]
 
 const DOT_BG_ACTIVE: Record<PrincipleColor, string> = {
-  blue:  "bg-blue-500",
-  amber: "bg-amber-500",
-  lime:  "bg-lime-500",
-  lilac: "bg-lilac-400",
+  blue:  "bg-blue-400",
+  amber: "bg-amber-400",
+  lime:  "bg-lime-400",
+  lilac: "bg-lilac-300",
 }
 
 const DOT_RING_CLASS: Record<PrincipleColor, string> = {
-  blue:  "focus-visible:ring-blue-500",
-  amber: "focus-visible:ring-amber-500",
-  lime:  "focus-visible:ring-lime-500",
-  lilac: "focus-visible:ring-lilac-400",
+  blue:  "focus-visible:ring-blue-400",
+  amber: "focus-visible:ring-amber-400",
+  lime:  "focus-visible:ring-lime-400",
+  lilac: "focus-visible:ring-lilac-300",
 }
 
 export function Section01About() {
@@ -192,22 +192,28 @@ export function Section01About() {
   const active = principles[activeIndex]
 
   return (
-    <section className="relative min-h-screen bg-white bg-[radial-gradient(980px_680px_at_72%_18%,rgba(245,158,11,0.28),rgba(255,255,255,0))]">
-      <div className="container mx-auto px-6 lg:px-12 pt-20 lg:pt-28 pb-20 lg:pb-28">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+    <section className="relative min-h-screen bg-transparent overflow-hidden">
+      <motion.div
+        className="absolute inset-0 z-0 pointer-events-none bg-[radial-gradient(1100px_760px_at_72%_16%,rgba(255,165,92,0.32),rgba(255,255,255,0)),radial-gradient(900px_680px_at_40%_70%,rgba(96,140,205,0.28),rgba(255,255,255,0)),radial-gradient(760px_520px_at_86%_62%,rgba(245,204,140,0.22),rgba(255,255,255,0))]"
+        animate={{ x: ["0%", "2%", "0%"], y: ["0%", "-2%", "0%"] }}
+        transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
+        aria-hidden="true"
+      />
+      <div className="container mx-auto px-6 lg:px-12 pt-16 lg:pt-24 pb-20 lg:pb-28 relative z-10">
+        <div className="relative min-h-[70vh] flex items-center">
           {/* Left: Hero text + CTA */}
-          <div className="space-y-7">
+          <div className="relative z-20 max-w-[520px] space-y-5">
             <motion.p
-              className="text-sm uppercase tracking-[0.32em] text-gray-500"
+              className="text-[11px] uppercase tracking-[0.4em] text-gray-500"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              style={{ fontFamily: "'EB Garamond', serif" }}
+              style={{ fontFamily: "'TeXGyreHeros', sans-serif" }}
             >
               Martin Heßmann
             </motion.p>
             <motion.h1
-              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-[0.95] tracking-[-0.02em] text-gray-950"
+              className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-semibold leading-[1.1] tracking-[-0.015em] text-gray-950"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
@@ -216,7 +222,7 @@ export function Section01About() {
               Systems<br />Designer —<br />Design,<br />Engineering, AI
             </motion.h1>
             <motion.p
-              className="text-base lg:text-lg text-gray-700 max-w-xl leading-relaxed"
+              className="text-[13px] sm:text-sm text-gray-700 max-w-xl leading-[1.6]"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -234,7 +240,7 @@ export function Section01About() {
               <button
                 type="button"
                 onClick={scrollToWork}
-                className="group inline-flex items-center gap-3 px-6 py-3 rounded-full bg-amber-400 text-gray-950 font-semibold border border-amber-300/60 hover:bg-amber-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2"
+                className="group inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-amber-400 text-gray-950 text-xs font-semibold uppercase tracking-[0.2em] border border-amber-300/60 hover:bg-amber-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2"
               >
                 See case studies
               </button>
@@ -243,7 +249,7 @@ export function Section01About() {
 
           {/* Right: Orb with icon + principle text + dot pagination */}
           <motion.div
-            className="flex flex-col items-center"
+            className="relative z-20 mt-12 flex flex-col items-center lg:mt-0 lg:absolute lg:right-[-80px] lg:top-1/2 lg:-translate-y-1/2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -263,12 +269,12 @@ export function Section01About() {
                   className="space-y-2"
                 >
                   <h3
-                    className="font-serif italic text-lg text-gray-950"
+                    className="font-serif italic text-sm text-gray-900"
                     style={{ fontFamily: "'EB Garamond', serif" }}
                   >
                     {active.title}
                   </h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">{active.description}</p>
+                  <p className="text-xs text-gray-600 leading-relaxed">{active.description}</p>
                 </motion.div>
               </AnimatePresence>
             </div>
@@ -283,8 +289,8 @@ export function Section01About() {
                   aria-selected={activeIndex === i}
                   aria-label={p.title}
                   onClick={() => { setActiveIndex(i); setHasInteracted(true) }}
-                  className={`w-8 h-2 rounded-full transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${DOT_RING_CLASS[p.color]} ${
-                    activeIndex === i ? `${DOT_BG_ACTIVE[p.color]} scale-110 shadow-[0_0_0_3px_rgba(0,0,0,0.06)]` : "bg-gray-200 hover:bg-gray-300"
+                  className={`w-6 h-1.5 rounded-full transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${DOT_RING_CLASS[p.color]} ${
+                    activeIndex === i ? `${DOT_BG_ACTIVE[p.color]} scale-110` : "bg-gray-200 hover:bg-gray-300"
                   }`}
                 />
               ))}

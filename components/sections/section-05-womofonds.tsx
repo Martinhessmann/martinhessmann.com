@@ -2,35 +2,35 @@
 
 import { CaseStudy } from "./case-study"
 
-// Abstract: subsidy flow — house/mobility icons + step ribbon + chat bubble
+// Abstract: subsidy flow — thin icons + step ribbon
 const WoMoFondsIllustration = () => (
   <svg viewBox="0 0 400 400" fill="none" className="w-full h-full">
     {/* House icon */}
-    <path d="M 100 180 L 140 140 L 180 180 L 180 240 L 100 240 Z" stroke="currentColor" strokeWidth="2" />
-    <rect x="125" y="200" width="30" height="40" stroke="currentColor" strokeWidth="1.5" />
+    <path d="M 100 180 L 140 140 L 180 180 L 180 240 L 100 240 Z" stroke="currentColor" strokeWidth="1" opacity="0.6" />
+    <rect x="125" y="200" width="30" height="40" stroke="currentColor" strokeWidth="0.9" opacity="0.6" />
 
     {/* Car silhouette */}
-    <ellipse cx="80" cy="290" rx="35" ry="15" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 4" />
-    <circle cx="60" cy="300" r="8" stroke="currentColor" strokeWidth="1.5" />
-    <circle cx="100" cy="300" r="8" stroke="currentColor" strokeWidth="1.5" />
+    <ellipse cx="80" cy="290" rx="35" ry="15" stroke="currentColor" strokeWidth="0.9" strokeDasharray="3 6" opacity="0.55" />
+    <circle cx="60" cy="300" r="8" stroke="currentColor" strokeWidth="0.9" opacity="0.6" />
+    <circle cx="100" cy="300" r="8" stroke="currentColor" strokeWidth="0.9" opacity="0.6" />
 
     {/* Train silhouette */}
-    <rect x="200" y="270" width="80" height="40" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 4" />
-    <circle cx="220" cy="320" r="8" stroke="currentColor" strokeWidth="1.5" />
-    <circle cx="260" cy="320" r="8" stroke="currentColor" strokeWidth="1.5" />
+    <rect x="200" y="270" width="80" height="40" stroke="currentColor" strokeWidth="0.9" strokeDasharray="3 6" opacity="0.55" />
+    <circle cx="220" cy="320" r="8" stroke="currentColor" strokeWidth="0.9" opacity="0.6" />
+    <circle cx="260" cy="320" r="8" stroke="currentColor" strokeWidth="0.9" opacity="0.6" />
 
     {/* Step ribbon — application flow */}
-    <line x1="200" y1="100" x2="200" y2="220" stroke="currentColor" strokeWidth="2" />
-    <circle cx="200" cy="100" r="8" fill="currentColor" />
-    <circle cx="200" cy="140" r="8" stroke="currentColor" strokeWidth="2" />
-    <circle cx="200" cy="180" r="8" stroke="currentColor" strokeWidth="2" />
-    <circle cx="200" cy="220" r="8" fill="currentColor" fillOpacity="0.3" stroke="currentColor" strokeWidth="2" />
+    <line x1="200" y1="100" x2="200" y2="220" stroke="currentColor" strokeWidth="1" opacity="0.6" />
+    <circle cx="200" cy="100" r="6" stroke="currentColor" strokeWidth="0.9" opacity="0.7" />
+    <circle cx="200" cy="140" r="6" stroke="currentColor" strokeWidth="0.9" opacity="0.7" />
+    <circle cx="200" cy="180" r="6" stroke="currentColor" strokeWidth="0.9" opacity="0.7" />
+    <circle cx="200" cy="220" r="6" stroke="currentColor" strokeWidth="0.9" opacity="0.7" />
 
     {/* Chat bubble — AI assistant */}
-    <rect x="280" y="120" width="70" height="50" rx="8" stroke="currentColor" strokeWidth="2" />
-    <circle cx="295" cy="145" r="4" fill="currentColor" />
-    <circle cx="315" cy="145" r="4" fill="currentColor" />
-    <circle cx="335" cy="145" r="4" fill="currentColor" />
+    <rect x="280" y="120" width="70" height="50" rx="8" stroke="currentColor" strokeWidth="1" opacity="0.6" />
+    <circle cx="295" cy="145" r="3" stroke="currentColor" strokeWidth="0.9" opacity="0.7" />
+    <circle cx="315" cy="145" r="3" stroke="currentColor" strokeWidth="0.9" opacity="0.7" />
+    <circle cx="335" cy="145" r="3" stroke="currentColor" strokeWidth="0.9" opacity="0.7" />
   </svg>
 )
 
