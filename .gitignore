@@ -44,3 +44,8 @@ next-env.d.ts
 *.csv
 data/sensitive/
 credentials/
+
+# backups and exports (large, machine-local)
+state.vscdb*.backup
+cursor-history-extract/
+codex-exports/

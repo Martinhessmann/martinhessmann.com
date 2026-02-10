@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Inter 28pt – primary sans-serif */
+@font-face {
+    font-family: 'Inter 28pt';
+    src: url('/fonts/Inter28pt-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Hedvig Letters Serif 24pt – accent serif */
+@font-face {
+    font-family: 'Hedvig Letters Serif 24pt';
+    src: url('/fonts/HedvigLettersSerif-24ptRegular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 /* TeX Gyre Heros – upright only; italic uses EB Garamond */
 @font-face {
     font-family: 'TeXGyreHeros';

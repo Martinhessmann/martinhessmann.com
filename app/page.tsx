@@ -2,12 +2,7 @@ import { Resume } from '@/types/resume'
 import { Resume as ResumeComponent } from '@/components/resume'
 import { PdfDownloadButton } from '@/components/pdf-download-button'
 import { PdfPreview } from '@/components/pdf-preview'
-import {
-  Section01About,
-  Section07ClientProjects,
-  Section09Resume,
-  Section10Footer
-} from '@/components/sections'
+import PortfolioPage from '@/components/portfolio-page'
 
 // Load resume data
 import resumeData from '@/data/resume.json'
@@ -36,20 +31,13 @@ export default async function ResumePage({ searchParams }: PageProps) {
     return (
       <>
         <PdfDownloadButton />
-        <main className="container mx-auto px-4 py-8 max-w-4xl print:p-0 print:max-w-none">
+        <main className="container mx-auto max-w-4xl px-4 py-8 print:max-w-none print:p-0">
           <ResumeComponent resume={resume} />
         </main>
       </>
     )
   }
 
-  // Default: New one-pager design
-  return (
-    <main className="min-h-screen bg-[#f4f2ee]">
-      <Section01About />
-      <Section07ClientProjects />
-      <Section09Resume work={resume.work ?? []} />
-      <Section10Footer />
-    </main>
-  )
+  // Default: Portfolio one-pager
+  return <PortfolioPage />
 }

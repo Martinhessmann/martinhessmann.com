@@ -23,6 +23,8 @@ const config: Config = {
   	extend: {
   		fontFamily: {
   			sans: ['TeXGyreHeros', 'EB Garamond', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+  			inter: ['"Inter 28pt"', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+  			hedvig: ['"Hedvig Letters Serif 24pt"', 'Georgia', 'serif'],
   			condensed: ['TeXGyreHerosCondensed', 'TeXGyreHeros', 'EB Garamond', 'system-ui', 'sans-serif'],
   			marker: ['"Permanent Marker"', 'cursive'],
   		},

@@ -1,0 +1,1012 @@
+[
+  {
+    "tag": "personal",
+    "tagSlug": "personal",
+    "name": "martin illustration",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/00-hero-intro/martin-portrait.png",
+    "sourceUrl": "/images/projects/figma-import-all/00-hero-intro/martin-portrait.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/personal/martin-illustration.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/personal/martin-illustration.png"
+  },
+  {
+    "tag": "personal",
+    "tagSlug": "personal",
+    "name": "martin holiday",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/01-personal-photo-collage/photo-03.png",
+    "sourceUrl": "/images/projects/figma-import-all/01-personal-photo-collage/photo-03.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/personal/martin-holiday.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/personal/martin-holiday.png"
+  },
+  {
+    "tag": "personal",
+    "tagSlug": "personal",
+    "name": "martin holiday",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/01-personal-photo-collage/photo-04-08.png",
+    "sourceUrl": "/images/projects/figma-import-all/01-personal-photo-collage/photo-04-08.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/personal/martin-holiday-2.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/personal/martin-holiday-2.png"
+  },
+  {
+    "tag": "personal",
+    "tagSlug": "personal",
+    "name": "martin cooking",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/01-personal-photo-collage/photo-05.png",
+    "sourceUrl": "/images/projects/figma-import-all/01-personal-photo-collage/photo-05.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/personal/martin-cooking.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/personal/martin-cooking.png"
+  },
+  {
+    "tag": "personal",
+    "tagSlug": "personal",
+    "name": "martin bike",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/01-personal-photo-collage/photo-06.png",
+    "sourceUrl": "/images/projects/figma-import-all/01-personal-photo-collage/photo-06.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/personal/martin-bike.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/personal/martin-bike.png"
+  },
+  {
+    "tag": "personal",
+    "tagSlug": "personal",
+    "name": "martin holiday",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/01-personal-photo-collage/photo-07.png",
+    "sourceUrl": "/images/projects/figma-import-all/01-personal-photo-collage/photo-07.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/personal/martin-holiday-3.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/personal/martin-holiday-3.png"
+  },
+  {
+    "tag": "personal",
+    "tagSlug": "personal",
+    "name": "martin bike",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/01-personal-photo-collage/photo-09.png",
+    "sourceUrl": "/images/projects/figma-import-all/01-personal-photo-collage/photo-09.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/personal/martin-bike-2.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/personal/martin-bike-2.png"
+  },
+  {
+    "tag": "personal",
+    "tagSlug": "personal",
+    "name": "martin holiday",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/01-personal-photo-collage/photo-10.png",
+    "sourceUrl": "/images/projects/figma-import-all/01-personal-photo-collage/photo-10.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/personal/martin-holiday-4.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/personal/martin-holiday-4.png"
+  },
+  {
+    "tag": "personal",
+    "tagSlug": "personal",
+    "name": "martin cooking",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/01-personal-photo-collage/photo-11.png",
+    "sourceUrl": "/images/projects/figma-import-all/01-personal-photo-collage/photo-11.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/personal/martin-cooking-2.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/personal/martin-cooking-2.png"
+  },
+  {
+    "tag": "work",
+    "tagSlug": "work",
+    "name": "linkedin cv screenshot",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/02-wide-showcase/showcase-main.png",
+    "sourceUrl": "/images/projects/figma-import-all/02-wide-showcase/showcase-main.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/work/linkedin-cv-screenshot.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/work/linkedin-cv-screenshot.png"
+  },
+  {
+    "tag": "work",
+    "tagSlug": "work",
+    "name": "martin in office with collegues",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/03-three-up-case-grid/case-bottom-left.png",
+    "sourceUrl": "/images/projects/figma-import-all/03-three-up-case-grid/case-bottom-left.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/work/martin-in-office-with-collegues.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/work/martin-in-office-with-collegues.png"
+  },
+  {
+    "tag": "work",
+    "tagSlug": "work",
+    "name": "martin homeoffice",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/03-three-up-case-grid/case-right-tall.png",
+    "sourceUrl": "/images/projects/figma-import-all/03-three-up-case-grid/case-right-tall.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/work/martin-homeoffice.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/work/martin-homeoffice.png"
+  },
+  {
+    "tag": "work",
+    "tagSlug": "work",
+    "name": "martin in office with clients",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/03-three-up-case-grid/case-top-left.png",
+    "sourceUrl": "/images/projects/figma-import-all/03-three-up-case-grid/case-top-left.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/work/martin-in-office-with-clients.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/work/martin-in-office-with-clients.png"
+  },
+  {
+    "tag": "tools",
+    "tagSlug": "tools",
+    "name": "figma",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/04-logo-single-card/logo-single.png",
+    "sourceUrl": "/images/projects/figma-import-all/04-logo-single-card/logo-single.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/tools/figma.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/tools/figma.png"
+  },
+  {
+    "tag": "tools",
+    "tagSlug": "tools",
+    "name": "vercel",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/05-logo-mosaic-png/image-235.png",
+    "sourceUrl": "/images/projects/figma-import-all/05-logo-mosaic-png/image-235.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/tools/vercel.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/tools/vercel.png"
+  },
+  {
+    "tag": "tools",
+    "tagSlug": "tools",
+    "name": "sentry",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/05-logo-mosaic-png/image-236.png",
+    "sourceUrl": "/images/projects/figma-import-all/05-logo-mosaic-png/image-236.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/tools/sentry.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/tools/sentry.png"
+  },
+  {
+    "tag": "tools",
+    "tagSlug": "tools",
+    "name": "gitlab",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/05-logo-mosaic-png/image-237.png",
+    "sourceUrl": "/images/projects/figma-import-all/05-logo-mosaic-png/image-237.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/tools/gitlab.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/tools/gitlab.png"
+  },
+  {
+    "tag": "tools",
+    "tagSlug": "tools",
+    "name": "github",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/05-logo-mosaic-png/image-238.png",
+    "sourceUrl": "/images/projects/figma-import-all/05-logo-mosaic-png/image-238.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/tools/github.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/tools/github.png"
+  },
+  {
+    "tag": "tools",
+    "tagSlug": "tools",
+    "name": "azure",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/05-logo-mosaic-png/image-239.png",
+    "sourceUrl": "/images/projects/figma-import-all/05-logo-mosaic-png/image-239.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/tools/azure.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/tools/azure.png"
+  },
+  {
+    "tag": "tools",
+    "tagSlug": "tools",
+    "name": "jenkins",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/05-logo-mosaic-png/image-240.png",
+    "sourceUrl": "/images/projects/figma-import-all/05-logo-mosaic-png/image-240.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/tools/jenkins.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/tools/jenkins.png"
+  },
+  {
+    "tag": "tools",
+    "tagSlug": "tools",
+    "name": "cloudflare",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/05-logo-mosaic-png/image-242.png",
+    "sourceUrl": "/images/projects/figma-import-all/05-logo-mosaic-png/image-242.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/tools/cloudflare.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/tools/cloudflare.png"
+  },
+  {
+    "tag": "tools",
+    "tagSlug": "tools",
+    "name": "uptime robot",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/05-logo-mosaic-png/image-243.png",
+    "sourceUrl": "/images/projects/figma-import-all/05-logo-mosaic-png/image-243.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/tools/uptime-robot.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/tools/uptime-robot.png"
+  },
+  {
+    "tag": "tools",
+    "tagSlug": "tools",
+    "name": "algolia",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/05-logo-mosaic-png/image-244.png",
+    "sourceUrl": "/images/projects/figma-import-all/05-logo-mosaic-png/image-244.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/tools/algolia.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/tools/algolia.png"
+  },
+  {
+    "tag": "tools",
+    "tagSlug": "tools",
+    "name": "google tag manager",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/05-logo-mosaic-png/image-245.png",
+    "sourceUrl": "/images/projects/figma-import-all/05-logo-mosaic-png/image-245.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/tools/google-tag-manager.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/tools/google-tag-manager.png"
+  },
+  {
+    "tag": "tools",
+    "tagSlug": "tools",
+    "name": "screaming frog",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/05-logo-mosaic-png/image-247.png",
+    "sourceUrl": "/images/projects/figma-import-all/05-logo-mosaic-png/image-247.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/tools/screaming-frog.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/tools/screaming-frog.png"
+  },
+  {
+    "tag": "tools",
+    "tagSlug": "tools",
+    "name": "mapbox",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/05-logo-mosaic-png/image-248.png",
+    "sourceUrl": "/images/projects/figma-import-all/05-logo-mosaic-png/image-248.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/tools/mapbox.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/tools/mapbox.png"
+  },
+  {
+    "tag": "tools",
+    "tagSlug": "tools",
+    "name": "sanity",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/05-logo-mosaic-png/image-249.png",
+    "sourceUrl": "/images/projects/figma-import-all/05-logo-mosaic-png/image-249.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/tools/sanity.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/tools/sanity.png"
+  },
+  {
+    "tag": "tools",
+    "tagSlug": "tools",
+    "name": "wordpress",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/05-logo-mosaic-png/image-251.png",
+    "sourceUrl": "/images/projects/figma-import-all/05-logo-mosaic-png/image-251.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/tools/wordpress.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/tools/wordpress.png"
+  },
+  {
+    "tag": "tools",
+    "tagSlug": "tools",
+    "name": "typo3",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/05-logo-mosaic-png/image-252.png",
+    "sourceUrl": "/images/projects/figma-import-all/05-logo-mosaic-png/image-252.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/tools/typo3.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/tools/typo3.png"
+  },
+  {
+    "tag": "tools",
+    "tagSlug": "tools",
+    "name": "hetzner",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/05-logo-mosaic-png/image-253.png",
+    "sourceUrl": "/images/projects/figma-import-all/05-logo-mosaic-png/image-253.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/tools/hetzner.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/tools/hetzner.png"
+  },
+  {
+    "tag": "tools",
+    "tagSlug": "tools",
+    "name": "mailchimp",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/05-logo-mosaic-png/image-254.png",
+    "sourceUrl": "/images/projects/figma-import-all/05-logo-mosaic-png/image-254.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/tools/mailchimp.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/tools/mailchimp.png"
+  },
+  {
+    "tag": "tools",
+    "tagSlug": "tools",
+    "name": "linear",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/05-logo-mosaic-png/image-255.png",
+    "sourceUrl": "/images/projects/figma-import-all/05-logo-mosaic-png/image-255.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/tools/linear.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/tools/linear.png"
+  },
+  {
+    "tag": "tools",
+    "tagSlug": "tools",
+    "name": "cursor",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/05-logo-mosaic-png/image-257.png",
+    "sourceUrl": "/images/projects/figma-import-all/05-logo-mosaic-png/image-257.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/tools/cursor.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/tools/cursor.png"
+  },
+  {
+    "tag": "clients",
+    "tagSlug": "clients",
+    "name": "deutsche bahn",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/06-logo-grid-svg/ebene-2.svg",
+    "sourceUrl": "/images/projects/figma-import-all/06-logo-grid-svg/ebene-2.svg",
+    "targetPath": "public/images/projects/figma-curated-tagged/clients/deutsche-bahn.svg",
+    "targetUrl": "/images/projects/figma-curated-tagged/clients/deutsche-bahn.svg"
+  },
+  {
+    "tag": "clients",
+    "tagSlug": "clients",
+    "name": "e-on",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/06-logo-grid-svg/eon-logo.svg",
+    "sourceUrl": "/images/projects/figma-import-all/06-logo-grid-svg/eon-logo.svg",
+    "targetPath": "public/images/projects/figma-curated-tagged/clients/e-on.svg",
+    "targetUrl": "/images/projects/figma-curated-tagged/clients/e-on.svg"
+  },
+  {
+    "tag": "clients",
+    "tagSlug": "clients",
+    "name": "easycredit",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/06-logo-grid-svg/frame-a.svg",
+    "sourceUrl": "/images/projects/figma-import-all/06-logo-grid-svg/frame-a.svg",
+    "targetPath": "public/images/projects/figma-curated-tagged/clients/easycredit.svg",
+    "targetUrl": "/images/projects/figma-curated-tagged/clients/easycredit.svg"
+  },
+  {
+    "tag": "clients",
+    "tagSlug": "clients",
+    "name": "evg",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/06-logo-grid-svg/frame-b.svg",
+    "sourceUrl": "/images/projects/figma-import-all/06-logo-grid-svg/frame-b.svg",
+    "targetPath": "public/images/projects/figma-curated-tagged/clients/evg.svg",
+    "targetUrl": "/images/projects/figma-curated-tagged/clients/evg.svg"
+  },
+  {
+    "tag": "clients",
+    "tagSlug": "clients",
+    "name": "giz",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/06-logo-grid-svg/frame-c.svg",
+    "sourceUrl": "/images/projects/figma-import-all/06-logo-grid-svg/frame-c.svg",
+    "targetPath": "public/images/projects/figma-curated-tagged/clients/giz.svg",
+    "targetUrl": "/images/projects/figma-curated-tagged/clients/giz.svg"
+  },
+  {
+    "tag": "clients",
+    "tagSlug": "clients",
+    "name": "hartmann",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/06-logo-grid-svg/frame-d.svg",
+    "sourceUrl": "/images/projects/figma-import-all/06-logo-grid-svg/frame-d.svg",
+    "targetPath": "public/images/projects/figma-curated-tagged/clients/hartmann.svg",
+    "targetUrl": "/images/projects/figma-curated-tagged/clients/hartmann.svg"
+  },
+  {
+    "tag": "clients",
+    "tagSlug": "clients",
+    "name": "volkswagen group",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/06-logo-grid-svg/frame-e.svg",
+    "sourceUrl": "/images/projects/figma-import-all/06-logo-grid-svg/frame-e.svg",
+    "targetPath": "public/images/projects/figma-curated-tagged/clients/volkswagen-group.svg",
+    "targetUrl": "/images/projects/figma-curated-tagged/clients/volkswagen-group.svg"
+  },
+  {
+    "tag": "clients",
+    "tagSlug": "clients",
+    "name": "teambank",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/06-logo-grid-svg/group-2608864.svg",
+    "sourceUrl": "/images/projects/figma-import-all/06-logo-grid-svg/group-2608864.svg",
+    "targetPath": "public/images/projects/figma-curated-tagged/clients/teambank.svg",
+    "targetUrl": "/images/projects/figma-curated-tagged/clients/teambank.svg"
+  },
+  {
+    "tag": "clients",
+    "tagSlug": "clients",
+    "name": "mobile-de",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/06-logo-grid-svg/logo.svg",
+    "sourceUrl": "/images/projects/figma-import-all/06-logo-grid-svg/logo.svg",
+    "targetPath": "public/images/projects/figma-curated-tagged/clients/mobile-de.svg",
+    "targetUrl": "/images/projects/figma-curated-tagged/clients/mobile-de.svg"
+  },
+  {
+    "tag": "clients",
+    "tagSlug": "clients",
+    "name": "gruen-berlin",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/06-logo-grid-svg/union.svg",
+    "sourceUrl": "/images/projects/figma-import-all/06-logo-grid-svg/union.svg",
+    "targetPath": "public/images/projects/figma-curated-tagged/clients/gruen-berlin.svg",
+    "targetUrl": "/images/projects/figma-curated-tagged/clients/gruen-berlin.svg"
+  },
+  {
+    "tag": "clients",
+    "tagSlug": "clients",
+    "name": "voith",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/06-logo-grid-svg/voith-logo-white-2.svg",
+    "sourceUrl": "/images/projects/figma-import-all/06-logo-grid-svg/voith-logo-white-2.svg",
+    "targetPath": "public/images/projects/figma-curated-tagged/clients/voith.svg",
+    "targetUrl": "/images/projects/figma-curated-tagged/clients/voith.svg"
+  },
+  {
+    "tag": "gruen-berlin",
+    "tagSlug": "gruen-berlin",
+    "name": "mood",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/08-gb-hero-v1/gb2-background.png",
+    "sourceUrl": "/images/projects/figma-import-all/08-gb-hero-v1/gb2-background.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/gruen-berlin/mood.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/gruen-berlin/mood.png"
+  },
+  {
+    "tag": "gruen-berlin",
+    "tagSlug": "gruen-berlin",
+    "name": "logo",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/08-gb-hero-v1/union-overlay.svg",
+    "sourceUrl": "/images/projects/figma-import-all/08-gb-hero-v1/union-overlay.svg",
+    "targetPath": "public/images/projects/figma-curated-tagged/gruen-berlin/logo.svg",
+    "targetUrl": "/images/projects/figma-curated-tagged/gruen-berlin/logo.svg"
+  },
+  {
+    "tag": "gruen-berlin",
+    "tagSlug": "gruen-berlin",
+    "name": "mood small",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/09-showcase-split-green/bottom-left.png",
+    "sourceUrl": "/images/projects/figma-import-all/09-showcase-split-green/bottom-left.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/gruen-berlin/mood-small.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/gruen-berlin/mood-small.png"
+  },
+  {
+    "tag": "gruen-berlin",
+    "tagSlug": "gruen-berlin",
+    "name": "mockup mobile",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/09-showcase-split-green/right-top-overlay.png",
+    "sourceUrl": "/images/projects/figma-import-all/09-showcase-split-green/right-top-overlay.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/gruen-berlin/mockup-mobile.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/gruen-berlin/mockup-mobile.png"
+  },
+  {
+    "tag": "gruen-berlin",
+    "tagSlug": "gruen-berlin",
+    "name": "homepage hero",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/09-showcase-split-green/screenshot-2023-06-14.png",
+    "sourceUrl": "/images/projects/figma-import-all/09-showcase-split-green/screenshot-2023-06-14.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/gruen-berlin/homepage-hero.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/gruen-berlin/homepage-hero.png"
+  },
+  {
+    "tag": "gruen-berlin",
+    "tagSlug": "gruen-berlin",
+    "name": "logo small",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/09-showcase-split-green/union-badge.svg",
+    "sourceUrl": "/images/projects/figma-import-all/09-showcase-split-green/union-badge.svg",
+    "targetPath": "public/images/projects/figma-curated-tagged/gruen-berlin/logo-small.svg",
+    "targetUrl": "/images/projects/figma-curated-tagged/gruen-berlin/logo-small.svg"
+  },
+  {
+    "tag": "infrasignal",
+    "tagSlug": "infrasignal",
+    "name": "mapbox logo",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/10-showcase-mixed-cards/image-248.png",
+    "sourceUrl": "/images/projects/figma-import-all/10-showcase-mixed-cards/image-248.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/infrasignal/mapbox-logo.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/infrasignal/mapbox-logo.png"
+  },
+  {
+    "tag": "infrasignal",
+    "tagSlug": "infrasignal",
+    "name": "typo 3 logo",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/10-showcase-mixed-cards/image-252.png",
+    "sourceUrl": "/images/projects/figma-import-all/10-showcase-mixed-cards/image-252.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/infrasignal/typo-3-logo.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/infrasignal/typo-3-logo.png"
+  },
+  {
+    "tag": "infrasignal",
+    "tagSlug": "infrasignal",
+    "name": "infrasignal mood",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/10-showcase-mixed-cards/image-259.png",
+    "sourceUrl": "/images/projects/figma-import-all/10-showcase-mixed-cards/image-259.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/infrasignal/infrasignal-mood.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/infrasignal/infrasignal-mood.png"
+  },
+  {
+    "tag": "infrasignal",
+    "tagSlug": "infrasignal",
+    "name": "geo json logo",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/10-showcase-mixed-cards/image-260.png",
+    "sourceUrl": "/images/projects/figma-import-all/10-showcase-mixed-cards/image-260.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/infrasignal/geo-json-logo.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/infrasignal/geo-json-logo.png"
+  },
+  {
+    "tag": "infrasignal",
+    "tagSlug": "infrasignal",
+    "name": "traffic-light map screenshot",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/10-showcase-mixed-cards/right-top.png",
+    "sourceUrl": "/images/projects/figma-import-all/10-showcase-mixed-cards/right-top.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/infrasignal/traffic-light-map-screenshot.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/infrasignal/traffic-light-map-screenshot.png"
+  },
+  {
+    "tag": "infrasignal",
+    "tagSlug": "infrasignal",
+    "name": "traffic-light reporting form screenshot",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/10-showcase-mixed-cards/screenshot-2023-06-14-variant.png",
+    "sourceUrl": "/images/projects/figma-import-all/10-showcase-mixed-cards/screenshot-2023-06-14-variant.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/infrasignal/traffic-light-reporting-form-screenshot.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/infrasignal/traffic-light-reporting-form-screenshot.png"
+  },
+  {
+    "tag": "infrasignal",
+    "tagSlug": "infrasignal",
+    "name": "traffic-light reporting button",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/10-showcase-mixed-cards/screenshot-2026-02-04-085659.png",
+    "sourceUrl": "/images/projects/figma-import-all/10-showcase-mixed-cards/screenshot-2026-02-04-085659.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/infrasignal/traffic-light-reporting-button.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/infrasignal/traffic-light-reporting-button.png"
+  },
+  {
+    "tag": "teambank",
+    "tagSlug": "teambank",
+    "name": "mood interior",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/11-teambank-hero/teambank-bg.png",
+    "sourceUrl": "/images/projects/figma-import-all/11-teambank-hero/teambank-bg.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/teambank/mood-interior.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/teambank/mood-interior.png"
+  },
+  {
+    "tag": "teambank",
+    "tagSlug": "teambank",
+    "name": "logo",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/11-teambank-hero/teambank-wordmark.svg",
+    "sourceUrl": "/images/projects/figma-import-all/11-teambank-hero/teambank-wordmark.svg",
+    "targetPath": "public/images/projects/figma-curated-tagged/teambank/logo.svg",
+    "targetUrl": "/images/projects/figma-curated-tagged/teambank/logo.svg"
+  },
+  {
+    "tag": "teambank",
+    "tagSlug": "teambank",
+    "name": "teambank homepage ipad mockup",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/12-teambank-composite/mockup-1.png",
+    "sourceUrl": "/images/projects/figma-import-all/12-teambank-composite/mockup-1.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/teambank/teambank-homepage-ipad-mockup.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/teambank/teambank-homepage-ipad-mockup.png"
+  },
+  {
+    "tag": "teambank",
+    "tagSlug": "teambank",
+    "name": "teambank homepage hero",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/12-teambank-composite/screenshot-2023-11-02.png",
+    "sourceUrl": "/images/projects/figma-import-all/12-teambank-composite/screenshot-2023-11-02.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/teambank/teambank-homepage-hero.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/teambank/teambank-homepage-hero.png"
+  },
+  {
+    "tag": "teambank",
+    "tagSlug": "teambank",
+    "name": "logo small",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/12-teambank-composite/tb-icon.png",
+    "sourceUrl": "/images/projects/figma-import-all/12-teambank-composite/tb-icon.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/teambank/logo-small.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/teambank/logo-small.png"
+  },
+  {
+    "tag": "teambank",
+    "tagSlug": "teambank",
+    "name": "teambank employees mood",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/12-teambank-composite/teambank-16-digital.png",
+    "sourceUrl": "/images/projects/figma-import-all/12-teambank-composite/teambank-16-digital.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/teambank/teambank-employees-mood.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/teambank/teambank-employees-mood.png"
+  },
+  {
+    "tag": "easycredit",
+    "tagSlug": "easycredit",
+    "name": "partner portal ui",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/13-easycredit-portal/doc-upload-screen.png",
+    "sourceUrl": "/images/projects/figma-import-all/13-easycredit-portal/doc-upload-screen.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/easycredit/partner-portal-ui.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/easycredit/partner-portal-ui.png"
+  },
+  {
+    "tag": "easycredit",
+    "tagSlug": "easycredit",
+    "name": "illustration onboarding",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/13-easycredit-portal/ec-graphic.png",
+    "sourceUrl": "/images/projects/figma-import-all/13-easycredit-portal/ec-graphic.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/easycredit/illustration-onboarding.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/easycredit/illustration-onboarding.png"
+  },
+  {
+    "tag": "easycredit",
+    "tagSlug": "easycredit",
+    "name": "illustration shopping",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/13-easycredit-portal/image-1.png",
+    "sourceUrl": "/images/projects/figma-import-all/13-easycredit-portal/image-1.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/easycredit/illustration-shopping.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/easycredit/illustration-shopping.png"
+  },
+  {
+    "tag": "easycredit",
+    "tagSlug": "easycredit",
+    "name": "mood customers sofa",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/13-easycredit-portal/image-4.png",
+    "sourceUrl": "/images/projects/figma-import-all/13-easycredit-portal/image-4.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/easycredit/mood-customers-sofa.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/easycredit/mood-customers-sofa.png"
+  },
+  {
+    "tag": "easycredit",
+    "tagSlug": "easycredit",
+    "name": "developer portal mockup",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/13-easycredit-portal/image-5-variant.png",
+    "sourceUrl": "/images/projects/figma-import-all/13-easycredit-portal/image-5-variant.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/easycredit/developer-portal-mockup.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/easycredit/developer-portal-mockup.png"
+  },
+  {
+    "tag": "easycredit",
+    "tagSlug": "easycredit",
+    "name": "wordpress logo",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/14-dashboard-variant/image-251.png",
+    "sourceUrl": "/images/projects/figma-import-all/14-dashboard-variant/image-251.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/easycredit/wordpress-logo.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/easycredit/wordpress-logo.png"
+  },
+  {
+    "tag": "easycredit",
+    "tagSlug": "easycredit",
+    "name": "bike merchant mood",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/14-dashboard-variant/image-5.png",
+    "sourceUrl": "/images/projects/figma-import-all/14-dashboard-variant/image-5.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/easycredit/bike-merchant-mood.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/easycredit/bike-merchant-mood.png"
+  },
+  {
+    "tag": "easycredit",
+    "tagSlug": "easycredit",
+    "name": "bnpl consultant ui",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/14-dashboard-variant/screenshot-2024-02-12-crop.png",
+    "sourceUrl": "/images/projects/figma-import-all/14-dashboard-variant/screenshot-2024-02-12-crop.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/easycredit/bnpl-consultant-ui.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/easycredit/bnpl-consultant-ui.png"
+  },
+  {
+    "tag": "easycredit",
+    "tagSlug": "easycredit",
+    "name": "bnpl consultant workshop scribbles",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/14-dashboard-variant/screenshot-2024-02-12-main.png",
+    "sourceUrl": "/images/projects/figma-import-all/14-dashboard-variant/screenshot-2024-02-12-main.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/easycredit/bnpl-consultant-workshop-scribbles.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/easycredit/bnpl-consultant-workshop-scribbles.png"
+  },
+  {
+    "tag": "easycredit",
+    "tagSlug": "easycredit",
+    "name": "bnpl consultant graph",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/14-dashboard-variant/screenshot-2026-02-04-090416.png",
+    "sourceUrl": "/images/projects/figma-import-all/14-dashboard-variant/screenshot-2026-02-04-090416.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/easycredit/bnpl-consultant-graph.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/easycredit/bnpl-consultant-graph.png"
+  },
+  {
+    "tag": "easycredit",
+    "tagSlug": "easycredit",
+    "name": "bnpl consultant ui dropdown",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/14-dashboard-variant/screenshot-2026-02-04-091725.png",
+    "sourceUrl": "/images/projects/figma-import-all/14-dashboard-variant/screenshot-2026-02-04-091725.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/easycredit/bnpl-consultant-ui-dropdown.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/easycredit/bnpl-consultant-ui-dropdown.png"
+  },
+  {
+    "tag": "easycredit",
+    "tagSlug": "easycredit",
+    "name": "open-register logo",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/14-dashboard-variant/screenshot-2026-02-04-102233.png",
+    "sourceUrl": "/images/projects/figma-import-all/14-dashboard-variant/screenshot-2026-02-04-102233.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/easycredit/open-register-logo.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/easycredit/open-register-logo.png"
+  },
+  {
+    "tag": "easycredit",
+    "tagSlug": "easycredit",
+    "name": "ratenkauf logo",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/15-search-results-case/brand-mark.svg",
+    "sourceUrl": "/images/projects/figma-import-all/15-search-results-case/brand-mark.svg",
+    "targetPath": "public/images/projects/figma-curated-tagged/easycredit/ratenkauf-logo.svg",
+    "targetUrl": "/images/projects/figma-curated-tagged/easycredit/ratenkauf-logo.svg"
+  },
+  {
+    "tag": "markenportal",
+    "tagSlug": "markenportal",
+    "name": "brand asset download preview",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/15-search-results-case/card-thumb-1.png",
+    "sourceUrl": "/images/projects/figma-import-all/15-search-results-case/card-thumb-1.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/markenportal/brand-asset-download-preview.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/markenportal/brand-asset-download-preview.png"
+  },
+  {
+    "tag": "markenportal",
+    "tagSlug": "markenportal",
+    "name": "download ui",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/15-search-results-case/frame-1321316236.png",
+    "sourceUrl": "/images/projects/figma-import-all/15-search-results-case/frame-1321316236.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/markenportal/download-ui.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/markenportal/download-ui.png"
+  },
+  {
+    "tag": "markenportal",
+    "tagSlug": "markenportal",
+    "name": "homepage mockup",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/15-search-results-case/rectangle-5009.png",
+    "sourceUrl": "/images/projects/figma-import-all/15-search-results-case/rectangle-5009.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/markenportal/homepage-mockup.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/markenportal/homepage-mockup.png"
+  },
+  {
+    "tag": "markenportal",
+    "tagSlug": "markenportal",
+    "name": "azure ci screenshot",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/16-telegram-case/frame-1321316237.png",
+    "sourceUrl": "/images/projects/figma-import-all/16-telegram-case/frame-1321316237.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/markenportal/azure-ci-screenshot.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/markenportal/azure-ci-screenshot.png"
+  },
+  {
+    "tag": "markenportal",
+    "tagSlug": "markenportal",
+    "name": "azure logo",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/16-telegram-case/image-239.png",
+    "sourceUrl": "/images/projects/figma-import-all/16-telegram-case/image-239.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/markenportal/azure-logo.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/markenportal/azure-logo.png"
+  },
+  {
+    "tag": "markenportal",
+    "tagSlug": "markenportal",
+    "name": "algolia logo",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/16-telegram-case/image-244.png",
+    "sourceUrl": "/images/projects/figma-import-all/16-telegram-case/image-244.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/markenportal/algolia-logo.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/markenportal/algolia-logo.png"
+  },
+  {
+    "tag": "markenportal",
+    "tagSlug": "markenportal",
+    "name": "wordpress logo",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/16-telegram-case/image-251.png",
+    "sourceUrl": "/images/projects/figma-import-all/16-telegram-case/image-251.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/markenportal/wordpress-logo.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/markenportal/wordpress-logo.png"
+  },
+  {
+    "tag": "markenportal",
+    "tagSlug": "markenportal",
+    "name": "kubernetes logo",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/16-telegram-case/image-261.png",
+    "sourceUrl": "/images/projects/figma-import-all/16-telegram-case/image-261.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/markenportal/kubernetes-logo.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/markenportal/kubernetes-logo.png"
+  },
+  {
+    "tag": "markenportal",
+    "tagSlug": "markenportal",
+    "name": "openai logo",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/16-telegram-case/image-262.png",
+    "sourceUrl": "/images/projects/figma-import-all/16-telegram-case/image-262.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/markenportal/openai-logo.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/markenportal/openai-logo.png"
+  },
+  {
+    "tag": "markenportal",
+    "tagSlug": "markenportal",
+    "name": "wordpress media backend new",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/16-telegram-case/telegram-photo-b.png",
+    "sourceUrl": "/images/projects/figma-import-all/16-telegram-case/telegram-photo-b.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/markenportal/wordpress-media-backend-new.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/markenportal/wordpress-media-backend-new.png"
+  },
+  {
+    "tag": "markenportal",
+    "tagSlug": "markenportal",
+    "name": "evg logo",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/17-gb-hero-v2/frame-overlay.svg",
+    "sourceUrl": "/images/projects/figma-import-all/17-gb-hero-v2/frame-overlay.svg",
+    "targetPath": "public/images/projects/figma-curated-tagged/markenportal/evg-logo.svg",
+    "targetUrl": "/images/projects/figma-curated-tagged/markenportal/evg-logo.svg"
+  },
+  {
+    "tag": "evg",
+    "tagSlug": "evg",
+    "name": "train mood",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/17-gb-hero-v2/gb3-background.png",
+    "sourceUrl": "/images/projects/figma-import-all/17-gb-hero-v2/gb3-background.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/evg/train-mood.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/evg/train-mood.png"
+  },
+  {
+    "tag": "evg",
+    "tagSlug": "evg",
+    "name": "womofonds homepage hero",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/18-layout-grid-case/frame-1321316238.png",
+    "sourceUrl": "/images/projects/figma-import-all/18-layout-grid-case/frame-1321316238.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/evg/womofonds-homepage-hero.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/evg/womofonds-homepage-hero.png"
+  },
+  {
+    "tag": "evg",
+    "tagSlug": "evg",
+    "name": "womofonds call out",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/18-layout-grid-case/frame-small.svg",
+    "sourceUrl": "/images/projects/figma-import-all/18-layout-grid-case/frame-small.svg",
+    "targetPath": "public/images/projects/figma-curated-tagged/evg/womofonds-call-out.svg",
+    "targetUrl": "/images/projects/figma-curated-tagged/evg/womofonds-call-out.svg"
+  },
+  {
+    "tag": "evg",
+    "tagSlug": "evg",
+    "name": "dein womo ipad mockup",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/18-layout-grid-case/rectangle-5010.png",
+    "sourceUrl": "/images/projects/figma-import-all/18-layout-grid-case/rectangle-5010.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/evg/dein-womo-ipad-mockup.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/evg/dein-womo-ipad-mockup.png"
+  },
+  {
+    "tag": "evg",
+    "tagSlug": "evg",
+    "name": "vercel logo",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/19-mobile-collage-case/image-235.png",
+    "sourceUrl": "/images/projects/figma-import-all/19-mobile-collage-case/image-235.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/evg/vercel-logo.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/evg/vercel-logo.png"
+  },
+  {
+    "tag": "evg",
+    "tagSlug": "evg",
+    "name": "sentry logo",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/19-mobile-collage-case/image-236.png",
+    "sourceUrl": "/images/projects/figma-import-all/19-mobile-collage-case/image-236.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/evg/sentry-logo.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/evg/sentry-logo.png"
+  },
+  {
+    "tag": "evg",
+    "tagSlug": "evg",
+    "name": "upstash logo",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/19-mobile-collage-case/image-244.png",
+    "sourceUrl": "/images/projects/figma-import-all/19-mobile-collage-case/image-244.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/evg/upstash-logo.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/evg/upstash-logo.png"
+  },
+  {
+    "tag": "evg",
+    "tagSlug": "evg",
+    "name": "typo3 logo",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/19-mobile-collage-case/image-252.png",
+    "sourceUrl": "/images/projects/figma-import-all/19-mobile-collage-case/image-252.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/evg/typo3-logo.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/evg/typo3-logo.png"
+  },
+  {
+    "tag": "evg",
+    "tagSlug": "evg",
+    "name": "cursor logo",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/19-mobile-collage-case/image-257.png",
+    "sourceUrl": "/images/projects/figma-import-all/19-mobile-collage-case/image-257.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/evg/cursor-logo.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/evg/cursor-logo.png"
+  },
+  {
+    "tag": "evg",
+    "tagSlug": "evg",
+    "name": "cohere logo",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/19-mobile-collage-case/image-262.png",
+    "sourceUrl": "/images/projects/figma-import-all/19-mobile-collage-case/image-262.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/evg/cohere-logo.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/evg/cohere-logo.png"
+  },
+  {
+    "tag": "evg",
+    "tagSlug": "evg",
+    "name": "vercel debug screenshot",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/19-mobile-collage-case/screenshot-101817.png",
+    "sourceUrl": "/images/projects/figma-import-all/19-mobile-collage-case/screenshot-101817.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/evg/vercel-debug-screenshot.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/evg/vercel-debug-screenshot.png"
+  },
+  {
+    "tag": "evg",
+    "tagSlug": "evg",
+    "name": "chatbot screenshot",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/19-mobile-collage-case/screenshot-101830.png",
+    "sourceUrl": "/images/projects/figma-import-all/19-mobile-collage-case/screenshot-101830.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/evg/chatbot-screenshot.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/evg/chatbot-screenshot.png"
+  },
+  {
+    "tag": "evg",
+    "tagSlug": "evg",
+    "name": "chatbot screenshot feedback",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/19-mobile-collage-case/screenshot-101855-1.png",
+    "sourceUrl": "/images/projects/figma-import-all/19-mobile-collage-case/screenshot-101855-1.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/evg/chatbot-screenshot-feedback.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/evg/chatbot-screenshot-feedback.png"
+  },
+  {
+    "tag": "evg",
+    "tagSlug": "evg",
+    "name": "chatbot screenshot multilanguage",
+    "notes": "",
+    "sourcePath": "public/images/projects/figma-import-all/19-mobile-collage-case/screenshot-101855-2.png",
+    "sourceUrl": "/images/projects/figma-import-all/19-mobile-collage-case/screenshot-101855-2.png",
+    "targetPath": "public/images/projects/figma-curated-tagged/evg/chatbot-screenshot-multilanguage.png",
+    "targetUrl": "/images/projects/figma-curated-tagged/evg/chatbot-screenshot-multilanguage.png"
+  }
+]

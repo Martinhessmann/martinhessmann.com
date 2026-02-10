@@ -34,6 +34,74 @@ For detailed documentation about the project, please check the [docs directory](
 - `npm run start` - Start production server
 - `npm run lint` - Run ESLint for code quality checks
 
+## Codex Conversation Export
+
+This repo includes a utility to export Codex Desktop sessions into reusable Markdown files.
+
+- Script: `scripts/export-codex-sessions.mjs`
+- Default output folder: `codex-exports/`
+- Project-grouped output: `codex-exports/by-project/<project>/`
+- Project index: `codex-exports/PROJECT_INDEX.md`
+
+Examples:
+
+```bash
+# Export latest active session
+node scripts/export-codex-sessions.mjs --latest 1 --source active
+
+# Export everything (active + archived), grouped by project
+node scripts/export-codex-sessions.mjs --all --source both --group-by-project
+```
+
+Notes:
+
+- By default, exports include `user` and `assistant` messages.
+- Add `--include-developer` if you also want developer/system scaffolding.
+- `--input <path-to-rollout.jsonl>` exports one specific session file.
+
+## Cursor Conversation Export
+
+This repo includes utilities to extract Cursor IDE composer history from a state.vscdb backup and reorganize it by project/workspace.
+
+### Workflow
+
+```bash
+# 1. Copy the DB first (keeps original User folder intact)
+cp ~/Library/Application\ Support/Cursor/User/globalStorage/state.vscdb ./state.vscdb.backup
+
+# 2. Extract conversations (batched queries, ~2 min for large DBs)
+npx tsx scripts/extract-cursor-history.ts
+
+# 3. Reorganize: keep only selected projects + merge into workspace folders
+npx tsx scripts/reorganize-cursor-extract.ts
+```
+
+### Output Structure
+
+`cursor-history-extract/` contains:
+
+| Folder | Description |
+|--------|-------------|
+| `ai-chat-bot` | AI chat bot project |
+| `open-wonder` | Open Wonder brand platform |
+| `teambank-easycredit` | Teambank, Teambank Markenportal, easycredit-ratenkauf-de, specify-teambank |
+| `tertianum-brasserie-dpf` | Tertianum sites, Brasserie Collette, DPF Investment |
+| `gruen-berlin-infrasignal` | Grüne Berlin, Infrasignal |
+| `wo-mo-fonds` | WoMo Fonds (womofonds-de, womofonds-dev) |
+
+Each folder holds `conv-<id>.md` files with User/Assistant message history.
+
+### Scripts
+
+- `scripts/extract-cursor-history.ts` – Reads `state.vscdb.backup`, extracts bubbles from `cursorDiskKV`, groups by inferred repo (from file paths in context), writes one .md per conversation.
+- `scripts/reorganize-cursor-extract.ts` – Merges project folders into the 4 workspace folders above and removes all other projects.
+- `scripts/cursor-history-queries.sql` – Reference SQL for manual querying.
+
+### Notes
+
+- The Cursor User folder is never modified; always work on a copy of `state.vscdb`.
+- `.gitignore` excludes `state.vscdb*.backup` and `cursor-history-extract/`.
+
 ## Technologies Used
 
 - Next.js 14
