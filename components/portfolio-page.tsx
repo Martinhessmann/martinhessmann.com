@@ -45,7 +45,7 @@ export default function PortfolioPage() {
             Where I dug in.
           </p>
 
-          <div className="grid grid-cols-1 gap-14 md:grid-cols-2 md:gap-x-8 md:gap-y-16 md:items-start">
+          <div className="grid grid-cols-1 gap-x-8 gap-y-20 md:grid-cols-2 md:items-start">
             {CLIENT_REALMS.map((realm) => (
               <article
                 key={realm.id}
@@ -61,25 +61,36 @@ export default function PortfolioPage() {
                 }}
                 aria-label={`Open details for ${realm.client}`}
               >
-                {/* Image — portrait, card styling on image wrapper only */}
-                <div className="overflow-hidden rounded-2xl bg-gray-950/[0.04] shadow-sm transition-shadow group-hover:shadow-md">
-                  <div className="aspect-[3/4]" />
+                {/* Mood image — portrait, card styling on image wrapper only */}
+                <div className="overflow-hidden rounded-2xl shadow-sm transition-shadow group-hover:shadow-md">
+                  {realm.moodImage ? (
+                    <img
+                      src={realm.moodImage}
+                      alt={realm.client}
+                      className="aspect-[3/4] w-full object-cover"
+                    />
+                  ) : (
+                    <div className="flex aspect-[3/4] w-full items-end bg-gray-950/[0.04] p-8">
+                      <p className="font-hedvig text-[21px] leading-[1.4] text-gray-950/25">
+                        {realm.hook}
+                      </p>
+                    </div>
+                  )}
                 </div>
 
-                {/* Text below — logo + name + hook, no card wrapper */}
-                <div className="mt-5 space-y-1">
-                  <div className="flex items-center gap-2.5">
-                    {realm.logo && (
-                      <img
-                        src={realm.logo}
-                        alt=""
-                        className="h-4 w-auto object-contain opacity-40"
-                      />
-                    )}
-                    <h2 className="text-[21px] font-normal leading-[1.3] text-gray-950">
+                {/* Logo or client name — then hook */}
+                <div className="mt-5 space-y-1.5">
+                  {realm.logo ? (
+                    <img
+                      src={realm.logo}
+                      alt={realm.client}
+                      className="h-5 w-auto object-contain opacity-50"
+                    />
+                  ) : (
+                    <p className="text-[16px] font-normal text-gray-950/50">
                       {realm.client}
-                    </h2>
-                  </div>
+                    </p>
+                  )}
                   <p className="font-hedvig text-[16px] leading-[1.5] text-gray-950/40">
                     {realm.hook}
                   </p>

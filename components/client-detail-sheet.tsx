@@ -13,133 +13,124 @@ export function ClientDetailSheet({ realm, open, onClose }: ClientDetailSheetPro
   return (
     <AnimatePresence>
       {open && realm && (
-        <motion.div
-          className="fixed inset-0 z-40 flex items-end justify-center bg-black/40 backdrop-blur-sm"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-        >
-          {/* Clickable backdrop */}
-          <button
-            type="button"
-            aria-label="Close client details"
-            className="absolute inset-0 h-full w-full cursor-pointer"
+        <>
+          {/* Darkened backdrop */}
+          <motion.div
+            className="fixed inset-0 z-40 bg-black/40"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             onClick={onClose}
           />
 
-          {/* Sheet */}
+          {/* Sheet with margin-top and border-radius */}
           <motion.section
-            className="relative z-10 flex max-h-[90vh] w-full max-w-4xl flex-col rounded-t-3xl bg-white shadow-2xl ring-1 ring-gray-200/70"
+            className="fixed inset-x-0 bottom-0 top-8 z-50 flex flex-col overflow-hidden rounded-t-2xl bg-white shadow-2xl lg:top-12"
             initial={{ y: '100%' }}
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
-            transition={{ type: 'spring', stiffness: 320, damping: 30 }}
+            transition={{ type: 'spring', stiffness: 260, damping: 28 }}
             role="dialog"
             aria-modal="true"
             aria-labelledby={`client-${realm.id}-title`}
           >
-            {/* Drag handle */}
-            <div className="flex shrink-0 justify-center pt-4">
-              <div className="h-1 w-10 rounded-full bg-gray-300" />
-            </div>
+            {/* Close button — top right, solid bg */}
+            <button
+              type="button"
+              onClick={onClose}
+              className="absolute right-5 top-5 z-50 flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-gray-600 transition-colors hover:bg-gray-200 hover:text-gray-900 lg:right-8 lg:top-8"
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 4L4 12M4 4l8 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+              </svg>
+            </button>
 
-            <div className="min-h-0 flex-1 space-y-8 overflow-y-auto px-6 pb-8 pt-5 md:px-10 md:pb-10">
-              {/* Header */}
-              <div className="flex items-center justify-between gap-4">
-                <div className="flex items-center gap-3">
-                  {realm.logo && (
+            {/* Scrollable content */}
+            <div className="flex-1 overflow-y-auto">
+              {/* Hero area — generous top padding, narrow column */}
+              <div className="mx-auto max-w-2xl px-6 pt-24 pb-16 lg:pt-32 lg:pb-24">
+                {/* Logo or client name + year */}
+                <div className="mb-12 flex items-center gap-3">
+                  {realm.logo ? (
                     <img
                       src={realm.logo}
-                      alt=""
-                      className="h-6 w-auto object-contain opacity-70"
+                      alt={realm.client}
+                      className="h-7 w-auto object-contain opacity-60"
                     />
-                  )}
-                  <div className="flex flex-col gap-0.5">
-                    <p className="text-[16px] text-gray-900" id={`client-${realm.id}-title`}>
+                  ) : (
+                    <p className="text-[16px] text-gray-950/50">
                       {realm.client}
                     </p>
-                    <p className="text-[16px] text-gray-950/35">
-                      since {realm.since} · {realm.realm}
-                    </p>
-                  </div>
+                  )}
+                  <p className="text-[16px] text-gray-950/30" id={`client-${realm.id}-title`}>
+                    since {realm.since}
+                  </p>
                 </div>
-                <button
-                  type="button"
-                  onClick={onClose}
-                  className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 bg-transparent text-gray-500 transition-colors hover:border-gray-400 hover:bg-gray-50"
-                >
-                  <span className="text-[16px]">&times;</span>
-                </button>
+
+                {/* Hook — large serif, the opening statement */}
+                <h2 className="font-hedvig text-[clamp(28px,4vw,40px)] leading-[1.35] text-gray-950">
+                  {realm.hook}
+                </h2>
+
+                {/* Key moment — body text */}
+                <blockquote className="mt-10 border-l-2 border-gray-300 pl-5">
+                  <p className="font-hedvig text-[21px] leading-[1.6] text-gray-700">
+                    {realm.keyMoment}
+                  </p>
+                </blockquote>
               </div>
 
-              {/* System + key moment */}
-              <div className="space-y-3">
-                <p className="font-hedvig text-[21px] leading-[1.55] text-gray-800">{realm.hook}</p>
-                <p className="text-[16px] leading-[1.6] text-gray-600">{realm.system}</p>
-              </div>
+              {/* Projects — images go wide, text stays narrow */}
+              {realm.projects
+                .filter((project) => project.images.length > 0)
+                .map((project) => (
+                  <div key={project.name} className="mb-24">
+                    {/* Project name — narrow column */}
+                    <div className="mx-auto max-w-2xl px-6">
+                      <p className="mb-8 text-[16px] text-gray-950/30">
+                        {project.name}
+                      </p>
+                    </div>
 
-              <div className="space-y-8">
-                {/* Key moment */}
-                <section className="space-y-3">
-                  <p className="text-[16px] text-gray-950/35">Where it turned.</p>
-                  <blockquote className="border-l-2 border-gray-300 pl-4">
-                    <p className="font-hedvig text-[21px] leading-[1.55] text-gray-700">
-                      &ldquo;{realm.keyMoment}&rdquo;
-                    </p>
-                  </blockquote>
-                </section>
-
-                {/* Images with captions — primary content, no bullet lists */}
-                {realm.assets && realm.assets.length > 0 && (
-                  <section className="space-y-4">
-                    <p className="text-[16px] text-gray-950/35">From inside the work.</p>
-                    <div className="space-y-6">
-                      {realm.assets.map((asset) => (
-                        <figure
-                          key={asset.caption}
-                          className="overflow-hidden rounded-2xl border border-gray-200 bg-gray-50"
-                        >
-                          {asset.src ? (
-                            <img
-                              src={asset.src}
-                              alt={asset.alt}
-                              className="aspect-[16/10] w-full max-w-[560px] object-cover"
-                            />
-                          ) : (
-                            <div className="aspect-[16/10] w-full max-w-[560px] bg-gray-200/50" />
-                          )}
-                          <figcaption className="px-4 py-3 text-[16px] text-gray-600">
-                            {asset.caption}
+                    {/* Images — wider than text */}
+                    <div className="mx-auto max-w-4xl space-y-16 px-6">
+                      {project.images.map((img) => (
+                        <figure key={img.src}>
+                          <img
+                            src={img.src}
+                            alt={img.alt}
+                            className="w-full"
+                          />
+                          <figcaption className="mx-auto mt-4 max-w-2xl text-[16px] leading-[1.6] text-gray-500">
+                            {img.caption}
                           </figcaption>
                         </figure>
                       ))}
                     </div>
-                  </section>
-                )}
+                  </div>
+                ))}
 
-                {realm.disciplines.length > 0 && (
-                  <section className="space-y-2">
-                    <p className="text-[16px] text-gray-950/35">What I brought.</p>
-                    <div className="flex flex-wrap gap-2">
-                      {realm.disciplines.map((discipline) => (
-                        <span
-                          key={discipline}
-                          className="rounded-full border border-gray-300 bg-transparent px-3 py-1 text-[16px] text-gray-700"
-                        >
-                          {discipline}
-                        </span>
-                      ))}
-                    </div>
-                  </section>
-                )}
-              </div>
+              {/* Footer — disciplines, narrow column */}
+              {realm.disciplines.length > 0 && (
+                <div className="mx-auto max-w-2xl px-6 pb-24">
+                  <div className="flex flex-wrap gap-2 border-t border-gray-200 pt-8">
+                    {realm.disciplines.map((d) => (
+                      <span
+                        key={d}
+                        className="rounded-full border border-gray-300 bg-transparent px-3 py-1 text-[16px] text-gray-700"
+                      >
+                        {d}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </motion.section>
-        </motion.div>
+        </>
       )}
     </AnimatePresence>
   )
 }
 
 export default ClientDetailSheet
-

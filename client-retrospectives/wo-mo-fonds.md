@@ -5,6 +5,36 @@
 
 ---
 
+## Narrative
+
+Let's be real: union members often struggle to access the benefits they've earned. Subsidy rules, deadlines, and paperwork turn simple questions into long searches through PDFs and web pages. For a membership as diverse as the EVG's — nearly 100,000 people across languages, jobs, and life situations — that creates a gap: people need reliable answers fast, but few have the time or patience to hunt for them.
+
+This tension is familiar. Members trust their union, but face jargon, long forms, and slow support. Meanwhile, staff spend hours answering the same questions, and those without strong German are at a disadvantage. Information exists, but it's locked in documents instead of being easy to find and use.
+
+Enter the Wo-Mo-Fonds AI Assistant.
+
+Developed for the EVG (Eisenbahn- und Verkehrsgewerkschaft), it is the first AI chatbot built by a German union. Launched in December 2025, it answers questions about subsidies, applications, and deadlines in the user's language — up to 15 — and draws only from curated, verified sources, not generic or invented answers.
+
+The approach is deliberate: members should get correct, trustworthy information without sharing personal data unnecessarily. All data handling is designed for privacy from the start, with anonymization before any external calls, EU hosting where possible, and clear consent. The system can choose when to consult its knowledge base and when to answer directly, so simple questions get quick replies and complex ones get grounded, citation-ready answers.
+
+We were invited to help shape this assistant and the forms that support it — from product design and implementation to content and UX — so the system would meet the needs of members and staff.
+
+The core idea: don't just "add AI" to existing content. Make subsidy information accessible and understandable where people actually ask: in chat and in forms. And do it in a way that respects language, law, and trust.
+
+We started with how people ask questions and where they get stuck. We mapped FAQ content to form fields, merged overlapping explanations, and rewrote help text so each piece was clear, legally accurate, and brief. We fixed how language switching worked — so that if someone asked in German, Turkish, or English, the whole experience stayed in that language. We debugged validation and error messages so mistakes were visible and fixable.
+
+The outcome is a live assistant that answers subsidy and application questions in real time, plus forms whose help content explains each step in plain language, with correct legal wording and solid accessibility.
+
+We also treated the story behind it as a product. Blog and marketing copy were refined until they spoke to union reps, communications teams, and decision makers — not developers. The positioning is clear: "Erster Gewerkschafts-Chatbot" (first union chatbot), the scale is tangible ("fast 100.000 Mitglieder"), and the tone matches how unions talk and think.
+
+Ultimately, this work is about lowering barriers. Members can ask in their own language and get accurate answers. Staff spend less time on routine questions. More people can use the benefits they're entitled to, and the system keeps improving as more questions are asked and answered.
+
+When access to information is simple, fair, and trustworthy, more people can take the first step. And when enough people use it, unions learn what matters most and can adjust support, content, and policy accordingly.
+
+*Developed with EVG / Wo-Mo-Fonds. Built by Unit ◯ GmbH (an.jetzt).*
+
+---
+
 ## Core Retrospective (10 Questions)
 
 ### 1. Problem space, constraints, and success

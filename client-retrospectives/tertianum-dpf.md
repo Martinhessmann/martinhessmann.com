@@ -4,6 +4,26 @@
 
 *Derived from conversation histories across tertianum.de, tertianum-premiumresidences.de, tertianum-premiumsuites.de, tertianum-suites.de, ras-services.de, brasseriecolette.de, dpf-investment.de.*
 
+Let’s be real: running multiple websites for one client is hard. When each site has its own theme, its own forms, its own mail setup, and its own deployment pipeline, every change — security, spam protection, lead capture — has to be copied from one codebase to the next. Before long you're chasing the same bug in five places and fixing one site while another quietly drifts. Add reverse proxies, cookie consent, CDNs, and multisite routing, and you end up with a stack that works but is brittle: one domain change, one header conflict, one unchecked box, and whole flows can break or flood Slack with alerts that don't matter.
+
+Tertianum, DPF, RAS, and Brasserie Colette sit inside one client ecosystem — senior living, concierge services, investment, gastronomy — but their sites grew independently. Different repos, different structures, different conventions. What they share is the same underlying need: forms that work, leads that are captured and traceable, spam that stays out, and pipelines that ship reliably without blowing up monitoring.
+
+The question became: how do you get six projects to behave like one platform without locking them into a single codebase? How do you centralise what must be the same — security, mail, Turnstile, Sentry, Playwright — while leaving room for what must stay different — multisite routing, REST endpoints, form flows, content models?
+
+The answer wasn't one big migration. It was a layer of shared patterns and shared documentation: a single workspace playbook that mapped Turnstile, testmode, SendGrid, and pipelines across every project; Cloudflare workers and `.htaccess` rules that solved CORS at the proxy and at the server; and a blueprint for a shared package that could eventually ship security, mailer, and testing utilities without destabilising the base tooling.
+
+Then came the lead storage system. Forms were sending mail, but when something failed — Turnstile timeout, rate limit, SendGrid error — there was no trail. No way to see which leads were affected or how they mapped to Sentry events. Admins were stuck between “everything looks fine” and “something broke somewhere.” The solution was a two-dimensional model: category (ok, spam, test) and status (pending, success, error, unknown). Each combination carried a clear meaning and an explicit next step. Leads were stored encrypted; Sentry links pointed to the event, not a generic search. A single suggestion — “hand down lead_id to Sentry” — turned broken links into direct navigation from a lead to the event that caused the problem.
+
+The same kind of precision guided Slack. At first, every failed submission — including things like an unchecked privacy checkbox — triggered a Slack alert. Real backend errors disappeared in the noise. The fix was to separate user validation from server failure: 4xx and user-input errors became `form_validation`; only true backend failures stayed as `form_error` so Slack would fire only when it mattered.
+
+Along the way, small, concrete moments moved the work forward. Font CORS errors showed duplicate headers: one rule for all requests, another for assets. Removing the general rule and keeping a single source of truth per asset type made the setup predictable. A privacy pre-submit guard was meant to stop Slack noise, but it broke Playwright: the checkbox sent an empty string when checked, so a naive “truthiness” check blocked valid submissions. Switching to key presence and DOM checked state fixed the tests and kept the guard in place. Each fix tightened the system instead of patching it.
+
+The work also produced documents that outlast single fixes. A consolidated playbook for the five Tertianum/RAS projects. Cloudflare worker docs and variants for AT, ES, PT, and FR. A platform kit blueprint with phases, integration checklists, and open questions so another engineer or agent could take over. The rule was to update existing docs, not spin up new ones — one playbook, one blueprint, fewer scattered references.
+
+Today, the ecosystem has encrypted lead storage with Sentry links and form filters, CORS handled at the edge and in PHP, Cloudflare purges tied to production deploys, Playwright tests that catch regressions quickly, and Slack alerts that focus on real errors. The platform kit blueprint sits in a doc, ready for implementation. The story here isn't a single launch; it's the deliberate wiring of six sites into a coherent, observable, and maintainable system — with ownership from definition through implementation, QA, and iteration.
+
+That's the work: reducing noise, avoiding regressions, and building infrastructure that lets the next person step in and continue.
+
 ---
 
 ## 1. Problem Space, Constraints, and Success
