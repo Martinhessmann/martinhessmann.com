@@ -390,6 +390,14 @@
     padding-top: 1rem;
     border-top: 1px solid var(--border);
   }
+
+  /* Portfolio: warm canvas (not too bright), subtle gradient for intentional accent */
+  .bg-warm {
+    background-color: #e8e4de;
+  }
+  .bg-gradient-subtle {
+    background-image: radial-gradient(ellipse 100% 254% at 100% 100%, #EBEDAF 0%, #FBE7A5 31%, #F7E4BB 54%, #C1BBFD 100%);
+  }
 }
 
 @layer components {

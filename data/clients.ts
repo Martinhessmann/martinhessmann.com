@@ -73,8 +73,8 @@ export const CLIENT_REALMS: ClientRealm[] = [
     since: "2019",
     disciplines: ["Product & UX", "Design Systems", "Platform & Infra"],
     logo: "/images/projects/figma-curated-tagged/clients/teambank.svg",
-    moodImage: "/images/projects/figma-curated-tagged/teambank/teambank-homepage-hero.png",
-    hook: "Four platforms, one BNPL story that merchants actually understand.",
+    moodImage: "", // TODO: needs real mood image — atmospheric, not a screenshot
+    hook: "Four platforms that finally agreed.",
     system:
       "I turned dense BNPL documentation and three separate WordPress themes into one coherent ecosystem: a single value hook (€ uplift per year), additive design tokens instead of one-off styles, and a documented release process so every deploy is traceable.",
     keyMoment:
@@ -106,9 +106,9 @@ export const CLIENT_REALMS: ClientRealm[] = [
     realm: "AI brand platforms & tooling",
     since: "2025",
     disciplines: ["AI & Tooling", "Platform & Infra"],
-    logo: "/images/projects/figma-curated-tagged/clients/hartmann.svg",
-    moodImage: "/images/projects/figma-curated-tagged/evg/chatbot-screenshot-multilanguage.png",
-    hook: "Controllable AI that speaks in your brand voice, not the model’s.",
+    logo: "", // TODO: no Open Wonder logo available yet
+    moodImage: "", // TODO: needs real mood image — atmospheric, not a screenshot
+    hook: "Made the AI learn the brand voice.",
     system:
       "I treated AI not as magic but as infrastructure: contracts, guardrails, and tooling that encode brand voice and operational workflow. Release announcements, Sanity integrations, and AURA’s privacy model all share one idea—encode the pattern once so future work stays on voice and on spec.",
     keyMoment:
@@ -134,8 +134,8 @@ export const CLIENT_REALMS: ClientRealm[] = [
     since: "2020",
     disciplines: ["Product & UX", "Accessibility", "Platform & Infra"],
     logo: "/images/projects/figma-curated-tagged/clients/gruen-berlin.svg",
-    moodImage: "/images/projects/figma-curated-tagged/gruen-berlin/homepage-hero.png",
-    hook: "From scattered logos and opaque audits to one stable civic platform.",
+    moodImage: "", // TODO: needs real mood image — atmospheric, not a screenshot
+    hook: "From scattered logos to one file change.",
     system:
       "I treated logos, disturbance maps, and accessibility reports as one system instead of isolated tickets. One master SVG per brand, a clear URL contract for map deep links, and a deduplicated WCAG backlog turned a fragile TYPO3 setup into something future teams can safely extend.",
     keyMoment:
@@ -158,9 +158,9 @@ export const CLIENT_REALMS: ClientRealm[] = [
     realm: "Multi-site WordPress & lead systems",
     since: "2019",
     disciplines: ["Product & UX", "Platform & Infra"],
-    logo: "/images/projects/figma-curated-tagged/clients/evg.svg",
-    moodImage: "/images/projects/tertianum-1730x1800.webp",
-    hook: "A federated senior-living portfolio that behaves like one platform.",
+    logo: "", // TODO: no Tertianum/DPF logo available yet
+    moodImage: "", // TODO: needs real mood image — atmospheric, not a screenshot
+    hook: "Six sites that behave like one.",
     system:
       "Instead of treating six sites as separate problems, I designed shared security, mail, lead storage, and monitoring so changes land once and benefit the whole portfolio. Each brand keeps its character; the operations layer stays coherent.",
     keyMoment:
@@ -184,8 +184,8 @@ export const CLIENT_REALMS: ClientRealm[] = [
     since: "2021",
     disciplines: ["Product & UX", "AI & Tooling", "Accessibility"],
     logo: "/images/projects/figma-curated-tagged/clients/evg.svg",
-    moodImage: "/images/projects/figma-curated-tagged/evg/womofonds-homepage-hero.png",
-    hook: "The first German union chatbot that respects policy and human time.",
+    moodImage: "", // TODO: needs real mood image — atmospheric, not a screenshot
+    hook: "Fifteen languages. Zero hallucinations.",
     system:
       "I built an AI assistant and form system for Wo-Mo-Fonds that answers subsidy questions in 15 languages without hallucinating, and surfaces legally precise help text exactly where members need it—inside accessible, WCAG-compliant forms.",
     keyMoment:

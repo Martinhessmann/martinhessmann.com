@@ -175,6 +175,11 @@ const config: Config = {
               DEFAULT: "hsl(var(--card))",
               foreground: "hsl(var(--card-foreground))",
             },
+            // Portfolio canvas: warm, not too bright
+            warm: "#e8e4de",
+  		},
+  		backgroundImage: {
+  			"gradient-subtle": "radial-gradient(ellipse 100% 254% at 100% 100%, #EBEDAF 0%, #FBE7A5 31%, #F7E4BB 54%, #C1BBFD 100%)",
   		},
   		borderRadius: {
   			lg: "var(--radius)",

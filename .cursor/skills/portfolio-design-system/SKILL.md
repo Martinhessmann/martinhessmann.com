@@ -32,6 +32,10 @@ These are hard rules. Breaking them means starting over.
 - No generic portfolio template patterns
 - No 7 text styles crammed into one section
 - No explaining what the page does ("Each block below is one client realm. Tap to...")
+- No all-caps text anywhere (no `uppercase`)
+- No text positioned on top of images (no gradient overlays for text)
+- No stretched full-width images without a constrained max-width
+- No CTA buttons on elements that are already clickable
 
 ## Typography
 
@@ -63,15 +67,30 @@ Two fonts. No exceptions.
 ## Color
 
 - Monochrome: black, white, grays
-- On warm backgrounds (`#f4f2ee`): use transparent black (`text-gray-950/40`) not flat gray
+- **Warm canvas**: `bg-warm` (`#e8e4de`) — not too bright. Use for portfolio and kitchen-sink.
+- On warm: secondary text is **lighter** — use `text-gray-950/35` or `text-gray-950/30`, not /50 or flat gray.
 - Color ONLY to distinguish disciplines, tags, or filters. Never decorative.
-- Gradient available for intentional hero or accent moments. Not default.
+- **Subtle gradient** for intentional accent only: `bg-gradient-subtle` — radial cream/yellow to soft lavender (`#EBEDAF` → `#FBE7A5` → `#F7E4BB` → `#C1BBFD` at 100% 100%). Not default.
 
 ## Layout
 
 - One element does the work. If the hero is a statement, the statement IS the design.
 - Massive whitespace. Let things breathe. COLLINS uses `min-h-[85vh]` of space for three words.
 - No cramming. If it feels tight, remove elements, don't shrink them.
+
+## Text and Image
+
+Hard rules. No exceptions.
+
+1. **Never text on image.** No gradient overlays, no text positioned over photos. Image is image. Text is below or beside it.
+2. **Clear image ratios.** Either portrait or landscape (e.g. `aspect-[16/10]`, `aspect-[3/4]`). Never stretch over the whole width — constrain with `max-w-[720px]` or similar.
+3. **Card treatment: one or the other.** The rounded/shadow/hover is on the IMAGE or on a white card wrapper. Rarely both combined. Don't wrap an image in a white card with padding unless there's a specific reason.
+4. **Clickable = no CTA.** If the card/image is already clickable, don't add a "View details" button or link. Buttons only appear where there's no clickable content yet.
+
+## Section Labels
+
+- **Never just name the section** (e.g. "Work", "Clients"). Lead with a half sentence instead: "Selected work I keep thinking about." or "Some of the teams I worked with."
+- **No all-caps.** Remove `uppercase` from all section labels and headings. Sentence case only.
 
 ## Interaction
 
