@@ -1,243 +1,516 @@
-export type ClientDiscipline =
-  | "Product & UX"
-  | "Design Systems"
-  | "AI & Tooling"
-  | "Platform & Infra"
-  | "Accessibility"
+export type StoryBlock =
+  | { type: "text"; content: string }
+  | { type: "image"; src: string; alt: string; caption: string }
+  | { type: "gallery"; images: { src: string; alt: string; caption: string }[] }
+  | { type: "label"; content: string }
 
-export interface ProjectImage {
-  src: string
-  alt: string
-  caption: string
+export interface Platform {
+  title: string
+  url?: string
+  description: string
+  /** Story section headline this platform belongs under (matches label content). */
+  sectionTitle?: string
 }
 
-export interface SubProject {
-  name: string
-  images: ProjectImage[]
+export interface SidebarMeta {
+  platforms: Platform[]
+  tools: string[]
+  openingNarrative?: string
+}
+
+export interface Deliverable {
+  title: string
+  description: string
 }
 
 export interface ClientRealm {
   id: string
   client: string
-  since: string
-  disciplines: ClientDiscipline[]
   logo: string
   moodImage: string
   hook: string
   keyMoment: string
-  projects: SubProject[]
+  sidebar: SidebarMeta
+  deliverables: {
+    heading: string
+    subheading: string
+    items: Deliverable[]
+  }
+  closing?: string
+  story: StoryBlock[]
   retrospectivePath?: string
 }
 
 const IMG = "/images/projects/figma-curated-tagged"
+const IMG_ROOT = "/images/projects"
 
 export const CLIENT_REALMS: ClientRealm[] = [
+  // ──────────────────────────────────────────────
+  // TeamBank / easyCredit
+  // ──────────────────────────────────────────────
   {
     id: "teambank",
     client: "TeamBank / easyCredit",
-    since: "2019",
-    disciplines: ["Product & UX", "Design Systems", "Platform & Infra"],
     logo: `${IMG}/clients/teambank.svg`,
     moodImage: `${IMG}/easycredit/mood-customers-sofa.png`,
     hook: "Four platforms that finally agreed.",
     keyMoment:
-      "What is the one value that would make a merchant genuinely lean in? Not a percentage. Not a promise. One number in euros.",
-    projects: [
+      "Not one website. An ecosystem of platforms and teams — and the role where brand, content, UI, and technical feasibility had to converge in one person.",
+    sidebar: {
+      platforms: [
+        { title: "teambank.de", url: "https://teambank.de", description: "Corporate and HR site for TeamBank, the maker of easyCredit.", sectionTitle: "teambank.de" },
+        { title: "teambank.welt", description: "Internal partner portal for banks in the easyCredit ecosystem.", sectionTitle: "teambank.welt" },
+        { title: "Markenportal", description: "Internal brand hub and asset system with Algolia search and tagging.", sectionTitle: "Markenportal" },
+        { title: "easyCredit B2B portal", url: "https://partner.easycredit.de", description: "B2B payment services portal for partners offering installment and invoice solutions.", sectionTitle: "easyCredit B2B portal" },
+      ],
+      tools: ["WordPress", "ACF Pro", "PHP", "SCSS", "Azure", "Docker", "Algolia", "Sentry", "Composer"],
+      openingNarrative:
+        "I wasn't the brand lead — there was a dedicated brand designer for that. I sat with the people who would actually use the system: not the loudest in the room, but the ones who had to operate it. My job was often about having the right conversations in the right order — knowing when to pull in the head of development, when to push back on a stakeholder, and how to get teams out of rigid corporate processes and back into motion. On easyCredit Ratenkauf I worked directly with the Head of Product, co-leading design and development management so product, partner experience, and developer experience didn't drift apart.",
+    },
+    deliverables: {
+      heading: "What I held together across all four.",
+      subheading:
+        "Not one big rewrite. Additive changes, shared patterns, and the discipline to open every blackbox I didn't understand.",
+      items: [
+        {
+          title: "Brand-to-UI translation",
+          description:
+            "A brand works in key visuals and presentations. In a WordPress interface with forms, tables, downloads, states, and accessibility — powered by ACF Pro and SCSS — it has to prove itself. I made sure it did, across all four portals.",
+        },
+        {
+          title: "Platform ecosystem",
+          description:
+            "Four WordPress platforms on Azure. Kept consistent with config-driven site profiles, shared tokens, and a single SCSS pipeline — without a big rewrite.",
+        },
+        {
+          title: "Design and dev management",
+          description:
+            "Co-led with the Head of Product on easyCredit. Steered roadmap, content, and technical execution — PHP, Composer, Docker. Design decisions and development decisions in the same conversation.",
+        },
+        {
+          title: "Content operations",
+          description:
+            "Partner handbooks digitized — not PDFs dumped online, but a structured, searchable system. Events as a native WordPress post type. ACF Pro and Algolia for section references so editors can't break pages.",
+        },
+        {
+          title: "Team enablement",
+          description:
+            "Made teams autonomous. Research before scaffold. Questions before code. Enablement so people could transfer content and extend the system themselves — with Composer, ACF Pro, and clear docs.",
+        },
+        {
+          title: "Technical ownership",
+          description:
+            "Never hid behind blackboxes. Azure CI/CD, Algolia indexing, WordPress architecture, Sentry for errors — opened, learned, translated so the team could make decisions.",
+        },
+      ],
+    },
+    closing:
+      "I became someone who isn't afraid to take responsibility across disciplines — going where the complexity is, pulling knowledge from specialists, making it usable for teams, and forming it into a system that stays consistent, maintainable, and honestly operable across multiple platforms.",
+    story: [
       {
-        name: "easyCredit Ratenkauf",
+        type: "text",
+        content:
+          "Corporate and HR site for TeamBank. Connected brand, UI, content, and tech — translating strategy into structured pages, recruiting, and governance. The main face of the maker of easyCredit.",
+      },
+      { type: "label", content: "teambank.de" },
+      {
+        type: "image",
+        src: `${IMG}/teambank/teambank-homepage-hero.png`,
+        alt: "teambank.de corporate site",
+        caption: "teambank.de",
+      },
+      {
+        type: "text",
+        content:
+          "Internal partner portal for banks in the easyCredit ecosystem. Beyond the configurator, the toolbox handles marketing materials, a banner configurator, and training content — all under one SCSS design token system. A single SCSS pipeline compiles through theme.scss: variables, mixins, helpers, then modules. Developer docs and APIs for partners.",
+      },
+      { type: "label", content: "teambank.welt" },
+      {
+        type: "gallery",
         images: [
           {
-            src: `${IMG}/easycredit/bnpl-consultant-ui.png`,
-            alt: "BNPL Business Berater configurator",
-            caption:
-              "The BNPL configurator rebuilt on WordPress with ACF. One question drove the whole design: what single value convinces a merchant? Annual uplift in euros.",
-          },
-          {
-            src: `${IMG}/easycredit/bnpl-consultant-graph.png`,
-            alt: "BNPL revenue potential graph",
-            caption:
-              "Conversion rate vs basket size, broken down by industry. The graph that replaced a deck full of benchmarks with one legible story.",
-          },
-          {
-            src: `${IMG}/easycredit/bnpl-consultant-workshop-scribbles.png`,
-            alt: "Workshop scribbles for the BNPL configurator",
-            caption:
-              "Where it started — user story mapping, configurator flow, and the question that shaped everything: what single value convinces a merchant?",
-          },
-          {
             src: `${IMG}/easycredit/partner-portal-ui.png`,
-            alt: "easyCredit partner portal toolbox",
-            caption:
-              "Partner portal toolbox — marketing materials, banner configurator, training content. All under one SCSS design token system so modules speak the same visual language.",
+            alt: "easyCredit partner portal",
+            caption: "Partner portal toolbox",
           },
           {
-            src: `${IMG}/easycredit/illustration-onboarding.png`,
-            alt: "Onboarding illustration in easyCredit style",
-            caption:
-              "AI-ready illustration briefings: flat vector, 4px stroke, palette locked to easyCredit blue/orange. So designers and AI tools produce consistent visuals without guessing.",
+            src: `${IMG}/easycredit/developer-portal-mockup.png`,
+            alt: "easyCredit developer portal",
+            caption: "Developer portal",
           },
         ],
       },
       {
-        name: "TeamBank Markenportal",
+        type: "text",
+        content:
+          "TeamBank's internal brand hub — not a static library of PDFs, but a navigable system. Algolia-powered search, a mega menu through Markenstrategie, Markenauftritt, Markenstil, and Markenmanagement in plain German. WordPress media library connected to Azure CI/CD.",
+      },
+      { type: "label", content: "Markenportal" },
+      {
+        type: "gallery",
         images: [
           {
             src: `${IMG}/markenportal/homepage-mockup.png`,
             alt: "TeamBank Markenportal on iPad",
-            caption:
-              "The brand portal restructured — Algolia search, WordPress media library, Azure CI/CD. One place for all TeamBank brand assets, navigable by Markenstrategie, Markenauftritt, Markenstil.",
+            caption: "Markenportal on iPad",
           },
           {
             src: `${IMG}/markenportal/brand-asset-download-preview.png`,
             alt: "Brand asset download interface",
-            caption:
-              "Asset download flow with preview. Algolia powering instant search across three brands. Config-driven site profiles instead of branches that drift.",
+            caption: "Asset download",
+          },
+          {
+            src: `${IMG}/markenportal/azure-ci-screenshot.png`,
+            alt: "Azure CI/CD pipeline",
+            caption: "Azure CI/CD",
+          },
+          {
+            src: `${IMG}/markenportal/wordpress-media-backend-new.png`,
+            alt: "WordPress media library",
+            caption: "Media backend",
+          },
+        ],
+      },
+      {
+        type: "text",
+        content:
+          "The BNPL configurator came from one question: what single value makes a merchant lean in? Annual euro uplift — grounded in OpenRegister industry benchmarks, not abstract percentages. The graph tells the whole story: conversion rate vs basket size, broken down by industry. SCSS design tokens, configurator hints, result chips — one visual language across platforms. What held it together wasn't a framework. It was a rule: never confuse \"less broken\" with \"good enough.\" Validate in the browser. On localhost. With evidence.",
+      },
+      { type: "label", content: "easyCredit B2B portal" },
+      {
+        type: "gallery",
+        images: [
+          {
+            src: `${IMG}/easycredit/bnpl-consultant-ui.png`,
+            alt: "BNPL Business Berater configurator",
+            caption: "BNPL configurator",
+          },
+          {
+            src: `${IMG}/easycredit/bnpl-consultant-graph.png`,
+            alt: "BNPL revenue potential graph",
+            caption: "Revenue potential by industry",
+          },
+          {
+            src: `${IMG}/easycredit/bnpl-consultant-ui-dropdown.png`,
+            alt: "BNPL configurator dropdown",
+            caption: "Configurator detail",
+          },
+          {
+            src: `${IMG}/easycredit/bnpl-consultant-workshop-scribbles.png`,
+            alt: "Workshop scribbles for the BNPL configurator",
+            caption: "Workshop scribbles",
+          },
+          {
+            src: `${IMG}/easycredit/illustration-onboarding.png`,
+            alt: "Onboarding illustration in easyCredit style",
+            caption: "Illustration system",
           },
         ],
       },
     ],
     retrospectivePath: "/client-retrospectives/teambank-easycredit.md",
   },
+
+  // ──────────────────────────────────────────────
+  // Grün Berlin / Infrasignal
+  // ──────────────────────────────────────────────
   {
     id: "gruen-infrasignal",
     client: "Grün Berlin / Infrasignal",
-    since: "2020",
-    disciplines: ["Product & UX", "Accessibility", "Platform & Infra"],
     logo: `${IMG}/clients/gruen-berlin.svg`,
     moodImage: `${IMG}/gruen-berlin/mood.png`,
     hook: "From scattered logos to one file change.",
     keyMoment:
       "Everything technically worked — until it didn't. Duplicated logo assets, brittle map links, opaque accessibility status, and repos whose branching history made even small changes feel risky.",
-    projects: [
+    sidebar: {
+      platforms: [
+        { title: "Grün Berlin", url: "https://gruen-berlin.de", description: "Civic portal for sustainable green and blue infrastructure in Berlin.", sectionTitle: "Grün Berlin" },
+        { title: "Infrasignal", url: "https://infrasignal.de", description: "Traffic light management spin-off for planning and operating 2,100+ signals.", sectionTitle: "Infrasignal" },
+      ],
+      tools: ["TYPO3", "Fluid", "Handlebars", "Mapbox", "GeoJSON", "Fuse.js", "Mailchimp", "GitLab"],
+    },
+    deliverables: {
+      heading: "What held together.",
+      subheading: "One master SVG per brand. One documented URL contract. One shared backlog.",
+      items: [
+        { title: "Logo consolidation", description: "One file per project. currentColor-driven. Collapsed SVGs scattered through TYPO3, Fluid partials, and Handlebars templates into a single source of truth." },
+        { title: "Accessibility backlog", description: "42 audit issues parsed, deduplicated, sorted into Easy, Medium, Hard. TYPO3 templates updated so every header, footer, and overlay stays reachable." },
+        { title: "Disturbance reporting", description: "Mapbox map with GeoJSON layer, citizen form, Fuse.js fallback for autocomplete, support email deep links." },
+        { title: "Mail-templates cleanup", description: "Mailchimp and TYPO3 Mail templates. Renamed master to main, merged shipped branches, aligned GitLab default." },
+      ],
+    },
+    closing: "The result isn't a flashy app. It's an ecosystem of civic tools that are easier to understand, easier to change, and far less likely to fail when citizens need them most.",
+    story: [
       {
-        name: "Grün Berlin",
-        images: [
-          {
-            src: `${IMG}/gruen-berlin/mockup-mobile.png`,
-            alt: "Grün Berlin website on mobile",
-            caption:
-              "TYPO3 civic platform — mobile-first, modular frontend. One master SVG per brand, inlined everywhere, themed with currentColor. The next time the logo changes, nobody chases copies.",
-          },
-          {
-            src: `${IMG}/gruen-berlin/homepage-hero.png`,
-            alt: "Grün Berlin homepage",
-            caption:
-              "Homepage after the cross-repo logo refactor. Headers, footers, TYPO3 templates — all reference one inline SVG. Old variants deleted.",
-          },
-        ],
+        type: "text",
+        content:
+          "We were brought in to translate a rebranding — started by a brand agency — into a working digital system. My task: take the huge amount of photography and commissioned copy and turn it into a navigable sitemap, modular in TYPO3. TYPO3 wasn't our core expertise — we're strong in frontend and JavaScript — so I found a partner with TYPO3 backend and templating experience and connected their skills with our frontend thinking. Branding and content became modular and maintainable.",
+      },
+      { type: "label", content: "Grün Berlin" },
+      {
+        type: "image",
+        src: `${IMG}/gruen-berlin/mockup-mobile.png`,
+        alt: "Grün Berlin website on mobile",
+        caption: "Grün Berlin on mobile",
       },
       {
-        name: "Infrasignal",
+        type: "text",
+        content:
+          "I started with something deceptively small but symbolically important: the logo. Both Grün Berlin and Infrasignal had near-duplicate SVGs scattered through HBS templates, Fluid partials, and asset folders. I collapsed that into one master SVG per project — inlined everywhere, driven by currentColor so every header, footer, and overlay is themed purely with CSS. Old variants deleted. The next time the logo changes, one file, one update.",
+      },
+      {
+        type: "image",
+        src: `${IMG}/gruen-berlin/homepage-hero.png`,
+        alt: "Grün Berlin homepage",
+        caption: "Homepage",
+      },
+      {
+        type: "text",
+        content:
+          "Then accessibility. A dense Prüfreport PDF from an external audit — 42 issues, ranging from \"buttons must contain perceivable text\" to \"not all controls are keyboard-reachable.\" I didn't leave them as abstract compliance notes. I parsed each issue, deduplicated them, sorted into Easy, Medium, and Hard — based on implementation effort, not how scary they sound. Which are pure code and markup, which require editorial work, which involve heavyweight assets like PDFs, videos, or German Sign Language. What could have been a compliance exercise became a shared backlog.",
+      },
+      { type: "label", content: "Infrasignal" },
+      {
+        type: "text",
+        content:
+          "A year after the relaunch, traffic light management was spun off into Infrasignal — same TYPO3 base, cloned template theme, but its own branding and completely different stakeholders. The core feature: disturbance reporting. When a traffic light fails, citizens report it on a form. I designed it so reported failures appear on a Mapbox map with every traffic light in Berlin plotted from a GeoJSON layer. Citizens pick the actual intersection. Autocomplete via Mapbox Search with a Fuse.js fallback. Service teams manage incidents faster.",
+      },
+      {
+        type: "image",
+        src: `${IMG}/infrasignal/infrasignal-mood.png`,
+        alt: "Berlin traffic light infrastructure",
+        caption: "Traffic light infrastructure",
+      },
+      {
+        type: "gallery",
         images: [
-          {
-            src: `${IMG}/infrasignal/infrasignal-mood.png`,
-            alt: "Berlin traffic light infrastructure",
-            caption:
-              "Infrasignal manages Berlin's traffic lights. When 'where is the disturbance map deployed?' had no clear answer, I traced the system end to end and turned it into a durable URL contract.",
-          },
           {
             src: `${IMG}/infrasignal/traffic-light-map-screenshot.png`,
             alt: "Traffic light disturbance map",
-            caption:
-              "Mapbox with GeoJSON, active and defective signals across Kreuzberg. Each pin links via a URL contract — lat, lng, zoom, highlight=lsa%3A7106 — so support emails land with precision.",
+            caption: "Disturbance map",
+          },
+          {
+            src: `${IMG}/infrasignal/traffic-light-reporting-button.png`,
+            alt: "Disturbance reporting button",
+            caption: "Report button",
           },
           {
             src: `${IMG}/infrasignal/traffic-light-reporting-form-screenshot.png`,
             alt: "Disturbance reporting form",
-            caption:
-              "The reporting form for citizens. Connected to the map, support email deep links, and the TYPO3 backend. Autocomplete via Mapbox Search with a Fuse.js fallback.",
+            caption: "Reporting form",
           },
         ],
+      },
+      {
+        type: "text",
+        content:
+          "When nobody could say which deployed HTML page and which query parameters were \"the real ones\" for the disturbance map, I traced the whole system: the Mapbox and React implementation, the bundle and HTML shim, the expected parameters — lat, lng, zoom, highlight, search — and even the need to URL-encode the colon in highlight=lsa:7106. I turned that into a documented contract. Now support emails don't just link \"somewhere near\" the problem. They land with precision.",
+      },
+      {
+        type: "text",
+        content:
+          "Beyond the individual flows, I cleaned up the mail-templates repository — renamed master to main, merged branches that had already shipped, aligned GitLab's default branch. The result isn't a flashy app. It's an ecosystem of civic tools that are easier to understand, easier to change, and far less likely to fail when citizens need them most.",
       },
     ],
     retrospectivePath: "/client-retrospectives/gruen-berlin-infrasignal.md",
   },
+
+  // ──────────────────────────────────────────────
+  // Open Wonder / AURA
+  // ──────────────────────────────────────────────
   {
     id: "open-wonder",
     client: "Open Wonder / AURA",
-    since: "2024",
-    disciplines: ["Product & UX", "AI & Tooling", "Design Systems"],
     logo: `${IMG}/clients/hartmann.svg`,
-    moodImage: "",
+    moodImage: `${IMG_ROOT}/openwonder-illlu.png`,
     hook: "AI that respects the brand. Or nothing.",
     keyMoment:
       "Early drafts were rejected as too technical, too flat, or simply 'cheap and sad.' So we encoded the voice into the system itself — commands, guidelines, concrete examples — so every future output starts from the right place.",
-    projects: [
+    sidebar: {
+      platforms: [
+        { title: "Open Wonder", url: "https://openwonder.com", description: "AI platform for generating on-brand images and marketing assets." },
+        { title: "Hartmann AURA", description: "Internal AI companion for brand-safe assets and review workflows." },
+      ],
+      tools: ["Next.js 15", "Supabase", "Prisma", "Sentry", "Vercel", "Cohere", "Sanity", "LoRA", "OpenTelemetry"],
+    },
+    deliverables: {
+      heading: "What I shaped.",
+      subheading: "Constraints, reference-style adherence, output schemas. Predictable outputs, reviewable rules.",
+      items: [
+        { title: "LLM process definition", description: "Who defines it, how it changes, how much restriction is too much. Cohere and Sanity guardrails so outputs stay on-brand." },
+        { title: "Copy guidelines", description: "Release announcements as product surface in Sanity. Modals rewritten to be scannable." },
+        { title: "Build and env discipline", description: "Next.js 15, Supabase, Prisma on Vercel. Package-lock on Linux, Sentry hostname detection, OpenTelemetry explicit." },
+      ],
+    },
+    closing: "AI is welcome, but only if it respects the constraints of brand, reliability, and trust — and only if it makes the humans on the other side faster, clearer, and more confident.",
+    story: [
       {
-        name: "Open Wonder Platform",
-        images: [],
+        type: "text",
+        content:
+          "Most AI brand tools don't change how people work. They bolt a chat box onto an existing interface, wire it to a model, and hope designers feel more supported. In practice, those tools feel vague, brittle, or off-brand. Open Wonder's task was different: transform static PDFs and scattered brand rules into an assistant that can critique layouts, generate on-brand images, and surface exactly the right guidance when a stressed designer is about to publish the wrong red.",
       },
       {
-        name: "AURA Infrastructure",
-        images: [],
+        type: "text",
+        content:
+          "I'm in the dailies, thinking about whether the whole thing actually works. Not the feature — the system. When someone prompts something, what checks it? Who defines the LLM process? How do you change the rules? How much restriction is too much when many different people use these tools? If AI outputs are inconsistent, I don't prompt harder — I define constraints, reference-style adherence, and output schemas. That's what makes AI usable inside corporate constraints: predictable outputs, reviewable rules, clear failure modes.",
+      },
+      {
+        type: "text",
+        content:
+          "The copy reflects that discipline. Release announcements aren't marketing bolted on at the end — they're product surface area. A create-release-announcement command, updated COPY_GUIDELINES, and concrete examples ensure every future announcement starts from user reality (\"we sat with creators and saw 10–20 iterations per keeper\"), pairs two headline features, and talks about libraries feeling like moodboards rather than draft boards. Modals rewritten to be scannable — short, simple texts became a non-negotiable.",
+      },
+      {
+        type: "text",
+        content:
+          "The platform runs on Next.js 15 with Supabase, Prisma, Sentry, and Vercel. When builds failed with sharp errors, Supabase CLI 503s, and missing Rollup binaries, we didn't hide behind \"works on my machine.\" We regenerated package-lock.json on Linux so the right binaries install, removed the fragile supabase npm dependency in favor of npx, made optional dependencies explicit, and added the OpenTelemetry packages Sentry expected. Sentry itself learned to detect dev vs. prod by hostname — so dev.openwonder.com finally behaves like a dev environment in the error stream.",
+      },
+      {
+        type: "text",
+        content:
+          "A Sanity plugin lets editors generate Open Wonder images from inside Studio without ever seeing a token or needing to understand LoRA jobs. Data-flow diagrams and privacy checklists make it clear where user data flows and lives. All of it adds up to a particular stance: AI is welcome, but only if it respects the constraints of brand, reliability, and trust — and only if it makes the humans on the other side faster, clearer, and more confident.",
       },
     ],
     retrospectivePath: "/client-retrospectives/open-wonder.md",
   },
+
+  // ──────────────────────────────────────────────
+  // Tertianum / DPF
+  // ──────────────────────────────────────────────
   {
     id: "tertianum-dpf",
     client: "Tertianum / DPF",
-    since: "2022",
-    disciplines: ["Platform & Infra", "Product & UX", "Accessibility"],
     logo: "",
-    moodImage: "",
+    moodImage: `${IMG_ROOT}/tertianum-illu.png`,
     hook: "Six sites. One platform. No big migration.",
     keyMoment:
       "Every change — security, spam protection, lead capture — had to be copied from one codebase to the next. The answer wasn't one big migration. It was shared patterns and shared documentation.",
-    projects: [
+    sidebar: {
+      platforms: [
+        { title: "DPF Group", url: "https://dpf-investment.de", description: "Corporate site for senior living investor and operator." },
+        { title: "Tertianum", url: "https://tertianum.de", description: "Senior living services and gourmet restaurants." },
+        { title: "RAS Services", url: "https://ras-service.de", description: "Concierge services for home and office support." },
+        { title: "Brasserie Colette", url: "https://brasseriecolette.de", description: "Restaurant website for fine dining in Berlin, Munich, Konstanz." },
+        { title: "Tertianum Premium Residences", url: "https://tertianum-premiumresidences.de", description: "Premium senior residences in urban locations." },
+      ],
+      tools: ["WordPress", "Nuxt", "Prismic", "Cloudflare Workers", "Turnstile", "SendGrid", "Playwright", "Sentry", "Microsoft Dynamics", "Mailchimp"],
+    },
+    deliverables: {
+      heading: "What I held together.",
+      subheading: "Shared patterns. Shared documentation. One playbook, one blueprint.",
+      items: [
+        { title: "Lead storage system", description: "Two-dimensional status in WordPress. Sentry tags for direct event links. Microsoft Dynamics and Mailchimp integration for CRM." },
+        { title: "Form validation separation", description: "4xx vs form_error. Cloudflare Turnstile for spam. Noise stopped. Playwright tests fixed." },
+        { title: "Consolidated playbook", description: "Five Tertianum/RAS projects — WordPress, Nuxt, Prismic. Cloudflare Worker docs per proxy domain." },
+      ],
+    },
+    closing: "I became the central contact when it's about the website. Brand, content, technical upkeep — the red thread runs through me.",
+    story: [
       {
-        name: "Lead Storage & Monitoring",
-        images: [],
+        type: "text",
+        content:
+          "DPF is a real estate investor focused on an aging society: premium residences in Berlin, Konstanz, and Munich. A development branding project in Frankfurt. A stake in RAS — rebranded, now one of Germany's best-known concierge companies. And Brasserie Colette, a fine dining restaurant tied to the residences, with its own branding, strategy, and website. Each brand has its own design system — not one shared component set. The needs are similar, but the brands stay deliberately separate.",
       },
       {
-        name: "Cloudflare & CORS",
-        images: [],
+        type: "text",
+        content:
+          "I became the place where all digital threads converge. WordPress for most brands, Next.js with Prismic for the Brasserie. A CRM migration from proprietary to Microsoft Dynamics and Mailchimp. Contact forms secured with Cloudflare Turnstile. CORS handled at the edge with Cloudflare Workers and in PHP via .htaccess — proxy domains across AT, ES, PT, FR. Brand experts, marketing, SEO, HR, and Google Ads teams all talk to me when it's about the website. I bring in developers and designers when needed, but the red thread runs through me.",
+      },
+      {
+        type: "text",
+        content:
+          "The lead storage system gives every form submission a two-dimensional status — category (ok, spam, test) and status (pending, success, error, unknown). Each combination has a clear meaning and an explicit next step. Leads stored encrypted in WordPress. Sentry links point to the exact event, not a generic search — I passed lead_id as a Sentry tag across all capture paths so broken links became direct navigation.",
+      },
+      {
+        type: "text",
+        content:
+          "When Slack alerts fired for every failed submission — including things like an unchecked privacy checkbox — real backend errors disappeared in the noise. I separated user validation from server failure: 4xx and user-input errors became form_validation; only true backend failures stayed as form_error. The noise stopped. Then a privacy pre-submit guard broke Playwright tests — the checkbox sent an empty string when checked, so a naive truthiness check blocked valid submissions. Switching to key presence and DOM checked state fixed the tests and kept the guard. Each fix tightened the system instead of patching it.",
+      },
+      {
+        type: "text",
+        content:
+          "The work also produced documents that outlast single fixes. A consolidated playbook for the five Tertianum/RAS projects. Cloudflare worker docs and variants for each proxy domain. A platform kit blueprint with phases, integration checklists, and open questions so another engineer could take over. The rule: update existing docs, not spin up new ones. One playbook, one blueprint, fewer scattered references.",
       },
     ],
     retrospectivePath: "/client-retrospectives/tertianum-dpf.md",
   },
+
+  // ──────────────────────────────────────────────
+  // EVG / Wo-Mo-Fonds
+  // ──────────────────────────────────────────────
   {
     id: "wo-mo-fonds",
     client: "EVG / Wo-Mo-Fonds",
-    since: "2021",
-    disciplines: ["Product & UX", "AI & Tooling", "Accessibility"],
     logo: `${IMG}/clients/evg.svg`,
     moodImage: `${IMG}/evg/train-mood.png`,
     hook: "Fifteen languages. Zero hallucinations.",
     keyMoment:
       "Members trust their union, but face jargon, long forms, and slow support. The first German union chatbot — built so people can ask in their own language and get accurate answers, not generated ones.",
-    projects: [
+    sidebar: {
+      platforms: [
+        { title: "Wo-Mo-Fonds", url: "https://womofonds.de", description: "Subsidy portal for housing and mobility costs.", sectionTitle: "Wo-Mo-Fonds" },
+        { title: "Dein WoMo", url: "https://dein-womo.de", description: "Platform for internet and tech vouchers via the social fund.", sectionTitle: "Dein WoMo" },
+        { title: "Wo-Mo-Fonds AI Chatbot", url: "https://womofonds.de", description: "AI assistant for eligibility questions and subsidy applications.", sectionTitle: "Wo-Mo-Fonds AI Chatbot" },
+      ],
+      tools: ["Cohere", "Vercel", "Sentry", "WCAG 2.1 AA", "React", "Node.js"],
+    },
+    deliverables: {
+      heading: "What I built.",
+      subheading: "Subsidy logic as a clear process. An assistant that relieves support without giving up control.",
+      items: [
+        { title: "Application logic", description: "Structured flows in React, inline help, expandable benefit types per year. Node.js backend, Vercel-hosted." },
+        { title: "Agentic RAG assistant", description: "Cohere. Fifteen languages. Datenschutz-by-design. Zero hallucinations." },
+        { title: "WCAG 2.1 AA forms", description: "Legally precise tooltips, conditional validation that propagates correctly. React, Sentry for errors, Vercel." },
+      ],
+    },
+    closing: "The platform is built to expand — new benefit types and variants per year. For members, clear. For the team, operable.",
+    story: [
       {
-        name: "Wo-Mo-Fonds Chatbot",
+        type: "text",
+        content:
+          "Subsidy portal for housing and mobility costs. Nearly 100,000 union members, Jobticket subsidies, internet subsidies for remote work, support in special life circumstances. The application logic feels like a clear process, not bureaucracy. Content and help text sit directly in the flow. The platform is built to expand — new benefit types and variants per year. The blog speaks to union reps: \"Was die EVG davon hat.\" Scale is tangible, tone matches how unions talk.",
+      },
+      { type: "label", content: "Wo-Mo-Fonds" },
+      {
+        type: "image",
+        src: `${IMG}/evg/womofonds-homepage-hero.png`,
+        alt: "Wo-Mo-Fonds homepage",
+        caption: "Wo-Mo-Fonds",
+      },
+      {
+        type: "text",
+        content:
+          "Platform for internet and tech vouchers via the social fund. Application flows for members outside DB AG — structured, inline help, expandable benefit types. Forms legally precise: each tooltip migrated from the FAQ, WCAG 2.1 AA. When conditional address fields cleared child tooltips on validation, I traced the DOM and fixed the radio group wrapper. Vercel-hosted, Sentry by hostname.",
+      },
+      { type: "label", content: "Dein WoMo" },
+      {
+        type: "image",
+        src: `${IMG}/evg/dein-womo-ipad-mockup.png`,
+        alt: "Dein WoMo application on iPad",
+        caption: "Dein WoMo",
+      },
+      {
+        type: "text",
+        content:
+          "The assistant runs on Cohere's agentic RAG — the system decides when to consult the knowledge base and when to answer directly. Standard questions get immediate replies. Detail questions get targeted research. Multilingual from the start: the assistant mirrors the language of the question. Privacy isn't an afterthought: personal data neutralized before external services, zero-retention at Cohere, consent required. Externally audited.",
+      },
+      { type: "label", content: "Wo-Mo-Fonds AI Chatbot" },
+      {
+        type: "gallery",
         images: [
           {
             src: `${IMG}/evg/chatbot-screenshot-multilanguage.png`,
             alt: "Chatbot switching from German to English",
-            caption:
-              "Agentic RAG with Cohere — the system decides when to consult the knowledge base and when to answer directly. Fifteen languages, Datenschutz-by-design, PII anonymized before any external call.",
+            caption: "Multilingual chatbot",
+          },
+          {
+            src: `${IMG}/evg/chatbot-screenshot.png`,
+            alt: "Chatbot conversation",
+            caption: "Chatbot UI",
           },
           {
             src: `${IMG}/evg/chatbot-screenshot-feedback.png`,
             alt: "Chatbot with feedback interaction",
-            caption:
-              "Feedback built into every answer. Usage estimation from Cohere billing data with spike filtering — roughly 130 users in the first two months.",
-          },
-        ],
-      },
-      {
-        name: "womofonds.de",
-        images: [
-          {
-            src: `${IMG}/evg/dein-womo-ipad-mockup.png`,
-            alt: "Wo-Mo-Fonds application portal on iPad",
-            caption:
-              "WCAG 2.1 AA forms with inline help text migrated from the FAQ. Each tooltip is legally precise, one paragraph per button, ARIA-compliant.",
-          },
-          {
-            src: `${IMG}/evg/womofonds-homepage-hero.png`,
-            alt: "Wo-Mo-Fonds homepage",
-            caption:
-              "Vercel-hosted, Sentry environment detection by hostname. Conditional form validation that actually propagates error states — not silent clearing.",
+            caption: "Feedback UI",
           },
         ],
       },

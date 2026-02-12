@@ -45,9 +45,13 @@ export default function KitchenSinkPage() {
             <h2 className="text-[30px] font-normal leading-[1.2] text-gray-950">
               {TEAMBANK.client}
             </h2>
-            <p className="text-[16px] text-gray-950/45">body — 16px (smallest on the site)</p>
+            <p className="text-[16px] text-gray-950/45">body — 16px</p>
             <p className="max-w-2xl text-[16px] leading-[1.6] text-gray-950">
               {TEAMBANK.system}
+            </p>
+            <p className="text-[16px] text-gray-950/45">small / meta — 14px (captions, sidebar, pills)</p>
+            <p className="text-[14px] leading-[1.5] text-gray-950/50">
+              Captions, sidebar metadata, tool pills. Smallest tier.
             </p>
             <p className="text-[16px] text-gray-950/45">larger — 21px, emphasis or serif accent</p>
             <p className="font-hedvig max-w-2xl text-[21px] leading-[1.5] text-gray-950/70">
