@@ -442,32 +442,32 @@ export const CLIENT_REALMS: ClientRealm[] = [
     client: "EVG / Wo-Mo-Fonds",
     logo: `${IMG}/clients/evg.svg`,
     moodImage: `${IMG}/evg/train-mood.png`,
-    hook: "Fifteen languages. Zero hallucinations.",
+    hook: "Bureaucracy translated into service.",
     keyMoment:
-      "Members trust their union, but face jargon, long forms, and slow support. The first German union chatbot — built so people can ask in their own language and get accurate answers, not generated ones.",
+      "The subsidy logic worked more like a tax return than a simple web form. The task was to make that system understandable at every step — in the application flow, in status communication, and in multilingual support.",
     sidebar: {
       platforms: [
-        { title: "Wo-Mo-Fonds", url: "https://womofonds.de", description: "Subsidy portal for housing and mobility costs.", sectionTitle: "Wo-Mo-Fonds" },
-        { title: "Dein WoMo", url: "https://dein-womo.de", description: "Platform for internet and tech vouchers via the social fund.", sectionTitle: "Dein WoMo" },
-        { title: "Wo-Mo-Fonds AI Chatbot", url: "https://womofonds.de", description: "AI assistant for eligibility questions and subsidy applications.", sectionTitle: "Wo-Mo-Fonds AI Chatbot" },
+        { title: "Wo-Mo-Fonds", url: "https://womofonds.de", description: "Subsidy portal for housing and mobility costs, applications, and status guidance.", sectionTitle: "Wo-Mo-Fonds" },
+        { title: "Dein WoMo", url: "https://dein-womo.de", description: "Voucher platform with expandable application flows for internet and equipment support.", sectionTitle: "Dein WoMo" },
+        { title: "Wo-Mo-Fonds AI Chatbot", url: "https://womofonds.de", description: "Multilingual assistant for eligibility questions, deadlines, and process guidance.", sectionTitle: "Wo-Mo-Fonds AI Chatbot" },
       ],
       tools: ["Cohere", "Vercel", "Sentry", "WCAG 2.1 AA", "React", "Node.js"],
     },
     deliverables: {
-      heading: "What I built.",
-      subheading: "Subsidy logic as a clear process. An assistant that relieves support without giving up control.",
+      heading: "What I clarified across the system.",
+      subheading: "Complex subsidy rules, readable status communication, and multilingual support designed as one service instead of three disconnected features.",
       items: [
-        { title: "Application logic", description: "Structured flows in React, inline help, expandable benefit types per year. Node.js backend, Vercel-hosted." },
-        { title: "Agentic RAG assistant", description: "Cohere. Fifteen languages. Datenschutz-by-design. Zero hallucinations." },
-        { title: "WCAG 2.1 AA forms", description: "Legally precise tooltips, conditional validation that propagates correctly. React, Sentry for errors, Vercel." },
+        { title: "Accessible application flows", description: "Complex, conditional subsidy logic translated into guided steps, inline help, and error states that stay understandable when forms branch." },
+        { title: "Readable status communication", description: "Replaced a brittle external status page with backend-driven progress updates in plain language, with timing expectations and clear contact paths." },
+        { title: "Multilingual AI support", description: "Cohere-based assistant for questions around eligibility, deadlines, and applications — grounded in curated sources, privacy-conscious, and available in up to fifteen languages." },
       ],
     },
-    closing: "The platform is built to expand — new benefit types and variants per year. For members, clear. For the team, operable.",
+    closing: "The result is not a flashy AI demo. It is a service system members can actually navigate, and a platform the fund team can maintain and extend without turning every new rule into a new barrier.",
     story: [
       {
         type: "text",
         content:
-          "Subsidy portal for housing and mobility costs. Nearly 100,000 union members, Jobticket subsidies, internet subsidies for remote work, support in special life circumstances. The application logic feels like a clear process, not bureaucracy. Content and help text sit directly in the flow. The platform is built to expand — new benefit types and variants per year. The blog speaks to union reps: \"Was die EVG davon hat.\" Scale is tangible, tone matches how unions talk.",
+          "Housing and mobility support sounds simple until the application behaves more like a tax return. Transport modes, existing discounts, annual costs, professional use, required evidence, and exceptions all change what the user has to do next. I worked on turning that bureaucracy into a process people can actually follow — with clear groupings, readable error states, and help text where uncertainty appears, not in a separate document.",
       },
       { type: "label", content: "Wo-Mo-Fonds" },
       {
@@ -479,7 +479,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       {
         type: "text",
         content:
-          "Platform for internet and tech vouchers via the social fund. Application flows for members outside DB AG — structured, inline help, expandable benefit types. Forms legally precise: each tooltip migrated from the FAQ, WCAG 2.1 AA. When conditional address fields cleared child tooltips on validation, I traced the DOM and fixed the radio group wrapper. Vercel-hosted, Sentry by hostname.",
+          "The same mindset shaped the surrounding service experience. Instead of redirecting members to a hard-to-maintain external page that displayed an image for status updates, the platform now runs a backend check and explains the current step in plain language: what already happened, where the application stands, how long that stage can take, and when to contact the fund team. Responsive, accessible, text-readable, and far easier to maintain.",
       },
       { type: "label", content: "Dein WoMo" },
       {
@@ -491,7 +491,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       {
         type: "text",
         content:
-          "The assistant runs on Cohere's agentic RAG — the system decides when to consult the knowledge base and when to answer directly. Standard questions get immediate replies. Detail questions get targeted research. Multilingual from the start: the assistant mirrors the language of the question. Privacy isn't an afterthought: personal data neutralized before external services, zero-retention at Cohere, consent required. Externally audited.",
+          "For voucher and special-case flows, the difficulty wasn't generic form scaffolding but the nested logic inside it. One checkbox could trigger another upload, another address variant, or another required field. I mapped FAQ content into inline guidance, tightened ARIA relationships, and fixed conditional validation so child tooltips and wrapper error states stayed visible when forms branched. That work sat across frontend, backend, and the systems behind them — plus the people operating them.",
       },
       { type: "label", content: "Wo-Mo-Fonds AI Chatbot" },
       {
@@ -513,6 +513,11 @@ export const CLIENT_REALMS: ClientRealm[] = [
             caption: "Feedback UI",
           },
         ],
+      },
+      {
+        type: "text",
+        content:
+          "The AI assistant extends that same service logic into chat. Built on Cohere's agentic RAG, it answers questions in up to fifteen languages, uses curated sources instead of improvising, and keeps privacy constraints explicit from the start. I worked on the behavior as much as the output: language switching that stays consistent, follow-up suggestions that match the actual conversation, and content that speaks to union members and representatives rather than to developers. The point was not to bolt AI onto the platform, but to make the whole system easier to understand.",
       },
     ],
     retrospectivePath: "/client-retrospectives/wo-mo-fonds.md",
