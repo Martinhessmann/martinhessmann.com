@@ -12,13 +12,13 @@ const logosDir = path.join(repoRoot, 'public/images/projects/figma-curated-tagge
 const outputDir = path.join(repoRoot, 'data/generated')
 const outputFile = path.join(outputDir, 'client-logo-metrics.ts')
 
-const TILE_WIDTH = 184
-const TILE_HEIGHT = 64
+const TILE_WIDTH = 196
+const TILE_HEIGHT = 68
 const BASE_BOX_WIDTH = 150
-const BASE_BOX_HEIGHT = 48
+const BASE_BOX_HEIGHT = 50
 const RASTER_SCALE = 10
 const MIN_SCALE = 0.78
-const MAX_SCALE = 1.22
+const MAX_SCALE = 1.28
 const ALPHA_THRESHOLD = 10
 
 function extractViewBox(svg) {
@@ -149,9 +149,9 @@ async function main() {
     measurements.map((measurement) => {
       const aspect = measurement.baseWidth / measurement.baseHeight
       const rawScale = Math.sqrt(targetVisualWeight / measurement.visualWeight)
-      const compactBoost = clamp((3.2 - aspect) / 2.2, 0, 1) * 0.12
-      const widePenalty = clamp((aspect - 3.4) / 2.6, 0, 1) * 0.08
-      const ultraWideBoost = clamp((aspect - 9) / 10, 0, 1) * 0.12
+      const compactBoost = clamp((3.4 - aspect) / 2.4, 0, 1) * 0.16
+      const widePenalty = clamp((aspect - 3.15) / 1.85, 0, 1) * 0.16
+      const ultraWideBoost = clamp((aspect - 7.5) / 11, 0, 1) * 0.2
       const adjustedScale = rawScale * (1 + compactBoost - widePenalty + ultraWideBoost)
       const maxScaleByTile = Math.min(
         TILE_WIDTH / measurement.baseWidth,
