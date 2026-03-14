@@ -1,6 +1,5 @@
 'use client'
 
-import type { ReactNode } from 'react'
 import type { ClientRealm, Platform, StoryBlock } from '@/data/clients'
 
 interface ClientDetailContentProps {
@@ -77,6 +76,15 @@ function flattenVisuals(visuals: ProjectSection['visuals']): { src: string; alt:
   return output
 }
 
+const EYEBROW_CLASS = 'text-[12px] font-medium uppercase tracking-[0.18em]'
+const META_CLASS = 'text-[14px] leading-[1.55]'
+const BODY_CLASS = 'text-[16px] leading-[1.72]'
+const INK_STRONG = 'var(--portfolio-ink-0)'
+const INK_MUTED = 'var(--portfolio-ink-1)'
+const SAND_FRAME = 'var(--portfolio-sand-1)'
+const SAND_BORDER = 'var(--portfolio-sand-3)'
+const PAPER_SURFACE = '#ffffff'
+
 function ImageRow({
   slides,
   className = '',
@@ -94,8 +102,14 @@ function ImageRow({
         <div className="flex gap-4" style={{ minWidth: 'min-content' }}>
           {slides.map((slide, index) => (
             <div key={index} className="w-[78vw] max-w-[760px] shrink-0">
-              <div className="rounded-[28px] border border-[#d8c5b3] bg-[#ead9ca] p-4 shadow-[0_18px_40px_rgba(109,77,49,0.14)]">
-                <div className="flex min-h-[260px] items-center justify-center rounded-[22px] bg-white p-4 sm:min-h-[340px] lg:min-h-[420px]">
+              <div
+                className="rounded-[28px] border p-4"
+                style={{ borderColor: SAND_BORDER, backgroundColor: SAND_FRAME }}
+              >
+                <div
+                  className="flex min-h-[260px] items-center justify-center rounded-[22px] border p-4 sm:min-h-[340px] lg:min-h-[420px]"
+                  style={{ backgroundColor: PAPER_SURFACE, borderColor: 'rgba(212, 193, 169, 0.34)' }}
+                >
                   <img
                     src={slide.src}
                     alt={slide.alt}
@@ -107,7 +121,7 @@ function ImageRow({
                   />
                 </div>
                 {slide.caption && (
-                  <span className="mt-3 block text-[14px] leading-[1.5] text-gray-950/45">
+                  <span className={`mt-3 block ${META_CLASS}`} style={{ color: INK_MUTED }}>
                     {slide.caption}
                   </span>
                 )}
@@ -120,17 +134,18 @@ function ImageRow({
   )
 }
 
-function PlatformLink({ platform }: { platform: Platform }) {
+function PlatformLink({ platform, showTitle = true }: { platform: Platform; showTitle?: boolean }) {
   return (
     <div className="space-y-1.5">
       <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
-        <span className="font-semibold text-gray-950">{platform.title}</span>
+        {showTitle && <span className="font-semibold" style={{ color: INK_STRONG }}>{platform.title}</span>}
         {platform.url && (
           <a
             href={platform.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-[16px] text-gray-500 underline decoration-gray-300 underline-offset-2 hover:text-gray-700 hover:decoration-gray-500"
+            className={`inline-flex items-center gap-1 ${META_CLASS} underline decoration-[#d4c1a9] underline-offset-2 hover:decoration-[#8f877b]`}
+            style={{ color: INK_MUTED }}
           >
             <span className="max-w-[220px] truncate">{platform.url.replace(/^https?:\/\//, '')}</span>
             <svg className="h-4 w-4 shrink-0" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
@@ -139,11 +154,6 @@ function PlatformLink({ platform }: { platform: Platform }) {
           </a>
         )}
       </div>
-      {platform.claim && (
-        <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-gray-500">
-          {platform.claim}
-        </p>
-      )}
     </div>
   )
 }
@@ -157,72 +167,50 @@ function ProjectSectionBlock({
 }) {
   const slides = flattenVisuals(section.visuals)
   const primaryPlatform = platforms[0]
+  const additionalPlatforms = platforms.slice(1)
+  const primaryMetaTitle = primaryPlatform && primaryPlatform.title !== section.title ? primaryPlatform.title : null
 
   return (
     <div className="mx-auto max-w-5xl px-6 lg:px-12">
       <div className="grid gap-8 pb-10 lg:grid-cols-2 lg:gap-16 lg:pb-14">
-        <div>
+        <div className="space-y-4">
           {primaryPlatform?.claim && (
-            <p className="mb-3 text-[12px] font-medium uppercase tracking-[0.18em] text-gray-500">
+            <p className={EYEBROW_CLASS} style={{ color: INK_MUTED }}>
               {primaryPlatform.claim}
             </p>
           )}
-          <h3 className="font-hedvig text-[clamp(22px,2.5vw,28px)] leading-[1.3] text-gray-950">
+          <h3 className="font-hedvig text-[clamp(24px,2.7vw,30px)] leading-[1.22]" style={{ color: INK_STRONG }}>
             {section.title}
           </h3>
-          {platforms.length > 0 && (
-            <ul className="mt-4 space-y-4">
-              {platforms.map((platform, index) => (
+          {(primaryMetaTitle || primaryPlatform?.url) && (
+            <div className="space-y-1">
+              {primaryMetaTitle && (
+                <p className="font-medium" style={{ color: INK_STRONG }}>
+                  {primaryMetaTitle}
+                </p>
+              )}
+              {primaryPlatform?.url && <PlatformLink platform={primaryPlatform} showTitle={false} />}
+            </div>
+          )}
+        </div>
+        <div className="space-y-4 lg:pt-1">
+          <p className={BODY_CLASS} style={{ color: INK_MUTED }}>{section.paragraph}</p>
+          {additionalPlatforms.length > 0 && (
+            <ul className="space-y-3">
+              {additionalPlatforms.map((platform, index) => (
                 <li key={index}>
                   <PlatformLink platform={platform} />
-                  <p className="mt-1 text-[16px] leading-[1.6] text-gray-600">{platform.description}</p>
+                  <p className={META_CLASS} style={{ color: INK_MUTED }}>
+                    {platform.description}
+                  </p>
                 </li>
               ))}
             </ul>
           )}
         </div>
-        <p className="text-[16px] leading-[1.75] text-gray-600 lg:pt-1">{section.paragraph}</p>
       </div>
       {slides.length > 0 && <ImageRow slides={slides} className="mt-6" />}
     </div>
-  )
-}
-
-const TOOL_LOGOS: Record<string, string> = {
-  WordPress: 'wordpress.png',
-  Azure: 'azure.png',
-  Algolia: 'algolia.png',
-  Sentry: 'sentry.png',
-  TYPO3: 'typo3.png',
-  Mapbox: 'mapbox.png',
-  Vercel: 'vercel.png',
-  Mailchimp: 'mailchimp.png',
-  GitLab: 'gitlab.png',
-  Sanity: 'sanity.png',
-  Cloudflare: 'cloudflare.png',
-}
-const TOOLS_BASE = '/images/projects/figma-curated-tagged/tools'
-
-function getToolLogo(name: string): string | null {
-  return TOOL_LOGOS[name] ? `${TOOLS_BASE}/${TOOL_LOGOS[name]}` : null
-}
-
-function highlightToolsInText(text: string, tools: string[]): ReactNode {
-  if (!tools?.length) return text
-  const sorted = [...tools].sort((a, b) => b.length - a.length)
-  const escaped = sorted.map((tool) => tool.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
-  const pattern = new RegExp(`(${escaped.join('|')})`, 'g')
-  const segments = text.split(pattern)
-  const toolSet = new Set(tools)
-
-  return segments.map((segment, index) =>
-    toolSet.has(segment) ? (
-      <span key={index} className="inline-flex items-center rounded-full bg-gray-100 px-2 py-0.5 text-[16px] text-gray-700">
-        {segment}
-      </span>
-    ) : (
-      segment
-    )
   )
 }
 
@@ -234,10 +222,10 @@ export function ClientDetailContent({ realm, standalone }: ClientDetailContentPr
   const hasTools = Boolean(sidebar?.tools?.length)
 
   return (
-    <div className={`font-inter tracking-normal text-gray-900 ${standalone ? 'min-h-screen bg-warm' : ''}`}>
+    <div className={`font-inter tracking-normal ${standalone ? 'min-h-screen bg-warm' : ''}`} style={{ color: INK_STRONG }}>
       {standalone && (
         <div className="mx-auto max-w-5xl px-6 pt-8 lg:px-12">
-          <a href="/" className="inline-flex items-center gap-2 text-[16px] text-gray-600 hover:text-gray-950">
+          <a href="/" className={`inline-flex items-center gap-2 ${META_CLASS} hover:text-[#23211e]`} style={{ color: INK_MUTED }}>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path d="M12 8H4M4 8l4 4M4 8l4-4" />
             </svg>
@@ -251,24 +239,24 @@ export function ClientDetailContent({ realm, standalone }: ClientDetailContentPr
           {realm.logo ? (
             <img src={realm.logo} alt={realm.displayName} className="h-6 w-auto object-contain opacity-50" />
           ) : (
-            <p className="text-[16px] text-gray-950/40">{realm.displayName}</p>
+            <p className={META_CLASS} style={{ color: INK_MUTED }}>{realm.displayName}</p>
           )}
         </div>
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-16">
           <div>
-            <p className="mb-4 text-[12px] font-medium uppercase tracking-[0.2em] text-gray-500">
+            <p className={`mb-4 ${EYEBROW_CLASS}`} style={{ color: INK_MUTED }}>
               {realm.displayName} · {realm.accountLine}
             </p>
-            <h2 id={`client-${realm.id}-title`} className="font-hedvig text-[clamp(28px,3.5vw,38px)] leading-[1.3] text-gray-950">
+            <h2 id={`client-${realm.id}-title`} className="font-hedvig text-[clamp(30px,3.8vw,40px)] leading-[1.16]" style={{ color: INK_STRONG }}>
               {realm.hook}
             </h2>
           </div>
-          <div className="space-y-5 text-[16px] leading-[1.75] text-gray-600 lg:pt-2">
+          <div className={`space-y-5 ${BODY_CLASS} lg:pt-2`} style={{ color: INK_MUTED }}>
             <p>{realm.keyMoment}</p>
             {sidebar?.openingNarrative && <p>{sidebar.openingNarrative}</p>}
-            <div className="border-t border-gray-200 pt-4">
-              <p className="text-[12px] font-medium uppercase tracking-[0.2em] text-gray-500">Role</p>
-              <p className="mt-3 text-[16px] leading-[1.75] text-gray-700">{realm.roleSummary}</p>
+            <div className="border-t pt-4" style={{ borderColor: 'rgba(212, 193, 169, 0.55)' }}>
+              <p className={EYEBROW_CLASS} style={{ color: INK_MUTED }}>Role</p>
+              <p className={`mt-3 ${BODY_CLASS}`} style={{ color: INK_STRONG }}>{realm.roleSummary}</p>
             </div>
           </div>
         </div>
@@ -290,7 +278,7 @@ export function ClientDetailContent({ realm, standalone }: ClientDetailContentPr
               {unassigned.map((platform, index) => (
                 <li key={index}>
                   <PlatformLink platform={platform} />
-                  <p className="mt-1 text-[16px] leading-[1.6] text-gray-600">{platform.description}</p>
+                  <p className={`mt-1 ${BODY_CLASS}`} style={{ color: INK_MUTED }}>{platform.description}</p>
                 </li>
               ))}
             </ul>
@@ -306,7 +294,7 @@ export function ClientDetailContent({ realm, standalone }: ClientDetailContentPr
               {realm.story
                 .filter((block): block is Extract<StoryBlock, { type: 'text' }> => block.type === 'text')
                 .map((block, index) => (
-                  <p key={index} className="text-[16px] leading-[1.75] text-gray-600">
+                  <p key={index} className={BODY_CLASS} style={{ color: INK_MUTED }}>
                     {block.content}
                   </p>
                 ))}
@@ -326,43 +314,32 @@ export function ClientDetailContent({ realm, standalone }: ClientDetailContentPr
 
       {(hasDeliverables || hasTools) && (
         <div className={`mx-auto max-w-5xl px-6 pb-16 lg:px-12 ${SECTION_SPACING}`}>
-          <div className="rounded-[28px] border border-[#dfd3c8] bg-white px-6 py-12 lg:px-10 lg:py-16">
+          <div
+            className="rounded-[28px] border px-6 py-12 lg:px-10 lg:py-16"
+            style={{ borderColor: SAND_BORDER, backgroundColor: PAPER_SURFACE }}
+          >
             {hasDeliverables && (
               <>
                 <div className="mb-10 grid gap-6 lg:grid-cols-2 lg:gap-12">
-                  <h3 className="font-hedvig text-[clamp(24px,2.5vw,32px)] leading-[1.3] text-gray-950">
+                  <h3 className="font-hedvig text-[clamp(28px,3vw,36px)] leading-[1.16]" style={{ color: INK_STRONG }}>
                     {deliverables.heading}
                   </h3>
                   <div className="lg:pt-2">
-                    <p className="text-[16px] leading-[1.7] text-gray-600">
-                      {highlightToolsInText(deliverables.subheading, sidebar?.tools ?? [])}
+                    <p className={BODY_CLASS} style={{ color: INK_MUTED }}>
+                      {deliverables.subheading}
                     </p>
                     {hasTools && (
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        {sidebar.tools.map((tool) => {
-                          const logo = getToolLogo(tool)
-                          return (
-                            <span key={tool} className="inline-flex items-center gap-2 rounded-full bg-gray-100 px-3 py-1.5 text-[16px] text-gray-700">
-                              {logo ? (
-                                <img src={logo} alt="" className="h-4 w-4 object-contain opacity-70" aria-hidden />
-                              ) : (
-                                <span className="h-4 w-4 rounded-full bg-gray-300" aria-hidden />
-                              )}
-                              {tool}
-                            </span>
-                          )
-                        })}
-                      </div>
+                      <p className={`mt-4 ${META_CLASS}`} style={{ color: INK_MUTED }}>
+                        Tooling: {sidebar.tools.join(' · ')}
+                      </p>
                     )}
                   </div>
                 </div>
                 <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
                   {deliverables.items.map((item) => (
                     <div key={item.title}>
-                      <h4 className="mb-2 text-[16px] font-medium leading-[1.4] text-gray-950">{item.title}</h4>
-                      <p className="text-[16px] leading-[1.6] text-gray-600">
-                        {highlightToolsInText(item.description, sidebar?.tools ?? [])}
-                      </p>
+                      <h4 className="mb-2 text-[16px] font-medium leading-[1.45]" style={{ color: INK_STRONG }}>{item.title}</h4>
+                      <p className={BODY_CLASS} style={{ color: INK_MUTED }}>{item.description}</p>
                     </div>
                   ))}
                 </div>
@@ -371,24 +348,10 @@ export function ClientDetailContent({ realm, standalone }: ClientDetailContentPr
 
             {hasTools && !hasDeliverables && (
               <>
-                <h3 className="mb-6 font-hedvig text-[clamp(24px,2.5vw,32px)] leading-[1.3] text-gray-950">
+                <h3 className="mb-6 font-hedvig text-[clamp(28px,3vw,36px)] leading-[1.16]" style={{ color: INK_STRONG }}>
                   What I built it with.
                 </h3>
-                <div className="flex flex-wrap gap-2">
-                  {sidebar.tools.map((tool) => {
-                    const logo = getToolLogo(tool)
-                    return (
-                      <span key={tool} className="inline-flex items-center gap-2 rounded-full bg-gray-100 px-3 py-1.5 text-[16px] text-gray-700">
-                        {logo ? (
-                          <img src={logo} alt="" className="h-4 w-4 object-contain opacity-70" aria-hidden />
-                        ) : (
-                          <span className="h-4 w-4 rounded-full bg-gray-300" aria-hidden />
-                        )}
-                        {tool}
-                      </span>
-                    )
-                  })}
-                </div>
+                <p className={BODY_CLASS} style={{ color: INK_MUTED }}>{sidebar.tools.join(' · ')}</p>
               </>
             )}
           </div>
@@ -397,7 +360,7 @@ export function ClientDetailContent({ realm, standalone }: ClientDetailContentPr
 
       {realm.closing && (
         <div className={`mx-auto max-w-2xl px-6 pb-24 ${SECTION_SPACING}`}>
-          <p className="text-[16px] leading-[1.75] text-gray-600">{realm.closing}</p>
+          <p className={BODY_CLASS} style={{ color: INK_MUTED }}>{realm.closing}</p>
         </div>
       )}
     </div>
