@@ -8,6 +8,7 @@ export interface Platform {
   title: string
   url?: string
   description: string
+  claim?: string
   /** Story section headline this platform belongs under (matches label content). */
   sectionTitle?: string
 }
@@ -26,10 +27,13 @@ export interface Deliverable {
 export interface ClientRealm {
   id: string
   client: string
+  displayName: string
+  accountLine: string
   logo: string
   moodImage: string
   hook: string
   keyMoment: string
+  roleSummary: string
   sidebar: SidebarMeta
   deliverables: {
     heading: string
@@ -51,26 +55,30 @@ export const CLIENT_REALMS: ClientRealm[] = [
   {
     id: "teambank",
     client: "TeamBank / easyCredit",
+    displayName: "TeamBank",
+    accountLine: "Regulated platform ecosystem",
     logo: `${IMG}/clients/teambank.svg`,
-    moodImage: `${IMG}/easycredit/mood-customers-sofa.png`,
+    moodImage: `${IMG_ROOT}/teambank-illlu.png`,
     hook: "Four platforms that finally agreed.",
     keyMoment:
-      "Not one website. An ecosystem of platforms and teams — and the role where brand, content, UI, and technical feasibility had to converge in one person.",
+      "A regulated platform ecosystem where brand, content operations, partner enablement, and delivery quality had to stay aligned over time.",
+    roleSummary:
+      "I held together platform strategy, WordPress architecture, content operations, and design-system continuity across multiple teams, products, and approval layers.",
     sidebar: {
       platforms: [
-        { title: "teambank.de", url: "https://teambank.de", description: "Corporate and HR site for TeamBank, the maker of easyCredit.", sectionTitle: "teambank.de" },
-        { title: "teambank.welt", description: "Internal partner portal for banks in the easyCredit ecosystem.", sectionTitle: "teambank.welt" },
-        { title: "Markenportal", description: "Internal brand hub and asset system with Algolia search and tagging.", sectionTitle: "Markenportal" },
-        { title: "easyCredit B2B portal", url: "https://partner.easycredit.de", description: "B2B payment services portal for partners offering installment and invoice solutions.", sectionTitle: "easyCredit B2B portal" },
+        { title: "teambank.de", url: "https://teambank.de", description: "Corporate and HR site for TeamBank, the maker of easyCredit.", claim: "The corporate platform that made governance usable.", sectionTitle: "teambank.de" },
+        { title: "teambank.welt", description: "Internal partner portal for banks in the easyCredit ecosystem.", claim: "A partner portal built for real operations, not deckware.", sectionTitle: "teambank.welt" },
+        { title: "Markenportal", description: "Internal brand hub and asset system with Algolia search and tagging.", claim: "A brand portal people could actually find things in.", sectionTitle: "Markenportal" },
+        { title: "easyCredit B2B portal", url: "https://partner.easycredit.de", description: "B2B payment services portal for partners offering installment and invoice solutions.", claim: "BNPL product logic translated into a decision tool.", sectionTitle: "easyCredit B2B portal" },
       ],
       tools: ["WordPress", "ACF Pro", "PHP", "SCSS", "Azure", "Docker", "Algolia", "Sentry", "Composer"],
       openingNarrative:
-        "I wasn't the brand lead — there was a dedicated brand designer for that. I sat with the people who would actually use the system: not the loudest in the room, but the ones who had to operate it. My job was often about having the right conversations in the right order — knowing when to pull in the head of development, when to push back on a stakeholder, and how to get teams out of rigid corporate processes and back into motion. On easyCredit Ratenkauf I worked directly with the Head of Product, co-leading design and development management so product, partner experience, and developer experience didn't drift apart.",
+        "This was not a page-design assignment. It was a continuity role inside a regulated WordPress ecosystem. I worked across brand, product, content, and engineering to keep shared primitives stable while enabling new modules, search, partner tooling, and operational change without forcing a rewrite.",
     },
     deliverables: {
-      heading: "What I held together across all four.",
+      heading: "What kept the system coherent.",
       subheading:
-        "Not one big rewrite. Additive changes, shared patterns, and the discipline to open every blackbox I didn't understand.",
+        "Shared patterns, additive delivery, and technical decisions teams could actually operate over time.",
       items: [
         {
           title: "Brand-to-UI translation",
@@ -105,7 +113,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       ],
     },
     closing:
-      "I became someone who isn't afraid to take responsibility across disciplines — going where the complexity is, pulling knowledge from specialists, making it usable for teams, and forming it into a system that stays consistent, maintainable, and honestly operable across multiple platforms.",
+      "The result was not one redesign story. It was four platforms that stayed governable, maintainable, and usable while teams, priorities, and products kept changing.",
     story: [
       {
         type: "text",
@@ -217,21 +225,27 @@ export const CLIENT_REALMS: ClientRealm[] = [
   {
     id: "gruen-infrasignal",
     client: "Grün Berlin / Infrasignal",
+    displayName: "Grün Berlin",
+    accountLine: "Civic infrastructure platforms",
     logo: `${IMG}/clients/gruen-berlin.svg`,
-    moodImage: `${IMG}/gruen-berlin/mood.png`,
+    moodImage: `${IMG_ROOT}/gruenberlin-illu.png`,
     hook: "From scattered logos to one file change.",
     keyMoment:
-      "Everything technically worked — until it didn't. Duplicated logo assets, brittle map links, opaque accessibility status, and repos whose branching history made even small changes feel risky.",
+      "Public-facing content and operator-facing tooling both needed to stay reliable, accessible, and easier to maintain under real operational constraints.",
+    roleSummary:
+      "I translated rebranding, accessibility, operational flows, and frontend implementation into a maintainable civic platform spanning public information and service operations.",
     sidebar: {
       platforms: [
-        { title: "Grün Berlin", url: "https://gruen-berlin.de", description: "Civic portal for sustainable green and blue infrastructure in Berlin.", sectionTitle: "Grün Berlin" },
-        { title: "Infrasignal", url: "https://infrasignal.de", description: "Traffic light management spin-off for planning and operating 2,100+ signals.", sectionTitle: "Infrasignal" },
+        { title: "Grün Berlin", url: "https://gruen-berlin.de", description: "Civic portal for sustainable green and blue infrastructure in Berlin.", claim: "A rebrand turned into a durable content system.", sectionTitle: "Grün Berlin" },
+        { title: "Infrasignal", url: "https://infrasignal.de", description: "Traffic light management spin-off for planning and operating 2,100+ signals.", claim: "Traffic signal issues routed with operational precision.", sectionTitle: "Infrasignal" },
       ],
       tools: ["TYPO3", "Fluid", "Handlebars", "Mapbox", "GeoJSON", "Fuse.js", "Mailchimp", "GitLab"],
+      openingNarrative:
+        "The work was less about novelty than durability. I treated typography, logos, accessibility, map behavior, and publishing workflows as one operational system so public users and internal teams could both rely on it.",
     },
     deliverables: {
-      heading: "What held together.",
-      subheading: "One master SVG per brand. One documented URL contract. One shared backlog.",
+      heading: "What made it durable.",
+      subheading: "One master SVG per brand, one documented contract for the map flow, and one backlog teams could act on.",
       items: [
         { title: "Logo consolidation", description: "One file per project. currentColor-driven. Collapsed SVGs scattered through TYPO3, Fluid partials, and Handlebars templates into a single source of truth." },
         { title: "Accessibility backlog", description: "42 audit issues parsed, deduplicated, sorted into Easy, Medium, Hard. TYPO3 templates updated so every header, footer, and overlay stays reachable." },
@@ -239,7 +253,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
         { title: "Mail-templates cleanup", description: "Mailchimp and TYPO3 Mail templates. Renamed master to main, merged shipped branches, aligned GitLab default." },
       ],
     },
-    closing: "The result isn't a flashy app. It's an ecosystem of civic tools that are easier to understand, easier to change, and far less likely to fail when citizens need them most.",
+    closing: "The outcome is a civic platform that became easier to understand, easier to change, and less likely to fail when citizens or service teams depend on it.",
     story: [
       {
         type: "text",
@@ -321,28 +335,34 @@ export const CLIENT_REALMS: ClientRealm[] = [
   {
     id: "open-wonder",
     client: "Open Wonder / AURA",
+    displayName: "Open Wonder",
+    accountLine: "AI brand systems",
     logo: `${IMG}/clients/hartmann.svg`,
     moodImage: `${IMG_ROOT}/openwonder-illlu.png`,
     hook: "AI that respects the brand. Or nothing.",
     keyMoment:
-      "Early drafts were rejected as too technical, too flat, or simply 'cheap and sad.' So we encoded the voice into the system itself — commands, guidelines, concrete examples — so every future output starts from the right place.",
+      "The core problem was not image generation. It was making AI outputs reviewable, on-brand, and operationally usable inside real product and brand constraints.",
+    roleSummary:
+      "I shaped the system where product, brand governance, engineering, and AI operations meet so outputs stay predictable, reviewable, and useful in practice.",
     sidebar: {
       platforms: [
-        { title: "Open Wonder", url: "https://openwonder.com", description: "AI platform for generating on-brand images and marketing assets." },
-        { title: "Hartmann AURA", description: "Internal AI companion for brand-safe assets and review workflows." },
+        { title: "Open Wonder", url: "https://openwonder.com", description: "AI platform for generating on-brand images and marketing assets.", claim: "Brand intelligence turned into an executable system." },
+        { title: "Hartmann AURA", description: "Internal AI companion for brand-safe assets and review workflows.", claim: "Internal AI workflows made governable." },
       ],
       tools: ["Next.js 15", "Supabase", "Prisma", "Sentry", "Vercel", "Cohere", "Sanity", "LoRA", "OpenTelemetry"],
+      openingNarrative:
+        "My role here sits between product strategy and system design. I define how prompts, guardrails, review flows, content operations, and build discipline connect so AI becomes part of a delivery system, not an isolated experiment.",
     },
     deliverables: {
-      heading: "What I shaped.",
-      subheading: "Constraints, reference-style adherence, output schemas. Predictable outputs, reviewable rules.",
+      heading: "What made AI operational.",
+      subheading: "Constraints, reference-style adherence, output schemas, and release workflows teams can actually trust.",
       items: [
         { title: "LLM process definition", description: "Who defines it, how it changes, how much restriction is too much. Cohere and Sanity guardrails so outputs stay on-brand." },
         { title: "Copy guidelines", description: "Release announcements as product surface in Sanity. Modals rewritten to be scannable." },
         { title: "Build and env discipline", description: "Next.js 15, Supabase, Prisma on Vercel. Package-lock on Linux, Sentry hostname detection, OpenTelemetry explicit." },
       ],
     },
-    closing: "AI is welcome, but only if it respects the constraints of brand, reliability, and trust — and only if it makes the humans on the other side faster, clearer, and more confident.",
+    closing: "The value is not AI for its own sake. It is a system that keeps brand quality, product reliability, and human review aligned as the tooling scales.",
     story: [
       {
         type: "text",
@@ -379,31 +399,37 @@ export const CLIENT_REALMS: ClientRealm[] = [
   {
     id: "tertianum-dpf",
     client: "Tertianum / DPF",
+    displayName: "DPF Group",
+    accountLine: "Multi-brand platform continuity",
     logo: "",
     moodImage: `${IMG_ROOT}/tertianum-illu.png`,
     hook: "Six sites. One platform. No big migration.",
     keyMoment:
-      "Every change — security, spam protection, lead capture — had to be copied from one codebase to the next. The answer wasn't one big migration. It was shared patterns and shared documentation.",
+      "A multi-brand portfolio with distinct identities still needed shared delivery logic, reliable lead handling, and a way to roll out change without repeated migrations.",
+    roleSummary:
+      "I acted as the continuity layer across brands, stacks, CRM transitions, and delivery teams, turning cross-portfolio change into shared patterns instead of repeated reinvention.",
     sidebar: {
       platforms: [
-        { title: "DPF Group", url: "https://dpf-investment.de", description: "Corporate site for senior living investor and operator." },
-        { title: "Tertianum", url: "https://tertianum.de", description: "Senior living services and gourmet restaurants." },
-        { title: "RAS Services", url: "https://ras-service.de", description: "Concierge services for home and office support." },
-        { title: "Brasserie Colette", url: "https://brasseriecolette.de", description: "Restaurant website for fine dining in Berlin, Munich, Konstanz." },
-        { title: "Tertianum Premium Residences", url: "https://tertianum-premiumresidences.de", description: "Premium senior residences in urban locations." },
+        { title: "DPF Group", url: "https://dpf-investment.de", description: "Corporate site for senior living investor and operator.", claim: "Investor storytelling aligned with platform operations." },
+        { title: "Tertianum", url: "https://tertianum.de", description: "Senior living services and gourmet restaurants.", claim: "Senior living services on a maintainable system." },
+        { title: "RAS Services", url: "https://ras-service.de", description: "Concierge services for home and office support.", claim: "Concierge services with reliable lead handling." },
+        { title: "Brasserie Colette", url: "https://brasseriecolette.de", description: "Restaurant website for fine dining in Berlin, Munich, Konstanz.", claim: "A restaurant brand delivered without operational drift." },
+        { title: "Tertianum Premium Residences", url: "https://tertianum-premiumresidences.de", description: "Premium senior residences in urban locations.", claim: "Premium residence sites without platform fragmentation." },
       ],
       tools: ["WordPress", "Nuxt", "Prismic", "Cloudflare Workers", "Turnstile", "SendGrid", "Playwright", "Sentry", "Microsoft Dynamics", "Mailchimp"],
+      openingNarrative:
+        "This account required continuity more than spectacle. My job was to define what stays shared, what stays brand-specific, and how technical changes propagate safely across properties with different teams and priorities.",
     },
     deliverables: {
-      heading: "What I held together.",
-      subheading: "Shared patterns. Shared documentation. One playbook, one blueprint.",
+      heading: "What kept the portfolio coherent.",
+      subheading: "Shared patterns, shared documentation, and delivery rules that reduced repeated migration work.",
       items: [
         { title: "Lead storage system", description: "Two-dimensional status in WordPress. Sentry tags for direct event links. Microsoft Dynamics and Mailchimp integration for CRM." },
         { title: "Form validation separation", description: "4xx vs form_error. Cloudflare Turnstile for spam. Noise stopped. Playwright tests fixed." },
         { title: "Consolidated playbook", description: "Five Tertianum/RAS projects — WordPress, Nuxt, Prismic. Cloudflare Worker docs per proxy domain." },
       ],
     },
-    closing: "I became the central contact when it's about the website. Brand, content, technical upkeep — the red thread runs through me.",
+    closing: "The account stayed operable because the website layer became a managed contract surface: lead logic, CRM integration, observability, and documentation moved together instead of drifting apart.",
     story: [
       {
         type: "text",
@@ -440,29 +466,35 @@ export const CLIENT_REALMS: ClientRealm[] = [
   {
     id: "wo-mo-fonds",
     client: "EVG / Wo-Mo-Fonds",
+    displayName: "EVG",
+    accountLine: "Digital benefit services",
     logo: `${IMG}/clients/evg.svg`,
-    moodImage: `${IMG}/evg/train-mood.png`,
+    moodImage: `${IMG_ROOT}/womofonds-illlu.png`,
     hook: "Fifteen languages. Zero hallucinations.",
     keyMoment:
-      "Members trust their union, but face jargon, long forms, and slow support. The first German union chatbot — built so people can ask in their own language and get accurate answers, not generated ones.",
+      "The challenge was not conversion. It was giving union members accurate, understandable access to real benefits while keeping privacy, policy logic, and support operations intact.",
+    roleSummary:
+      "I translated policy, application logic, accessibility, privacy, and AI assistance into a service system members can understand and teams can operate with confidence.",
     sidebar: {
       platforms: [
-        { title: "Wo-Mo-Fonds", url: "https://womofonds.de", description: "Subsidy portal for housing and mobility costs.", sectionTitle: "Wo-Mo-Fonds" },
-        { title: "Dein WoMo", url: "https://dein-womo.de", description: "Platform for internet and tech vouchers via the social fund.", sectionTitle: "Dein WoMo" },
-        { title: "Wo-Mo-Fonds AI Chatbot", url: "https://womofonds.de", description: "AI assistant for eligibility questions and subsidy applications.", sectionTitle: "Wo-Mo-Fonds AI Chatbot" },
+        { title: "Wo-Mo-Fonds", url: "https://womofonds.de", description: "Subsidy portal for housing and mobility costs.", claim: "Subsidy logic turned into a clear member journey.", sectionTitle: "Wo-Mo-Fonds" },
+        { title: "Dein WoMo", url: "https://dein-womo.de", description: "Platform for internet and tech vouchers via the social fund.", claim: "Application flows that stay precise under policy constraints.", sectionTitle: "Dein WoMo" },
+        { title: "Wo-Mo-Fonds AI Chatbot", url: "https://womofonds.de", description: "AI assistant for eligibility questions and subsidy applications.", claim: "A multilingual assistant with guardrails, not guesswork.", sectionTitle: "Wo-Mo-Fonds AI Chatbot" },
       ],
       tools: ["Cohere", "Vercel", "Sentry", "WCAG 2.1 AA", "React", "Node.js"],
+      openingNarrative:
+        "I approached this account as a service system, not a marketing site. The work translates policy into product behavior: who qualifies, what evidence matters, how status gets communicated, where self-service is safe, and where the system should deliberately hand off to humans.",
     },
     deliverables: {
-      heading: "What I built.",
-      subheading: "Subsidy logic as a clear process. An assistant that relieves support without giving up control.",
+      heading: "What made the service reliable.",
+      subheading: "Application logic, multilingual assistance, and accessible flows that reduce support load without giving up control.",
       items: [
         { title: "Application logic", description: "Structured flows in React, inline help, expandable benefit types per year. Node.js backend, Vercel-hosted." },
         { title: "Agentic RAG assistant", description: "Cohere. Fifteen languages. Datenschutz-by-design. Zero hallucinations." },
         { title: "WCAG 2.1 AA forms", description: "Legally precise tooltips, conditional validation that propagates correctly. React, Sentry for errors, Vercel." },
       ],
     },
-    closing: "The platform is built to expand — new benefit types and variants per year. For members, clear. For the team, operable.",
+    closing: "The platform can expand without losing clarity: new benefit types, new variants, and new support needs still fit into a system members can understand and teams can run.",
     story: [
       {
         type: "text",
