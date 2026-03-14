@@ -255,7 +255,20 @@ export default function PortfolioPage() {
 
           <div className="mt-16 grid gap-x-14 gap-y-10 border-t border-white/10 pt-10 lg:grid-cols-2">
             {CLIENT_REALMS.map((realm) => (
-              <article key={realm.id} className="space-y-3">
+              <article
+                key={realm.id}
+                className="cursor-pointer space-y-3 transition-opacity hover:opacity-100"
+                onClick={() => setActiveRealmId(realm.id)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault()
+                    setActiveRealmId(realm.id)
+                  }
+                }}
+                aria-label={`Open case study teaser for ${realm.displayName}`}
+              >
                 <p className="text-[12px] font-medium uppercase tracking-[0.18em] text-white/42">
                   {realm.displayName}
                 </p>
