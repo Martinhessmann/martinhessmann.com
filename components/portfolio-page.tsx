@@ -118,13 +118,16 @@ export default function PortfolioPage() {
   const prefersReducedMotion = useReducedMotion()
 
   const featuredWork = useMemo(() => resume.work?.slice(0, 4) ?? [], [])
-  const awards = useMemo(() => resume.awards?.slice(0, 2) ?? [], [])
   const languages = useMemo(
     () =>
       (resume.languages ?? [])
         .map((entry) => `${entry.language} (${entry.fluency})`)
         .join(' · '),
     []
+  )
+  const footerMeta = useMemo(
+    () => [resume.basics.location?.city, languages].filter(Boolean).join(' · '),
+    [languages]
   )
 
   const handleLogoPanelPointerMove = (event: PointerEvent<HTMLDivElement>) => {
@@ -370,18 +373,18 @@ export default function PortfolioPage() {
       >
         <div className="mx-auto grid max-w-6xl gap-14 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-20">
           <div>
-            <p className="text-[12px] font-medium uppercase tracking-[0.22em]" style={{ color: UI_PINK }}>CV</p>
+            <p className="text-[12px] font-medium uppercase tracking-[0.22em]" style={{ color: UI_PINK }}>Resume</p>
             <h2 className="mt-4 font-hedvig text-[clamp(28px,4vw,44px)] leading-[1.1] text-white">
-              From visual design into systems design, delivery leadership, and AI product strategy.
+              From UX/UI design into systems design, cross-functional delivery, and AI product strategy.
             </h2>
             <div className="mt-6 space-y-5 text-[15px] leading-[1.72] lg:text-[16px]" style={{ color: UI_TEXT_SOFT }}>
+              <p>{resume.basics.summary}</p>
               <p>
-                My background runs from UX/UI design and multi-device product work into design-system
-                governance, cross-functional delivery, and product strategy for AI platforms.
+                Current scope spans product strategy for Open Wonder&apos;s AI platform, cross-functional
+                delivery and design-system leadership at AN®, and the multi-brand UX foundation built
+                across Unit U+2463 and Ape Unit.
               </p>
-              <p>
-                Languages: {languages}. Recent recognition includes {awards.map((award) => award.title).filter(Boolean).join(' and ')}.
-              </p>
+              <p>{footerMeta}</p>
             </div>
           </div>
 
@@ -398,6 +401,16 @@ export default function PortfolioPage() {
                   <p className="text-[14px] font-medium" style={{ color: UI_TEXT_MUTED }}>{formatPeriod(entry.startDate, entry.endDate)}</p>
                 </div>
                 {entry.summary && <p className="mt-4 text-[15px] leading-[1.72]" style={{ color: UI_TEXT_SOFT }}>{entry.summary}</p>}
+                {entry.highlights && entry.highlights.length > 0 && (
+                  <ul className="mt-4 space-y-2 text-[14px] leading-[1.68]" style={{ color: UI_TEXT_SOFT }}>
+                    {entry.highlights.slice(0, 2).map((highlight) => (
+                      <li key={highlight} className="flex items-start gap-3">
+                        <span className="mt-[0.6em] h-1.5 w-1.5 shrink-0 rounded-full" style={{ backgroundColor: UI_PINK }} />
+                        <span>{highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </article>
             ))}
           </div>
@@ -405,38 +418,75 @@ export default function PortfolioPage() {
       </section>
 
       <footer className="px-6 py-12 lg:px-12 lg:py-16">
-        <div className="mx-auto flex max-w-6xl flex-col gap-8 border-t pt-8 lg:flex-row lg:items-end lg:justify-between" style={{ borderColor: UI_BORDER }}>
-          <div className="space-y-2">
-            <p className="font-hedvig text-[20px] text-white">{resume.basics.name}</p>
-            <p className="text-[15px] leading-[1.7]" style={{ color: UI_TEXT_MUTED }}>
-              {resume.basics.label} · {resume.basics.location?.city}
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-x-6 gap-y-3 text-[15px]" style={{ color: UI_TEXT_MUTED }}>
-            <a href={`mailto:${resume.basics.email}`} className="transition-colors hover:text-white">
-              Email
-            </a>
-            <a href="/?view=resume" className="transition-colors hover:text-white">
-              CV
-            </a>
-            <a href="/?preview=print" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-white">
-              PDF
-            </a>
-            <a href={getProfileUrl('LinkedIn')} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-white">
-              LinkedIn
-            </a>
-            <a href={getProfileUrl('GitHub')} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-white">
-              GitHub
-            </a>
-            <a href={getProfileUrl('Instagram')} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-white">
-              Instagram
-            </a>
-            <a href="/impressum" className="transition-colors hover:text-white">
-              Impressum
-            </a>
-            <a href="/datenschutz" className="transition-colors hover:text-white">
-              Datenschutz
-            </a>
+        <div className="mx-auto max-w-6xl border-t pt-8" style={{ borderColor: UI_BORDER }}>
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1.35fr)] lg:gap-16">
+            <div className="space-y-3">
+              <p className="font-hedvig text-[20px] text-white">{resume.basics.name}</p>
+              <p className="max-w-md text-[15px] leading-[1.7]" style={{ color: UI_TEXT_SOFT }}>
+                Systems Designer across product design, engineering, AI, and delivery.
+              </p>
+              <p className="text-[14px] leading-[1.7]" style={{ color: UI_TEXT_MUTED }}>
+                {footerMeta}
+              </p>
+            </div>
+
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+              <div>
+                <p className="text-[11px] font-medium uppercase tracking-[0.2em]" style={{ color: UI_PINK }}>
+                  Contact
+                </p>
+                <div className="mt-3 space-y-2 text-[15px]" style={{ color: UI_TEXT_MUTED }}>
+                  <a href={`mailto:${resume.basics.email}`} className="block transition-colors hover:text-white">
+                    Email
+                  </a>
+                  <a href={getProfileUrl('LinkedIn')} target="_blank" rel="noopener noreferrer" className="block transition-colors hover:text-white">
+                    LinkedIn
+                  </a>
+                </div>
+              </div>
+
+              <div>
+                <p className="text-[11px] font-medium uppercase tracking-[0.2em]" style={{ color: UI_PINK }}>
+                  Resume
+                </p>
+                <div className="mt-3 space-y-2 text-[15px]" style={{ color: UI_TEXT_MUTED }}>
+                  <a href="/?view=resume" className="block transition-colors hover:text-white">
+                    Resume
+                  </a>
+                  <a href="/?preview=print" target="_blank" rel="noopener noreferrer" className="block transition-colors hover:text-white">
+                    PDF
+                  </a>
+                </div>
+              </div>
+
+              <div>
+                <p className="text-[11px] font-medium uppercase tracking-[0.2em]" style={{ color: UI_PINK }}>
+                  Social
+                </p>
+                <div className="mt-3 space-y-2 text-[15px]" style={{ color: UI_TEXT_MUTED }}>
+                  <a href={getProfileUrl('GitHub')} target="_blank" rel="noopener noreferrer" className="block transition-colors hover:text-white">
+                    GitHub
+                  </a>
+                  <a href={getProfileUrl('Instagram')} target="_blank" rel="noopener noreferrer" className="block transition-colors hover:text-white">
+                    Instagram
+                  </a>
+                </div>
+              </div>
+
+              <div>
+                <p className="text-[11px] font-medium uppercase tracking-[0.2em]" style={{ color: UI_PINK }}>
+                  Legal
+                </p>
+                <div className="mt-3 space-y-2 text-[15px]" style={{ color: UI_TEXT_MUTED }}>
+                  <a href="/impressum" className="block transition-colors hover:text-white">
+                    Impressum
+                  </a>
+                  <a href="/datenschutz" className="block transition-colors hover:text-white">
+                    Datenschutz
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </footer>

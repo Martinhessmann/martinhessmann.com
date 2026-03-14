@@ -4,79 +4,79 @@
 
 export const CLIENT_LOGO_METRICS = {
   "deutsche-bahn": {
-    "width": 69.913,
-    "height": 48,
-    "scale": 1.2011,
-    "inkArea": 2128.5344,
-    "visualWeight": 2672.3882
+    "width": 72.8261,
+    "height": 50,
+    "scale": 1.1893,
+    "inkArea": 2310.7487,
+    "visualWeight": 2900.194
   },
   "e-on": {
     "width": 150,
     "height": 42.8573,
-    "scale": 0.8409,
+    "scale": 0.818,
     "inkArea": 3172.5837,
     "visualWeight": 4518.3599
   },
   "easycredit": {
-    "width": 129,
-    "height": 48,
-    "scale": 0.9861,
-    "inkArea": 1971.56,
-    "visualWeight": 3493.9804
+    "width": 134.375,
+    "height": 50,
+    "scale": 0.9645,
+    "inkArea": 2140.2099,
+    "visualWeight": 3792.3885
   },
   "evg": {
-    "width": 123,
-    "height": 48,
-    "scale": 0.9501,
-    "inkArea": 2592.6304,
-    "visualWeight": 3813.399
+    "width": 128.125,
+    "height": 50,
+    "scale": 0.9302,
+    "inkArea": 2813.625,
+    "visualWeight": 4142.0474
   },
   "giz": {
-    "width": 57.6,
-    "height": 48,
-    "scale": 1.22,
-    "inkArea": 929.6207,
-    "visualWeight": 1603.1891
+    "width": 60,
+    "height": 50,
+    "scale": 1.28,
+    "inkArea": 1008.8898,
+    "visualWeight": 1739.7326
   },
   "gruen-berlin": {
     "width": 150,
     "height": 20.7642,
-    "scale": 1.1402,
+    "scale": 1.0411,
     "inkArea": 1404.1634,
     "visualWeight": 2093.0814
   },
   "hartmann": {
-    "width": 111.0588,
-    "height": 48,
-    "scale": 0.9102,
-    "inkArea": 3468.6395,
-    "visualWeight": 4264.8878
+    "width": 115.6863,
+    "height": 50,
+    "scale": 0.8943,
+    "inkArea": 3763.3143,
+    "visualWeight": 4623.7322
   },
   "mobile-de": {
-    "width": 143.3425,
-    "height": 48,
-    "scale": 1.22,
-    "inkArea": 1349.3216,
-    "visualWeight": 2014.4421
+    "width": 149.3151,
+    "height": 50,
+    "scale": 1.2463,
+    "inkArea": 1464.3958,
+    "visualWeight": 2185.6027
   },
   "teambank": {
     "width": 150,
     "height": 37.3183,
-    "scale": 0.9436,
+    "scale": 0.8896,
     "inkArea": 2157.3107,
     "visualWeight": 3474.2126
   },
   "voith": {
     "width": 150,
     "height": 34.4118,
-    "scale": 0.9705,
+    "scale": 0.8954,
     "inkArea": 2107.2983,
     "visualWeight": 3215.0114
   },
   "volkswagen-group": {
     "width": 150,
     "height": 8.1818,
-    "scale": 1.2021,
+    "scale": 1.28,
     "inkArea": 471.3379,
     "visualWeight": 761.4103
   }

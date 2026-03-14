@@ -6,7 +6,7 @@
     "image": "",
     "email": "martin@martinhessmann.com",
     "url": "https://martinhessmann.com",
-    "summary": "I connect brand, product, and technology into systems that make teams autonomous. 10+ years bridging design and engineering — building maintainable platforms, AI-assisted workflows, and design systems at scale. Seeking long-term partnerships where I can drive sustained impact across the full product lifecycle.",
+    "summary": "I work across product design, engineering, and AI systems, translating brand, content, and operational constraints into platforms teams can run and extend. Over the last decade, that path moved from UX/UI and visual design into design systems, cross-functional delivery, and product strategy for AI and multi-platform products.",
     "location": {
       "city": "Berlin",
       "countryCode": "DE"
@@ -572,7 +572,7 @@
         "city": "Berlin",
         "countryCode": "DE"
       },
-      "summary": "Own product strategy for Open Wonder’s AI platform, translating brand constraints and client requirements into system logic for scalable, on-brand image generation.",
+      "summary": "Shape product strategy for Open Wonder’s AI platform, translating brand constraints and client requirements into product priorities, evaluation criteria, and system logic for scalable, on-brand image generation.",
       "profileMix": {
         "segments": [
           { "label": "Strategy", "value": 40 },
@@ -582,8 +582,8 @@
         ]
       },
       "highlights": [
-        "Define brand-system guardrails and evaluation criteria to keep AI outputs consistent across teams",
-        "Partner with product, design, and engineering to translate client needs into roadmap priorities",
+        "Translate client and brand constraints into roadmap priorities, guardrails, and review logic for AI image-generation workflows",
+        "Work across product, design, and engineering to make output quality measurable, reviewable, and usable in real production contexts",
         "Establish feedback loops and documentation that improve adoption and reduce manual review"
       ],
       "tech": ["Product Strategy", "Product Management", "AI Platforms", "Brand Systems"]
@@ -598,7 +598,7 @@
         "city": "Berlin",
         "countryCode": "DE"
       },
-      "summary": "Lead cross-functional squads delivering headless marketing sites and digital products, driving design system strategy, accessibility, and delivery quality across stakeholders.",
+      "summary": "Lead cross-functional squads delivering headless marketing sites and digital products, connecting design-system strategy, accessibility, QA, and AI-assisted workflows across stakeholders.",
       "profileMix": {
         "segments": [
           { "label": "System", "value": 20 },
@@ -608,9 +608,9 @@
         ]
       },
       "highlights": [
-        "Led an 8-person product trio (design, frontend, platform) delivering 15+ headless marketing sites and internal tools",
-        "Built a tokenized design system and coded component library with governance; cut handoff time by 30% and reduced UI regressions",
-        "Standardized delivery and QA workflows (CI/CD, observability, automated smoke tests) to keep MTTR under 2 hours",
+        "Lead cross-functional squads across design, frontend, and platform delivery for headless sites and digital products",
+        "Drive design-system governance, accessibility standards, and release quality across client and internal teams",
+        "Standardize delivery and QA workflows with CI/CD, observability, and smoke tests to keep launches dependable",
         "Aligned brand, marketing, and platform stakeholders on roadmaps, launch criteria, and quality standards"
       ],
       "tech": ["Next.js", "Nuxt.js", "Eleventy", "WordPress", "TYPO3", "Prismic", "Cloudflare", "Vercel", "Hetzner", "GitLab", "GitOps", "CI/CD", "Sentry Automations", "Playwright", "Algolia", "Optimole", "Mapbox", "AI-assisted workflows"]
@@ -625,7 +625,7 @@
         "city": "Berlin",
         "countryCode": "DE"
       },
-      "summary": "Directed UX and visual systems for a 6-brand portfolio, leading discovery, research, and design system governance across product teams.",
+      "summary": "Directed UX, concept development, and visual systems across a six-brand portfolio, connecting discovery, research, and design-system governance across product teams.",
       "profileMix": {
         "segments": [
           { "label": "Design", "value": 40 },
@@ -635,9 +635,9 @@
         ]
       },
       "highlights": [
-        "Built a multi-brand design system in Figma + Storybook adopted across 20+ launches, accelerating delivery by 25%",
-        "Led discovery, interviews, and prototyping to turn complex workflows into clear user journeys",
-        "Defined UX standards and ensured parity between design and production across WordPress/TYPO3/Prismic stacks",
+        "Led discovery, interviews, and prototyping to turn complex workflows into clearer user journeys and reusable interface patterns",
+        "Built multi-brand design-system foundations in Figma and Storybook across launches and product teams",
+        "Defined UX standards and ensured parity between design and production across WordPress, TYPO3, and Prismic stacks",
         "Introduced design reviews, Storybook templates, and handoff rituals to reduce rework and speed launch cycles"
       ],
       "tech": ["Figma", "Storybook", "WordPress", "TYPO3", "Prismic", "Jira", "GitLab", "CI/CD", "Design tokens"]
@@ -652,7 +652,7 @@
         "city": "Berlin",
         "countryCode": "DE"
       },
-      "summary": "Designed end-to-end UX for responsive web apps and campaign sites, translating complex workflows into clear, accessible experiences.",
+      "summary": "Designed end-to-end UX for responsive web apps and campaign sites, shaping information architecture, interaction design, and reusable UI patterns across multi-device products.",
       "profileMix": {
         "segments": [
           { "label": "Design", "value": 55 },
@@ -662,9 +662,9 @@
         ]
       },
       "highlights": [
-        "Owned IA, user flows, visual design, and interactive prototypes across 10+ responsive sites and apps",
+        "Owned IA, user flows, visual design, and interactive prototypes across responsive sites and web apps",
         "Established reusable UI patterns and component-based workflows for multi-device delivery",
-        "Ran moderated usability tests and analytics reviews; improved task success by about 20% on average",
+        "Ran moderated usability tests and analytics reviews to improve clarity and task success",
         "Maintained brand consistency and accessibility standards across launches"
       ],
       "tech": ["Sketch", "Zeplin", "InVision", "HTML/CSS", "JavaScript"]
