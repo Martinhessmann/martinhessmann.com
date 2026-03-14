@@ -120,29 +120,22 @@ function ImageRow({
   )
 }
 
-function PlatformLink({ platform }: { platform: Platform }) {
+function PlatformMeta({ platform }: { platform: Platform }) {
   return (
-    <div className="space-y-1.5">
-      <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
-        <span className="font-semibold text-gray-950">{platform.title}</span>
-        {platform.url && (
-          <a
-            href={platform.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-[16px] text-gray-500 underline decoration-gray-300 underline-offset-2 hover:text-gray-700 hover:decoration-gray-500"
-          >
-            <span className="max-w-[220px] truncate">{platform.url.replace(/^https?:\/\//, '')}</span>
-            <svg className="h-4 w-4 shrink-0" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
-              <path d="M6 3h7v7M9 13H2V6" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </a>
-        )}
-      </div>
-      {platform.claim && (
-        <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-gray-500">
-          {platform.claim}
-        </p>
+    <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+      <span className="font-semibold text-gray-950">{platform.title}</span>
+      {platform.url && (
+        <a
+          href={platform.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1 text-[16px] text-gray-500 underline decoration-gray-300 underline-offset-2 hover:text-gray-700 hover:decoration-gray-500"
+        >
+          <span className="max-w-[220px] truncate">{platform.url.replace(/^https?:\/\//, '')}</span>
+          <svg className="h-4 w-4 shrink-0" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
+            <path d="M6 3h7v7M9 13H2V6" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </a>
       )}
     </div>
   )
@@ -162,23 +155,31 @@ function ProjectSectionBlock({
     <div className="mx-auto max-w-5xl px-6 lg:px-12">
       <div className="grid gap-8 pb-10 lg:grid-cols-2 lg:gap-16 lg:pb-14">
         <div>
-          {primaryPlatform?.claim && (
-            <p className="mb-3 text-[12px] font-medium uppercase tracking-[0.18em] text-gray-500">
-              {primaryPlatform.claim}
-            </p>
-          )}
-          <h3 className="font-hedvig text-[clamp(22px,2.5vw,28px)] leading-[1.3] text-gray-950">
-            {section.title}
-          </h3>
-          {platforms.length > 0 && (
-            <ul className="mt-4 space-y-4">
-              {platforms.map((platform, index) => (
-                <li key={index}>
-                  <PlatformLink platform={platform} />
-                  <p className="mt-1 text-[16px] leading-[1.6] text-gray-600">{platform.description}</p>
-                </li>
-              ))}
-            </ul>
+          {primaryPlatform?.claim ? (
+            <>
+              <h3 className="font-hedvig text-[clamp(22px,2.5vw,28px)] leading-[1.3] text-gray-950">
+                {primaryPlatform.claim}
+              </h3>
+              <div className="mt-4">
+                <PlatformMeta platform={primaryPlatform} />
+              </div>
+            </>
+          ) : (
+            <>
+              <h3 className="font-hedvig text-[clamp(22px,2.5vw,28px)] leading-[1.3] text-gray-950">
+                {section.title}
+              </h3>
+              {platforms.length > 0 && (
+                <ul className="mt-4 space-y-4">
+                  {platforms.map((platform, index) => (
+                    <li key={index}>
+                      <PlatformMeta platform={platform} />
+                      <p className="mt-1 text-[16px] leading-[1.6] text-gray-600">{platform.description}</p>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </>
           )}
         </div>
         <p className="text-[16px] leading-[1.75] text-gray-600 lg:pt-1">{section.paragraph}</p>
@@ -188,23 +189,64 @@ function ProjectSectionBlock({
   )
 }
 
-const TOOL_LOGOS: Record<string, string> = {
-  WordPress: 'wordpress.png',
-  Azure: 'azure.png',
-  Algolia: 'algolia.png',
-  Sentry: 'sentry.png',
-  TYPO3: 'typo3.png',
-  Mapbox: 'mapbox.png',
-  Vercel: 'vercel.png',
-  Mailchimp: 'mailchimp.png',
-  GitLab: 'gitlab.png',
-  Sanity: 'sanity.png',
-  Cloudflare: 'cloudflare.png',
-}
 const TOOLS_BASE = '/images/projects/figma-curated-tagged/tools'
+const EVG_TOOLS_BASE = '/images/projects/figma-curated-tagged/evg'
 
-function getToolLogo(name: string): string | null {
-  return TOOL_LOGOS[name] ? `${TOOLS_BASE}/${TOOL_LOGOS[name]}` : null
+type ToolLogoSpec = {
+  src: string
+  className: string
+}
+
+const TOOL_LOGOS: Record<string, ToolLogoSpec> = {
+  WordPress: { src: `${TOOLS_BASE}/wordpress.png`, className: 'h-4 w-4 object-contain opacity-75' },
+  Azure: { src: `${TOOLS_BASE}/azure.png`, className: 'h-4 w-4 object-contain opacity-75' },
+  Algolia: { src: `${TOOLS_BASE}/algolia.png`, className: 'h-4 w-4 object-contain opacity-75' },
+  Sentry: { src: `${TOOLS_BASE}/sentry.png`, className: 'h-4 w-4 object-contain opacity-75' },
+  TYPO3: { src: `${EVG_TOOLS_BASE}/typo3-logo.png`, className: 'h-[18px] w-auto object-contain opacity-80' },
+  Mapbox: { src: `${TOOLS_BASE}/mapbox.png`, className: 'h-4 w-4 object-contain opacity-75' },
+  Vercel: { src: `${TOOLS_BASE}/vercel.png`, className: 'h-4 w-4 object-contain opacity-75' },
+  Mailchimp: { src: `${TOOLS_BASE}/mailchimp.png`, className: 'h-4 w-4 object-contain opacity-75' },
+  GitLab: { src: `${TOOLS_BASE}/gitlab.png`, className: 'h-4 w-4 object-contain opacity-75' },
+  Sanity: { src: `${TOOLS_BASE}/sanity.png`, className: 'h-4 w-4 object-contain opacity-75' },
+  Cloudflare: { src: `${TOOLS_BASE}/cloudflare.png`, className: 'h-4 w-4 object-contain opacity-75' },
+  Cohere: { src: `${EVG_TOOLS_BASE}/cohere-logo.png`, className: 'h-[20px] w-auto object-contain opacity-80' },
+}
+
+function getToolLogo(name: string): ToolLogoSpec | null {
+  return TOOL_LOGOS[name] ?? null
+}
+
+function ToolChip({
+  tool,
+  variant = 'cluster',
+  logoOnly = false,
+}: {
+  tool: string
+  variant?: 'cluster' | 'inline'
+  logoOnly?: boolean
+}) {
+  if (variant === 'inline') {
+    return (
+      <span className="inline rounded-[999px] align-baseline text-[0.86em] font-medium leading-none text-gray-700 shadow-[0_0_0_0.18rem_rgba(243,244,246,0.98)] ring-1 ring-[rgba(223,211,200,0.5)]">
+        {tool}
+      </span>
+    )
+  }
+
+  const logo = getToolLogo(tool)
+  const isLogoOnly = Boolean(logo && logoOnly)
+
+  return (
+    <span
+      className={`inline-flex items-center rounded-full bg-[#f6f4ef] text-gray-700 ring-1 ring-[#ece3d9] shadow-[0_8px_18px_rgba(17,24,39,0.06)] ${
+        isLogoOnly ? 'px-3 py-2' : 'gap-2 px-3 py-1.5'
+      }`}
+      title={tool}
+    >
+      {logo && <img src={logo.src} alt="" className={logo.className} aria-hidden />}
+      {isLogoOnly ? <span className="sr-only">{tool}</span> : <span className="text-[14px] leading-none">{tool}</span>}
+    </span>
+  )
 }
 
 function highlightToolsInText(text: string, tools: string[]): ReactNode {
@@ -217,9 +259,7 @@ function highlightToolsInText(text: string, tools: string[]): ReactNode {
 
   return segments.map((segment, index) =>
     toolSet.has(segment) ? (
-      <span key={index} className="inline-flex items-center rounded-full bg-gray-100 px-2 py-0.5 text-[16px] text-gray-700">
-        {segment}
-      </span>
+      <ToolChip key={index} tool={segment} variant="inline" />
     ) : (
       segment
     )
@@ -232,6 +272,8 @@ export function ClientDetailContent({ realm, standalone }: ClientDetailContentPr
   const { sidebar, deliverables } = realm
   const hasDeliverables = Boolean(deliverables?.items?.length)
   const hasTools = Boolean(sidebar?.tools?.length)
+  const hasSubheading = Boolean(deliverables?.subheading?.trim())
+  const useLogoOnlyHeaderTools = realm.id === 'wo-mo-fonds' && !hasSubheading
 
   return (
     <div className={`font-inter tracking-normal text-gray-900 ${standalone ? 'min-h-screen bg-warm' : ''}`}>
@@ -268,7 +310,20 @@ export function ClientDetailContent({ realm, standalone }: ClientDetailContentPr
             {sidebar?.openingNarrative && <p>{sidebar.openingNarrative}</p>}
             <div className="border-t border-gray-200 pt-4">
               <p className="text-[12px] font-medium uppercase tracking-[0.2em] text-gray-500">Role</p>
-              <p className="mt-3 text-[16px] leading-[1.75] text-gray-700">{realm.roleSummary}</p>
+              {realm.roleTags.length > 0 ? (
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {realm.roleTags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="inline-flex items-center rounded-full bg-gray-100 px-3 py-1.5 text-[14px] font-medium text-gray-700"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              ) : (
+                <p className="mt-3 text-[16px] leading-[1.75] text-gray-700">{realm.roleSummary}</p>
+              )}
             </div>
           </div>
         </div>
@@ -289,7 +344,7 @@ export function ClientDetailContent({ realm, standalone }: ClientDetailContentPr
             <ul className="space-y-6">
               {unassigned.map((platform, index) => (
                 <li key={index}>
-                  <PlatformLink platform={platform} />
+                  <PlatformMeta platform={platform} />
                   <p className="mt-1 text-[16px] leading-[1.6] text-gray-600">{platform.description}</p>
                 </li>
               ))}
@@ -324,6 +379,12 @@ export function ClientDetailContent({ realm, standalone }: ClientDetailContentPr
         )
       })()}
 
+      {realm.closing && (
+        <div className={`mx-auto max-w-2xl px-6 pb-16 ${SECTION_SPACING}`}>
+          <p className="text-[16px] leading-[1.75] text-gray-600">{realm.closing}</p>
+        </div>
+      )}
+
       {(hasDeliverables || hasTools) && (
         <div className={`mx-auto max-w-5xl px-6 pb-16 lg:px-12 ${SECTION_SPACING}`}>
           <div className="rounded-[28px] border border-[#dfd3c8] bg-white px-6 py-12 lg:px-10 lg:py-16">
@@ -334,24 +395,16 @@ export function ClientDetailContent({ realm, standalone }: ClientDetailContentPr
                     {deliverables.heading}
                   </h3>
                   <div className="lg:pt-2">
-                    <p className="text-[16px] leading-[1.7] text-gray-600">
-                      {highlightToolsInText(deliverables.subheading, sidebar?.tools ?? [])}
-                    </p>
+                    {hasSubheading && (
+                      <p className="text-[16px] leading-[1.7] text-gray-600">
+                        {highlightToolsInText(deliverables.subheading, sidebar?.tools ?? [])}
+                      </p>
+                    )}
                     {hasTools && (
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        {sidebar.tools.map((tool) => {
-                          const logo = getToolLogo(tool)
-                          return (
-                            <span key={tool} className="inline-flex items-center gap-2 rounded-full bg-gray-100 px-3 py-1.5 text-[16px] text-gray-700">
-                              {logo ? (
-                                <img src={logo} alt="" className="h-4 w-4 object-contain opacity-70" aria-hidden />
-                              ) : (
-                                <span className="h-4 w-4 rounded-full bg-gray-300" aria-hidden />
-                              )}
-                              {tool}
-                            </span>
-                          )
-                        })}
+                      <div className={`${hasSubheading ? 'mt-4' : ''} flex flex-wrap gap-2.5`}>
+                        {sidebar.tools.map((tool) => (
+                          <ToolChip key={tool} tool={tool} logoOnly={useLogoOnlyHeaderTools} />
+                        ))}
                       </div>
                     )}
                   </div>
@@ -375,29 +428,13 @@ export function ClientDetailContent({ realm, standalone }: ClientDetailContentPr
                   What I built it with.
                 </h3>
                 <div className="flex flex-wrap gap-2">
-                  {sidebar.tools.map((tool) => {
-                    const logo = getToolLogo(tool)
-                    return (
-                      <span key={tool} className="inline-flex items-center gap-2 rounded-full bg-gray-100 px-3 py-1.5 text-[16px] text-gray-700">
-                        {logo ? (
-                          <img src={logo} alt="" className="h-4 w-4 object-contain opacity-70" aria-hidden />
-                        ) : (
-                          <span className="h-4 w-4 rounded-full bg-gray-300" aria-hidden />
-                        )}
-                        {tool}
-                      </span>
-                    )
-                  })}
+                  {sidebar.tools.map((tool) => (
+                    <ToolChip key={tool} tool={tool} />
+                  ))}
                 </div>
               </>
             )}
           </div>
-        </div>
-      )}
-
-      {realm.closing && (
-        <div className={`mx-auto max-w-2xl px-6 pb-24 ${SECTION_SPACING}`}>
-          <p className="text-[16px] leading-[1.75] text-gray-600">{realm.closing}</p>
         </div>
       )}
     </div>

@@ -34,6 +34,7 @@ export interface ClientRealm {
   hook: string
   keyMoment: string
   roleSummary: string
+  roleTags: string[]
   sidebar: SidebarMeta
   deliverables: {
     heading: string
@@ -64,6 +65,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       "A regulated platform ecosystem where brand, content operations, partner enablement, and delivery quality had to stay aligned over time.",
     roleSummary:
       "I held together platform strategy, WordPress architecture, content operations, and design-system continuity across multiple teams, products, and approval layers.",
+    roleTags: [],
     sidebar: {
       platforms: [
         { title: "teambank.de", url: "https://teambank.de", description: "Corporate and HR site for TeamBank, the maker of easyCredit.", claim: "The corporate platform that made governance usable.", sectionTitle: "teambank.de" },
@@ -234,6 +236,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       "Public-facing content and operator-facing tooling both needed to stay reliable, accessible, and easier to maintain under real operational constraints.",
     roleSummary:
       "I translated rebranding, accessibility, operational flows, and frontend implementation into a maintainable civic platform spanning public information and service operations.",
+    roleTags: [],
     sidebar: {
       platforms: [
         { title: "Grün Berlin", url: "https://gruen-berlin.de", description: "Civic portal for sustainable green and blue infrastructure in Berlin.", claim: "A rebrand turned into a durable content system.", sectionTitle: "Grün Berlin" },
@@ -344,6 +347,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       "The core problem was not image generation. It was making AI outputs reviewable, on-brand, and operationally usable inside real product and brand constraints.",
     roleSummary:
       "I shaped the system where product, brand governance, engineering, and AI operations meet so outputs stay predictable, reviewable, and useful in practice.",
+    roleTags: [],
     sidebar: {
       platforms: [
         { title: "Open Wonder", url: "https://openwonder.com", description: "AI platform for generating on-brand images and marketing assets.", claim: "Brand intelligence turned into an executable system." },
@@ -408,6 +412,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       "A multi-brand portfolio with distinct identities still needed shared delivery logic, reliable lead handling, and a way to roll out change without repeated migrations.",
     roleSummary:
       "I acted as the continuity layer across brands, stacks, CRM transitions, and delivery teams, turning cross-portfolio change into shared patterns instead of repeated reinvention.",
+    roleTags: [],
     sidebar: {
       platforms: [
         { title: "DPF Group", url: "https://dpf-investment.de", description: "Corporate site for senior living investor and operator.", claim: "Investor storytelling aligned with platform operations." },
@@ -467,39 +472,58 @@ export const CLIENT_REALMS: ClientRealm[] = [
     id: "wo-mo-fonds",
     client: "EVG / Wo-Mo-Fonds",
     displayName: "EVG",
-    accountLine: "Digital benefit services",
+    accountLine: "Member benefit platform",
     logo: `${IMG}/clients/evg.svg`,
     moodImage: `${IMG_ROOT}/womofonds-illlu.png`,
-    hook: "Bureaucracy translated into service.",
+    hook: "Union benefits, made understandable.",
     keyMoment:
-      "The subsidy logic worked more like a tax return than a simple web form. The task was to make that system understandable at every step — in the application flow, in status communication, and in multilingual support.",
+      "EVG, the Eisenbahn- und Verkehrsgewerkschaft, supports members through Wo-Mo-Fonds and Dein WoMo — digital services for housing, mobility, internet, and equipment benefits. The challenge was to make those regulated processes understandable without losing legal precision.",
     roleSummary:
-      "I translated policy, application logic, accessibility, privacy, and AI support into a service system members can navigate and teams can operate with confidence.",
+      "I turned policy, application logic, accessibility, and multilingual support into a member-facing service system EVG could actually run.",
+    roleTags: [
+      "Service Design",
+      "Accessibility",
+      "Application Logic",
+      "Content Strategy",
+      "Stakeholder Alignment",
+      "AI UX",
+    ],
     sidebar: {
       platforms: [
-        { title: "Wo-Mo-Fonds", url: "https://womofonds.de", description: "Subsidy portal for housing and mobility costs, applications, and status guidance.", claim: "Subsidy logic turned into a readable member journey.", sectionTitle: "Wo-Mo-Fonds" },
-        { title: "Dein WoMo", url: "https://dein-womo.de", description: "Voucher platform with expandable application flows for internet and equipment support.", claim: "Conditional application logic made usable and accessible.", sectionTitle: "Dein WoMo" },
-        { title: "Wo-Mo-Fonds AI Chatbot", url: "https://womofonds.de", description: "Multilingual assistant for eligibility questions, deadlines, and process guidance.", claim: "A multilingual assistant with guardrails, not guesswork.", sectionTitle: "Wo-Mo-Fonds AI Chatbot" },
+        { title: "Wo-Mo-Fonds", url: "https://womofonds.de", description: "Housing and mobility support platform for EVG members.", claim: "Housing and mobility support for EVG members", sectionTitle: "Wo-Mo-Fonds" },
+        { title: "Dein WoMo", url: "https://dein-womo.de", description: "Internet and equipment voucher flow within the WoMo service family.", claim: "Internet and equipment vouchers for eligible members", sectionTitle: "Dein WoMo" },
+        { title: "Wo-Mo-Fonds AI Chatbot", url: "https://womofonds.de", description: "Multilingual assistant for benefit questions, deadlines, and application guidance.", claim: "Multilingual guidance for benefits, deadlines, and applications", sectionTitle: "Wo-Mo-Fonds AI Chatbot" },
       ],
-      tools: ["Cohere", "Vercel", "Sentry", "WCAG 2.1 AA", "React", "Node.js"],
+      tools: ["TYPO3", "Eleventy (11ty)", "TYPO3 Mail", "Cohere"],
       openingNarrative:
-        "I approached this account as a service system, not a marketing site. The work translates policy into product behavior: who qualifies, what evidence matters, how status gets communicated, where self-service is safe, and where the system should deliberately hand off to humans.",
+        "These are not simple upload forms. Eligibility can behave more like a tax form: conditional evidence, branching questions, deadlines, and policy wording all have to stay correct. I worked across forms, content, status communication, and multilingual guidance so members could use the system without hitting another barrier.",
     },
     deliverables: {
       heading: "What I clarified across the system.",
-      subheading: "Complex subsidy rules, readable status communication, and multilingual support designed as one service instead of three disconnected features.",
+      subheading: "",
       items: [
-        { title: "Accessible application flows", description: "Complex, conditional subsidy logic translated into guided steps, inline help, and error states that stay understandable when forms branch." },
-        { title: "Readable status communication", description: "Replaced a brittle external status page with backend-driven progress updates in plain language, with timing expectations and clear contact paths." },
-        { title: "Multilingual AI support", description: "Cohere-based assistant for questions around eligibility, deadlines, and applications — grounded in curated sources, privacy-conscious, and available in up to fifteen languages." },
+        {
+          title: "Accessibility",
+          description:
+            "Across Wo-Mo-Fonds and Dein WoMo, accessibility meant guided branching, inline help at the moment of uncertainty, and ARIA-linked error states people could recover from inside TYPO3.",
+        },
+        {
+          title: "Privacy",
+          description:
+            "For the Wo-Mo-Fonds AI Chatbot, privacy meant consent, grounded answers, careful handling of personal data before external processing, and clear handoff to humans when automation should stop. Cohere sat inside those boundaries, not outside them.",
+        },
+        {
+          title: "Hybrid-team collaboration",
+          description:
+            "Uncompromised UX depended on coordination across four hybrid teams: EVG, fund operations, external implementation, and AI/service work. I aligned forms, status communication, and follow-up paths across Wo-Mo-Fonds, Dein WoMo, and TYPO3 Mail so the service behaved like one system.",
+        },
       ],
     },
-    closing: "The result is not a flashy AI demo. It is a service system members can actually navigate, and a platform the fund team can maintain and extend without turning every new rule into a new barrier.",
     story: [
       {
         type: "text",
         content:
-          "Housing and mobility support sounds simple until the application behaves more like a tax return. Transport modes, existing discounts, annual costs, professional use, required evidence, and exceptions all change what the user has to do next. I worked on turning that bureaucracy into a process people can actually follow — with clear groupings, readable error states, and help text where uncertainty appears, not in a separate document.",
+          "EVG is the Eisenbahn- und Verkehrsgewerkschaft. Wo-Mo-Fonds is its member benefit platform for housing and mobility support: commuting costs, job tickets, and related subsidies. The work was to make that regulated process understandable, then replace a brittle external status page with backend-driven progress updates in plain language: what already happened, what step is current, how long it can take, and when to contact the fund team.",
       },
       { type: "label", content: "Wo-Mo-Fonds" },
       {
@@ -511,7 +535,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       {
         type: "text",
         content:
-          "The same mindset shaped the surrounding service experience. Instead of redirecting members to a hard-to-maintain external page that displayed an image for status updates, the platform now runs a backend check and explains the current step in plain language: what already happened, where the application stands, how long that stage can take, and when to contact the fund team. Responsive, accessible, text-readable, and far easier to maintain.",
+          "Dein WoMo is the internet and equipment voucher flow within the same service family. Here the hard part was conditional application logic: nested fields, uploads, legal help text, and error states that still had to stay accessible. I mapped FAQ content into inline guidance, tightened ARIA relationships, and kept branching validation readable instead of punitive.",
       },
       { type: "label", content: "Dein WoMo" },
       {
@@ -523,7 +547,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       {
         type: "text",
         content:
-          "For voucher and special-case flows, the difficulty wasn't generic form scaffolding but the nested logic inside it. One checkbox could trigger another upload, another address variant, or another required field. I mapped FAQ content into inline guidance, tightened ARIA relationships, and fixed conditional validation so child tooltips and wrapper error states stayed visible when forms branched. That work sat across frontend, backend, and the systems behind them — plus the people operating them.",
+          "The AI assistant extends the same service into multilingual guidance. Built on Cohere, it helps with benefit questions, deadlines, and applications in up to fifteen languages, using grounded sources instead of guesswork. The goal was not to bolt AI onto the platform, but to make the benefit system easier to understand while keeping privacy and escalation boundaries clear.",
       },
       { type: "label", content: "Wo-Mo-Fonds AI Chatbot" },
       {
@@ -545,11 +569,6 @@ export const CLIENT_REALMS: ClientRealm[] = [
             caption: "Feedback UI",
           },
         ],
-      },
-      {
-        type: "text",
-        content:
-          "The AI assistant extends that same service logic into chat. Built on Cohere's agentic RAG, it answers questions in up to fifteen languages, uses curated sources instead of improvising, and keeps privacy constraints explicit from the start. I worked on the behavior as much as the output: language switching that stays consistent, follow-up suggestions that match the actual conversation, and content that speaks to union members and representatives rather than to developers. The point was not to bolt AI onto the platform, but to make the whole system easier to understand.",
       },
     ],
     retrospectivePath: "/client-retrospectives/wo-mo-fonds.md",
