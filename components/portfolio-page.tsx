@@ -329,14 +329,14 @@ export default function PortfolioPage() {
                 {TRUST_LOGOS.map((logo) => (
                   <span
                     key={logo.name}
-                    className="inline-flex min-h-[112px] items-center justify-center overflow-hidden rounded-[18px] border px-6 py-7"
+                    className="inline-flex min-h-[118px] items-center justify-center overflow-hidden rounded-[18px] border px-6 py-7 sm:min-h-[122px]"
                     style={{
                       backgroundColor: UI_MIDNIGHT,
                       borderColor: 'rgba(161, 161, 250, 0.08)',
                     }}
                     title={logo.name}
                   >
-                    <span className="flex h-[64px] w-[184px] items-center justify-center">
+                    <span className="flex h-[68px] w-[196px] items-center justify-center">
                       <img
                         src={logo.src}
                         alt={logo.name}
