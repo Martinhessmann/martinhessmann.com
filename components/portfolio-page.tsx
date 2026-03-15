@@ -228,7 +228,8 @@ export default function PortfolioPage() {
                     <img
                       src={logo.src}
                       alt={logo.name}
-                      className="max-h-[68px] max-w-[196px] w-auto object-contain brightness-0 invert opacity-80"
+                      className="object-contain brightness-0 invert opacity-80"
+                      style={{ width: logo.width, height: logo.height }}
                     />
                   </span>
                 ))}

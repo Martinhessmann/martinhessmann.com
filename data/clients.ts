@@ -57,21 +57,14 @@ export interface ClientRealm {
   retrospectivePath?: string
 }
 
-export type TrustLogoSize = 'xs' | 'sm' | 'md'
-
 export interface TrustLogo {
   id: string
   name: string
   src: string
-  /** Optional size tier for the logo wall; omit for default. */
-  size?: TrustLogoSize
-}
-
-export const TRUST_LOGO_SIZES: Record<TrustLogoSize | 'default', string> = {
-  xs: 'max-h-[42px] max-w-[110px]',
-  sm: 'max-h-[56px] max-w-[150px]',
-  md: 'max-h-[60px] max-w-[165px]',
-  default: 'max-h-[68px] max-w-[196px]',
+  /** Explicit pixel width for balanced visual weight in the logo wall. */
+  width: number
+  /** Explicit pixel height for balanced visual weight in the logo wall. */
+  height: number
 }
 
 const IMG = "/images/projects/figma-curated-tagged"
@@ -750,19 +743,21 @@ export const CLIENT_REALMS: ClientRealm[] = [
   },
 ]
 
+// All logos sized to ~3600 sq px visual area (sqrt(3600/ratio) for height).
+// VW Group is an 18:1 wordmark — capped at 160px wide to avoid overflow.
 export const TRUST_LOGOS: TrustLogo[] = [
-  { id: 'teambank', name: 'TeamBank', src: `${IMG}/clients/teambank.svg`, size: 'sm' },
-  { id: 'easycredit', name: 'easyCredit', src: `${IMG}/clients/easycredit.svg`, size: 'md' },
-  { id: 'evg', name: 'EVG', src: `${IMG}/clients/evg.svg`, size: 'xs' },
-  { id: 'gruen-berlin', name: 'Grün Berlin', src: `${IMG}/clients/gruen-berlin.svg` },
-  { id: 'hartmann', name: 'Hartmann', src: `${IMG}/clients/hartmann.svg` },
-  { id: 'mobile-de', name: 'mobile.de', src: `${IMG}/clients/mobile-de.svg` },
-  { id: 'deutsche-bahn', name: 'Deutsche Bahn', src: `${IMG}/clients/deutsche-bahn.svg`, size: 'md' },
-  { id: 'e-on', name: 'E.ON', src: `${IMG}/clients/e-on.svg`, size: 'xs' },
-  { id: 'volkswagen-group', name: 'Volkswagen Group', src: `${IMG}/clients/volkswagen-group.svg` },
-  { id: 'voith', name: 'Voith', src: `${IMG}/clients/voith.svg`, size: 'sm' },
-  { id: 'giz', name: 'GIZ', src: `${IMG}/clients/giz.svg` },
-  { id: 'porsche', name: 'Porsche', src: `${IMG}/clients/porsche.svg` },
+  { id: 'teambank',         name: 'TeamBank',         src: `${IMG}/clients/teambank.svg`,         width: 121, height: 30 },
+  { id: 'easycredit',       name: 'easyCredit',       src: `${IMG}/clients/easycredit.svg`,       width: 100, height: 37 },
+  { id: 'evg',              name: 'EVG',              src: `${IMG}/clients/evg.svg`,              width: 97,  height: 38 },
+  { id: 'gruen-berlin',     name: 'Grün Berlin',      src: `${IMG}/clients/gruen-berlin.svg`,     width: 159, height: 22 },
+  { id: 'hartmann',         name: 'Hartmann',         src: `${IMG}/clients/hartmann.svg`,         width: 92,  height: 40 },
+  { id: 'mobile-de',        name: 'mobile.de',        src: `${IMG}/clients/mobile-de.svg`,        width: 105, height: 35 },
+  { id: 'deutsche-bahn',    name: 'Deutsche Bahn',    src: `${IMG}/clients/deutsche-bahn.svg`,    width: 73,  height: 50 },
+  { id: 'e-on',             name: 'E.ON',             src: `${IMG}/clients/e-on.svg`,             width: 112, height: 32 },
+  { id: 'volkswagen-group', name: 'Volkswagen Group', src: `${IMG}/clients/volkswagen-group.svg`, width: 160, height: 14 },
+  { id: 'voith',            name: 'Voith',            src: `${IMG}/clients/voith.svg`,            width: 126, height: 29 },
+  { id: 'giz',              name: 'GIZ',              src: `${IMG}/clients/giz.svg`,              width: 66,  height: 55 },
+  { id: 'porsche',          name: 'Porsche',          src: `${IMG}/clients/porsche.svg`,          width: 119, height: 30 },
 ]
 
 export const DEFAULT_CARD_THEME: CardTheme = {
