@@ -3,12 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "npm run logos:measure && next dev",
-    "build": "npm run logos:measure && next build",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "figma:build-tagged": "node scripts/build-figma-curated-tagged.mjs",
-    "logos:measure": "node scripts/build-client-logo-metrics.mjs"
+    "figma:build-tagged": "node scripts/build-figma-curated-tagged.mjs"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",

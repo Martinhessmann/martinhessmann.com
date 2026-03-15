@@ -1,10 +1,9 @@
 'use client'
 
-import { useMemo, useState, type CSSProperties, type PointerEvent } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import ClientDetailSheet from '@/components/client-detail-sheet'
 import { CLIENT_REALMS } from '@/data/clients'
-import { CLIENT_LOGO_METRICS, type ClientLogoMetricId } from '@/data/generated/client-logo-metrics'
 import resumeData from '@/data/resume.json'
 import type { Resume } from '@/types/resume'
 
@@ -37,7 +36,7 @@ const CARD_BG_COLORS: Record<
     text: 'gray-900',
     tray: '#2F9C61',
     panel: '#2F9C61',
-    panelText: '#FFFFFF',
+    panelText: '#181823',
     label: 'rgba(12,26,18,0.84)',
   },
   'open-wonder': {
@@ -77,18 +76,18 @@ const CARD_LAYOUT = [
   { rotate: -4, translateY: 20 },
 ]
 
-const TRUST_LOGOS: Array<{ id: ClientLogoMetricId; name: string; src: string }> = [
-  { id: 'teambank', name: 'TeamBank', src: '/images/projects/figma-curated-tagged/clients/teambank.svg' },
-  { id: 'easycredit', name: 'easyCredit', src: '/images/projects/figma-curated-tagged/clients/easycredit.svg' },
-  { id: 'evg', name: 'EVG', src: '/images/projects/figma-curated-tagged/clients/evg.svg' },
-  { id: 'gruen-berlin', name: 'Grün Berlin', src: '/images/projects/figma-curated-tagged/clients/gruen-berlin.svg' },
-  { id: 'hartmann', name: 'Hartmann', src: '/images/projects/figma-curated-tagged/clients/hartmann.svg' },
-  { id: 'mobile-de', name: 'mobile.de', src: '/images/projects/figma-curated-tagged/clients/mobile-de.svg' },
-  { id: 'deutsche-bahn', name: 'Deutsche Bahn', src: '/images/projects/figma-curated-tagged/clients/deutsche-bahn.svg' },
-  { id: 'e-on', name: 'E.ON', src: '/images/projects/figma-curated-tagged/clients/e-on.svg' },
-  { id: 'volkswagen-group', name: 'Volkswagen Group', src: '/images/projects/figma-curated-tagged/clients/volkswagen-group.svg' },
-  { id: 'voith', name: 'Voith', src: '/images/projects/figma-curated-tagged/clients/voith.svg' },
-  { id: 'giz', name: 'GIZ', src: '/images/projects/figma-curated-tagged/clients/giz.svg' },
+const TRUST_LOGOS: Array<{ name: string; src: string }> = [
+  { name: 'TeamBank', src: '/images/projects/figma-curated-tagged/clients/teambank.svg' },
+  { name: 'easyCredit', src: '/images/projects/figma-curated-tagged/clients/easycredit.svg' },
+  { name: 'EVG', src: '/images/projects/figma-curated-tagged/clients/evg.svg' },
+  { name: 'Grün Berlin', src: '/images/projects/figma-curated-tagged/clients/gruen-berlin.svg' },
+  { name: 'Hartmann', src: '/images/projects/figma-curated-tagged/clients/hartmann.svg' },
+  { name: 'mobile.de', src: '/images/projects/figma-curated-tagged/clients/mobile-de.svg' },
+  { name: 'Deutsche Bahn', src: '/images/projects/figma-curated-tagged/clients/deutsche-bahn.svg' },
+  { name: 'E.ON', src: '/images/projects/figma-curated-tagged/clients/e-on.svg' },
+  { name: 'Volkswagen Group', src: '/images/projects/figma-curated-tagged/clients/volkswagen-group.svg' },
+  { name: 'Voith', src: '/images/projects/figma-curated-tagged/clients/voith.svg' },
+  { name: 'GIZ', src: '/images/projects/figma-curated-tagged/clients/giz.svg' },
 ]
 
 const UI_BASE = 'var(--portfolio-midnight-950)'
@@ -96,7 +95,6 @@ const UI_MIDNIGHT = 'var(--portfolio-midnight-900)'
 const UI_LILAC = 'var(--portfolio-accent-lilac)'
 const UI_PINK = 'var(--portfolio-accent-pink)'
 const UI_BORDER = 'rgba(161, 161, 250, 0.18)'
-const UI_BORDER_SOFT = 'rgba(250, 187, 249, 0.18)'
 const UI_TEXT_SOFT = 'rgba(255, 255, 255, 0.72)'
 const UI_TEXT_MUTED = 'rgba(255, 255, 255, 0.46)'
 const UI_PANEL = 'rgba(255, 255, 255, 0.035)'
@@ -112,10 +110,26 @@ function getProfileUrl(network: string) {
   return resume.basics.profiles?.find((profile) => profile.network === network)?.url ?? '#'
 }
 
+function useCompactCardLayout() {
+  const [isCompact, setIsCompact] = useState<boolean | undefined>(undefined)
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 1023px)')
+    const onChange = () => setIsCompact(window.innerWidth < 1024)
+    onChange()
+    mediaQuery.addEventListener('change', onChange)
+    return () => mediaQuery.removeEventListener('change', onChange)
+  }, [])
+
+  return isCompact ?? true
+}
+
 export default function PortfolioPage() {
   const [activeRealmId, setActiveRealmId] = useState<string | null>(null)
   const activeRealm = CLIENT_REALMS.find((realm) => realm.id === activeRealmId) ?? null
   const prefersReducedMotion = useReducedMotion()
+  const isCompactCardLayout = useCompactCardLayout()
+  const useCardFanLayout = !prefersReducedMotion && !isCompactCardLayout
 
   const featuredWork = useMemo(() => resume.work?.slice(0, 4) ?? [], [])
   const languages = useMemo(
@@ -129,18 +143,6 @@ export default function PortfolioPage() {
     () => [resume.basics.location?.city, languages].filter(Boolean).join(' · '),
     [languages]
   )
-
-  const handleLogoPanelPointerMove = (event: PointerEvent<HTMLDivElement>) => {
-    if (prefersReducedMotion) return
-    const rect = event.currentTarget.getBoundingClientRect()
-    event.currentTarget.style.setProperty('--logo-glow-x', `${event.clientX - rect.left}px`)
-    event.currentTarget.style.setProperty('--logo-glow-y', `${event.clientY - rect.top}px`)
-    event.currentTarget.style.setProperty('--logo-glow-opacity', '1')
-  }
-
-  const handleLogoPanelPointerLeave = (event: PointerEvent<HTMLDivElement>) => {
-    event.currentTarget.style.setProperty('--logo-glow-opacity', '0')
-  }
 
   return (
     <main className="min-h-screen font-inter tracking-normal text-white" style={{ backgroundColor: UI_BASE }}>
@@ -201,7 +203,7 @@ export default function PortfolioPage() {
             Selected accounts
           </p>
 
-          <div className="mt-7 flex min-w-max items-end justify-center gap-3 overflow-x-auto px-2 pb-4 pt-4 sm:gap-4 lg:min-w-0 lg:overflow-visible lg:px-0">
+          <div className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:flex lg:items-end lg:justify-center lg:gap-4 lg:pb-4 lg:pt-4">
             {CLIENT_REALMS.map((realm, index) => {
               const layout = CARD_LAYOUT[index] ?? { rotate: 0, translateY: 0 }
               const colors = CARD_BG_COLORS[realm.id] ?? {
@@ -217,44 +219,31 @@ export default function PortfolioPage() {
               return (
                 <motion.div
                   key={realm.id}
-                  className="relative shrink-0 will-change-transform hover:z-30 focus-within:z-30"
+                  className="relative w-full min-w-0 will-change-transform hover:z-30 focus-within:z-30 lg:w-auto lg:shrink-0"
                   initial={
-                    prefersReducedMotion
-                      ? false
-                      : { opacity: 0, y: layout.translateY + 36, rotate: layout.rotate * 1.6, scale: 0.96 }
+                    useCardFanLayout
+                      ? { opacity: 0, y: layout.translateY + 36, rotate: layout.rotate * 1.6, scale: 0.96 }
+                      : { opacity: 0, y: 18, rotate: 0, scale: 0.985 }
                   }
                   animate={{
                     opacity: 1,
-                    y: prefersReducedMotion ? 0 : layout.translateY,
-                    rotate: prefersReducedMotion ? 0 : layout.rotate,
+                    y: useCardFanLayout ? layout.translateY : 0,
+                    rotate: useCardFanLayout ? layout.rotate : 0,
                     scale: 1,
                   }}
-                  whileHover={
-                    prefersReducedMotion
-                      ? undefined
-                      : { y: layout.translateY - 22, rotate: layout.rotate * 0.18, scale: 1.035 }
-                  }
-                  whileFocus={
-                    prefersReducedMotion
-                      ? undefined
-                      : { y: layout.translateY - 22, rotate: layout.rotate * 0.18, scale: 1.035 }
-                  }
+                  whileHover={useCardFanLayout ? { y: layout.translateY - 22, rotate: layout.rotate * 0.18, scale: 1.035 } : undefined}
+                  whileFocus={useCardFanLayout ? { y: layout.translateY - 22, rotate: layout.rotate * 0.18, scale: 1.035 } : undefined}
                   transition={{
                     opacity: { duration: 0.22, ease: [0.22, 1, 0.36, 1], delay: prefersReducedMotion ? 0 : index * 0.03 },
                     y: { type: 'spring', stiffness: 380, damping: 28, mass: 0.55, delay: prefersReducedMotion ? 0 : index * 0.03 },
                     rotate: { type: 'spring', stiffness: 360, damping: 30, mass: 0.55, delay: prefersReducedMotion ? 0 : index * 0.03 },
                     scale: { type: 'spring', stiffness: 360, damping: 28, mass: 0.55, delay: prefersReducedMotion ? 0 : index * 0.03 },
                   }}
-                  style={{ zIndex: CLIENT_REALMS.length - index }}
+                  style={{ zIndex: useCardFanLayout ? CLIENT_REALMS.length - index : 'auto' }}
                 >
-                  <div
-                    className="pointer-events-none absolute inset-x-2 bottom-[-10px] top-4 rounded-[24px] opacity-85"
-                    style={{ backgroundColor: colors.tray }}
-                    aria-hidden="true"
-                  />
                   <article
-                    className="relative flex h-[272px] w-[194px] cursor-pointer flex-col overflow-hidden rounded-[24px] border border-black/10 p-3 sm:h-[304px] sm:w-[220px] sm:p-4"
-                    style={{ backgroundColor: colors.bg, boxShadow: 'var(--portfolio-shadow-object)' }}
+                    className="relative flex h-fit w-full cursor-pointer flex-col overflow-hidden rounded-[var(--surface-radius-lg)] border p-3 sm:p-4 lg:w-[220px]"
+                    style={{ backgroundColor: colors.bg, borderColor: 'var(--surface-border-dark)' }}
                     onClick={() => setActiveRealmId(realm.id)}
                     role="button"
                     tabIndex={0}
@@ -272,25 +261,26 @@ export default function PortfolioPage() {
                     >
                       {realm.displayName}
                     </p>
-                    <div
-                      className="mt-3 flex min-h-0 flex-1 items-center justify-center overflow-hidden rounded-[18px] border border-black/10 p-3"
-                      style={{ backgroundColor: colors.surface }}
-                    >
+                    <div className="mt-2 flex items-center justify-center overflow-hidden">
                       {realm.moodImage ? (
-                        <img src={realm.moodImage} alt="" className="h-full w-full object-contain" />
+                        <img
+                          src={realm.moodImage}
+                          alt=""
+                          className="max-h-[160px] w-full rounded-[var(--surface-radius-sm)] object-contain object-center sm:max-h-[180px]"
+                        />
                       ) : (
-                        <div className="h-full w-full bg-black/10" />
+                        <div className="h-[120px] w-full rounded-[var(--surface-radius-sm)] bg-black/10 sm:h-[140px]" />
                       )}
                     </div>
-                    <div
-                      className="mt-3 shrink-0 rounded-[16px] border px-3 py-3"
-                      style={{ backgroundColor: colors.panel, borderColor: 'rgba(255,255,255,0.14)', color: colors.panelText }}
-                    >
-                      <p className="font-hedvig text-[15px] leading-[1.14] sm:text-[17px]">
+                    <div className="mt-auto shrink-0 px-1 pb-1 pt-2">
+                      <p
+                        className="font-hedvig text-[15px] leading-[1.14] sm:text-[17px]"
+                        style={{ color: colors.panelText }}
+                      >
                         {realm.hook}
                       </p>
                       <p
-                        className="mt-2 text-[13px] leading-[1.45]"
+                        className="mt-1 text-[13px] leading-[1.45]"
                         style={{ color: colors.panelText === '#181823' ? 'rgba(24,24,35,0.76)' : 'rgba(255,255,255,0.8)' }}
                       >
                         {realm.accountLine}
@@ -307,53 +297,21 @@ export default function PortfolioPage() {
               Selected clients and brands
             </p>
             <div
-              className="relative mt-6 overflow-hidden rounded-[28px] border p-3 sm:p-4 lg:p-5"
-              style={{
-                borderColor: UI_BORDER,
-                background:
-                  'linear-gradient(135deg, rgba(46, 43, 65, 0.98), rgba(34, 34, 51, 0.98))',
-                '--logo-glow-x': '50%',
-                '--logo-glow-y': '50%',
-                '--logo-glow-opacity': '0',
-              } as CSSProperties}
-              onPointerMove={handleLogoPanelPointerMove}
-              onPointerLeave={handleLogoPanelPointerLeave}
+              className="mt-6 overflow-hidden rounded-[var(--surface-radius-lg)] p-3 sm:p-4 lg:p-5"
+              style={{ backgroundColor: UI_MIDNIGHT }}
             >
-              <div
-                className="pointer-events-none absolute inset-0 transition-opacity duration-200"
-                style={{
-                  opacity: 'var(--logo-glow-opacity)',
-                  background:
-                    'radial-gradient(280px circle at var(--logo-glow-x) var(--logo-glow-y), rgba(250, 187, 249, 0.09), rgba(161, 161, 250, 0.05) 34%, transparent 66%)',
-                }}
-                aria-hidden="true"
-              />
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
                 {TRUST_LOGOS.map((logo) => (
                   <span
                     key={logo.name}
-                    className="inline-flex min-h-[118px] items-center justify-center overflow-hidden rounded-[18px] border px-6 py-7 sm:min-h-[122px]"
-                    style={{
-                      backgroundColor: UI_MIDNIGHT,
-                      borderColor: 'rgba(161, 161, 250, 0.08)',
-                    }}
+                    className="inline-flex min-h-[118px] items-center justify-center px-6 py-7 sm:min-h-[122px]"
                     title={logo.name}
                   >
-                    <span className="flex h-[68px] w-[196px] items-center justify-center">
-                      <img
-                        src={logo.src}
-                        alt={logo.name}
-                        className="shrink-0 object-contain brightness-0 invert opacity-80"
-                        style={{
-                          width: `${CLIENT_LOGO_METRICS[logo.id].width}px`,
-                          height: `${CLIENT_LOGO_METRICS[logo.id].height}px`,
-                          maxWidth: 'none',
-                          maxHeight: 'none',
-                          transform: `scale(${CLIENT_LOGO_METRICS[logo.id].scale})`,
-                          transformOrigin: 'center center',
-                        }}
-                      />
-                    </span>
+                    <img
+                      src={logo.src}
+                      alt={logo.name}
+                      className="max-h-[68px] max-w-[196px] w-auto object-contain brightness-0 invert opacity-80"
+                    />
                   </span>
                 ))}
               </div>

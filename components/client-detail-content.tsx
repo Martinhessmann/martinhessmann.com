@@ -94,24 +94,22 @@ function ImageRow({
         <div className="flex gap-4" style={{ minWidth: 'min-content' }}>
           {slides.map((slide, index) => (
             <div key={index} className="w-[78vw] max-w-[760px] shrink-0">
-              <div className="rounded-[28px] border border-[#d8c5b3] bg-[#ead9ca] p-4 shadow-[0_18px_40px_rgba(109,77,49,0.14)]">
-                <div className="flex min-h-[260px] items-center justify-center rounded-[22px] bg-white p-4 sm:min-h-[340px] lg:min-h-[420px]">
-                  <img
-                    src={slide.src}
-                    alt={slide.alt}
-                    className={
-                      objectFit === 'contain'
-                        ? 'max-h-[420px] max-w-full rounded-xl object-contain'
-                        : 'h-[420px] w-full rounded-xl object-cover'
-                    }
-                  />
-                </div>
-                {slide.caption && (
-                  <span className="mt-3 block text-[14px] leading-[1.5] text-gray-950/45">
-                    {slide.caption}
-                  </span>
-                )}
+              <div className="flex min-h-[260px] items-center justify-center overflow-hidden sm:min-h-[340px] lg:min-h-[420px]">
+                <img
+                  src={slide.src}
+                  alt={slide.alt}
+                  className={
+                    objectFit === 'contain'
+                      ? 'max-h-[420px] max-w-full rounded-[var(--surface-radius-md)] object-contain'
+                      : 'h-[420px] w-full rounded-[var(--surface-radius-md)] object-cover'
+                  }
+                />
               </div>
+              {slide.caption && (
+                <span className="mt-3 block text-[14px] leading-[1.5] text-gray-950/45">
+                  {slide.caption}
+                </span>
+              )}
             </div>
           ))}
         </div>
@@ -189,62 +187,27 @@ function ProjectSectionBlock({
   )
 }
 
-const TOOLS_BASE = '/images/projects/figma-curated-tagged/tools'
-const EVG_TOOLS_BASE = '/images/projects/figma-curated-tagged/evg'
-
-type ToolLogoSpec = {
-  src: string
-  className: string
-}
-
-const TOOL_LOGOS: Record<string, ToolLogoSpec> = {
-  WordPress: { src: `${TOOLS_BASE}/wordpress.png`, className: 'h-4 w-4 object-contain opacity-75' },
-  Azure: { src: `${TOOLS_BASE}/azure.png`, className: 'h-4 w-4 object-contain opacity-75' },
-  Algolia: { src: `${TOOLS_BASE}/algolia.png`, className: 'h-4 w-4 object-contain opacity-75' },
-  Sentry: { src: `${TOOLS_BASE}/sentry.png`, className: 'h-4 w-4 object-contain opacity-75' },
-  TYPO3: { src: `${EVG_TOOLS_BASE}/typo3-logo.png`, className: 'h-[18px] w-auto object-contain opacity-80' },
-  Mapbox: { src: `${TOOLS_BASE}/mapbox.png`, className: 'h-4 w-4 object-contain opacity-75' },
-  Vercel: { src: `${TOOLS_BASE}/vercel.png`, className: 'h-4 w-4 object-contain opacity-75' },
-  Mailchimp: { src: `${TOOLS_BASE}/mailchimp.png`, className: 'h-4 w-4 object-contain opacity-75' },
-  GitLab: { src: `${TOOLS_BASE}/gitlab.png`, className: 'h-4 w-4 object-contain opacity-75' },
-  Sanity: { src: `${TOOLS_BASE}/sanity.png`, className: 'h-4 w-4 object-contain opacity-75' },
-  Cloudflare: { src: `${TOOLS_BASE}/cloudflare.png`, className: 'h-4 w-4 object-contain opacity-75' },
-  Cohere: { src: `${EVG_TOOLS_BASE}/cohere-logo.png`, className: 'h-[20px] w-auto object-contain opacity-80' },
-}
-
-function getToolLogo(name: string): ToolLogoSpec | null {
-  return TOOL_LOGOS[name] ?? null
-}
-
 function ToolChip({
   tool,
   variant = 'cluster',
-  logoOnly = false,
 }: {
   tool: string
   variant?: 'cluster' | 'inline'
-  logoOnly?: boolean
 }) {
   if (variant === 'inline') {
     return (
-      <span className="inline rounded-[999px] align-baseline text-[0.86em] font-medium leading-none text-gray-700 shadow-[0_0_0_0.18rem_rgba(243,244,246,0.98)] ring-1 ring-[rgba(223,211,200,0.5)]">
+      <span className="inline rounded-[999px] border border-gray-300 bg-white px-2 py-0.5 align-baseline text-[0.86em] font-medium leading-none text-gray-700">
         {tool}
       </span>
     )
   }
 
-  const logo = getToolLogo(tool)
-  const isLogoOnly = Boolean(logo && logoOnly)
-
   return (
     <span
-      className={`inline-flex items-center rounded-full bg-[#f6f4ef] text-gray-700 ring-1 ring-[#ece3d9] shadow-[0_8px_18px_rgba(17,24,39,0.06)] ${
-        isLogoOnly ? 'px-3 py-2' : 'gap-2 px-3 py-1.5'
-      }`}
+      className="inline-flex items-center rounded-full border border-gray-300 bg-white px-3 py-1.5 text-[14px] leading-none text-gray-700"
       title={tool}
     >
-      {logo && <img src={logo.src} alt="" className={logo.className} aria-hidden />}
-      {isLogoOnly ? <span className="sr-only">{tool}</span> : <span className="text-[14px] leading-none">{tool}</span>}
+      {tool}
     </span>
   )
 }
@@ -273,7 +236,6 @@ export function ClientDetailContent({ realm, standalone }: ClientDetailContentPr
   const hasDeliverables = Boolean(deliverables?.items?.length)
   const hasTools = Boolean(sidebar?.tools?.length)
   const hasSubheading = Boolean(deliverables?.subheading?.trim())
-  const useLogoOnlyHeaderTools = realm.id === 'wo-mo-fonds' && !hasSubheading
 
   return (
     <div className={`font-inter tracking-normal text-gray-900 ${standalone ? 'min-h-screen bg-warm' : ''}`}>
@@ -315,7 +277,7 @@ export function ClientDetailContent({ realm, standalone }: ClientDetailContentPr
                   {realm.roleTags.map((tag) => (
                     <span
                       key={tag}
-                      className="inline-flex items-center rounded-full bg-gray-100 px-3 py-1.5 text-[14px] font-medium text-gray-700"
+                      className="inline-flex items-center rounded-full bg-[var(--portfolio-sand-0)] px-3 py-1.5 text-[14px] font-medium text-gray-700"
                     >
                       {tag}
                     </span>
@@ -387,7 +349,7 @@ export function ClientDetailContent({ realm, standalone }: ClientDetailContentPr
 
       {(hasDeliverables || hasTools) && (
         <div className={`mx-auto max-w-5xl px-6 pb-16 lg:px-12 ${SECTION_SPACING}`}>
-          <div className="rounded-[28px] border border-[#dfd3c8] bg-white px-6 py-12 lg:px-10 lg:py-16">
+          <div className="rounded-[var(--surface-radius-lg)] border bg-white px-6 py-12 lg:px-10 lg:py-16" style={{ borderColor: 'var(--surface-border)' }}>
             {hasDeliverables && (
               <>
                 <div className="mb-10 grid gap-6 lg:grid-cols-2 lg:gap-12">
@@ -403,7 +365,7 @@ export function ClientDetailContent({ realm, standalone }: ClientDetailContentPr
                     {hasTools && (
                       <div className={`${hasSubheading ? 'mt-4' : ''} flex flex-wrap gap-2.5`}>
                         {sidebar.tools.map((tool) => (
-                          <ToolChip key={tool} tool={tool} logoOnly={useLogoOnlyHeaderTools} />
+                          <ToolChip key={tool} tool={tool} />
                         ))}
                       </div>
                     )}

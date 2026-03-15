@@ -41,7 +41,8 @@ export function ClientDetailSheet({ realm, open, onClose }: ClientDetailSheetPro
 
           {/* Sheet */}
           <motion.section
-            className="fixed inset-x-0 bottom-0 top-8 z-50 flex flex-col overflow-hidden rounded-t-2xl bg-white shadow-2xl lg:top-12"
+            className="fixed inset-x-0 bottom-0 top-8 z-50 flex flex-col overflow-hidden rounded-t-[var(--surface-radius-lg)] shadow-2xl lg:top-12"
+            style={{ backgroundColor: '#faf8f5' }}
             initial={{ y: '100%' }}
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
@@ -56,7 +57,7 @@ export function ClientDetailSheet({ realm, open, onClose }: ClientDetailSheetPro
                 type="button"
                 onClick={onClose}
                 aria-label="Close case study"
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-gray-600 transition-colors hover:bg-gray-200 hover:text-gray-900"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-900"
               >
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12 4L4 12M4 4l8 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />

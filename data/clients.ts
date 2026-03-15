@@ -57,70 +57,166 @@ export const CLIENT_REALMS: ClientRealm[] = [
     id: "teambank",
     client: "TeamBank / easyCredit",
     displayName: "TeamBank",
-    accountLine: "Regulated platform ecosystem",
+    accountLine: "Multi-platform brand and partner systems",
     logo: `${IMG}/clients/teambank.svg`,
     moodImage: `${IMG_ROOT}/teambank-illlu.png`,
-    hook: "Four platforms that finally agreed.",
+    hook: "UI systems for platforms that could not wait for a style guide.",
     keyMoment:
-      "A regulated platform ecosystem where brand, content operations, partner enablement, and delivery quality had to stay aligned over time.",
+      "TeamBank, the maker of easyCredit, was operating across multiple platforms, teams, and agencies: corporate communication, partner tooling, brand operations, and merchant-facing services. I led UI/UX on the platforms I worked on and turned that fragmented landscape into a usable interface system, even though no commissioned global style guide existed for the platform layer.",
     roleSummary:
-      "I held together platform strategy, WordPress architecture, content operations, and design-system continuity across multiple teams, products, and approval layers.",
-    roleTags: [],
+      "I led UI/UX across the TeamBank platforms I worked on, translating brand inputs, search, content operations, and WordPress constraints into reusable interface patterns teams could actually use.",
+    roleTags: [
+      "UX/UI Design",
+      "Platform Design",
+      "Design Systems",
+      "Search & IA",
+      "Content Operations",
+      "Cross-team Collaboration",
+    ],
     sidebar: {
       platforms: [
-        { title: "teambank.de", url: "https://teambank.de", description: "Corporate and HR site for TeamBank, the maker of easyCredit.", claim: "The corporate platform that made governance usable.", sectionTitle: "teambank.de" },
-        { title: "teambank.welt", description: "Internal partner portal for banks in the easyCredit ecosystem.", claim: "A partner portal built for real operations, not deckware.", sectionTitle: "teambank.welt" },
-        { title: "Markenportal", description: "Internal brand hub and asset system with Algolia search and tagging.", claim: "A brand portal people could actually find things in.", sectionTitle: "Markenportal" },
-        { title: "easyCredit B2B portal", url: "https://partner.easycredit.de", description: "B2B payment services portal for partners offering installment and invoice solutions.", claim: "BNPL product logic translated into a decision tool.", sectionTitle: "easyCredit B2B portal" },
+        {
+          title: "Markenportal",
+          description:
+            "Internal brand and work-asset platform with search, downloads, and editor workflows for teams and partners.",
+          claim: "A brand portal people could actually work with.",
+          sectionTitle: "Markenportal",
+        },
+        {
+          title: "teambank.de",
+          url: "https://teambank.de",
+          description:
+            "Corporate and HR site for TeamBank where the same UI logic had to stay coherent under brand and content constraints.",
+          claim: "Corporate UI that had to fit the system, not drift from it.",
+          sectionTitle: "teambank.de",
+        },
+        {
+          title: "teambank.welt",
+          description:
+            "Partner portal for banks and internal users, built on shared search, components, and interface patterns.",
+          claim: "Partner workflows built on the same UI foundation.",
+          sectionTitle: "teambank.welt",
+        },
+        {
+          title: "easyCredit B2B portal",
+          url: "https://partner.easycredit.de",
+          description:
+            "Merchant-facing payment-services portal where the shared UI system extended into partner tooling and BNPL flows.",
+          claim: "Merchant tooling shaped by the same interface system.",
+          sectionTitle: "easyCredit B2B portal",
+        },
       ],
-      tools: ["WordPress", "ACF Pro", "PHP", "SCSS", "Azure", "Docker", "Algolia", "Sentry", "Composer"],
+      tools: ["WordPress", "ACF Pro", "Algolia", "PHP", "SCSS", "Azure", "Docker"],
       openingNarrative:
-        "This was not a page-design assignment. It was a continuity role inside a regulated WordPress ecosystem. I worked across brand, product, content, and engineering to keep shared primitives stable while enabling new modules, search, partner tooling, and operational change without forcing a rewrite.",
+        "This work happened inside a larger multi-agency platform landscape. I led UI/UX on the TeamBank surfaces I worked on and translated brand inputs, search, content operations, and WordPress constraints into a reusable interface system before any formal global style guide existed for the platform layer.",
     },
     deliverables: {
-      heading: "What kept the system coherent.",
+      heading: "What made the platforms usable.",
       subheading:
-        "Shared patterns, additive delivery, and technical decisions teams could actually operate over time.",
+        "Shared UI logic, editor tooling, and search infrastructure that turned separate portals into a working system.",
       items: [
         {
-          title: "Brand-to-UI translation",
+          title: "Interface system",
           description:
-            "A brand works in key visuals and presentations. In a WordPress interface with forms, tables, downloads, states, and accessibility — powered by ACF Pro and SCSS — it has to prove itself. I made sure it did, across all four portals.",
+            "The platforms could not wait for a formal style guide. I built the UI layer anyway: reusable patterns, search behavior, layout logic, and content structures that made separate surfaces feel related without flattening their purpose.",
         },
         {
-          title: "Platform ecosystem",
+          title: "Operational workflows",
           description:
-            "Four WordPress platforms on Azure. Kept consistent with config-driven site profiles, shared tokens, and a single SCSS pipeline — without a big rewrite.",
+            "Inside the Markenportal ecosystem, downloads, collections, previews, and editor-facing helpers reduced manual work. Media Library and Download CPT stayed separate, bulk creation handled repetitive setup, and previews regenerated when collections changed.",
         },
         {
-          title: "Design and dev management",
+          title: "Shared search and reuse",
           description:
-            "Co-led with the Head of Product on easyCredit. Steered roadmap, content, and technical execution — PHP, Composer, Docker. Design decisions and development decisions in the same conversation.",
-        },
-        {
-          title: "Content operations",
-          description:
-            "Partner handbooks digitized — not PDFs dumped online, but a structured, searchable system. Events as a native WordPress post type. ACF Pro and Algolia for section references so editors can't break pages.",
-        },
-        {
-          title: "Team enablement",
-          description:
-            "Made teams autonomous. Research before scaffold. Questions before code. Enablement so people could transfer content and extend the system themselves — with Composer, ACF Pro, and clear docs.",
-        },
-        {
-          title: "Technical ownership",
-          description:
-            "Never hid behind blackboxes. Azure CI/CD, Algolia indexing, WordPress architecture, Sentry for errors — opened, learned, translated so the team could make decisions.",
+            "Algolia was more than a search box. Components and indexing logic became reusable infrastructure across TeamBank and easyCredit surfaces, so assets, pages, and partner features stayed discoverable instead of drifting into separate solutions.",
         },
       ],
     },
     closing:
-      "The result was not one redesign story. It was four platforms that stayed governable, maintainable, and usable while teams, priorities, and products kept changing.",
+      "The result was not a master style-guide deck. It was a working interface system: searchable, reusable, and operational enough for teams across a multi-platform landscape.",
     story: [
       {
         type: "text",
         content:
-          "Corporate and HR site for TeamBank. Connected brand, UI, content, and tech — translating strategy into structured pages, recruiting, and governance. The main face of the maker of easyCredit.",
+          "The TeamBank Markenportal is the clearest expression of the problem I was solving. In a landscape of multiple portals and agencies, it had to turn brand governance into a usable working surface: searchable assets, understandable navigation, and downloads that felt like part of a system rather than a pile of files.",
+      },
+      { type: "label", content: "Markenportal" },
+      {
+        type: "gallery",
+        images: [
+          {
+            src: `${IMG}/markenportal/homepage-mockup.png`,
+            alt: "TeamBank Markenportal on iPad",
+            caption: "Markenportal on iPad",
+          },
+          {
+            src: `${IMG}/markenportal/download-ui.png`,
+            alt: "Download interface in the Markenportal",
+            caption: "Download interface",
+          },
+          {
+            src: `${IMG}/markenportal/brand-asset-download-preview.png`,
+            alt: "Brand asset download preview",
+            caption: "Asset download preview",
+          },
+        ],
+      },
+      {
+        type: "text",
+        content:
+          "The editor tooling behind that portal mattered just as much as the interface. We kept the WordPress Media Library separate from a dedicated Download custom post type so not every upload became public-facing content. That created real operational complexity, so I helped shape micro-plugins that checked media against existing downloads, bulk-created missing entries, cleaned filenames, assigned previews, and regenerated collection thumbnails through PHP and ImageMagick when grouped assets changed.",
+      },
+      { type: "label", content: "Content manager workflows" },
+      {
+        type: "gallery",
+        images: [
+          {
+            src: `${IMG}/markenportal/wordpress-media-backend-new.png`,
+            alt: "WordPress media workflow",
+            caption: "WordPress media workflow",
+          },
+          {
+            src: `${IMG}/markenportal/download-ui.png`,
+            alt: "Download UI in the Markenportal",
+            caption: "Download UI",
+          },
+          {
+            src: `${IMG}/markenportal/brand-asset-download-preview.png`,
+            alt: "Generated download preview",
+            caption: "Generated download preview",
+          },
+        ],
+      },
+      {
+        type: "text",
+        content:
+          "Search and discoverability were treated as shared infrastructure. Algolia was embedded and versioned in a way that let the same logic travel between WordPress and PHP surfaces instead of being reinvented in each portal. File metadata, collection previews, and later even auto-generated descriptions via a user-provided OpenAI Vision setup all fed the same goal: make assets and pages easier to find, and make that behavior reusable across the wider TeamBank and easyCredit landscape.",
+      },
+      { type: "label", content: "Shared search and reuse" },
+      {
+        type: "gallery",
+        images: [
+          {
+            src: `${IMG}/teambank/teambank-homepage-ipad-mockup.png`,
+            alt: "teambank.de homepage on iPad",
+            caption: "teambank.de on iPad",
+          },
+          {
+            src: `${IMG}/easycredit/partner-portal-ui.png`,
+            alt: "easyCredit partner portal",
+            caption: "Partner portal toolbox",
+          },
+          {
+            src: `${IMG}/easycredit/developer-portal-mockup.png`,
+            alt: "easyCredit developer portal",
+            caption: "Developer portal",
+          },
+        ],
+      },
+      {
+        type: "text",
+        content:
+          "On teambank.de, the same UI logic had to hold under different constraints. Corporate communication, recruiting, and brand presentation still needed to feel connected to the wider system instead of drifting into their own interface language.",
       },
       { type: "label", content: "teambank.de" },
       {
@@ -132,7 +228,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       {
         type: "text",
         content:
-          "Internal partner portal for banks in the easyCredit ecosystem. Beyond the configurator, the toolbox handles marketing materials, a banner configurator, and training content — all under one SCSS design token system. A single SCSS pipeline compiles through theme.scss: variables, mixins, helpers, then modules. Developer docs and APIs for partners.",
+          "teambank.welt extended the same discipline into partner-facing workflows. Marketing materials, developer-facing resources, and toolbox features sat on the same underlying pattern language so the experience could stay recognizable even when the use case changed.",
       },
       { type: "label", content: "teambank.welt" },
       {
@@ -153,38 +249,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       {
         type: "text",
         content:
-          "TeamBank's internal brand hub — not a static library of PDFs, but a navigable system. Algolia-powered search, a mega menu through Markenstrategie, Markenauftritt, Markenstil, and Markenmanagement in plain German. WordPress media library connected to Azure CI/CD.",
-      },
-      { type: "label", content: "Markenportal" },
-      {
-        type: "gallery",
-        images: [
-          {
-            src: `${IMG}/markenportal/homepage-mockup.png`,
-            alt: "TeamBank Markenportal on iPad",
-            caption: "Markenportal on iPad",
-          },
-          {
-            src: `${IMG}/markenportal/brand-asset-download-preview.png`,
-            alt: "Brand asset download interface",
-            caption: "Asset download",
-          },
-          {
-            src: `${IMG}/markenportal/azure-ci-screenshot.png`,
-            alt: "Azure CI/CD pipeline",
-            caption: "Azure CI/CD",
-          },
-          {
-            src: `${IMG}/markenportal/wordpress-media-backend-new.png`,
-            alt: "WordPress media library",
-            caption: "Media backend",
-          },
-        ],
-      },
-      {
-        type: "text",
-        content:
-          "The BNPL configurator came from one question: what single value makes a merchant lean in? Annual euro uplift — grounded in OpenRegister industry benchmarks, not abstract percentages. The graph tells the whole story: conversion rate vs basket size, broken down by industry. SCSS design tokens, configurator hints, result chips — one visual language across platforms. What held it together wasn't a framework. It was a rule: never confuse \"less broken\" with \"good enough.\" Validate in the browser. On localhost. With evidence.",
+          "The easyCredit B2B portal shows the same system under merchant-facing pressure. BNPL-related tooling, hints, and interface details had to work inside a partner product context without becoming their own disconnected design island. That is why this case keeps BNPL visible as supporting proof, but not as the lead story.",
       },
       { type: "label", content: "easyCredit B2B portal" },
       {
@@ -204,16 +269,6 @@ export const CLIENT_REALMS: ClientRealm[] = [
             src: `${IMG}/easycredit/bnpl-consultant-ui-dropdown.png`,
             alt: "BNPL configurator dropdown",
             caption: "Configurator detail",
-          },
-          {
-            src: `${IMG}/easycredit/bnpl-consultant-workshop-scribbles.png`,
-            alt: "Workshop scribbles for the BNPL configurator",
-            caption: "Workshop scribbles",
-          },
-          {
-            src: `${IMG}/easycredit/illustration-onboarding.png`,
-            alt: "Onboarding illustration in easyCredit style",
-            caption: "Illustration system",
           },
         ],
       },

@@ -1,176 +1,215 @@
 /**
  * Kitchen Sink — Design system reference.
- * Rules: no all-caps, no text on image, clear image ratios,
- * card styling on image OR white wrapper (not both),
- * clickable elements don't need a CTA button.
+ * Shows the actual components and surface tokens in use on the portfolio.
+ * No fake cards: these match portfolio-page and client-detail-content.
  */
 
 const TEAMBANK = {
-  client: "TeamBank / easyCredit",
-  since: "2019",
-  hook: "Four platforms that finally agreed.",
+  client: 'TeamBank / easyCredit',
+  hook: 'Four platforms that finally agreed.',
+  accountLine: 'Regulated platform ecosystem',
   system:
-    "I turned dense BNPL documentation and three separate WordPress themes into one coherent ecosystem: a single value hook (€ uplift per year), additive design tokens instead of one-off styles, and a documented release process so every deploy is traceable.",
-  keyMoment:
-    "Never claiming 'after rebuilding it will work' without validating in the browser.",
-  logo: "/images/projects/figma-curated-tagged/clients/teambank.svg",
-  moodImage: "/images/projects/figma-curated-tagged/teambank/teambank-homepage-hero.png",
+    'I turned dense BNPL documentation and three separate WordPress themes into one coherent ecosystem.',
+  keyMoment: 'Never claiming "after rebuilding it will work" without validating in the browser.',
+  logo: '/images/projects/figma-curated-tagged/clients/teambank.svg',
+  moodImage: '/images/projects/figma-curated-tagged/teambank/teambank-homepage-hero.png',
 }
+
+// Match portfolio-page.tsx
+const TEAMBANK_COLORS = {
+  bg: '#2C9AD8',
+  panel: '#17688F',
+  panelText: '#FFFFFF',
+  label: 'rgba(255,255,255,0.9)',
+}
+const UI_MIDNIGHT = 'var(--portfolio-midnight-900)'
 
 export default function KitchenSinkPage() {
   return (
-    <div className="min-h-screen bg-warm font-inter tracking-normal text-gray-900">
+    <div className="min-h-screen font-inter tracking-normal">
       <div className="mx-auto max-w-5xl px-6 py-16 lg:px-12 space-y-24">
-        {/* ─── Hero ─── */}
-        <section className="flex min-h-[60vh] flex-col justify-center">
-          <h1 className="text-center">
-            <span className="block text-[clamp(40px,7vw,72px)] font-normal leading-[1.1] text-gray-950">
-              Sit with it
-            </span>
-            <span className="font-hedvig block text-[clamp(40px,7vw,72px)] font-normal leading-[1.1] text-gray-950/30">
-              until it talks.
-            </span>
-          </h1>
-        </section>
-
-        {/* ─── Type scale ─── */}
+        {/* ─── Surface tokens (what we actually use) ─── */}
         <section className="space-y-6">
-          <p className="text-[16px] text-gray-950/35">How the type scale works.</p>
-          <div className="space-y-4">
-            <p className="text-[16px] text-gray-950/45">h1 — ~64px, once per page</p>
-            <h1 className="text-[64px] font-normal leading-[1.05] text-gray-950">
-              {TEAMBANK.client}
-            </h1>
-            <p className="text-[16px] text-gray-950/45">h2 — 28–32px, section anchors</p>
-            <h2 className="text-[30px] font-normal leading-[1.2] text-gray-950">
-              {TEAMBANK.client}
-            </h2>
-            <p className="text-[16px] text-gray-950/45">body — 16px</p>
-            <p className="max-w-2xl text-[16px] leading-[1.6] text-gray-950">
-              {TEAMBANK.system}
-            </p>
-            <p className="text-[16px] text-gray-950/45">small / meta — 14px (captions, sidebar, pills)</p>
-            <p className="text-[14px] leading-[1.5] text-gray-950/50">
-              Captions, sidebar metadata, tool pills. Smallest tier.
-            </p>
-            <p className="text-[16px] text-gray-950/45">larger — 21px, emphasis or serif accent</p>
-            <p className="font-hedvig max-w-2xl text-[21px] leading-[1.5] text-gray-950/70">
-              {TEAMBANK.hook}
-            </p>
-          </div>
-        </section>
-
-        {/* ─── Color on warm ─── */}
-        <section className="space-y-4">
-          <p className="text-[16px] text-gray-950/35">Color on the warm canvas.</p>
-          <p className="max-w-xl text-[16px] leading-[1.6] text-gray-950/70">
-            Primary: <span className="text-gray-950">gray-950</span>. Secondary:{" "}
-            <span className="text-gray-950/30">gray-950/30</span>. Subtle gradient for intentional accent.
+          <h2 className="font-hedvig text-[clamp(22px,2.5vw,28px)] leading-[1.3] text-gray-950">
+            Surface system
+          </h2>
+          <p className="text-[16px] leading-[1.6] text-gray-600">
+            Three radii, one border token per context. No shadows except on the bottom sheet overlay.
           </p>
-          <div className="flex gap-4">
-            <div className="h-16 w-24 rounded-2xl border border-gray-200 bg-gray-950" />
-            <div className="h-16 w-24 rounded-2xl border border-gray-200 bg-gray-950/30" />
-            <div className="h-16 w-24 rounded-2xl border border-gray-200/80 bg-gradient-subtle" />
+          <div className="flex flex-wrap gap-8">
+            <div>
+              <p className="text-[14px] font-medium text-gray-500 mb-2">--surface-radius-sm (16px)</p>
+              <div className="h-20 w-24 rounded-[var(--surface-radius-sm)] border bg-gray-100" style={{ borderColor: 'var(--surface-border)' }} />
+            </div>
+            <div>
+              <p className="text-[14px] font-medium text-gray-500 mb-2">--surface-radius-md (20px)</p>
+              <div className="h-20 w-24 rounded-[var(--surface-radius-md)] border bg-gray-100" style={{ borderColor: 'var(--surface-border)' }} />
+            </div>
+            <div>
+              <p className="text-[14px] font-medium text-gray-500 mb-2">--surface-radius-lg (24px)</p>
+              <div className="h-20 w-24 rounded-[var(--surface-radius-lg)] border bg-gray-100" style={{ borderColor: 'var(--surface-border)' }} />
+            </div>
           </div>
+          <p className="text-[14px] text-gray-500">
+            Borders: <code className="bg-gray-100 px-1 rounded">--surface-border</code> (light),{' '}
+            <code className="bg-gray-100 px-1 rounded">--surface-border-dark</code> (on dark).
+          </p>
         </section>
 
-        {/* ─── Client block: image with card styling, text below ─── */}
-        <section className="space-y-4">
-          <p className="text-[16px] text-gray-950/35">A client block — image is clickable, text supports it.</p>
-          <article className="group cursor-pointer max-w-sm">
-            {/* Image gets the card treatment (rounded, shadow) — portrait, no text on it */}
-            <div className="overflow-hidden rounded-2xl bg-gray-950/[0.04] shadow-sm transition-shadow group-hover:shadow-md">
-              <div className="aspect-[3/4]" />
-            </div>
-            {/* Text below — logo + name + hook, no wrapper card */}
-            <div className="mt-5 space-y-1">
-              <div className="flex items-center gap-2.5">
-                <img
-                  src={TEAMBANK.logo}
-                  alt=""
-                  className="h-4 w-auto object-contain opacity-40"
-                />
-                <h2 className="text-[21px] font-normal leading-[1.3] text-gray-950">
-                  {TEAMBANK.client}
-                </h2>
-              </div>
-              <p className="font-hedvig text-[16px] leading-[1.5] text-gray-950/40">
-                {TEAMBANK.hook}
-              </p>
-            </div>
-          </article>
-        </section>
+        {/* ─── Portfolio homepage (dark) — real markup from portfolio-page ─── */}
+        <section className="space-y-6">
+          <h2 className="font-hedvig text-[clamp(22px,2.5vw,28px)] leading-[1.3] text-gray-950">
+            Portfolio homepage (dark)
+          </h2>
+          <p className="text-[16px] leading-[1.6] text-gray-600">
+            Client realm card and logo panel. Same structure as <code className="bg-gray-100 px-1 rounded">portfolio-page.tsx</code>.
+          </p>
+          <div
+            className="rounded-[var(--surface-radius-lg)] p-8"
+            style={{ backgroundColor: 'var(--portfolio-midnight-950)' }}
+          >
+            <div className="flex flex-wrap items-end gap-6">
+              {/* One client realm card — same classes as portfolio-page */}
+              <article
+                className="relative flex h-[248px] w-[220px] cursor-default flex-col overflow-hidden rounded-[var(--surface-radius-lg)] border p-3 sm:p-4"
+                style={{ backgroundColor: TEAMBANK_COLORS.bg, borderColor: 'var(--surface-border-dark)' }}
+              >
+                <p className="text-[12px] font-medium uppercase tracking-[0.18em]" style={{ color: TEAMBANK_COLORS.label }}>
+                  TEAMBANK
+                </p>
+                <div className="mt-3 flex min-h-0 flex-1 items-center justify-center overflow-hidden">
+                  <img
+                    src={TEAMBANK.moodImage}
+                    alt=""
+                    className="h-full w-full rounded-[var(--surface-radius-sm)] object-contain"
+                  />
+                </div>
+                <div className="mt-3 shrink-0 px-1" style={{ color: TEAMBANK_COLORS.panelText }}>
+                  <p className="font-hedvig text-[15px] leading-[1.14] sm:text-[17px]">{TEAMBANK.hook}</p>
+                  <p className="mt-2 text-[13px] leading-[1.45]" style={{ color: 'rgba(255,255,255,0.8)' }}>
+                    {TEAMBANK.accountLine}
+                  </p>
+                </div>
+              </article>
 
-        {/* ─── Detail sheet preview (static) ─── */}
-        <section className="space-y-4">
-          <p className="text-[16px] text-gray-950/35">Inside a detail sheet — where the story lives.</p>
-          <div className="max-w-3xl rounded-t-3xl border border-gray-200 border-b-0 bg-white p-8 shadow-lg">
-            <div className="flex items-center justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <img src={TEAMBANK.logo} alt="" className="h-6 w-auto object-contain opacity-70" />
-                <div>
-                  <p className="text-[16px] font-normal text-gray-950">{TEAMBANK.client}</p>
-                  <p className="text-[16px] text-gray-950/35">since {TEAMBANK.since}</p>
+              {/* Logo panel — same wrapper + cells as portfolio-page */}
+              <div
+                className="overflow-hidden rounded-[var(--surface-radius-lg)] p-3 sm:p-4"
+                style={{ backgroundColor: UI_MIDNIGHT }}
+              >
+                <div className="grid grid-cols-3 gap-3">
+                  {['teambank', 'easycredit', 'evg'].map((id) => (
+                    <span
+                      key={id}
+                      className="inline-flex min-h-[80px] items-center justify-center overflow-hidden rounded-[var(--surface-radius-sm)] px-4 py-5"
+                      style={{ backgroundColor: 'rgba(255,255,255,0.04)' }}
+                    >
+                      <img
+                        src={`/images/projects/figma-curated-tagged/clients/${id}.svg`}
+                        alt=""
+                        className="h-8 w-auto object-contain brightness-0 invert opacity-80"
+                      />
+                    </span>
+                  ))}
                 </div>
               </div>
-              <button
-                type="button"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-transparent text-gray-950/60 transition-colors hover:border-gray-400"
-              >
-                <span className="text-[16px]">&times;</span>
-              </button>
-            </div>
-            <div className="mt-6 space-y-4">
-              <p className="font-hedvig text-[21px] leading-[1.5] text-gray-950/80">
-                {TEAMBANK.hook}
-              </p>
-              <p className="text-[16px] leading-[1.6] text-gray-600">{TEAMBANK.system}</p>
-              <blockquote className="border-l-2 border-gray-300 pl-4">
-                <p className="font-hedvig text-[21px] leading-[1.55] text-gray-950/60">
-                  &ldquo;{TEAMBANK.keyMoment}&rdquo;
-                </p>
-              </blockquote>
             </div>
           </div>
         </section>
 
-        {/* ─── Buttons ─── */}
-        <section className="space-y-4">
-          <p className="text-[16px] text-gray-950/35">Buttons only where there is no clickable content yet.</p>
-          <div className="flex flex-wrap gap-4">
-            <button
-              type="button"
-              className="rounded-full border border-gray-300 bg-transparent px-5 py-2.5 text-[16px] text-gray-950 transition-colors hover:border-gray-950"
-            >
-              Read full retrospective
-            </button>
-          </div>
-        </section>
-
-        {/* ─── Footer on dark ─── */}
-        <footer className="rounded-2xl bg-gray-950 px-6 py-12 lg:px-10">
-          <p className="text-[16px] text-gray-500">
-            Some of the teams I worked with.
+        {/* ─── Detail sheet (light) — real markup from client-detail-content ─── */}
+        <section className="space-y-6">
+          <h2 className="font-hedvig text-[clamp(22px,2.5vw,28px)] leading-[1.3] text-gray-950">
+            Detail sheet (light)
+          </h2>
+          <p className="text-[16px] leading-[1.6] text-gray-600">
+            Deliverables panel, image (radius only, no wrapper), tool chips, role tags. Same as <code className="bg-gray-100 px-1 rounded">client-detail-content.tsx</code>.
           </p>
-          <div className="mt-6 flex flex-wrap items-center gap-8">
-            <img
-              src={TEAMBANK.logo}
-              alt=""
-              className="h-6 w-auto object-contain brightness-0 invert opacity-40"
-            />
-          </div>
-          <div className="mt-8 border-t border-gray-800 pt-6">
-            <p className="text-[16px] text-gray-400">Martin Hessmann — Berlin</p>
-            <div className="mt-2 flex gap-6 text-[16px] text-gray-500">
-              <a href="#" className="underline decoration-gray-600 underline-offset-4 hover:text-gray-300">
-                Email
-              </a>
-              <a href="#" className="underline decoration-gray-600 underline-offset-4 hover:text-gray-300">
-                LinkedIn
-              </a>
+
+          <div className="space-y-8 rounded-[var(--surface-radius-lg)] border border-gray-200 p-8" style={{ backgroundColor: '#faf8f5' }}>
+            {/* Deliverables panel — exact same div as client-detail-content */}
+            <div>
+              <p className="text-[14px] font-medium text-gray-500 mb-3">Deliverables panel</p>
+              <div
+                className="rounded-[var(--surface-radius-lg)] border bg-white px-6 py-12 lg:px-10 lg:py-16"
+                style={{ borderColor: 'var(--surface-border)' }}
+              >
+                <h3 className="font-hedvig text-[clamp(24px,2.5vw,32px)] leading-[1.3] text-gray-950">
+                  What kept the system coherent.
+                </h3>
+                <p className="mt-4 text-[16px] leading-[1.7] text-gray-600">
+                  Shared patterns, additive delivery, and technical decisions teams could actually operate over time.
+                </p>
+                <div className="mt-4 flex flex-wrap gap-2.5">
+                  <span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-3 py-1.5 text-[14px] leading-none text-gray-700">
+                    WordPress
+                  </span>
+                  <span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-3 py-1.5 text-[14px] leading-none text-gray-700">
+                    PHP
+                  </span>
+                  <span className="inline-flex items-center rounded-full border border-gray-300 bg-white px-3 py-1.5 text-[14px] leading-none text-gray-700">
+                    Azure
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Image: radius on img only, no wrapper */}
+            <div>
+              <p className="text-[14px] font-medium text-gray-500 mb-3">Image (radius on img, no card)</p>
+              <div className="flex min-h-[200px] items-center justify-center overflow-hidden">
+                <img
+                  src={TEAMBANK.moodImage}
+                  alt=""
+                  className="max-h-[280px] max-w-full rounded-[var(--surface-radius-md)] object-contain"
+                />
+              </div>
+              <span className="mt-3 block text-[14px] leading-[1.5] text-gray-950/45">Optional caption below.</span>
+            </div>
+
+            {/* Role tags + inline tool chip */}
+            <div>
+              <p className="text-[14px] font-medium text-gray-500 mb-3">Role tags (rounded-full, no shadow)</p>
+              <div className="flex flex-wrap gap-2">
+                <span className="inline-flex items-center rounded-full bg-[var(--portfolio-sand-0)] px-3 py-1.5 text-[14px] font-medium text-gray-700">
+                  Design systems
+                </span>
+                <span className="inline-flex items-center rounded-full bg-[var(--portfolio-sand-0)] px-3 py-1.5 text-[14px] font-medium text-gray-700">
+                  Delivery
+                </span>
+              </div>
+              <p className="mt-4 text-[16px] leading-[1.7] text-gray-600">
+                Inline tool mention: <span className="inline rounded-[999px] border border-gray-300 bg-white px-2 py-0.5 align-baseline text-[0.86em] font-medium leading-none text-gray-700">WordPress</span> and PHP.
+              </p>
             </div>
           </div>
-        </footer>
+        </section>
+
+        {/* ─── Bottom sheet (overlay) ─── */}
+        <section className="space-y-4">
+          <h2 className="font-hedvig text-[clamp(22px,2.5vw,28px)] leading-[1.3] text-gray-950">
+            Bottom sheet
+          </h2>
+          <p className="text-[16px] leading-[1.6] text-gray-600">
+            Only component that keeps a shadow: <code className="bg-gray-100 px-1 rounded">rounded-t-[var(--surface-radius-lg)] shadow-2xl</code>.
+          </p>
+        </section>
+
+        {/* ─── Type scale (reference) ─── */}
+        <section className="space-y-6">
+          <h2 className="font-hedvig text-[clamp(22px,2.5vw,28px)] leading-[1.3] text-gray-950">
+            Type scale
+          </h2>
+          <div className="space-y-4">
+            <p className="text-[16px] text-gray-950/45">h1 — ~64px</p>
+            <h1 className="text-[64px] font-normal leading-[1.05] text-gray-950">{TEAMBANK.client}</h1>
+            <p className="text-[16px] text-gray-950/45">h2 — 28–32px</p>
+            <h2 className="text-[30px] font-normal leading-[1.2] text-gray-950">{TEAMBANK.client}</h2>
+            <p className="text-[16px] text-gray-950/45">body — 16px</p>
+            <p className="max-w-2xl text-[16px] leading-[1.6] text-gray-950">{TEAMBANK.system}</p>
+            <p className="font-hedvig max-w-2xl text-[21px] leading-[1.5] text-gray-950/70">{TEAMBANK.hook}</p>
+          </div>
+        </section>
       </div>
     </div>
   )
