@@ -11,16 +11,16 @@
       "kicker": "10+ years · Design, Engineering, AI",
       "title": "Systems Designer for design, engineering, and AI.",
       "body": [
-        "I work where products stop being tidy: regulated platforms, civic infrastructure, multi-brand portfolios, and AI systems that need governance as much as interfaces.",
-        "My role is to connect brand, product, content, engineering, and delivery so teams can keep shipping without losing clarity, maintainability, or operational control."
+        "I take on the projects where design, engineering, and operations have to work together or nothing ships. The kind where there’s no single owner, the stakeholders disagree, and the system has been growing faster than anyone can keep up with.",
+        "I make those situations workable. I connect the people, define the structure, and stay close enough to the build to know when something is off."
       ]
     },
     "resume": {
       "label": "Where I've worked and what I bring.",
       "headline": "Design foundation. Engineering fluency. AI as a daily tool, not a buzzword.",
       "intro": [
-        "10+ years moving from UX/UI design into systems design, cross-functional delivery, and AI product strategy. I design and build digital platforms — headless marketing sites, regulated application flows, multi-brand portfolios, AI image-generation systems — and I lead the squads that ship them.",
-        "Strongest where design, engineering, and stakeholder alignment have to actually agree: design-system governance across 6+ brands, accessible form logic for union benefit applications, AI guardrails that make brand-safe output reviewable in production. Currently at AN® and Open Wonder."
+        "I started in UX/UI, designing responsive sites and campaign pages. The work kept getting more complex — multi-brand portfolios, regulated application flows, civic platforms, AI products — and I kept following it. Ten years later, I sit between design, engineering, and product strategy, usually at the point where those disciplines have to actually agree.",
+        "Currently leading digital delivery at AN® and shaping AI product strategy at Open Wonder."
       ]
     },
     "location": {
@@ -60,7 +60,8 @@
         "Figma",
         "Prototyping",
         "User Research",
-        "Usability Testing"
+        "Usability Testing",
+        "Storybook"
       ]
     },
     {
@@ -72,40 +73,43 @@
         "Nuxt.js",
         "TypeScript",
         "HTML/CSS",
-        "Headless Architecture",
+        "Headless CMS",
         "WordPress",
         "TYPO3",
         "Prismic",
-        "AI-assisted Workflows",
-        "AI Integration"
+        "AI Integration",
+        "LLM Workflows",
+        "Prompt Engineering"
       ]
     },
     {
       "name": "Leadership (20%)",
       "level": "Advanced",
       "keywords": [
-        "Team Leadership",
+        "Cross-functional Leadership",
         "Design Ops",
-        "Resource Planning",
+        "Team Leadership",
         "Hiring & Coaching",
-        "GitOps (GitLab)",
-        "CI/CD Pipelines",
-        "Sentry Automations",
-        "Playwright Testing",
-        "Observability"
+        "CI/CD",
+        "GitOps",
+        "Sentry",
+        "Playwright",
+        "Observability",
+        "Release Management"
       ]
     },
     {
-      "name": "Stakeholder Alignment (20%)",
+      "name": "Stakeholder & Strategy (20%)",
       "level": "Advanced",
       "keywords": [
+        "Product Strategy",
         "Discovery Workshops",
-        "Cross-functional Collaboration",
         "Stakeholder Management",
-        "Client Strategy",
         "Roadmapping",
         "Design System Governance",
-        "Content Strategy"
+        "Content Strategy",
+        "Accessibility",
+        "Brand Governance"
       ]
     }
   ],
@@ -588,7 +592,7 @@
         "city": "Berlin",
         "countryCode": "DE"
       },
-      "summary": "Define product strategy for an AI platform generating on-brand images for enterprise clients. Translate brand constraints into prompt logic, guardrails, and review workflows that make AI output predictable and production-ready.",
+      "summary": "Shaping how an AI image-generation platform works in practice — not just the model, but the rules around it. I translate brand constraints into prompt logic, guardrails, and review workflows so the output is predictable enough to actually use in production.",
       "profileMix": {
         "segments": [
           {
@@ -610,15 +614,21 @@
         ]
       },
       "highlights": [
-        "Defined evaluation criteria and constraint logic for AI image-generation pipelines serving brands like Kneipp and Hartmann",
-        "Work daily across product, engineering, and brand teams to make output quality measurable — not just generative",
-        "Establish feedback loops and documentation that improve adoption and reduce manual review"
+        "Define evaluation criteria and constraint logic for AI generation pipelines serving enterprise brands",
+        "Work across product, engineering, and brand teams daily to make output quality measurable and reviewable",
+        "Establish feedback loops and documentation that reduce manual review and improve adoption"
       ],
       "tech": [
         "Product Strategy",
-        "Product Management",
-        "AI Platforms",
-        "Brand Systems"
+        "AI Product Management",
+        "LLM Integration",
+        "Brand Governance",
+        "Prompt Engineering",
+        "Next.js",
+        "Supabase",
+        "Vercel",
+        "Sentry",
+        "OpenTelemetry"
       ]
     },
     {
@@ -631,7 +641,7 @@
         "city": "Berlin",
         "countryCode": "DE"
       },
-      "summary": "Lead cross-functional squads delivering headless marketing sites and digital products for clients including TeamBank, Grün Berlin, EVG, and DPF Group. Own design-system governance, accessibility, QA, and release quality across 15+ active platforms.",
+      "summary": "I run the squads that deliver client websites and digital products — from first concept through to a stable, monitored release. The job is to keep design quality, accessibility, and technical standards high across a portfolio that spans very different clients and stacks.",
       "profileMix": {
         "segments": [
           {
@@ -653,30 +663,31 @@
         ]
       },
       "highlights": [
-        "Delivery across Next.js, Nuxt, TYPO3, WordPress, and Prismic with CI/CD, Sentry observability, and Playwright testing",
-        "Design-system governance and accessibility standards across client and internal teams — from Figma tokens to production parity",
-        "Standardize delivery and QA workflows with CI/CD, observability, and smoke tests to keep launches dependable",
-        "Aligned brand, marketing, and platform stakeholders on roadmaps, launch criteria, and quality standards"
+        "Responsible for delivery, design-system governance, and release quality across the full client portfolio",
+        "Introduced CI/CD pipelines, observability, and automated testing to make launches predictable instead of stressful",
+        "Aligned brand, marketing, and platform stakeholders on roadmaps, launch criteria, and quality standards",
+        "Drive accessibility standards and design-system parity from Figma tokens through to production"
       ],
       "tech": [
+        "Cross-functional Leadership",
+        "Design Systems",
+        "Accessibility",
         "Next.js",
         "Nuxt.js",
-        "Eleventy",
+        "TypeScript",
         "WordPress",
         "TYPO3",
         "Prismic",
-        "Cloudflare",
-        "Vercel",
-        "Hetzner",
-        "GitLab",
-        "GitOps",
+        "Figma",
+        "Storybook",
         "CI/CD",
-        "Sentry Automations",
+        "GitLab",
+        "Sentry",
         "Playwright",
+        "Vercel",
+        "Cloudflare",
         "Algolia",
-        "Optimole",
-        "Mapbox",
-        "AI-assisted workflows"
+        "Mapbox"
       ]
     },
     {
@@ -689,7 +700,7 @@
         "city": "Berlin",
         "countryCode": "DE"
       },
-      "summary": "Directed UX and design systems across a six-brand portfolio. Led discovery, research, and prototyping while building the multi-brand design-system foundations teams shipped on for 5 years.",
+      "summary": "Five years directing UX across a six-brand portfolio. I led discovery, research, and prototyping while building the design-system foundations that teams shipped on across WordPress, TYPO3, and Prismic.",
       "profileMix": {
         "segments": [
           {
@@ -711,21 +722,25 @@
         ]
       },
       "highlights": [
-        "Built reusable design-system foundations in Figma and Storybook across 6 brands on WordPress, TYPO3, and Prismic",
-        "Led discovery interviews and prototyping that turned complex regulated workflows into understandable interface patterns",
-        "Defined UX standards and ensured parity between design and production across WordPress, TYPO3, and Prismic stacks",
-        "Introduced design reviews, Storybook templates, and handoff rituals to reduce rework and speed launch cycles"
+        "Built multi-brand design-system foundations in Figma and Storybook that stayed in use across launches and teams",
+        "Led discovery interviews and prototyping that turned complex regulated workflows into understandable interfaces",
+        "Defined UX standards and ensured design-production parity across three CMS stacks",
+        "Introduced design reviews and handoff rituals that reduced rework and sped up launch cycles"
       ],
       "tech": [
+        "UX Design",
+        "Design Direction",
+        "Design Systems",
+        "Prototyping",
+        "User Research",
         "Figma",
         "Storybook",
+        "Design Tokens",
         "WordPress",
         "TYPO3",
         "Prismic",
         "Jira",
-        "GitLab",
-        "CI/CD",
-        "Design tokens"
+        "GitLab"
       ]
     },
     {
@@ -738,7 +753,7 @@
         "city": "Berlin",
         "countryCode": "DE"
       },
-      "summary": "Designed end-to-end UX for responsive web apps and campaign sites. Owned information architecture, interaction design, and reusable UI patterns across multi-device products.",
+      "summary": "Designed responsive web apps and campaign sites end to end — from early research and information architecture through to visual design and interactive prototypes.",
       "profileMix": {
         "segments": [
           {
@@ -760,12 +775,18 @@
         ]
       },
       "highlights": [
-        "Full ownership of IA, user flows, visual design, and interactive prototypes for responsive sites and web apps",
-        "Established component-based UI patterns and design-to-dev workflows for multi-device delivery",
+        "Owned the full design process from research and user flows through to production-ready prototypes",
+        "Built reusable component patterns and design-to-dev handoff workflows the team kept using after I left",
         "Ran moderated usability tests and analytics reviews to improve clarity and task success",
         "Maintained brand consistency and accessibility standards across launches"
       ],
       "tech": [
+        "UX Design",
+        "UI Design",
+        "Information Architecture",
+        "Interaction Design",
+        "Prototyping",
+        "Usability Testing",
         "Sketch",
         "Zeplin",
         "InVision",

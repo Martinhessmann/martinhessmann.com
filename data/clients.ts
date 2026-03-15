@@ -57,10 +57,21 @@ export interface ClientRealm {
   retrospectivePath?: string
 }
 
+export type TrustLogoSize = 'xs' | 'sm' | 'md'
+
 export interface TrustLogo {
   id: string
   name: string
   src: string
+  /** Optional size tier for the logo wall; omit for default. */
+  size?: TrustLogoSize
+}
+
+export const TRUST_LOGO_SIZES: Record<TrustLogoSize | 'default', string> = {
+  xs: 'max-h-[42px] max-w-[110px]',
+  sm: 'max-h-[56px] max-w-[150px]',
+  md: 'max-h-[60px] max-w-[165px]',
+  default: 'max-h-[68px] max-w-[196px]',
 }
 
 const IMG = "/images/projects/figma-curated-tagged"
@@ -740,17 +751,18 @@ export const CLIENT_REALMS: ClientRealm[] = [
 ]
 
 export const TRUST_LOGOS: TrustLogo[] = [
-  { id: 'teambank', name: 'TeamBank', src: `${IMG}/clients/teambank.svg` },
-  { id: 'easycredit', name: 'easyCredit', src: `${IMG}/clients/easycredit.svg` },
-  { id: 'evg', name: 'EVG', src: `${IMG}/clients/evg.svg` },
+  { id: 'teambank', name: 'TeamBank', src: `${IMG}/clients/teambank.svg`, size: 'sm' },
+  { id: 'easycredit', name: 'easyCredit', src: `${IMG}/clients/easycredit.svg`, size: 'md' },
+  { id: 'evg', name: 'EVG', src: `${IMG}/clients/evg.svg`, size: 'xs' },
   { id: 'gruen-berlin', name: 'Grün Berlin', src: `${IMG}/clients/gruen-berlin.svg` },
   { id: 'hartmann', name: 'Hartmann', src: `${IMG}/clients/hartmann.svg` },
   { id: 'mobile-de', name: 'mobile.de', src: `${IMG}/clients/mobile-de.svg` },
-  { id: 'deutsche-bahn', name: 'Deutsche Bahn', src: `${IMG}/clients/deutsche-bahn.svg` },
-  { id: 'e-on', name: 'E.ON', src: `${IMG}/clients/e-on.svg` },
+  { id: 'deutsche-bahn', name: 'Deutsche Bahn', src: `${IMG}/clients/deutsche-bahn.svg`, size: 'md' },
+  { id: 'e-on', name: 'E.ON', src: `${IMG}/clients/e-on.svg`, size: 'xs' },
   { id: 'volkswagen-group', name: 'Volkswagen Group', src: `${IMG}/clients/volkswagen-group.svg` },
-  { id: 'voith', name: 'Voith', src: `${IMG}/clients/voith.svg` },
+  { id: 'voith', name: 'Voith', src: `${IMG}/clients/voith.svg`, size: 'sm' },
   { id: 'giz', name: 'GIZ', src: `${IMG}/clients/giz.svg` },
+  { id: 'porsche', name: 'Porsche', src: `${IMG}/clients/porsche.svg` },
 ]
 
 export const DEFAULT_CARD_THEME: CardTheme = {

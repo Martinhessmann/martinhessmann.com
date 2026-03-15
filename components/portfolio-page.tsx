@@ -160,7 +160,7 @@ export default function PortfolioPage() {
                   style={{ zIndex: useCardFanLayout ? CLIENT_REALMS.length - index : 'auto' }}
                 >
                   <article
-                    className="relative flex h-fit w-full cursor-pointer flex-col overflow-hidden rounded-[var(--surface-radius-lg)] border p-3 sm:p-4 lg:w-[220px]"
+                    className="relative flex h-fit w-full cursor-pointer flex-col overflow-hidden rounded-[var(--surface-radius-lg)] border p-2 sm:p-3 lg:w-[220px]"
                     style={{ backgroundColor: colors.bg, borderColor: 'var(--surface-border-dark)' }}
                     onClick={() => setActiveRealmId(realm.id)}
                     role="button"
@@ -179,18 +179,18 @@ export default function PortfolioPage() {
                     >
                       {realm.displayName}
                     </p>
-                    <div className="mt-2 flex aspect-[220/180] w-full items-center justify-center overflow-hidden rounded-[var(--surface-radius-sm)]">
+                    <div className="mt-1 flex aspect-[220/180] w-full items-center justify-center overflow-hidden rounded-[var(--surface-radius-lg)]">
                       {realm.moodImage ? (
                         <img
                           src={realm.moodImage}
                           alt=""
-                          className="h-full w-full rounded-[var(--surface-radius-sm)] object-contain object-center"
+                          className="h-full w-full rounded-[var(--surface-radius-lg)] object-contain object-center"
                         />
                       ) : (
-                        <div className="h-full w-full rounded-[var(--surface-radius-sm)] bg-black/10" />
+                        <div className="h-full w-full rounded-[var(--surface-radius-lg)] bg-black/10" />
                       )}
                     </div>
-                    <div className="mt-3 shrink-0 px-1 pb-1 pt-2">
+                    <div className="mt-2 shrink-0 px-0 pb-0 pt-1">
                       <p
                         className="font-hedvig text-[15px] leading-[1.14] sm:text-[17px]"
                         style={{ color: colors.panelText }}
