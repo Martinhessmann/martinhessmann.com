@@ -1,80 +1,12 @@
 'use client'
 
-import type { ReactNode } from 'react'
+import { useRef, useState, type ReactNode } from 'react'
 import type { ClientRealm, Platform, StoryBlock } from '@/data/clients'
+import { flattenVisuals, getSectionPlatforms, type ProjectSection, parseStoryIntoSections } from '@/lib/client-story'
 
 interface ClientDetailContentProps {
   realm: ClientRealm
   standalone?: boolean
-}
-
-type ProjectSection = {
-  title: string
-  paragraph: string
-  visuals: Array<
-    | { type: 'image'; src: string; alt: string; caption: string }
-    | { type: 'gallery'; images: { src: string; alt: string; caption: string }[] }
-  >
-}
-
-function parseStoryIntoSections(story: StoryBlock[]): ProjectSection[] {
-  const sections: ProjectSection[] = []
-  let pendingLabel: string | null = null
-  let pendingParagraph = ''
-  let sectionParagraph = ''
-  const pendingVisuals: ProjectSection['visuals'] = []
-
-  for (const block of story) {
-    if (block.type === 'label') {
-      if (pendingLabel) {
-        sections.push({
-          title: pendingLabel,
-          paragraph: sectionParagraph,
-          visuals: [...pendingVisuals],
-        })
-      }
-      pendingLabel = block.content
-      sectionParagraph = pendingParagraph
-      pendingParagraph = ''
-      pendingVisuals.length = 0
-    } else if (block.type === 'text') {
-      pendingParagraph = block.content
-    } else if (block.type === 'image') {
-      pendingVisuals.push({
-        type: 'image',
-        src: block.src,
-        alt: block.alt,
-        caption: block.caption,
-      })
-    } else if (block.type === 'gallery') {
-      pendingVisuals.push({
-        type: 'gallery',
-        images: block.images,
-      })
-    }
-  }
-
-  if (pendingLabel) {
-    sections.push({
-      title: pendingLabel,
-      paragraph: sectionParagraph,
-      visuals: [...pendingVisuals],
-    })
-  }
-
-  return sections
-}
-
-function flattenVisuals(visuals: ProjectSection['visuals']): { src: string; alt: string; caption: string }[] {
-  const output: { src: string; alt: string; caption: string }[] = []
-  for (const visual of visuals) {
-    if (visual.type === 'image') {
-      output.push({ src: visual.src, alt: visual.alt, caption: visual.caption })
-    } else {
-      output.push(...visual.images)
-    }
-  }
-  return output
 }
 
 function ImageRow({
@@ -86,27 +18,70 @@ function ImageRow({
   className?: string
   objectFit?: 'cover' | 'contain'
 }) {
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const [isDragging, setIsDragging] = useState(false)
+  const dragState = useRef({ startX: 0, scrollLeft: 0, moved: false })
+
   if (slides.length === 0) return null
 
+  const isSingle = slides.length === 1
+
+  const handlePointerDown = (e: React.PointerEvent) => {
+    if (isSingle) return
+    const el = scrollRef.current
+    if (!el) return
+    el.setPointerCapture(e.pointerId)
+    dragState.current = { startX: e.clientX, scrollLeft: el.scrollLeft, moved: false }
+    setIsDragging(true)
+  }
+
+  const handlePointerMove = (e: React.PointerEvent) => {
+    if (!isDragging) return
+    const el = scrollRef.current
+    if (!el) return
+    const dx = e.clientX - dragState.current.startX
+    if (Math.abs(dx) > 3) dragState.current.moved = true
+    el.scrollLeft = dragState.current.scrollLeft - dx
+  }
+
+  const handlePointerUp = (e: React.PointerEvent) => {
+    if (!isDragging) return
+    scrollRef.current?.releasePointerCapture(e.pointerId)
+    setIsDragging(false)
+  }
+
   return (
-    <figure className={className}>
-      <div className="-mx-6 overflow-x-auto px-6 lg:-mx-12 lg:px-12">
-        <div className="flex gap-4" style={{ minWidth: 'min-content' }}>
+    <figure className={`${className} relative`}>
+      <div
+        ref={scrollRef}
+        className={`relative left-1/2 w-screen max-w-none -translate-x-1/2 select-none overflow-x-auto overflow-y-visible [&::-webkit-scrollbar]:hidden ${!isSingle ? (isDragging ? 'cursor-grabbing' : 'cursor-grab') : ''}`}
+        style={{ scrollbarWidth: 'none' }}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerUp}
+      >
+        <div className="flex gap-5 px-6 lg:px-12" style={{ minWidth: 'min-content' }}>
           {slides.map((slide, index) => (
-            <div key={index} className="w-[78vw] max-w-[760px] shrink-0">
-              <div className="flex min-h-[260px] items-center justify-center overflow-hidden sm:min-h-[340px] lg:min-h-[420px]">
+            <div
+              key={index}
+              className="shrink-0"
+              style={{ maxWidth: isSingle ? '100%' : '78vw' }}
+            >
+              <div className={`overflow-hidden rounded-[var(--surface-radius-md)] ${!isSingle ? 'transition-shadow duration-200 ease-out hover:shadow-lg' : ''}`}>
                 <img
                   src={slide.src}
                   alt={slide.alt}
-                  className={
+                  draggable={false}
+                  className={`${!isSingle ? 'transition-transform duration-200 ease-out hover:scale-[1.01]' : ''} ${
                     objectFit === 'contain'
-                      ? 'max-h-[420px] max-w-full rounded-[var(--surface-radius-md)] object-contain'
-                      : 'h-[420px] w-full rounded-[var(--surface-radius-md)] object-cover'
-                  }
+                      ? 'max-h-[420px] w-auto max-w-full object-contain'
+                      : 'h-[420px] w-auto object-cover'
+                  }`}
                 />
               </div>
               {slide.caption && (
-                <span className="mt-3 block text-[14px] leading-[1.5] text-gray-950/45">
+                <span className="mt-2 block text-[14px] leading-[1.5] text-gray-950/45">
                   {slide.caption}
                 </span>
               )}
@@ -334,7 +309,7 @@ export function ClientDetailContent({ realm, standalone }: ClientDetailContentPr
         return (
           <div className={`space-y-24 pb-16 lg:space-y-28 ${SECTION_SPACING}`}>
             {sections.map((section, index) => {
-              const sectionPlatforms = sidebar?.platforms?.filter((platform) => platform.sectionTitle === section.title) ?? []
+              const sectionPlatforms = getSectionPlatforms(sidebar?.platforms, section.title)
               return <ProjectSectionBlock key={index} section={section} platforms={sectionPlatforms} />
             })}
           </div>
