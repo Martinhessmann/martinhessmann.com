@@ -177,17 +177,17 @@ export const CLIENT_REALMS: ClientRealm[] = [
           {
             src: `${IMG}/markenportal/homepage-mockup.png`,
             alt: "TeamBank Markenportal on iPad",
-            caption: "Markenportal on iPad",
+            caption: "Search, navigation, and brand assets in one working surface",
           },
           {
             src: `${IMG}/markenportal/download-ui.png`,
             alt: "Download interface in the Markenportal",
-            caption: "Download interface",
+            caption: "Downloads that felt like part of a system, not a file dump",
           },
           {
             src: `${IMG}/markenportal/brand-asset-download-preview.png`,
             alt: "Brand asset download preview",
-            caption: "Asset download preview",
+            caption: "Preview logic that made assets easier to trust",
           },
         ],
       },
@@ -203,17 +203,17 @@ export const CLIENT_REALMS: ClientRealm[] = [
           {
             src: `${IMG}/markenportal/wordpress-media-backend-new.png`,
             alt: "WordPress media workflow",
-            caption: "WordPress media workflow",
+            caption: "Micro-plugins around the media workflow",
           },
           {
             src: `${IMG}/markenportal/download-ui.png`,
             alt: "Download UI in the Markenportal",
-            caption: "Download UI",
+            caption: "Editor-facing download management",
           },
           {
             src: `${IMG}/markenportal/brand-asset-download-preview.png`,
             alt: "Generated download preview",
-            caption: "Generated download preview",
+            caption: "Collection previews generated from grouped assets",
           },
         ],
       },
@@ -229,17 +229,17 @@ export const CLIENT_REALMS: ClientRealm[] = [
           {
             src: `${IMG}/teambank/teambank-homepage-ipad-mockup.png`,
             alt: "teambank.de homepage on iPad",
-            caption: "teambank.de on iPad",
+            caption: "Corporate communication kept inside the same system language",
           },
           {
             src: `${IMG}/easycredit/partner-portal-ui.png`,
             alt: "easyCredit partner portal",
-            caption: "Partner portal toolbox",
+            caption: "Partner tooling without a disconnected UI language",
           },
           {
             src: `${IMG}/easycredit/developer-portal-mockup.png`,
             alt: "easyCredit developer portal",
-            caption: "Developer portal",
+            caption: "Developer-facing reuse on the same foundation",
           },
         ],
       },
@@ -253,7 +253,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
         type: "image",
         src: `${IMG}/teambank/teambank-homepage-hero.png`,
         alt: "teambank.de corporate site",
-        caption: "teambank.de",
+        caption: "Corporate site after relaunch",
       },
       {
         type: "text",
@@ -313,10 +313,10 @@ export const CLIENT_REALMS: ClientRealm[] = [
     id: "gruen-infrasignal",
     client: "Grün Berlin / Infrasignal",
     displayName: "Grün Berlin",
-    accountLine: "Civic infrastructure platforms",
+    accountLine: "Civic infrastructure and public-service platforms",
     logo: `${IMG}/clients/gruen-berlin.svg`,
     moodImage: `${IMG_ROOT}/gruenberlin-illu.png`,
-    hook: "From scattered logos to one file change.",
+    hook: "Public infrastructure only works when people can understand it.",
     theme: {
       bg: '#5BE290',
       surface: '#8AF0B4',
@@ -327,35 +327,66 @@ export const CLIENT_REALMS: ClientRealm[] = [
       label: 'rgba(12,26,18,0.84)',
     },
     keyMoment:
-      "Public-facing content and operator-facing tooling both needed to stay reliable, accessible, and easier to maintain under real operational constraints.",
+      "Grün Berlin and Infrasignal sit at the public edge of Berlin's infrastructure: civic information, public participation, and traffic-light disturbance reporting. The work was to turn rebranding, accessibility findings, map behavior, and publishing operations into digital systems citizens and service teams could actually trust.",
     roleSummary:
-      "I translated rebranding, accessibility, operational flows, and frontend implementation into a maintainable civic platform spanning public information and service operations.",
-    roleTags: [],
+      "I translated branding, accessibility, map behavior, and TYPO3 publishing into maintainable civic systems that improved both public usability and internal operations.",
+    roleTags: [
+      "Civic UX",
+      "Accessibility",
+      "Content Systems",
+      "Information Architecture",
+      "Operational Design",
+      "Frontend Stewardship",
+    ],
     sidebar: {
       platforms: [
-        { title: "Grün Berlin", url: "https://gruen-berlin.de", description: "Civic portal for sustainable green and blue infrastructure in Berlin.", claim: "A rebrand turned into a durable content system.", sectionTitle: "Grün Berlin" },
-        { title: "Infrasignal", url: "https://infrasignal.de", description: "Traffic light management spin-off for planning and operating 2,100+ signals.", claim: "Traffic signal issues routed with operational precision.", sectionTitle: "Infrasignal" },
+        {
+          title: "Grün Berlin",
+          url: "https://gruen-berlin.de",
+          description: "Civic portal for Berlin's green and blue infrastructure, public information, and participation.",
+          claim: "A civic rebrand translated into a usable content system.",
+          sectionTitle: "Grün Berlin",
+        },
+        {
+          title: "Infrasignal",
+          url: "https://infrasignal.de",
+          description: "Traffic-light disturbance platform where public reports had to become precise operational signals.",
+          claim: "Disturbance reporting that service teams could act on.",
+          sectionTitle: "Infrasignal",
+        },
       ],
       tools: ["TYPO3", "Fluid", "Handlebars", "Mapbox", "GeoJSON", "Fuse.js", "Mailchimp", "GitLab"],
       openingNarrative:
-        "The work was less about novelty than durability. I treated typography, logos, accessibility, map behavior, and publishing workflows as one operational system so public users and internal teams could both rely on it.",
+        "The visible requests looked small: a logo, an accessibility declaration, a map, a mail template. The real work was defining the contracts underneath them so the civic layer became clearer, more actionable, and less brittle over time.",
     },
     deliverables: {
-      heading: "What made it durable.",
-      subheading: "One master SVG per brand, one documented contract for the map flow, and one backlog teams could act on.",
+      heading: "What made the civic layer reliable.",
+      subheading: "Brand consistency, accessibility, and disturbance routing treated as one public-service system.",
       items: [
-        { title: "Logo consolidation", description: "One file per project. currentColor-driven. Collapsed SVGs scattered through TYPO3, Fluid partials, and Handlebars templates into a single source of truth." },
-        { title: "Accessibility backlog", description: "42 audit issues parsed, deduplicated, sorted into Easy, Medium, Hard. TYPO3 templates updated so every header, footer, and overlay stays reachable." },
-        { title: "Disturbance reporting", description: "Mapbox map with GeoJSON layer, citizen form, Fuse.js fallback for autocomplete, support email deep links." },
-        { title: "Mail-templates cleanup", description: "Mailchimp and TYPO3 Mail templates. Renamed master to main, merged shipped branches, aligned GitLab default." },
+        {
+          title: "Public trust",
+          description:
+            "A civic portal and a disturbance-report flow both had to feel understandable and dependable. Typography, logos, and publishing patterns were treated as part of that trust, not as separate styling work.",
+        },
+        {
+          title: "Accessibility in practice",
+          description:
+            "The audit did not stay a PDF. I turned it into a deduplicated, effort-based backlog and an accessibility declaration teams could actually work from, so compliance became a roadmap instead of a dead document.",
+        },
+        {
+          title: "Operational precision",
+          description:
+            "Infrasignal needed more than a map. Mapbox, GeoJSON, Fuse.js fallback, and support email links had to point to the exact signal and not just the rough area. That parameter contract made the reporting flow useful for service teams.",
+        },
       ],
     },
-    closing: "The outcome is a civic platform that became easier to understand, easier to change, and less likely to fail when citizens or service teams depend on it.",
+    closing:
+      "The outcome is a civic platform that became easier to understand, easier to maintain, and more dependable at the exact point where citizens and service teams rely on it.",
     story: [
       {
         type: "text",
         content:
-          "We were brought in to translate a rebranding — started by a brand agency — into a working digital system. My task: take the huge amount of photography and commissioned copy and turn it into a navigable sitemap, modular in TYPO3. TYPO3 wasn't our core expertise — we're strong in frontend and JavaScript — so I found a partner with TYPO3 backend and templating experience and connected their skills with our frontend thinking. Branding and content became modular and maintainable.",
+          "Grün Berlin and Infrasignal sit at the public edge of Berlin's infrastructure. One side communicates parks, urban development, and civic participation. The other turns traffic-light disturbances into something service teams can actually act on. The work was to make that civic layer clearer, more accessible, and more operationally dependable.",
       },
       { type: "label", content: "Grün Berlin" },
       {
@@ -367,7 +398,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       {
         type: "text",
         content:
-          "I started with something deceptively small but symbolically important: the logo. Both Grün Berlin and Infrasignal had near-duplicate SVGs scattered through HBS templates, Fluid partials, and asset folders. I collapsed that into one master SVG per project — inlined everywhere, driven by currentColor so every header, footer, and overlay is themed purely with CSS. Old variants deleted. The next time the logo changes, one file, one update.",
+          "The Grün Berlin work started from a rebrand, but the real challenge was to turn it into a maintainable publishing system. One of the clearest examples was the logo: near-duplicate SVGs were scattered across HBS templates, Fluid partials, and asset folders. I collapsed that into one master SVG per project, inlined everywhere and driven by currentColor so brand updates became predictable instead of fragile.",
       },
       {
         type: "image",
@@ -375,16 +406,17 @@ export const CLIENT_REALMS: ClientRealm[] = [
         alt: "Grün Berlin homepage",
         caption: "Homepage",
       },
+      { type: "label", content: "Accessibility backlog" },
       {
         type: "text",
         content:
-          "Then accessibility. A dense Prüfreport PDF from an external audit — 42 issues, ranging from \"buttons must contain perceivable text\" to \"not all controls are keyboard-reachable.\" I didn't leave them as abstract compliance notes. I parsed each issue, deduplicated them, sorted into Easy, Medium, and Hard — based on implementation effort, not how scary they sound. Which are pure code and markup, which require editorial work, which involve heavyweight assets like PDFs, videos, or German Sign Language. What could have been a compliance exercise became a shared backlog.",
+          "Accessibility also had to become actionable. A dense Prüfreport from an external audit surfaced 42 issues, but leaving it as a PDF would have helped nobody. I parsed the findings, deduplicated them, and sorted them into Easy, Medium, and Hard based on implementation reality: code and markup, editorial work, or heavyweight media and content problems. What could have stayed abstract compliance became a backlog teams could actually work from.",
       },
       { type: "label", content: "Infrasignal" },
       {
         type: "text",
         content:
-          "A year after the relaunch, traffic light management was spun off into Infrasignal — same TYPO3 base, cloned template theme, but its own branding and completely different stakeholders. The core feature: disturbance reporting. When a traffic light fails, citizens report it on a form. I designed it so reported failures appear on a Mapbox map with every traffic light in Berlin plotted from a GeoJSON layer. Citizens pick the actual intersection. Autocomplete via Mapbox Search with a Fuse.js fallback. Service teams manage incidents faster.",
+          "Infrasignal made the operational side of the realm visible. Built on the same TYPO3 base but with its own branding and stakeholders, it focused on disturbance reporting. Citizens report traffic-light issues through a form, then locate the actual intersection on a Mapbox map backed by GeoJSON data and a Fuse.js fallback. The value here was not the map alone, but the fact that reporting could become precise enough for service teams to use.",
       },
       {
         type: "image",
@@ -415,12 +447,12 @@ export const CLIENT_REALMS: ClientRealm[] = [
       {
         type: "text",
         content:
-          "When nobody could say which deployed HTML page and which query parameters were \"the real ones\" for the disturbance map, I traced the whole system: the Mapbox and React implementation, the bundle and HTML shim, the expected parameters — lat, lng, zoom, highlight, search — and even the need to URL-encode the colon in highlight=lsa:7106. I turned that into a documented contract. Now support emails don't just link \"somewhere near\" the problem. They land with precision.",
+          "When nobody could say which deployed HTML page and which query parameters were the real ones for the disturbance map, I traced the whole system: the build, the HTML shim, the expected parameters, and even the need to URL-encode the colon in `highlight=lsa:7106`. That sounds small, but it changed the support experience. Links no longer landed somewhere near the problem. They landed on the right signal with enough precision to act.",
       },
       {
         type: "text",
         content:
-          "Beyond the individual flows, I cleaned up the mail-templates repository — renamed master to main, merged branches that had already shipped, aligned GitLab's default branch. The result isn't a flashy app. It's an ecosystem of civic tools that are easier to understand, easier to change, and far less likely to fail when citizens need them most.",
+          "Beyond the visible flows, I also cleaned up the substrate around them: the mail-templates repository, default branches, and the small operational contracts future contributors depend on. The result is not a flashy civic app. It is a set of public-service tools that are easier to understand, easier to change, and less likely to fail when citizens and operators need them most.",
       },
     ],
     retrospectivePath: "/client-retrospectives/gruen-berlin-infrasignal.md",
@@ -554,10 +586,10 @@ export const CLIENT_REALMS: ClientRealm[] = [
     id: "tertianum-dpf",
     client: "Tertianum / DPF",
     displayName: "DPF Group",
-    accountLine: "Multi-brand platform continuity",
+    accountLine: "High-trust service and growth systems",
     logo: "",
     moodImage: `${IMG_ROOT}/tertianum-illu.png`,
-    hook: "Six sites. One platform. No big migration.",
+    hook: "Service quality and growth, held together over years.",
     theme: {
       bg: '#F8F0E5',
       surface: '#FFF8F1',
@@ -568,57 +600,111 @@ export const CLIENT_REALMS: ClientRealm[] = [
       label: 'rgba(73,58,38,0.84)',
     },
     keyMoment:
-      "A multi-brand portfolio with distinct identities still needed shared delivery logic, reliable lead handling, and a way to roll out change without repeated migrations.",
+      "DPF Group operates brands across senior living, concierge services, hospitality, and investment. The real challenge was not simply keeping multiple sites online, but making age-accessible contact flows, lead capture, SEO, Google Ads tracking, CRM handoff, and security feel like one trustworthy system across brands with different identities and teams.",
     roleSummary:
-      "I acted as the continuity layer across brands, stacks, CRM transitions, and delivery teams, turning cross-portfolio change into shared patterns instead of repeated reinvention.",
-    roleTags: [],
+      "I owned the execution layer across the realm: turning service design, lead flows, CRM, SEO, tracking, security, and rollout decisions into digital experiences teams could trust and maintain.",
+    roleTags: [
+      "Service Design",
+      "Accessibility",
+      "CRM & Lead Flows",
+      "SEO & Analytics",
+      "Security & QA",
+      "Platform Stewardship",
+    ],
     sidebar: {
       platforms: [
-        { title: "DPF Group", url: "https://dpf-investment.de", description: "Corporate site for senior living investor and operator.", claim: "Investor storytelling aligned with platform operations." },
-        { title: "Tertianum", url: "https://tertianum.de", description: "Senior living services and gourmet restaurants.", claim: "Senior living services on a maintainable system." },
-        { title: "RAS Services", url: "https://ras-service.de", description: "Concierge services for home and office support.", claim: "Concierge services with reliable lead handling." },
-        { title: "Brasserie Colette", url: "https://brasseriecolette.de", description: "Restaurant website for fine dining in Berlin, Munich, Konstanz.", claim: "A restaurant brand delivered without operational drift." },
-        { title: "Tertianum Premium Residences", url: "https://tertianum-premiumresidences.de", description: "Premium senior residences in urban locations.", claim: "Premium residence sites without platform fragmentation." },
+        {
+          title: "Tertianum Premium Residences",
+          url: "https://tertianum-premiumresidences.de",
+          description: "Residence and location sites where contact flows had to feel personal, trustworthy, and easy to complete.",
+          claim: "Age-accessible lead journeys for premium senior living.",
+        },
+        {
+          title: "RAS Services",
+          url: "https://ras-services.de",
+          description: "Concierge platform combining lead capture, CRM touchpoints, tracking, and nationwide service roll-out.",
+          claim: "Concierge services with service design built into the funnel.",
+        },
+        {
+          title: "Brasserie Colette",
+          url: "https://brasseriecolette.de",
+          description: "Hospitality site proving the same ecosystem could support a different tone, stack, and conversion logic without losing rigor.",
+          claim: "Hospitality UX without losing operational rigor.",
+        },
+        {
+          title: "DPF Investment",
+          url: "https://dpf-investment.de",
+          description: "Corporate and operator surface for the group behind the wider senior-living ecosystem.",
+          claim: "Investor and operator communication tied to the same digital backbone.",
+        },
+        {
+          title: "Tertianum",
+          url: "https://tertianum.de",
+          description: "Umbrella brand surface for senior living communication, editorial trust-building, and maintainable service information.",
+          claim: "Senior living communication that stayed clear and maintainable.",
+        },
       ],
-      tools: ["WordPress", "Nuxt", "Prismic", "Cloudflare Workers", "Turnstile", "SendGrid", "Playwright", "Sentry", "Microsoft Dynamics", "Mailchimp"],
+      tools: ["WordPress", "Nuxt", "Prismic", "Microsoft Dynamics", "Mailchimp", "Cloudflare Turnstile", "Playwright", "Sentry"],
       openingNarrative:
-        "This account required continuity more than spectacle. My job was to define what stays shared, what stays brand-specific, and how technical changes propagate safely across properties with different teams and priorities.",
+        "This realm only worked when service quality, SEO, CRM, tracking, and security were treated as one connected system. I sat at that intersection and made execution decisions that stayed accountable to marketing, customer management, and delivery at the same time.",
     },
     deliverables: {
-      heading: "What kept the portfolio coherent.",
-      subheading: "Shared patterns, shared documentation, and delivery rules that reduced repeated migration work.",
+      heading: "What made the ecosystem trustworthy.",
+      subheading: "Service quality, growth operations, and resilience had to hold across senior living, concierge, hospitality, and investment.",
       items: [
-        { title: "Lead storage system", description: "Two-dimensional status in WordPress. Sentry tags for direct event links. Microsoft Dynamics and Mailchimp integration for CRM." },
-        { title: "Form validation separation", description: "4xx vs form_error. Cloudflare Turnstile for spam. Noise stopped. Playwright tests fixed." },
-        { title: "Consolidated playbook", description: "Five Tertianum/RAS projects — WordPress, Nuxt, Prismic. Cloudflare Worker docs per proxy domain." },
+        {
+          title: "Service quality",
+          description:
+            "Tertianum and Tertianum Premium Residences needed contact flows that felt calm, personal, and age-accessible. Lead capture, validation, and follow-up had to support trust instead of reducing the experience to form completion.",
+        },
+        {
+          title: "Growth operations",
+          description:
+            "CRM handoff, Google Ads tracking, newsletter logic, SEO, and lead collection all had to stay traceable across brands. Microsoft Dynamics and Mailchimp mattered here because growth quality depended on what happened after the form, not only before it.",
+        },
+        {
+          title: "Operational resilience",
+          description:
+            "Cloudflare Turnstile, bot detection, Playwright, Sentry, and cleaner alerting kept the ecosystem usable as it evolved. The point was not more tooling, but fewer regressions and a digital layer teams could keep adapting over years.",
+        },
       ],
     },
-    closing: "The account stayed operable because the website layer became a managed contract surface: lead logic, CRM integration, observability, and documentation moved together instead of drifting apart.",
+    closing:
+      "The value here was not just that several sites kept running. It was that a growing client ecosystem stayed trustworthy, maintainable, and commercially useful as brands, campaigns, and service needs kept changing.",
     story: [
       {
         type: "text",
         content:
-          "DPF is a real estate investor focused on an aging society: premium residences in Berlin, Konstanz, and Munich. A development branding project in Frankfurt. A stake in RAS — rebranded, now one of Germany's best-known concierge companies. And Brasserie Colette, a fine dining restaurant tied to the residences, with its own branding, strategy, and website. Each brand has its own design system — not one shared component set. The needs are similar, but the brands stay deliberately separate.",
+          "DPF Group operates one client ecosystem across senior living, concierge services, hospitality, and investment. What mattered here was not only delivery across several brands, but the quality of the service experience behind them: age-accessible contact flows, trustworthy lead capture, clear follow-up, and digital touchpoints that felt personal enough for high-trust decisions.",
+      },
+      { type: "label", content: "Tertianum / Premium Residences" },
+      {
+        type: "text",
+        content:
+          "Tertianum and the Premium Residences sites were the clearest proof. These forms were often the first serious contact point for people considering a residence or reaching out on behalf of someone else. That meant they had to feel calm, readable, and age-accessible while still supporting lead capture, newsletter logic, CRM handoff, and the practical realities of marketing and service operations.",
+      },
+      { type: "label", content: "RAS Services" },
+      {
+        type: "text",
+        content:
+          "RAS made the service-design dimension even more explicit. A concierge brand cannot afford generic digital communication. Contact flows, tracking, and CRM touchpoints had to support a nationwide service business while still feeling responsive and personal. That is why this realm is not just a platform story. It is also about translating service expectations into digital behavior teams can actually operate.",
+      },
+      { type: "label", content: "Brasserie Colette / DPF Investment" },
+      {
+        type: "text",
+        content:
+          "Brasserie Colette stayed an equal proof surface because the same operational rigor had to hold under a different tone, stack, and conversion logic. DPF Investment tied the ecosystem back to the operator and investor layer. Together they show why the realm should not read like random maintenance work: distinct brands, distinct audiences, but one long-running responsibility for trust, growth, and execution quality.",
+      },
+      { type: "label", content: "Operational resilience" },
+      {
+        type: "text",
+        content:
+          "Most people would underestimate the account because they only see several sites. The real work was that marketing, SEO, CRM, customer management, tracking, security, and rollout were all equally relevant, and I had to speak all of those languages at once to make responsible execution decisions. Microsoft Dynamics and Mailchimp support, Google Ads tracking, and cross-brand publishing all had to stay compatible with the service experience instead of fighting it.",
       },
       {
         type: "text",
         content:
-          "I became the place where all digital threads converge. WordPress for most brands, Next.js with Prismic for the Brasserie. A CRM migration from proprietary to Microsoft Dynamics and Mailchimp. Contact forms secured with Cloudflare Turnstile. CORS handled at the edge with Cloudflare Workers and in PHP via .htaccess — proxy domains across AT, ES, PT, FR. Brand experts, marketing, SEO, HR, and Google Ads teams all talk to me when it's about the website. I bring in developers and designers when needed, but the red thread runs through me.",
-      },
-      {
-        type: "text",
-        content:
-          "The lead storage system gives every form submission a two-dimensional status — category (ok, spam, test) and status (pending, success, error, unknown). Each combination has a clear meaning and an explicit next step. Leads stored encrypted in WordPress. Sentry links point to the exact event, not a generic search — I passed lead_id as a Sentry tag across all capture paths so broken links became direct navigation.",
-      },
-      {
-        type: "text",
-        content:
-          "When Slack alerts fired for every failed submission — including things like an unchecked privacy checkbox — real backend errors disappeared in the noise. I separated user validation from server failure: 4xx and user-input errors became form_validation; only true backend failures stayed as form_error. The noise stopped. Then a privacy pre-submit guard broke Playwright tests — the checkbox sent an empty string when checked, so a naive truthiness check blocked valid submissions. Switching to key presence and DOM checked state fixed the tests and kept the guard. Each fix tightened the system instead of patching it.",
-      },
-      {
-        type: "text",
-        content:
-          "The work also produced documents that outlast single fixes. A consolidated playbook for the five Tertianum/RAS projects. Cloudflare worker docs and variants for each proxy domain. A platform kit blueprint with phases, integration checklists, and open questions so another engineer could take over. The rule: update existing docs, not spin up new ones. One playbook, one blueprint, fewer scattered references.",
+          "That is also why security and observability belong in the public story. Cloudflare Turnstile, bot detection, Playwright, Sentry-linked lead handling, and cleaner alert separation kept the ecosystem trustworthy as it grew. Since 2019, new campaigns, HR work, press work, and changing service needs kept landing on the same stack. The value was keeping it maintainable without flattening the brands or letting quality drift.",
       },
     ],
     retrospectivePath: "/client-retrospectives/tertianum-dpf.md",
@@ -698,7 +784,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
         type: "image",
         src: `${IMG}/evg/womofonds-homepage-hero.png`,
         alt: "Wo-Mo-Fonds homepage",
-        caption: "Wo-Mo-Fonds",
+        caption: "Entry point for housing and mobility benefits",
       },
       {
         type: "text",
@@ -710,7 +796,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
         type: "image",
         src: `${IMG}/evg/dein-womo-ipad-mockup.png`,
         alt: "Dein WoMo application on iPad",
-        caption: "Dein WoMo",
+        caption: "Branching voucher application with accessible validation",
       },
       {
         type: "text",
@@ -724,17 +810,17 @@ export const CLIENT_REALMS: ClientRealm[] = [
           {
             src: `${IMG}/evg/chatbot-screenshot-multilanguage.png`,
             alt: "Chatbot switching from German to English",
-            caption: "Multilingual chatbot",
+            caption: "Grounded support across up to 15 languages",
           },
           {
             src: `${IMG}/evg/chatbot-screenshot.png`,
             alt: "Chatbot conversation",
-            caption: "Chatbot UI",
+            caption: "Benefit guidance inside the service flow",
           },
           {
             src: `${IMG}/evg/chatbot-screenshot-feedback.png`,
             alt: "Chatbot with feedback interaction",
-            caption: "Feedback UI",
+            caption: "Feedback and escalation signals",
           },
         ],
       },

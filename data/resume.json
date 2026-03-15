@@ -4,20 +4,37 @@
     "name": "Martin Heßmann",
     "label": "Systems Designer — Design, Engineering, AI",
     "image": "",
+    "workPhotos": [
+      {
+        "src": "/images/projects/figma-curated-tagged/work/martin-in-office-with-clients.png",
+        "alt": "Martin working with clients in an office",
+        "caption": "Workshops and stakeholder alignment"
+      },
+      {
+        "src": "/images/projects/figma-curated-tagged/work/martin-homeoffice.png",
+        "alt": "Martin working from his home office",
+        "caption": "Remote delivery and review"
+      },
+      {
+        "src": "/images/projects/figma-curated-tagged/work/martin-in-office-with-collegues.png",
+        "alt": "Martin working with colleagues in an office",
+        "caption": "Design and implementation with teams"
+      }
+    ],
     "email": "martin@martinhessmann.com",
     "url": "https://martinhessmann.com",
-    "summary": "10+ years designing and building digital platforms — headless marketing sites, regulated application flows, multi-brand portfolios, AI image-generation systems — and leading the squads that ship them. Strongest where design, engineering, and stakeholder alignment have to actually agree.",
+    "summary": "I turn complex digital systems — AI products, regulated services, and multi-platform ecosystems — into tools teams can actually use, run, and ship. Strongest where design, engineering, and stakeholder alignment have to actually agree.",
     "hero": {
-      "kicker": "10+ years · Design, Engineering, AI",
-      "title": "Systems Designer for design, engineering, and AI.",
+      "kicker": "Systems design · Delivery · AI",
+      "title": "I turn complex digital systems into tools teams can use, run, and ship.",
       "body": [
-        "I take on the projects where design, engineering, and operations have to work together or nothing ships. The kind where there’s no single owner, the stakeholders disagree, and the system has been growing faster than anyone can keep up with.",
-        "I make those situations workable. I connect the people, define the structure, and stay close enough to the build to know when something is off."
+        "My best work starts when design decisions, technical architecture, content operations, and stakeholder alignment all begin to affect each other at once.",
+        "I help teams make those systems workable: clarify the structure, stay close to execution, and keep quality high enough that the thing actually ships."
       ]
     },
     "resume": {
       "label": "Where I've worked and what I bring.",
-      "headline": "Design foundation. Engineering fluency. AI as a daily tool, not a buzzword.",
+      "headline": "Design systems, execution fluency, and AI that holds up in the real world.",
       "intro": [
         "I started in UX/UI, designing responsive sites and campaign pages. The work kept getting more complex — multi-brand portfolios, regulated application flows, civic platforms, AI products — and I kept following it. Ten years later, I sit between design, engineering, and product strategy, usually at the point where those disciplines have to actually agree.",
         "Currently leading digital delivery at AN® and shaping AI product strategy at Open Wonder."

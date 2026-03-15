@@ -33,6 +33,7 @@ export interface Basics {
   name: string
   label?: string
   image?: string
+  workPhotos?: WorkPhoto[]
   email?: string
   phone?: string
   url?: string
@@ -55,6 +56,12 @@ export interface Profile {
   network?: string
   username?: string
   url?: string
+}
+
+export interface WorkPhoto {
+  src: string
+  alt: string
+  caption?: string
 }
 
 export interface ProfileMixSegment {

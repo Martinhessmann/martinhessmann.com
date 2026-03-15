@@ -376,7 +376,13 @@ export default function PortfolioPage() {
                     Resume
                   </a>
                   <a href="/?preview=print" target="_blank" rel="noopener noreferrer" className="block transition-colors hover:text-white">
-                    PDF
+                    Resume PDF
+                  </a>
+                  <a href="/?view=slides" className="block transition-colors hover:text-white">
+                    Slides
+                  </a>
+                  <a href="/?preview=slides" target="_blank" rel="noopener noreferrer" className="block transition-colors hover:text-white">
+                    Slides PDF
                   </a>
                 </div>
               </div>
