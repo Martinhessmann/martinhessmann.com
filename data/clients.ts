@@ -311,12 +311,12 @@ export const CLIENT_REALMS: ClientRealm[] = [
   // ──────────────────────────────────────────────
   {
     id: "gruen-infrasignal",
-    client: "Grün Berlin / Infrasignal",
+    client: "Grün Berlin",
     displayName: "Grün Berlin",
-    accountLine: "Civic infrastructure and public-service platforms",
+    accountLine: "Civic ecosystem stewardship",
     logo: `${IMG}/clients/gruen-berlin.svg`,
     moodImage: `${IMG_ROOT}/gruenberlin-illu.png`,
-    hook: "Public infrastructure only works when people can understand it.",
+    hook: "A civic ecosystem people had to understand, use, and trust.",
     theme: {
       bg: '#5BE290',
       surface: '#8AF0B4',
@@ -327,66 +327,80 @@ export const CLIENT_REALMS: ClientRealm[] = [
       label: 'rgba(12,26,18,0.84)',
     },
     keyMoment:
-      "Grün Berlin and Infrasignal sit at the public edge of Berlin's infrastructure: civic information, public participation, and traffic-light disturbance reporting. The work was to turn rebranding, accessibility findings, map behavior, and publishing operations into digital systems citizens and service teams could actually trust.",
+      "Grün Berlin was the mother project inside a broader civic ecosystem: the main TYPO3 and HBS platform carrying careers, press and news, annual reports, timelines, a project map, berlin.de RSS, and accessible frontend work for Berlin's public spaces. Around it sat Infrasignal, Mauerpark, and Stadt Weide Land, plus newsletter and marketing-design support for other Grün Berlin properties. My role was to keep that public-facing ecosystem coherent across digital branding, UI/UX, development, accessibility, and delivery.",
     roleSummary:
-      "I translated branding, accessibility, map behavior, and TYPO3 publishing into maintainable civic systems that improved both public usability and internal operations.",
+      "I led digital branding, UI/UX, frontend development, and cross-functional delivery across the Grün Berlin ecosystem, turning many civic-facing surfaces into a more coherent digital layer without claiming authorship of every brand or relaunch.",
     roleTags: [
-      "Civic UX",
+      "Digital Branding",
+      "UX/UI Design",
       "Accessibility",
-      "Content Systems",
-      "Information Architecture",
-      "Operational Design",
-      "Frontend Stewardship",
+      "TYPO3 Systems",
+      "Frontend Development",
+      "Cross-functional Delivery",
     ],
     sidebar: {
       platforms: [
         {
           title: "Grün Berlin",
           url: "https://gruen-berlin.de",
-          description: "Civic portal for Berlin's green and blue infrastructure, public information, and participation.",
-          claim: "A civic rebrand translated into a usable content system.",
+          description: "Mother project and civic platform carrying careers, press/news, annual reports, timelines, project maps, and accessible frontend work.",
+          claim: "The mother platform behind a much wider civic ecosystem.",
           sectionTitle: "Grün Berlin",
         },
         {
           title: "Infrasignal",
           url: "https://infrasignal.de",
-          description: "Traffic-light disturbance platform where public reports had to become precise operational signals.",
-          claim: "Disturbance reporting that service teams could act on.",
+          description: "Traffic-light reporting system where public input had to become precise operational signals for service teams.",
+          claim: "Traffic-light reporting that had to work in real operations.",
           sectionTitle: "Infrasignal",
         },
+        {
+          title: "Mauerpark",
+          url: "https://mauerpark.de",
+          description: "Public-space brand surface showing how the ecosystem extended into distinct digital branding, UI/UX, and development work.",
+          claim: "A distinct civic place brand inside the same ecosystem.",
+          sectionTitle: "Mauerpark",
+        },
+        {
+          title: "Stadt Weide Land",
+          url: "https://stadtweideland.de",
+          description: "Storytelling-driven civic property with its own TYPO3 system, visual language, and public-facing digital identity.",
+          claim: "A separate civic voice held to the same digital quality bar.",
+          sectionTitle: "Stadt Weide Land",
+        },
       ],
-      tools: ["TYPO3", "Fluid", "Handlebars", "Mapbox", "GeoJSON", "Fuse.js", "Mailchimp", "GitLab"],
+      tools: ["TYPO3", "Handlebars", "Fluid", "Mapbox", "TYPO3 Mail", "Mailchimp", "GitLab"],
       openingNarrative:
-        "The visible requests looked small: a logo, an accessibility declaration, a map, a mail template. The real work was defining the contracts underneath them so the civic layer became clearer, more actionable, and less brittle over time.",
+        "This was not one civic website. Grün Berlin presents itself to the public as a coherent civic layer, but behind it sits a wider operator and project-developer ecosystem with separate spaces, brands, newsletters, and marketing surfaces. I worked across that stretch and kept the digital layer legible instead of letting it fragment into isolated properties.",
     },
     deliverables: {
-      heading: "What made the civic layer reliable.",
-      subheading: "Brand consistency, accessibility, and disturbance routing treated as one public-service system.",
+      heading: "What held the ecosystem together.",
+      subheading: "The mother platform, one sharp operational flow, and several civic extensions had to behave like one digital layer.",
       items: [
         {
-          title: "Public trust",
+          title: "Civic ecosystem",
           description:
-            "A civic portal and a disturbance-report flow both had to feel understandable and dependable. Typography, logos, and publishing patterns were treated as part of that trust, not as separate styling work.",
+            "Grün Berlin.de was the complexity center: careers, press/news, annual reports, timelines, project maps, berlin.de RSS, TYPO3 templates, and an accessible HBS frontend. The real work was holding that core platform together while the ecosystem kept branching into new surfaces.",
         },
         {
-          title: "Accessibility in practice",
+          title: "Operational public-service flow",
           description:
-            "The audit did not stay a PDF. I turned it into a deduplicated, effort-based backlog and an accessibility declaration teams could actually work from, so compliance became a roadmap instead of a dead document.",
+            "Infrasignal is in the case for one reason: the traffic-light reporting system. Citizens had to find the right intersection, support links had to land on the exact signal, and the flow had to be operationally useful instead of technically impressive.",
         },
         {
-          title: "Operational precision",
+          title: "Brand and channel extension",
           description:
-            "Infrasignal needed more than a map. Mapbox, GeoJSON, Fuse.js fallback, and support email links had to point to the exact signal and not just the rough area. That parameter contract made the reporting flow useful for service teams.",
+            "Mauerpark and Stadt Weide Land show how the ecosystem extended into distinct brands with their own digital voice. Newsletter and marketing-design support for Campus Stadt Natur, Britzer Garten, Gärten der Welt, and Spreepark made the wider Berlin portfolio part of the same delivery reality.",
         },
       ],
     },
     closing:
-      "The outcome is a civic platform that became easier to understand, easier to maintain, and more dependable at the exact point where citizens and service teams rely on it.",
+      "The outcome is not one polished civic site. It is a broader Berlin-facing ecosystem that stayed clearer, more usable, and more maintainable across many public surfaces and teams.",
     story: [
       {
         type: "text",
         content:
-          "Grün Berlin and Infrasignal sit at the public edge of Berlin's infrastructure. One side communicates parks, urban development, and civic participation. The other turns traffic-light disturbances into something service teams can actually act on. The work was to make that civic layer clearer, more accessible, and more operationally dependable.",
+          "Grün Berlin.de was the mother project and the real complexity center: careers, press and news, annual reports, timelines, a map of projects, berlin.de RSS feeds, TYPO3 templates, and the accessible HBS frontend at frontend.gruen-berlin.de. My work across digital branding, UI/UX, and development was to keep that civic core coherent while related surfaces and brands branched out around it.",
       },
       { type: "label", content: "Grün Berlin" },
       {
@@ -396,28 +410,17 @@ export const CLIENT_REALMS: ClientRealm[] = [
         caption: "Grün Berlin on mobile",
       },
       {
-        type: "text",
-        content:
-          "The Grün Berlin work started from a rebrand, but the real challenge was to turn it into a maintainable publishing system. One of the clearest examples was the logo: near-duplicate SVGs were scattered across HBS templates, Fluid partials, and asset folders. I collapsed that into one master SVG per project, inlined everywhere and driven by currentColor so brand updates became predictable instead of fragile.",
-      },
-      {
         type: "image",
         src: `${IMG}/gruen-berlin/homepage-hero.png`,
         alt: "Grün Berlin homepage",
         caption: "Homepage",
       },
-      { type: "label", content: "Accessibility backlog" },
       {
         type: "text",
         content:
-          "Accessibility also had to become actionable. A dense Prüfreport from an external audit surfaced 42 issues, but leaving it as a PDF would have helped nobody. I parsed the findings, deduplicated them, and sorted them into Easy, Medium, and Hard based on implementation reality: code and markup, editorial work, or heavyweight media and content problems. What could have stayed abstract compliance became a backlog teams could actually work from.",
+          "Infrasignal belongs in the case because of the traffic-light reporting system, not because it was another cloned website. Citizens report a disturbance, identify the right intersection on a Mapbox map, and service teams need links and parameters precise enough to act. That made the route from public report to operational handling the sharpest proof surface inside the wider ecosystem.",
       },
       { type: "label", content: "Infrasignal" },
-      {
-        type: "text",
-        content:
-          "Infrasignal made the operational side of the realm visible. Built on the same TYPO3 base but with its own branding and stakeholders, it focused on disturbance reporting. Citizens report traffic-light issues through a form, then locate the actual intersection on a Mapbox map backed by GeoJSON data and a Fuse.js fallback. The value here was not the map alone, but the fact that reporting could become precise enough for service teams to use.",
-      },
       {
         type: "image",
         src: `${IMG}/infrasignal/infrasignal-mood.png`,
@@ -447,12 +450,29 @@ export const CLIENT_REALMS: ClientRealm[] = [
       {
         type: "text",
         content:
-          "When nobody could say which deployed HTML page and which query parameters were the real ones for the disturbance map, I traced the whole system: the build, the HTML shim, the expected parameters, and even the need to URL-encode the colon in `highlight=lsa:7106`. That sounds small, but it changed the support experience. Links no longer landed somewhere near the problem. They landed on the right signal with enough precision to act.",
+          "Mauerpark shows that the Grün Berlin ecosystem was broader than the mother platform and sharper than one design-system story. It had its own public-facing identity, digital branding, UI/UX, and development needs, but still had to sit coherently inside the wider operator reality rather than becoming an isolated microsite.",
+      },
+      { type: "label", content: "Mauerpark" },
+      {
+        type: "text",
+        content:
+          "Stadt Weide Land extended the same work into a distinct storytelling property with its own TYPO3 system, visual language, and conservation context. It is useful proof because it shows the ecosystem could carry more than one civic voice while staying within the same quality bar for branding, UI/UX, and delivery.",
+      },
+      { type: "label", content: "Stadt Weide Land" },
+      {
+        type: "image",
+        src: "/images/clients/stadtweideland.de-og.jpg",
+        alt: "Stadt Weide Land website",
+        caption: "Stadt Weide Land",
       },
       {
         type: "text",
         content:
-          "Beyond the visible flows, I also cleaned up the substrate around them: the mail-templates repository, default branches, and the small operational contracts future contributors depend on. The result is not a flashy civic app. It is a set of public-service tools that are easier to understand, easier to change, and less likely to fail when citizens and operators need them most.",
+          "Beyond those named surfaces, the ecosystem also included newsletter and marketing-design support for Campus Stadt Natur, Britzer Garten, Gärten der Welt, and Spreepark. That supporting layer is part of the CV relevance here: not one civic site, but an expanding network of public-facing Berlin brands and spaces that needed coherent digital stewardship.",
+      },
+      {
+        type: "label",
+        content: "Wider ecosystem",
       },
     ],
     retrospectivePath: "/client-retrospectives/gruen-berlin-infrasignal.md",
