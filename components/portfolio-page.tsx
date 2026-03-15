@@ -269,15 +269,15 @@ export default function PortfolioPage() {
                     >
                       {realm.displayName}
                     </p>
-                    <div className="mt-2 flex items-center justify-center overflow-hidden">
+                    <div className="mt-2 flex aspect-[220/180] w-full items-center justify-center overflow-hidden rounded-[var(--surface-radius-sm)]">
                       {realm.moodImage ? (
                         <img
                           src={realm.moodImage}
                           alt=""
-                          className="max-h-[160px] w-full rounded-[var(--surface-radius-sm)] object-contain object-center sm:max-h-[180px]"
+                          className="h-full w-full rounded-[var(--surface-radius-sm)] object-contain object-center"
                         />
                       ) : (
-                        <div className="h-[120px] w-full rounded-[var(--surface-radius-sm)] bg-black/10 sm:h-[140px]" />
+                        <div className="h-full w-full rounded-[var(--surface-radius-sm)] bg-black/10" />
                       )}
                     </div>
                     <div className="mt-3 shrink-0 px-1 pb-1 pt-2">

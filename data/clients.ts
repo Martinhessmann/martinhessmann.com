@@ -394,59 +394,106 @@ export const CLIENT_REALMS: ClientRealm[] = [
     id: "open-wonder",
     client: "Open Wonder / AURA",
     displayName: "Open Wonder",
-    accountLine: "AI brand systems",
+    accountLine: "Generative brand production systems",
     logo: `${IMG}/clients/hartmann.svg`,
     moodImage: `${IMG_ROOT}/openwonder-illlu.png`,
-    hook: "AI that respects the brand. Or nothing.",
+    hook: "An agency service, rebuilt as a product system.",
     keyMoment:
-      "The core problem was not image generation. It was making AI outputs reviewable, on-brand, and operationally usable inside real product and brand constraints.",
+      "Open Wonder turns agency-style brand production into a product. The real problem is not just generating images, but making LLM logic, generation models, brand rules, and creative direction align well enough that outputs become usable, repeatable, and worth shipping for teams including Idealo, mobile.de, Hartmann, and Kneipp.",
     roleSummary:
-      "I shaped the system where product, brand governance, engineering, and AI operations meet so outputs stay predictable, reviewable, and useful in practice.",
-    roleTags: [],
+      "I designed the product and generation system: how brand logic, model behavior, creative direction, review flows, and integrations work together so outputs become operational instead of approximate.",
+    roleTags: [
+      "Product Design",
+      "AI Systems",
+      "Brand Governance",
+      "Creative Direction",
+      "Generation Workflows",
+      "Integrations",
+    ],
     sidebar: {
       platforms: [
-        { title: "Open Wonder", url: "https://openwonder.com", description: "AI platform for generating on-brand images and marketing assets.", claim: "Brand intelligence turned into an executable system." },
-        { title: "Hartmann AURA", description: "Internal AI companion for brand-safe assets and review workflows.", claim: "Internal AI workflows made governable." },
+        {
+          title: "Open Wonder",
+          url: "https://openwonder.com",
+          description: "Brand-asset generation platform for turning agency-style production logic into usable product behavior.",
+          claim: "Creative production, translated into product logic.",
+          sectionTitle: "Open Wonder",
+        },
+        {
+          title: "Hartmann AURA",
+          description: "Governed internal AI workflow for brand-safe assets, reviewability, and enterprise rollout.",
+          claim: "Internal AI workflows made governable.",
+          sectionTitle: "Hartmann AURA",
+        },
+        {
+          title: "Kneipp Product Studio",
+          description: "Newest creative-placement flow for product photography and illustration inside the Hartmann brand family.",
+          claim: "Product-studio generation pushed into real campaign work.",
+          sectionTitle: "Kneipp Product Studio",
+        },
       ],
-      tools: ["Next.js 15", "Supabase", "Prisma", "Sentry", "Vercel", "Cohere", "Sanity", "LoRA", "OpenTelemetry"],
+      tools: ["Next.js 15", "Supabase", "Prisma", "Sentry", "Vercel", "Sanity", "LoRA", "OpenTelemetry"],
       openingNarrative:
-        "My role here sits between product strategy and system design. I define how prompts, guardrails, review flows, content operations, and build discipline connect so AI becomes part of a delivery system, not an isolated experiment.",
+        "The market has plenty of generative tools, but very few systems that can turn brand logic and creative direction into production-quality assets. My work sat at that frontier: designing how product flow, generation behavior, reviewability, and operational rollout reinforce each other instead of drifting apart.",
     },
     deliverables: {
-      heading: "What made AI operational.",
-      subheading: "Constraints, reference-style adherence, output schemas, and release workflows teams can actually trust.",
+      heading: "What made generative production usable.",
+      subheading: "Service logic, model alignment, and operational rollout built into one system.",
       items: [
-        { title: "LLM process definition", description: "Who defines it, how it changes, how much restriction is too much. Cohere and Sanity guardrails so outputs stay on-brand." },
-        { title: "Copy guidelines", description: "Release announcements as product surface in Sanity. Modals rewritten to be scannable." },
-        { title: "Build and env discipline", description: "Next.js 15, Supabase, Prisma on Vercel. Package-lock on Linux, Sentry hostname detection, OpenTelemetry explicit." },
+        {
+          title: "Service into product",
+          description:
+            "Open Wonder turns agency-style creative production into repeatable product behavior: what a brand allows, how concepts emerge, how outputs vary, and how photo, illustration, and the newer product-studio flow stay usable in one system.",
+        },
+        {
+          title: "Model-to-brand alignment",
+          description:
+            "The hard part is not picking one model. It is getting LLM logic, generation behavior, brand rules, and creative direction to understand each other well enough that results feel intentional rather than approximate.",
+        },
+        {
+          title: "Operational rollout",
+          description:
+            "Used by teams including Idealo, mobile.de, Hartmann, and Kneipp. Sanity integration, privacy/data-flow work, and shipping discipline across Next.js 15, Supabase, Prisma, Sentry, and Vercel made the system behave like product, not a demo.",
+        },
       ],
     },
-    closing: "The value is not AI for its own sake. It is a system that keeps brand quality, product reliability, and human review aligned as the tooling scales.",
+    closing: "The point is not AI output in isolation. It is a production system that turns brand knowledge into assets teams can actually use, review, and ship.",
     story: [
       {
-        type: "text",
-        content:
-          "Most AI brand tools don't change how people work. They bolt a chat box onto an existing interface, wire it to a model, and hope designers feel more supported. In practice, those tools feel vague, brittle, or off-brand. Open Wonder's task was different: transform static PDFs and scattered brand rules into an assistant that can critique layouts, generate on-brand images, and surface exactly the right guidance when a stressed designer is about to publish the wrong red.",
+        type: "label",
+        content: "Open Wonder",
       },
       {
         type: "text",
         content:
-          "I'm in the dailies, thinking about whether the whole thing actually works. Not the feature — the system. When someone prompts something, what checks it? Who defines the LLM process? How do you change the rules? How much restriction is too much when many different people use these tools? If AI outputs are inconsistent, I don't prompt harder — I define constraints, reference-style adherence, and output schemas. That's what makes AI usable inside corporate constraints: predictable outputs, reviewable rules, clear failure modes.",
+          "Open Wonder exists because classic brand guides stop being enough once generative production becomes operational. The platform takes the kind of brand-production service an agency would normally interpret manually and turns it into a product system that can generate, critique, and steer assets for real teams. That is why named adoption matters here: Idealo, mobile.de, Hartmann, and Kneipp are not decorative references, but proof that the system had to work under actual brand pressure.",
+      },
+      {
+        type: "label",
+        content: "Hartmann AURA",
       },
       {
         type: "text",
         content:
-          "The copy reflects that discipline. Release announcements aren't marketing bolted on at the end — they're product surface area. A create-release-announcement command, updated COPY_GUIDELINES, and concrete examples ensure every future announcement starts from user reality (\"we sat with creators and saw 10–20 iterations per keeper\"), pairs two headline features, and talks about libraries feeling like moodboards rather than draft boards. Modals rewritten to be scannable — short, simple texts became a non-negotiable.",
+          "AURA shows the governed side of the same product logic. Internal AI workflows had to stay reviewable, privacy-conscious, and deployable inside enterprise conditions, not just impressive in a workshop. Data-flow diagrams, privacy checklists, reliable environment tagging, and build fixes were part of the product itself because trust in a brand-generation system depends on governance and operational clarity, not just output quality.",
+      },
+      {
+        type: "label",
+        content: "Kneipp Product Studio",
       },
       {
         type: "text",
         content:
-          "The platform runs on Next.js 15 with Supabase, Prisma, Sentry, and Vercel. When builds failed with sharp errors, Supabase CLI 503s, and missing Rollup binaries, we didn't hide behind \"works on my machine.\" We regenerated package-lock.json on Linux so the right binaries install, removed the fragile supabase npm dependency in favor of npx, made optional dependencies explicit, and added the OpenTelemetry packages Sentry expected. Sentry itself learned to detect dev vs. prod by hostname — so dev.openwonder.com finally behaves like a dev environment in the error stream.",
+          "Kneipp is the freshest proof that the system is moving closer to real production. In the new Product Studio Creative Placement Flow, the challenge was not to feed a product image into a model and hope for a generic shot. The work had to encode brand-specific studio language, props, composition rules, colors, and concept space well enough that the result could feel like Kneipp. Early tests were already strong enough that the outputs could move ahead of traditional render and photo production for social use, which changed the role of the system from exploratory tooling to practical brand asset generation.",
+      },
+      {
+        type: "label",
+        content: "Integrations and rollout",
       },
       {
         type: "text",
         content:
-          "A Sanity plugin lets editors generate Open Wonder images from inside Studio without ever seeing a token or needing to understand LoRA jobs. Data-flow diagrams and privacy checklists make it clear where user data flows and lives. All of it adds up to a particular stance: AI is welcome, but only if it respects the constraints of brand, reliability, and trust — and only if it makes the humans on the other side faster, clearer, and more confident.",
+          "The system also had to operate like product. A Sanity integration let editors generate Open Wonder assets from inside a real CMS surface without dealing with tokens or model orchestration. On the platform side, Next.js 15, Supabase, Prisma, Sentry, Vercel, and OpenTelemetry had to survive sharp binaries, lockfile issues, environment confusion, and privacy requirements. That operational layer matters because a generative brand system only becomes strategically useful when teams can rely on it, not just admire it.",
       },
     ],
     retrospectivePath: "/client-retrospectives/open-wonder.md",
