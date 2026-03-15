@@ -51,17 +51,20 @@ function ImageRow({
   }
 
   return (
-    <figure className={className}>
+    <figure className={`${className} relative`}>
       <div
         ref={scrollRef}
-        className={`min-w-0 select-none overflow-x-auto overflow-y-visible [&::-webkit-scrollbar]:hidden ${!isSingle ? (isDragging ? 'cursor-grabbing' : 'cursor-grab') : ''}`}
+        className={`relative left-1/2 w-screen max-w-none -translate-x-1/2 select-none overflow-x-auto [&::-webkit-scrollbar]:hidden ${!isSingle ? (isDragging ? 'cursor-grabbing' : 'cursor-grab') : ''}`}
         style={{ scrollbarWidth: 'none' }}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
         onPointerCancel={handlePointerUp}
       >
-        <div className="flex gap-5" style={{ minWidth: 'min-content' }}>
+        <div
+          className="flex gap-5 pl-6 pr-[max(1.5rem,calc(50vw-512px))] lg:pl-12 lg:pr-[max(3rem,calc(50vw-512px))]"
+          style={{ minWidth: 'min-content' }}
+        >
           {slides.map((slide, index) => (
             <div
               key={index}
