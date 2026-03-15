@@ -17,6 +17,18 @@ export interface Resume {
   successes?: Success[]
 }
 
+export interface HeroCopy {
+  kicker?: string
+  title?: string
+  body?: string[]
+}
+
+export interface ResumeCopy {
+  label?: string
+  headline?: string
+  intro?: string[]
+}
+
 export interface Basics {
   name: string
   label?: string
@@ -25,6 +37,8 @@ export interface Basics {
   phone?: string
   url?: string
   summary?: string
+  hero?: HeroCopy
+  resume?: ResumeCopy
   location?: Location
   profiles?: Profile[]
 }

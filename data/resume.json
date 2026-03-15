@@ -6,7 +6,23 @@
     "image": "",
     "email": "martin@martinhessmann.com",
     "url": "https://martinhessmann.com",
-    "summary": "I work across product design, engineering, and AI systems, translating brand, content, and operational constraints into platforms teams can run and extend. Over the last decade, that path moved from UX/UI and visual design into design systems, cross-functional delivery, and product strategy for AI and multi-platform products.",
+    "summary": "10+ years designing and building digital platforms — headless marketing sites, regulated application flows, multi-brand portfolios, AI image-generation systems — and leading the squads that ship them. Strongest where design, engineering, and stakeholder alignment have to actually agree.",
+    "hero": {
+      "kicker": "10+ years · Design, Engineering, AI",
+      "title": "Systems Designer for design, engineering, and AI.",
+      "body": [
+        "I work where products stop being tidy: regulated platforms, civic infrastructure, multi-brand portfolios, and AI systems that need governance as much as interfaces.",
+        "My role is to connect brand, product, content, engineering, and delivery so teams can keep shipping without losing clarity, maintainability, or operational control."
+      ]
+    },
+    "resume": {
+      "label": "Where I've worked and what I bring.",
+      "headline": "Design foundation. Engineering fluency. AI as a daily tool, not a buzzword.",
+      "intro": [
+        "10+ years moving from UX/UI design into systems design, cross-functional delivery, and AI product strategy. I design and build digital platforms — headless marketing sites, regulated application flows, multi-brand portfolios, AI image-generation systems — and I lead the squads that ship them.",
+        "Strongest where design, engineering, and stakeholder alignment have to actually agree: design-system governance across 6+ brands, accessible form logic for union benefit applications, AI guardrails that make brand-safe output reviewable in production. Currently at AN® and Open Wonder."
+      ]
+    },
     "location": {
       "city": "Berlin",
       "countryCode": "DE"
@@ -572,21 +588,38 @@
         "city": "Berlin",
         "countryCode": "DE"
       },
-      "summary": "Shape product strategy for Open Wonder’s AI platform, translating brand constraints and client requirements into product priorities, evaluation criteria, and system logic for scalable, on-brand image generation.",
+      "summary": "Define product strategy for an AI platform generating on-brand images for enterprise clients. Translate brand constraints into prompt logic, guardrails, and review workflows that make AI output predictable and production-ready.",
       "profileMix": {
         "segments": [
-          { "label": "Strategy", "value": 40 },
-          { "label": "Systems", "value": 25 },
-          { "label": "AI", "value": 20 },
-          { "label": "Partner", "value": 15 }
+          {
+            "label": "Strategy",
+            "value": 40
+          },
+          {
+            "label": "Systems",
+            "value": 25
+          },
+          {
+            "label": "AI",
+            "value": 20
+          },
+          {
+            "label": "Partner",
+            "value": 15
+          }
         ]
       },
       "highlights": [
-        "Translate client and brand constraints into roadmap priorities, guardrails, and review logic for AI image-generation workflows",
-        "Work across product, design, and engineering to make output quality measurable, reviewable, and usable in real production contexts",
+        "Defined evaluation criteria and constraint logic for AI image-generation pipelines serving brands like Kneipp and Hartmann",
+        "Work daily across product, engineering, and brand teams to make output quality measurable — not just generative",
         "Establish feedback loops and documentation that improve adoption and reduce manual review"
       ],
-      "tech": ["Product Strategy", "Product Management", "AI Platforms", "Brand Systems"]
+      "tech": [
+        "Product Strategy",
+        "Product Management",
+        "AI Platforms",
+        "Brand Systems"
+      ]
     },
     {
       "name": "AN® (an.jetzt)",
@@ -598,22 +631,53 @@
         "city": "Berlin",
         "countryCode": "DE"
       },
-      "summary": "Lead cross-functional squads delivering headless marketing sites and digital products, connecting design-system strategy, accessibility, QA, and AI-assisted workflows across stakeholders.",
+      "summary": "Lead cross-functional squads delivering headless marketing sites and digital products for clients including TeamBank, Grün Berlin, EVG, and DPF Group. Own design-system governance, accessibility, QA, and release quality across 15+ active platforms.",
       "profileMix": {
         "segments": [
-          { "label": "System", "value": 20 },
-          { "label": "Deliver", "value": 20 },
-          { "label": "Direct", "value": 35 },
-          { "label": "Strategy", "value": 25 }
+          {
+            "label": "System",
+            "value": 20
+          },
+          {
+            "label": "Deliver",
+            "value": 20
+          },
+          {
+            "label": "Direct",
+            "value": 35
+          },
+          {
+            "label": "Strategy",
+            "value": 25
+          }
         ]
       },
       "highlights": [
-        "Lead cross-functional squads across design, frontend, and platform delivery for headless sites and digital products",
-        "Drive design-system governance, accessibility standards, and release quality across client and internal teams",
+        "Delivery across Next.js, Nuxt, TYPO3, WordPress, and Prismic with CI/CD, Sentry observability, and Playwright testing",
+        "Design-system governance and accessibility standards across client and internal teams — from Figma tokens to production parity",
         "Standardize delivery and QA workflows with CI/CD, observability, and smoke tests to keep launches dependable",
         "Aligned brand, marketing, and platform stakeholders on roadmaps, launch criteria, and quality standards"
       ],
-      "tech": ["Next.js", "Nuxt.js", "Eleventy", "WordPress", "TYPO3", "Prismic", "Cloudflare", "Vercel", "Hetzner", "GitLab", "GitOps", "CI/CD", "Sentry Automations", "Playwright", "Algolia", "Optimole", "Mapbox", "AI-assisted workflows"]
+      "tech": [
+        "Next.js",
+        "Nuxt.js",
+        "Eleventy",
+        "WordPress",
+        "TYPO3",
+        "Prismic",
+        "Cloudflare",
+        "Vercel",
+        "Hetzner",
+        "GitLab",
+        "GitOps",
+        "CI/CD",
+        "Sentry Automations",
+        "Playwright",
+        "Algolia",
+        "Optimole",
+        "Mapbox",
+        "AI-assisted workflows"
+      ]
     },
     {
       "name": "Unit U+2463 GmbH",
@@ -625,22 +689,44 @@
         "city": "Berlin",
         "countryCode": "DE"
       },
-      "summary": "Directed UX, concept development, and visual systems across a six-brand portfolio, connecting discovery, research, and design-system governance across product teams.",
+      "summary": "Directed UX and design systems across a six-brand portfolio. Led discovery, research, and prototyping while building the multi-brand design-system foundations teams shipped on for 5 years.",
       "profileMix": {
         "segments": [
-          { "label": "Design", "value": 40 },
-          { "label": "Proto", "value": 15 },
-          { "label": "Direct", "value": 25 },
-          { "label": "Research", "value": 20 }
+          {
+            "label": "Design",
+            "value": 40
+          },
+          {
+            "label": "Proto",
+            "value": 15
+          },
+          {
+            "label": "Direct",
+            "value": 25
+          },
+          {
+            "label": "Research",
+            "value": 20
+          }
         ]
       },
       "highlights": [
-        "Led discovery, interviews, and prototyping to turn complex workflows into clearer user journeys and reusable interface patterns",
-        "Built multi-brand design-system foundations in Figma and Storybook across launches and product teams",
+        "Built reusable design-system foundations in Figma and Storybook across 6 brands on WordPress, TYPO3, and Prismic",
+        "Led discovery interviews and prototyping that turned complex regulated workflows into understandable interface patterns",
         "Defined UX standards and ensured parity between design and production across WordPress, TYPO3, and Prismic stacks",
         "Introduced design reviews, Storybook templates, and handoff rituals to reduce rework and speed launch cycles"
       ],
-      "tech": ["Figma", "Storybook", "WordPress", "TYPO3", "Prismic", "Jira", "GitLab", "CI/CD", "Design tokens"]
+      "tech": [
+        "Figma",
+        "Storybook",
+        "WordPress",
+        "TYPO3",
+        "Prismic",
+        "Jira",
+        "GitLab",
+        "CI/CD",
+        "Design tokens"
+      ]
     },
     {
       "name": "Ape Unit GmbH",
@@ -652,22 +738,40 @@
         "city": "Berlin",
         "countryCode": "DE"
       },
-      "summary": "Designed end-to-end UX for responsive web apps and campaign sites, shaping information architecture, interaction design, and reusable UI patterns across multi-device products.",
+      "summary": "Designed end-to-end UX for responsive web apps and campaign sites. Owned information architecture, interaction design, and reusable UI patterns across multi-device products.",
       "profileMix": {
         "segments": [
-          { "label": "Design", "value": 55 },
-          { "label": "Proto", "value": 25 },
-          { "label": "Team", "value": 10 },
-          { "label": "Research", "value": 10 }
+          {
+            "label": "Design",
+            "value": 55
+          },
+          {
+            "label": "Proto",
+            "value": 25
+          },
+          {
+            "label": "Team",
+            "value": 10
+          },
+          {
+            "label": "Research",
+            "value": 10
+          }
         ]
       },
       "highlights": [
-        "Owned IA, user flows, visual design, and interactive prototypes across responsive sites and web apps",
-        "Established reusable UI patterns and component-based workflows for multi-device delivery",
+        "Full ownership of IA, user flows, visual design, and interactive prototypes for responsive sites and web apps",
+        "Established component-based UI patterns and design-to-dev workflows for multi-device delivery",
         "Ran moderated usability tests and analytics reviews to improve clarity and task success",
         "Maintained brand consistency and accessibility standards across launches"
       ],
-      "tech": ["Sketch", "Zeplin", "InVision", "HTML/CSS", "JavaScript"]
+      "tech": [
+        "Sketch",
+        "Zeplin",
+        "InVision",
+        "HTML/CSS",
+        "JavaScript"
+      ]
     },
     {
       "name": "Ape Unit GmbH",
@@ -682,10 +786,22 @@
       "summary": "3-month internship supporting web campaigns and early UX research, contributing UI assets, prototypes, and QA feedback.",
       "profileMix": {
         "segments": [
-          { "label": "Explore", "value": 65 },
-          { "label": "Build", "value": 20 },
-          { "label": "Learn", "value": 5 },
-          { "label": "Research", "value": 10 }
+          {
+            "label": "Explore",
+            "value": 65
+          },
+          {
+            "label": "Build",
+            "value": 20
+          },
+          {
+            "label": "Learn",
+            "value": 5
+          },
+          {
+            "label": "Research",
+            "value": 10
+          }
         ]
       },
       "highlights": [
@@ -693,7 +809,12 @@
         "Contributed to a Natural User Interface study supporting a bachelor's thesis research track",
         "Built interactive prototypes in HTML/CSS, assisted QA, and documented feedback for senior designers"
       ],
-      "tech": ["Photoshop", "Illustrator", "HTML/CSS", "GitLab"]
+      "tech": [
+        "Photoshop",
+        "Illustrator",
+        "HTML/CSS",
+        "GitLab"
+      ]
     },
     {
       "position": "Freelance Brand & Graphic Designer",
@@ -707,10 +828,22 @@
       "summary": "Freelance brand and graphic designer delivering identity systems and multi-channel collateral for local businesses, owning client discovery, scope, and production delivery.",
       "profileMix": {
         "segments": [
-          { "label": "Brand", "value": 60 },
-          { "label": "Print", "value": 10 },
-          { "label": "Client", "value": 15 },
-          { "label": "Scope", "value": 15 }
+          {
+            "label": "Brand",
+            "value": 60
+          },
+          {
+            "label": "Print",
+            "value": 10
+          },
+          {
+            "label": "Client",
+            "value": 15
+          },
+          {
+            "label": "Scope",
+            "value": 15
+          }
         ]
       },
       "highlights": [
@@ -718,7 +851,13 @@
         "Produced print collateral (business cards, flyers, menus) with press-ready specs and vendor coordination",
         "Scoped and budgeted projects end-to-end, managing client communication from kickoff through production"
       ],
-      "tech": ["Illustrator", "InDesign", "Photoshop", "HTML", "CSS"]
+      "tech": [
+        "Illustrator",
+        "InDesign",
+        "Photoshop",
+        "HTML",
+        "CSS"
+      ]
     }
   ],
   "education": [

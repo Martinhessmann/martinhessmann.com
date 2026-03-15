@@ -3,70 +3,11 @@
 import { useEffect, useMemo, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import ClientDetailSheet from '@/components/client-detail-sheet'
-import { CLIENT_REALMS } from '@/data/clients'
+import { CLIENT_REALMS, TRUST_LOGOS, DEFAULT_CARD_THEME } from '@/data/clients'
 import resumeData from '@/data/resume.json'
 import type { Resume } from '@/types/resume'
 
 const resume = resumeData as Resume
-
-const CARD_BG_COLORS: Record<
-  string,
-  {
-    bg: string
-    surface: string
-    text: string
-    tray: string
-    panel: string
-    panelText: string
-    label: string
-  }
-> = {
-  teambank: {
-    bg: '#2C9AD8',
-    surface: '#5BB6EA',
-    text: 'white',
-    tray: '#17688F',
-    panel: '#17688F',
-    panelText: '#FFFFFF',
-    label: 'rgba(255,255,255,0.9)',
-  },
-  'gruen-infrasignal': {
-    bg: '#5BE290',
-    surface: '#8AF0B4',
-    text: 'gray-900',
-    tray: '#2F9C61',
-    panel: '#2F9C61',
-    panelText: '#181823',
-    label: 'rgba(12,26,18,0.84)',
-  },
-  'open-wonder': {
-    bg: '#F5E642',
-    surface: '#FFF07A',
-    text: 'gray-900',
-    tray: '#D5C51F',
-    panel: '#D5C51F',
-    panelText: '#181823',
-    label: 'rgba(44,39,3,0.86)',
-  },
-  'tertianum-dpf': {
-    bg: '#F8F0E5',
-    surface: '#FFF8F1',
-    text: 'gray-900',
-    tray: '#DED0BF',
-    panel: '#DED0BF',
-    panelText: '#181823',
-    label: 'rgba(73,58,38,0.84)',
-  },
-  'wo-mo-fonds': {
-    bg: '#1E3A5F',
-    surface: '#325783',
-    text: 'white',
-    tray: '#213A5B',
-    panel: '#213A5B',
-    panelText: '#FFFFFF',
-    label: 'rgba(255,255,255,0.88)',
-  },
-}
 
 const CARD_LAYOUT = [
   { rotate: -7, translateY: 28 },
@@ -74,28 +15,6 @@ const CARD_LAYOUT = [
   { rotate: -5, translateY: 24 },
   { rotate: 4, translateY: 4 },
   { rotate: -4, translateY: 20 },
-]
-
-const TRUST_LOGO_SIZES = {
-  xs: 'max-h-[42px] max-w-[110px]',   // way too large → noticeably smaller
-  sm: 'max-h-[56px] max-w-[150px]',   // a bit too large
-  md: 'max-h-[60px] max-w-[165px]',   // a tiny bit smaller
-  default: 'max-h-[68px] max-w-[196px]',
-} as const
-
-const TRUST_LOGOS: Array<{ name: string; src: string; size?: keyof typeof TRUST_LOGO_SIZES }> = [
-  { name: 'TeamBank', src: '/images/projects/figma-curated-tagged/clients/teambank.svg', size: 'sm' },
-  { name: 'easyCredit', src: '/images/projects/figma-curated-tagged/clients/easycredit.svg', size: 'md' },
-  { name: 'EVG', src: '/images/projects/figma-curated-tagged/clients/evg.svg', size: 'xs' },
-  { name: 'Grün Berlin', src: '/images/projects/figma-curated-tagged/clients/gruen-berlin.svg' },
-  { name: 'Hartmann', src: '/images/projects/figma-curated-tagged/clients/hartmann.svg' },
-  { name: 'mobile.de', src: '/images/projects/figma-curated-tagged/clients/mobile-de.svg' },
-  { name: 'Deutsche Bahn', src: '/images/projects/figma-curated-tagged/clients/deutsche-bahn.svg', size: 'md' },
-  { name: 'E.ON', src: '/images/projects/figma-curated-tagged/clients/e-on.svg', size: 'xs' },
-  { name: 'Volkswagen Group', src: '/images/projects/figma-curated-tagged/clients/volkswagen-group.svg' },
-  { name: 'Voith', src: '/images/projects/figma-curated-tagged/clients/voith.svg', size: 'sm' },
-  { name: 'GIZ', src: '/images/projects/figma-curated-tagged/clients/giz.svg' },
-  { name: 'Porsche', src: '/images/projects/figma-curated-tagged/clients/porsche.svg' },
 ]
 
 const UI_BASE = 'var(--portfolio-midnight-950)'
@@ -186,22 +105,21 @@ export default function PortfolioPage() {
 
       <section className="px-6 pb-8 pt-24 lg:px-12 lg:pb-10 lg:pt-32">
         <div className="mx-auto max-w-6xl">
-          <p className="text-[12px] font-medium uppercase tracking-[0.22em]" style={{ color: UI_LILAC }}>
-            10+ years · Design, Engineering, AI
-          </p>
+          {resume.basics.hero?.kicker && (
+            <p className="text-[12px] font-medium uppercase tracking-[0.22em]" style={{ color: UI_LILAC }}>
+              {resume.basics.hero.kicker}
+            </p>
+          )}
           <h1 className="mt-5 max-w-5xl font-hedvig text-[clamp(40px,6vw,72px)] leading-[1.02] text-white">
-            Systems Designer for design, engineering, and AI.
+            {resume.basics.hero?.title ?? resume.basics.label}
           </h1>
-          <div className="mt-8 max-w-4xl space-y-5 text-[16px] leading-[1.7] lg:text-[17px]" style={{ color: UI_TEXT_SOFT }}>
-            <p>
-              I work where products stop being tidy: regulated platforms, civic infrastructure,
-              multi-brand portfolios, and AI systems that need governance as much as interfaces.
-            </p>
-            <p>
-              My role is to connect brand, product, content, engineering, and delivery so teams
-              can keep shipping without losing clarity, maintainability, or operational control.
-            </p>
-          </div>
+          {resume.basics.hero?.body && (
+            <div className="mt-8 max-w-4xl space-y-5 text-[16px] leading-[1.7] lg:text-[17px]" style={{ color: UI_TEXT_SOFT }}>
+              {resume.basics.hero.body.map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -214,15 +132,7 @@ export default function PortfolioPage() {
           <div className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:flex lg:items-end lg:justify-center lg:gap-4 lg:pb-4 lg:pt-4">
             {CLIENT_REALMS.map((realm, index) => {
               const layout = CARD_LAYOUT[index] ?? { rotate: 0, translateY: 0 }
-              const colors = CARD_BG_COLORS[realm.id] ?? {
-                bg: '#1f2937',
-                surface: '#374151',
-                text: 'white',
-                tray: '#7c5b38',
-                panel: '#243247',
-                panelText: '#ffffff',
-                label: 'rgba(255,255,255,0.88)',
-              }
+              const colors = realm.theme ?? DEFAULT_CARD_THEME
 
               return (
                 <motion.div
@@ -318,7 +228,7 @@ export default function PortfolioPage() {
                     <img
                       src={logo.src}
                       alt={logo.name}
-                      className={`w-auto object-contain brightness-0 invert opacity-80 ${TRUST_LOGO_SIZES[logo.size ?? 'default']}`}
+                      className="max-h-[68px] max-w-[196px] w-auto object-contain brightness-0 invert opacity-80"
                     />
                   </span>
                 ))}
@@ -337,49 +247,94 @@ export default function PortfolioPage() {
             'linear-gradient(180deg, rgba(161, 161, 250, 0.045), rgba(250, 187, 249, 0.03))',
         }}
       >
-        <div className="mx-auto grid max-w-6xl gap-14 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-20">
-          <div>
-            <p className="text-[12px] font-medium uppercase tracking-[0.22em]" style={{ color: UI_PINK }}>Resume</p>
-            <h2 className="mt-4 font-hedvig text-[clamp(28px,4vw,44px)] leading-[1.1] text-white">
-              From UX/UI design into systems design, cross-functional delivery, and AI product strategy.
-            </h2>
-            <div className="mt-6 space-y-5 text-[15px] leading-[1.72] lg:text-[16px]" style={{ color: UI_TEXT_SOFT }}>
-              <p>{resume.basics.summary}</p>
-              <p>
-                Current scope spans product strategy for Open Wonder&apos;s AI platform, cross-functional
-                delivery and design-system leadership at AN®, and the multi-brand UX foundation built
-                across Unit U+2463 and Ape Unit.
+        <div className="mx-auto max-w-6xl">
+          <div className="grid gap-14 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-20">
+            <div>
+              <p className="text-[12px] font-medium uppercase tracking-[0.22em]" style={{ color: UI_PINK }}>
+                {resume.basics.resume?.label ?? 'Resume'}
               </p>
-              <p>{footerMeta}</p>
+              <h2 className="mt-4 font-hedvig text-[clamp(28px,4vw,44px)] leading-[1.1] text-white">
+                {resume.basics.resume?.headline ?? resume.basics.label}
+              </h2>
+              {resume.basics.resume?.intro && (
+                <div className="mt-6 space-y-5 text-[16px] leading-[1.72]" style={{ color: UI_TEXT_SOFT }}>
+                  {resume.basics.resume.intro.map((paragraph, i) => (
+                    <p key={i}>{paragraph}</p>
+                  ))}
+                </div>
+              )}
+
+              {(resume.education?.[0] || languages) && (
+                <div className="mt-8 space-y-2 text-[16px] leading-[1.6]" style={{ color: UI_TEXT_MUTED }}>
+                  {resume.education?.[0] && (
+                    <p>
+                      {resume.education[0].studyType} — {resume.education[0].area}, {resume.education[0].location?.city} ({resume.education[0].startDate}–{resume.education[0].endDate})
+                    </p>
+                  )}
+                  <p>{footerMeta}</p>
+                </div>
+              )}
+            </div>
+
+            <div className="space-y-8">
+              {featuredWork.map((entry) => (
+                <article key={`${entry.name}-${entry.startDate}`} className="border-t pt-5 first:border-t-0 first:pt-0" style={{ borderColor: UI_BORDER }}>
+                  <div className="flex flex-wrap items-baseline justify-between gap-4">
+                    <div>
+                      <h3 className="font-hedvig text-[24px] leading-[1.2] text-white">{entry.position}</h3>
+                      <p className="mt-1 text-[16px] font-medium uppercase tracking-[0.08em]" style={{ color: UI_PINK }}>
+                        {entry.name}
+                      </p>
+                    </div>
+                    <p className="text-[16px] font-medium" style={{ color: UI_TEXT_MUTED }}>{formatPeriod(entry.startDate, entry.endDate)}</p>
+                  </div>
+                  {entry.summary && <p className="mt-4 text-[16px] leading-[1.72]" style={{ color: UI_TEXT_SOFT }}>{entry.summary}</p>}
+                  {entry.highlights && entry.highlights.length > 0 && (
+                    <ul className="mt-4 space-y-2 text-[16px] leading-[1.68]" style={{ color: UI_TEXT_SOFT }}>
+                      {entry.highlights.slice(0, 2).map((highlight) => (
+                        <li key={highlight} className="flex items-start gap-3">
+                          <span className="mt-[0.6em] h-1.5 w-1.5 shrink-0 rounded-full" style={{ backgroundColor: UI_PINK }} />
+                          <span>{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </article>
+              ))}
             </div>
           </div>
 
-          <div className="space-y-8">
-            {featuredWork.map((entry) => (
-              <article key={`${entry.name}-${entry.startDate}`} className="border-t pt-5 first:border-t-0 first:pt-0" style={{ borderColor: UI_BORDER }}>
-                <div className="flex flex-wrap items-baseline justify-between gap-4">
-                  <div>
-                    <h3 className="font-hedvig text-[24px] leading-[1.2] text-white">{entry.position}</h3>
-                    <p className="mt-1 text-[14px] font-medium uppercase tracking-[0.16em]" style={{ color: UI_PINK }}>
-                      {entry.name}
-                    </p>
+          {resume.skills && resume.skills.length > 0 && (
+            <div className="mt-16 border-t pt-10" style={{ borderColor: UI_BORDER }}>
+              <p className="text-[12px] font-medium uppercase tracking-[0.22em]" style={{ color: UI_PINK }}>
+                What I work with.
+              </p>
+              <div className="mt-6 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                {resume.skills.map((skill) => (
+                  <div key={skill.name}>
+                    <p className="text-[16px] font-medium text-white">{skill.name}</p>
+                    {skill.keywords && (
+                      <p className="mt-2 text-[16px] leading-[1.7]" style={{ color: UI_TEXT_MUTED }}>
+                        {skill.keywords.join(', ')}
+                      </p>
+                    )}
                   </div>
-                  <p className="text-[14px] font-medium" style={{ color: UI_TEXT_MUTED }}>{formatPeriod(entry.startDate, entry.endDate)}</p>
-                </div>
-                {entry.summary && <p className="mt-4 text-[15px] leading-[1.72]" style={{ color: UI_TEXT_SOFT }}>{entry.summary}</p>}
-                {entry.highlights && entry.highlights.length > 0 && (
-                  <ul className="mt-4 space-y-2 text-[14px] leading-[1.68]" style={{ color: UI_TEXT_SOFT }}>
-                    {entry.highlights.slice(0, 2).map((highlight) => (
-                      <li key={highlight} className="flex items-start gap-3">
-                        <span className="mt-[0.6em] h-1.5 w-1.5 shrink-0 rounded-full" style={{ backgroundColor: UI_PINK }} />
-                        <span>{highlight}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </article>
-            ))}
-          </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {resume.awards && resume.awards.length > 0 && (
+            <div className="mt-10 border-t pt-8" style={{ borderColor: UI_BORDER }}>
+              <div className="flex flex-wrap gap-x-8 gap-y-3 text-[16px]" style={{ color: UI_TEXT_MUTED }}>
+                {resume.awards.map((award) => (
+                  <span key={award.title}>
+                    {award.title} <span style={{ color: UI_TEXT_MUTED, opacity: 0.6 }}>· {award.awarder}, {award.date?.slice(0, 4)}</span>
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
@@ -388,17 +343,17 @@ export default function PortfolioPage() {
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1.35fr)] lg:gap-16">
             <div className="space-y-3">
               <p className="font-hedvig text-[20px] text-white">{resume.basics.name}</p>
-              <p className="max-w-md text-[15px] leading-[1.7]" style={{ color: UI_TEXT_SOFT }}>
-                Systems Designer across product design, engineering, AI, and delivery.
+              <p className="max-w-md text-[16px] leading-[1.7]" style={{ color: UI_TEXT_SOFT }}>
+                {resume.basics.label}
               </p>
-              <p className="text-[14px] leading-[1.7]" style={{ color: UI_TEXT_MUTED }}>
+              <p className="text-[16px] leading-[1.7]" style={{ color: UI_TEXT_MUTED }}>
                 {footerMeta}
               </p>
             </div>
 
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
               <div>
-                <p className="text-[11px] font-medium uppercase tracking-[0.2em]" style={{ color: UI_PINK }}>
+                <p className="text-[12px] font-medium uppercase tracking-[0.2em]" style={{ color: UI_PINK }}>
                   Contact
                 </p>
                 <div className="mt-3 space-y-2 text-[15px]" style={{ color: UI_TEXT_MUTED }}>
@@ -412,7 +367,7 @@ export default function PortfolioPage() {
               </div>
 
               <div>
-                <p className="text-[11px] font-medium uppercase tracking-[0.2em]" style={{ color: UI_PINK }}>
+                <p className="text-[12px] font-medium uppercase tracking-[0.2em]" style={{ color: UI_PINK }}>
                   Resume
                 </p>
                 <div className="mt-3 space-y-2 text-[15px]" style={{ color: UI_TEXT_MUTED }}>
@@ -426,7 +381,7 @@ export default function PortfolioPage() {
               </div>
 
               <div>
-                <p className="text-[11px] font-medium uppercase tracking-[0.2em]" style={{ color: UI_PINK }}>
+                <p className="text-[12px] font-medium uppercase tracking-[0.2em]" style={{ color: UI_PINK }}>
                   Social
                 </p>
                 <div className="mt-3 space-y-2 text-[15px]" style={{ color: UI_TEXT_MUTED }}>
@@ -440,7 +395,7 @@ export default function PortfolioPage() {
               </div>
 
               <div>
-                <p className="text-[11px] font-medium uppercase tracking-[0.2em]" style={{ color: UI_PINK }}>
+                <p className="text-[12px] font-medium uppercase tracking-[0.2em]" style={{ color: UI_PINK }}>
                   Legal
                 </p>
                 <div className="mt-3 space-y-2 text-[15px]" style={{ color: UI_TEXT_MUTED }}>

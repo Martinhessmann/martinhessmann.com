@@ -24,6 +24,16 @@ export interface Deliverable {
   description: string
 }
 
+export interface CardTheme {
+  bg: string
+  surface: string
+  text: string
+  tray: string
+  panel: string
+  panelText: string
+  label: string
+}
+
 export interface ClientRealm {
   id: string
   client: string
@@ -35,6 +45,7 @@ export interface ClientRealm {
   keyMoment: string
   roleSummary: string
   roleTags: string[]
+  theme: CardTheme
   sidebar: SidebarMeta
   deliverables: {
     heading: string
@@ -44,6 +55,12 @@ export interface ClientRealm {
   closing?: string
   story: StoryBlock[]
   retrospectivePath?: string
+}
+
+export interface TrustLogo {
+  id: string
+  name: string
+  src: string
 }
 
 const IMG = "/images/projects/figma-curated-tagged"
@@ -61,6 +78,15 @@ export const CLIENT_REALMS: ClientRealm[] = [
     logo: `${IMG}/clients/teambank.svg`,
     moodImage: `${IMG_ROOT}/teambank-illlu.png`,
     hook: "UI systems for platforms that could not wait for a style guide.",
+    theme: {
+      bg: '#2C9AD8',
+      surface: '#5BB6EA',
+      text: 'white',
+      tray: '#17688F',
+      panel: '#17688F',
+      panelText: '#FFFFFF',
+      label: 'rgba(255,255,255,0.9)',
+    },
     keyMoment:
       "TeamBank, the maker of easyCredit, was operating across multiple platforms, teams, and agencies: corporate communication, partner tooling, brand operations, and merchant-facing services. I led UI/UX on the platforms I worked on and turned that fragmented landscape into a usable interface system, even though no commissioned global style guide existed for the platform layer.",
     roleSummary:
@@ -287,6 +313,15 @@ export const CLIENT_REALMS: ClientRealm[] = [
     logo: `${IMG}/clients/gruen-berlin.svg`,
     moodImage: `${IMG_ROOT}/gruenberlin-illu.png`,
     hook: "From scattered logos to one file change.",
+    theme: {
+      bg: '#5BE290',
+      surface: '#8AF0B4',
+      text: 'gray-900',
+      tray: '#2F9C61',
+      panel: '#2F9C61',
+      panelText: '#181823',
+      label: 'rgba(12,26,18,0.84)',
+    },
     keyMoment:
       "Public-facing content and operator-facing tooling both needed to stay reliable, accessible, and easier to maintain under real operational constraints.",
     roleSummary:
@@ -398,6 +433,15 @@ export const CLIENT_REALMS: ClientRealm[] = [
     logo: `${IMG}/clients/hartmann.svg`,
     moodImage: `${IMG_ROOT}/openwonder-illlu.png`,
     hook: "An agency service, rebuilt as a product system.",
+    theme: {
+      bg: '#F5E642',
+      surface: '#FFF07A',
+      text: 'gray-900',
+      tray: '#D5C51F',
+      panel: '#D5C51F',
+      panelText: '#181823',
+      label: 'rgba(44,39,3,0.86)',
+    },
     keyMoment:
       "Open Wonder turns agency-style brand production into a product. The real problem is not just generating images, but making LLM logic, generation models, brand rules, and creative direction align well enough that outputs become usable, repeatable, and worth shipping for teams including Idealo, mobile.de, Hartmann, and Kneipp.",
     roleSummary:
@@ -510,6 +554,15 @@ export const CLIENT_REALMS: ClientRealm[] = [
     logo: "",
     moodImage: `${IMG_ROOT}/tertianum-illu.png`,
     hook: "Six sites. One platform. No big migration.",
+    theme: {
+      bg: '#F8F0E5',
+      surface: '#FFF8F1',
+      text: 'gray-900',
+      tray: '#DED0BF',
+      panel: '#DED0BF',
+      panelText: '#181823',
+      label: 'rgba(73,58,38,0.84)',
+    },
     keyMoment:
       "A multi-brand portfolio with distinct identities still needed shared delivery logic, reliable lead handling, and a way to roll out change without repeated migrations.",
     roleSummary:
@@ -578,6 +631,15 @@ export const CLIENT_REALMS: ClientRealm[] = [
     logo: `${IMG}/clients/evg.svg`,
     moodImage: `${IMG_ROOT}/womofonds-illlu.png`,
     hook: "Union benefits, made understandable.",
+    theme: {
+      bg: '#1E3A5F',
+      surface: '#325783',
+      text: 'white',
+      tray: '#213A5B',
+      panel: '#213A5B',
+      panelText: '#FFFFFF',
+      label: 'rgba(255,255,255,0.88)',
+    },
     keyMoment:
       "EVG, the Eisenbahn- und Verkehrsgewerkschaft, supports members through Wo-Mo-Fonds and Dein WoMo — digital services for housing, mobility, internet, and equipment benefits. The challenge was to make those regulated processes understandable without losing legal precision.",
     roleSummary:
@@ -676,3 +738,27 @@ export const CLIENT_REALMS: ClientRealm[] = [
     retrospectivePath: "/client-retrospectives/wo-mo-fonds.md",
   },
 ]
+
+export const TRUST_LOGOS: TrustLogo[] = [
+  { id: 'teambank', name: 'TeamBank', src: `${IMG}/clients/teambank.svg` },
+  { id: 'easycredit', name: 'easyCredit', src: `${IMG}/clients/easycredit.svg` },
+  { id: 'evg', name: 'EVG', src: `${IMG}/clients/evg.svg` },
+  { id: 'gruen-berlin', name: 'Grün Berlin', src: `${IMG}/clients/gruen-berlin.svg` },
+  { id: 'hartmann', name: 'Hartmann', src: `${IMG}/clients/hartmann.svg` },
+  { id: 'mobile-de', name: 'mobile.de', src: `${IMG}/clients/mobile-de.svg` },
+  { id: 'deutsche-bahn', name: 'Deutsche Bahn', src: `${IMG}/clients/deutsche-bahn.svg` },
+  { id: 'e-on', name: 'E.ON', src: `${IMG}/clients/e-on.svg` },
+  { id: 'volkswagen-group', name: 'Volkswagen Group', src: `${IMG}/clients/volkswagen-group.svg` },
+  { id: 'voith', name: 'Voith', src: `${IMG}/clients/voith.svg` },
+  { id: 'giz', name: 'GIZ', src: `${IMG}/clients/giz.svg` },
+]
+
+export const DEFAULT_CARD_THEME: CardTheme = {
+  bg: '#1f2937',
+  surface: '#374151',
+  text: 'white',
+  tray: '#7c5b38',
+  panel: '#243247',
+  panelText: '#ffffff',
+  label: 'rgba(255,255,255,0.88)',
+}
