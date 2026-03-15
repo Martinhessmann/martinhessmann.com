@@ -250,7 +250,7 @@ export default function PortfolioPage() {
                   style={{ zIndex: useCardFanLayout ? CLIENT_REALMS.length - index : 'auto' }}
                 >
                   <article
-                    className="relative flex h-fit min-h-[280px] w-full cursor-pointer flex-col overflow-hidden rounded-[var(--surface-radius-lg)] border p-3 sm:min-h-[310px] sm:p-4 lg:min-h-[330px] lg:w-[220px]"
+                    className="relative flex h-fit w-full cursor-pointer flex-col overflow-hidden rounded-[var(--surface-radius-lg)] border p-3 sm:p-4 lg:w-[220px]"
                     style={{ backgroundColor: colors.bg, borderColor: 'var(--surface-border-dark)' }}
                     onClick={() => setActiveRealmId(realm.id)}
                     role="button"
@@ -280,7 +280,7 @@ export default function PortfolioPage() {
                         <div className="h-[120px] w-full rounded-[var(--surface-radius-sm)] bg-black/10 sm:h-[140px]" />
                       )}
                     </div>
-                    <div className="mt-auto flex min-h-[7rem] shrink-0 flex-col justify-start px-1 pb-1 pt-2">
+                    <div className="mt-3 shrink-0 px-1 pb-1 pt-2">
                       <p
                         className="font-hedvig text-[15px] leading-[1.14] sm:text-[17px]"
                         style={{ color: colors.panelText }}
