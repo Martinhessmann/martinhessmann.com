@@ -67,8 +67,18 @@ export interface TrustLogo {
   height: number
 }
 
+// Legacy tagged assets still power logos and non-migrated media.
+// Canonical realm screenshots now live under /images/projects/clients/<realm-id>/...
 const IMG = "/images/projects/figma-curated-tagged"
 const IMG_ROOT = "/images/projects"
+const CLIENT_IMG = `${IMG_ROOT}/clients`
+const REALM_IMG = {
+  teambank: `${CLIENT_IMG}/teambank`,
+  gruenInfrasignal: `${CLIENT_IMG}/gruen-infrasignal`,
+  openWonder: `${CLIENT_IMG}/open-wonder`,
+  tertianumDpf: `${CLIENT_IMG}/tertianum-dpf`,
+  woMoFonds: `${CLIENT_IMG}/wo-mo-fonds`,
+} as const
 
 export const CLIENT_REALMS: ClientRealm[] = [
   // ──────────────────────────────────────────────
@@ -80,7 +90,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
     displayName: "TeamBank",
     accountLine: "Multi-platform brand and partner systems",
     logo: `${IMG}/clients/teambank.svg`,
-    moodImage: `${IMG_ROOT}/teambank-illlu.png`,
+    moodImage: `${REALM_IMG.teambank}/cover/cover-illustration.png`,
     hook: "UI systems for platforms that could not wait for a style guide.",
     theme: {
       bg: '#2C9AD8',
@@ -175,17 +185,17 @@ export const CLIENT_REALMS: ClientRealm[] = [
         type: "gallery",
         images: [
           {
-            src: `${IMG}/markenportal/homepage-mockup.png`,
+            src: `${REALM_IMG.teambank}/markenportal/homepage-mockup.png`,
             alt: "TeamBank Markenportal on iPad",
             caption: "Search, navigation, and brand assets in one working surface",
           },
           {
-            src: `${IMG}/markenportal/download-ui.png`,
+            src: `${REALM_IMG.teambank}/markenportal/download-ui.png`,
             alt: "Download interface in the Markenportal",
             caption: "Downloads that felt like part of a system, not a file dump",
           },
           {
-            src: `${IMG}/markenportal/brand-asset-download-preview.png`,
+            src: `${REALM_IMG.teambank}/markenportal/brand-asset-download-preview.png`,
             alt: "Brand asset download preview",
             caption: "Preview logic that made assets easier to trust",
           },
@@ -201,17 +211,17 @@ export const CLIENT_REALMS: ClientRealm[] = [
         type: "gallery",
         images: [
           {
-            src: `${IMG}/markenportal/wordpress-media-backend-new.png`,
+            src: `${REALM_IMG.teambank}/content-manager-workflows/wordpress-media-backend-new.png`,
             alt: "WordPress media workflow",
             caption: "Micro-plugins around the media workflow",
           },
           {
-            src: `${IMG}/markenportal/download-ui.png`,
+            src: `${REALM_IMG.teambank}/content-manager-workflows/download-ui.png`,
             alt: "Download UI in the Markenportal",
             caption: "Editor-facing download management",
           },
           {
-            src: `${IMG}/markenportal/brand-asset-download-preview.png`,
+            src: `${REALM_IMG.teambank}/content-manager-workflows/brand-asset-download-preview.png`,
             alt: "Generated download preview",
             caption: "Collection previews generated from grouped assets",
           },
@@ -227,17 +237,17 @@ export const CLIENT_REALMS: ClientRealm[] = [
         type: "gallery",
         images: [
           {
-            src: `${IMG}/teambank/teambank-homepage-ipad-mockup.png`,
+            src: `${REALM_IMG.teambank}/shared-search-and-reuse/teambank-homepage-ipad-mockup.png`,
             alt: "teambank.de homepage on iPad",
             caption: "Corporate communication kept inside the same system language",
           },
           {
-            src: `${IMG}/easycredit/partner-portal-ui.png`,
+            src: `${REALM_IMG.teambank}/shared-search-and-reuse/partner-portal-ui.png`,
             alt: "easyCredit partner portal",
             caption: "Partner tooling without a disconnected UI language",
           },
           {
-            src: `${IMG}/easycredit/developer-portal-mockup.png`,
+            src: `${REALM_IMG.teambank}/shared-search-and-reuse/developer-portal-mockup.png`,
             alt: "easyCredit developer portal",
             caption: "Developer-facing reuse on the same foundation",
           },
@@ -251,7 +261,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       { type: "label", content: "teambank.de" },
       {
         type: "image",
-        src: `${IMG}/teambank/teambank-homepage-hero.png`,
+        src: `${REALM_IMG.teambank}/teambank-de/teambank-homepage-hero.png`,
         alt: "teambank.de corporate site",
         caption: "Corporate site after relaunch",
       },
@@ -265,12 +275,12 @@ export const CLIENT_REALMS: ClientRealm[] = [
         type: "gallery",
         images: [
           {
-            src: `${IMG}/easycredit/partner-portal-ui.png`,
+            src: `${REALM_IMG.teambank}/teambank-welt/partner-portal-ui.png`,
             alt: "easyCredit partner portal",
             caption: "Partner portal toolbox",
           },
           {
-            src: `${IMG}/easycredit/developer-portal-mockup.png`,
+            src: `${REALM_IMG.teambank}/teambank-welt/developer-portal-mockup.png`,
             alt: "easyCredit developer portal",
             caption: "Developer portal",
           },
@@ -286,17 +296,17 @@ export const CLIENT_REALMS: ClientRealm[] = [
         type: "gallery",
         images: [
           {
-            src: `${IMG}/easycredit/bnpl-consultant-ui.png`,
+            src: `${REALM_IMG.teambank}/easycredit-b2b-portal/bnpl-consultant-ui.png`,
             alt: "BNPL Business Berater configurator",
             caption: "BNPL configurator",
           },
           {
-            src: `${IMG}/easycredit/bnpl-consultant-graph.png`,
+            src: `${REALM_IMG.teambank}/easycredit-b2b-portal/bnpl-consultant-graph.png`,
             alt: "BNPL revenue potential graph",
             caption: "Revenue potential by industry",
           },
           {
-            src: `${IMG}/easycredit/bnpl-consultant-ui-dropdown.png`,
+            src: `${REALM_IMG.teambank}/easycredit-b2b-portal/bnpl-consultant-ui-dropdown.png`,
             alt: "BNPL configurator dropdown",
             caption: "Configurator detail",
           },
@@ -315,7 +325,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
     displayName: "Grün Berlin",
     accountLine: "Civic ecosystem stewardship",
     logo: `${IMG}/clients/gruen-berlin.svg`,
-    moodImage: `${IMG_ROOT}/gruenberlin-illu.png`,
+    moodImage: `${REALM_IMG.gruenInfrasignal}/cover/cover-illustration.png`,
     hook: "A civic ecosystem people had to understand, use, and trust.",
     theme: {
       bg: '#5BE290',
@@ -405,13 +415,13 @@ export const CLIENT_REALMS: ClientRealm[] = [
       { type: "label", content: "Grün Berlin" },
       {
         type: "image",
-        src: `${IMG}/gruen-berlin/mockup-mobile.png`,
+        src: `${REALM_IMG.gruenInfrasignal}/gruen-berlin/mockup-mobile.png`,
         alt: "Grün Berlin website on mobile",
         caption: "Grün Berlin on mobile",
       },
       {
         type: "image",
-        src: `${IMG}/gruen-berlin/homepage-hero.png`,
+        src: `${REALM_IMG.gruenInfrasignal}/gruen-berlin/homepage-hero.png`,
         alt: "Grün Berlin homepage",
         caption: "Homepage",
       },
@@ -423,7 +433,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       { type: "label", content: "Infrasignal" },
       {
         type: "image",
-        src: `${IMG}/infrasignal/infrasignal-mood.png`,
+        src: `${REALM_IMG.gruenInfrasignal}/infrasignal/infrasignal-mood.png`,
         alt: "Berlin traffic light infrastructure",
         caption: "Traffic light infrastructure",
       },
@@ -431,17 +441,17 @@ export const CLIENT_REALMS: ClientRealm[] = [
         type: "gallery",
         images: [
           {
-            src: `${IMG}/infrasignal/traffic-light-map-screenshot.png`,
+            src: `${REALM_IMG.gruenInfrasignal}/infrasignal/traffic-light-map-screenshot.png`,
             alt: "Traffic light disturbance map",
             caption: "Disturbance map",
           },
           {
-            src: `${IMG}/infrasignal/traffic-light-reporting-button.png`,
+            src: `${REALM_IMG.gruenInfrasignal}/infrasignal/traffic-light-reporting-button.png`,
             alt: "Disturbance reporting button",
             caption: "Report button",
           },
           {
-            src: `${IMG}/infrasignal/traffic-light-reporting-form-screenshot.png`,
+            src: `${REALM_IMG.gruenInfrasignal}/infrasignal/traffic-light-reporting-form-screenshot.png`,
             alt: "Disturbance reporting form",
             caption: "Reporting form",
           },
@@ -461,7 +471,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       { type: "label", content: "Stadt Weide Land" },
       {
         type: "image",
-        src: "/images/clients/stadtweideland.de-og.jpg",
+        src: `${REALM_IMG.gruenInfrasignal}/stadt-weide-land/stadtweideland.de-og.jpg`,
         alt: "Stadt Weide Land website",
         caption: "Stadt Weide Land",
       },
@@ -487,7 +497,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
     displayName: "Open Wonder",
     accountLine: "Generative brand production systems",
     logo: `${IMG}/clients/hartmann.svg`,
-    moodImage: `${IMG_ROOT}/openwonder-illlu.png`,
+    moodImage: `${REALM_IMG.openWonder}/cover/cover-illustration.png`,
     hook: "An agency service, rebuilt as a product system.",
     theme: {
       bg: '#F5E642',
@@ -560,17 +570,13 @@ export const CLIENT_REALMS: ClientRealm[] = [
     closing: "The point is not AI output in isolation. It is a production system that turns brand knowledge into assets teams can actually use, review, and ship.",
     story: [
       {
-        type: "label",
-        content: "Open Wonder",
-      },
-      {
         type: "text",
         content:
           "Open Wonder exists because classic brand guides stop being enough once generative production becomes operational. The platform takes the kind of brand-production service an agency would normally interpret manually and turns it into a product system that can generate, critique, and steer assets for real teams. That is why named adoption matters here: Idealo, mobile.de, Hartmann, and Kneipp are not decorative references, but proof that the system had to work under actual brand pressure.",
       },
       {
         type: "label",
-        content: "Hartmann AURA",
+        content: "Open Wonder",
       },
       {
         type: "text",
@@ -579,7 +585,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       },
       {
         type: "label",
-        content: "Kneipp Product Studio",
+        content: "Hartmann AURA",
       },
       {
         type: "text",
@@ -588,12 +594,16 @@ export const CLIENT_REALMS: ClientRealm[] = [
       },
       {
         type: "label",
-        content: "Integrations and rollout",
+        content: "Kneipp Product Studio",
       },
       {
         type: "text",
         content:
           "The system also had to operate like product. A Sanity integration let editors generate Open Wonder assets from inside a real CMS surface without dealing with tokens or model orchestration. On the platform side, Next.js 15, Supabase, Prisma, Sentry, Vercel, and OpenTelemetry had to survive sharp binaries, lockfile issues, environment confusion, and privacy requirements. That operational layer matters because a generative brand system only becomes strategically useful when teams can rely on it, not just admire it.",
+      },
+      {
+        type: "label",
+        content: "Integrations and rollout",
       },
     ],
     retrospectivePath: "/client-retrospectives/open-wonder.md",
@@ -608,7 +618,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
     displayName: "DPF Group",
     accountLine: "High-trust service and growth systems",
     logo: "",
-    moodImage: `${IMG_ROOT}/tertianum-illu.png`,
+    moodImage: `${REALM_IMG.tertianumDpf}/cover/cover-illustration.png`,
     hook: "Service quality and growth, held together over years.",
     theme: {
       bg: '#F8F0E5',
@@ -695,36 +705,59 @@ export const CLIENT_REALMS: ClientRealm[] = [
       {
         type: "text",
         content:
-          "DPF Group operates one client ecosystem across senior living, concierge services, hospitality, and investment. What mattered here was not only delivery across several brands, but the quality of the service experience behind them: age-accessible contact flows, trustworthy lead capture, clear follow-up, and digital touchpoints that felt personal enough for high-trust decisions.",
+          "Tertianum and the Premium Residences sites were the clearest proof. These forms were often the first serious contact point for people considering a residence or reaching out on behalf of someone else. That meant they had to feel calm, readable, and age-accessible while still supporting lead capture, newsletter logic, CRM handoff, and the practical realities of marketing and service operations.",
       },
       { type: "label", content: "Tertianum / Premium Residences" },
       {
-        type: "text",
-        content:
-          "Tertianum and the Premium Residences sites were the clearest proof. These forms were often the first serious contact point for people considering a residence or reaching out on behalf of someone else. That meant they had to feel calm, readable, and age-accessible while still supporting lead capture, newsletter logic, CRM handoff, and the practical realities of marketing and service operations.",
+        type: "image",
+        src: `${REALM_IMG.tertianumDpf}/tertianum-premium-residences/tertianum-premiumresidences.de-og.jpg`,
+        alt: "Tertianum Premium Residences website",
+        caption: "Age-accessible lead journeys for premium senior living",
       },
-      { type: "label", content: "RAS Services" },
       {
         type: "text",
         content:
           "RAS made the service-design dimension even more explicit. A concierge brand cannot afford generic digital communication. Contact flows, tracking, and CRM touchpoints had to support a nationwide service business while still feeling responsive and personal. That is why this realm is not just a platform story. It is also about translating service expectations into digital behavior teams can actually operate.",
       },
-      { type: "label", content: "Brasserie Colette / DPF Investment" },
+      { type: "label", content: "RAS Services" },
+      {
+        type: "image",
+        src: `${REALM_IMG.tertianumDpf}/ras-services/ras-services.de-og.jpg`,
+        alt: "RAS Services website",
+        caption: "Concierge services with service design built into the funnel",
+      },
       {
         type: "text",
         content:
           "Brasserie Colette stayed an equal proof surface because the same operational rigor had to hold under a different tone, stack, and conversion logic. DPF Investment tied the ecosystem back to the operator and investor layer. Together they show why the realm should not read like random maintenance work: distinct brands, distinct audiences, but one long-running responsibility for trust, growth, and execution quality.",
       },
-      { type: "label", content: "Operational resilience" },
+      { type: "label", content: "Brasserie Colette / DPF Investment" },
       {
-        type: "text",
-        content:
-          "Most people would underestimate the account because they only see several sites. The real work was that marketing, SEO, CRM, customer management, tracking, security, and rollout were all equally relevant, and I had to speak all of those languages at once to make responsible execution decisions. Microsoft Dynamics and Mailchimp support, Google Ads tracking, and cross-brand publishing all had to stay compatible with the service experience instead of fighting it.",
+        type: "gallery",
+        images: [
+          {
+            src: `${REALM_IMG.tertianumDpf}/brasserie-colette-dpf-investment/brasseriecolette.de-og.jpg`,
+            alt: "Brasserie Colette website",
+            caption: "Hospitality UX without losing operational rigor",
+          },
+          {
+            src: `${REALM_IMG.tertianumDpf}/brasserie-colette-dpf-investment/dpf-investment.de-og.jpg`,
+            alt: "DPF Investment website",
+            caption: "Investor and operator communication on the same backbone",
+          },
+        ],
       },
       {
         type: "text",
         content:
-          "That is also why security and observability belong in the public story. Cloudflare Turnstile, bot detection, Playwright, Sentry-linked lead handling, and cleaner alert separation kept the ecosystem trustworthy as it grew. Since 2019, new campaigns, HR work, press work, and changing service needs kept landing on the same stack. The value was keeping it maintainable without flattening the brands or letting quality drift.",
+          "Most people would underestimate the account because they only see several sites. The real work was that marketing, SEO, CRM, customer management, tracking, security, and rollout were all equally relevant, and I had to speak all of those languages at once to make responsible execution decisions. Microsoft Dynamics and Mailchimp support, Google Ads tracking, and cross-brand publishing all had to stay compatible with the service experience instead of fighting it. That is also why security and observability belong in the public story. Cloudflare Turnstile, bot detection, Playwright, Sentry-linked lead handling, and cleaner alert separation kept the ecosystem trustworthy as it grew.",
+      },
+      { type: "label", content: "Operational resilience" },
+      {
+        type: "image",
+        src: `${REALM_IMG.tertianumDpf}/operational-resilience/tertianum.de-og.jpg`,
+        alt: "Tertianum website",
+        caption: "Umbrella brand surface inside the same operating system",
       },
     ],
     retrospectivePath: "/client-retrospectives/tertianum-dpf.md",
@@ -739,7 +772,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
     displayName: "EVG",
     accountLine: "Member benefit platform",
     logo: `${IMG}/clients/evg.svg`,
-    moodImage: `${IMG_ROOT}/womofonds-illlu.png`,
+    moodImage: `${REALM_IMG.woMoFonds}/cover/cover-illustration.png`,
     hook: "Union benefits, made understandable.",
     theme: {
       bg: '#1E3A5F',
@@ -802,7 +835,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       { type: "label", content: "Wo-Mo-Fonds" },
       {
         type: "image",
-        src: `${IMG}/evg/womofonds-homepage-hero.png`,
+        src: `${REALM_IMG.woMoFonds}/wo-mo-fonds/womofonds-homepage-hero.png`,
         alt: "Wo-Mo-Fonds homepage",
         caption: "Entry point for housing and mobility benefits",
       },
@@ -814,7 +847,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       { type: "label", content: "Dein WoMo" },
       {
         type: "image",
-        src: `${IMG}/evg/dein-womo-ipad-mockup.png`,
+        src: `${REALM_IMG.woMoFonds}/dein-womo/dein-womo-ipad-mockup.png`,
         alt: "Dein WoMo application on iPad",
         caption: "Branching voucher application with accessible validation",
       },
@@ -828,17 +861,17 @@ export const CLIENT_REALMS: ClientRealm[] = [
         type: "gallery",
         images: [
           {
-            src: `${IMG}/evg/chatbot-screenshot-multilanguage.png`,
+            src: `${REALM_IMG.woMoFonds}/wo-mo-fonds-ai-chatbot/chatbot-screenshot-multilanguage.png`,
             alt: "Chatbot switching from German to English",
             caption: "Grounded support across up to 15 languages",
           },
           {
-            src: `${IMG}/evg/chatbot-screenshot.png`,
+            src: `${REALM_IMG.woMoFonds}/wo-mo-fonds-ai-chatbot/chatbot-screenshot.png`,
             alt: "Chatbot conversation",
             caption: "Benefit guidance inside the service flow",
           },
           {
-            src: `${IMG}/evg/chatbot-screenshot-feedback.png`,
+            src: `${REALM_IMG.woMoFonds}/wo-mo-fonds-ai-chatbot/chatbot-screenshot-feedback.png`,
             alt: "Chatbot with feedback interaction",
             caption: "Feedback and escalation signals",
           },

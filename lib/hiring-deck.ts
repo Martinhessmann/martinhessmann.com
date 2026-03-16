@@ -230,7 +230,7 @@ function buildDetailSlides(realm: ClientRealm, startIndex: number): CaseDetailSl
     const visuals = flattenVisuals(section.visuals)
     const images =
       visuals.length > 0
-        ? visuals
+        ? [visuals[0]]
         : [
             {
               src: realm.moodImage,
