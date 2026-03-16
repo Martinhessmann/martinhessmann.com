@@ -1,6 +1,12 @@
 import { CLIENT_REALMS, TRUST_LOGOS, type CardTheme, type ClientRealm, type TrustLogo } from '@/data/clients'
 import type { Resume, Skill, WorkPhoto } from '@/types/resume'
-import { flattenVisuals, getSectionPlatforms, parseStoryIntoSections } from '@/lib/client-story'
+import { flattenVisuals, getSectionPlatforms } from '@/lib/client-story'
+import {
+  buildDraftAwareSections,
+  resolveSectionImagePool,
+  toSectionSlug,
+} from '@/lib/image-curation-shared'
+import type { ImageCurationDraftStore } from '@/types/image-curation'
 
 const MAIN_REALM_IDS = ['open-wonder', 'wo-mo-fonds', 'teambank'] as const
 
@@ -67,6 +73,13 @@ export interface CapabilityCard {
   description: string
 }
 
+export interface EditableSlideSection {
+  realmId: string
+  sectionSlug: string
+  availableImages: SlideImage[]
+  heroImageSrc?: string
+}
+
 interface SlideBase {
   id: string
   index: number
@@ -100,6 +113,7 @@ export interface CaseIntroSlide extends SlideBase {
   roleSummary: string
   meta: SlideMetaItem[]
   images: SlideImage[]
+  editableSection?: EditableSlideSection
   theme: DeckTheme
 }
 
@@ -112,6 +126,7 @@ export interface CaseDetailSlide extends SlideBase {
   paragraph: string
   images: SlideImage[]
   meta: SlideMetaItem[]
+  editableSection?: EditableSlideSection
   theme: DeckTheme
 }
 
@@ -221,23 +236,56 @@ function buildCaseIntroMeta(realm: ClientRealm): SlideMetaItem[] {
   ]
 }
 
-function buildDetailSlides(realm: ClientRealm, startIndex: number): CaseDetailSlide[] {
-  const sections = parseStoryIntoSections(realm.story).slice(0, 4)
+function buildDetailSlides(
+  realm: ClientRealm,
+  startIndex: number,
+  draftStore?: ImageCurationDraftStore | null
+): CaseDetailSlide[] {
+  const sections = buildDraftAwareSections(realm, draftStore).slice(0, 4)
 
   return sections.map((section, offset) => {
+    const sectionSlug = toSectionSlug(section.title)
     const sectionPlatforms = getSectionPlatforms(realm.sidebar.platforms, section.title)
     const primaryPlatform = sectionPlatforms[0]
     const visuals = flattenVisuals(section.visuals)
-    const images =
-      visuals.length > 0
-        ? [visuals[0]]
-        : [
-            {
-              src: realm.moodImage,
-              alt: realm.displayName,
-              caption: primaryPlatform?.claim ?? section.title,
-            },
-          ]
+    const resolvedSection = resolveSectionImagePool(realm, sectionSlug, draftStore)
+    const heroImage = resolvedSection.heroImage
+    const fallbackImage = visuals[0]
+      ? {
+          src: visuals[0].src,
+          alt: visuals[0].alt,
+          caption: visuals[0].caption,
+        }
+      : {
+          src: realm.moodImage,
+          alt: realm.displayName,
+          caption: primaryPlatform?.claim ?? section.title,
+        }
+    const availableImages =
+      resolvedSection.availableImages.length > 0
+        ? resolvedSection.availableImages.map((image) => ({
+            src: image.src,
+            alt: image.alt,
+            caption: image.caption,
+          }))
+        : heroImage
+          ? [
+              {
+                src: heroImage.src,
+                alt: heroImage.alt,
+                caption: heroImage.caption,
+              },
+            ]
+          : []
+    const images = heroImage
+      ? [
+          {
+            src: heroImage.src,
+            alt: heroImage.alt,
+            caption: heroImage.caption,
+          },
+        ]
+      : [fallbackImage]
 
     return {
       id: `${realm.id}-${offset + 1}`,
@@ -256,6 +304,12 @@ function buildDetailSlides(realm: ClientRealm, startIndex: number): CaseDetailSl
               hrefs: platform.url ? [platform.url] : undefined,
             }))
           : [],
+      editableSection: {
+        realmId: realm.id,
+        sectionSlug,
+        availableImages,
+        heroImageSrc: heroImage?.src,
+      },
       theme: buildTheme(realm.theme),
       index: startIndex + offset,
       label: '',
@@ -282,11 +336,17 @@ function labelForSlide(slide: HiringDeckSlide) {
   }
 }
 
-export function buildHiringDeck(resume: Resume): HiringDeckSlide[] {
+export function buildHiringDeck(
+  resume: Resume,
+  options?: {
+    draftStore?: ImageCurationDraftStore | null
+  }
+): HiringDeckSlide[] {
   const workPhotos = getWorkPhotos(resume)
   const selectedRealms = MAIN_REALM_IDS.map(getRealmById).filter((realm): realm is ClientRealm => Boolean(realm))
   const linkedIn = getProfileUrl(resume, 'LinkedIn')
   const gitHub = getProfileUrl(resume, 'GitHub')
+  const draftStore = options?.draftStore
 
   const rawSlides: HiringDeckSlide[] = [
     {
@@ -339,6 +399,12 @@ export function buildHiringDeck(resume: Resume): HiringDeckSlide[] {
 
   for (const realm of selectedRealms) {
     const introIndex = rawSlides.length
+    const coverSection = resolveSectionImagePool(realm, 'cover', draftStore)
+    const introHeroImage = coverSection.heroImage ?? {
+      src: realm.moodImage,
+      alt: realm.displayName,
+      caption: realm.sidebar.openingNarrative,
+    }
     rawSlides.push({
       id: `${realm.id}-intro`,
       kind: 'caseIntro',
@@ -352,17 +418,36 @@ export function buildHiringDeck(resume: Resume): HiringDeckSlide[] {
       meta: buildCaseIntroMeta(realm),
       images: [
         {
-          src: realm.moodImage,
-          alt: realm.displayName,
-          caption: realm.sidebar.openingNarrative,
+          src: introHeroImage.src,
+          alt: introHeroImage.alt,
+          caption: introHeroImage.caption,
         },
       ],
+      editableSection: {
+        realmId: realm.id,
+        sectionSlug: 'cover',
+        availableImages:
+          coverSection.availableImages.length > 0
+            ? coverSection.availableImages.map((image) => ({
+                src: image.src,
+                alt: image.alt,
+                caption: image.caption,
+              }))
+            : [
+                {
+                  src: introHeroImage.src,
+                  alt: introHeroImage.alt,
+                  caption: introHeroImage.caption,
+                },
+              ],
+        heroImageSrc: introHeroImage.src,
+      },
       theme: buildTheme(realm.theme),
       index: introIndex,
       label: '',
     })
 
-    rawSlides.push(...buildDetailSlides(realm, rawSlides.length))
+    rawSlides.push(...buildDetailSlides(realm, rawSlides.length, draftStore))
   }
 
   rawSlides.push(

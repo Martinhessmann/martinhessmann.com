@@ -1,4 +1,6 @@
-import type { ReactNode } from 'react'
+'use client'
+
+import { useState, type ReactNode } from 'react'
 import type {
   CapabilityCard,
   CaseDetailSlide,
@@ -12,12 +14,122 @@ import type {
   UspSlide,
 } from '@/lib/hiring-deck'
 import { SlidesDownloadButton } from '@/components/slides/slides-download-button'
+import { SlideCurationPanel } from '@/components/slides/slide-curation-panel'
+import type { DraftSectionEntry, DraftSectionImage } from '@/types/image-curation'
 
 const SHELL_BORDER = 'var(--portfolio-sand-2)'
 const SHELL_BG = 'var(--portfolio-sand-0)'
 const SHELL_TEXT = 'var(--portfolio-ink-0)'
 const SHELL_TEXT_SOFT = 'var(--portfolio-ink-1)'
 const MIDNIGHT = 'var(--portfolio-midnight-950)'
+
+interface EditableSectionState {
+  realmId: string
+  sectionSlug: string
+  images: DraftSectionImage[]
+  heroImageSrc?: string
+  status?: string
+}
+
+type EditableCaseSlide = (CaseIntroSlide | CaseDetailSlide) & {
+  editableSection: NonNullable<CaseIntroSlide['editableSection']>
+}
+
+function isEditableCaseSlide(slide: HiringDeckSlide): slide is EditableCaseSlide {
+  return (slide.kind === 'caseIntro' || slide.kind === 'caseDetail') && Boolean(slide.editableSection)
+}
+
+function getSlideSectionKey(slide: HiringDeckSlide) {
+  if (!isEditableCaseSlide(slide)) return null
+
+  return `${slide.editableSection.realmId}::${slide.editableSection.sectionSlug}`
+}
+
+function toDraftImages(images: SlideImage[]): DraftSectionImage[] {
+  return images.map((image, index) => ({
+    src: image.src,
+    alt: image.alt,
+    draftCaption: image.caption ?? '',
+    enabled: true,
+    sortOrder: index,
+  }))
+}
+
+function buildInitialEditableSections(slides: HiringDeckSlide[]) {
+  const entries: Record<string, EditableSectionState> = {}
+
+  for (const slide of slides) {
+    if (!isEditableCaseSlide(slide)) continue
+
+    const key = getSlideSectionKey(slide)
+    if (!key || entries[key]) continue
+
+    entries[key] = {
+      realmId: slide.editableSection.realmId,
+      sectionSlug: slide.editableSection.sectionSlug,
+      heroImageSrc: slide.editableSection.heroImageSrc ?? slide.editableSection.availableImages[0]?.src,
+      images: toDraftImages(slide.editableSection.availableImages),
+    }
+  }
+
+  return entries
+}
+
+function findHeroImage(entry: EditableSectionState | undefined, fallback: SlideImage[]) {
+  if (!entry) return fallback[0]
+
+  const visibleImages = entry.images
+    .filter((image) => image.enabled)
+    .sort((a, b) => a.sortOrder - b.sortOrder)
+  const hero =
+    visibleImages.find((image) => image.src === entry.heroImageSrc) ??
+    visibleImages[0]
+
+  if (!hero) return fallback[0]
+
+  return {
+    src: hero.src,
+    alt: hero.alt,
+    caption: hero.draftCaption,
+  }
+}
+
+function applyDraftStateToSlides(
+  slides: HiringDeckSlide[],
+  editableSections: Record<string, EditableSectionState>
+) {
+  return slides.map((slide) => {
+    if (!isEditableCaseSlide(slide)) return slide
+
+    const key = getSlideSectionKey(slide)
+    if (!key) return slide
+
+    const entry = editableSections[key]
+    if (!entry) return slide
+
+    const heroImage = findHeroImage(entry, slide.images)
+    const availableImages = entry.images
+      .filter((image) => image.enabled)
+      .sort((a, b) => a.sortOrder - b.sortOrder)
+      .map((image) => ({
+        src: image.src,
+        alt: image.alt,
+        caption: image.draftCaption,
+      }))
+
+    return {
+      ...slide,
+      images: heroImage ? [heroImage] : slide.images,
+      editableSection: slide.editableSection
+        ? {
+            ...slide.editableSection,
+            availableImages,
+            heroImageSrc: entry.heroImageSrc,
+          }
+        : slide.editableSection,
+    }
+  })
+}
 
 function SlideLabel({ label, accent = MIDNIGHT }: { label: string; accent?: string }) {
   return (
@@ -180,10 +292,12 @@ function SlideShell({
   accent,
   label,
   children,
+  footer,
 }: {
   accent: string
   label: string
   children: ReactNode
+  footer?: ReactNode
 }) {
   return (
     <section className="snap-start px-4 py-24 sm:px-6 lg:px-10 lg:py-28">
@@ -199,6 +313,7 @@ function SlideShell({
             <div className="mt-5 flex-1">{children}</div>
           </div>
         </div>
+        {footer ? <div className="mt-4">{footer}</div> : null}
       </div>
     </section>
   )
@@ -430,7 +545,217 @@ function getAccent(slide: HiringDeckSlide) {
   }
 }
 
-export default function SlidesPage({ slides }: { slides: HiringDeckSlide[] }) {
+export default function SlidesPage({
+  slides,
+  editMode = false,
+  localCurationEnabled = false,
+}: {
+  slides: HiringDeckSlide[]
+  editMode?: boolean
+  localCurationEnabled?: boolean
+}) {
+  const [editableSections, setEditableSections] = useState<Record<string, EditableSectionState>>(
+    () => buildInitialEditableSections(slides)
+  )
+  const displaySlides = applyDraftStateToSlides(slides, editableSections)
+  const previewHref = editMode ? '/?preview=slides&draft=1' : '/?preview=slides'
+
+  function updateSectionState(key: string, updater: (entry: EditableSectionState) => EditableSectionState) {
+    let nextEntry: EditableSectionState | null = null
+
+    setEditableSections((current) => {
+      const existing = current[key]
+      if (!existing) return current
+      nextEntry = updater(existing)
+      return {
+        ...current,
+        [key]: nextEntry,
+      }
+    })
+
+    return nextEntry
+  }
+
+  async function persistEntry(key: string, entry: EditableSectionState) {
+    setEditableSections((current) => ({
+      ...current,
+      [key]: {
+        ...current[key],
+        status: 'Saving draft…',
+      },
+    }))
+
+    try {
+      const payload: DraftSectionEntry = {
+        realmId: entry.realmId,
+        sectionSlug: entry.sectionSlug,
+        heroImageSrc: entry.heroImageSrc,
+        images: entry.images.map((image, index) => ({
+          ...image,
+          sortOrder: index,
+        })),
+      }
+
+      const response = await fetch('/api/image-curation/drafts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      })
+
+      const result = (await response.json()) as { entry?: DraftSectionEntry; error?: string }
+      if (!response.ok || !result.entry) {
+        throw new Error(result.error ?? 'Unable to save draft.')
+      }
+
+      setEditableSections((current) => ({
+        ...current,
+        [key]: {
+          realmId: result.entry!.realmId,
+          sectionSlug: result.entry!.sectionSlug,
+          heroImageSrc: result.entry!.heroImageSrc,
+          images: result.entry!.images,
+          status: 'Saved to local draft.',
+        },
+      }))
+    } catch (error) {
+      setEditableSections((current) => ({
+        ...current,
+        [key]: {
+          ...current[key],
+          status: error instanceof Error ? `Error: ${error.message}` : 'Error: Unable to save draft.',
+        },
+      }))
+    }
+  }
+
+  async function uploadToSection(key: string, files: File[]) {
+    const entry = editableSections[key]
+    if (!entry || files.length === 0) return
+
+    setEditableSections((current) => ({
+      ...current,
+      [key]: {
+        ...current[key],
+        status: 'Uploading…',
+      },
+    }))
+
+    try {
+      const formData = new FormData()
+      formData.set('realmId', entry.realmId)
+      formData.set('sectionSlug', entry.sectionSlug)
+
+      for (const file of files) {
+        formData.append('files', file)
+      }
+
+      const response = await fetch('/api/image-curation/upload', {
+        method: 'POST',
+        body: formData,
+      })
+
+      const result = (await response.json()) as { entry?: DraftSectionEntry; error?: string }
+      if (!response.ok || !result.entry) {
+        throw new Error(result.error ?? 'Unable to upload image.')
+      }
+
+      setEditableSections((current) => ({
+        ...current,
+        [key]: {
+          realmId: result.entry!.realmId,
+          sectionSlug: result.entry!.sectionSlug,
+          heroImageSrc: result.entry!.heroImageSrc,
+          images: result.entry!.images,
+          status: 'Uploaded to local draft.',
+        },
+      }))
+    } catch (error) {
+      setEditableSections((current) => ({
+        ...current,
+        [key]: {
+          ...current[key],
+          status: error instanceof Error ? `Error: ${error.message}` : 'Error: Unable to upload image.',
+        },
+      }))
+    }
+  }
+
+  function moveImage(key: string, src: string, direction: 'left' | 'right') {
+    const nextEntry = updateSectionState(key, (entry) => {
+      const index = entry.images.findIndex((image) => image.src === src)
+      if (index === -1) return entry
+
+      const targetIndex = direction === 'left' ? index - 1 : index + 1
+      if (targetIndex < 0 || targetIndex >= entry.images.length) return entry
+
+      const nextImages = [...entry.images]
+      const [moved] = nextImages.splice(index, 1)
+      nextImages.splice(targetIndex, 0, moved)
+
+      return {
+        ...entry,
+        images: nextImages.map((image, imageIndex) => ({
+          ...image,
+          sortOrder: imageIndex,
+        })),
+      }
+    })
+
+    if (nextEntry) {
+      void persistEntry(key, nextEntry)
+    }
+  }
+
+  function toggleImage(key: string, src: string) {
+    const nextEntry = updateSectionState(key, (entry) => {
+      const nextImages = entry.images.map((image) =>
+        image.src === src ? { ...image, enabled: !image.enabled } : image
+      )
+      const nextHero = nextImages.some((image) => image.src === entry.heroImageSrc && image.enabled)
+        ? entry.heroImageSrc
+        : nextImages.find((image) => image.enabled)?.src
+
+      return {
+        ...entry,
+        images: nextImages,
+        heroImageSrc: nextHero,
+      }
+    })
+
+    if (nextEntry) {
+      void persistEntry(key, nextEntry)
+    }
+  }
+
+  function setHeroImage(key: string, src: string) {
+    const nextEntry = updateSectionState(key, (entry) => ({
+      ...entry,
+      heroImageSrc: src,
+    }))
+
+    if (nextEntry) {
+      void persistEntry(key, nextEntry)
+    }
+  }
+
+  function changeCaption(key: string, src: string, value: string) {
+    updateSectionState(key, (entry) => ({
+      ...entry,
+      images: entry.images.map((image) =>
+        image.src === src ? { ...image, draftCaption: value } : image
+      ),
+    }))
+  }
+
+  function commitCaption(key: string) {
+    const entry = editableSections[key]
+    if (entry) {
+      void persistEntry(key, entry)
+    }
+  }
+
   return (
     <main className="min-h-screen snap-y snap-mandatory overflow-y-auto font-inter" style={{ backgroundColor: MIDNIGHT }}>
       <header className="fixed inset-x-0 top-0 z-50 border-b backdrop-blur" style={{ backgroundColor: 'rgba(24, 24, 35, 0.92)', borderColor: 'rgba(228, 213, 194, 0.12)' }}>
@@ -439,22 +764,56 @@ export default function SlidesPage({ slides }: { slides: HiringDeckSlide[] }) {
             <a href="/" className="font-hedvig text-[18px] text-white">
               Martin Heßmann
             </a>
-            <p className="mt-1 text-[12px] uppercase tracking-[0.2em] text-white/55">{slides.length} slides · generated from portfolio data</p>
+            <p className="mt-1 text-[12px] uppercase tracking-[0.2em] text-white/55">
+              {displaySlides.length} slides · generated from portfolio data
+            </p>
+            {editMode && (
+              <p className="mt-2 text-[12px] text-white/55">
+                Slide edit mode is draft-only. Nothing writes back to canonical content until we promote it together.
+              </p>
+            )}
           </div>
           <div className="flex items-center gap-3 text-sm text-white/75">
-            <a href="/?preview=slides" target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/15 px-4 py-2 transition-colors hover:bg-white/[0.08] hover:text-white">
+            <a href={previewHref} target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/15 px-4 py-2 transition-colors hover:bg-white/[0.08] hover:text-white">
               Preview PDF
             </a>
-            <SlidesDownloadButton slides={slides} variant="inline" />
+            <SlidesDownloadButton slides={displaySlides} variant="inline" />
           </div>
         </div>
       </header>
 
-      {slides.map((slide) => (
-        <SlideShell key={slide.id} label={slide.label} accent={getAccent(slide)}>
-          {renderSlide(slide)}
-        </SlideShell>
-      ))}
+      {displaySlides.map((slide) => {
+        const key = getSlideSectionKey(slide)
+        const entry = key ? editableSections[key] : null
+
+        return (
+          <SlideShell
+            key={slide.id}
+            label={slide.label}
+            accent={getAccent(slide)}
+            footer={
+              editMode && key && entry ? (
+                <SlideCurationPanel
+                  realmName={slide.kind === 'caseIntro' || slide.kind === 'caseDetail' ? slide.realmName : 'Project'}
+                  sectionTitle={slide.kind === 'caseIntro' ? 'Cover' : slide.kind === 'caseDetail' ? slide.eyebrow : 'Section'}
+                  localEnabled={localCurationEnabled}
+                  images={entry.images}
+                  heroImageSrc={entry.heroImageSrc}
+                  status={entry.status}
+                  onUpload={(files) => uploadToSection(key, files)}
+                  onMove={(src, direction) => moveImage(key, src, direction)}
+                  onToggleEnabled={(src) => toggleImage(key, src)}
+                  onSetHero={(src) => setHeroImage(key, src)}
+                  onCaptionChange={(src, value) => changeCaption(key, src, value)}
+                  onCaptionCommit={() => commitCaption(key)}
+                />
+              ) : null
+            }
+          >
+            {renderSlide(slide)}
+          </SlideShell>
+        )
+      })}
     </main>
   )
 }

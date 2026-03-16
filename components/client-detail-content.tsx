@@ -7,6 +7,8 @@ import { flattenVisuals, getSectionPlatforms, type ProjectSection, parseStoryInt
 interface ClientDetailContentProps {
   realm: ClientRealm
   standalone?: boolean
+  sections?: ProjectSection[]
+  moodImage?: string
 }
 
 function ImageRow({
@@ -209,11 +211,18 @@ function highlightToolsInText(text: string, tools: string[]): ReactNode {
 
 const SECTION_SPACING = 'pt-20 lg:pt-28'
 
-export function ClientDetailContent({ realm, standalone }: ClientDetailContentProps) {
+export function ClientDetailContent({
+  realm,
+  standalone,
+  sections: providedSections,
+  moodImage: providedMoodImage,
+}: ClientDetailContentProps) {
   const { sidebar, deliverables } = realm
   const hasDeliverables = Boolean(deliverables?.items?.length)
   const hasTools = Boolean(sidebar?.tools?.length)
   const hasSubheading = Boolean(deliverables?.subheading?.trim())
+  const sections = providedSections ?? parseStoryIntoSections(realm.story)
+  const moodImage = providedMoodImage ?? realm.moodImage
 
   return (
     <div className={`font-inter tracking-normal text-gray-900 ${standalone ? 'min-h-screen bg-warm' : ''}`}>
@@ -269,9 +278,9 @@ export function ClientDetailContent({ realm, standalone }: ClientDetailContentPr
         </div>
       </div>
 
-      {realm.moodImage && (
+      {moodImage && (
         <div className={`mx-auto max-w-5xl px-6 pb-20 lg:px-12 ${SECTION_SPACING}`}>
-          <ImageRow slides={[{ src: realm.moodImage, alt: realm.displayName, caption: '' }]} objectFit="contain" />
+          <ImageRow slides={[{ src: moodImage, alt: realm.displayName, caption: '' }]} objectFit="contain" />
         </div>
       )}
 
@@ -294,7 +303,6 @@ export function ClientDetailContent({ realm, standalone }: ClientDetailContentPr
       })()}
 
       {(() => {
-        const sections = parseStoryIntoSections(realm.story)
         if (sections.length === 0) {
           return (
             <div className={`mx-auto max-w-2xl space-y-6 px-6 pb-16 ${SECTION_SPACING}`}>
