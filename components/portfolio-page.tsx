@@ -106,7 +106,7 @@ export default function PortfolioPage() {
       <section className="px-6 pb-8 pt-24 lg:px-12 lg:pb-10 lg:pt-32">
         <div className="mx-auto max-w-6xl">
           {resume.basics.hero?.kicker && (
-            <p className="text-[12px] font-medium uppercase tracking-[0.22em]" style={{ color: UI_LILAC }}>
+            <p className="text-[12px] font-medium tracking-[0.08em]" style={{ color: UI_LILAC }}>
               {resume.basics.hero.kicker}
             </p>
           )}
@@ -125,7 +125,7 @@ export default function PortfolioPage() {
 
       <section id="work" className="px-6 pb-20 lg:px-12 lg:pb-28">
         <div className="mx-auto max-w-6xl">
-          <p className="text-[12px] font-medium uppercase tracking-[0.22em]" style={{ color: UI_LILAC }}>
+          <p className="text-[12px] font-medium tracking-[0.08em]" style={{ color: UI_LILAC }}>
             Selected accounts
           </p>
 
@@ -174,7 +174,7 @@ export default function PortfolioPage() {
                     aria-label={`Open case study for ${realm.displayName}`}
                   >
                     <p
-                      className="text-[12px] font-medium uppercase tracking-[0.18em]"
+                      className="text-[12px] font-medium tracking-[0.08em]"
                       style={{ color: colors.label }}
                     >
                       {realm.displayName}
@@ -211,8 +211,8 @@ export default function PortfolioPage() {
           </div>
 
           <div className="mt-10 border-t pt-8" style={{ borderColor: UI_BORDER }}>
-            <p className="text-[12px] font-medium uppercase tracking-[0.22em]" style={{ color: UI_PINK }}>
-              Selected clients and brands
+            <p className="text-[12px] font-medium tracking-[0.08em]" style={{ color: UI_PINK }}>
+              Clients and brands
             </p>
             <div
               className="mt-6 overflow-hidden rounded-[var(--surface-radius-lg)] p-3 sm:p-4 lg:p-5"
@@ -251,7 +251,7 @@ export default function PortfolioPage() {
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-14 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-20">
             <div>
-              <p className="text-[12px] font-medium uppercase tracking-[0.22em]" style={{ color: UI_PINK }}>
+              <p className="text-[12px] font-medium tracking-[0.08em]" style={{ color: UI_PINK }}>
                 {resume.basics.resume?.label ?? 'Resume'}
               </p>
               <h2 className="mt-4 font-hedvig text-[clamp(28px,4vw,44px)] leading-[1.1] text-white">
@@ -283,7 +283,7 @@ export default function PortfolioPage() {
                   <div className="flex flex-wrap items-baseline justify-between gap-4">
                     <div>
                       <h3 className="font-hedvig text-[24px] leading-[1.2] text-white">{entry.position}</h3>
-                      <p className="mt-1 text-[16px] font-medium uppercase tracking-[0.08em]" style={{ color: UI_PINK }}>
+                      <p className="mt-1 text-[16px] font-medium tracking-[0.08em]" style={{ color: UI_PINK }}>
                         {entry.name}
                       </p>
                     </div>
@@ -307,8 +307,8 @@ export default function PortfolioPage() {
 
           {resume.skills && resume.skills.length > 0 && (
             <div className="mt-16 border-t pt-10" style={{ borderColor: UI_BORDER }}>
-              <p className="text-[12px] font-medium uppercase tracking-[0.22em]" style={{ color: UI_PINK }}>
-                What I work with.
+              <p className="text-[12px] font-medium tracking-[0.08em]" style={{ color: UI_PINK }}>
+                Tools
               </p>
               <div className="mt-6 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
                 {resume.skills.map((skill) => (
@@ -354,7 +354,7 @@ export default function PortfolioPage() {
 
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
               <div>
-                <p className="text-[12px] font-medium uppercase tracking-[0.2em]" style={{ color: UI_PINK }}>
+                <p className="text-[12px] font-medium tracking-[0.08em]" style={{ color: UI_PINK }}>
                   Contact
                 </p>
                 <div className="mt-3 space-y-2 text-[15px]" style={{ color: UI_TEXT_MUTED }}>
@@ -368,7 +368,7 @@ export default function PortfolioPage() {
               </div>
 
               <div>
-                <p className="text-[12px] font-medium uppercase tracking-[0.2em]" style={{ color: UI_PINK }}>
+                <p className="text-[12px] font-medium tracking-[0.08em]" style={{ color: UI_PINK }}>
                   Resume
                 </p>
                 <div className="mt-3 space-y-2 text-[15px]" style={{ color: UI_TEXT_MUTED }}>
@@ -388,7 +388,7 @@ export default function PortfolioPage() {
               </div>
 
               <div>
-                <p className="text-[12px] font-medium uppercase tracking-[0.2em]" style={{ color: UI_PINK }}>
+                <p className="text-[12px] font-medium tracking-[0.08em]" style={{ color: UI_PINK }}>
                   Social
                 </p>
                 <div className="mt-3 space-y-2 text-[15px]" style={{ color: UI_TEXT_MUTED }}>
@@ -402,7 +402,7 @@ export default function PortfolioPage() {
               </div>
 
               <div>
-                <p className="text-[12px] font-medium uppercase tracking-[0.2em]" style={{ color: UI_PINK }}>
+                <p className="text-[12px] font-medium tracking-[0.08em]" style={{ color: UI_PINK }}>
                   Legal
                 </p>
                 <div className="mt-3 space-y-2 text-[15px]" style={{ color: UI_TEXT_MUTED }}>

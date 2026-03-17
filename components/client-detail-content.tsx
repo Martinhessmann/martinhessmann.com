@@ -247,7 +247,7 @@ export function ClientDetailContent({
         </div>
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-16">
           <div>
-            <p className="mb-4 text-[12px] font-medium uppercase tracking-[0.2em] text-gray-500">
+            <p className="mb-4 text-[12px] font-medium tracking-[0.08em] text-gray-500">
               {realm.displayName} · {realm.accountLine}
             </p>
             <h2 id={`client-${realm.id}-title`} className="font-hedvig text-[clamp(28px,3.5vw,38px)] leading-[1.3] text-gray-950">
@@ -258,7 +258,7 @@ export function ClientDetailContent({
             <p>{realm.keyMoment}</p>
             {sidebar?.openingNarrative && <p>{sidebar.openingNarrative}</p>}
             <div className="border-t border-gray-200 pt-4">
-              <p className="text-[12px] font-medium uppercase tracking-[0.2em] text-gray-500">Role</p>
+              <p className="text-[12px] font-medium tracking-[0.08em] text-gray-500">Role</p>
               {realm.roleTags.length > 0 ? (
                 <div className="mt-3 flex flex-wrap gap-2">
                   {realm.roleTags.map((tag) => (
@@ -339,7 +339,7 @@ export function ClientDetailContent({
             {hasDeliverables && (
               <>
                 <div className="mb-10 grid gap-6 lg:grid-cols-2 lg:gap-12">
-                  <h3 className="font-hedvig text-[clamp(24px,2.5vw,32px)] leading-[1.3] text-gray-950">
+                  <h3 className="font-hedvig text-[clamp(22px,2.5vw,28px)] leading-[1.3] text-gray-950">
                     {deliverables.heading}
                   </h3>
                   <div className="lg:pt-2">
@@ -373,7 +373,7 @@ export function ClientDetailContent({
             {hasTools && !hasDeliverables && (
               <>
                 <h3 className="mb-6 font-hedvig text-[clamp(24px,2.5vw,32px)] leading-[1.3] text-gray-950">
-                  What I built it with.
+                  Tools
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {sidebar.tools.map((tool) => (

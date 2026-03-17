@@ -9,6 +9,17 @@ description: Design system rules, voice, typography, and interaction principles 
 
 [wearecollins.com](https://wearecollins.com/) is the design reference. Study how COLLINS uses one statement, massive whitespace, and typography as architecture. Every decision below comes from this reference filtered through Martin's voice and values.
 
+## Interface Craft (interfacecraft.dev) — Lean & Nurturing UX
+
+Use as a secondary reference for UI and reading UX:
+
+- **Lean & minimal:** No clutter. Ample negative space. One element does the work.
+- **Honest & upfront:** Direct, factual wording. No marketing language.
+- **Compact & precise:** Short, to-the-point text. Convey meaning without verbosity.
+- **Small sub-headlines:** Clear, concise section headers. Sentence case. Make content immediately scannable.
+- **Easy reading UX:** High contrast, clear fonts, generous spacing. Break dense content into digestible blocks with small sub-headlines.
+- **Do not add:** No extra text frames, elements, or complexity. When in doubt, shorten and remove.
+
 ## Voice
 
 **Hero statement:** "Sit with it until it talks."
@@ -90,7 +101,7 @@ Hard rules. No exceptions.
 ## Section Labels
 
 - **Never just name the section** (e.g. "Work", "Clients"). Lead with a half sentence instead: "Selected work I keep thinking about." or "Some of the teams I worked with."
-- **No all-caps.** Remove `uppercase` from all section labels and headings. Sentence case only.
+- **No all-caps.** Remove `uppercase` from all section labels and headings. Sentence case only. (Interface Craft: small sub-headlines in sentence case.)
 
 ## Interaction
 
