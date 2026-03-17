@@ -218,17 +218,17 @@ export default function PortfolioPage() {
               className="mt-6 overflow-hidden rounded-[var(--surface-radius-lg)] p-3 sm:p-4 lg:p-5"
               style={{ backgroundColor: UI_MIDNIGHT }}
             >
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+              <div className="grid grid-cols-4 gap-1.5 sm:grid-cols-3 sm:gap-3 lg:grid-cols-4">
                 {TRUST_LOGOS.map((logo) => (
                   <span
                     key={logo.name}
-                    className="inline-flex min-h-[118px] items-center justify-center px-6 py-7 sm:min-h-[122px]"
+                    className="inline-flex min-h-[56px] items-center justify-center px-2 py-3 sm:min-h-[122px] sm:px-6 sm:py-7"
                     title={logo.name}
                   >
                     <img
                       src={logo.src}
                       alt={logo.name}
-                      className="object-contain brightness-0 invert opacity-80"
+                      className="max-w-full object-contain brightness-0 invert opacity-80"
                       style={{ width: logo.width, height: logo.height }}
                     />
                   </span>
