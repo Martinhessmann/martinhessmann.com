@@ -114,7 +114,7 @@ export default function PortfolioPage() {
             {resume.basics.hero?.title ?? resume.basics.label}
           </h1>
           {resume.basics.hero?.body && (
-            <div className="mt-8 max-w-4xl space-y-5 text-[16px] leading-[1.7] lg:text-[17px]" style={{ color: UI_TEXT_SOFT }}>
+            <div className="mt-8 max-w-4xl space-y-6 text-[17px] leading-[1.8] lg:text-[18px]" style={{ color: UI_TEXT_SOFT }}>
               {resume.basics.hero.body.map((paragraph, i) => (
                 <p key={i}>{paragraph}</p>
               ))}
@@ -258,7 +258,7 @@ export default function PortfolioPage() {
                 {resume.basics.resume?.headline ?? resume.basics.label}
               </h2>
               {resume.basics.resume?.intro && (
-                <div className="mt-6 space-y-5 text-[16px] leading-[1.72]" style={{ color: UI_TEXT_SOFT }}>
+                <div className="mt-6 space-y-6 text-[17px] leading-[1.8]" style={{ color: UI_TEXT_SOFT }}>
                   {resume.basics.resume.intro.map((paragraph, i) => (
                     <p key={i}>{paragraph}</p>
                   ))}
@@ -289,9 +289,9 @@ export default function PortfolioPage() {
                     </div>
                     <p className="text-[16px] font-medium" style={{ color: UI_TEXT_MUTED }}>{formatPeriod(entry.startDate, entry.endDate)}</p>
                   </div>
-                  {entry.summary && <p className="mt-4 text-[16px] leading-[1.72]" style={{ color: UI_TEXT_SOFT }}>{entry.summary}</p>}
+                  {entry.summary && <p className="mt-4 text-[17px] leading-[1.8]" style={{ color: UI_TEXT_SOFT }}>{entry.summary}</p>}
                   {entry.highlights && entry.highlights.length > 0 && (
-                    <ul className="mt-4 space-y-2 text-[16px] leading-[1.68]" style={{ color: UI_TEXT_SOFT }}>
+                    <ul className="mt-4 space-y-2.5 text-[17px] leading-[1.8]" style={{ color: UI_TEXT_SOFT }}>
                       {entry.highlights.slice(0, 2).map((highlight) => (
                         <li key={highlight} className="flex items-start gap-3">
                           <span className="mt-[0.6em] h-1.5 w-1.5 shrink-0 rounded-full" style={{ backgroundColor: UI_PINK }} />
@@ -344,7 +344,7 @@ export default function PortfolioPage() {
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1.35fr)] lg:gap-16">
             <div className="space-y-3">
               <p className="font-hedvig text-[20px] text-white">{resume.basics.name}</p>
-              <p className="max-w-md text-[16px] leading-[1.7]" style={{ color: UI_TEXT_SOFT }}>
+              <p className="max-w-md text-[17px] leading-[1.8]" style={{ color: UI_TEXT_SOFT }}>
                 {resume.basics.label}
               </p>
               <p className="text-[16px] leading-[1.7]" style={{ color: UI_TEXT_MUTED }}>

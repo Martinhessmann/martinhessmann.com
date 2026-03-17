@@ -152,7 +152,7 @@ function ProjectSectionBlock({
                   {platforms.map((platform, index) => (
                     <li key={index}>
                       <PlatformMeta platform={platform} />
-                      <p className="mt-1 text-[16px] leading-[1.6] text-gray-600">{platform.description}</p>
+                      <p className="mt-1 text-[17px] leading-[1.8] text-gray-600">{platform.description}</p>
                     </li>
                   ))}
                 </ul>
@@ -160,7 +160,7 @@ function ProjectSectionBlock({
             </>
           )}
         </div>
-        <p className="text-[16px] leading-[1.75] text-gray-600 lg:pt-1">{section.paragraph}</p>
+        <p className="text-[17px] leading-[1.8] text-gray-600 lg:pt-1">{section.paragraph}</p>
       </div>
       {slides.length > 0 && <ImageRow slides={slides} className="mt-6" />}
     </div>
@@ -254,11 +254,11 @@ export function ClientDetailContent({
               {realm.hook}
             </h2>
           </div>
-          <div className="space-y-5 text-[16px] leading-[1.75] text-gray-600 lg:pt-2">
+          <div className="max-w-2xl space-y-6 text-[17px] leading-[1.8] text-gray-600 lg:pt-2">
             <p>{realm.keyMoment}</p>
             {sidebar?.openingNarrative && <p>{sidebar.openingNarrative}</p>}
             <div className="mt-6 border-t border-gray-200 pt-6">
-              <p className="text-[12px] font-medium tracking-[0.08em] text-gray-500">Role</p>
+              <p className="mb-3 text-[12px] font-medium tracking-[0.08em] text-gray-500">Role</p>
               {realm.roleTags.length > 0 ? (
                 <div className="mt-3 flex flex-wrap gap-2">
                   {realm.roleTags.map((tag) => (
@@ -271,7 +271,7 @@ export function ClientDetailContent({
                   ))}
                 </div>
               ) : (
-                <p className="mt-3 text-[16px] leading-[1.75] text-gray-700">{realm.roleSummary}</p>
+                <p className="mt-3 text-[17px] leading-[1.8] text-gray-700">{realm.roleSummary}</p>
               )}
             </div>
           </div>
@@ -309,7 +309,7 @@ export function ClientDetailContent({
               {unassigned.map((platform, index) => (
                 <li key={index}>
                   <PlatformMeta platform={platform} />
-                  <p className="mt-1 text-[16px] leading-[1.6] text-gray-600">{platform.description}</p>
+                  <p className="mt-1 text-[17px] leading-[1.8] text-gray-600">{platform.description}</p>
                 </li>
               ))}
             </ul>
@@ -324,7 +324,7 @@ export function ClientDetailContent({
               {realm.story
                 .filter((block): block is Extract<StoryBlock, { type: 'text' }> => block.type === 'text')
                 .map((block, index) => (
-                  <p key={index} className="text-[16px] leading-[1.75] text-gray-600">
+                  <p key={index} className="text-[17px] leading-[1.8] text-gray-600">
                     {block.content}
                   </p>
                 ))}
@@ -344,7 +344,7 @@ export function ClientDetailContent({
 
       {realm.closing && (
         <div className={`mx-auto max-w-2xl px-6 pb-16 ${SECTION_SPACING}`}>
-          <p className="text-[16px] leading-[1.75] text-gray-600">{realm.closing}</p>
+          <p className="text-[17px] leading-[1.8] text-gray-600">{realm.closing}</p>
         </div>
       )}
 
@@ -359,7 +359,7 @@ export function ClientDetailContent({
                   </h3>
                   <div className="lg:pt-2">
                     {hasSubheading && (
-                      <p className="text-[16px] leading-[1.7] text-gray-600">
+                      <p className="text-[17px] leading-[1.8] text-gray-600">
                         {highlightToolsInText(deliverables.subheading, sidebar?.tools ?? [])}
                       </p>
                     )}
@@ -376,7 +376,7 @@ export function ClientDetailContent({
                   {deliverables.items.map((item) => (
                     <div key={item.title}>
                       <h4 className="mb-4 text-[16px] font-medium leading-[1.4] text-gray-950">{item.title}</h4>
-                      <p className="text-[16px] leading-[1.6] text-gray-600">
+                      <p className="text-[17px] leading-[1.8] text-gray-600">
                         {highlightToolsInText(item.description, sidebar?.tools ?? [])}
                       </p>
                     </div>
