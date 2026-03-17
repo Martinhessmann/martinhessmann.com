@@ -115,9 +115,11 @@ export const CLIENT_REALMS: ClientRealm[] = [
       "UX/UI Design",
       "Platform Design",
       "Design Systems",
+      "Design System Governance",
+      "B2B Platform",
       "Search & IA",
       "Content Operations",
-      "Cross-team Collaboration",
+      "Cross-functional Leadership",
     ],
     sidebar: {
       platforms: [
@@ -349,10 +351,11 @@ export const CLIENT_REALMS: ClientRealm[] = [
     roleTags: [
       "Digital Branding",
       "UX/UI Design",
+      "Design Systems",
       "Accessibility",
       "TYPO3 Systems",
       "Frontend Development",
-      "Cross-functional Delivery",
+      "Cross-functional Leadership",
     ],
     sidebar: {
       platforms: [
@@ -521,7 +524,9 @@ export const CLIENT_REALMS: ClientRealm[] = [
     roleTags: [
       "Product Design",
       "AI Systems",
+      "AI UX",
       "Brand Governance",
+      "Design System Governance",
       "Creative Direction",
       "Generation Workflows",
       "Integrations",
@@ -642,9 +647,11 @@ export const CLIENT_REALMS: ClientRealm[] = [
     roleTags: [
       "Service Design",
       "Accessibility",
+      "Regulated Flows",
       "CRM & Lead Flows",
       "SEO & Analytics",
       "Security & QA",
+      "Cross-functional Leadership",
       "Platform Stewardship",
     ],
     sidebar: {
@@ -796,9 +803,10 @@ export const CLIENT_REALMS: ClientRealm[] = [
     roleTags: [
       "Service Design",
       "Accessibility",
+      "Regulated Flows",
       "Application Logic",
       "Content Strategy",
-      "Stakeholder Alignment",
+      "Cross-functional Leadership",
       "AI UX",
     ],
     sidebar: {
