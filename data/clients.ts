@@ -154,7 +154,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
           sectionTitle: "easyCredit B2B portal",
         },
       ],
-      tools: ["WordPress", "ACF Pro", "Algolia", "PHP", "SCSS", "Azure", "Docker"],
+      tools: ["WordPress", "ACF Pro", "Algolia", "PHP", "SCSS", "Azure", "Docker", "Kubernetes"],
       openingNarrative:
         "This work happened inside a larger multi-agency platform landscape. I led UI/UX on the TeamBank surfaces I worked on and translated brand inputs, search, content operations, and WordPress constraints into a reusable interface system before any formal global style guide existed for the platform layer.",
     },
@@ -178,10 +178,15 @@ export const CLIENT_REALMS: ClientRealm[] = [
           description:
             "Algolia was more than a search box. Components and indexing logic became reusable infrastructure across TeamBank and easyCredit surfaces, so assets, pages, and partner features stayed discoverable instead of drifting into separate solutions.",
         },
+        {
+          title: "Kubernetes delivery and enablement",
+          description:
+            "Led Markenportal delivery into Kubernetes — kubectl debugging, writing debug logs, building custom plugin admin pages for quicker access. Enabled a junior developer and Head of Brand to trust the approach, feel included, and take over at any time.",
+        },
       ],
     },
     closing:
-      "The result was not a master style-guide deck. It was a working interface system: searchable, reusable, and operational enough for teams across a multi-platform landscape.",
+      "A working interface system: searchable, reusable, and operational enough for teams across a multi-platform landscape.",
     story: [
       {
         type: "text",
@@ -208,6 +213,11 @@ export const CLIENT_REALMS: ClientRealm[] = [
             caption: "Preview logic that made assets easier to trust",
           },
         ],
+      },
+      {
+        type: "text",
+        content:
+          "The Markenportal ran on Kubernetes, and I got deep into that layer: kubectl debugging, writing debug logs, building custom plugin admin pages for quicker team access. This required UX, customer understanding, AI capabilities, corporate architecture knowledge, and the confidence to consult and lead the client. I enabled a junior developer and the Head of Brand to trust the approach and take over at any time.",
       },
       {
         type: "text",
@@ -437,7 +447,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       {
         type: "text",
         content:
-          "Infrasignal belongs in the case because of the traffic-light reporting system, not because it was another cloned website. Citizens report a disturbance, identify the right intersection on a Mapbox map, and service teams need links and parameters precise enough to act. That made the route from public report to operational handling the sharpest proof surface inside the wider ecosystem.",
+          "Infrasignal belongs in the case because of the traffic-light reporting system, not because it was another cloned website. Citizens report a disturbance, identify the right intersection on a Mapbox map, and service teams need links and parameters precise enough to act. That made the route from public report to operational handling the sharpest proof surface inside the wider ecosystem. Migrating 3 CSV files of traffic-light data required Codex-written Python scripts and automated tests — pragmatic AI-assisted development for complex data migration.",
       },
       { type: "label", content: "Infrasignal" },
       {
@@ -576,6 +586,11 @@ export const CLIENT_REALMS: ClientRealm[] = [
           description:
             "Used by teams including Idealo, mobile.de, Hartmann, and Kneipp. Sanity integration, privacy/data-flow work, and shipping discipline across Next.js 15, Supabase, Prisma, Sentry, and Vercel made the system behave like product, not a demo.",
         },
+        {
+          title: "Feedback and observability",
+          description:
+            "Set up Sentry for user feedback across AI applications. Feedback flows into Slack notifications, which trigger Linear and Cursor bots, GitHub Actions, and Vercel pipelines for response and iteration — production-grade observability for generative systems.",
+        },
       ],
     },
     closing: "A production system that turns brand knowledge into assets teams can use, review, and ship.",
@@ -601,7 +616,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       {
         type: "text",
         content:
-          "Kneipp is the freshest proof that the system is moving closer to real production. In the new Product Studio Creative Placement Flow, the challenge was not to feed a product image into a model and hope for a generic shot. The work had to encode brand-specific studio language, props, composition rules, colors, and concept space well enough that the result could feel like Kneipp. Early tests were already strong enough that the outputs could move ahead of traditional render and photo production for social use, which changed the role of the system from exploratory tooling to practical brand asset generation.",
+          "Kneipp is the freshest proof that the system is moving closer to real production. In the new Product Studio Creative Placement Flow, the challenge was not to feed a product image into a model and hope for a generic shot. The work had to encode brand-specific studio language, props, composition rules, colors, and concept space well enough that the result could feel like Kneipp. I used Codex to write prompt-enhancer templates with memory persistence — automated generations that look at results, iterate on prompts, and store adjustments so past decisions carry forward. Best-in-class use of Gemini 2.0/2.1 with current capabilities. Early tests moved ahead of traditional render and photo production for social use.",
       },
       {
         type: "label",
@@ -687,7 +702,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
           claim: "Senior living communication that stayed clear and maintainable.",
         },
       ],
-      tools: ["WordPress", "Nuxt", "Prismic", "Microsoft Dynamics", "Mailchimp", "Cloudflare Turnstile", "Playwright", "Sentry"],
+      tools: ["WordPress", "Nuxt", "Prismic", "Microsoft Dynamics", "Mailchimp", "Cloudflare Turnstile", "Cloudflare Workers", "Playwright", "Sentry"],
       openingNarrative:
         "This realm only worked when service quality, SEO, CRM, tracking, and security were treated as one connected system. I sat at that intersection and made execution decisions that stayed accountable to marketing, customer management, and delivery at the same time.",
     },
@@ -709,6 +724,11 @@ export const CLIENT_REALMS: ClientRealm[] = [
           title: "Operational resilience",
           description:
             "Cloudflare Turnstile, bot detection, Playwright, Sentry, and cleaner alerting kept the ecosystem usable as it evolved. Fewer regressions and a digital layer teams could keep adapting over years.",
+        },
+        {
+          title: "Cloud architecture",
+          description:
+            "Multi-domain landing pages required Cloudflare Workers with CORS settings for Hetzner WordPress — no repository dependencies. Pragmatic edge compute integration without over-engineering.",
         },
       ],
     },
@@ -815,7 +835,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
         { title: "Dein WoMo", url: "https://dein-womo.de", description: "Internet and equipment voucher flow within the WoMo service family.", claim: "Internet and equipment vouchers for eligible members", sectionTitle: "Dein WoMo" },
         { title: "Wo-Mo-Fonds AI Chatbot", url: "https://womofonds.de", description: "Multilingual assistant for benefit questions, deadlines, and application guidance.", claim: "Multilingual guidance for benefits, deadlines, and applications", sectionTitle: "Wo-Mo-Fonds AI Chatbot" },
       ],
-      tools: ["TYPO3", "Eleventy (11ty)", "TYPO3 Mail", "Cohere"],
+      tools: ["TYPO3", "Eleventy (11ty)", "TYPO3 Mail", "Cohere", "Sentry", "Cursor/Codex Agents"],
       openingNarrative:
         "These are not simple upload forms. Eligibility can behave more like a tax form: conditional evidence, branching questions, deadlines, and policy wording all have to stay correct. I worked across forms, content, status communication, and multilingual guidance so members could use the system without hitting another barrier.",
     },
@@ -837,6 +857,11 @@ export const CLIENT_REALMS: ClientRealm[] = [
           title: "Hybrid-team collaboration",
           description:
             "Uncompromised UX depended on coordination across four hybrid teams: EVG, fund operations, external implementation, and AI/service work. I aligned forms, status communication, and follow-up paths across Wo-Mo-Fonds, Dein WoMo, and TYPO3 Mail so the service behaved like one system.",
+        },
+        {
+          title: "Autonomous agentic debugging",
+          description:
+            "The client now runs Cursor/Codex agents to debug prompts that caused faulty responses, iterate until the response is closer to the goal, and validate no regression across performance, multilingual detection, and basic questions. Germany's first launched multilingual chatbot of a Gewerkschaft.",
         },
       ],
     },
