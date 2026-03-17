@@ -203,4 +203,57 @@ When applying to Kraken, emphasize:
 
 ---
 
+## 8. Additional Proof Points — Cloud Architecture & Agentic Engineering
+
+Martin's input: these accomplishments demonstrate cloud architecture understanding and cutting-edge agentic engineering. Add to resume/clients where appropriate.
+
+### 8.1 Sentry + User Feedback → Slack → Linear/Cursor Bots → GitHub Actions / Vercel Pipelines
+
+**Where:** AURA, Open Wonder, Wo-Mo-Fonds Chatbot
+
+**What:** Set up Sentry for user feedback across all AI applications. Feedback flows into Slack notifications, which trigger Linear and Cursor bots, GitHub Actions, and Vercel pipelines for response and iteration.
+
+**Why it matters:** Proves understanding of cloud architecture, observability, feedback loops, and agentic engineering. Kraken is AI-powered — this shows you build AI products with production-grade feedback systems.
+
+**Add to:** Open Wonder highlights, Wo-Mo-Fonds deliverables, AN® tech/skills. Consider a new "success" or resume highlight: "Built user-feedback pipelines (Sentry → Slack → Linear/Cursor bots → GitHub Actions) across AI products so teams respond to issues in real time."
+
+### 8.2 Infrasignal — Codex Python Scripts, CSV Migration, Vidal Debugging
+
+**Where:** Infrasignal (traffic light reporting system)
+
+**What:** Migrated 3 CSV files with traffic light data. Used Codex to write Python scripts and automated tests. Vidal debugging with localhost setup: Mapbox, autocomplete, location spoofing for local testing.
+
+**Why it matters:** AI-assisted development for complex data migration; pragmatic automation; shows you ship when the problem is "boring" but critical.
+
+**Add to:** Grün Berlin / Infrasignal `deliverables` or `story` in clients.ts. Resume.json Grün Berlin/infraSignal project description.
+
+### 8.3 Tertianum — Cloudflare Workers + CORS, Multi-Domain Landing Pages
+
+**Where:** Tertianum / DPF Group
+
+**What:** Needed multi-domain landing pages. Integrated Cloudflare Workers with CORS settings for Hetzner WordPress — no repository dependencies.
+
+**Why it matters:** Cloud architecture, pragmatic integration, understanding of edge compute and CORS. "Get Sh*t Done" without over-engineering.
+
+**Add to:** DPF Group / Tertianum project description in resume.json. clients.ts Tertianum deliverables.
+
+### 8.4 Kneipp Virtual Photo Studio — Codex Prompt Enhancer, Gemini 2.0/2.1
+
+**Where:** Open Wonder / Kneipp Product Studio
+
+**What:** Used Codex to write prompt enhancer templates. Automated generations, made the system look at results, iterate on prompts, store a memory file so past adjustments weren't overwritten. Best-in-class use of Gemini 2.0/2.1 with current capabilities.
+
+**Why it matters:** AI product design at the frontier — prompt engineering, iteration workflows, memory/state. Directly relevant to Kraken's AI-powered platform.
+
+**Add to:** Open Wonder clients.ts story (Kneipp section). Resume.json Open Wonder highlights. Consider: "Designed prompt-enhancer workflows with memory persistence for iterative AI generation (Gemini 2.0/2.1)."
+
+### 8.5 Implementation Notes
+
+- **Resume.json:** Add 1–2 of these as work highlights (Open Wonder, AN®) or project descriptions.
+- **clients.ts:** Weave into `deliverables`, `story`, or `sidebar.openingNarrative` for Open Wonder, Wo-Mo-Fonds, Grün Berlin/Infrasignal, Tertianum.
+- **Skills:** Add "Agentic Engineering," "Observability Pipelines," "Cloudflare Workers," "Sentry" (if not already).
+- **Voice:** Keep it concrete. "Sentry user feedback → Slack → Linear bots → GitHub Actions" is more credible than "built feedback systems."
+
+---
+
 *Plan created for tailoring CV, clients.ts, and Resume.json toward Head of UX roles at Kraken.tech and similar companies.*
