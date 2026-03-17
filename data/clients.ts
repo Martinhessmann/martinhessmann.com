@@ -34,6 +34,11 @@ export interface CardTheme {
   label: string
 }
 
+export interface ClientQuote {
+  text: string
+  attribution?: string
+}
+
 export interface ClientRealm {
   id: string
   client: string
@@ -53,6 +58,7 @@ export interface ClientRealm {
     items: Deliverable[]
   }
   closing?: string
+  quote?: ClientQuote
   story: StoryBlock[]
   retrospectivePath?: string
 }
@@ -825,6 +831,10 @@ export const CLIENT_REALMS: ClientRealm[] = [
             "Uncompromised UX depended on coordination across four hybrid teams: EVG, fund operations, external implementation, and AI/service work. I aligned forms, status communication, and follow-up paths across Wo-Mo-Fonds, Dein WoMo, and TYPO3 Mail so the service behaved like one system.",
         },
       ],
+    },
+    quote: {
+      text: "They had never seen such flawless privacy and architecture documentation for a chatbot.",
+      attribution: "PWC",
     },
     story: [
       {

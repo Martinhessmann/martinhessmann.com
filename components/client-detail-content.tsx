@@ -257,7 +257,7 @@ export function ClientDetailContent({
           <div className="space-y-5 text-[16px] leading-[1.75] text-gray-600 lg:pt-2">
             <p>{realm.keyMoment}</p>
             {sidebar?.openingNarrative && <p>{sidebar.openingNarrative}</p>}
-            <div className="border-t border-gray-200 pt-4">
+            <div className="mt-6 border-t border-gray-200 pt-6">
               <p className="text-[12px] font-medium tracking-[0.08em] text-gray-500">Role</p>
               {realm.roleTags.length > 0 ? (
                 <div className="mt-3 flex flex-wrap gap-2">
@@ -277,6 +277,21 @@ export function ClientDetailContent({
           </div>
         </div>
       </div>
+
+      {realm.quote && (
+        <div className="mx-auto max-w-2xl px-6 pb-12 pt-10 lg:px-12 lg:pt-14">
+          <blockquote className="border-l-2 border-gray-300 pl-6">
+            <p className="font-hedvig text-[clamp(18px,2vw,22px)] leading-[1.4] text-gray-800">
+              {realm.quote.text}
+            </p>
+            {realm.quote.attribution && (
+              <footer className="mt-4 text-[16px] font-medium text-gray-500">
+                — {realm.quote.attribution}
+              </footer>
+            )}
+          </blockquote>
+        </div>
+      )}
 
       {moodImage && (
         <div className={`mx-auto max-w-5xl px-6 pb-20 lg:px-12 ${SECTION_SPACING}`}>
@@ -338,7 +353,7 @@ export function ClientDetailContent({
           <div className="rounded-[var(--surface-radius-lg)] border bg-white px-6 py-12 lg:px-10 lg:py-16" style={{ borderColor: 'var(--surface-border)' }}>
             {hasDeliverables && (
               <>
-                <div className="mb-10 grid gap-6 lg:grid-cols-2 lg:gap-12">
+                <div className="mb-12 grid gap-8 lg:grid-cols-2 lg:gap-12">
                   <h3 className="font-hedvig text-[clamp(22px,2.5vw,28px)] leading-[1.3] text-gray-950">
                     {deliverables.heading}
                   </h3>
@@ -360,7 +375,7 @@ export function ClientDetailContent({
                 <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
                   {deliverables.items.map((item) => (
                     <div key={item.title}>
-                      <h4 className="mb-2 text-[16px] font-medium leading-[1.4] text-gray-950">{item.title}</h4>
+                      <h4 className="mb-4 text-[16px] font-medium leading-[1.4] text-gray-950">{item.title}</h4>
                       <p className="text-[16px] leading-[1.6] text-gray-600">
                         {highlightToolsInText(item.description, sidebar?.tools ?? [])}
                       </p>
