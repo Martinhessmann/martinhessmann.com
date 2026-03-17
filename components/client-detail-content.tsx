@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState, type ReactNode } from 'react'
+import { useRef, useState } from 'react'
 import type { ClientRealm, Platform, StoryBlock } from '@/data/clients'
 import { flattenVisuals, getSectionPlatforms, type ProjectSection, parseStoryIntoSections } from '@/lib/client-story'
 
@@ -167,48 +167,6 @@ function ProjectSectionBlock({
   )
 }
 
-function ToolChip({
-  tool,
-  variant = 'cluster',
-}: {
-  tool: string
-  variant?: 'cluster' | 'inline'
-}) {
-  if (variant === 'inline') {
-    return (
-      <span className="inline rounded-[999px] border border-gray-300 bg-white px-2 py-0.5 align-baseline text-[0.86em] font-medium leading-none text-gray-700">
-        {tool}
-      </span>
-    )
-  }
-
-  return (
-    <span
-      className="inline-flex items-center rounded-full border border-gray-300 bg-white px-3 py-1.5 text-[14px] leading-none text-gray-700"
-      title={tool}
-    >
-      {tool}
-    </span>
-  )
-}
-
-function highlightToolsInText(text: string, tools: string[]): ReactNode {
-  if (!tools?.length) return text
-  const sorted = [...tools].sort((a, b) => b.length - a.length)
-  const escaped = sorted.map((tool) => tool.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
-  const pattern = new RegExp(`(${escaped.join('|')})`, 'g')
-  const segments = text.split(pattern)
-  const toolSet = new Set(tools)
-
-  return segments.map((segment, index) =>
-    toolSet.has(segment) ? (
-      <ToolChip key={index} tool={segment} variant="inline" />
-    ) : (
-      segment
-    )
-  )
-}
-
 const SECTION_SPACING = 'pt-20 lg:pt-28'
 
 export function ClientDetailContent({
@@ -220,7 +178,6 @@ export function ClientDetailContent({
   const { sidebar, deliverables } = realm
   const hasDeliverables = Boolean(deliverables?.items?.length)
   const hasTools = Boolean(sidebar?.tools?.length)
-  const hasSubheading = Boolean(deliverables?.subheading?.trim())
   const sections = providedSections ?? parseStoryIntoSections(realm.story)
   const moodImage = providedMoodImage ?? realm.moodImage
 
@@ -258,20 +215,13 @@ export function ClientDetailContent({
             <p>{realm.keyMoment}</p>
             {sidebar?.openingNarrative && <p>{sidebar.openingNarrative}</p>}
             <div className="mt-6 border-t border-gray-200 pt-6">
-              <p className="mb-3 text-[12px] font-medium tracking-[0.08em] text-gray-500">Role</p>
+              <p className="mb-2 text-[12px] font-medium tracking-[0.08em] text-gray-500">Role</p>
               {realm.roleTags.length > 0 ? (
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {realm.roleTags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="inline-flex items-center rounded-full bg-[var(--portfolio-sand-0)] px-3 py-1.5 text-[14px] font-medium text-gray-700"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                <p className="text-[17px] leading-[1.8] text-gray-700">
+                  {realm.roleTags.join(', ')}
+                </p>
               ) : (
-                <p className="mt-3 text-[17px] leading-[1.8] text-gray-700">{realm.roleSummary}</p>
+                <p className="text-[17px] leading-[1.8] text-gray-700">{realm.roleSummary}</p>
               )}
             </div>
           </div>
@@ -342,62 +292,29 @@ export function ClientDetailContent({
         )
       })()}
 
-      {realm.closing && (
-        <div className={`mx-auto max-w-2xl px-6 pb-16 ${SECTION_SPACING}`}>
-          <p className="text-[17px] leading-[1.8] text-gray-600">{realm.closing}</p>
+      {hasDeliverables && (
+        <div className={`mx-auto max-w-5xl px-6 pb-12 lg:px-12 ${SECTION_SPACING}`}>
+          <h3 className="mb-8 font-hedvig text-[clamp(22px,2.5vw,28px)] leading-[1.3] text-gray-950">
+            {deliverables.heading}
+          </h3>
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {deliverables.items.map((item) => (
+              <div key={item.title}>
+                <h4 className="mb-4 text-[16px] font-medium leading-[1.4] text-gray-950">{item.title}</h4>
+                <p className="text-[17px] leading-[1.8] text-gray-600">
+                  {item.description}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       )}
 
-      {(hasDeliverables || hasTools) && (
-        <div className={`mx-auto max-w-5xl px-6 pb-16 lg:px-12 ${SECTION_SPACING}`}>
-          <div className="rounded-[var(--surface-radius-lg)] border bg-white px-6 py-12 lg:px-10 lg:py-16" style={{ borderColor: 'var(--surface-border)' }}>
-            {hasDeliverables && (
-              <>
-                <div className="mb-12 grid gap-8 lg:grid-cols-2 lg:gap-12">
-                  <h3 className="font-hedvig text-[clamp(22px,2.5vw,28px)] leading-[1.3] text-gray-950">
-                    {deliverables.heading}
-                  </h3>
-                  <div className="lg:pt-2">
-                    {hasSubheading && (
-                      <p className="text-[17px] leading-[1.8] text-gray-600">
-                        {highlightToolsInText(deliverables.subheading, sidebar?.tools ?? [])}
-                      </p>
-                    )}
-                    {hasTools && (
-                      <div className={`${hasSubheading ? 'mt-4' : ''} flex flex-wrap gap-2.5`}>
-                        {sidebar.tools.map((tool) => (
-                          <ToolChip key={tool} tool={tool} />
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </div>
-                <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                  {deliverables.items.map((item) => (
-                    <div key={item.title}>
-                      <h4 className="mb-4 text-[16px] font-medium leading-[1.4] text-gray-950">{item.title}</h4>
-                      <p className="text-[17px] leading-[1.8] text-gray-600">
-                        {highlightToolsInText(item.description, sidebar?.tools ?? [])}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </>
-            )}
-
-            {hasTools && !hasDeliverables && (
-              <>
-                <h3 className="mb-6 font-hedvig text-[clamp(24px,2.5vw,32px)] leading-[1.3] text-gray-950">
-                  Tools
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {sidebar.tools.map((tool) => (
-                    <ToolChip key={tool} tool={tool} />
-                  ))}
-                </div>
-              </>
-            )}
-          </div>
+      {hasTools && (
+        <div className={`mx-auto max-w-5xl px-6 pb-16 lg:px-12 ${hasDeliverables ? 'pt-0' : SECTION_SPACING}`}>
+          <p className="text-[16px] text-gray-500">
+            {(sidebar?.tools ?? []).join(', ')}
+          </p>
         </div>
       )}
     </div>
