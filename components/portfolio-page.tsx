@@ -160,7 +160,7 @@ export default function PortfolioPage() {
                   style={{ zIndex: useCardFanLayout ? CLIENT_REALMS.length - index : 'auto' }}
                 >
                   <article
-                    className="relative flex h-fit w-full cursor-pointer flex-col overflow-hidden rounded-[var(--surface-radius-lg)] border p-2 sm:p-3 lg:w-[220px]"
+                    className="relative flex h-fit w-full cursor-pointer flex-col overflow-hidden rounded-[var(--surface-radius-lg)] border p-4 sm:p-5 lg:w-[220px]"
                     style={{ backgroundColor: colors.bg, borderColor: 'var(--surface-border-dark)' }}
                     onClick={() => setActiveRealmId(realm.id)}
                     role="button"
@@ -173,32 +173,32 @@ export default function PortfolioPage() {
                     }}
                     aria-label={`Open case study for ${realm.displayName}`}
                   >
-                    <p
-                      className="text-[12px] font-medium tracking-[0.08em]"
-                      style={{ color: colors.label }}
-                    >
-                      {realm.displayName}
-                    </p>
-                    <div className="mt-1 flex aspect-[220/180] w-full items-center justify-center overflow-hidden rounded-[var(--surface-radius-lg)]">
+                    <div className="-m-4 -mb-0 -mt-4 flex aspect-[220/180] w-[calc(100%+2rem)] shrink-0 items-center justify-center overflow-hidden rounded-t-[var(--surface-radius-lg)] sm:-m-5 sm:-mb-0 sm:-mt-5 sm:w-[calc(100%+2.5rem)]">
                       {realm.moodImage ? (
                         <img
                           src={realm.moodImage}
                           alt=""
-                          className="h-full w-full rounded-[var(--surface-radius-lg)] object-contain object-center"
+                          className="h-full w-full object-cover object-center mix-blend-multiply"
                         />
                       ) : (
-                        <div className="h-full w-full rounded-[var(--surface-radius-lg)] bg-black/10" />
+                        <div className="h-full w-full bg-black/10" />
                       )}
                     </div>
-                    <div className="mt-2 shrink-0 px-0 pb-0 pt-1">
+                    <p
+                      className="mt-4 text-[12px] font-medium tracking-[0.08em] sm:mt-5"
+                      style={{ color: colors.label }}
+                    >
+                      {realm.displayName}
+                    </p>
+                    <div className="mt-3 shrink-0 sm:mt-4">
                       <p
-                        className="font-hedvig text-[15px] leading-[1.14] sm:text-[17px]"
+                        className="font-hedvig text-[18px] leading-[1.2] sm:text-[21px]"
                         style={{ color: colors.panelText }}
                       >
                         {realm.hook}
                       </p>
                       <p
-                        className="mt-1 text-[13px] leading-[1.45]"
+                        className="mt-1.5 text-[14px] leading-[1.45]"
                         style={{ color: colors.panelText === '#181823' ? 'rgba(24,24,35,0.76)' : 'rgba(255,255,255,0.8)' }}
                       >
                         {realm.accountLine}
