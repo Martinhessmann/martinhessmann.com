@@ -51,12 +51,26 @@ function useCompactCardLayout() {
   return isCompact ?? true
 }
 
+/** Scale factor for logo wall: on mobile (4 cols) scale down to fit; on sm+ use natural size for balanced visual weight. */
+function useLogoScale() {
+  const [scale, setScale] = useState(1)
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 639px)')
+    const update = () => setScale(mq.matches ? 0.5 : 1)
+    update()
+    mq.addEventListener('change', update)
+    return () => mq.removeEventListener('change', update)
+  }, [])
+  return scale
+}
+
 export default function PortfolioPage() {
   const [activeRealmId, setActiveRealmId] = useState<string | null>(null)
   const activeRealm = CLIENT_REALMS.find((realm) => realm.id === activeRealmId) ?? null
   const prefersReducedMotion = useReducedMotion()
   const isCompactCardLayout = useCompactCardLayout()
   const useCardFanLayout = !prefersReducedMotion && !isCompactCardLayout
+  const logoScale = useLogoScale()
 
   const featuredWork = useMemo(() => resume.work?.slice(0, 4) ?? [], [])
   const languages = useMemo(
@@ -225,12 +239,23 @@ export default function PortfolioPage() {
                     className="inline-flex min-h-[56px] items-center justify-center px-2 py-3 sm:min-h-[122px] sm:px-6 sm:py-7"
                     title={logo.name}
                   >
-                    <img
-                      src={logo.src}
-                      alt={logo.name}
-                      className="max-w-full object-contain brightness-0 invert opacity-80"
-                      style={{ width: logo.width, height: logo.height }}
-                    />
+                    <span
+                      className="inline-flex items-center justify-center overflow-hidden"
+                      style={{
+                        width: logo.width * logoScale,
+                        height: logo.height * logoScale,
+                        minWidth: logo.width * logoScale,
+                        minHeight: logo.height * logoScale,
+                      }}
+                    >
+                      <img
+                        src={logo.src}
+                        alt={logo.name}
+                        className="h-full w-full object-contain brightness-0 invert opacity-80"
+                        width={logo.width}
+                        height={logo.height}
+                      />
+                    </span>
                   </span>
                 ))}
               </div>
