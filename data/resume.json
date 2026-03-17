@@ -36,7 +36,8 @@
       "headline": "Design systems, cross-functional leadership, and AI that holds up in production.",
       "intro": [
         "I build design systems and lead UX where the stakes are high — regulated application flows, multi-brand B2B ecosystems, civic platforms, AI products. I've owned adoption battles, legacy migrations, and the cross-functional partnerships that make governance work without killing creativity.",
-        "Currently leading digital delivery at AN® and shaping AI product strategy at Open Wonder."
+        "Currently leading digital delivery at AN® and shaping AI product strategy at Open Wonder.",
+        "When AI can generate anything, knowing what changed, why, and by whom matters more than ever. Version, trace, commit, changelog. I git it."
       ]
     },
     "location": {
@@ -690,7 +691,7 @@
         "Own delivery, design-system governance, and release quality across the full client portfolio",
         "Set UX standards and bring them to client leadership, internal stakeholders, and sometimes skeptical engineers",
         "Scale design operations across regulated and B2B platforms — rituals, tooling, and reviews without the process theater",
-        "Build the conditions for teams to ship work they're proud of, then get out of the way"
+        "My changelogs have plot arcs — enforce traceability, git discipline, and release documentation so teams can trust what shipped and why"
       ],
       "tech": [
         "Cross-functional Leadership",
