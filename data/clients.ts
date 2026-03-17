@@ -179,9 +179,9 @@ export const CLIENT_REALMS: ClientRealm[] = [
             "Algolia was more than a search box. Components and indexing logic became reusable infrastructure across TeamBank and easyCredit surfaces, so assets, pages, and partner features stayed discoverable instead of drifting into separate solutions.",
         },
         {
-          title: "Kubernetes delivery and enablement",
+          title: "Kubernetes and client enablement",
           description:
-            "Led Markenportal delivery into Kubernetes — kubectl debugging, writing debug logs, building custom plugin admin pages for quicker access. Enabled a junior developer and Head of Brand to trust the approach, feel included, and take over at any time.",
+            "The Markenportal ran on Kubernetes. I went deep — kubectl debugging, debug logs, custom admin pages for faster team access. The kind of delivery where UX, architecture, and client confidence have to coexist. A junior developer and the Head of Brand could trust the approach and take over when needed.",
         },
       ],
     },
@@ -217,7 +217,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       {
         type: "text",
         content:
-          "The Markenportal ran on Kubernetes, and I got deep into that layer: kubectl debugging, writing debug logs, building custom plugin admin pages for quicker team access. This required UX, customer understanding, AI capabilities, corporate architecture knowledge, and the confidence to consult and lead the client. I enabled a junior developer and the Head of Brand to trust the approach and take over at any time.",
+          "The Markenportal ran on Kubernetes. I went deep into that layer — kubectl debugging, debug logs, custom plugin admin pages for quicker team access. Nobody without a mix of UX, corporate architecture knowledge, and client confidence could have delivered it. A junior developer and the Head of Brand could trust the approach, feel included, and take over at any time.",
       },
       {
         type: "text",
@@ -424,7 +424,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       ],
     },
     closing:
-      "The outcome is not one polished civic site. It is a broader Berlin-facing ecosystem that stayed clearer, more usable, and more maintainable across many public surfaces and teams.",
+      "A broader Berlin-facing ecosystem that stayed clearer, more usable, and more maintainable across many public surfaces and teams.",
     story: [
       {
         type: "text",
@@ -447,7 +447,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       {
         type: "text",
         content:
-          "Infrasignal belongs in the case because of the traffic-light reporting system, not because it was another cloned website. Citizens report a disturbance, identify the right intersection on a Mapbox map, and service teams need links and parameters precise enough to act. That made the route from public report to operational handling the sharpest proof surface inside the wider ecosystem. Migrating 3 CSV files of traffic-light data required Codex-written Python scripts and automated tests — pragmatic AI-assisted development for complex data migration.",
+          "Infrasignal belongs in the case because of the traffic-light reporting system, not because it was another cloned website. Citizens report a disturbance, identify the right intersection on a Mapbox map, and service teams need links and parameters precise enough to act. That made the route from public report to operational handling the sharpest proof surface inside the wider ecosystem. Under the hood: migrating data for Berlin's 2,100+ signal installations meant Codex-written Python scripts and automated tests across three CSV files — unglamorous but critical infrastructure work.",
       },
       { type: "label", content: "Infrasignal" },
       {
@@ -589,7 +589,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
         {
           title: "Feedback and observability",
           description:
-            "Set up Sentry for user feedback across AI applications. Feedback flows into Slack notifications, which trigger Linear and Cursor bots, GitHub Actions, and Vercel pipelines for response and iteration — production-grade observability for generative systems.",
+            "Sentry captures user feedback across all AI applications. That feedback flows into Slack, triggers Linear and Cursor bots, fires GitHub Actions and Vercel pipelines — a closed loop from user report to shipped fix. Production-grade observability for generative systems.",
         },
       ],
     },
@@ -616,7 +616,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       {
         type: "text",
         content:
-          "Kneipp is the freshest proof that the system is moving closer to real production. In the new Product Studio Creative Placement Flow, the challenge was not to feed a product image into a model and hope for a generic shot. The work had to encode brand-specific studio language, props, composition rules, colors, and concept space well enough that the result could feel like Kneipp. I used Codex to write prompt-enhancer templates with memory persistence — automated generations that look at results, iterate on prompts, and store adjustments so past decisions carry forward. Best-in-class use of Gemini 2.0/2.1 with current capabilities. Early tests moved ahead of traditional render and photo production for social use.",
+          "Kneipp is the freshest proof that the system is moving closer to real production. In the new Product Studio Creative Placement Flow, the challenge was encoding brand-specific studio language, props, composition rules, colors, and concept space well enough that the result could feel like Kneipp — not a generic model output. I wrote prompt-enhancer templates with memory persistence using Codex: generations that evaluate their own results, iterate on prompts, and store adjustments so past decisions carry forward. Running on Gemini 2.0/2.1. Early tests moved ahead of traditional render and photo production for social use.",
       },
       {
         type: "label",
@@ -728,7 +728,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
         {
           title: "Cloud architecture",
           description:
-            "Multi-domain landing pages required Cloudflare Workers with CORS settings for Hetzner WordPress — no repository dependencies. Pragmatic edge compute integration without over-engineering.",
+            "Multi-domain landing pages through Cloudflare Workers with CORS for Hetzner WordPress — no repo dependencies, no over-engineering. Edge compute that solves a real problem and moves on.",
         },
       ],
     },
@@ -861,7 +861,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
         {
           title: "Autonomous agentic debugging",
           description:
-            "The client now runs Cursor/Codex agents to debug prompts that caused faulty responses, iterate until the response is closer to the goal, and validate no regression across performance, multilingual detection, and basic questions. Germany's first launched multilingual chatbot of a Gewerkschaft.",
+            "The client runs Cursor/Codex agents autonomously — debugging prompts, iterating until responses improve, validating no regression across performance and multilingual detection. Germany's first launched multilingual chatbot of a Gewerkschaft.",
         },
       ],
     },
