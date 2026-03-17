@@ -207,6 +207,14 @@ When applying to Kraken, emphasize:
 
 Martin's input: these accomplishments demonstrate cloud architecture understanding and cutting-edge agentic engineering. Add to resume/clients where appropriate.
 
+### 8.0 Portfolio Direction — Text Heavy, Fewer Shiny Screens
+
+**Martin's preference:** Portfolio can be text heavy. Don't need so many shiny screens.
+
+**Implementation:** When updating clients.ts and portfolio pages, favor narrative, deliverables, and story blocks over image galleries. Reduce "gallery" blocks where text can carry the story. Aligns with design system voice: "Sit with it until it talks."
+
+---
+
 ### 8.1 Sentry + User Feedback → Slack → Linear/Cursor Bots → GitHub Actions / Vercel Pipelines
 
 **Where:** AURA, Open Wonder, Wo-Mo-Fonds Chatbot
@@ -216,6 +224,18 @@ Martin's input: these accomplishments demonstrate cloud architecture understandi
 **Why it matters:** Proves understanding of cloud architecture, observability, feedback loops, and agentic engineering. Kraken is AI-powered — this shows you build AI products with production-grade feedback systems.
 
 **Add to:** Open Wonder highlights, Wo-Mo-Fonds deliverables, AN® tech/skills. Consider a new "success" or resume highlight: "Built user-feedback pipelines (Sentry → Slack → Linear/Cursor bots → GitHub Actions) across AI products so teams respond to issues in real time."
+
+**WoMo-Fonds extension:** The client now uses the feedback system themselves. They launch Cursor/Codex agents autonomously that: debug the prompt that caused a faulty response, iterate until the response is closer to the goal, then run basic checks (performance, multilingual detection, basic questions) to confirm changes didn't lower other functions. Add to Wo-Mo-Fonds deliverables: "Autonomous agentic debugging — client runs Cursor/Codex agents to debug prompts, iterate, and validate no regression."
+
+### 8.1b WoMo-Fonds Chatbot — PWC Validation, Germany's First Gewerkschaft Chatbot
+
+**Where:** Wo-Mo-Fonds (EVG)
+
+**What:** PWC (the consulting firm) told the team they had never seen such flawless privacy and architecture documentation for a Chatbot. Germany's first launched, multilingual chatbot of a Gewerkschaft (union).
+
+**Why it matters:** Third-party validation from PWC. Regulated, high-trust context. First-of-its-kind in the union space. Strong proof for Kraken (regulated, complex domains, scale).
+
+**Add to:** Wo-Mo-Fonds `deliverables`, `keyMoment`, or `closing` in clients.ts. Resume.json Fonds für Wohnen und Mobilität project description. Consider: "PWC audited and praised the privacy and architecture documentation as best-in-class for a chatbot. Germany's first launched multilingual union chatbot."
 
 ### 8.2 Infrasignal — Codex Python Scripts, CSV Migration, Vidal Debugging
 
