@@ -47,6 +47,8 @@ These are hard rules. Breaking them means starting over.
 - No text positioned on top of images (no gradient overlays for text)
 - No stretched full-width images without a constrained max-width
 - No CTA buttons on elements that are already clickable
+- **No "not X but Y" / "not only… but also…" constructions.** Never write "The point is not X. It is Y." or "not just the model, but the rules around it." State the main thing directly. No negations that delay the real point.
+- **No "to actually" / "actually" as filler.** Write "teams can use" not "teams can actually use." If it needs emphasis, use a stronger verb or concrete detail.
 
 ## Typography
 

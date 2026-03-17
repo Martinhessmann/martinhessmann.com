@@ -35,7 +35,7 @@
       "label": "Where I've worked and what I bring.",
       "headline": "Design systems, execution fluency, and AI that holds up in the real world.",
       "intro": [
-        "I started in UX/UI, designing responsive sites and campaign pages. The work kept getting more complex — multi-brand portfolios, regulated application flows, civic platforms, AI products — and I kept following it. Ten years later, I sit between design, engineering, and product strategy, usually at the point where those disciplines have to actually agree.",
+        "I started in UX/UI, designing responsive sites and campaign pages. The work kept getting more complex — multi-brand portfolios, regulated application flows, civic platforms, AI products — and I kept following it. Ten years later, I sit between design, engineering, and product strategy, usually at the point where those disciplines have to agree.",
         "Currently leading digital delivery at AN® and shaping AI product strategy at Open Wonder."
       ]
     },
@@ -608,7 +608,7 @@
         "city": "Berlin",
         "countryCode": "DE"
       },
-      "summary": "Shaping how an AI image-generation platform works in practice — not just the model, but the rules around it. I translate brand constraints into prompt logic, guardrails, and review workflows so the output is predictable enough to actually use in production.",
+      "summary": "Shaping how an AI image-generation platform works in practice. I translate brand constraints into prompt logic, guardrails, and review workflows so the output is predictable and usable in production.",
       "profileMix": {
         "segments": [
           {
