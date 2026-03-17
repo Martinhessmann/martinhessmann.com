@@ -247,11 +247,21 @@ Martin's input: these accomplishments demonstrate cloud architecture understandi
 
 **Add to:** Open Wonder clients.ts story (Kneipp section). Resume.json Open Wonder highlights. Consider: "Designed prompt-enhancer workflows with memory persistence for iterative AI generation (Gemini 2.0/2.1)."
 
-### 8.5 Implementation Notes
+### 8.5 TeamBank Markenportal — Kubernetes, kubectl, Debug Logs, Custom Admin Pages
+
+**Where:** TeamBank / Markenportal
+
+**What:** Got into Kubernetes for the Markenportal — debugging with kubectl, writing debug logs, building custom plugin admin pages for quicker access. Work that required UX, customer understanding, AI capabilities, corporate architecture knowledge, and the language/confidence to consult and lead the client. Enabled junior developer and Head of Brand to trust the approach, feel included, and take over at any time.
+
+**Why it matters:** Proves you operate at the intersection of design, engineering, and client leadership. Nobody without that combination could have done it. Shows enablement — "feel included and able to take over" — which aligns with design culture and Kraken's "Freedom & Responsibility."
+
+**Add to:** TeamBank `deliverables` or `story` in clients.ts. Resume.json TeamBank/easyCredit project or AN® highlights. Consider: "Led Markenportal delivery into Kubernetes — kubectl debugging, custom admin pages, enabling juniors and client stakeholders to take over."
+
+### 8.6 Implementation Notes
 
 - **Resume.json:** Add 1–2 of these as work highlights (Open Wonder, AN®) or project descriptions.
-- **clients.ts:** Weave into `deliverables`, `story`, or `sidebar.openingNarrative` for Open Wonder, Wo-Mo-Fonds, Grün Berlin/Infrasignal, Tertianum.
-- **Skills:** Add "Agentic Engineering," "Observability Pipelines," "Cloudflare Workers," "Sentry" (if not already).
+- **clients.ts:** Weave into `deliverables`, `story`, or `sidebar.openingNarrative` for Open Wonder, Wo-Mo-Fonds, Grün Berlin/Infrasignal, Tertianum, TeamBank.
+- **Skills:** Add "Agentic Engineering," "Observability Pipelines," "Cloudflare Workers," "Sentry," "Kubernetes" (if not already).
 - **Voice:** Keep it concrete. "Sentry user feedback → Slack → Linear bots → GitHub Actions" is more credible than "built feedback systems."
 
 ---
