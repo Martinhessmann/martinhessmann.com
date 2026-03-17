@@ -9,6 +9,17 @@ description: Design system rules, voice, typography, and interaction principles 
 
 [wearecollins.com](https://wearecollins.com/) is the design reference. Study how COLLINS uses one statement, massive whitespace, and typography as architecture. Every decision below comes from this reference filtered through Martin's voice and values.
 
+## Interface Craft (interfacecraft.dev) — Lean & Nurturing UX
+
+Use as a secondary reference for UI and reading UX:
+
+- **Lean & minimal:** No clutter. Ample negative space. One element does the work.
+- **Honest & upfront:** Direct, factual wording. No marketing language.
+- **Compact & precise:** Short, to-the-point text. Convey meaning without verbosity.
+- **Small sub-headlines:** Clear, concise section headers. Sentence case. Make content immediately scannable.
+- **Easy reading UX:** High contrast, clear fonts, generous spacing. Break dense content into digestible blocks with small sub-headlines.
+- **Do not add:** No extra text frames, elements, or complexity. When in doubt, shorten and remove.
+
 ## Voice
 
 **Hero statement:** "Sit with it until it talks."
@@ -36,6 +47,8 @@ These are hard rules. Breaking them means starting over.
 - No text positioned on top of images (no gradient overlays for text)
 - No stretched full-width images without a constrained max-width
 - No CTA buttons on elements that are already clickable
+- **No "not X but Y" / "not only… but also…" constructions.** Never write "The point is not X. It is Y." or "not just the model, but the rules around it." State the main thing directly. No negations that delay the real point.
+- **No "to actually" / "actually" as filler.** Write "teams can use" not "teams can actually use." If it needs emphasis, use a stronger verb or concrete detail.
 
 ## Typography
 
@@ -52,11 +65,11 @@ Two fonts. No exceptions.
 |-------|------|-------|-----------|
 | h1 | ~64px | Hero statement, page title | Once per page, maximum |
 | h2 | 28-32px | Section anchors, client names | One per section |
-| body | 16px | Default for everything | Most text on the page |
+| body | 17px | Default for body/paragraphs | Most text on the page |
 | larger | 21px | One step above body, for emphasis or serif accents | Selective |
 | small | 14px is NOT a size we use | -- | -- |
 
-**16px is the smallest text on the site.** Nothing smaller. Not 14px, not 13px, not 11px.
+**16px is the smallest text on the site.** Body/paragraphs use 17px with leading-[1.8] for readable feeling. Nothing smaller than 16px.
 
 ### Rules
 
@@ -90,7 +103,7 @@ Hard rules. No exceptions.
 ## Section Labels
 
 - **Never just name the section** (e.g. "Work", "Clients"). Lead with a half sentence instead: "Selected work I keep thinking about." or "Some of the teams I worked with."
-- **No all-caps.** Remove `uppercase` from all section labels and headings. Sentence case only.
+- **No all-caps.** Remove `uppercase` from all section labels and headings. Sentence case only. (Interface Craft: small sub-headlines in sentence case.)
 
 ## Interaction
 

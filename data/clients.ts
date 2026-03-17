@@ -34,6 +34,11 @@ export interface CardTheme {
   label: string
 }
 
+export interface ClientQuote {
+  text: string
+  attribution?: string
+}
+
 export interface ClientRealm {
   id: string
   client: string
@@ -53,6 +58,7 @@ export interface ClientRealm {
     items: Deliverable[]
   }
   closing?: string
+  quote?: ClientQuote
   story: StoryBlock[]
   retrospectivePath?: string
 }
@@ -93,25 +99,27 @@ export const CLIENT_REALMS: ClientRealm[] = [
     moodImage: `${REALM_IMG.teambank}/cover/cover-illustration.png`,
     hook: "UI systems for platforms that could not wait for a style guide.",
     theme: {
-      bg: '#2C9AD8',
-      surface: '#5BB6EA',
+      bg: '#4BB4F0',
+      surface: '#6BC4F5',
       text: 'white',
-      tray: '#17688F',
-      panel: '#17688F',
+      tray: '#1a7ab5',
+      panel: '#1a7ab5',
       panelText: '#FFFFFF',
       label: 'rgba(255,255,255,0.9)',
     },
     keyMoment:
       "TeamBank, the maker of easyCredit, was operating across multiple platforms, teams, and agencies: corporate communication, partner tooling, brand operations, and merchant-facing services. I led UI/UX on the platforms I worked on and turned that fragmented landscape into a usable interface system, even though no commissioned global style guide existed for the platform layer.",
     roleSummary:
-      "I led UI/UX across the TeamBank platforms I worked on, translating brand inputs, search, content operations, and WordPress constraints into reusable interface patterns teams could actually use.",
+      "I led UI/UX across the TeamBank platforms I worked on, translating brand inputs, search, content operations, and WordPress constraints into reusable interface patterns teams could use.",
     roleTags: [
       "UX/UI Design",
       "Platform Design",
       "Design Systems",
+      "Design System Governance",
+      "B2B Platform",
       "Search & IA",
       "Content Operations",
-      "Cross-team Collaboration",
+      "Cross-functional Leadership",
     ],
     sidebar: {
       platforms: [
@@ -119,7 +127,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
           title: "Markenportal",
           description:
             "Internal brand and work-asset platform with search, downloads, and editor workflows for teams and partners.",
-          claim: "A brand portal people could actually work with.",
+          claim: "A brand portal people could work with.",
           sectionTitle: "Markenportal",
         },
         {
@@ -146,7 +154,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
           sectionTitle: "easyCredit B2B portal",
         },
       ],
-      tools: ["WordPress", "ACF Pro", "Algolia", "PHP", "SCSS", "Azure", "Docker"],
+      tools: ["WordPress", "ACF Pro", "Algolia", "PHP", "SCSS", "Azure", "Docker", "Kubernetes"],
       openingNarrative:
         "This work happened inside a larger multi-agency platform landscape. I led UI/UX on the TeamBank surfaces I worked on and translated brand inputs, search, content operations, and WordPress constraints into a reusable interface system before any formal global style guide existed for the platform layer.",
     },
@@ -170,10 +178,15 @@ export const CLIENT_REALMS: ClientRealm[] = [
           description:
             "Algolia was more than a search box. Components and indexing logic became reusable infrastructure across TeamBank and easyCredit surfaces, so assets, pages, and partner features stayed discoverable instead of drifting into separate solutions.",
         },
+        {
+          title: "Kubernetes and client enablement",
+          description:
+            "The Markenportal ran on Kubernetes. I went deep — kubectl debugging, debug logs, custom admin pages for faster team access. The kind of delivery where UX, architecture, and client confidence have to coexist. A junior developer and the Head of Brand could trust the approach and take over when needed.",
+        },
       ],
     },
     closing:
-      "The result was not a master style-guide deck. It was a working interface system: searchable, reusable, and operational enough for teams across a multi-platform landscape.",
+      "A working interface system: searchable, reusable, and operational enough for teams across a multi-platform landscape.",
     story: [
       {
         type: "text",
@@ -200,6 +213,11 @@ export const CLIENT_REALMS: ClientRealm[] = [
             caption: "Preview logic that made assets easier to trust",
           },
         ],
+      },
+      {
+        type: "text",
+        content:
+          "The Markenportal ran on Kubernetes. I went deep into that layer — kubectl debugging, debug logs, custom plugin admin pages for quicker team access. Nobody without a mix of UX, corporate architecture knowledge, and client confidence could have delivered it. A junior developer and the Head of Brand could trust the approach, feel included, and take over at any time.",
       },
       {
         type: "text",
@@ -343,10 +361,11 @@ export const CLIENT_REALMS: ClientRealm[] = [
     roleTags: [
       "Digital Branding",
       "UX/UI Design",
+      "Design Systems",
       "Accessibility",
       "TYPO3 Systems",
       "Frontend Development",
-      "Cross-functional Delivery",
+      "Cross-functional Leadership",
     ],
     sidebar: {
       platforms: [
@@ -381,7 +400,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       ],
       tools: ["TYPO3", "Handlebars", "Fluid", "Mapbox", "TYPO3 Mail", "Mailchimp", "GitLab"],
       openingNarrative:
-        "This was not one civic website. Grün Berlin presents itself to the public as a coherent civic layer, but behind it sits a wider operator and project-developer ecosystem with separate spaces, brands, newsletters, and marketing surfaces. I worked across that stretch and kept the digital layer legible instead of letting it fragment into isolated properties.",
+        "Grün Berlin presents itself to the public as a coherent civic layer. Behind it sits a wider operator and project-developer ecosystem with separate spaces, brands, newsletters, and marketing surfaces. I worked across that stretch and kept the digital layer legible instead of letting it fragment into isolated properties.",
     },
     deliverables: {
       heading: "What held the ecosystem together.",
@@ -405,7 +424,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       ],
     },
     closing:
-      "The outcome is not one polished civic site. It is a broader Berlin-facing ecosystem that stayed clearer, more usable, and more maintainable across many public surfaces and teams.",
+      "A broader Berlin-facing ecosystem that stayed clearer, more usable, and more maintainable across many public surfaces and teams.",
     story: [
       {
         type: "text",
@@ -428,7 +447,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       {
         type: "text",
         content:
-          "Infrasignal belongs in the case because of the traffic-light reporting system, not because it was another cloned website. Citizens report a disturbance, identify the right intersection on a Mapbox map, and service teams need links and parameters precise enough to act. That made the route from public report to operational handling the sharpest proof surface inside the wider ecosystem.",
+          "Infrasignal belongs in the case because of the traffic-light reporting system, not because it was another cloned website. Citizens report a disturbance, identify the right intersection on a Mapbox map, and service teams need links and parameters precise enough to act. That made the route from public report to operational handling the sharpest proof surface inside the wider ecosystem. Under the hood: migrating data for Berlin's 2,100+ signal installations meant Codex-written Python scripts and automated tests across three CSV files — unglamorous but critical infrastructure work.",
       },
       { type: "label", content: "Infrasignal" },
       {
@@ -478,7 +497,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       {
         type: "text",
         content:
-          "Beyond those named surfaces, the ecosystem also included newsletter and marketing-design support for Campus Stadt Natur, Britzer Garten, Gärten der Welt, and Spreepark. That supporting layer is part of the CV relevance here: not one civic site, but an expanding network of public-facing Berlin brands and spaces that needed coherent digital stewardship.",
+          "Beyond those named surfaces, the ecosystem included newsletter and marketing-design support for Campus Stadt Natur, Britzer Garten, Gärten der Welt, and Spreepark. The ecosystem was an expanding network of public-facing Berlin brands and spaces that needed coherent digital stewardship.",
       },
       {
         type: "label",
@@ -509,13 +528,15 @@ export const CLIENT_REALMS: ClientRealm[] = [
       label: 'rgba(44,39,3,0.86)',
     },
     keyMoment:
-      "Open Wonder turns agency-style brand production into a product. The real problem is not just generating images, but making LLM logic, generation models, brand rules, and creative direction align well enough that outputs become usable, repeatable, and worth shipping for teams including Idealo, mobile.de, Hartmann, and Kneipp.",
+      "Open Wonder turns agency-style brand production into a product. LLM logic, generation models, brand rules, and creative direction have to align so outputs become usable, repeatable, and worth shipping for teams including Idealo, mobile.de, Hartmann, and Kneipp.",
     roleSummary:
       "I designed the product and generation system: how brand logic, model behavior, creative direction, review flows, and integrations work together so outputs become operational instead of approximate.",
     roleTags: [
       "Product Design",
       "AI Systems",
+      "AI UX",
       "Brand Governance",
+      "Design System Governance",
       "Creative Direction",
       "Generation Workflows",
       "Integrations",
@@ -565,14 +586,19 @@ export const CLIENT_REALMS: ClientRealm[] = [
           description:
             "Used by teams including Idealo, mobile.de, Hartmann, and Kneipp. Sanity integration, privacy/data-flow work, and shipping discipline across Next.js 15, Supabase, Prisma, Sentry, and Vercel made the system behave like product, not a demo.",
         },
+        {
+          title: "Feedback and observability",
+          description:
+            "Sentry captures user feedback across all AI applications. That feedback flows into Slack, triggers Linear and Cursor bots, fires GitHub Actions and Vercel pipelines — a closed loop from user report to shipped fix. Production-grade observability for generative systems.",
+        },
       ],
     },
-    closing: "The point is not AI output in isolation. It is a production system that turns brand knowledge into assets teams can actually use, review, and ship.",
+    closing: "A production system that turns brand knowledge into assets teams can use, review, and ship.",
     story: [
       {
         type: "text",
         content:
-          "Open Wonder exists because classic brand guides stop being enough once generative production becomes operational. The platform takes the kind of brand-production service an agency would normally interpret manually and turns it into a product system that can generate, critique, and steer assets for real teams. That is why named adoption matters here: Idealo, mobile.de, Hartmann, and Kneipp are not decorative references, but proof that the system had to work under actual brand pressure.",
+          "Open Wonder exists because classic brand guides stop being enough once generative production becomes operational. The platform takes the kind of brand-production service an agency would normally interpret manually and turns it into a product system that can generate, critique, and steer assets for real teams. Idealo, mobile.de, Hartmann, and Kneipp prove the system had to work under real brand pressure.",
       },
       {
         type: "label",
@@ -581,7 +607,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       {
         type: "text",
         content:
-          "AURA shows the governed side of the same product logic. Internal AI workflows had to stay reviewable, privacy-conscious, and deployable inside enterprise conditions, not just impressive in a workshop. Data-flow diagrams, privacy checklists, reliable environment tagging, and build fixes were part of the product itself because trust in a brand-generation system depends on governance and operational clarity, not just output quality.",
+          "AURA shows the governed side of the same product logic. Internal AI workflows had to stay reviewable, privacy-conscious, and deployable inside enterprise conditions. Data-flow diagrams, privacy checklists, reliable environment tagging, and build fixes were part of the product because trust in a brand-generation system depends on governance and operational clarity.",
       },
       {
         type: "label",
@@ -590,7 +616,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       {
         type: "text",
         content:
-          "Kneipp is the freshest proof that the system is moving closer to real production. In the new Product Studio Creative Placement Flow, the challenge was not to feed a product image into a model and hope for a generic shot. The work had to encode brand-specific studio language, props, composition rules, colors, and concept space well enough that the result could feel like Kneipp. Early tests were already strong enough that the outputs could move ahead of traditional render and photo production for social use, which changed the role of the system from exploratory tooling to practical brand asset generation.",
+          "Kneipp is the freshest proof that the system is moving closer to real production. In the new Product Studio Creative Placement Flow, the challenge was encoding brand-specific studio language, props, composition rules, colors, and concept space well enough that the result could feel like Kneipp — not a generic model output. I wrote prompt-enhancer templates with memory persistence using Codex: generations that evaluate their own results, iterate on prompts, and store adjustments so past decisions carry forward. Running on Gemini 2.0/2.1. Early tests moved ahead of traditional render and photo production for social use.",
       },
       {
         type: "label",
@@ -599,7 +625,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       {
         type: "text",
         content:
-          "The system also had to operate like product. A Sanity integration let editors generate Open Wonder assets from inside a real CMS surface without dealing with tokens or model orchestration. On the platform side, Next.js 15, Supabase, Prisma, Sentry, Vercel, and OpenTelemetry had to survive sharp binaries, lockfile issues, environment confusion, and privacy requirements. That operational layer matters because a generative brand system only becomes strategically useful when teams can rely on it, not just admire it.",
+          "The system also had to operate like product. A Sanity integration let editors generate Open Wonder assets from inside a real CMS surface without dealing with tokens or model orchestration. Next.js 15, Supabase, Prisma, Sentry, Vercel, and OpenTelemetry had to survive sharp binaries, lockfile issues, environment confusion, and privacy requirements. A generative brand system becomes strategically useful when teams can rely on it.",
       },
       {
         type: "label",
@@ -630,15 +656,17 @@ export const CLIENT_REALMS: ClientRealm[] = [
       label: 'rgba(73,58,38,0.84)',
     },
     keyMoment:
-      "DPF Group operates brands across senior living, concierge services, hospitality, and investment. The real challenge was not simply keeping multiple sites online, but making age-accessible contact flows, lead capture, SEO, Google Ads tracking, CRM handoff, and security feel like one trustworthy system across brands with different identities and teams.",
+      "DPF Group operates brands across senior living, concierge services, hospitality, and investment. The challenge was making age-accessible contact flows, lead capture, SEO, Google Ads tracking, CRM handoff, and security feel like one trustworthy system across brands with different identities and teams.",
     roleSummary:
       "I owned the execution layer across the realm: turning service design, lead flows, CRM, SEO, tracking, security, and rollout decisions into digital experiences teams could trust and maintain.",
     roleTags: [
       "Service Design",
       "Accessibility",
+      "Regulated Flows",
       "CRM & Lead Flows",
       "SEO & Analytics",
       "Security & QA",
+      "Cross-functional Leadership",
       "Platform Stewardship",
     ],
     sidebar: {
@@ -674,7 +702,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
           claim: "Senior living communication that stayed clear and maintainable.",
         },
       ],
-      tools: ["WordPress", "Nuxt", "Prismic", "Microsoft Dynamics", "Mailchimp", "Cloudflare Turnstile", "Playwright", "Sentry"],
+      tools: ["WordPress", "Nuxt", "Prismic", "Microsoft Dynamics", "Mailchimp", "Cloudflare Turnstile", "Cloudflare Workers", "Playwright", "Sentry"],
       openingNarrative:
         "This realm only worked when service quality, SEO, CRM, tracking, and security were treated as one connected system. I sat at that intersection and made execution decisions that stayed accountable to marketing, customer management, and delivery at the same time.",
     },
@@ -690,17 +718,22 @@ export const CLIENT_REALMS: ClientRealm[] = [
         {
           title: "Growth operations",
           description:
-            "CRM handoff, Google Ads tracking, newsletter logic, SEO, and lead collection all had to stay traceable across brands. Microsoft Dynamics and Mailchimp mattered here because growth quality depended on what happened after the form, not only before it.",
+            "CRM handoff, Google Ads tracking, newsletter logic, SEO, and lead collection had to stay traceable across brands. Microsoft Dynamics and Mailchimp mattered because growth quality depended on what happened after the form as much as before it.",
         },
         {
           title: "Operational resilience",
           description:
-            "Cloudflare Turnstile, bot detection, Playwright, Sentry, and cleaner alerting kept the ecosystem usable as it evolved. The point was not more tooling, but fewer regressions and a digital layer teams could keep adapting over years.",
+            "Cloudflare Turnstile, bot detection, Playwright, Sentry, and cleaner alerting kept the ecosystem usable as it evolved. Fewer regressions and a digital layer teams could keep adapting over years.",
+        },
+        {
+          title: "Cloud architecture",
+          description:
+            "Multi-domain landing pages through Cloudflare Workers with CORS for Hetzner WordPress — no repo dependencies, no over-engineering. Edge compute that solves a real problem and moves on.",
         },
       ],
     },
     closing:
-      "The value here was not just that several sites kept running. It was that a growing client ecosystem stayed trustworthy, maintainable, and commercially useful as brands, campaigns, and service needs kept changing.",
+      "A growing client ecosystem stayed trustworthy, maintainable, and commercially useful as brands, campaigns, and service needs kept changing.",
     story: [
       {
         type: "text",
@@ -717,7 +750,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       {
         type: "text",
         content:
-          "RAS made the service-design dimension even more explicit. A concierge brand cannot afford generic digital communication. Contact flows, tracking, and CRM touchpoints had to support a nationwide service business while still feeling responsive and personal. That is why this realm is not just a platform story. It is also about translating service expectations into digital behavior teams can actually operate.",
+          "RAS made the service-design dimension explicit. A concierge brand cannot afford generic digital communication. Contact flows, tracking, and CRM touchpoints had to support a nationwide service business while still feeling responsive and personal. This realm is about translating service expectations into digital behavior teams can operate.",
       },
       { type: "label", content: "RAS Services" },
       {
@@ -729,7 +762,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       {
         type: "text",
         content:
-          "Brasserie Colette stayed an equal proof surface because the same operational rigor had to hold under a different tone, stack, and conversion logic. DPF Investment tied the ecosystem back to the operator and investor layer. Together they show why the realm should not read like random maintenance work: distinct brands, distinct audiences, but one long-running responsibility for trust, growth, and execution quality.",
+          "Brasserie Colette stayed an equal proof surface because the same operational rigor had to hold under a different tone, stack, and conversion logic. DPF Investment tied the ecosystem back to the operator and investor layer. Together they show distinct brands, distinct audiences, and one long-running responsibility for trust, growth, and execution quality.",
       },
       { type: "label", content: "Brasserie Colette / DPF Investment" },
       {
@@ -775,24 +808,25 @@ export const CLIENT_REALMS: ClientRealm[] = [
     moodImage: `${REALM_IMG.woMoFonds}/cover/cover-illustration.png`,
     hook: "Union benefits, made understandable.",
     theme: {
-      bg: '#1E3A5F',
-      surface: '#325783',
-      text: 'white',
-      tray: '#213A5B',
-      panel: '#213A5B',
-      panelText: '#FFFFFF',
-      label: 'rgba(255,255,255,0.88)',
+      bg: '#a1a1fa',
+      surface: '#b8b4f8',
+      text: 'gray-900',
+      tray: '#8884e0',
+      panel: '#8884e0',
+      panelText: '#181823',
+      label: 'rgba(24,24,35,0.84)',
     },
     keyMoment:
       "EVG, the Eisenbahn- und Verkehrsgewerkschaft, supports members through Wo-Mo-Fonds and Dein WoMo — digital services for housing, mobility, internet, and equipment benefits. The challenge was to make those regulated processes understandable without losing legal precision.",
     roleSummary:
-      "I turned policy, application logic, accessibility, and multilingual support into a member-facing service system EVG could actually run.",
+      "I turned policy, application logic, accessibility, and multilingual support into a member-facing service system EVG could run.",
     roleTags: [
       "Service Design",
       "Accessibility",
+      "Regulated Flows",
       "Application Logic",
       "Content Strategy",
-      "Stakeholder Alignment",
+      "Cross-functional Leadership",
       "AI UX",
     ],
     sidebar: {
@@ -801,7 +835,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
         { title: "Dein WoMo", url: "https://dein-womo.de", description: "Internet and equipment voucher flow within the WoMo service family.", claim: "Internet and equipment vouchers for eligible members", sectionTitle: "Dein WoMo" },
         { title: "Wo-Mo-Fonds AI Chatbot", url: "https://womofonds.de", description: "Multilingual assistant for benefit questions, deadlines, and application guidance.", claim: "Multilingual guidance for benefits, deadlines, and applications", sectionTitle: "Wo-Mo-Fonds AI Chatbot" },
       ],
-      tools: ["TYPO3", "Eleventy (11ty)", "TYPO3 Mail", "Cohere"],
+      tools: ["TYPO3", "Eleventy (11ty)", "TYPO3 Mail", "Cohere", "Sentry", "Cursor/Codex Agents"],
       openingNarrative:
         "These are not simple upload forms. Eligibility can behave more like a tax form: conditional evidence, branching questions, deadlines, and policy wording all have to stay correct. I worked across forms, content, status communication, and multilingual guidance so members could use the system without hitting another barrier.",
     },
@@ -824,7 +858,16 @@ export const CLIENT_REALMS: ClientRealm[] = [
           description:
             "Uncompromised UX depended on coordination across four hybrid teams: EVG, fund operations, external implementation, and AI/service work. I aligned forms, status communication, and follow-up paths across Wo-Mo-Fonds, Dein WoMo, and TYPO3 Mail so the service behaved like one system.",
         },
+        {
+          title: "Autonomous agentic debugging",
+          description:
+            "The client runs Cursor/Codex agents autonomously — debugging prompts, iterating until responses improve, validating no regression across performance and multilingual detection. Germany's first launched multilingual chatbot of a Gewerkschaft.",
+        },
       ],
+    },
+    quote: {
+      text: "They had never seen such flawless privacy and architecture documentation for a chatbot.",
+      attribution: "PWC",
     },
     story: [
       {
@@ -854,7 +897,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       {
         type: "text",
         content:
-          "The AI assistant extends the same service into multilingual guidance. Built on Cohere, it helps with benefit questions, deadlines, and applications in up to fifteen languages, using grounded sources instead of guesswork. The goal was not to bolt AI onto the platform, but to make the benefit system easier to understand while keeping privacy and escalation boundaries clear.",
+          "The AI assistant extends the same service into multilingual guidance. Built on Cohere, it helps with benefit questions, deadlines, and applications in up to fifteen languages, using grounded sources instead of guesswork. The goal was to make the benefit system easier to understand while keeping privacy and escalation boundaries clear.",
       },
       { type: "label", content: "Wo-Mo-Fonds AI Chatbot" },
       {

@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
   "basics": {
     "name": "Martin Heßmann",
-    "label": "Systems Designer — Design, Engineering, AI",
+    "label": "UX & Design Systems Lead — Design, Engineering, AI",
     "image": "",
     "workPhotos": [
       {
@@ -23,20 +23,21 @@
     ],
     "email": "martin@martinhessmann.com",
     "url": "https://martinhessmann.com",
-    "summary": "I work where AI changes how products are designed, built, and governed, translating brand identity and human judgment into systems teams can trust. I stay close to workflows, engineering, and delivery so the result holds up in production.",
+    "summary": "I build design systems and lead UX across regulated platforms, civic services, and AI products. I've been through the adoption battles, the legacy migrations, and the dev partnerships that make systems work at scale. I stay close to the work, close to the code, and close to the people using it.",
     "hero": {
       "kicker": "Design · Engineering · AI",
       "title": "Designing for the Agentic Era.",
       "body": [
-        "I work where AI changes how products are designed, built, and governed, translating brand identity and human judgment into systems teams can trust. Across brand systems, workflows, and the engineering that makes them real, I stay close enough to execution to keep the work usable, reviewable, and grounded in production."
+        "I build design systems and lead UX across regulated platforms, civic services, and AI products. I've been through the adoption battles, the legacy migrations, and the dev partnerships that make systems work at scale. I stay close to the work, close to the code, and close to the people using it."
       ]
     },
     "resume": {
       "label": "Where I've worked and what I bring.",
-      "headline": "Design systems, execution fluency, and AI that holds up in the real world.",
+      "headline": "Design systems, cross-functional leadership, and AI that holds up in production.",
       "intro": [
-        "I started in UX/UI, designing responsive sites and campaign pages. The work kept getting more complex — multi-brand portfolios, regulated application flows, civic platforms, AI products — and I kept following it. Ten years later, I sit between design, engineering, and product strategy, usually at the point where those disciplines have to actually agree.",
-        "Currently leading digital delivery at AN® and shaping AI product strategy at Open Wonder."
+        "I build design systems and lead UX where the stakes are high — regulated application flows, multi-brand B2B ecosystems, civic platforms, AI products. I've owned adoption battles, legacy migrations, and the cross-functional partnerships that make governance work without killing creativity.",
+        "Currently leading digital delivery at AN® and shaping AI product strategy at Open Wonder.",
+        "AI makes shipping faster. That makes version control, traceability, and proper changelogs more vital — not less. I git it."
       ]
     },
     "location": {
@@ -71,6 +72,8 @@
         "Product Design",
         "Design Systems",
         "Design Tokens",
+        "AI in UX",
+        "B2B Platform Design",
         "Interaction Design",
         "Information Architecture",
         "Figma",
@@ -81,7 +84,21 @@
       ]
     },
     {
-      "name": "Code & Build (30%)",
+      "name": "Leadership (25%)",
+      "level": "Expert",
+      "keywords": [
+        "Cross-functional Leadership",
+        "Design Ops",
+        "Design System Governance",
+        "Team Leadership",
+        "Hiring & Coaching",
+        "Design Culture Building",
+        "Release Management",
+        "Observability Pipelines"
+      ]
+    },
+    {
+      "name": "Code & Build (25%)",
       "level": "Expert",
       "keywords": [
         "React",
@@ -95,23 +112,14 @@
         "Prismic",
         "AI Integration",
         "LLM Workflows",
-        "Prompt Engineering"
-      ]
-    },
-    {
-      "name": "Leadership (20%)",
-      "level": "Advanced",
-      "keywords": [
-        "Cross-functional Leadership",
-        "Design Ops",
-        "Team Leadership",
-        "Hiring & Coaching",
+        "Prompt Engineering",
+        "Agentic Engineering",
+        "Kubernetes",
+        "Cloudflare Workers",
         "CI/CD",
         "GitOps",
         "Sentry",
-        "Playwright",
-        "Observability",
-        "Release Management"
+        "Playwright"
       ]
     },
     {
@@ -122,7 +130,7 @@
         "Discovery Workshops",
         "Stakeholder Management",
         "Roadmapping",
-        "Design System Governance",
+        "Regulated / Complex Domains",
         "Content Strategy",
         "Accessibility",
         "Brand Governance"
@@ -608,7 +616,7 @@
         "city": "Berlin",
         "countryCode": "DE"
       },
-      "summary": "Shaping how an AI image-generation platform works in practice — not just the model, but the rules around it. I translate brand constraints into prompt logic, guardrails, and review workflows so the output is predictable enough to actually use in production.",
+      "summary": "Shaping how an AI brand-production platform works beyond the demo — translating brand constraints into prompt logic, guardrails, and review workflows so the output is predictable enough to ship.",
       "profileMix": {
         "segments": [
           {
@@ -630,9 +638,10 @@
         ]
       },
       "highlights": [
-        "Define evaluation criteria and constraint logic for AI generation pipelines serving enterprise brands",
-        "Work across product, engineering, and brand teams daily to make output quality measurable and reviewable",
-        "Establish feedback loops and documentation that reduce manual review and improve adoption"
+        "Define evaluation criteria and constraint logic for AI generation pipelines serving Idealo, mobile.de, Hartmann, and Kneipp",
+        "Shape product direction in a design-engineering-product triad, making output quality measurable and reviewable",
+        "Build observability pipelines (Sentry → Slack → Linear → GitHub Actions) that close the loop from user feedback to shipped fix",
+        "Design prompt-enhancer workflows with memory persistence for iterative AI generation on Gemini 2.0/2.1"
       ],
       "tech": [
         "Product Strategy",
@@ -657,7 +666,7 @@
         "city": "Berlin",
         "countryCode": "DE"
       },
-      "summary": "I run the squads that deliver client websites and digital products — from first concept through to a stable, monitored release. The job is to keep design quality, accessibility, and technical standards high across a portfolio that spans very different clients and stacks.",
+      "summary": "Running the squads that deliver client websites and digital products — from first concept through stable, monitored release. Design quality, accessibility, and technical standards across a portfolio of very different clients and stacks.",
       "profileMix": {
         "segments": [
           {
@@ -679,10 +688,10 @@
         ]
       },
       "highlights": [
-        "Responsible for delivery, design-system governance, and release quality across the full client portfolio",
-        "Introduced CI/CD pipelines, observability, and automated testing to make launches predictable instead of stressful",
-        "Aligned brand, marketing, and platform stakeholders on roadmaps, launch criteria, and quality standards",
-        "Drive accessibility standards and design-system parity from Figma tokens through to production"
+        "Own delivery, design-system governance, and release quality across the full client portfolio",
+        "Set UX standards and bring them to client leadership, internal stakeholders, and sometimes skeptical engineers",
+        "Scale design operations across regulated and B2B platforms — rituals, tooling, and reviews without the process theater",
+        "Changelogs should have plot arcs — traceability, git discipline, and release documentation so everyone can trust what shipped and why"
       ],
       "tech": [
         "Cross-functional Leadership",
@@ -740,8 +749,7 @@
       "highlights": [
         "Built multi-brand design-system foundations in Figma and Storybook that stayed in use across launches and teams",
         "Led discovery interviews and prototyping that turned complex regulated workflows into understandable interfaces",
-        "Defined UX standards and ensured design-production parity across three CMS stacks",
-        "Introduced design reviews and handoff rituals that reduced rework and sped up launch cycles"
+        "Defined UX standards and ensured design-production parity across three CMS stacks"
       ],
       "tech": [
         "UX Design",

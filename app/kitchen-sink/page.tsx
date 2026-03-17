@@ -17,8 +17,8 @@ const TEAMBANK = {
 
 // Match portfolio-page.tsx
 const TEAMBANK_COLORS = {
-  bg: '#2C9AD8',
-  panel: '#17688F',
+  bg: '#4BB4F0',
+  panel: '#1a7ab5',
   panelText: '#FFFFFF',
   label: 'rgba(255,255,255,0.9)',
 }
