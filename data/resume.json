@@ -23,19 +23,19 @@
     ],
     "email": "martin@martinhessmann.com",
     "url": "https://martinhessmann.com",
-    "summary": "I lead UX and design systems where AI changes how products are built and governed. Ten years across multi-platform ecosystems, regulated flows, and AI products — from TeamBank and EVG to Open Wonder. I translate brand and human judgment into systems teams can trust, stay close to engineering and delivery, and build design cultures that ship.",
+    "summary": "I build design systems and lead UX across regulated platforms, civic services, and AI products. I've been through the adoption battles, the legacy migrations, and the dev partnerships that make systems work at scale. I stay close to the work, close to the code, and close to the people using it.",
     "hero": {
       "kicker": "Design · Engineering · AI",
       "title": "Designing for the Agentic Era.",
       "body": [
-        "I lead UX and design systems where AI changes how products are built and governed. Ten years across multi-platform ecosystems, regulated flows, and AI products — I translate brand identity and human judgment into systems teams can trust, stay close to engineering and delivery, and build design cultures that ship."
+        "I build design systems and lead UX across regulated platforms, civic services, and AI products. I've been through the adoption battles, the legacy migrations, and the dev partnerships that make systems work at scale. I stay close to the work, close to the code, and close to the people using it."
       ]
     },
     "resume": {
       "label": "Where I've worked and what I bring.",
-      "headline": "Design systems, cross-functional leadership, and AI that holds up in the real world.",
+      "headline": "Design systems, cross-functional leadership, and AI that holds up in production.",
       "intro": [
-        "I lead UX and design systems across regulated B2B platforms, civic services, and AI products. Ten years of building design-system governance, cross-functional alignment, and delivery cultures — from multi-portal ecosystems at TeamBank to AI brand production at Open Wonder.",
+        "I build design systems and lead UX where the stakes are high — regulated application flows, multi-brand B2B ecosystems, civic platforms, AI products. I've owned adoption battles, legacy migrations, and the cross-functional partnerships that make governance work without killing creativity.",
         "Currently leading digital delivery at AN® and shaping AI product strategy at Open Wonder."
       ]
     },
@@ -615,7 +615,7 @@
         "city": "Berlin",
         "countryCode": "DE"
       },
-      "summary": "Shaping how an AI image-generation platform works in practice. I translate brand constraints into prompt logic, guardrails, and review workflows so the output is predictable and usable in production.",
+      "summary": "Shaping how an AI brand-production platform works beyond the demo — translating brand constraints into prompt logic, guardrails, and review workflows so the output is predictable enough to ship.",
       "profileMix": {
         "segments": [
           {
@@ -637,10 +637,10 @@
         ]
       },
       "highlights": [
-        "Define evaluation criteria and constraint logic for AI generation pipelines serving enterprise brands",
-        "Work across product, engineering, and brand teams daily to make output quality measurable and reviewable",
-        "Built user-feedback pipelines (Sentry → Slack → Linear/Cursor bots → GitHub Actions) so teams respond to issues in real time",
-        "Designed prompt-enhancer workflows with memory persistence for iterative AI generation (Gemini 2.0/2.1)"
+        "Define evaluation criteria and constraint logic for AI generation pipelines serving Idealo, mobile.de, Hartmann, and Kneipp",
+        "Shape product direction in a design-engineering-product triad, making output quality measurable and reviewable",
+        "Build observability pipelines (Sentry → Slack → Linear → GitHub Actions) that close the loop from user feedback to shipped fix",
+        "Design prompt-enhancer workflows with memory persistence for iterative AI generation on Gemini 2.0/2.1"
       ],
       "tech": [
         "Product Strategy",
@@ -665,7 +665,7 @@
         "city": "Berlin",
         "countryCode": "DE"
       },
-      "summary": "I run the squads that deliver client websites and digital products — from first concept through to a stable, monitored release. The job is to keep design quality, accessibility, and technical standards high across a portfolio that spans very different clients and stacks.",
+      "summary": "Running the squads that deliver client websites and digital products — from first concept through stable, monitored release. Design quality, accessibility, and technical standards across a portfolio of very different clients and stacks.",
       "profileMix": {
         "segments": [
           {
@@ -687,10 +687,10 @@
         ]
       },
       "highlights": [
-        "Responsible for delivery, design-system governance, and release quality across the full client portfolio",
-        "Evangelize UX and design-system standards to client leadership and internal stakeholders",
-        "Scale design operations across a portfolio of regulated and B2B platforms",
-        "Establish design reviews and handoff rituals that reduce rework and improve launch predictability"
+        "Own delivery, design-system governance, and release quality across the full client portfolio",
+        "Set UX standards and bring them to client leadership, internal stakeholders, and sometimes skeptical engineers",
+        "Scale design operations across regulated and B2B platforms — rituals, tooling, and reviews without the process theater",
+        "Build the conditions for teams to ship work they're proud of, then get out of the way"
       ],
       "tech": [
         "Cross-functional Leadership",
