@@ -140,10 +140,10 @@ export default function PortfolioPage() {
       <section id="work" className="px-6 pb-20 lg:px-12 lg:pb-28">
         <div className="mx-auto max-w-6xl">
           <p className="text-[14px] font-medium uppercase tracking-[0.12em]" style={{ color: UI_LILAC }}>
-            Selected accounts
+            case-studies
           </p>
 
-          <div className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:flex lg:items-end lg:justify-center lg:gap-2 lg:pb-4 lg:pt-4">
+          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-4 lg:flex lg:items-end lg:justify-center lg:gap-1 lg:pb-2 lg:pt-2">
             {CLIENT_REALMS.map((realm, index) => {
               const layout = CARD_LAYOUT[index] ?? { rotate: 0, translateY: 0 }
               const colors = realm.theme ?? DEFAULT_CARD_THEME
@@ -220,7 +220,7 @@ export default function PortfolioPage() {
 
           <div className="mt-10 border-t pt-8" style={{ borderColor: UI_BORDER }}>
             <p className="text-[14px] font-medium uppercase tracking-[0.12em]" style={{ color: UI_PINK }}>
-                Clients and brands
+                clients
               </p>
             <div
               className="mt-6 overflow-hidden rounded-[var(--surface-radius-lg)] p-3 sm:p-4 lg:p-5"

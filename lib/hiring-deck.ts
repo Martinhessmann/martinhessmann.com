@@ -38,17 +38,6 @@ const DEFAULT_WORK_PHOTOS: WorkPhoto[] = [
   },
 ]
 
-const PROFILE_LOGO_IDS = [
-  'hartmann',
-  'mobile-de',
-  'evg',
-  'teambank',
-  'easycredit',
-  'deutsche-bahn',
-  'volkswagen-group',
-  'voith',
-]
-
 export interface DeckTheme {
   accent: string
   accentSoft: string
@@ -415,8 +404,8 @@ export function buildHiringDeck(
       title: resume.basics.label ?? 'Systems Designer',
       paragraph: resume.basics.resume?.intro?.[1] ?? resume.basics.hero?.body?.[1] ?? '',
       capabilities: buildCapabilities(resume.skills),
-      logos: TRUST_LOGOS.filter((logo) => PROFILE_LOGO_IDS.includes(logo.id)),
-      images: toSlideImages(workPhotos.slice(1, 2)),
+      logos: TRUST_LOGOS,
+      images: [],
       index: 2,
       label: '',
     },

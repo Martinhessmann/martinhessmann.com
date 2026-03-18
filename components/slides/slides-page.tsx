@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, type ReactNode } from 'react'
+import { useEffect, useState, type ReactNode } from 'react'
+import { TRUST_LOGOS } from '@/data/clients'
 import type {
   CaseDetailSlide,
   CaseIntroSlide,
@@ -22,6 +23,20 @@ const SHELL_BG = 'var(--portfolio-sand-0)'
 const SHELL_TEXT = 'var(--portfolio-ink-0)'
 const SHELL_TEXT_SOFT = 'var(--portfolio-ink-1)'
 const MIDNIGHT = 'var(--portfolio-midnight-950)'
+const SHELL_MIDNIGHT = 'var(--portfolio-midnight-900)'
+
+/** Scale factor for logo wall: on mobile (4 cols) scale down to fit; on sm+ use natural size. */
+function useLogoScale() {
+  const [scale, setScale] = useState(1)
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 639px)')
+    const update = () => setScale(mq.matches ? 0.5 : 1)
+    update()
+    mq.addEventListener('change', update)
+    return () => mq.removeEventListener('change', update)
+  }, [])
+  return scale
+}
 
 interface EditableSectionState {
   realmId: string
@@ -252,22 +267,44 @@ function ImageGrid({ images }: { images: SlideImage[] }) {
   )
 }
 
-function LogoStrip({ logos }: { logos: ProfileSlide['logos'] }) {
-  if (logos.length === 0) return null
-
+function LogoGrid() {
+  const logoScale = useLogoScale()
   return (
-    <BubbleCard>
-      <p className="text-[0.6875em] font-medium uppercase tracking-[0.22em]" style={{ color: SHELL_TEXT_SOFT }}>
+    <div
+      className="mt-[1.5em] overflow-hidden rounded-[var(--surface-radius-lg)] p-[0.75em] sm:p-[1em] lg:p-[1.25em]"
+      style={{ backgroundColor: SHELL_MIDNIGHT }}
+    >
+      <p className="mb-[1em] text-[0.6875em] font-medium uppercase tracking-[0.22em]" style={{ color: SHELL_TEXT_SOFT }}>
         Selected organisations
       </p>
-      <div className="mt-[1.25em] grid grid-cols-3 gap-[1em] sm:grid-cols-4">
-        {logos.map((logo) => (
-          <div key={logo.id} className="flex min-h-[5em] items-center justify-center rounded-[1.375em] bg-white/70 px-[0.75em] py-[1em]">
-            <img src={logo.src} alt={logo.name} className="max-h-[2.5em] w-auto object-contain opacity-80" />
-          </div>
+      <div className="grid grid-cols-4 gap-[0.375em] sm:grid-cols-3 sm:gap-[0.75em] lg:grid-cols-4">
+        {TRUST_LOGOS.map((logo) => (
+          <span
+            key={logo.id}
+            className="inline-flex min-h-[3.5em] items-center justify-center px-[0.5em] py-[0.75em] sm:min-h-[7.625em] sm:px-[1.5em] sm:py-[1.75em]"
+            title={logo.name}
+          >
+            <span
+              className="inline-flex items-center justify-center overflow-hidden"
+              style={{
+                width: logo.width * logoScale,
+                height: logo.height * logoScale,
+                minWidth: logo.width * logoScale,
+                minHeight: logo.height * logoScale,
+              }}
+            >
+              <img
+                src={logo.src}
+                alt={logo.name}
+                className="h-full w-full object-contain brightness-0 invert opacity-80"
+                width={logo.width}
+                height={logo.height}
+              />
+            </span>
+          </span>
         ))}
       </div>
-    </BubbleCard>
+    </div>
   )
 }
 
@@ -478,22 +515,13 @@ function renderCaseDetail(slide: CaseDetailSlide) {
 function renderProfile(slide: ProfileSlide) {
   return (
     <div className="flex h-full min-h-0 flex-col gap-[2em] overflow-y-auto">
-      <div className="grid min-h-0 grid-rows-[1fr] gap-[1.5em] lg:grid-cols-[minmax(0,0.5fr)_minmax(0,1.5fr)]">
-        <div className="flex min-h-0 flex-col justify-center gap-[1em] overflow-y-auto">
-          <h2 className="font-hedvig text-[clamp(1.75em,3cqi,3em)] leading-[1.04]" style={{ color: SHELL_TEXT }}>
-            {slide.title}
-          </h2>
-          <p className="text-[0.9375em] leading-[1.7] sm:text-[1em]" style={{ color: SHELL_TEXT }}>
-            {slide.paragraph}
-          </p>
-        </div>
-        {slide.images.length > 0 && (
-          <div className="grid min-h-0 grid-rows-[1fr] gap-[1em] sm:grid-cols-1 lg:grid-cols-1">
-            {slide.images.map((image) => (
-              <ImageCard key={image.src} image={image} className="h-full min-h-0" />
-            ))}
-          </div>
-        )}
+      <div className="flex min-h-0 flex-col justify-center gap-[1em] overflow-y-auto">
+        <h2 className="font-hedvig text-[clamp(1.75em,3cqi,3em)] leading-[1.04]" style={{ color: SHELL_TEXT }}>
+          {slide.title}
+        </h2>
+        <p className="text-[0.9375em] leading-[1.7] sm:text-[1em]" style={{ color: SHELL_TEXT }}>
+          {slide.paragraph}
+        </p>
       </div>
       <div className="grid gap-[1.5em] sm:grid-cols-2 lg:grid-cols-4">
         {slide.capabilities.map((capability) => (
@@ -507,7 +535,7 @@ function renderProfile(slide: ProfileSlide) {
           </div>
         ))}
       </div>
-      <LogoStrip logos={slide.logos} />
+      <LogoGrid />
     </div>
   )
 }

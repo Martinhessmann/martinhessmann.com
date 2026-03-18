@@ -463,7 +463,7 @@ function renderCaseIntro(slide: Extract<HiringDeckSlide, { kind: 'caseIntro' }>)
     <View style={styles.row}>
       <View style={[styles.column, styles.grow]}>
         <PdfCard>
-          <Text style={[styles.title, { color: slide.theme.label }]}>{slide.title}</Text>
+          <Text style={styles.title}>{slide.title}</Text>
         </PdfCard>
         <PdfCard>
           <Text style={styles.paragraph}>{slide.paragraph}</Text>
@@ -521,23 +521,18 @@ function renderProfile(slide: Extract<HiringDeckSlide, { kind: 'profile' }>) {
             ))}
           </View>
           {slide.logos.length > 0 && (
-            <PdfCard>
-              <Text style={styles.eyebrow}>Selected organisations</Text>
-              <View style={[styles.chipRow, { marginTop: 10 }]}>
+            <View style={{ marginTop: 14, padding: 14, backgroundColor: COLORS.midnight, borderRadius: 22 }}>
+              <Text style={[styles.eyebrow, { color: COLORS.white, opacity: 0.7, marginBottom: 12 }]}>Selected organisations</Text>
+              <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8, justifyContent: 'center', alignItems: 'center' }}>
                 {slide.logos.map((logo) => (
-                  <Text key={logo.id} style={styles.chip}>
-                    {logo.name}
-                  </Text>
+                  <View key={logo.id} style={{ width: logo.width * 0.6, height: logo.height * 0.6, justifyContent: 'center', alignItems: 'center' }}>
+                    <Image src={logo.src} style={{ width: logo.width * 0.6, height: logo.height * 0.6, objectFit: 'contain' }} />
+                  </View>
                 ))}
               </View>
-            </PdfCard>
+            </View>
           )}
         </View>
-        {slide.images.length > 0 && (
-          <View style={[styles.column, { width: 280 }]}>
-            <PdfImageCard image={slide.images[0]} cover />
-          </View>
-        )}
       </View>
     </View>
   )
