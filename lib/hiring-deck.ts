@@ -102,6 +102,9 @@ export interface WorkEntry {
 
 export interface WorkExperienceSlide extends SlideBase {
   kind: 'workExperience'
+  sectionLabel: string
+  headline: string
+  intro: string[]
   entries: WorkEntry[]
   images: SlideImage[]
 }
@@ -386,6 +389,9 @@ export function buildHiringDeck(
     {
       id: 'work',
       kind: 'workExperience',
+      sectionLabel: resume.basics.resume?.label ?? 'Background and experience.',
+      headline: resume.basics.resume?.headline ?? 'How I learned there is no one solution.',
+      intro: resume.basics.resume?.intro ?? [],
       entries: (resume.work ?? []).slice(0, 4).map((job) => ({
         position: job.position ?? '',
         name: job.name ?? '',

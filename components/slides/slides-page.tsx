@@ -23,7 +23,6 @@ const SHELL_BG = 'var(--portfolio-sand-0)'
 const SHELL_TEXT = 'var(--portfolio-ink-0)'
 const SHELL_TEXT_SOFT = 'var(--portfolio-ink-1)'
 const MIDNIGHT = 'var(--portfolio-midnight-950)'
-const SHELL_MIDNIGHT = 'var(--portfolio-midnight-900)'
 
 /** Scale factor for logo wall: on mobile (4 cols) scale down to fit; on sm+ use natural size. */
 function useLogoScale() {
@@ -270,14 +269,11 @@ function ImageGrid({ images }: { images: SlideImage[] }) {
 function LogoGrid() {
   const logoScale = useLogoScale()
   return (
-    <div
-      className="mt-[1.5em] overflow-hidden rounded-[var(--surface-radius-lg)] p-[0.75em] sm:p-[1em] lg:p-[1.25em]"
-      style={{ backgroundColor: SHELL_MIDNIGHT }}
-    >
-      <p className="mb-[1em] text-[0.6875em] font-medium uppercase tracking-[0.22em]" style={{ color: SHELL_TEXT_SOFT }}>
+    <BubbleCard>
+      <p className="text-[0.6875em] font-medium uppercase tracking-[0.22em]" style={{ color: SHELL_TEXT_SOFT }}>
         Selected organisations
       </p>
-      <div className="grid grid-cols-4 gap-[0.375em] sm:grid-cols-3 sm:gap-[0.75em] lg:grid-cols-4">
+      <div className="mt-[1.25em] grid grid-cols-4 gap-[0.375em] sm:grid-cols-3 sm:gap-[0.75em] lg:grid-cols-4">
         {TRUST_LOGOS.map((logo) => (
           <span
             key={logo.id}
@@ -296,7 +292,7 @@ function LogoGrid() {
               <img
                 src={logo.src}
                 alt={logo.name}
-                className="h-full w-full object-contain brightness-0 invert opacity-80"
+                className="h-full w-full object-contain opacity-80"
                 width={logo.width}
                 height={logo.height}
               />
@@ -304,7 +300,7 @@ function LogoGrid() {
           </span>
         ))}
       </div>
-    </div>
+    </BubbleCard>
   )
 }
 
@@ -415,6 +411,23 @@ function renderUsp(slide: UspSlide) {
 function renderWorkExperience(slide: WorkExperienceSlide) {
   return (
     <div className="flex h-full min-h-0 flex-col gap-[1em] overflow-y-auto">
+      <div className="shrink-0">
+        <p className="text-[0.6875em] font-medium uppercase tracking-[0.22em]" style={{ color: SHELL_TEXT_SOFT }}>
+          {slide.sectionLabel}
+        </p>
+        <h2 className="mt-[0.5em] font-hedvig text-[clamp(1.5em,2.5cqi,2.25em)] leading-[1.08]" style={{ color: SHELL_TEXT }}>
+          {slide.headline}
+        </h2>
+        {slide.intro.length > 0 && (
+          <div className="mt-[0.75em] space-y-[0.5em]">
+            {slide.intro.map((paragraph, i) => (
+              <p key={i} className="text-[0.875em] leading-[1.65] sm:text-[0.9375em]" style={{ color: SHELL_TEXT_SOFT }}>
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        )}
+      </div>
       <div className="grid gap-[1em] sm:grid-cols-2">
         {slide.entries.map((entry) => (
           <BubbleCard key={`${entry.name}-${entry.startDate}`} className="flex flex-col">

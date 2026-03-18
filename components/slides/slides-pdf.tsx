@@ -427,6 +427,17 @@ function formatPeriod(startDate?: string, endDate?: string) {
 function renderWorkExperience(slide: Extract<HiringDeckSlide, { kind: 'workExperience' }>) {
   return (
     <View style={styles.column}>
+      <View style={{ marginBottom: 12 }}>
+        <Text style={styles.eyebrow}>{slide.sectionLabel}</Text>
+        <Text style={[styles.title, { marginTop: 6, fontSize: 24 }]}>{slide.headline}</Text>
+        {slide.intro.length > 0 && (
+          <View style={{ marginTop: 10 }}>
+            {slide.intro.map((paragraph, i) => (
+              <Text key={i} style={[styles.paragraphSoft, { marginTop: i > 0 ? 6 : 0 }]}>{paragraph}</Text>
+            ))}
+          </View>
+        )}
+      </View>
       <View style={[styles.row, { flexWrap: 'wrap' }]}>
         {slide.entries.map((entry) => (
           <PdfCard key={`${entry.name}-${entry.startDate}`} style={[styles.grow, { minWidth: '45%', maxWidth: '48%' }]}>
@@ -449,11 +460,13 @@ function renderWorkExperience(slide: Extract<HiringDeckSlide, { kind: 'workExper
           </PdfCard>
         ))}
       </View>
-      <View style={styles.imageRow}>
-        {slide.images.slice(0, 3).map((image) => (
-          <PdfImageCard key={image.src} image={image} cover style={styles.imageHalf} />
-        ))}
-      </View>
+      {slide.images.length > 0 && (
+        <View style={styles.imageRow}>
+          {slide.images.map((image) => (
+            <PdfImageCard key={image.src} image={image} cover style={styles.imageHalf} />
+          ))}
+        </View>
+      )}
     </View>
   )
 }
