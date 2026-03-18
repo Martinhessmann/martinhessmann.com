@@ -204,7 +204,7 @@ function MetaList({ items }: { items: SlideMetaItem[] }) {
   if (items.length === 0) return null
 
   return (
-    <div className="flex flex-wrap gap-x-[2.5em] gap-y-[1em]">
+    <div className="flex flex-col gap-y-[1em]">
       {items.map((item) => (
         <div key={item.label}>
           <p className="text-[0.6875em] font-medium uppercase tracking-[0.22em]" style={{ color: SHELL_TEXT_SOFT }}>
@@ -273,7 +273,7 @@ function LogoGrid() {
       <p className="text-[0.6875em] font-medium uppercase tracking-[0.22em]" style={{ color: SHELL_TEXT_SOFT }}>
         Selected organisations
       </p>
-      <div className="mt-[1.25em] grid grid-cols-4 gap-[0.375em] sm:grid-cols-3 sm:gap-[0.75em] lg:grid-cols-4">
+      <div className="mt-[1.25em] grid grid-cols-3 gap-[0.375em] sm:gap-[0.75em]">
         {TRUST_LOGOS.map((logo) => (
           <span
             key={logo.id}
@@ -339,8 +339,13 @@ function SlideShell({
 
 function renderCover(slide: CoverSlide) {
   return (
-    <div className="grid h-full min-h-0 grid-rows-[1fr] gap-[2em] lg:grid-cols-[minmax(0,0.55fr)_minmax(0,1.45fr)]">
+    <div className="grid h-full min-h-0 grid-rows-[1fr] gap-[3em] lg:grid-cols-[minmax(0,0.55fr)_minmax(0,1.45fr)]">
       <div className="flex min-h-0 min-w-0 flex-col justify-center gap-[1.5em] overflow-y-auto">
+        {slide.name && (
+          <p className="text-[0.6875em] font-medium uppercase tracking-[0.22em]" style={{ color: SHELL_TEXT_SOFT }}>
+            {slide.name}
+          </p>
+        )}
         <h1 className="max-w-[60em] font-hedvig text-[clamp(2.25em,4cqi,4.5em)] leading-[0.96]" style={{ color: SHELL_TEXT }}>
           {slide.title}
         </h1>
@@ -377,7 +382,7 @@ function formatPeriod(startDate?: string, endDate?: string) {
 function renderUsp(slide: UspSlide) {
   return (
     <div className="flex h-full min-h-0 flex-col gap-[2em] overflow-y-auto">
-      <div className="grid min-h-0 grid-rows-[1fr] gap-[1.5em] lg:grid-cols-[minmax(0,0.45fr)_minmax(0,1.55fr)]">
+      <div className="grid min-h-0 grid-rows-[1fr] gap-[2.5em] lg:grid-cols-[minmax(0,0.45fr)_minmax(0,1.55fr)]">
         <div className="flex min-h-0 flex-col justify-center gap-[1em] overflow-y-auto">
           <h2 className="font-hedvig text-[clamp(1.875em,3.2cqi,3.5em)] leading-[1.04]" style={{ color: SHELL_TEXT }}>
             {slide.title}
@@ -410,8 +415,8 @@ function renderUsp(slide: UspSlide) {
 
 function renderWorkExperience(slide: WorkExperienceSlide) {
   return (
-    <div className="flex h-full min-h-0 flex-col gap-[1em] overflow-y-auto">
-      <div className="shrink-0">
+    <div className="grid h-full min-h-0 grid-rows-[1fr] gap-[2.5em] lg:grid-cols-[minmax(0,0.55fr)_minmax(0,1.45fr)]">
+      <div className="flex min-h-0 flex-col justify-center overflow-y-auto">
         <p className="text-[0.6875em] font-medium uppercase tracking-[0.22em]" style={{ color: SHELL_TEXT_SOFT }}>
           {slide.sectionLabel}
         </p>
@@ -428,7 +433,7 @@ function renderWorkExperience(slide: WorkExperienceSlide) {
           </div>
         )}
       </div>
-      <div className="grid gap-[1em] sm:grid-cols-2">
+      <div className="grid min-h-0 grid-cols-2 grid-rows-2 gap-[1em]">
         {slide.entries.map((entry) => (
           <BubbleCard key={`${entry.name}-${entry.startDate}`} className="flex flex-col">
             <div className="flex flex-wrap items-baseline justify-between gap-[0.5em]">
@@ -458,20 +463,13 @@ function renderWorkExperience(slide: WorkExperienceSlide) {
           </BubbleCard>
         ))}
       </div>
-      {slide.images.length > 0 && (
-        <div className="grid min-h-0 grid-rows-[1fr] gap-[1em] md:grid-cols-3">
-          {slide.images.map((image) => (
-            <ImageCard key={image.src} image={image} className="h-full min-h-0" />
-          ))}
-        </div>
-      )}
     </div>
   )
 }
 
 function renderCaseIntro(slide: CaseIntroSlide) {
   return (
-    <div className="grid h-full min-h-0 grid-rows-[1fr] gap-[2em] lg:grid-cols-[minmax(0,0.6fr)_minmax(0,1.4fr)]">
+    <div className="grid h-full min-h-0 grid-rows-[1fr] gap-[3em] lg:grid-cols-[minmax(0,0.6fr)_minmax(0,1.4fr)]">
       <div className="flex min-h-0 min-w-0 flex-col justify-center gap-[1.5em] overflow-y-auto">
         <div>
           <h2 className="font-hedvig text-[clamp(1.75em,3.2cqi,3.25em)] leading-[1.05]" style={{ color: SHELL_TEXT }}>
@@ -498,7 +496,7 @@ function renderCaseIntro(slide: CaseIntroSlide) {
 function renderCaseDetail(slide: CaseDetailSlide) {
   return (
     <div className="flex h-full min-h-0 flex-col gap-[1.5em] overflow-y-auto">
-      <div className="grid min-h-0 grid-rows-[1fr] gap-[1.5em] lg:grid-cols-[minmax(0,0.55fr)_minmax(0,1.45fr)]">
+      <div className="grid min-h-0 grid-rows-[1fr] gap-[2.5em] lg:grid-cols-[minmax(0,0.55fr)_minmax(0,1.45fr)]">
         <div className="flex min-h-0 flex-col justify-center gap-[1em] overflow-y-auto">
           <div>
             <p className="text-[0.6875em] font-medium uppercase tracking-[0.22em]" style={{ color: slide.theme.label }}>
@@ -527,7 +525,7 @@ function renderCaseDetail(slide: CaseDetailSlide) {
 
 function renderProfile(slide: ProfileSlide) {
   return (
-    <div className="flex h-full min-h-0 flex-col gap-[2em] overflow-y-auto">
+    <div className="grid h-full min-h-0 grid-rows-[1fr] gap-[2.5em] lg:grid-cols-[minmax(0,0.45fr)_minmax(0,1.55fr)]">
       <div className="flex min-h-0 flex-col justify-center gap-[1em] overflow-y-auto">
         <h2 className="font-hedvig text-[clamp(1.75em,3cqi,3em)] leading-[1.04]" style={{ color: SHELL_TEXT }}>
           {slide.title}
@@ -535,27 +533,29 @@ function renderProfile(slide: ProfileSlide) {
         <p className="text-[0.9375em] leading-[1.7] sm:text-[1em]" style={{ color: SHELL_TEXT }}>
           {slide.paragraph}
         </p>
+        <div className="flex flex-col gap-[1em]">
+          {slide.capabilities.map((capability) => (
+            <div key={capability.title}>
+              <h3 className="font-hedvig text-[1.25em] leading-[1.1]" style={{ color: SHELL_TEXT }}>
+                {capability.title}
+              </h3>
+              <p className="mt-[0.5em] text-[0.875em] leading-[1.6]" style={{ color: SHELL_TEXT_SOFT }}>
+                {capability.description}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
-      <div className="grid gap-[1.5em] sm:grid-cols-2 lg:grid-cols-4">
-        {slide.capabilities.map((capability) => (
-          <div key={capability.title}>
-            <h3 className="font-hedvig text-[1.25em] leading-[1.1]" style={{ color: SHELL_TEXT }}>
-              {capability.title}
-            </h3>
-            <p className="mt-[0.5em] text-[0.875em] leading-[1.6]" style={{ color: SHELL_TEXT_SOFT }}>
-              {capability.description}
-            </p>
-          </div>
-        ))}
+      <div className="flex min-h-0 flex-col justify-center overflow-y-auto">
+        <LogoGrid />
       </div>
-      <LogoGrid />
     </div>
   )
 }
 
 function renderContact(slide: ContactSlide) {
   return (
-    <div className="grid h-full min-h-0 grid-rows-[1fr] gap-[2em] lg:grid-cols-[minmax(0,0.5fr)_minmax(0,1.5fr)]">
+    <div className="grid h-full min-h-0 grid-rows-[1fr] gap-[3em] lg:grid-cols-[minmax(0,0.5fr)_minmax(0,1.5fr)]">
       <div className="flex min-h-0 min-w-0 flex-col justify-center gap-[1.5em] overflow-y-auto">
         <h2 className="font-hedvig text-[clamp(1.875em,3.2cqi,3.25em)] leading-[1.05]" style={{ color: SHELL_TEXT }}>
           {slide.title}

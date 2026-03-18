@@ -77,6 +77,7 @@ interface SlideBase {
 
 export interface CoverSlide extends SlideBase {
   kind: 'cover'
+  name?: string
   title: string
   paragraph: string
   factCards: { label: string; value: string }[]
@@ -307,7 +308,7 @@ function buildDetailSlides(
       meta:
         sectionPlatforms.length > 0
           ? sectionPlatforms.map((platform) => ({
-              label: platform.title,
+              label: platform.url ? 'URL' : 'Overview',
               values: platform.url ? [formatUrl(platform.url)] : [platform.description],
               hrefs: platform.url ? [platform.url] : undefined,
             }))
@@ -362,11 +363,12 @@ export function buildHiringDeck(
     {
       id: 'cover',
       kind: 'cover',
+      name: resume.basics.name,
       title: resume.basics.hero?.title ?? resume.basics.label ?? 'Systems Designer',
       paragraph:
-        resume.basics.resume?.intro?.[0] ??
         resume.basics.summary ??
         resume.basics.hero?.body?.[0] ??
+        resume.basics.resume?.intro?.[0] ??
         '',
       factCards: [
         {

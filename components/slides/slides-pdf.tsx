@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
-    gap: 14,
+    gap: 22,
   },
   column: {
     flexDirection: 'column',
@@ -191,12 +191,11 @@ const styles = StyleSheet.create({
     flexBasis: 0,
   },
   metaGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
+    flexDirection: 'column',
     gap: 10,
   },
   metaCard: {
-    width: '31.8%',
+    width: '100%',
   },
   metaValue: {
     fontSize: 11,
@@ -241,12 +240,11 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   capabilityGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
+    flexDirection: 'column',
     gap: 10,
   },
   capabilityCard: {
-    width: '48.6%',
+    width: '100%',
   },
   chipRow: {
     flexDirection: 'row',
@@ -265,12 +263,11 @@ const styles = StyleSheet.create({
     color: COLORS.inkSoft,
   },
   contactGrid: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     gap: 10,
-    flexWrap: 'wrap',
   },
   contactCard: {
-    width: '48.6%',
+    width: '100%',
   },
 })
 
@@ -365,6 +362,11 @@ function renderCover(slide: Extract<HiringDeckSlide, { kind: 'cover' }>) {
   return (
     <View style={styles.row}>
       <View style={[styles.column, styles.grow]}>
+        {slide.name && (
+          <PdfCard tight>
+            <Text style={styles.eyebrow}>{slide.name}</Text>
+          </PdfCard>
+        )}
         <PdfCard>
           <Text style={styles.titleLarge}>{slide.title}</Text>
         </PdfCard>
@@ -426,8 +428,8 @@ function formatPeriod(startDate?: string, endDate?: string) {
 
 function renderWorkExperience(slide: Extract<HiringDeckSlide, { kind: 'workExperience' }>) {
   return (
-    <View style={styles.column}>
-      <View style={{ marginBottom: 12 }}>
+    <View style={styles.row}>
+      <View style={[styles.column, styles.grow]}>
         <Text style={styles.eyebrow}>{slide.sectionLabel}</Text>
         <Text style={[styles.title, { marginTop: 6, fontSize: 24 }]}>{slide.headline}</Text>
         {slide.intro.length > 0 && (
@@ -438,9 +440,9 @@ function renderWorkExperience(slide: Extract<HiringDeckSlide, { kind: 'workExper
           </View>
         )}
       </View>
-      <View style={[styles.row, { flexWrap: 'wrap' }]}>
+      <View style={[styles.row, { flexWrap: 'wrap', flex: 1, gap: 10 }]}>
         {slide.entries.map((entry) => (
-          <PdfCard key={`${entry.name}-${entry.startDate}`} style={[styles.grow, { minWidth: '45%', maxWidth: '48%' }]}>
+          <PdfCard key={`${entry.name}-${entry.startDate}`} style={{ flexGrow: 1, flexBasis: '45%', minWidth: '45%', maxWidth: '48%' }}>
             <View style={[styles.row, { justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap' }]}>
               <Text style={[styles.title, { fontSize: 18 }]}>{entry.position}</Text>
               <Text style={styles.eyebrow}>{formatPeriod(entry.startDate, entry.endDate)}</Text>
@@ -460,13 +462,6 @@ function renderWorkExperience(slide: Extract<HiringDeckSlide, { kind: 'workExper
           </PdfCard>
         ))}
       </View>
-      {slide.images.length > 0 && (
-        <View style={styles.imageRow}>
-          {slide.images.map((image) => (
-            <PdfImageCard key={image.src} image={image} cover style={styles.imageHalf} />
-          ))}
-        </View>
-      )}
     </View>
   )
 }
@@ -514,38 +509,36 @@ function renderCaseDetail(slide: Extract<HiringDeckSlide, { kind: 'caseDetail' }
 
 function renderProfile(slide: Extract<HiringDeckSlide, { kind: 'profile' }>) {
   return (
-    <View style={styles.column}>
-      <View style={styles.row}>
-        <PdfCard style={styles.grow}>
+    <View style={styles.row}>
+      <View style={[styles.column, { flexGrow: 0.45, flexShrink: 1, flexBasis: 0 }]}>
+        <PdfCard>
           <Text style={styles.title}>{slide.title}</Text>
         </PdfCard>
-        <PdfCard style={styles.grow}>
+        <PdfCard>
           <Text style={styles.paragraph}>{slide.paragraph}</Text>
         </PdfCard>
-      </View>
-      <View style={styles.row}>
-        <View style={[styles.column, styles.grow]}>
-          <View style={styles.capabilityGrid}>
-            {slide.capabilities.map((capability) => (
-              <PdfCard key={capability.title} style={styles.capabilityCard}>
-                <Text style={[styles.title, { fontSize: 20 }]}>{capability.title}</Text>
-                <Text style={[styles.paragraphSoft, { marginTop: 8 }]}>{capability.description}</Text>
-              </PdfCard>
-            ))}
-          </View>
-          {slide.logos.length > 0 && (
-            <View style={{ marginTop: 14, padding: 14, backgroundColor: COLORS.midnight, borderRadius: 22 }}>
-              <Text style={[styles.eyebrow, { color: COLORS.white, opacity: 0.7, marginBottom: 12 }]}>Selected organisations</Text>
-              <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8, justifyContent: 'center', alignItems: 'center' }}>
-                {slide.logos.map((logo) => (
-                  <View key={logo.id} style={{ width: logo.width * 0.6, height: logo.height * 0.6, justifyContent: 'center', alignItems: 'center' }}>
-                    <Image src={logo.src} style={{ width: logo.width * 0.6, height: logo.height * 0.6, objectFit: 'contain' }} />
-                  </View>
-                ))}
-              </View>
-            </View>
-          )}
+        <View style={styles.capabilityGrid}>
+          {slide.capabilities.map((capability) => (
+            <PdfCard key={capability.title} style={styles.capabilityCard}>
+              <Text style={[styles.title, { fontSize: 20 }]}>{capability.title}</Text>
+              <Text style={[styles.paragraphSoft, { marginTop: 8 }]}>{capability.description}</Text>
+            </PdfCard>
+          ))}
         </View>
+      </View>
+      <View style={[styles.column, { flexGrow: 1.55, flexShrink: 1, flexBasis: 0 }]}>
+        {slide.logos.length > 0 && (
+          <View style={{ marginTop: 14, padding: 14, backgroundColor: COLORS.card, border: `1 solid ${COLORS.border}`, borderRadius: 22 }}>
+            <Text style={[styles.eyebrow, { marginBottom: 12 }]}>Selected organisations</Text>
+            <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8, justifyContent: 'flex-start', alignItems: 'center' }}>
+              {slide.logos.map((logo) => (
+                <View key={logo.id} style={{ width: '31%', minWidth: 60, justifyContent: 'center', alignItems: 'center' }}>
+                  <Image src={logo.src} style={{ width: logo.width * 0.5, height: logo.height * 0.5, objectFit: 'contain' }} />
+                </View>
+              ))}
+            </View>
+          </View>
+        )}
       </View>
     </View>
   )
