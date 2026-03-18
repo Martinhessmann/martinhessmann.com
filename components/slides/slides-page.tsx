@@ -304,7 +304,7 @@ function SlideShell({
     <section className="snap-start px-4 py-24 sm:px-6 lg:px-10 lg:py-28">
       <div className="mx-auto max-w-[1480px]">
         <div
-          className="relative overflow-hidden rounded-[36px] border p-5 shadow-[0_28px_120px_rgba(24,24,35,0.25)] sm:p-8 lg:aspect-[16/9] lg:p-10 xl:p-12"
+          className="relative overflow-hidden rounded-none border p-5 shadow-[0_28px_120px_rgba(24,24,35,0.25)] sm:p-8 lg:aspect-[16/9] lg:p-10 xl:p-12"
           style={{ backgroundColor: SHELL_BG, borderColor: SHELL_BORDER, color: SHELL_TEXT }}
         >
           <div className="pointer-events-none absolute -bottom-24 -left-20 h-64 w-64 rounded-full opacity-20" style={{ backgroundColor: accent }} />
