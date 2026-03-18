@@ -32,11 +32,10 @@
       ]
     },
     "resume": {
-      "label": "A career built in layers.",
-      "headline": "From design systems to AI products — and the delivery work in between.",
+      "label": "Background and experience.",
+      "headline": "How I learned there is no one solution.",
       "intro": [
-        "I lead design systems and UX across regulated platforms, civic services, and AI products. I own migrations, governance partnerships, and the delivery discipline that keeps systems working at scale. I stay close to the work, close to the code, and close to the people using it.",
-        "I've been using AI tools since they shipped — Midjourney, ChatGPT, Cursor, Codex. What I've learned is that speed without discipline creates noise. Traceability and release quality matter more as teams move faster, not less."
+        "My path has run through very different clients, teams, and stacks. None of them worked the same way, and I've stopped believing there's one approach that fits everything. What I appreciate most is learning each time — new tools, new constraints, custom solutions — and building in a way that makes teams stronger, not dependent on me."
       ]
     },
     "location": {
@@ -656,7 +655,7 @@
       ]
     },
     {
-      "name": "AN®)",
+      "name": "AN®",
       "position": "Digital Design Manager",
       "url": "https://an.jetzt",
       "startDate": "2023-07",

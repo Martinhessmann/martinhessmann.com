@@ -132,11 +132,11 @@ function applyDraftStateToSlides(
   })
 }
 
-function SlideLabel({ label, accent = MIDNIGHT }: { label: string; accent?: string }) {
+function SlideLabel({ label }: { label: string; accent?: string }) {
   return (
     <span
-      className="inline-flex w-fit items-center rounded-full px-4 py-2 text-[11px] font-medium uppercase tracking-[0.22em] sm:text-[12px]"
-      style={{ backgroundColor: accent, color: '#FFFFFF' }}
+      className="inline-flex w-fit items-center rounded-full text-[11px] font-medium uppercase tracking-[0.22em] sm:text-[12px]"
+      style={{ color: 'var(--accent-foreground)' }}
     >
       {label}
     </span>
@@ -152,7 +152,7 @@ function BubbleCard({
 }) {
   return (
     <div
-      className={`rounded-[28px] border bg-white/90 p-5 shadow-[0_24px_80px_rgba(24,24,35,0.08)] backdrop-blur ${className}`}
+      className={`rounded-[28px] border bg-white/90 p-5 ${className}`}
       style={{ borderColor: 'rgba(35, 33, 30, 0.08)' }}
     >
       {children}

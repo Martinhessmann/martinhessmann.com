@@ -290,16 +290,6 @@ export default function PortfolioPage() {
                 </div>
               )}
 
-              {(resume.education?.[0] || languages) && (
-                <div className="mt-8 space-y-2 text-[16px] leading-[1.6]" style={{ color: UI_TEXT_MUTED }}>
-                  {resume.education?.[0] && (
-                    <p>
-                      {resume.education[0].studyType} — {resume.education[0].area}, {resume.education[0].location?.city} ({resume.education[0].startDate}–{resume.education[0].endDate})
-                    </p>
-                  )}
-                  <p>{footerMeta}</p>
-                </div>
-              )}
             </div>
 
             <div className="space-y-8">
@@ -350,8 +340,27 @@ export default function PortfolioPage() {
             </div>
           )}
 
+          {(resume.education?.[0] || languages) && (
+            <div className="mt-10 border-t pt-8" style={{ borderColor: UI_BORDER }}>
+              <p className="text-[12px] font-medium tracking-[0.08em]" style={{ color: UI_PINK }}>
+                Education and languages
+              </p>
+              <div className="mt-4 space-y-2 text-[16px] leading-[1.6]" style={{ color: UI_TEXT_MUTED }}>
+                {resume.education?.[0] && (
+                  <p>
+                    {resume.education[0].studyType} — {resume.education[0].area}, {resume.education[0].location?.city} ({resume.education[0].startDate}–{resume.education[0].endDate})
+                  </p>
+                )}
+                <p>{footerMeta}</p>
+              </div>
+            </div>
+          )}
+
           {resume.awards && resume.awards.length > 0 && (
             <div className="mt-10 border-t pt-8" style={{ borderColor: UI_BORDER }}>
+              <p className="mb-4 text-[12px] font-medium tracking-[0.08em]" style={{ color: UI_PINK }}>
+                Recognition
+              </p>
               <div className="flex flex-wrap gap-x-8 gap-y-3 text-[16px]" style={{ color: UI_TEXT_MUTED }}>
                 {resume.awards.map((award) => (
                   <span key={award.title}>
