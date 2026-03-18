@@ -217,7 +217,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       {
         type: "text",
         content:
-          "The Markenportal ran on Kubernetes. I went deep into that layer — kubectl debugging, debug logs, custom plugin admin pages for quicker team access. Nobody without a mix of UX, corporate architecture knowledge, and client confidence could have delivered it. A junior developer and the Head of Brand could trust the approach, feel included, and take over at any time.",
+          "The Markenportal ran on Kubernetes. I went deep into that layer — kubectl debugging, debug logs, custom plugin admin pages for quicker team access. UX, architecture knowledge, and client confidence had to work together. A junior developer and the Head of Brand could trust the approach, feel included, and take over at any time.",
       },
       {
         type: "text",
@@ -307,7 +307,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       {
         type: "text",
         content:
-          "The easyCredit B2B portal shows the same system under merchant-facing pressure. BNPL-related tooling, hints, and interface details had to work inside a partner product context without becoming their own disconnected design island. That is why this case keeps BNPL visible as supporting proof, but not as the lead story.",
+          "The easyCredit B2B portal shows the same system under merchant-facing pressure. BNPL-related tooling, hints, and interface details had to work inside a partner product context without becoming their own disconnected design island. BNPL stays visible as supporting proof.",
       },
       { type: "label", content: "easyCredit B2B portal" },
       {
@@ -565,7 +565,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       ],
       tools: ["Next.js 15", "Supabase", "Prisma", "Sentry", "Vercel", "Sanity", "LoRA", "OpenTelemetry"],
       openingNarrative:
-        "The market has plenty of generative tools, but very few systems that can turn brand logic and creative direction into production-quality assets. My work sat at that frontier: designing how product flow, generation behavior, reviewability, and operational rollout reinforce each other instead of drifting apart.",
+        "Few systems turn brand logic and creative direction into production-quality assets. I designed how product flow, generation behavior, reviewability, and operational rollout reinforce each other.",
     },
     deliverables: {
       heading: "What made generative production usable.",
@@ -579,7 +579,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
         {
           title: "Model-to-brand alignment",
           description:
-            "The hard part is not picking one model. It is getting LLM logic, generation behavior, brand rules, and creative direction to understand each other well enough that results feel intentional rather than approximate.",
+            "Getting LLM logic, generation behavior, brand rules, and creative direction to align well enough that results feel intentional rather than approximate.",
         },
         {
           title: "Operational rollout",
@@ -783,7 +783,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       {
         type: "text",
         content:
-          "Most people would underestimate the account because they only see several sites. The real work was that marketing, SEO, CRM, customer management, tracking, security, and rollout were all equally relevant, and I had to speak all of those languages at once to make responsible execution decisions. Microsoft Dynamics and Mailchimp support, Google Ads tracking, and cross-brand publishing all had to stay compatible with the service experience instead of fighting it. That is also why security and observability belong in the public story. Cloudflare Turnstile, bot detection, Playwright, Sentry-linked lead handling, and cleaner alert separation kept the ecosystem trustworthy as it grew.",
+          "Marketing, SEO, CRM, customer management, tracking, security, and rollout were all equally relevant. I made execution decisions that stayed accountable to each. Microsoft Dynamics and Mailchimp support, Google Ads tracking, and cross-brand publishing had to stay compatible with the service experience. Cloudflare Turnstile, bot detection, Playwright, Sentry-linked lead handling, and cleaner alert separation kept the ecosystem trustworthy as it grew.",
       },
       { type: "label", content: "Operational resilience" },
       {
@@ -851,7 +851,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
         {
           title: "Privacy",
           description:
-            "For the Wo-Mo-Fonds AI Chatbot, privacy meant consent, grounded answers, careful handling of personal data before external processing, and clear handoff to humans when automation should stop. Cohere sat inside those boundaries, not outside them.",
+            "For the Wo-Mo-Fonds AI Chatbot, privacy meant consent, grounded answers, careful handling of personal data before external processing, and clear handoff to humans when automation should stop. Cohere operated within those boundaries.",
         },
         {
           title: "Hybrid-team collaboration",
@@ -861,7 +861,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
         {
           title: "Autonomous agentic debugging",
           description:
-            "The client runs Cursor/Codex agents autonomously — debugging prompts, iterating until responses improve, validating no regression across performance and multilingual detection. Germany's first launched multilingual chatbot of a Gewerkschaft.",
+            "The client runs Cursor/Codex agents autonomously — debugging prompts, iterating until responses improve, validating no regression across performance and multilingual detection.",
         },
       ],
     },

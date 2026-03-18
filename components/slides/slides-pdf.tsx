@@ -415,6 +415,47 @@ function renderUsp(slide: Extract<HiringDeckSlide, { kind: 'usp' }>) {
   )
 }
 
+function formatPeriod(startDate?: string, endDate?: string) {
+  if (!startDate) return ''
+  const startYear = startDate.slice(0, 4)
+  const endYear = endDate ? endDate.slice(0, 4) : 'today'
+  return startYear === endYear ? startYear : `${startYear}–${endYear}`
+}
+
+function renderWorkExperience(slide: Extract<HiringDeckSlide, { kind: 'workExperience' }>) {
+  return (
+    <View style={styles.column}>
+      <View style={[styles.row, { flexWrap: 'wrap' }]}>
+        {slide.entries.map((entry) => (
+          <PdfCard key={`${entry.name}-${entry.startDate}`} style={[styles.grow, { minWidth: '45%', maxWidth: '48%' }]}>
+            <View style={[styles.row, { justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap' }]}>
+              <Text style={[styles.title, { fontSize: 18 }]}>{entry.position}</Text>
+              <Text style={styles.eyebrow}>{formatPeriod(entry.startDate, entry.endDate)}</Text>
+            </View>
+            <Text style={[styles.paragraphSoft, { marginTop: 4, fontSize: 11 }]}>{entry.name}</Text>
+            <Text style={[styles.paragraph, { marginTop: 8, fontSize: 11 }]}>{entry.summary}</Text>
+            {entry.highlights.length > 0 && (
+              <View style={{ marginTop: 8 }}>
+                {entry.highlights.map((h) => (
+                  <View key={h} style={[styles.row, { marginTop: 4, alignItems: 'flex-start' }]}>
+                    <View style={{ width: 4, height: 4, borderRadius: 2, backgroundColor: COLORS.inkSoft, marginTop: 5, marginRight: 8 }} />
+                    <Text style={[styles.paragraphSoft, { fontSize: 10, flex: 1 }]}>{h}</Text>
+                  </View>
+                ))}
+              </View>
+            )}
+          </PdfCard>
+        ))}
+      </View>
+      <View style={styles.imageRow}>
+        {slide.images.slice(0, 3).map((image) => (
+          <PdfImageCard key={image.src} image={image} cover style={styles.imageHalf} />
+        ))}
+      </View>
+    </View>
+  )
+}
+
 function renderCaseIntro(slide: Extract<HiringDeckSlide, { kind: 'caseIntro' }>) {
   return (
     <View style={styles.row}>
@@ -544,6 +585,8 @@ function renderSlide(slide: HiringDeckSlide) {
       return renderCover(slide)
     case 'usp':
       return renderUsp(slide)
+    case 'workExperience':
+      return renderWorkExperience(slide)
     case 'caseIntro':
       return renderCaseIntro(slide)
     case 'caseDetail':
@@ -563,6 +606,7 @@ function getAccent(slide: HiringDeckSlide) {
     case 'cover':
       return '#A1A1FA'
     case 'usp':
+    case 'workExperience':
       return '#FABBF9'
     case 'profile':
       return '#A1A1FA'

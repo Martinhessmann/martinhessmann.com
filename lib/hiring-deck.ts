@@ -102,6 +102,21 @@ export interface UspSlide extends SlideBase {
   images: SlideImage[]
 }
 
+export interface WorkEntry {
+  position: string
+  name: string
+  startDate?: string
+  endDate?: string
+  summary: string
+  highlights: string[]
+}
+
+export interface WorkExperienceSlide extends SlideBase {
+  kind: 'workExperience'
+  entries: WorkEntry[]
+  images: SlideImage[]
+}
+
 export interface CaseIntroSlide extends SlideBase {
   kind: 'caseIntro'
   realmId: string
@@ -150,6 +165,7 @@ export interface ContactSlide extends SlideBase {
 export type HiringDeckSlide =
   | CoverSlide
   | UspSlide
+  | WorkExperienceSlide
   | CaseIntroSlide
   | CaseDetailSlide
   | ProfileSlide
@@ -203,7 +219,7 @@ function getCurrentRoles(resume: Resume) {
 function buildCapabilities(skills: Skill[] | undefined): CapabilityCard[] {
   return (skills ?? []).slice(0, 4).map((skill) => ({
     title: stripSkillWeight(skill.name) || 'Capability',
-    description: (skill.keywords ?? []).slice(0, 4).join(' · ') || skill.level || '',
+    description: (skill.keywords ?? []).join(', ') || skill.level || '',
   }))
 }
 
@@ -325,6 +341,8 @@ function labelForSlide(slide: HiringDeckSlide) {
       return `${prefix} / INTRO`
     case 'usp':
       return `${prefix} / USP`
+    case 'workExperience':
+      return `${prefix} / WORK`
     case 'caseIntro':
       return `${prefix} / ${slide.realmName.toUpperCase()}`
     case 'caseDetail':
@@ -353,7 +371,11 @@ export function buildHiringDeck(
       id: 'cover',
       kind: 'cover',
       title: resume.basics.hero?.title ?? resume.basics.label ?? 'Systems Designer',
-      paragraph: resume.basics.summary ?? resume.basics.hero?.body?.[0] ?? '',
+      paragraph:
+        resume.basics.resume?.intro?.[0] ??
+        resume.basics.summary ??
+        resume.basics.hero?.body?.[0] ??
+        '',
       factCards: [
         {
           label: 'Based in',
@@ -373,24 +395,16 @@ export function buildHiringDeck(
       label: '',
     },
     {
-      id: 'usp',
-      kind: 'usp',
-      title: resume.basics.resume?.headline ?? 'Design systems, execution fluency, and AI that holds up in the real world.',
-      paragraph: resume.basics.resume?.intro?.[0] ?? resume.basics.hero?.body?.[0] ?? '',
-      pillars: [
-        {
-          title: 'AI systems that need governance',
-          description: selectedRealms[0]?.hook ?? 'Generative products under real brand constraints.',
-        },
-        {
-          title: 'Service systems that need clarity',
-          description: selectedRealms[1]?.hook ?? 'Regulated services made understandable.',
-        },
-        {
-          title: 'Platform systems that need continuity',
-          description: selectedRealms[2]?.hook ?? 'Multi-platform systems kept coherent over time.',
-        },
-      ],
+      id: 'work',
+      kind: 'workExperience',
+      entries: (resume.work ?? []).slice(0, 4).map((job) => ({
+        position: job.position ?? '',
+        name: job.name ?? '',
+        startDate: job.startDate,
+        endDate: job.endDate,
+        summary: job.summary ?? '',
+        highlights: (job.highlights ?? []).slice(0, 2),
+      })),
       images: toSlideImages(workPhotos.slice(0, 3)),
       index: 1,
       label: '',

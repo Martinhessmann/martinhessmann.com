@@ -333,7 +333,7 @@ export default function PortfolioPage() {
           {resume.skills && resume.skills.length > 0 && (
             <div className="mt-16 border-t pt-10" style={{ borderColor: UI_BORDER }}>
               <p className="text-[12px] font-medium tracking-[0.08em]" style={{ color: UI_PINK }}>
-                Tools
+                Skills
               </p>
               <div className="mt-6 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
                 {resume.skills.map((skill) => (

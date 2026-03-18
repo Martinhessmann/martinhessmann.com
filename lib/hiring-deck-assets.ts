@@ -27,6 +27,7 @@ export function absolutizeDeckSlides(slides: HiringDeckSlide[], origin: string):
     switch (slide.kind) {
       case 'cover':
       case 'usp':
+      case 'workExperience':
       case 'contact':
         return {
           ...slide,

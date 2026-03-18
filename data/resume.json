@@ -23,21 +23,20 @@
     ],
     "email": "martin@martinhessmann.com",
     "url": "https://martinhessmann.com",
-    "summary": "I build design systems and lead UX across regulated platforms, civic services, and AI products. I've been through the adoption battles, the legacy migrations, and the dev partnerships that make systems work at scale. I stay close to the work, close to the code, and close to the people using it.",
+    "summary": "I lead design systems and UX across regulated platforms, civic services, and AI products. I own migrations, governance partnerships, and the delivery discipline that keeps systems working at scale. I stay close to the work, close to the code, and close to the people using it.",
     "hero": {
       "kicker": "Design · Engineering · AI",
       "title": "Designing for the Agentic Era.",
       "body": [
-        "I build design systems and lead UX across regulated platforms, civic services, and AI products. I've been through the adoption battles, the legacy migrations, and the dev partnerships that make systems work at scale. I stay close to the work, close to the code, and close to the people using it."
+        "I lead design systems and UX across regulated platforms, civic services, and AI products. I own migrations, governance partnerships, and the delivery discipline that keeps systems working at scale. I stay close to the work, close to the code, and close to the people using it."
       ]
     },
     "resume": {
-      "label": "Where I've worked and what I bring.",
-      "headline": "Design systems, cross-functional leadership, and AI that holds up in production.",
+      "label": "A career built in layers.",
+      "headline": "From design systems to AI products — and the delivery work in between.",
       "intro": [
-        "I build design systems and lead UX where the stakes are high — regulated application flows, multi-brand B2B ecosystems, civic platforms, AI products. I've owned adoption battles, legacy migrations, and the cross-functional partnerships that make governance work without killing creativity.",
-        "Currently leading digital delivery at AN® and shaping AI product strategy at Open Wonder.",
-        "AI makes shipping faster. That makes version control, traceability, and proper changelogs more vital — not less. I git it."
+        "I lead design systems and UX across regulated platforms, civic services, and AI products. I own migrations, governance partnerships, and the delivery discipline that keeps systems working at scale. I stay close to the work, close to the code, and close to the people using it.",
+        "I've been using AI tools since they shipped — Midjourney, ChatGPT, Cursor, Codex. What I've learned is that speed without discipline creates noise. Traceability and release quality matter more as teams move faster, not less."
       ]
     },
     "location": {
@@ -64,7 +63,7 @@
   },
   "skills": [
     {
-      "name": "Design (30%)",
+      "name": "Design",
       "level": "Expert",
       "keywords": [
         "UX Design",
@@ -84,7 +83,7 @@
       ]
     },
     {
-      "name": "Leadership (25%)",
+      "name": "Leadership",
       "level": "Expert",
       "keywords": [
         "Cross-functional Leadership",
@@ -98,7 +97,7 @@
       ]
     },
     {
-      "name": "Code & Build (25%)",
+      "name": "Code & Ship",
       "level": "Expert",
       "keywords": [
         "React",
@@ -123,7 +122,7 @@
       ]
     },
     {
-      "name": "Stakeholder & Strategy (20%)",
+      "name": "Stakeholder & Strategy",
       "level": "Advanced",
       "keywords": [
         "Product Strategy",
@@ -657,7 +656,7 @@
       ]
     },
     {
-      "name": "AN® (an.jetzt)",
+      "name": "AN®)",
       "position": "Digital Design Manager",
       "url": "https://an.jetzt",
       "startDate": "2023-07",
@@ -666,7 +665,7 @@
         "city": "Berlin",
         "countryCode": "DE"
       },
-      "summary": "Running the squads that deliver client websites and digital products — from first concept through stable, monitored release. Design quality, accessibility, and technical standards across a portfolio of very different clients and stacks.",
+      "summary": "End-to-end ownership of client delivery — from first concept through stable, monitored release. Design quality, accessibility, and technical standards across a portfolio of very different clients and stacks.",
       "profileMix": {
         "segments": [
           {
@@ -691,7 +690,7 @@
         "Own delivery, design-system governance, and release quality across the full client portfolio",
         "Set UX standards and bring them to client leadership, internal stakeholders, and sometimes skeptical engineers",
         "Scale design operations across regulated and B2B platforms — rituals, tooling, and reviews without the process theater",
-        "Changelogs should have plot arcs — traceability, git discipline, and release documentation so everyone can trust what shipped and why"
+        "Traceability, git discipline, and release documentation so everyone can trust what shipped and why"
       ],
       "tech": [
         "Cross-functional Leadership",

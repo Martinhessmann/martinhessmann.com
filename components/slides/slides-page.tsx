@@ -12,6 +12,7 @@ import type {
   SlideImage,
   SlideMetaItem,
   UspSlide,
+  WorkExperienceSlide,
 } from '@/lib/hiring-deck'
 import { SlidesDownloadButton } from '@/components/slides/slides-download-button'
 import { SlideCurationPanel } from '@/components/slides/slide-curation-panel'
@@ -353,6 +354,13 @@ function renderCover(slide: CoverSlide) {
   )
 }
 
+function formatPeriod(startDate?: string, endDate?: string) {
+  if (!startDate) return ''
+  const startYear = startDate.slice(0, 4)
+  const endYear = endDate ? endDate.slice(0, 4) : 'today'
+  return startYear === endYear ? startYear : `${startYear}–${endYear}`
+}
+
 function renderUsp(slide: UspSlide) {
   return (
     <div className="flex h-full flex-col gap-5">
@@ -386,6 +394,48 @@ function renderUsp(slide: UspSlide) {
       <div className="grid gap-4 md:grid-cols-3">
         {slide.images.map((image) => (
           <ImageCard key={image.src} image={image} className="min-h-[210px]" />
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function renderWorkExperience(slide: WorkExperienceSlide) {
+  return (
+    <div className="flex h-full flex-col gap-4 overflow-y-auto">
+      <div className="grid gap-4 sm:grid-cols-2">
+        {slide.entries.map((entry) => (
+          <BubbleCard key={`${entry.name}-${entry.startDate}`} className="flex flex-col">
+            <div className="flex flex-wrap items-baseline justify-between gap-2">
+              <h3 className="font-hedvig text-[22px] leading-[1.15] sm:text-[24px]" style={{ color: SHELL_TEXT }}>
+                {entry.position}
+              </h3>
+              <p className="text-[12px] font-medium tracking-[0.08em]" style={{ color: SHELL_TEXT_SOFT }}>
+                {formatPeriod(entry.startDate, entry.endDate)}
+              </p>
+            </div>
+            <p className="mt-1 text-[14px] font-medium" style={{ color: SHELL_TEXT_SOFT }}>
+              {entry.name}
+            </p>
+            <p className="mt-3 text-[14px] leading-[1.6] sm:text-[15px]" style={{ color: SHELL_TEXT }}>
+              {entry.summary}
+            </p>
+            {entry.highlights.length > 0 && (
+              <ul className="mt-3 space-y-1.5">
+                {entry.highlights.map((h) => (
+                  <li key={h} className="flex items-start gap-2 text-[13px] leading-[1.55] sm:text-[14px]" style={{ color: SHELL_TEXT_SOFT }}>
+                    <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full" style={{ backgroundColor: SHELL_TEXT_SOFT }} />
+                    <span>{h}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </BubbleCard>
+        ))}
+      </div>
+      <div className="grid gap-4 md:grid-cols-3">
+        {slide.images.map((image) => (
+          <ImageCard key={image.src} image={image} className="min-h-[160px]" />
         ))}
       </div>
     </div>
@@ -518,6 +568,8 @@ function renderSlide(slide: HiringDeckSlide) {
       return renderCover(slide)
     case 'usp':
       return renderUsp(slide)
+    case 'workExperience':
+      return renderWorkExperience(slide)
     case 'caseIntro':
       return renderCaseIntro(slide)
     case 'caseDetail':
@@ -537,6 +589,7 @@ function getAccent(slide: HiringDeckSlide) {
     case 'cover':
       return '#A1A1FA'
     case 'usp':
+    case 'workExperience':
       return '#FABBF9'
     case 'profile':
       return '#A1A1FA'
