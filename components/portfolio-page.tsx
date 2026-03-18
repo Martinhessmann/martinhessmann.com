@@ -120,7 +120,7 @@ export default function PortfolioPage() {
       <section className="px-6 pb-8 pt-24 lg:px-12 lg:pb-10 lg:pt-32">
         <div className="mx-auto max-w-6xl">
           {resume.basics.hero?.kicker && (
-            <p className="text-[12px] font-medium tracking-[0.08em]" style={{ color: UI_LILAC }}>
+            <p className="text-[14px] font-medium uppercase tracking-[0.12em]" style={{ color: UI_LILAC }}>
               {resume.basics.hero.kicker}
             </p>
           )}
@@ -128,7 +128,7 @@ export default function PortfolioPage() {
             {resume.basics.hero?.title ?? resume.basics.label}
           </h1>
           {resume.basics.hero?.body && (
-            <div className="mt-8 max-w-4xl space-y-6 text-[17px] leading-[1.8] lg:text-[18px]" style={{ color: UI_TEXT_SOFT }}>
+            <div className="mt-8 max-w-4xl space-y-6 text-[16px] leading-[1.8] lg:text-[17px]" style={{ color: UI_TEXT_MUTED }}>
               {resume.basics.hero.body.map((paragraph, i) => (
                 <p key={i}>{paragraph}</p>
               ))}
@@ -139,11 +139,11 @@ export default function PortfolioPage() {
 
       <section id="work" className="px-6 pb-20 lg:px-12 lg:pb-28">
         <div className="mx-auto max-w-6xl">
-          <p className="text-[12px] font-medium tracking-[0.08em]" style={{ color: UI_LILAC }}>
+          <p className="text-[14px] font-medium uppercase tracking-[0.12em]" style={{ color: UI_LILAC }}>
             Selected accounts
           </p>
 
-          <div className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:flex lg:items-end lg:justify-center lg:gap-4 lg:pb-4 lg:pt-4">
+          <div className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:flex lg:items-end lg:justify-center lg:gap-2 lg:pb-4 lg:pt-4">
             {CLIENT_REALMS.map((realm, index) => {
               const layout = CARD_LAYOUT[index] ?? { rotate: 0, translateY: 0 }
               const colors = realm.theme ?? DEFAULT_CARD_THEME
@@ -174,7 +174,7 @@ export default function PortfolioPage() {
                   style={{ zIndex: useCardFanLayout ? CLIENT_REALMS.length - index : 'auto' }}
                 >
                   <article
-                    className="relative flex h-fit w-full cursor-pointer flex-col overflow-hidden rounded-[var(--surface-radius-lg)] border p-4 sm:p-5 lg:w-[220px]"
+                    className="relative flex h-fit w-full cursor-pointer flex-col overflow-hidden rounded-[var(--surface-radius-md)] border p-4 sm:p-5 lg:w-[220px]"
                     style={{ backgroundColor: colors.bg, borderColor: 'var(--surface-border-dark)' }}
                     onClick={() => setActiveRealmId(realm.id)}
                     role="button"
@@ -187,7 +187,7 @@ export default function PortfolioPage() {
                     }}
                     aria-label={`Open case study for ${realm.displayName}`}
                   >
-                    <div className="-m-4 -mb-0 -mt-4 flex aspect-[220/180] w-[calc(100%+2rem)] shrink-0 items-center justify-center overflow-hidden rounded-t-[var(--surface-radius-lg)] sm:-m-5 sm:-mb-0 sm:-mt-5 sm:w-[calc(100%+2.5rem)]">
+                    <div className="-m-4 -mb-0 -mt-4 flex aspect-[220/150] w-[calc(100%+2rem)] shrink-0 items-center justify-center overflow-hidden rounded-t-[var(--surface-radius-md)] sm:-m-5 sm:-mb-0 sm:-mt-5 sm:w-[calc(100%+2.5rem)]">
                       {realm.moodImage ? (
                         <img
                           src={realm.moodImage}
@@ -199,23 +199,17 @@ export default function PortfolioPage() {
                       )}
                     </div>
                     <p
-                      className="mt-4 text-[12px] font-medium tracking-[0.08em] sm:mt-5"
+                      className="mt-2 text-[14px] font-medium uppercase tracking-[0.12em] sm:mt-3"
                       style={{ color: colors.label }}
                     >
                       {realm.displayName}
                     </p>
-                    <div className="mt-3 shrink-0 sm:mt-4">
+                    <div className="mt-2 shrink-0">
                       <p
                         className="font-hedvig text-[18px] leading-[1.2] sm:text-[21px]"
                         style={{ color: colors.panelText }}
                       >
                         {realm.hook}
-                      </p>
-                      <p
-                        className="mt-1.5 text-[14px] leading-[1.45]"
-                        style={{ color: colors.panelText === '#181823' ? 'rgba(24,24,35,0.76)' : 'rgba(255,255,255,0.8)' }}
-                      >
-                        {realm.accountLine}
                       </p>
                     </div>
                   </article>
@@ -225,9 +219,9 @@ export default function PortfolioPage() {
           </div>
 
           <div className="mt-10 border-t pt-8" style={{ borderColor: UI_BORDER }}>
-            <p className="text-[12px] font-medium tracking-[0.08em]" style={{ color: UI_PINK }}>
-              Clients and brands
-            </p>
+            <p className="text-[14px] font-medium uppercase tracking-[0.12em]" style={{ color: UI_PINK }}>
+                Clients and brands
+              </p>
             <div
               className="mt-6 overflow-hidden rounded-[var(--surface-radius-lg)] p-3 sm:p-4 lg:p-5"
               style={{ backgroundColor: UI_MIDNIGHT }}
@@ -276,14 +270,14 @@ export default function PortfolioPage() {
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-14 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-20">
             <div>
-              <p className="text-[12px] font-medium tracking-[0.08em]" style={{ color: UI_PINK }}>
+              <p className="text-[14px] font-medium uppercase tracking-[0.12em]" style={{ color: UI_PINK }}>
                 {resume.basics.resume?.label ?? 'Resume'}
               </p>
               <h2 className="mt-4 font-hedvig text-[clamp(28px,4vw,44px)] leading-[1.1] text-white">
                 {resume.basics.resume?.headline ?? resume.basics.label}
               </h2>
               {resume.basics.resume?.intro && (
-                <div className="mt-6 space-y-6 text-[17px] leading-[1.8]" style={{ color: UI_TEXT_SOFT }}>
+                <div className="mt-6 space-y-6 text-[16px] leading-[1.8]" style={{ color: UI_TEXT_SOFT }}>
                   {resume.basics.resume.intro.map((paragraph, i) => (
                     <p key={i}>{paragraph}</p>
                   ))}
@@ -298,15 +292,15 @@ export default function PortfolioPage() {
                   <div className="flex flex-wrap items-baseline justify-between gap-4">
                     <div>
                       <h3 className="font-hedvig text-[24px] leading-[1.2] text-white">{entry.position}</h3>
-                      <p className="mt-1 text-[16px] font-medium tracking-[0.08em]" style={{ color: UI_PINK }}>
+                      <p className="mt-1 text-[14px] font-medium uppercase tracking-[0.12em]" style={{ color: UI_PINK }}>
                         {entry.name}
                       </p>
                     </div>
-                    <p className="text-[16px] font-medium" style={{ color: UI_TEXT_MUTED }}>{formatPeriod(entry.startDate, entry.endDate)}</p>
+                    <p className="text-[16px] font-medium" style={{ color: UI_TEXT_SOFT }}>{formatPeriod(entry.startDate, entry.endDate)}</p>
                   </div>
-                  {entry.summary && <p className="mt-4 text-[17px] leading-[1.8]" style={{ color: UI_TEXT_SOFT }}>{entry.summary}</p>}
+                  {entry.summary && <p className="mt-4 text-[16px] leading-[1.8]" style={{ color: UI_TEXT_SOFT }}>{entry.summary}</p>}
                   {entry.highlights && entry.highlights.length > 0 && (
-                    <ul className="mt-4 space-y-2.5 text-[17px] leading-[1.8]" style={{ color: UI_TEXT_SOFT }}>
+                    <ul className="mt-4 space-y-2.5 text-[16px] leading-[1.8]" style={{ color: UI_TEXT_SOFT }}>
                       {entry.highlights.slice(0, 2).map((highlight) => (
                         <li key={highlight} className="flex items-start gap-3">
                           <span className="mt-[0.6em] h-1.5 w-1.5 shrink-0 rounded-full" style={{ backgroundColor: UI_PINK }} />
@@ -322,7 +316,7 @@ export default function PortfolioPage() {
 
           {resume.skills && resume.skills.length > 0 && (
             <div className="mt-16 border-t pt-10" style={{ borderColor: UI_BORDER }}>
-              <p className="text-[12px] font-medium tracking-[0.08em]" style={{ color: UI_PINK }}>
+              <p className="text-[14px] font-medium uppercase tracking-[0.12em]" style={{ color: UI_PINK }}>
                 Skills
               </p>
               <div className="mt-6 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -342,24 +336,36 @@ export default function PortfolioPage() {
 
           {(resume.education?.[0] || languages) && (
             <div className="mt-10 border-t pt-8" style={{ borderColor: UI_BORDER }}>
-              <p className="text-[12px] font-medium tracking-[0.08em]" style={{ color: UI_PINK }}>
+              <p className="text-[14px] font-medium uppercase tracking-[0.12em]" style={{ color: UI_PINK }}>
                 Education and languages
               </p>
               <div className="mt-4 space-y-2 text-[16px] leading-[1.6]" style={{ color: UI_TEXT_MUTED }}>
                 {resume.education?.[0] && (
                   <p>
-                    {resume.education[0].studyType} — {resume.education[0].area}, {resume.education[0].location?.city} ({resume.education[0].startDate}–{resume.education[0].endDate})
+                    {resume.education[0].studyType} — {resume.education[0].area}, {resume.education[0].location?.city}{' '}
+                    <span style={{ opacity: 0.6 }}>({resume.education[0].startDate}–{resume.education[0].endDate})</span>
                   </p>
                 )}
-                <p>{footerMeta}</p>
+                {(resume.basics.location?.city || (resume.languages ?? []).length > 0) && (
+                <p>
+                  {resume.basics.location?.city}
+                  {resume.basics.location?.city && (resume.languages ?? []).length > 0 ? ' · ' : ''}
+                  {(resume.languages ?? []).map((entry, i) => (
+                    <span key={entry.language}>
+                      {i > 0 ? ' · ' : ''}
+                      {entry.language} <span style={{ opacity: 0.6 }}>({entry.fluency})</span>
+                    </span>
+                  ))}
+                </p>
+                )}
               </div>
             </div>
           )}
 
           {resume.awards && resume.awards.length > 0 && (
             <div className="mt-10 border-t pt-8" style={{ borderColor: UI_BORDER }}>
-              <p className="mb-4 text-[12px] font-medium tracking-[0.08em]" style={{ color: UI_PINK }}>
-                Recognition
+              <p className="mb-4 text-[14px] font-medium uppercase tracking-[0.12em]" style={{ color: UI_PINK }}>
+                Engagement
               </p>
               <div className="flex flex-wrap gap-x-8 gap-y-3 text-[16px]" style={{ color: UI_TEXT_MUTED }}>
                 {resume.awards.map((award) => (
@@ -378,7 +384,7 @@ export default function PortfolioPage() {
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1.35fr)] lg:gap-16">
             <div className="space-y-3">
               <p className="font-hedvig text-[20px] text-white">{resume.basics.name}</p>
-              <p className="max-w-md text-[17px] leading-[1.8]" style={{ color: UI_TEXT_SOFT }}>
+              <p className="max-w-md text-[16px] leading-[1.8]" style={{ color: UI_TEXT_SOFT }}>
                 {resume.basics.label}
               </p>
               <p className="text-[16px] leading-[1.7]" style={{ color: UI_TEXT_MUTED }}>
@@ -388,7 +394,7 @@ export default function PortfolioPage() {
 
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
               <div>
-                <p className="text-[12px] font-medium tracking-[0.08em]" style={{ color: UI_PINK }}>
+                <p className="text-[14px] font-medium uppercase tracking-[0.12em]" style={{ color: UI_PINK }}>
                   Contact
                 </p>
                 <div className="mt-3 space-y-2 text-[15px]" style={{ color: UI_TEXT_MUTED }}>
@@ -402,7 +408,7 @@ export default function PortfolioPage() {
               </div>
 
               <div>
-                <p className="text-[12px] font-medium tracking-[0.08em]" style={{ color: UI_PINK }}>
+                <p className="text-[14px] font-medium uppercase tracking-[0.12em]" style={{ color: UI_PINK }}>
                   Resume
                 </p>
                 <div className="mt-3 space-y-2 text-[15px]" style={{ color: UI_TEXT_MUTED }}>
@@ -422,7 +428,7 @@ export default function PortfolioPage() {
               </div>
 
               <div>
-                <p className="text-[12px] font-medium tracking-[0.08em]" style={{ color: UI_PINK }}>
+                <p className="text-[14px] font-medium uppercase tracking-[0.12em]" style={{ color: UI_PINK }}>
                   Social
                 </p>
                 <div className="mt-3 space-y-2 text-[15px]" style={{ color: UI_TEXT_MUTED }}>
@@ -436,7 +442,7 @@ export default function PortfolioPage() {
               </div>
 
               <div>
-                <p className="text-[12px] font-medium tracking-[0.08em]" style={{ color: UI_PINK }}>
+                <p className="text-[14px] font-medium uppercase tracking-[0.12em]" style={{ color: UI_PINK }}>
                   Legal
                 </p>
                 <div className="mt-3 space-y-2 text-[15px]" style={{ color: UI_TEXT_MUTED }}>

@@ -56,7 +56,7 @@ Two fonts. No exceptions.
 
 | Font | Role | Usage |
 |------|------|-------|
-| Inter 28pt Regular | Structure | Headings, body, labels, tags |
+| Inter | Structure | Headings, body, labels, tags. Stack: `Inter, -apple-system, BlinkMacSystemFont, sans-serif` |
 | Hedvig Letters Serif 24pt Regular | Emotion | One-liners, quotes, the second half of a split statement |
 
 ### Type Scale
@@ -65,11 +65,11 @@ Two fonts. No exceptions.
 |-------|------|-------|-----------|
 | h1 | ~64px | Hero statement, page title | Once per page, maximum |
 | h2 | 28-32px | Section anchors, client names | One per section |
-| body | 17px | Default for body/paragraphs | Most text on the page |
+| body | 16px | Default for body/paragraphs | Most text on the page |
 | larger | 21px | One step above body, for emphasis or serif accents | Selective |
-| small | 14px is NOT a size we use | -- | -- |
+| section labels | 16px | Section headers, column titles | Medium weight, tracking-normal, sentence case |
 
-**16px is the smallest text on the site.** Body/paragraphs use 17px with leading-[1.8] for readable feeling. Nothing smaller than 16px.
+**16px is the smallest text on the site.** Body/paragraphs use 16px with leading-[1.8] for readable feeling. Nothing smaller than 16px.
 
 ### Rules
 

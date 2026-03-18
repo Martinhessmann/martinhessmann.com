@@ -2,7 +2,6 @@
 
 import { useState, type ReactNode } from 'react'
 import type {
-  CapabilityCard,
   CaseDetailSlide,
   CaseIntroSlide,
   ContactSlide,
@@ -132,10 +131,10 @@ function applyDraftStateToSlides(
   })
 }
 
-function SlideLabel({ label }: { label: string; accent?: string }) {
+function SlideLabel({ label }: { label: string }) {
   return (
     <span
-      className="inline-flex w-fit items-center rounded-full text-[11px] font-medium uppercase tracking-[0.22em] sm:text-[12px]"
+      className="inline-flex w-fit items-center rounded-full text-[0.6875em] font-medium uppercase tracking-[0.22em] sm:text-[0.75em]"
       style={{ color: 'var(--accent-foreground)' }}
     >
       {label}
@@ -152,7 +151,7 @@ function BubbleCard({
 }) {
   return (
     <div
-      className={`rounded-[28px] border bg-white/90 p-5 ${className}`}
+      className={`rounded-[1.75em] border bg-white/90 p-[1.25em] ${className}`}
       style={{ borderColor: 'rgba(35, 33, 30, 0.08)' }}
     >
       {children}
@@ -170,8 +169,8 @@ function ImageCard({
   objectFit?: 'cover' | 'contain'
 }) {
   return (
-    <figure className={`overflow-hidden rounded-[28px] border bg-white/85 ${className}`} style={{ borderColor: 'rgba(35, 33, 30, 0.08)' }}>
-      <div className="relative bg-[rgba(255,255,255,0.75)]">
+    <figure className={`flex min-h-0 flex-col overflow-hidden rounded-[1.75em] border bg-white/85 ${className}`} style={{ borderColor: 'rgba(35, 33, 30, 0.08)' }}>
+      <div className="relative min-h-0 flex-1 bg-[rgba(255,255,255,0.75)]">
         <img
           src={image.src}
           alt={image.alt}
@@ -179,7 +178,7 @@ function ImageCard({
         />
       </div>
       {image.caption && (
-        <figcaption className="border-t px-4 py-3 text-[12px] leading-[1.5] sm:text-[13px]" style={{ borderColor: 'rgba(35, 33, 30, 0.08)', color: SHELL_TEXT_SOFT }}>
+        <figcaption className="border-t px-[1em] py-[0.75em] text-[0.75em] leading-[1.5] sm:text-[0.8125em]" style={{ borderColor: 'rgba(35, 33, 30, 0.08)', color: SHELL_TEXT_SOFT }}>
           {image.caption}
         </figcaption>
       )}
@@ -187,17 +186,17 @@ function ImageCard({
   )
 }
 
-function MetaGrid({ items }: { items: SlideMetaItem[] }) {
+function MetaList({ items }: { items: SlideMetaItem[] }) {
   if (items.length === 0) return null
 
   return (
-    <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+    <div className="flex flex-wrap gap-x-[2.5em] gap-y-[1em]">
       {items.map((item) => (
-        <BubbleCard key={item.label} className="min-h-[150px]">
-          <p className="text-[11px] font-medium uppercase tracking-[0.22em]" style={{ color: SHELL_TEXT_SOFT }}>
+        <div key={item.label}>
+          <p className="text-[0.6875em] font-medium uppercase tracking-[0.22em]" style={{ color: SHELL_TEXT_SOFT }}>
             {item.label}
           </p>
-          <div className="mt-3 space-y-2 text-[15px] leading-[1.45] sm:text-[16px]" style={{ color: SHELL_TEXT }}>
+          <div className="mt-[0.375em] space-y-[0.125em] text-[0.9375em] leading-[1.45]" style={{ color: SHELL_TEXT }}>
             {item.values.map((value, index) => {
               const href = item.hrefs?.[index]
               return href ? (
@@ -209,7 +208,7 @@ function MetaGrid({ items }: { items: SlideMetaItem[] }) {
               )
             })}
           </div>
-        </BubbleCard>
+        </div>
       ))}
     </div>
   )
@@ -219,53 +218,36 @@ function ImageGrid({ images }: { images: SlideImage[] }) {
   if (images.length === 0) return null
 
   if (images.length === 1) {
-    return <ImageCard image={images[0]} className="h-full min-h-[320px]" objectFit="contain" />
+    return <ImageCard image={images[0]} className="h-full min-h-0" objectFit="contain" />
   }
 
   if (images.length === 2) {
     return (
-      <div className="grid gap-4 lg:grid-cols-2">
+      <div className="grid h-full min-h-0 grid-rows-[1fr] gap-[1em] lg:grid-cols-2">
         {images.map((image) => (
-          <ImageCard key={`${image.src}-${image.caption ?? image.alt}`} image={image} className="min-h-[280px]" objectFit="contain" />
+          <ImageCard key={`${image.src}-${image.caption ?? image.alt}`} image={image} className="h-full min-h-0" objectFit="contain" />
         ))}
       </div>
     )
   }
 
   return (
-    <div className="grid gap-4 lg:grid-cols-2">
-      <ImageCard image={images[0]} className="min-h-[300px] lg:min-h-[420px]" objectFit="contain" />
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+    <div
+      className={`grid h-full min-h-0 gap-[1em] lg:grid-cols-2 ${images.length > 3 ? 'grid-rows-[1fr_1fr]' : 'grid-rows-[1fr]'}`}
+    >
+      <ImageCard image={images[0]} className="h-full min-h-0" objectFit="contain" />
+      <div className="grid min-h-0 grid-rows-[1fr_1fr] gap-[1em] sm:grid-cols-2 lg:grid-cols-1">
         {images.slice(1, 3).map((image) => (
-          <ImageCard key={`${image.src}-${image.caption ?? image.alt}`} image={image} className="min-h-[220px]" objectFit="contain" />
+          <ImageCard key={`${image.src}-${image.caption ?? image.alt}`} image={image} className="h-full min-h-0" objectFit="contain" />
         ))}
       </div>
       {images.length > 3 && (
-        <div className="lg:col-span-2">
-          <div className="grid gap-4 sm:grid-cols-2">
-            {images.slice(3).map((image) => (
-              <ImageCard key={`${image.src}-${image.caption ?? image.alt}`} image={image} className="min-h-[220px]" objectFit="contain" />
-            ))}
-          </div>
+        <div className="grid min-h-0 grid-rows-[1fr] gap-[1em] sm:grid-cols-2 lg:col-span-2">
+          {images.slice(3).map((image) => (
+            <ImageCard key={`${image.src}-${image.caption ?? image.alt}`} image={image} className="h-full min-h-0" objectFit="contain" />
+          ))}
         </div>
       )}
-    </div>
-  )
-}
-
-function CapabilityGrid({ capabilities }: { capabilities: CapabilityCard[] }) {
-  return (
-    <div className="grid gap-3 sm:grid-cols-2">
-      {capabilities.map((capability) => (
-        <BubbleCard key={capability.title}>
-          <h3 className="font-hedvig text-[22px] leading-[1.1]" style={{ color: SHELL_TEXT }}>
-            {capability.title}
-          </h3>
-          <p className="mt-3 text-[14px] leading-[1.6] sm:text-[15px]" style={{ color: SHELL_TEXT_SOFT }}>
-            {capability.description}
-          </p>
-        </BubbleCard>
-      ))}
     </div>
   )
 }
@@ -275,13 +257,13 @@ function LogoStrip({ logos }: { logos: ProfileSlide['logos'] }) {
 
   return (
     <BubbleCard>
-      <p className="text-[11px] font-medium uppercase tracking-[0.22em]" style={{ color: SHELL_TEXT_SOFT }}>
+      <p className="text-[0.6875em] font-medium uppercase tracking-[0.22em]" style={{ color: SHELL_TEXT_SOFT }}>
         Selected organisations
       </p>
-      <div className="mt-5 grid grid-cols-3 gap-4 sm:grid-cols-4">
+      <div className="mt-[1.25em] grid grid-cols-3 gap-[1em] sm:grid-cols-4">
         {logos.map((logo) => (
-          <div key={logo.id} className="flex min-h-[80px] items-center justify-center rounded-[22px] bg-white/70 px-3 py-4">
-            <img src={logo.src} alt={logo.name} className="max-h-10 w-auto object-contain opacity-80" />
+          <div key={logo.id} className="flex min-h-[5em] items-center justify-center rounded-[1.375em] bg-white/70 px-[0.75em] py-[1em]">
+            <img src={logo.src} alt={logo.name} className="max-h-[2.5em] w-auto object-contain opacity-80" />
           </div>
         ))}
       </div>
@@ -290,28 +272,30 @@ function LogoStrip({ logos }: { logos: ProfileSlide['logos'] }) {
 }
 
 function SlideShell({
-  accent,
   label,
   children,
   footer,
 }: {
-  accent: string
   label: string
   children: ReactNode
   footer?: ReactNode
 }) {
   return (
     <section className="snap-start px-4 py-24 sm:px-6 lg:px-10 lg:py-28">
-      <div className="mx-auto max-w-[1480px]">
+      <div className="mx-auto w-full max-w-[1480px]">
         <div
-          className="relative overflow-hidden rounded-none border p-5 shadow-[0_28px_120px_rgba(24,24,35,0.25)] sm:p-8 lg:aspect-[16/9] lg:p-10 xl:p-12"
-          style={{ backgroundColor: SHELL_BG, borderColor: SHELL_BORDER, color: SHELL_TEXT }}
+          className="relative aspect-video overflow-hidden rounded-none border p-[1.5em] shadow-[0_1.75em_7.5em_rgba(24,24,35,0.25)] sm:p-[2em] lg:p-[2.5em]"
+          style={{
+            backgroundColor: SHELL_BG,
+            borderColor: SHELL_BORDER,
+            color: SHELL_TEXT,
+            containerType: 'inline-size',
+            fontSize: 'clamp(8px, 0.83cqi, 16px)',
+          }}
         >
-          <div className="pointer-events-none absolute -bottom-24 -left-20 h-64 w-64 rounded-full opacity-20" style={{ backgroundColor: accent }} />
-          <div className="pointer-events-none absolute -right-12 top-0 h-2 w-52 rounded-b-full opacity-90" style={{ backgroundColor: accent }} />
-          <div className="relative z-10 flex h-full flex-col">
-            <SlideLabel label={label} accent={MIDNIGHT} />
-            <div className="mt-5 flex-1">{children}</div>
+          <div className="relative z-10 flex h-full min-h-0 flex-col">
+            <SlideLabel label={label} />
+            <div className="mt-[1.25em] min-h-0 flex-1 overflow-hidden">{children}</div>
           </div>
         </div>
         {footer ? <div className="mt-4">{footer}</div> : null}
@@ -322,33 +306,29 @@ function SlideShell({
 
 function renderCover(slide: CoverSlide) {
   return (
-    <div className="grid h-full gap-5 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
-      <div className="flex min-w-0 flex-col gap-4">
-        <BubbleCard className="max-w-3xl">
-          <h1 className="font-hedvig text-[clamp(40px,4.6vw,86px)] leading-[0.95]" style={{ color: SHELL_TEXT }}>
-            {slide.title}
-          </h1>
-        </BubbleCard>
-        <div className="grid gap-3 sm:grid-cols-3">
+    <div className="grid h-full min-h-0 grid-rows-[1fr] gap-[2em] lg:grid-cols-[minmax(0,0.55fr)_minmax(0,1.45fr)]">
+      <div className="flex min-h-0 min-w-0 flex-col justify-center gap-[1.5em] overflow-y-auto">
+        <h1 className="max-w-[60em] font-hedvig text-[clamp(2.25em,4cqi,4.5em)] leading-[0.96]" style={{ color: SHELL_TEXT }}>
+          {slide.title}
+        </h1>
+        <div className="flex flex-wrap gap-x-[2.5em] gap-y-[1em]">
           {slide.factCards.map((fact) => (
-            <BubbleCard key={fact.label}>
-              <p className="text-[11px] font-medium uppercase tracking-[0.22em]" style={{ color: SHELL_TEXT_SOFT }}>
+            <div key={fact.label}>
+              <p className="text-[0.6875em] font-medium uppercase tracking-[0.22em]" style={{ color: SHELL_TEXT_SOFT }}>
                 {fact.label}
               </p>
-              <p className="mt-3 text-[18px] leading-[1.25] sm:text-[20px]" style={{ color: SHELL_TEXT }}>
+              <p className="mt-[0.375em] text-[1.0625em] leading-[1.25] sm:text-[1.125em]" style={{ color: SHELL_TEXT }}>
                 {fact.value}
               </p>
-            </BubbleCard>
+            </div>
           ))}
         </div>
-        <BubbleCard className="max-w-4xl">
-          <p className="text-[17px] leading-[1.7] sm:text-[19px]" style={{ color: SHELL_TEXT }}>
-            {slide.paragraph}
-          </p>
-        </BubbleCard>
+        <p className="max-w-[40em] text-[0.9375em] leading-[1.7] sm:text-[1em]" style={{ color: SHELL_TEXT }}>
+          {slide.paragraph}
+        </p>
       </div>
-      <div className="min-h-[320px]">
-        <ImageCard image={slide.images[0]} className="h-full min-h-[320px]" />
+      <div className="min-h-0 overflow-hidden">
+        <ImageCard image={slide.images[0]} className="h-full w-full" />
       </div>
     </div>
   )
@@ -363,37 +343,32 @@ function formatPeriod(startDate?: string, endDate?: string) {
 
 function renderUsp(slide: UspSlide) {
   return (
-    <div className="flex h-full flex-col gap-5">
-      <div className="grid gap-4 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
-        <BubbleCard>
-          <h2 className="font-hedvig text-[clamp(32px,3.6vw,64px)] leading-[1.02]" style={{ color: SHELL_TEXT }}>
+    <div className="flex h-full min-h-0 flex-col gap-[2em] overflow-y-auto">
+      <div className="grid min-h-0 grid-rows-[1fr] gap-[1.5em] lg:grid-cols-[minmax(0,0.45fr)_minmax(0,1.55fr)]">
+        <div className="flex min-h-0 flex-col justify-center gap-[1em] overflow-y-auto">
+          <h2 className="font-hedvig text-[clamp(1.875em,3.2cqi,3.5em)] leading-[1.04]" style={{ color: SHELL_TEXT }}>
             {slide.title}
           </h2>
-        </BubbleCard>
-        <BubbleCard>
-          <p className="text-[16px] leading-[1.7] sm:text-[18px]" style={{ color: SHELL_TEXT }}>
+          <p className="text-[0.9375em] leading-[1.7] sm:text-[1em]" style={{ color: SHELL_TEXT }}>
             {slide.paragraph}
           </p>
-        </BubbleCard>
+        </div>
+        <div className="grid min-h-0 grid-rows-[1fr] gap-[1em] md:grid-cols-3">
+          {slide.images.map((image) => (
+            <ImageCard key={image.src} image={image} className="h-full min-h-0" />
+          ))}
+        </div>
       </div>
-      <div className="grid gap-3 lg:grid-cols-3">
-        {slide.pillars.map((pillar, index) => (
-          <BubbleCard key={pillar.title} className={index === 1 ? 'lg:translate-y-6' : ''}>
-            <p className="text-[11px] font-medium uppercase tracking-[0.22em]" style={{ color: SHELL_TEXT_SOFT }}>
-              Theme {index + 1}
-            </p>
-            <h3 className="mt-3 font-hedvig text-[28px] leading-[1.05]" style={{ color: SHELL_TEXT }}>
+      <div className="grid gap-[2em] lg:grid-cols-3">
+        {slide.pillars.map((pillar) => (
+          <div key={pillar.title}>
+            <h3 className="font-hedvig text-[1.5em] leading-[1.08]" style={{ color: SHELL_TEXT }}>
               {pillar.title}
             </h3>
-            <p className="mt-4 text-[15px] leading-[1.6] sm:text-[16px]" style={{ color: SHELL_TEXT_SOFT }}>
+            <p className="mt-[0.75em] text-[0.875em] leading-[1.65] sm:text-[0.9375em]" style={{ color: SHELL_TEXT_SOFT }}>
               {pillar.description}
             </p>
-          </BubbleCard>
-        ))}
-      </div>
-      <div className="grid gap-4 md:grid-cols-3">
-        {slide.images.map((image) => (
-          <ImageCard key={image.src} image={image} className="min-h-[210px]" />
+          </div>
         ))}
       </div>
     </div>
@@ -402,29 +377,29 @@ function renderUsp(slide: UspSlide) {
 
 function renderWorkExperience(slide: WorkExperienceSlide) {
   return (
-    <div className="flex h-full flex-col gap-4 overflow-y-auto">
-      <div className="grid gap-4 sm:grid-cols-2">
+    <div className="flex h-full min-h-0 flex-col gap-[1em] overflow-y-auto">
+      <div className="grid gap-[1em] sm:grid-cols-2">
         {slide.entries.map((entry) => (
           <BubbleCard key={`${entry.name}-${entry.startDate}`} className="flex flex-col">
-            <div className="flex flex-wrap items-baseline justify-between gap-2">
-              <h3 className="font-hedvig text-[22px] leading-[1.15] sm:text-[24px]" style={{ color: SHELL_TEXT }}>
+            <div className="flex flex-wrap items-baseline justify-between gap-[0.5em]">
+              <h3 className="font-hedvig text-[1.375em] leading-[1.15] sm:text-[1.5em]" style={{ color: SHELL_TEXT }}>
                 {entry.position}
               </h3>
-              <p className="text-[12px] font-medium tracking-[0.08em]" style={{ color: SHELL_TEXT_SOFT }}>
+              <p className="text-[0.75em] font-medium tracking-[0.08em]" style={{ color: SHELL_TEXT_SOFT }}>
                 {formatPeriod(entry.startDate, entry.endDate)}
               </p>
             </div>
-            <p className="mt-1 text-[14px] font-medium" style={{ color: SHELL_TEXT_SOFT }}>
+            <p className="mt-[0.25em] text-[0.875em] font-medium" style={{ color: SHELL_TEXT_SOFT }}>
               {entry.name}
             </p>
-            <p className="mt-3 text-[14px] leading-[1.6] sm:text-[15px]" style={{ color: SHELL_TEXT }}>
+            <p className="mt-[0.75em] text-[0.875em] leading-[1.6] sm:text-[0.9375em]" style={{ color: SHELL_TEXT }}>
               {entry.summary}
             </p>
             {entry.highlights.length > 0 && (
-              <ul className="mt-3 space-y-1.5">
+              <ul className="mt-[0.75em] space-y-[0.375em]">
                 {entry.highlights.map((h) => (
-                  <li key={h} className="flex items-start gap-2 text-[13px] leading-[1.55] sm:text-[14px]" style={{ color: SHELL_TEXT_SOFT }}>
-                    <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full" style={{ backgroundColor: SHELL_TEXT_SOFT }} />
+                  <li key={h} className="flex items-start gap-[0.5em] text-[0.8125em] leading-[1.55] sm:text-[0.875em]" style={{ color: SHELL_TEXT_SOFT }}>
+                    <span className="mt-[0.375em] h-[0.25em] w-[0.25em] shrink-0 rounded-full" style={{ backgroundColor: SHELL_TEXT_SOFT }} />
                     <span>{h}</span>
                   </li>
                 ))}
@@ -433,49 +408,38 @@ function renderWorkExperience(slide: WorkExperienceSlide) {
           </BubbleCard>
         ))}
       </div>
-      <div className="grid gap-4 md:grid-cols-3">
-        {slide.images.map((image) => (
-          <ImageCard key={image.src} image={image} className="min-h-[160px]" />
-        ))}
-      </div>
+      {slide.images.length > 0 && (
+        <div className="grid min-h-0 grid-rows-[1fr] gap-[1em] md:grid-cols-3">
+          {slide.images.map((image) => (
+            <ImageCard key={image.src} image={image} className="h-full min-h-0" />
+          ))}
+        </div>
+      )}
     </div>
   )
 }
 
 function renderCaseIntro(slide: CaseIntroSlide) {
   return (
-    <div className="grid h-full gap-5 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
-      <div className="flex min-w-0 flex-col gap-4">
-        <BubbleCard className="max-w-3xl">
-          <div className="flex items-start justify-between gap-4">
-            <div>
-              <p className="text-[11px] font-medium uppercase tracking-[0.22em]" style={{ color: slide.theme.label }}>
-                {slide.accountLine}
-              </p>
-              <h2 className="mt-3 font-hedvig text-[clamp(32px,3.7vw,62px)] leading-[1.03]" style={{ color: SHELL_TEXT }}>
-                {slide.title}
-              </h2>
-            </div>
-            {slide.logo ? <img src={slide.logo} alt={slide.realmName} className="h-10 w-auto object-contain opacity-65" /> : null}
-          </div>
-        </BubbleCard>
-        <BubbleCard>
-          <p className="text-[16px] leading-[1.7] sm:text-[18px]" style={{ color: SHELL_TEXT }}>
-            {slide.paragraph}
-          </p>
-        </BubbleCard>
-        <BubbleCard>
-          <p className="text-[11px] font-medium uppercase tracking-[0.22em]" style={{ color: SHELL_TEXT_SOFT }}>
-            Role summary
-          </p>
-          <p className="mt-3 text-[15px] leading-[1.65] sm:text-[16px]" style={{ color: SHELL_TEXT }}>
+    <div className="grid h-full min-h-0 grid-rows-[1fr] gap-[2em] lg:grid-cols-[minmax(0,0.6fr)_minmax(0,1.4fr)]">
+      <div className="flex min-h-0 min-w-0 flex-col justify-center gap-[1.5em] overflow-y-auto">
+        <div>
+          <h2 className="font-hedvig text-[clamp(1.75em,3.2cqi,3.25em)] leading-[1.05]" style={{ color: SHELL_TEXT }}>
+            {slide.title}
+          </h2>
+        </div>
+        <p className="text-[0.9375em] leading-[1.7] sm:text-[1em]" style={{ color: SHELL_TEXT }}>
+          {slide.paragraph}
+        </p>
+        <div>
+          <p className="text-[0.9375em] leading-[1.65] sm:text-[1em]" style={{ color: SHELL_TEXT_SOFT }}>
             {slide.roleSummary}
           </p>
-        </BubbleCard>
-        <MetaGrid items={slide.meta} />
+        </div>
+        <MetaList items={slide.meta} />
       </div>
-      <div className="min-h-[320px]">
-        <ImageCard image={slide.images[0]} className="h-full min-h-[320px]" objectFit="contain" />
+      <div className="min-h-0 overflow-hidden">
+        <ImageCard image={slide.images[0]} className="h-full w-full" objectFit="contain" />
       </div>
     </div>
   )
@@ -483,25 +447,29 @@ function renderCaseIntro(slide: CaseIntroSlide) {
 
 function renderCaseDetail(slide: CaseDetailSlide) {
   return (
-    <div className="flex h-full flex-col gap-5">
-      <div className="grid gap-4 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
-        <BubbleCard>
-          <p className="text-[11px] font-medium uppercase tracking-[0.22em]" style={{ color: slide.theme.label }}>
-            {slide.eyebrow}
-          </p>
-          <h2 className="mt-3 font-hedvig text-[clamp(28px,3.2vw,52px)] leading-[1.04]" style={{ color: SHELL_TEXT }}>
-            {slide.title}
-          </h2>
-        </BubbleCard>
-        <BubbleCard>
-          <p className="text-[16px] leading-[1.7] sm:text-[18px]" style={{ color: SHELL_TEXT }}>
+    <div className="flex h-full min-h-0 flex-col gap-[1.5em] overflow-y-auto">
+      <div className="grid min-h-0 grid-rows-[1fr] gap-[1.5em] lg:grid-cols-[minmax(0,0.55fr)_minmax(0,1.45fr)]">
+        <div className="flex min-h-0 flex-col justify-center gap-[1em] overflow-y-auto">
+          <div>
+            <p className="text-[0.6875em] font-medium uppercase tracking-[0.22em]" style={{ color: slide.theme.label }}>
+              {slide.eyebrow}
+            </p>
+            <h2 className="mt-[0.75em] font-hedvig text-[clamp(1.625em,2.8cqi,2.75em)] leading-[1.06]" style={{ color: SHELL_TEXT }}>
+              {slide.title}
+            </h2>
+          </div>
+          <p className="text-[0.9375em] leading-[1.7] sm:text-[1em]" style={{ color: SHELL_TEXT }}>
             {slide.paragraph}
           </p>
-        </BubbleCard>
-      </div>
-      {slide.meta.length > 0 && <MetaGrid items={slide.meta} />}
-      <div className="flex-1">
-        <ImageGrid images={slide.images} />
+          {slide.meta.length > 0 && <MetaList items={slide.meta} />}
+        </div>
+        <div className="min-h-0 overflow-hidden">
+          {slide.images.length === 1 ? (
+            <ImageCard image={slide.images[0]} className="h-full w-full" objectFit="contain" />
+          ) : (
+            <ImageGrid images={slide.images} />
+          )}
+        </div>
       </div>
     </div>
   )
@@ -509,53 +477,56 @@ function renderCaseDetail(slide: CaseDetailSlide) {
 
 function renderProfile(slide: ProfileSlide) {
   return (
-    <div className="flex h-full flex-col gap-5">
-      <div className="grid gap-4 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
-        <BubbleCard>
-          <h2 className="font-hedvig text-[clamp(30px,3.4vw,56px)] leading-[1.02]" style={{ color: SHELL_TEXT }}>
+    <div className="flex h-full min-h-0 flex-col gap-[2em] overflow-y-auto">
+      <div className="grid min-h-0 grid-rows-[1fr] gap-[1.5em] lg:grid-cols-[minmax(0,0.5fr)_minmax(0,1.5fr)]">
+        <div className="flex min-h-0 flex-col justify-center gap-[1em] overflow-y-auto">
+          <h2 className="font-hedvig text-[clamp(1.75em,3cqi,3em)] leading-[1.04]" style={{ color: SHELL_TEXT }}>
             {slide.title}
           </h2>
-        </BubbleCard>
-        <BubbleCard>
-          <p className="text-[16px] leading-[1.7] sm:text-[18px]" style={{ color: SHELL_TEXT }}>
+          <p className="text-[0.9375em] leading-[1.7] sm:text-[1em]" style={{ color: SHELL_TEXT }}>
             {slide.paragraph}
           </p>
-        </BubbleCard>
-      </div>
-      <div className="grid gap-4 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
-        <div className="space-y-4">
-          <CapabilityGrid capabilities={slide.capabilities} />
-          <LogoStrip logos={slide.logos} />
         </div>
-        <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
-          {slide.images.map((image) => (
-            <ImageCard key={image.src} image={image} className="min-h-[200px]" />
-          ))}
-        </div>
+        {slide.images.length > 0 && (
+          <div className="grid min-h-0 grid-rows-[1fr] gap-[1em] sm:grid-cols-1 lg:grid-cols-1">
+            {slide.images.map((image) => (
+              <ImageCard key={image.src} image={image} className="h-full min-h-0" />
+            ))}
+          </div>
+        )}
       </div>
+      <div className="grid gap-[1.5em] sm:grid-cols-2 lg:grid-cols-4">
+        {slide.capabilities.map((capability) => (
+          <div key={capability.title}>
+            <h3 className="font-hedvig text-[1.25em] leading-[1.1]" style={{ color: SHELL_TEXT }}>
+              {capability.title}
+            </h3>
+            <p className="mt-[0.5em] text-[0.875em] leading-[1.6]" style={{ color: SHELL_TEXT_SOFT }}>
+              {capability.description}
+            </p>
+          </div>
+        ))}
+      </div>
+      <LogoStrip logos={slide.logos} />
     </div>
   )
 }
 
 function renderContact(slide: ContactSlide) {
   return (
-    <div className="grid h-full gap-5 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
-      <div className="flex min-w-0 flex-col gap-4">
-        <BubbleCard>
-          <h2 className="font-hedvig text-[clamp(32px,3.6vw,60px)] leading-[1.03]" style={{ color: SHELL_TEXT }}>
-            {slide.title}
-          </h2>
-        </BubbleCard>
-        <BubbleCard>
-          <p className="text-[16px] leading-[1.7] sm:text-[18px]" style={{ color: SHELL_TEXT }}>
-            {slide.paragraph}
-          </p>
-        </BubbleCard>
-        <MetaGrid items={slide.links} />
+    <div className="grid h-full min-h-0 grid-rows-[1fr] gap-[2em] lg:grid-cols-[minmax(0,0.5fr)_minmax(0,1.5fr)]">
+      <div className="flex min-h-0 min-w-0 flex-col justify-center gap-[1.5em] overflow-y-auto">
+        <h2 className="font-hedvig text-[clamp(1.875em,3.2cqi,3.25em)] leading-[1.05]" style={{ color: SHELL_TEXT }}>
+          {slide.title}
+        </h2>
+        <p className="text-[0.9375em] leading-[1.7] sm:text-[1em]" style={{ color: SHELL_TEXT }}>
+          {slide.paragraph}
+        </p>
+        <MetaList items={slide.links} />
       </div>
-      <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-2">
+      <div className="grid min-h-0 grid-rows-[1fr] gap-[1em] sm:grid-cols-3 lg:grid-cols-2">
         {slide.images.map((image, index) => (
-          <ImageCard key={image.src} image={image} className={index === 0 ? 'sm:col-span-3 lg:col-span-2 min-h-[240px]' : 'min-h-[220px]'} />
+          <ImageCard key={image.src} image={image} className={index === 0 ? 'h-full min-h-0 sm:col-span-3 lg:col-span-2' : 'h-full min-h-0'} />
         ))}
       </div>
     </div>
@@ -581,22 +552,6 @@ function renderSlide(slide: HiringDeckSlide) {
   }
 }
 
-function getAccent(slide: HiringDeckSlide) {
-  switch (slide.kind) {
-    case 'caseIntro':
-    case 'caseDetail':
-      return slide.theme.accent
-    case 'cover':
-      return '#A1A1FA'
-    case 'usp':
-    case 'workExperience':
-      return '#FABBF9'
-    case 'profile':
-      return '#A1A1FA'
-    case 'contact':
-      return '#FABBF9'
-  }
-}
 
 export default function SlidesPage({
   slides,
@@ -843,7 +798,6 @@ export default function SlidesPage({
           <SlideShell
             key={slide.id}
             label={slide.label}
-            accent={getAccent(slide)}
             footer={
               editMode && key && entry ? (
                 <SlideCurationPanel

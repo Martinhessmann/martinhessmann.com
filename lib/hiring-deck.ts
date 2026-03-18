@@ -405,8 +405,19 @@ export function buildHiringDeck(
         summary: job.summary ?? '',
         highlights: (job.highlights ?? []).slice(0, 2),
       })),
-      images: toSlideImages(workPhotos.slice(0, 3)),
+      images: [],
       index: 1,
+      label: '',
+    },
+    {
+      id: 'profile',
+      kind: 'profile',
+      title: resume.basics.label ?? 'Systems Designer',
+      paragraph: resume.basics.resume?.intro?.[1] ?? resume.basics.hero?.body?.[1] ?? '',
+      capabilities: buildCapabilities(resume.skills),
+      logos: TRUST_LOGOS.filter((logo) => PROFILE_LOGO_IDS.includes(logo.id)),
+      images: toSlideImages(workPhotos.slice(1, 2)),
+      index: 2,
       label: '',
     },
   ]
@@ -464,52 +475,39 @@ export function buildHiringDeck(
     rawSlides.push(...buildDetailSlides(realm, rawSlides.length, draftStore))
   }
 
-  rawSlides.push(
-    {
-      id: 'profile',
-      kind: 'profile',
-      title: resume.basics.label ?? 'Systems Designer',
-      paragraph: resume.basics.resume?.intro?.[1] ?? resume.basics.hero?.body?.[1] ?? '',
-      capabilities: buildCapabilities(resume.skills),
-      logos: TRUST_LOGOS.filter((logo) => PROFILE_LOGO_IDS.includes(logo.id)),
-      images: toSlideImages(workPhotos.slice(0, 3)),
-      index: rawSlides.length,
-      label: '',
-    },
-    {
-      id: 'contact',
-      kind: 'contact',
-      title: 'If this kind of systems work would help your team, let’s talk.',
-      paragraph:
-        resume.basics.hero?.body?.[1] ??
-        'I am most useful where design, systems thinking, and execution quality need to work together instead of drifting apart.',
-      links: [
-        {
-          label: 'Email',
-          values: resume.basics.email ? [resume.basics.email] : [],
-          hrefs: resume.basics.email ? [`mailto:${resume.basics.email}`] : undefined,
-        },
-        {
-          label: 'LinkedIn',
-          values: linkedIn ? [formatUrl(linkedIn)] : [],
-          hrefs: linkedIn ? [linkedIn] : undefined,
-        },
-        {
-          label: 'Website',
-          values: resume.basics.url ? [formatUrl(resume.basics.url)] : [],
-          hrefs: resume.basics.url ? [resume.basics.url] : undefined,
-        },
-        {
-          label: 'GitHub',
-          values: gitHub ? [formatUrl(gitHub)] : [],
-          hrefs: gitHub ? [gitHub] : undefined,
-        },
-      ].filter((entry) => entry.values.length > 0),
-      images: toSlideImages(workPhotos.slice(0, 3)),
-      index: rawSlides.length + 1,
-      label: '',
-    }
-  )
+  rawSlides.push({
+    id: 'contact',
+    kind: 'contact',
+    title: 'If this kind of systems work would help your team, let’s talk.',
+    paragraph:
+      resume.basics.hero?.body?.[1] ??
+      'I am most useful where design, systems thinking, and execution quality need to work together instead of drifting apart.',
+    links: [
+      {
+        label: 'Email',
+        values: resume.basics.email ? [resume.basics.email] : [],
+        hrefs: resume.basics.email ? [`mailto:${resume.basics.email}`] : undefined,
+      },
+      {
+        label: 'LinkedIn',
+        values: linkedIn ? [formatUrl(linkedIn)] : [],
+        hrefs: linkedIn ? [linkedIn] : undefined,
+      },
+      {
+        label: 'Website',
+        values: resume.basics.url ? [formatUrl(resume.basics.url)] : [],
+        hrefs: resume.basics.url ? [resume.basics.url] : undefined,
+      },
+      {
+        label: 'GitHub',
+        values: gitHub ? [formatUrl(gitHub)] : [],
+        hrefs: gitHub ? [gitHub] : undefined,
+      },
+    ].filter((entry) => entry.values.length > 0),
+    images: toSlideImages(workPhotos.slice(1, 2)),
+    index: rawSlides.length,
+    label: '',
+  })
 
   return rawSlides.map((slide, index) => ({
     ...slide,

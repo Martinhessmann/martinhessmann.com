@@ -205,7 +205,7 @@ export function ClientDetailContent({
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-16">
           <div>
             <p className="mb-4 text-[12px] font-medium tracking-[0.08em] text-gray-500">
-              {realm.displayName} · {realm.accountLine}
+              {realm.displayName}
             </p>
             <h2 id={`client-${realm.id}-title`} className="font-hedvig text-[clamp(28px,3.5vw,38px)] leading-[1.3] text-gray-950">
               {realm.hook}

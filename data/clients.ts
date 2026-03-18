@@ -97,15 +97,15 @@ export const CLIENT_REALMS: ClientRealm[] = [
     accountLine: "Multi-platform brand and partner systems",
     logo: `${IMG}/clients/teambank.svg`,
     moodImage: `${REALM_IMG.teambank}/cover/cover-illustration.png`,
-    hook: "UI systems for platforms that could not wait for a style guide.",
+    hook: "Systematic design patterns across platforms.",
     theme: {
       bg: '#4BB4F0',
       surface: '#6BC4F5',
       text: 'white',
       tray: '#1a7ab5',
       panel: '#1a7ab5',
-      panelText: '#FFFFFF',
-      label: 'rgba(255,255,255,0.9)',
+      panelText: '#181823',
+      label: 'rgba(24,24,35,0.9)',
     },
     keyMoment:
       "TeamBank, the maker of easyCredit, was operating across multiple platforms, teams, and agencies: corporate communication, partner tooling, brand operations, and merchant-facing services. I led UI/UX on the platforms I worked on and turned that fragmented landscape into a usable interface system, even though no commissioned global style guide existed for the platform layer.",
@@ -344,7 +344,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
     accountLine: "Civic ecosystem stewardship",
     logo: `${IMG}/clients/gruen-berlin.svg`,
     moodImage: `${REALM_IMG.gruenInfrasignal}/cover/cover-illustration.png`,
-    hook: "A civic ecosystem people had to understand, use, and trust.",
+    hook: "Civic spaces, made digitally legible.",
     theme: {
       bg: '#5BE290',
       surface: '#8AF0B4',
@@ -517,7 +517,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
     accountLine: "Generative brand production systems",
     logo: `${IMG}/clients/hartmann.svg`,
     moodImage: `${REALM_IMG.openWonder}/cover/cover-illustration.png`,
-    hook: "An agency service, rebuilt as a product system.",
+    hook: "Creative production with autonomous, agentic Agency.",
     theme: {
       bg: '#F5E642',
       surface: '#FFF07A',
@@ -525,7 +525,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
       tray: '#D5C51F',
       panel: '#D5C51F',
       panelText: '#181823',
-      label: 'rgba(44,39,3,0.86)',
+      label: 'rgba(44,39,3,0.6)',
     },
     keyMoment:
       "Open Wonder turns agency-style brand production into a product. LLM logic, generation models, brand rules, and creative direction have to align so outputs become usable, repeatable, and worth shipping for teams including Idealo, mobile.de, Hartmann, and Kneipp.",
@@ -645,7 +645,7 @@ export const CLIENT_REALMS: ClientRealm[] = [
     accountLine: "High-trust service and growth systems",
     logo: "",
     moodImage: `${REALM_IMG.tertianumDpf}/cover/cover-illustration.png`,
-    hook: "Service quality and growth, held together over years.",
+    hook: "Premium living, transformed into digital trust.",
     theme: {
       bg: '#F8F0E5',
       surface: '#FFF8F1',
@@ -806,9 +806,9 @@ export const CLIENT_REALMS: ClientRealm[] = [
     accountLine: "Member benefit platform",
     logo: `${IMG}/clients/evg.svg`,
     moodImage: `${REALM_IMG.woMoFonds}/cover/cover-illustration.png`,
-    hook: "Union benefits, made understandable.",
+    hook: "Union benefits, made accessible.",
     theme: {
-      bg: '#a1a1fa',
+      bg: '#bde7ff',
       surface: '#b8b4f8',
       text: 'gray-900',
       tray: '#8884e0',

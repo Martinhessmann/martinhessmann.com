@@ -2,7 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Inter 28pt – primary sans-serif */
+/* Inter – primary sans-serif (uses Inter 28pt woff2) */
+@font-face {
+    font-family: 'Inter';
+    src: url('/fonts/Inter28pt-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Inter 28pt – alias for backwards compatibility */
 @font-face {
     font-family: 'Inter 28pt';
     src: url('/fonts/Inter28pt-Regular.woff2') format('woff2');

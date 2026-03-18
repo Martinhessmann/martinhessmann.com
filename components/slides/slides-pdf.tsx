@@ -406,11 +406,13 @@ function renderUsp(slide: Extract<HiringDeckSlide, { kind: 'usp' }>) {
           </PdfCard>
         ))}
       </View>
-      <View style={styles.imageRow}>
-        {slide.images.slice(0, 3).map((image) => (
-          <PdfImageCard key={image.src} image={image} cover style={styles.imageHalf} />
-        ))}
-      </View>
+      {slide.images.length > 0 && (
+        <View style={styles.imageRow}>
+          {slide.images.map((image) => (
+            <PdfImageCard key={image.src} image={image} cover style={styles.imageHalf} />
+          ))}
+        </View>
+      )}
     </View>
   )
 }
@@ -461,8 +463,7 @@ function renderCaseIntro(slide: Extract<HiringDeckSlide, { kind: 'caseIntro' }>)
     <View style={styles.row}>
       <View style={[styles.column, styles.grow]}>
         <PdfCard>
-          <Text style={[styles.eyebrow, { color: slide.theme.label }]}>{slide.accountLine}</Text>
-          <Text style={[styles.title, { marginTop: 10 }]}>{slide.title}</Text>
+          <Text style={[styles.title, { color: slide.theme.label }]}>{slide.title}</Text>
         </PdfCard>
         <PdfCard>
           <Text style={styles.paragraph}>{slide.paragraph}</Text>
@@ -519,22 +520,24 @@ function renderProfile(slide: Extract<HiringDeckSlide, { kind: 'profile' }>) {
               </PdfCard>
             ))}
           </View>
-          <PdfCard>
-            <Text style={styles.eyebrow}>Selected organisations</Text>
-            <View style={[styles.chipRow, { marginTop: 10 }]}>
-              {slide.logos.map((logo) => (
-                <Text key={logo.id} style={styles.chip}>
-                  {logo.name}
-                </Text>
-              ))}
-            </View>
-          </PdfCard>
+          {slide.logos.length > 0 && (
+            <PdfCard>
+              <Text style={styles.eyebrow}>Selected organisations</Text>
+              <View style={[styles.chipRow, { marginTop: 10 }]}>
+                {slide.logos.map((logo) => (
+                  <Text key={logo.id} style={styles.chip}>
+                    {logo.name}
+                  </Text>
+                ))}
+              </View>
+            </PdfCard>
+          )}
         </View>
-        <View style={[styles.column, { width: 280 }]}>
-          {slide.images.slice(0, 3).map((image) => (
-            <PdfImageCard key={image.src} image={image} cover />
-          ))}
-        </View>
+        {slide.images.length > 0 && (
+          <View style={[styles.column, { width: 280 }]}>
+            <PdfImageCard image={slide.images[0]} cover />
+          </View>
+        )}
       </View>
     </View>
   )
@@ -570,11 +573,11 @@ function renderContact(slide: Extract<HiringDeckSlide, { kind: 'contact' }>) {
           ))}
         </View>
       </View>
-      <View style={[styles.column, { width: 320 }]}>
-        {slide.images.slice(0, 2).map((image, index) => (
-          <PdfImageCard key={image.src} image={image} cover style={index === 0 ? { minHeight: 248 } : undefined} />
-        ))}
-      </View>
+      {slide.images.length > 0 && (
+        <View style={[styles.column, { width: 320 }]}>
+          <PdfImageCard image={slide.images[0]} cover style={{ minHeight: 248 }} />
+        </View>
+      )}
     </View>
   )
 }

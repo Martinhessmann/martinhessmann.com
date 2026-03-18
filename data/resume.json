@@ -70,7 +70,6 @@
         "Product Design",
         "Design Systems",
         "Design Tokens",
-        "AI in UX",
         "B2B Platform Design",
         "Interaction Design",
         "Information Architecture",
@@ -82,15 +81,15 @@
       ]
     },
     {
-      "name": "Leadership",
+      "name": "AI & Delivery",
       "level": "Expert",
       "keywords": [
-        "Cross-functional Leadership",
+        "LLM Workflows",
+        "Prompt Engineering",
+        "Agentic Engineering",
+        "Evaluation & Feedback Systems",
         "Design Ops",
         "Design System Governance",
-        "Team Leadership",
-        "Hiring & Coaching",
-        "Design Culture Building",
         "Release Management",
         "Observability Pipelines"
       ]
@@ -108,10 +107,6 @@
         "WordPress",
         "TYPO3",
         "Prismic",
-        "AI Integration",
-        "LLM Workflows",
-        "Prompt Engineering",
-        "Agentic Engineering",
         "Kubernetes",
         "Cloudflare Workers",
         "CI/CD",
@@ -614,7 +609,7 @@
         "city": "Berlin",
         "countryCode": "DE"
       },
-      "summary": "Shaping how an AI brand-production platform works beyond the demo — translating brand constraints into prompt logic, guardrails, and review workflows so the output is predictable enough to ship.",
+      "summary": "I work across product discovery, model evaluation, workflow design, and production quality for an AI brand-asset platform. My role covers how brand and art-direction requirements are translated into generation logic, how output quality is evaluated, and how generation workflows are integrated into the tools creative teams already use.",
       "profileMix": {
         "segments": [
           {
@@ -636,8 +631,8 @@
         ]
       },
       "highlights": [
-        "Define evaluation criteria and constraint logic for AI generation pipelines serving Idealo, mobile.de, Hartmann, and Kneipp",
-        "Shape product direction in a design-engineering-product triad, making output quality measurable and reviewable",
+        "Defined evaluation, feedback, and versioning structures so generated outputs can be reviewed, improved, and governed at production standard.",
+        "Led integration of generation workflows into Figma and CMS environments, including plugin development, API scope design, and support for banner-campaign production.",
         "Build observability pipelines (Sentry → Slack → Linear → GitHub Actions) that close the loop from user feedback to shipped fix",
         "Design prompt-enhancer workflows with memory persistence for iterative AI generation on Gemini 2.0/2.1"
       ],
@@ -664,7 +659,7 @@
         "city": "Berlin",
         "countryCode": "DE"
       },
-      "summary": "End-to-end ownership of client delivery — from first concept through stable, monitored release. Design quality, accessibility, and technical standards across a portfolio of very different clients and stacks.",
+      "summary": "I own delivery across a portfolio of clients with different stacks, stakeholders, and definitions of done. My role is to align design quality, accessibility, and technical standards with how each client operates, and to make design systems and design operations useful and sustainable rather than a burden.",
       "profileMix": {
         "segments": [
           {
@@ -686,8 +681,8 @@
         ]
       },
       "highlights": [
-        "Own delivery, design-system governance, and release quality across the full client portfolio",
-        "Set UX standards and bring them to client leadership, internal stakeholders, and sometimes skeptical engineers",
+        "Established quality as a delivery discipline across the portfolio — CI/CD, automated testing, Sentry, Playwright, and release traceability.",
+        "Accessibility audits, plugin development, and bringing UX standards to client leadership, internal stakeholders, and engineers who think in different terms.",
         "Scale design operations across regulated and B2B platforms — rituals, tooling, and reviews without the process theater",
         "Traceability, git discipline, and release documentation so everyone can trust what shipped and why"
       ],
@@ -723,7 +718,7 @@
         "city": "Berlin",
         "countryCode": "DE"
       },
-      "summary": "Five years directing UX across a six-brand portfolio. I led discovery, research, and prototyping while building the design-system foundations that teams shipped on across WordPress, TYPO3, and Prismic.",
+      "summary": "I led UX across a multi-brand portfolio with different technical and organizational constraints. My role combined research, prototyping, and system design to establish foundations that stayed reliable through relaunches, team changes, and new use cases.",
       "profileMix": {
         "segments": [
           {
@@ -745,8 +740,8 @@
         ]
       },
       "highlights": [
-        "Built multi-brand design-system foundations in Figma and Storybook that stayed in use across launches and teams",
-        "Led discovery interviews and prototyping that turned complex regulated workflows into understandable interfaces",
+        "Established design-system foundations in Figma and token-based workflows to support consistent implementation across teams.",
+        "Built trust with product and marketing stakeholders by translating UX decisions into KPI-relevant outcomes and clearer delivery priorities.",
         "Defined UX standards and ensured design-production parity across three CMS stacks"
       ],
       "tech": [
@@ -775,7 +770,7 @@
         "city": "Berlin",
         "countryCode": "DE"
       },
-      "summary": "Designed responsive web apps and campaign sites end to end — from early research and information architecture through to visual design and interactive prototypes.",
+      "summary": "I owned the end-to-end design process for responsive web apps and campaign sites: research, information architecture, visual design, and prototypes. I worked closely with developers on handoff and production quality, and on keeping style guides and component patterns usable as platforms and use cases changed.",
       "profileMix": {
         "segments": [
           {
@@ -797,8 +792,8 @@
         ]
       },
       "highlights": [
-        "Owned the full design process from research and user flows through to production-ready prototypes",
-        "Built reusable component patterns and design-to-dev handoff workflows the team kept using after I left",
+        "Photoshop, Sketch, Zeplin, InVision — the full path from wireframe to developer handoff.",
+        "Style guides and component patterns that evolved with each platform and use case, with alignment between the teams building them and the teams executing them.",
         "Ran moderated usability tests and analytics reviews to improve clarity and task success",
         "Maintained brand consistency and accessibility standards across launches"
       ],
@@ -999,6 +994,18 @@
       "date": "2023-05",
       "awarder": "GitLab",
       "summary": "Accepted into GitLab's Community Program for open source contributions and knowledge sharing around developer tooling and workflows."
+    },
+    {
+      "title": "Digital infrastructure support – Platte e.V.",
+      "date": "2024-01",
+      "awarder": "Platte e.V.",
+      "summary": "Supporting Platte e.V. with their digital infrastructure and automations for the organization."
+    },
+    {
+      "title": "Tech From Below Meetups",
+      "date": "2024-01",
+      "awarder": "Wikimedia Foundation",
+      "summary": "Attending the Tech From Below meetups at the Wikimedia Foundation."
     }
   ],
   "certificates": [],
